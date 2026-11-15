@@ -31,8 +31,8 @@ Further design properties:
 - **Bounded resources.** Request bodies are capped at 1 MiB; upstream responses are capped after decompression
   (gzip bombs stop at the cap); requests are concurrency-limited and time-limited; results over
   `WEATHER_MCP_MAX_RESPONSE_BYTES` are replaced by an error rather than cut; the cache has a fixed size.
-- **Parsing.** JSON is parsed with a nesting limit. The gazetteer archive is read by a small ZIP reader that caps
-  the decompressed size and only accepts stored or deflated members.
+- **Parsing.** JSON is parsed with a nesting limit. The gazetteer archive is read with rubyzip, and the CSV inside is
+  capped as it inflates (the size the archive declares is not trusted); a build that fails is never installed.
 - **Minimal container.** Non-root user (65532), no writable paths, works with `--read-only` and
   `--cap-drop ALL`; the place-name database is built into the image; base images are pinned by digest.
 

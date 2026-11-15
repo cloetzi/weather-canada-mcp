@@ -45,9 +45,9 @@ module WeatherCanadaMcp
         raise InvalidArguments, "Give a query, or lat and lon." unless query.is_a?(String) && !query.strip.empty?
         raise InvalidArguments, "query is longer than #{MAX_LOCATION_LENGTH} characters." if query.length > MAX_LOCATION_LENGTH
 
-        name, province = Gazetteer.split_province(query)
+        name, province = Places::Gazetteer.split_province(query)
         if arguments["province"]
-          province = Gazetteer.province_name(arguments["province"]) or
+          province = Places::Gazetteer.province_name(arguments["province"]) or
             raise InvalidArguments, "Unknown province #{arguments["province"].to_s[0, 40].inspect}; use a code such as AB or a name such as Alberta."
         end
 
@@ -71,7 +71,7 @@ module WeatherCanadaMcp
         @context.places.get.nearest(point.lat, point.lon, radius_km: 15, limit:).map do |distance, place|
           place.to_h.merge(distance_km: round_km(distance))
         end
-      rescue Gazetteer::Unavailable
+      rescue Places::Gazetteer::Unavailable
         nil
       end
 

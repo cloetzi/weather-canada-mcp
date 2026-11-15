@@ -7,6 +7,7 @@ PATH
       falcon (~> 0.57)
       mcp (~> 1.9)
       nokogiri (~> 1.18)
+      rubyzip (~> 3.2)
       sqlite3 (~> 2.7)
       zeitwerk (~> 2.8)
 
@@ -156,6 +157,7 @@ GEM
       lint_roller (~> 1.1)
       rubocop (>= 1.72.1)
     ruby-progressbar (1.13.0)
+    rubyzip (3.7.0)
     samovar (2.5.1)
       console (~> 1.0)
     simpleidn (0.3.0)
@@ -255,6 +257,7 @@ CHECKSUMS
   rubocop-minitest (0.41.0) sha256=c15bfe00134a30c8a00ce670b07ecc80440455ba277b8682cf0d515c98ee7426
   rubocop-rake (0.7.1) sha256=3797f2b6810c3e9df7376c26d5f44f3475eda59eb1adc38e6f62ecf027cbae4d
   ruby-progressbar (1.13.0) sha256=80fc9c47a9b640d6834e0dc7b3c94c9df37f08cb072b7761e4a71e22cff29b33
+  rubyzip (3.7.0) sha256=65c19294da75297a939006f3516deacc33185fbd721ff1954f7a231db6d3e121
   samovar (2.5.1) sha256=8a9fc41eb8868084f0321eb41678c485cfbc7d282fb306c0be67c3284b1d2394
   simpleidn (0.3.0) sha256=12ca730bed2f3db04d11e9bfd1bca3e11fb37f55b21eb2e9793fb5814bf54d03
   sqlite3 (2.10.2-aarch64-linux-gnu) sha256=e9aea2c2b3476fc875dd8a89313a9a2862818519c0186bfb5b56d6f57bb08d98

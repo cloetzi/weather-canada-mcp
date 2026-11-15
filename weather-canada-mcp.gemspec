@@ -27,6 +27,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "falcon", "~> 0.57"
   spec.add_dependency "mcp", "~> 1.9"
   spec.add_dependency "nokogiri", "~> 1.18"
+  spec.add_dependency "rubyzip", "~> 3.2"
   spec.add_dependency "sqlite3", "~> 2.7"
   spec.add_dependency "zeitwerk", "~> 2.8"
 end

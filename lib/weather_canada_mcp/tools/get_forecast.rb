@@ -33,8 +33,8 @@ module WeatherCanadaMcp
         point = resolve_point(arguments)
         hours = (arguments["hours"] || 12).clamp(0, MAX_HOURS)
         distance, site = locator.nearest_sites(point.lat, point.lon, limit: 1).first
-        properties = ogc.item(Locator::COLLECTION, site.id).fetch("properties") do
-          raise Upstream::InvalidResponse, "api.weather.gc.ca returned a forecast without properties."
+        properties = ogc.item(Places::Locator::COLLECTION, site.id).fetch("properties") do
+          raise Sources::InvalidResponse, "api.weather.gc.ca returned a forecast without properties."
         end
         @lang = lang
         shape(properties, site, distance, point, hours)

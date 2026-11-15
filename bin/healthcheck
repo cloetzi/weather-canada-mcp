@@ -15,7 +15,7 @@ rescue SystemCallError
 end
 
 begin
-  uri = URI(WeatherCanadaMcp::HealthCheck.url)
+  uri = URI(WeatherCanadaMcp::Server::HealthCheck.url)
   response = Net::HTTP.start(uri.hostname, uri.port, open_timeout: 2, read_timeout: 2) { |http| http.get(uri.path) }
   exit(response.is_a?(Net::HTTPOK) ? 0 : 1)
 rescue StandardError => e

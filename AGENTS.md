@@ -11,17 +11,18 @@ Names. Users run it over stdio or from the Docker image on GHCR. No upstream cre
 ## Layout
 
 - `lib/weather_canada_mcp/`
-  - `tools/`: one class per MCP tool (`Tools::Base` subclasses); `tools.rb` lists them in order
-  - `tool_runner.rb`: runs a tool call, drops nulls, adds the attribution, enforces the size cap, turns errors into
+  - `tools/`: one class per MCP tool (`Tools::Base` subclasses); `tools.rb` lists them in order;
+    `Tools::Runner` runs a tool call, drops nulls, adds the attribution, enforces the size cap, turns errors into
     tool errors
-  - `upstream/`: `HttpClient` (GET only, fixed origins, gzip, size cap, retries), `RateLimiter` (GCRA, global),
-    `Cache` (TTL with request coalescing); `upstream.rb` holds the error classes
-  - `sources/`: thin upstream clients returning parsed data (`OgcApi` today)
-  - `gazetteer.rb`, `gazetteer/`: offline place names in SQLite (FTS5; plain lat/lon index, since the bundled
-    SQLite has no R*Tree), built from NRCan's CSV by `Builder`, downloaded and built on demand by `Provider`
-  - `locator.rb`: nearest City Page forecast sites; `geo.rb`: distance, bbox, point in polygon
-  - `config.rb`, `http_app.rb`, `host_origin_guard.rb`, `static_token_verifier.rb`, `application.rb`, `cli.rb`:
-    wiring and transports
+  - `sources/`: everything that fetches ECCC and NRCan data. `HttpClient` (GET only, fixed origins, gzip, size cap,
+    retries), `RateLimiter` (GCRA, global), `Cache` (TTL with request coalescing), and a thin client per service
+    returning parsed data (`OgcApi` today); `sources.rb` holds the error classes
+  - `places/`: `Gazetteer`, offline place names in SQLite (FTS5; plain lat/lon index, since the bundled SQLite has
+    no R*Tree), built from NRCan's CSV by `Builder`, downloaded (rubyzip) and built on demand by `Provider`;
+    `Locator`, nearest City Page forecast sites
+  - `server/`: the HTTP transport. `HttpApp`, `HostOriginGuard`, `StaticTokenVerifier`, `HealthCheck`,
+    `ListenAddress`, `ExceptionReporter`
+  - `config.rb`, `application.rb`, `cli.rb`, `logger.rb`: wiring; `geo.rb`: distance, bbox, point in polygon
 - `bin/`: `weather-canada-mcp` (CLI), `capture-fixtures`, `healthcheck`, `docker-smoke-test`
 - `test/`: Minitest. `test/support/fake_eccc.rb` serves `test/fixtures/` on a local port;
   `test/fixtures/tools.json` snapshots the tool manifest; `test/fixtures/m0/` holds samples for future tools.
@@ -38,10 +39,10 @@ docker build -t weather-canada-mcp:dev . && bin/docker-smoke-test weather-canada
 
 ## Rules
 
-- **Licence.** Every tool result carries `ATTRIBUTION` (ToolRunner adds it). Alert text is passed through
+- **Licence.** Every tool result carries `ATTRIBUTION` (`Tools::Runner` adds it). Alert text is passed through
   verbatim: never summarize, reword or truncate it. Never use ECCC logos or imply endorsement.
-- **Fair use.** All upstream requests go through `Upstream::HttpClient` (rate limiter, User-Agent) and should be
-  cached through `Upstream::Cache`. Prefer `bbox`, `limit` and `properties` to keep responses small.
+- **Fair use.** All upstream requests go through `Sources::HttpClient` (rate limiter, User-Agent) and should be
+  cached through `Sources::Cache`. Prefer `bbox`, `limit` and `properties` to keep responses small.
 - **Fixtures are real.** Capture them with `bin/capture-fixtures`; never hand-write or edit upstream data.
 - **Privacy.** Never log tool arguments or results: locations reveal where people are. Log tool names,
   durations and error classes only.
