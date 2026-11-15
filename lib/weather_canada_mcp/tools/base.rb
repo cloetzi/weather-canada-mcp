@@ -110,12 +110,14 @@ module WeatherCanadaMcp
       # The MCP server checks arguments against the schema first; this keeps a bad value a readable tool error, not a
       # bug, if that check is ever off.
       def integer_argument(arguments, name, default, range)
-        value = arguments[name].nil? ? default : arguments[name]
-        value = value.to_i if value.is_a?(Float) && value.finite? && (value % 1).zero? # JSON Schema counts 2.0 as an integer
+        value = whole_number(arguments[name].nil? ? default : arguments[name])
         return value if value.is_a?(Integer) && range.cover?(value)
 
         raise InvalidArguments, "#{name} must be a whole number from #{range.min} to #{range.max}."
       end
+
+      # JSON Schema counts 2.0 as an integer, so the server's schema check lets it through.
+      def whole_number(value) = value.is_a?(Float) && value.finite? && (value % 1).zero? ? value.to_i : value
 
       def round_km(distance) = distance.round(distance < 10 ? 1 : 0)
 

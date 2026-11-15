@@ -41,7 +41,7 @@ module WeatherCanadaMcp
       def call(arguments)
         lang = lang(arguments)
         point = resolve_point(arguments)
-        hours = arguments["hours"] || 24
+        hours = whole_number(arguments["hours"] || 24)
         step = STEP_HOURS.fetch(hours) { raise InvalidArguments, "hours must be 12, 24 or 48." }
         # The step that contains now comes first.
         start = Time.at(now.to_i / (step * 3600) * (step * 3600)).utc

@@ -62,7 +62,7 @@ module WeatherCanadaMcp
       def call(arguments)
         lang(arguments)
         point = resolve_point(arguments)
-        radius = arguments["radius_km"] || 100
+        radius = whole_number(arguments["radius_km"] || 100)
         raise InvalidArguments, "radius_km must be one of #{RADII.join(", ")}." unless RADII.include?(radius)
 
         kind = precipitation(arguments["precipitation"])
