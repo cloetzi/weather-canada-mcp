@@ -7,7 +7,7 @@ class LoaderTest < Minitest::Test
   def test_every_file_follows_zeitwerk_conventions
     Zeitwerk::Loader.eager_load_namespace(WeatherCanadaMCP)
 
-    assert_kind_of Class, WeatherCanadaMCP::Sources::OgcApi
+    assert_kind_of Class, WeatherCanadaMCP::Sources::ECCC::OgcApi
   end
 
   # The CLI rescues WeatherCanadaMCP::Error, so every error class must descend from it.

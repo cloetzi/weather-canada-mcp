@@ -2,19 +2,19 @@
 
 require_relative "../../test_helper"
 
-class MapImageTest < Minitest::Test
-  MapImage = WeatherCanadaMCP::Tools::MapImage
+class CompositorTest < Minitest::Test
+  Compositor = WeatherCanadaMCP::Maps::Compositor
   BASE = FakeEccc.fixture_binary("nrcan/cbmt_whistler.png")
   RADAR = FakeEccc.fixture_binary("geomet/whistler/RADAR_1KM_RSNO_20261115T1930Z.png")
 
   def test_dimensions_from_the_header
-    assert_equal [512, 512], MapImage.dimensions(BASE)
-    assert_nil MapImage.dimensions('<?xml version="1.0"?>')
-    assert_nil MapImage.dimensions(BASE.byteslice(0, 20))
+    assert_equal [512, 512], Compositor.dimensions(BASE)
+    assert_nil Compositor.dimensions('<?xml version="1.0"?>')
+    assert_nil Compositor.dimensions(BASE.byteslice(0, 20))
   end
 
   def test_overlays_keep_the_base_where_transparent
-    result = MapImage.compose([RADAR], width: 512, height: 512, marker: [10, 10], base: BASE)
+    result = Compositor.compose([RADAR], width: 512, height: 512, marker: [10, 10], base: BASE)
     composed = ChunkyPNG::Image.from_blob(result.png)
     base = ChunkyPNG::Image.from_blob(BASE)
     radar = ChunkyPNG::Image.from_blob(RADAR)
@@ -23,12 +23,12 @@ class MapImageTest < Minitest::Test
 
     assert_equal base[clear, 500], composed[clear, 500]
     assert_equal radar[echo, 500], composed[echo, 500]
-    assert_equal MapImage::MARKER, composed[17, 10]
+    assert_equal Compositor::MARKER, composed[17, 10]
     assert_nil result.base_error
   end
 
   def test_an_unreadable_base_is_replaced_by_white
-    result = MapImage.compose([RADAR], width: 512, height: 512, marker: [10, 10], base: "not a png")
+    result = Compositor.compose([RADAR], width: 512, height: 512, marker: [10, 10], base: "not a png")
 
     assert_match(/not the 512x512 pixels/, result.base_error)
     assert_equal ChunkyPNG::Color::WHITE, ChunkyPNG::Image.from_blob(result.png)[0, 0]
@@ -41,14 +41,14 @@ class MapImageTest < Minitest::Test
     idat = [data.bytesize].pack("N") + "IDAT".b + data + [Zlib.crc32("IDAT#{data}")].pack("N")
     bomb = header + idat + [0].pack("N") + "IEND".b + [Zlib.crc32("IEND")].pack("N")
 
-    refute MapImage.inflates_within?(bomb, 512, 512)
-    error = assert_raises(WeatherCanadaMCP::Sources::InvalidResponse) { MapImage.compose([bomb], width: 512, height: 512, marker: [0, 0]) }
+    refute Compositor.inflates_within?(bomb, 512, 512)
+    error = assert_raises(WeatherCanadaMCP::Sources::InvalidResponse) { Compositor.compose([bomb], width: 512, height: 512, marker: [0, 0]) }
     assert_match(/more data than its size allows/, error.message)
-    assert MapImage.inflates_within?(BASE, 512, 512)
+    assert Compositor.inflates_within?(BASE, 512, 512)
   end
 
   def test_an_image_of_another_size_is_refused_before_decoding
-    error = assert_raises(WeatherCanadaMCP::Sources::InvalidResponse) { MapImage.compose([BASE], width: 256, height: 256, marker: [0, 0]) }
+    error = assert_raises(WeatherCanadaMCP::Sources::InvalidResponse) { Compositor.compose([BASE], width: 256, height: 256, marker: [0, 0]) }
 
     assert_match(/not the 256x256 pixels/, error.message)
   end
@@ -56,6 +56,6 @@ class MapImageTest < Minitest::Test
   def test_a_broken_png_is_an_invalid_response
     broken = BASE.byteslice(0, 200)
 
-    assert_raises(WeatherCanadaMCP::Sources::InvalidResponse) { MapImage.compose([broken], width: 512, height: 512, marker: [0, 0]) }
+    assert_raises(WeatherCanadaMCP::Sources::InvalidResponse) { Compositor.compose([broken], width: 512, height: 512, marker: [0, 0]) }
   end
 end

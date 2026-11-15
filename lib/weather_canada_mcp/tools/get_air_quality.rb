@@ -81,12 +81,12 @@ module WeatherCanadaMCP
                                                                                  limit: 100).first
         return { location: point.to_h, note: "No AQHI location within #{RADIUS_KM} km. AQHI covers mostly populated areas." } unless observation
 
-        p = observation["properties"]
-        current = current(p, lang)
-        forecast = forecast(p["location_id"], lang)
+        properties = observation["properties"]
+        current = current(properties, lang)
+        forecast = forecast(properties["location_id"], lang)
         {
           location: point.to_h,
-          aqhi_location: { id: p["location_id"], name: p["location_name_#{lang}"] || p["location_name_en"],
+          aqhi_location: { id: properties["location_id"], name: properties["location_name_#{lang}"] || properties["location_name_en"],
                            distance_km: round_km(distance) },
           current:, forecast:,
           health_messages: health_messages([current, *forecast&.dig(:periods)], lang), health_messages_source: MESSAGES_URL.fetch(lang),
@@ -109,10 +109,10 @@ module WeatherCanadaMCP
 
         data = ogc.items(FORECASTS_COLLECTION, location_id:, aqhi_type: "AQHI-Forecast-Period", sortby: "-publication_datetime",
                                                skipGeometry: true, limit: 1)
-        p = Array(data["features"]).first&.dig("properties")
-        return unless p.is_a?(Hash)
+        properties = Array(data["features"]).first&.dig("properties")
+        return unless properties.is_a?(Hash)
 
-        { published_at: time(p["publication_datetime"])&.utc&.iso8601, periods: periods(p["forecast_period"], lang) }
+        { published_at: time(properties["publication_datetime"])&.utc&.iso8601, periods: periods(properties["forecast_period"], lang) }
       rescue Sources::Error => e
         { note: "The forecast could not be fetched: #{e.message}" }
       end

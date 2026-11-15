@@ -88,8 +88,8 @@ module WeatherCanadaMCP
         temperature, precipitation, snowfall = collections.map do |features|
           features.find { |entry| entry.dig("properties", "VIRTUAL_CLIMATE_ID") == id }&.dig("properties") || {}
         end
-        p = feature["properties"]
-        { station: { name: p["VIRTUAL_STATION_NAME_#{lang == "fr" ? "F" : "E"}"] || p["VIRTUAL_STATION_NAME_E"], id:,
+        properties = feature["properties"]
+        { station: { name: properties["VIRTUAL_STATION_NAME_#{lang == "fr" ? "F" : "E"}"] || properties["VIRTUAL_STATION_NAME_E"], id:,
                      distance_km: round_km(distance) },
           **temperature_records(temperature), **amount_record(precipitation, "PRECIPITATION", "mm"),
           **amount_record(snowfall, "SNOWFALL", "cm") }
@@ -146,7 +146,7 @@ module WeatherCanadaMCP
         id = station.dig("properties", "CLIMATE_IDENTIFIER")
         data = ogc.items(NORMALS, CLIMATE_IDENTIFIER: id, MONTH: month, skipGeometry: true, limit: 200,
                                   properties: "NORMAL_ID,VALUE,PERIOD_BEGIN,PERIOD_END")
-        rows = Array(data["features"]).filter_map { |feature| feature["properties"] }.to_h { |p| [p["NORMAL_ID"], p] }
+        rows = Array(data["features"]).filter_map { |feature| feature["properties"] }.to_h { |row| [row["NORMAL_ID"], row] }
         first = rows.values.first || {}
         { station: { name: station.dig("properties", "STATION_NAME"), climate_id: id, distance_km: round_km(distance) },
           period: ("#{first["PERIOD_BEGIN"]}-#{first["PERIOD_END"]}" if first["PERIOD_BEGIN"]),

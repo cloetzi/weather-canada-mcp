@@ -29,7 +29,7 @@ module WeatherCanadaMCP
     # WEATHER_MCP_TOOLS may name only tools this configuration serves; WEATHER_MCP_EXCLUDE_TOOLS any known tool, so
     # excluding an opt-in tool that is off does nothing.
     def self.unknown_tools(config)
-      known = (Tools.all + Tools.avalanche + Tools.field_reports).map(&:tool_name)
+      known = (Tools.core + Tools.avalanche + Tools.field_reports).map(&:tool_name)
       (Array(config.tools) - Tools.available(config).map(&:tool_name)) | (config.exclude_tools - known)
     end
 
@@ -63,19 +63,19 @@ module WeatherCanadaMCP
     # Map images (100 KB or more each) are kept apart, so they never crowd out the small entries.
     def image_cache = @image_cache ||= Sources::Cache.new(max_entries: IMAGE_CACHE_ENTRIES, scale: config.cache_scale)
 
-    def ogc = @ogc ||= Sources::OgcApi.new(http:, cache:)
+    def ogc = @ogc ||= Sources::ECCC::OgcApi.new(http:, cache:)
 
-    def wms = @wms ||= Sources::Wms.new(http:, cache:, image_cache:)
+    def wms = @wms ||= Sources::ECCC::Wms.new(http:, cache:, image_cache:)
 
-    def basemap = @basemap ||= Sources::Basemap.new(http:, cache: image_cache)
+    def basemap = @basemap ||= Sources::NRCan::Basemap.new(http:, cache: image_cache)
 
-    def avalanche = (@avalanche ||= Sources::AvalancheCanada.new(http:, cache:) if config.avalanche_enabled)
+    def avalanche = (@avalanche ||= Sources::AvalancheCanada::Services.build(http:, cache:) if config.avalanche_enabled)
 
-    def places = @places ||= Places::Gazetteer::Provider.new(path: config.gazetteer_path, http:, logger:)
+    def gazetteer = @gazetteer ||= Places::Gazetteer::Store.new(path: config.gazetteer_path, http:, logger:)
 
     def context
-      @context ||= Tools::Context.new(ogc:, wms:, basemap:, images: image_cache, avalanche:, locator: Places::Locator.new(ogc:),
-                                      places:, config:, clock: @clock)
+      @context ||= Tools::Context.new(ogc:, wms:, basemap:, image_cache:, avalanche:,
+                                      forecast_sites: Sources::ECCC::ForecastSites.new(ogc:), gazetteer:, config:, clock: @clock)
     end
 
     def instructions = config.avalanche_enabled ? "#{INSTRUCTIONS} #{AVALANCHE_INSTRUCTIONS}" : INSTRUCTIONS
@@ -97,7 +97,7 @@ module WeatherCanadaMCP
     def rack_app = Server::HttpApp.new(server: mcp_server, config:, logger:)
 
     def close
-      @places&.close
+      @gazetteer&.close
       @http&.close
     end
   end

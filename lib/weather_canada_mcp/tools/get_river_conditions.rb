@@ -98,9 +98,9 @@ module WeatherCanadaMCP
         data = ogc.items(REALTIME_COLLECTION, STATION_NUMBER: number, datetime: "#{since}/..", sortby: "-DATETIME",
                                               properties: "DATETIME,LEVEL,DISCHARGE", skipGeometry: true, limit: 3000)
         readings = Array(data["features"]).filter_map do |feature|
-          p = feature["properties"] || {}
-          at = time(p["DATETIME"])
-          { at:, level: number_or_nil(p["LEVEL"]), discharge: number_or_nil(p["DISCHARGE"]) } if at
+          properties = feature["properties"] || {}
+          at = time(properties["DATETIME"])
+          { at:, level: number_or_nil(properties["LEVEL"]), discharge: number_or_nil(properties["DISCHARGE"]) } if at
         end
         readings.sort_by { |reading| -reading[:at].to_f }
       end
@@ -172,9 +172,9 @@ module WeatherCanadaMCP
         data = ogc.items(MONTHLY_COLLECTION, STATION_NUMBER: number, properties: "DATE,MONTHLY_MEAN_DISCHARGE", skipGeometry: true,
                                              limit: 2000)
         Array(data["features"]).each_with_object({}) do |feature, means|
-          p = feature["properties"] || {}
-          year, m = p["DATE"].to_s.split("-").map(&:to_i)
-          value = p["MONTHLY_MEAN_DISCHARGE"]
+          properties = feature["properties"] || {}
+          year, m = properties["DATE"].to_s.split("-").map(&:to_i)
+          value = properties["MONTHLY_MEAN_DISCHARGE"]
           means[year] = value.to_f if m == month && value.is_a?(Numeric)
         end
       rescue Sources::Error => e

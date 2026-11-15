@@ -17,7 +17,7 @@ class CLITest < Minitest::Test
     stdout, _stderr, status = cli("check-config", WEATHER_MCP_AUTH_TOKEN: TestHelpers::AUTH_TOKEN)
 
     assert_predicate status, :success?
-    assert_match(/Configuration OK for the http transport: #{WeatherCanadaMCP::Tools.all.size} tools enabled/, stdout)
+    assert_match(/Configuration OK for the http transport: #{WeatherCanadaMCP::Tools.core.size} tools enabled/, stdout)
     assert_match(/MCP authentication: bearer token/, stdout)
     assert_match(/Place-name database: #{Regexp.escape(gazetteer_path)}/, stdout)
   end
@@ -52,11 +52,11 @@ class CLITest < Minitest::Test
     stdout, _stderr, status = cli("tools")
 
     assert_predicate status, :success?
-    assert_equal(WeatherCanadaMCP::Tools.all.map(&:tool_name), JSON.parse(stdout).map { |tool| tool["name"] })
+    assert_equal(WeatherCanadaMCP::Tools.core.map(&:tool_name), JSON.parse(stdout).map { |tool| tool["name"] })
   end
 
   def test_tool_manifest_matches_the_snapshot
-    manifest = "#{JSON.pretty_generate(JSON.parse(JSON.generate(WeatherCanadaMCP::Tools.all.map(&:manifest))))}\n"
+    manifest = "#{JSON.pretty_generate(JSON.parse(JSON.generate(WeatherCanadaMCP::Tools.core.map(&:manifest))))}\n"
     path = File.join(TestHelpers::ROOT, "test/fixtures/tools.json")
     File.write(path, manifest) if ENV["UPDATE_SNAPSHOTS"]
 

@@ -89,7 +89,7 @@ module WeatherCanadaMCP
         marker = marker(point, bbox)
         base_png = base if base.is_a?(String)
         image = composed([kind, at.to_i, bbox, marker, base_png ? 1 : 0]) do
-          MapImage.compose([coverage, radar], width: SIZE, height: SIZE, marker:, base: base_png)
+          Maps::Compositor.compose([coverage, radar], width: SIZE, height: SIZE, marker:, base: base_png)
         end
         {
           location: point.to_h, radar_time: at.utc.iso8601, **readings(kind, other, at, [latest, other_rate, type, history]),
@@ -152,7 +152,7 @@ module WeatherCanadaMCP
         min_lon, min_lat, max_lon, max_lat = bbox
         info = { precipitation: kind, radius_km: radius, width: SIZE, height: SIZE,
                  bounds: { min_lat:, min_lon:, max_lat:, max_lon: }, legend: LEGENDS.fetch(kind) }
-        return info.merge(base_map: Sources::Basemap::ATTRIBUTION) unless base_error
+        return info.merge(base_map: Sources::NRCan::Basemap::ATTRIBUTION) unless base_error
 
         info.merge(note: "The base map could not be used (#{base_error}); the radar is drawn on white.")
       end

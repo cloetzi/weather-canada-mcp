@@ -83,7 +83,8 @@ module WeatherCanadaMCP
       config = app.config
       puts "Configuration OK for the #{transport} transport: #{app.tools.size} tools enabled (#{app.tools.map(&:tool_name).join(", ")})"
       puts "MCP authentication: #{auth_summary(transport, config)}"
-      puts "Place-name database: #{app.places.available? ? config.gazetteer_path : "not built yet (built on first use, or run `gazetteer update`)"}"
+      built = app.gazetteer.available? ? config.gazetteer_path : "not built yet (built on first use, or run `gazetteer update`)"
+      puts "Place-name database: #{built}"
     end
 
     def auth_summary(transport, config)
@@ -97,12 +98,12 @@ module WeatherCanadaMCP
       app = Application.new(config)
       case subcommand
       when "update"
-        Sync { app.places.rebuild! }
-        puts "Built #{config.gazetteer_path} (#{app.places.get.size} names)."
+        Sync { app.gazetteer.rebuild! }
+        puts "Built #{config.gazetteer_path} (#{app.gazetteer.open.size} names)."
       when "info"
-        return puts("No place-name database at #{config.gazetteer_path}.") unless app.places.available?
+        return puts("No place-name database at #{config.gazetteer_path}.") unless app.gazetteer.available?
 
-        puts JSON.pretty_generate(app.places.get.meta.merge("path" => config.gazetteer_path))
+        puts JSON.pretty_generate(app.gazetteer.open.meta.merge("path" => config.gazetteer_path))
       else usage_error("unknown gazetteer command: #{subcommand.inspect}")
       end
     ensure

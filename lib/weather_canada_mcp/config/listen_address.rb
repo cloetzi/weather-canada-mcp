@@ -3,7 +3,7 @@
 require "ipaddr"
 
 module WeatherCanadaMCP
-  module Server
+  class Config
     ListenAddress = Data.define(:host, :port)
 
     # Where the HTTP transport listens (WEATHER_MCP_HOST, WEATHER_MCP_PORT). The host is an IP address or a host name;
@@ -13,9 +13,9 @@ module WeatherCanadaMCP
       DEFAULT_PORT = 8080
       HOST_NAME = /\A(?!-)[A-Za-z0-9_-]{1,63}(?<!-)(?:\.(?!-)[A-Za-z0-9_-]{1,63}(?<!-))*\z/
 
-      # Reads only these two settings, so the container health check needs no secrets. Raises Config::Error when invalid.
+      # Reads only these two settings, so the container health check needs no secrets. Raises Error when invalid.
       def self.from_env(env = ENV)
-        reader = Config::EnvReader.new(env)
+        reader = EnvReader.new(env)
         read(reader).tap { reader.validate! }
       end
 

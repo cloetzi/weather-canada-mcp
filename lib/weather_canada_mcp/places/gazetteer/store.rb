@@ -13,7 +13,7 @@ module WeatherCanadaMCP
       # CGN archive (~16 MB) through the upstream client, then inflates and loads it in background threads (streamed
       # through a pipe), so the reactor keeps serving other requests. Concurrent callers share one build. A failed
       # build is not retried for RETRY_AFTER seconds, so a broken setup does not re-download the archive on every call.
-      class Provider
+      class Store
         CGN_PATH = "/pub/nrcan_rncan/vector/geobase_cgn_toponyme/prov_csv_eng/cgn_canada_csv_eng.zip"
         MAX_ARCHIVE_BYTES = 64 * 1024 * 1024
         MAX_CSV_BYTES = 512 * 1024 * 1024
@@ -36,7 +36,7 @@ module WeatherCanadaMCP
 
         def available? = !@gazetteer.nil? || File.file?(@path)
 
-        def get
+        def open
           return @gazetteer if @gazetteer
 
           opened = open_or_build
