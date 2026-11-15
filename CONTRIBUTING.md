@@ -50,8 +50,11 @@ After changing a tool's name, description or schema, regenerate the manifest sna
 ## Releases
 
 Maintainers merge the release PR that release-please keeps open. That creates the tag and GitHub release and
-publishes `ghcr.io/cloetzi/weather-canada-mcp:<version>`, `:<major>.<minor>` and `:latest`.
-Every push to `main` also publishes `:edge`.
+publishes `ghcr.io/cloetzi/weather-canada-mcp:<version>`, `:<major>.<minor>` and `:latest`, and pushes the gem to
+the GitHub Packages RubyGems registry. Every push to `main` also publishes `:edge`.
+
+Images are built natively for `linux/amd64` and `linux/arm64` (one runner per architecture, no emulation) and
+assembled into one manifest list by `.github/workflows/publish-image.yml`.
 
 By contributing you agree to follow the [Code of Conduct](CODE_OF_CONDUCT.md) and that your contributions are
 licensed under the [Apache License 2.0](LICENSE).

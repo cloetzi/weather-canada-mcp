@@ -13,6 +13,7 @@ Gem::Specification.new do |spec|
   spec.license = "Apache-2.0"
   spec.required_ruby_version = ">= 4.0"
   spec.metadata = {
+    "allowed_push_host" => "https://rubygems.pkg.github.com/cloetzi",
     "source_code_uri" => spec.homepage,
     "changelog_uri" => "#{spec.homepage}/blob/main/CHANGELOG.md",
     "rubygems_mfa_required" => "true"
