@@ -21,7 +21,7 @@ container network) and that a browser on the same machine may visit hostile web 
 | MCP endpoint | Bearer token required by default for HTTP, compared in constant time; at least 32 characters. Disabling authentication requires an explicit setting and is logged as a warning at every start. |
 | Local browser attacks | `Host` and `Origin` validation against DNS rebinding and cross-site requests. |
 | Locations people ask about | Tool arguments (which can reveal where someone is) are never logged; only tool names, durations and error classes are. |
-| ECCC fair use | A global rate limiter (1 request/s by default), a TTL cache with request coalescing, and a descriptive User-Agent. |
+| ECCC fair use | A rate limiter for each data provider (1 request/s by default, bursts of up to 12), a TTL cache with request coalescing, and a descriptive User-Agent. |
 
 Further design properties:
 

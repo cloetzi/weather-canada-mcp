@@ -8,7 +8,7 @@ configure for local use.
 >
 > "Is there a weather alert near Lake Louise right now?"
 
-**Status: pre-release.** All ten planned ECCC tools work, plus opt-in Avalanche Canada tools. A first release (gem on GitHub Packages and a multi-architecture image on GHCR) follows once the tool contract is settled (see the [roadmap](#roadmap)).
+**Status: pre-release.** All ten ECCC tools work, plus opt-in Avalanche Canada tools. The first release (a gem on GitHub Packages and a multi-architecture image on GHCR) comes from the release workflow (see the [roadmap](#roadmap)).
 
 ## Tools
 
@@ -35,7 +35,7 @@ provinces), `location.other_matches` lists the others, so the assistant can ask 
 
 ### Stability
 
-The server is pre-1.0 and the tool contract was settled for 1.0: tool names, argument names and result field names
+The server is pre-1.0, but the tool contract is settled: tool names, argument names and result field names
 follow one vocabulary (see [CONTRIBUTING.md](CONTRIBUTING.md#result-vocabulary)), so the same thing has the same name
 in every tool. From 1.0, removing or renaming a tool, argument or result field is a breaking change and bumps the major
 version; adding fields or tools is not. Results are meant to be read by a language model, not parsed: text fields
@@ -59,14 +59,25 @@ Off unless `WEATHER_MCP_AVALANCHE=true` (and `WEATHER_MCP_AVALANCHE_REPORTS=true
 
 With Ruby 4.0:
 
-```sh
-gem install weather-canada-mcp --source https://rubygems.org --source https://rubygems.pkg.github.com/cloetzi
-claude mcp add weather-canada -- weather-canada-mcp stdio
+Create a `Gemfile` that takes this one gem from GitHub Packages and everything else from rubygems.org:
+
+```ruby
+source "https://rubygems.org"
+
+source "https://rubygems.pkg.github.com/cloetzi" do
+  gem "weather-canada-mcp"
+end
 ```
 
-The gem is published to GitHub Packages (rubygems.org is listed too, for its dependencies), which asks for a token with the `read:packages` scope even for public
-gems: add it to `~/.gem/credentials` or `~/.bundle/config` as GitHub describes. Until the first release, run
-`bin/weather-canada-mcp` from a checkout. (RubyGems.org may follow later.)
+```sh
+bundle config set --global https://rubygems.pkg.github.com/cloetzi YOUR_GITHUB_USER:TOKEN
+bundle install
+claude mcp add weather-canada -- bundle exec weather-canada-mcp stdio   # run from the Gemfile's directory
+```
+
+The gem is published only to GitHub Packages, which asks for a token with the `read:packages` scope even for public
+gems. Keep the gem inside the `source ... do` block, so it can only come from GitHub Packages and never from another
+source. Until the first release, run `bin/weather-canada-mcp` from a checkout.
 
 The first place-name lookup downloads NRCan's Canadian Geographical Names (about 16 MB) and builds a local SQLite
 database (about 60 MB, 20 seconds). `weather-canada-mcp gazetteer update` does that up front, or refreshes it.
@@ -93,8 +104,8 @@ and [docs/configuration.md](docs/configuration.md) for every setting.
 - Radar base map: Canada Base Map (CBMT), Natural Resources Canada, under the same licence.
 - This project is not affiliated with or endorsed by ECCC or NRCan. For safety-critical decisions use
   [weather.gc.ca](https://weather.gc.ca).
-- The server stays well inside ECCC's fair-use guidance: one request per second sustained across all tools, a
-  cache, and a User-Agent that names the project (add your own contact with `WEATHER_MCP_USER_AGENT_CONTACT`).
+- The server stays well inside ECCC's fair-use guidance: about one request per second sustained to each data
+  provider (ECCC, NRCan and, when enabled, Avalanche Canada), with bursts of up to 12, a cache, and a User-Agent that names the project (add your own contact with `WEATHER_MCP_USER_AGENT_CONTACT`).
 
 ### Avalanche Canada data
 
@@ -114,9 +125,7 @@ them only where you have that consent or your use is otherwise permitted.
 
 ## Roadmap
 
-1. **Before 1.0:** publish the gem to GitHub Packages and the
-   `linux/amd64` + `linux/arm64` image to GHCR from the release workflow.
-2. **Later:** also publish the gem to RubyGems.org.
+Publish the gem to GitHub Packages and the `linux/amd64` and `linux/arm64` image to GHCR from the release workflow.
 
 ## Development
 

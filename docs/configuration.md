@@ -31,7 +31,7 @@ what a configuration enables.
 | Variable | Default | Purpose |
 | --- | --- | --- |
 | `WEATHER_MCP_USER_AGENT_CONTACT` | repository URL | URL or email appended to the User-Agent, so ECCC can reach whoever runs the server. |
-| `WEATHER_MCP_REQUESTS_PER_SECOND` | `1.0` | Sustained rate of upstream requests, applied to each provider separately (ECCC, NRCan, and Avalanche Canada when enabled), with bursts of up to 12. A request that would wait more than 20 seconds for its turn fails at once with a "try again" error. |
+| `WEATHER_MCP_REQUESTS_PER_SECOND` | `1.0` | Sustained rate of upstream requests, applied to each provider separately (ECCC, NRCan, and Avalanche Canada when enabled), with bursts of up to 12. A request waits for its turn as long as its tool call's 45-second deadline allows; one that would wait longer fails at once with a "try again" error. |
 | `WEATHER_MCP_MAX_CONCURRENCY` | `4` | Requests to ECCC and NRCan in flight at once. |
 | `WEATHER_MCP_TIMEOUT` | `20` | Seconds per upstream request attempt. |
 | `WEATHER_MCP_MAX_DOWNLOAD_BYTES` | `5242880` | Largest upstream JSON response read, after decompression. Map images and the place-name archive have their own, fixed limits. |
@@ -57,7 +57,7 @@ permitted. While they are off, the tool manifest is unchanged and no request goe
 | `WEATHER_MCP_AVALANCHE_URL` | `https://avcan-services-api.prod.avalanche.ca` | Forecasts, forecast metadata and field reports. |
 | `WEATHER_MCP_AVALANCHE_STATIONS_URL` | `https://weather.prod.avalanche.ca` | Mountain weather stations and their measurements. |
 
-These requests share the rate limit, concurrency limit and timeout above. Cache times: forecasts 20 min (per point,
+These requests use their own rate limit (Avalanche Canada's, apart from ECCC's and NRCan's) and share the concurrency limit and timeout above. Cache times: forecasts 20 min (per point,
 rounded to 0.01°), forecast metadata 1 h, the station list 24 h, station measurements 10 min, field reports 15 min.
 
 ## Place names
