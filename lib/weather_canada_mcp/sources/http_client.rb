@@ -15,7 +15,7 @@ module WeatherCanadaMcp
     # per origin, a shared concurrency limit and rate limiter, gzip, an overall deadline per attempt, a cap on the
     # decoded body, and bounded retries on transient failures. Only GET exists: the server is read-only.
     #
-    # Callers name an origin (:api, :datamart, :geomet, :cgn, and :avalanche, :avalanche_weather when enabled) and pass a
+    # Callers name an origin (:api, :datamart, :geomet, :cgn, :basemap, and :avalanche, :avalanche_weather when enabled) and pass a
     # path with its query; they cannot reach any other host.
     class HttpClient
       RETRY_STATUSES = [429, 502, 503, 504].freeze

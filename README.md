@@ -8,7 +8,7 @@ configure for local use.
 >
 > "Is there a weather alert near Lake Louise right now?"
 
-**Status: early development (M3).** All ten planned ECCC tools work, plus opt-in Avalanche Canada tools; v1.0 follows (see the [roadmap](#roadmap)).
+**Status: pre-release.** All ten planned ECCC tools work, plus opt-in Avalanche Canada tools. A first release (gem on GitHub Packages and a multi-architecture image on GHCR) follows once the tool contract is settled (see the [roadmap](#roadmap)).
 
 ## Tools
 
@@ -48,9 +48,13 @@ Off unless `AVALANCHE_CANADA_ENABLED=true` (and `AVALANCHE_CANADA_FIELD_REPORTS_
 With Ruby 4.0:
 
 ```sh
-gem install weather-canada-mcp        # once published; until then, run bin/weather-canada-mcp from a checkout
+gem install weather-canada-mcp --source https://rubygems.pkg.github.com/cloetzi
 claude mcp add weather-canada -- weather-canada-mcp stdio
 ```
+
+The gem is published to GitHub Packages, which asks for a token with the `read:packages` scope even for public
+gems: add it to `~/.gem/credentials` or `~/.bundle/config` as GitHub describes. Until the first release, run
+`bin/weather-canada-mcp` from a checkout. (RubyGems.org may follow later.)
 
 The first place-name lookup downloads NRCan's Canadian Geographical Names (about 16 MB) and builds a local SQLite
 database (about 60 MB, 20 seconds). `weather-canada-mcp gazetteer update` does that up front, or refreshes it.
@@ -98,7 +102,9 @@ them only where you have that consent or your use is otherwise permitted.
 
 ## Roadmap
 
-1. **M4:** v1.0 with the gem and image published.
+1. **Before 1.0:** settle the tool contract (names, units, times), then publish the gem to GitHub Packages and the
+   `linux/amd64` + `linux/arm64` image to GHCR from the release workflow.
+2. **Later:** also publish the gem to RubyGems.org.
 
 ## Development
 

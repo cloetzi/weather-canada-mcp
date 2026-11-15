@@ -26,7 +26,9 @@ container network) and that a browser on the same machine may visit hostile web 
 Further design properties:
 
 - **Read-only, fixed hosts.** The server only sends `GET` requests, and only to the configured upstream origins
-  (`api.weather.gc.ca`, `dd.weather.gc.ca`, `geo.weather.gc.ca`, `ftp.maps.canada.ca` by default). Tool arguments
+  (`api.weather.gc.ca`, `geo.weather.gc.ca`, `ftp.maps.canada.ca` and `maps.geogratis.gc.ca` by default, plus
+  `avcan-services-api.prod.avalanche.ca` and `weather.prod.avalanche.ca` only when the opt-in Avalanche Canada
+  tools are enabled). Tool arguments
   are validated against their schema and never become a host or a path segment without validation and encoding.
 - **Bounded resources.** Request bodies are capped at 1 MiB; upstream responses are capped after decompression
   (gzip bombs stop at the cap); requests are concurrency-limited and time-limited; results over
