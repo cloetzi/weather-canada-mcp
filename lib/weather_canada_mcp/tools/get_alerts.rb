@@ -49,7 +49,7 @@ module WeatherCanadaMcp
         return false if properties["status_en"] == "ended"
 
         expires = time(properties["expiration_datetime"])
-        expires.nil? || expires > @context.clock.call
+        expires.nil? || expires > now
       end
 
       def alert(feature, lang)
@@ -74,12 +74,6 @@ module WeatherCanadaMcp
       def field(properties, name, lang) = properties["#{name}_#{lang}"] || properties["#{name}_en"]
 
       def severity_order(alert) = [SEVERITY.fetch(alert[:type], 9), alert[:issued_at].to_s]
-
-      def time(value)
-        Time.iso8601(value) if value.is_a?(String)
-      rescue ArgumentError
-        nil
-      end
     end
   end
 end

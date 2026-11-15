@@ -8,8 +8,8 @@ configure for local use.
 >
 > "Is there a weather alert near Lake Louise right now?"
 
-**Status: early development (M1).** Three tools work today; observations, rivers, air quality, snow outlook, radar,
-marine forecasts and climate context follow (see the [roadmap](#roadmap)).
+**Status: early development (M2).** Six tools work today; snow outlook, radar, marine forecasts and climate context
+follow (see the [roadmap](#roadmap)).
 
 ## Tools
 
@@ -18,9 +18,12 @@ marine forecasts and climate context follow (see the [roadmap](#roadmap)).
 | `find_location` | Which places match a name (towns, parks, lakes, peaks, rivers), and the nearest ECCC forecast sites to a place or point | NRCan Canadian Geographical Names (offline), City Page site list |
 | `get_forecast` | Current conditions, the official text forecast for about 6 days (with mountain snow levels where ECCC issues them), hourly forecast, sunrise/sunset and warning headlines | OGC API `citypageweather-realtime` |
 | `get_alerts` | Active warnings, watches, advisories and statements covering a point, with the official text as issued | OGC API `weather-alerts` |
+| `get_current_observations` | The latest measured temperature, wind and gusts, pressure, visibility, precipitation, snowfall and snow depth at the nearest weather stations, with their elevation | OGC API `swob-stations`, `swob-realtime` |
+| `get_river_conditions` | Real-time water level and flow at the nearest gauges, the 24-hour change and 3-day range, and how the flow compares with the historical mean for the month | OGC API `hydrometric-stations`, `hydrometric-realtime`, `hydrometric-monthly-mean` |
+| `get_air_quality` | The Air Quality Health Index now and forecast for the next days, with the health messages for each risk level | OGC API `aqhi-observations-realtime`, `aqhi-forecasts-realtime` |
 
 Every tool takes a `location` (`"Squamish"`, `"Lake Louise, AB"`) or `lat`/`lon`, and `lang` (`en` or `fr`).
-Results are compact JSON with units in the field names, name the forecast site used and its distance, and carry
+Results are compact JSON with units in the field names, name the forecast site or station used and its distance, and carry
 the required attribution. `bin/weather-canada-mcp tools` prints the full schemas.
 
 ## Running it
@@ -63,11 +66,9 @@ and [docs/configuration.md](docs/configuration.md) for every setting.
 
 ## Roadmap
 
-1. **M2:** `get_current_observations` (SWOB stations, including snow depth), `get_river_conditions` (real-time
-   hydrometric data compared with historical means), `get_air_quality` (AQHI).
-2. **M3:** `get_snow_outlook` (HRDPS/RDPS snow level, accumulation and blowing snow), `get_radar_map`,
+1. **M3:** `get_snow_outlook` (HRDPS/RDPS snow level, accumulation and blowing snow), `get_radar_map`,
    `get_marine_forecast`, `get_climate_context` (normals and records).
-3. **M4:** v1.0 with the gem and image published.
+2. **M4:** v1.0 with the gem and image published.
 
 ## Development
 

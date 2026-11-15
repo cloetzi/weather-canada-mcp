@@ -35,9 +35,36 @@ def items(collection, **params) = "#{API}/collections/#{collection}/items?#{URI.
 
 def bbox(lat, lon, half = 0.01) = [lon - half, lat - half, lon + half, lat + half].map { |v| v.round(4) }.join(",")
 
+# The bbox the tools send: Geo.bbox(lat, lon, radius_km).
+def bbox_km(lat, lon, radius_km)
+  d_lat = radius_km / 111.32
+  d_lon = radius_km / (111.32 * [Math.cos(lat * Math::PI / 180), 0.01].max)
+  [lon - d_lon, lat - d_lat, lon + d_lon, lat + d_lat].map { |v| v.round(5) }.join(",")
+end
+
+# As the M2 tools request them (keep in step with Tools::GetCurrentObservations::FIELDS).
+SWOB_ELEMENTS = %w[air_temp dwpt_temp rel_hum avg_wnd_spd_10m_pst2mts avg_wnd_spd_10m_pst10mts avg_wnd_dir_10m_pst2mts
+                   avg_wnd_dir_10m_pst10mts max_wnd_gst_spd_10m_pst10mts max_wnd_spd_10m_pst1hr mslp stn_pres vis
+                   tot_cld_amt pcpn_amt_pst1hr pcpn_amt_pst6hrs pcpn_amt_pst24hrs snwfl_amt_pst1hr snw_dpth
+                   avg_snw_dpth_pst5mts max_air_temp_pst24hrs min_air_temp_pst24hrs].freeze
+SWOB_PROPERTIES = ["date_tm-value", *SWOB_ELEMENTS, *SWOB_ELEMENTS.map { |e| "#{e}-qa" }].join(",")
+def swob(msc_id) = items("swob-realtime", "msc_id-value": msc_id, sortby: "-date_tm-value", limit: 6, properties: SWOB_PROPERTIES)
+
+# The past 72 hours, from the start of the hour, as Tools::GetRiverConditions asks.
+HYDRO_SINCE = Time.at((Time.now.to_i - (72 * 3600)) / 3600 * 3600).utc.strftime("%Y-%m-%dT%H:%M:%SZ")
+def hydro_realtime(number)
+  items("hydrometric-realtime", STATION_NUMBER: number, datetime: "#{HYDRO_SINCE}/..", sortby: "-DATETIME",
+                                properties: "DATETIME,LEVEL,DISCHARGE", skipGeometry: true, limit: 3000)
+end
+
+def hydro_monthly(number)
+  items("hydrometric-monthly-mean", STATION_NUMBER: number, properties: "DATE,MONTHLY_MEAN_DISCHARGE", skipGeometry: true, limit: 2000)
+end
+
 SQUAMISH = [49.7, -123.15].freeze
 WHISTLER = [50.12, -122.96].freeze
 EDMONTON = [53.54, -113.49].freeze
+KELOWNA = [49.89, -119.5].freeze
 OTTAWA = [45.42, -75.7].freeze
 
 FIXTURES = {
@@ -50,14 +77,24 @@ FIXTURES = {
   "api/weather-alerts_squamish.json" => items("weather-alerts", bbox: bbox(*SQUAMISH), limit: 50),
   # No alert was in effect in Ottawa at capture time: the shape of an empty result.
   "api/weather-alerts_ottawa.json" => items("weather-alerts", bbox: bbox(*OTTAWA), limit: 50),
-  # M0 samples for later milestones (M2, M3)
-  "m0/swob-realtime_whistler.json" => items("swob-realtime", bbox: bbox(*WHISTLER, 0.2), limit: 2, sortby: "-date_tm-value"),
-  "m0/hydrometric-stations_squamish.json" => items("hydrometric-stations", bbox: bbox(*SQUAMISH, 0.2), limit: 5),
-  "m0/hydrometric-realtime_squamish.json" => items("hydrometric-realtime", bbox: bbox(*SQUAMISH, 0.2), limit: 5,
-                                                                           sortby: "-DATETIME"),
-  "m0/aqhi-observations-realtime_vancouver.json" => items("aqhi-observations-realtime", bbox: bbox(49.25, -123.1, 0.3),
-                                                                                        latest: "true", limit: 5),
-  "m0/aqhi-forecasts-realtime_vancouver.json" => items("aqhi-forecasts-realtime", bbox: bbox(49.25, -123.1, 0.3), limit: 2),
+  # M2: get_current_observations (Whistler), get_river_conditions (Squamish), get_air_quality (Kelowna)
+  "api/swob-stations_whistler.json" => items("swob-stations", bbox: bbox_km(*WHISTLER, 50), limit: 500),
+  "api/swob-realtime_1100875.json" => swob("1100875"),
+  "api/swob-realtime_1048899.json" => swob("1048899"),
+  "api/swob-realtime_1101300.json" => swob("1101300"),
+  "api/hydrometric-stations_squamish.json" => items("hydrometric-stations", bbox: bbox_km(*SQUAMISH, 50), REAL_TIME: 1, limit: 500),
+  "api/hydrometric-realtime_08GA076.json" => hydro_realtime("08GA076"),
+  "api/hydrometric-realtime_08GA075.json" => hydro_realtime("08GA075"),
+  "api/hydrometric-realtime_08GA022.json" => hydro_realtime("08GA022"),
+  "api/hydrometric-monthly-mean_08GA076.json" => hydro_monthly("08GA076"),
+  "api/hydrometric-monthly-mean_08GA075.json" => hydro_monthly("08GA075"),
+  "api/hydrometric-monthly-mean_08GA022.json" => hydro_monthly("08GA022"),
+  "api/aqhi-observations-realtime_kelowna.json" => items("aqhi-observations-realtime", bbox: bbox_km(*KELOWNA, 100), latest: true,
+                                                                                       limit: 100),
+  "api/aqhi-forecasts-realtime_JAFUV.json" => items("aqhi-forecasts-realtime", location_id: "JAFUV", aqhi_type: "AQHI-Forecast-Period",
+                                                                               sortby: "-publication_datetime", skipGeometry: true,
+                                                                               limit: 1),
+  # M0 samples for M3
   "m0/marineweather-realtime_howe-sound.json" => items("marineweather-realtime", bbox: bbox(49.5, -123.3, 0.05), limit: 2),
   "m0/ltce-snowfall_whistler.json" => items("ltce-snowfall", bbox: bbox(*WHISTLER, 0.3), LOCAL_MONTH: 11, LOCAL_DAY: 15,
                                                              limit: 2),

@@ -26,6 +26,19 @@ class FakeEccc
 
   def self.fixture_json(path) = JSON.parse(fixture(path))
 
+  # Collections served from one fixture whatever the query (each was captured for one test location).
+  FIXED_FIXTURES = {
+    "citypageweather-realtime" => "api/citypage_sites.json",
+    "swob-stations" => "api/swob-stations_whistler.json",
+    "hydrometric-stations" => "api/hydrometric-stations_squamish.json",
+    "aqhi-observations-realtime" => "api/aqhi-observations-realtime_kelowna.json"
+  }.freeze
+  # Collections served per station or location: the query parameter naming it, and fixtures named api/<collection>_<id>.json.
+  KEYED_FIXTURES = {
+    "swob-realtime" => "msc_id-value", "hydrometric-realtime" => "STATION_NUMBER",
+    "hydrometric-monthly-mean" => "STATION_NUMBER", "aqhi-forecasts-realtime" => "location_id"
+  }.freeze
+
   # A one-member ZIP archive (deflated) of the real CGN sample, shaped like NRCan's download.
   def self.cgn_zip(csv = fixture("cgn/cgn_sample.csv"))
     Zip::OutputStream.write_buffer(StringIO.new) do |zip|
@@ -76,13 +89,19 @@ class FakeEccc
   end
 
   def fixture_for(request)
-    case request.path
-    when "/collections/citypageweather-realtime/items" then "api/citypage_sites.json"
-    when %r{\A/collections/citypageweather-realtime/items/([\w-]+)\z}
-      "api/citypage_#{Regexp.last_match(1)}.json" if File.exist?(File.join(FIXTURES, "api/citypage_#{Regexp.last_match(1)}.json"))
-    when "/collections/weather-alerts/items" then alerts_fixture(request.query["bbox"])
-    when CGN_PATH then :cgn
-    end
+    return :cgn if request.path == CGN_PATH
+
+    collection, item = request.path.match(%r{\A/collections/([\w-]+)/items(?:/([\w-]+))?\z})&.captures
+    return keyed_fixture("citypage", item) if collection == "citypageweather-realtime" && item
+    return alerts_fixture(request.query["bbox"]) if collection == "weather-alerts"
+
+    FIXED_FIXTURES[collection] || (keyed_fixture(collection, request.query[KEYED_FIXTURES[collection]]) if KEYED_FIXTURES.key?(collection))
+  end
+
+  # The fixture captured for one station, location or site, named after its id.
+  def keyed_fixture(prefix, id)
+    path = "api/#{prefix}_#{id}.json"
+    path if id.to_s.match?(/\A[\w-]+\z/) && File.exist?(File.join(FIXTURES, path))
   end
 
   # The fixture captured for the point inside the bbox; an empty collection anywhere else.

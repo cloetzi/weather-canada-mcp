@@ -1,0 +1,7374 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "id": "08GA075.2026-11-15T16:05:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T16:05:00Z",
+        "LEVEL": 3.084,
+        "DISCHARGE": 103.0
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T16:00:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T16:00:00Z",
+        "LEVEL": 3.076,
+        "DISCHARGE": 103.0
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T15:55:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T15:55:00Z",
+        "LEVEL": 3.064,
+        "DISCHARGE": 102.0
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T15:50:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T15:50:00Z",
+        "LEVEL": 3.085,
+        "DISCHARGE": 103.0
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T15:45:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T15:45:00Z",
+        "LEVEL": 3.047,
+        "DISCHARGE": 101.0
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T15:40:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T15:40:00Z",
+        "LEVEL": 3.031,
+        "DISCHARGE": 99.9
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T15:35:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T15:35:00Z",
+        "LEVEL": 3.082,
+        "DISCHARGE": 103.0
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T15:30:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T15:30:00Z",
+        "LEVEL": 3.034,
+        "DISCHARGE": 100.0
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T15:25:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T15:25:00Z",
+        "LEVEL": 3.027,
+        "DISCHARGE": 99.6
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T15:20:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T15:20:00Z",
+        "LEVEL": 3.034,
+        "DISCHARGE": 100.0
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T15:15:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T15:15:00Z",
+        "LEVEL": 2.992,
+        "DISCHARGE": 97.3
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T15:10:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T15:10:00Z",
+        "LEVEL": 2.973,
+        "DISCHARGE": 96.1
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T12:05:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T12:05:00Z",
+        "LEVEL": 2.771,
+        "DISCHARGE": 83.6
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T12:00:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T12:00:00Z",
+        "LEVEL": 2.82,
+        "DISCHARGE": 86.5
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T11:55:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T11:55:00Z",
+        "LEVEL": 2.756,
+        "DISCHARGE": 82.7
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T11:50:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T11:50:00Z",
+        "LEVEL": 2.799,
+        "DISCHARGE": 85.3
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T11:45:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T11:45:00Z",
+        "LEVEL": 2.765,
+        "DISCHARGE": 83.2
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T11:40:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T11:40:00Z",
+        "LEVEL": 2.719,
+        "DISCHARGE": 80.5
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T11:35:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T11:35:00Z",
+        "LEVEL": 2.739,
+        "DISCHARGE": 81.7
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T11:30:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T11:30:00Z",
+        "LEVEL": 2.739,
+        "DISCHARGE": 81.7
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T11:25:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T11:25:00Z",
+        "LEVEL": 2.744,
+        "DISCHARGE": 82.0
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T11:20:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T11:20:00Z",
+        "LEVEL": 2.718,
+        "DISCHARGE": 80.4
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T11:15:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T11:15:00Z",
+        "LEVEL": 2.695,
+        "DISCHARGE": 79.1
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T11:10:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T11:10:00Z",
+        "LEVEL": 2.717,
+        "DISCHARGE": 80.4
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T11:05:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T11:05:00Z",
+        "LEVEL": 2.705,
+        "DISCHARGE": 79.7
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T11:00:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T11:00:00Z",
+        "LEVEL": 2.685,
+        "DISCHARGE": 78.5
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T10:55:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T10:55:00Z",
+        "LEVEL": 2.709,
+        "DISCHARGE": 79.9
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T10:50:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T10:50:00Z",
+        "LEVEL": 2.654,
+        "DISCHARGE": 76.7
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T10:45:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T10:45:00Z",
+        "LEVEL": 2.659,
+        "DISCHARGE": 77.0
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T10:40:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T10:40:00Z",
+        "LEVEL": 2.626,
+        "DISCHARGE": 75.1
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T10:35:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T10:35:00Z",
+        "LEVEL": 2.636,
+        "DISCHARGE": 75.7
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T10:30:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T10:30:00Z",
+        "LEVEL": 2.634,
+        "DISCHARGE": 75.6
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T10:25:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T10:25:00Z",
+        "LEVEL": 2.626,
+        "DISCHARGE": 75.1
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T10:20:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T10:20:00Z",
+        "LEVEL": 2.59,
+        "DISCHARGE": 73.1
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T10:15:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T10:15:00Z",
+        "LEVEL": 2.579,
+        "DISCHARGE": 72.5
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T10:10:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T10:10:00Z",
+        "LEVEL": 2.548,
+        "DISCHARGE": 70.8
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T10:05:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T10:05:00Z",
+        "LEVEL": 2.572,
+        "DISCHARGE": 72.1
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T10:00:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T10:00:00Z",
+        "LEVEL": 2.53,
+        "DISCHARGE": 69.8
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T09:55:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T09:55:00Z",
+        "LEVEL": 2.538,
+        "DISCHARGE": 70.2
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T09:50:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T09:50:00Z",
+        "LEVEL": 2.527,
+        "DISCHARGE": 69.6
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T09:45:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T09:45:00Z",
+        "LEVEL": 2.499,
+        "DISCHARGE": 68.1
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T09:40:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T09:40:00Z",
+        "LEVEL": 2.506,
+        "DISCHARGE": 68.5
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T09:35:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T09:35:00Z",
+        "LEVEL": 2.483,
+        "DISCHARGE": 67.2
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T09:30:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T09:30:00Z",
+        "LEVEL": 2.467,
+        "DISCHARGE": 66.4
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T09:25:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T09:25:00Z",
+        "LEVEL": 2.467,
+        "DISCHARGE": 66.4
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T09:20:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T09:20:00Z",
+        "LEVEL": 2.462,
+        "DISCHARGE": 66.1
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T09:15:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T09:15:00Z",
+        "LEVEL": 2.439,
+        "DISCHARGE": 64.9
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T09:10:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T09:10:00Z",
+        "LEVEL": 2.439,
+        "DISCHARGE": 64.9
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T09:05:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T09:05:00Z",
+        "LEVEL": 2.432,
+        "DISCHARGE": 64.5
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T09:00:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T09:00:00Z",
+        "LEVEL": 2.427,
+        "DISCHARGE": 64.3
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T08:55:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T08:55:00Z",
+        "LEVEL": 2.412,
+        "DISCHARGE": 63.5
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T08:50:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T08:50:00Z",
+        "LEVEL": 2.405,
+        "DISCHARGE": 63.1
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T08:45:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T08:45:00Z",
+        "LEVEL": 2.394,
+        "DISCHARGE": 62.5
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T08:40:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T08:40:00Z",
+        "LEVEL": 2.377,
+        "DISCHARGE": 61.7
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T08:35:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T08:35:00Z",
+        "LEVEL": 2.394,
+        "DISCHARGE": 62.5
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T08:30:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T08:30:00Z",
+        "LEVEL": 2.367,
+        "DISCHARGE": 61.1
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T08:25:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T08:25:00Z",
+        "LEVEL": 2.36,
+        "DISCHARGE": 60.8
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T08:20:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T08:20:00Z",
+        "LEVEL": 2.354,
+        "DISCHARGE": 60.5
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T08:15:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T08:15:00Z",
+        "LEVEL": 2.357,
+        "DISCHARGE": 60.6
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T08:10:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T08:10:00Z",
+        "LEVEL": 2.349,
+        "DISCHARGE": 60.2
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T04:05:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T04:05:00Z",
+        "LEVEL": 2.354,
+        "DISCHARGE": 60.5
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T04:00:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T04:00:00Z",
+        "LEVEL": 2.352,
+        "DISCHARGE": 60.4
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T03:55:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T03:55:00Z",
+        "LEVEL": 2.346,
+        "DISCHARGE": 60.1
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T03:50:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T03:50:00Z",
+        "LEVEL": 2.352,
+        "DISCHARGE": 60.4
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T03:45:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T03:45:00Z",
+        "LEVEL": 2.35,
+        "DISCHARGE": 60.3
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T03:40:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T03:40:00Z",
+        "LEVEL": 2.361,
+        "DISCHARGE": 60.8
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T03:35:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T03:35:00Z",
+        "LEVEL": 2.357,
+        "DISCHARGE": 60.6
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T03:30:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T03:30:00Z",
+        "LEVEL": 2.35,
+        "DISCHARGE": 60.3
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T03:25:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T03:25:00Z",
+        "LEVEL": 2.351,
+        "DISCHARGE": 60.3
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T03:20:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T03:20:00Z",
+        "LEVEL": 2.357,
+        "DISCHARGE": 60.6
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T03:15:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T03:15:00Z",
+        "LEVEL": 2.344,
+        "DISCHARGE": 60.0
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T03:10:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T03:10:00Z",
+        "LEVEL": 2.35,
+        "DISCHARGE": 60.3
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T03:05:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T03:05:00Z",
+        "LEVEL": 2.344,
+        "DISCHARGE": 60.0
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T03:00:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T03:00:00Z",
+        "LEVEL": 2.354,
+        "DISCHARGE": 60.5
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T02:55:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T02:55:00Z",
+        "LEVEL": 2.349,
+        "DISCHARGE": 60.2
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T02:50:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T02:50:00Z",
+        "LEVEL": 2.323,
+        "DISCHARGE": 58.9
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T02:45:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T02:45:00Z",
+        "LEVEL": 2.331,
+        "DISCHARGE": 59.3
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T02:40:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T02:40:00Z",
+        "LEVEL": 2.345,
+        "DISCHARGE": 60.0
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T02:35:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T02:35:00Z",
+        "LEVEL": 2.34,
+        "DISCHARGE": 59.8
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T02:30:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T02:30:00Z",
+        "LEVEL": 2.339,
+        "DISCHARGE": 59.7
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T02:25:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T02:25:00Z",
+        "LEVEL": 2.338,
+        "DISCHARGE": 59.7
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T02:20:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T02:20:00Z",
+        "LEVEL": 2.349,
+        "DISCHARGE": 60.2
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T02:15:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T02:15:00Z",
+        "LEVEL": 2.341,
+        "DISCHARGE": 59.8
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T02:10:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T02:10:00Z",
+        "LEVEL": 2.328,
+        "DISCHARGE": 59.2
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T02:05:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T02:05:00Z",
+        "LEVEL": 2.347,
+        "DISCHARGE": 60.1
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T02:00:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T02:00:00Z",
+        "LEVEL": 2.329,
+        "DISCHARGE": 59.2
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T01:55:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T01:55:00Z",
+        "LEVEL": 2.339,
+        "DISCHARGE": 59.7
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T01:50:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T01:50:00Z",
+        "LEVEL": 2.331,
+        "DISCHARGE": 59.3
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T01:45:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T01:45:00Z",
+        "LEVEL": 2.333,
+        "DISCHARGE": 59.4
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T01:40:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T01:40:00Z",
+        "LEVEL": 2.321,
+        "DISCHARGE": 58.8
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T01:35:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T01:35:00Z",
+        "LEVEL": 2.331,
+        "DISCHARGE": 59.3
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T01:30:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T01:30:00Z",
+        "LEVEL": 2.328,
+        "DISCHARGE": 59.2
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T01:25:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T01:25:00Z",
+        "LEVEL": 2.346,
+        "DISCHARGE": 60.1
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T01:20:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T01:20:00Z",
+        "LEVEL": 2.335,
+        "DISCHARGE": 59.5
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T01:15:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T01:15:00Z",
+        "LEVEL": 2.33,
+        "DISCHARGE": 59.3
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T01:10:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T01:10:00Z",
+        "LEVEL": 2.339,
+        "DISCHARGE": 59.7
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T01:05:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T01:05:00Z",
+        "LEVEL": 2.332,
+        "DISCHARGE": 59.4
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T01:00:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T01:00:00Z",
+        "LEVEL": 2.335,
+        "DISCHARGE": 59.5
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T00:55:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T00:55:00Z",
+        "LEVEL": 2.324,
+        "DISCHARGE": 59.0
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T00:50:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T00:50:00Z",
+        "LEVEL": 2.349,
+        "DISCHARGE": 60.2
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T00:45:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T00:45:00Z",
+        "LEVEL": 2.343,
+        "DISCHARGE": 59.9
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T00:40:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T00:40:00Z",
+        "LEVEL": 2.327,
+        "DISCHARGE": 59.1
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T00:35:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T00:35:00Z",
+        "LEVEL": 2.348,
+        "DISCHARGE": 60.2
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T00:30:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T00:30:00Z",
+        "LEVEL": 2.338,
+        "DISCHARGE": 59.7
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T00:25:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T00:25:00Z",
+        "LEVEL": 2.33,
+        "DISCHARGE": 59.3
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T00:20:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T00:20:00Z",
+        "LEVEL": 2.327,
+        "DISCHARGE": 59.1
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T00:15:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T00:15:00Z",
+        "LEVEL": 2.351,
+        "DISCHARGE": 60.3
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T00:10:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T00:10:00Z",
+        "LEVEL": 2.356,
+        "DISCHARGE": 60.6
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T00:05:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T00:05:00Z",
+        "LEVEL": 2.336,
+        "DISCHARGE": 59.6
+      }
+    },
+    {
+      "id": "08GA075.2026-11-15T00:00:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-15T00:00:00Z",
+        "LEVEL": 2.33,
+        "DISCHARGE": 59.3
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T23:55:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T23:55:00Z",
+        "LEVEL": 2.331,
+        "DISCHARGE": 59.3
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T23:50:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T23:50:00Z",
+        "LEVEL": 2.336,
+        "DISCHARGE": 59.6
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T23:45:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T23:45:00Z",
+        "LEVEL": 2.339,
+        "DISCHARGE": 59.7
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T23:40:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T23:40:00Z",
+        "LEVEL": 2.324,
+        "DISCHARGE": 59.0
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T23:35:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T23:35:00Z",
+        "LEVEL": 2.35,
+        "DISCHARGE": 60.3
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T23:30:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T23:30:00Z",
+        "LEVEL": 2.352,
+        "DISCHARGE": 60.4
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T23:25:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T23:25:00Z",
+        "LEVEL": 2.354,
+        "DISCHARGE": 60.5
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T23:20:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T23:20:00Z",
+        "LEVEL": 2.358,
+        "DISCHARGE": 60.7
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T23:15:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T23:15:00Z",
+        "LEVEL": 2.337,
+        "DISCHARGE": 59.6
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T23:10:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T23:10:00Z",
+        "LEVEL": 2.326,
+        "DISCHARGE": 59.1
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T23:05:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T23:05:00Z",
+        "LEVEL": 2.339,
+        "DISCHARGE": 59.7
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T23:00:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T23:00:00Z",
+        "LEVEL": 2.329,
+        "DISCHARGE": 59.2
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T22:55:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T22:55:00Z",
+        "LEVEL": 2.329,
+        "DISCHARGE": 59.2
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T22:50:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T22:50:00Z",
+        "LEVEL": 2.348,
+        "DISCHARGE": 60.2
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T22:45:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T22:45:00Z",
+        "LEVEL": 2.331,
+        "DISCHARGE": 59.3
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T22:40:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T22:40:00Z",
+        "LEVEL": 2.348,
+        "DISCHARGE": 60.2
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T22:35:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T22:35:00Z",
+        "LEVEL": 2.352,
+        "DISCHARGE": 60.4
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T22:30:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T22:30:00Z",
+        "LEVEL": 2.356,
+        "DISCHARGE": 60.6
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T22:25:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T22:25:00Z",
+        "LEVEL": 2.364,
+        "DISCHARGE": 61.0
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T22:20:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T22:20:00Z",
+        "LEVEL": 2.349,
+        "DISCHARGE": 60.2
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T22:15:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T22:15:00Z",
+        "LEVEL": 2.357,
+        "DISCHARGE": 60.6
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T22:10:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T22:10:00Z",
+        "LEVEL": 2.35,
+        "DISCHARGE": 60.3
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T22:05:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T22:05:00Z",
+        "LEVEL": 2.352,
+        "DISCHARGE": 60.4
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T22:00:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T22:00:00Z",
+        "LEVEL": 2.36,
+        "DISCHARGE": 60.8
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T21:55:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T21:55:00Z",
+        "LEVEL": 2.35,
+        "DISCHARGE": 60.3
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T21:50:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T21:50:00Z",
+        "LEVEL": 2.367,
+        "DISCHARGE": 61.1
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T21:45:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T21:45:00Z",
+        "LEVEL": 2.352,
+        "DISCHARGE": 60.4
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T21:40:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T21:40:00Z",
+        "LEVEL": 2.359,
+        "DISCHARGE": 60.7
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T21:35:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T21:35:00Z",
+        "LEVEL": 2.362,
+        "DISCHARGE": 60.9
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T21:30:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T21:30:00Z",
+        "LEVEL": 2.373,
+        "DISCHARGE": 61.5
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T21:25:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T21:25:00Z",
+        "LEVEL": 2.366,
+        "DISCHARGE": 61.1
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T21:20:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T21:20:00Z",
+        "LEVEL": 2.363,
+        "DISCHARGE": 60.9
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T21:15:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T21:15:00Z",
+        "LEVEL": 2.358,
+        "DISCHARGE": 60.7
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T21:10:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T21:10:00Z",
+        "LEVEL": 2.372,
+        "DISCHARGE": 61.4
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T21:05:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T21:05:00Z",
+        "LEVEL": 2.358,
+        "DISCHARGE": 60.7
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T21:00:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T21:00:00Z",
+        "LEVEL": 2.38,
+        "DISCHARGE": 61.8
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T20:55:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T20:55:00Z",
+        "LEVEL": 2.376,
+        "DISCHARGE": 61.6
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T20:50:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T20:50:00Z",
+        "LEVEL": 2.359,
+        "DISCHARGE": 60.7
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T20:45:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T20:45:00Z",
+        "LEVEL": 2.37,
+        "DISCHARGE": 61.3
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T20:40:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T20:40:00Z",
+        "LEVEL": 2.371,
+        "DISCHARGE": 61.4
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T20:35:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T20:35:00Z",
+        "LEVEL": 2.375,
+        "DISCHARGE": 61.6
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T20:30:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T20:30:00Z",
+        "LEVEL": 2.387,
+        "DISCHARGE": 62.2
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T20:25:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T20:25:00Z",
+        "LEVEL": 2.359,
+        "DISCHARGE": 60.7
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T20:20:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T20:20:00Z",
+        "LEVEL": 2.377,
+        "DISCHARGE": 61.7
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T20:15:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T20:15:00Z",
+        "LEVEL": 2.397,
+        "DISCHARGE": 62.7
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T20:10:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T20:10:00Z",
+        "LEVEL": 2.405,
+        "DISCHARGE": 63.1
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T20:05:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T20:05:00Z",
+        "LEVEL": 2.388,
+        "DISCHARGE": 62.2
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T20:00:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T20:00:00Z",
+        "LEVEL": 2.382,
+        "DISCHARGE": 61.9
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T19:55:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T19:55:00Z",
+        "LEVEL": 2.401,
+        "DISCHARGE": 62.9
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T19:50:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T19:50:00Z",
+        "LEVEL": 2.395,
+        "DISCHARGE": 62.6
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T19:45:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T19:45:00Z",
+        "LEVEL": 2.398,
+        "DISCHARGE": 62.7
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T19:40:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T19:40:00Z",
+        "LEVEL": 2.407,
+        "DISCHARGE": 63.2
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T19:35:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T19:35:00Z",
+        "LEVEL": 2.391,
+        "DISCHARGE": 62.4
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T19:30:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T19:30:00Z",
+        "LEVEL": 2.402,
+        "DISCHARGE": 63.0
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T19:25:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T19:25:00Z",
+        "LEVEL": 2.411,
+        "DISCHARGE": 63.4
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T19:20:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T19:20:00Z",
+        "LEVEL": 2.406,
+        "DISCHARGE": 63.2
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T19:15:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T19:15:00Z",
+        "LEVEL": 2.401,
+        "DISCHARGE": 62.9
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T19:10:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T19:10:00Z",
+        "LEVEL": 2.426,
+        "DISCHARGE": 64.2
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T19:05:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T19:05:00Z",
+        "LEVEL": 2.426,
+        "DISCHARGE": 64.2
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T19:00:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T19:00:00Z",
+        "LEVEL": 2.425,
+        "DISCHARGE": 64.2
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T18:55:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T18:55:00Z",
+        "LEVEL": 2.442,
+        "DISCHARGE": 65.1
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T18:50:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T18:50:00Z",
+        "LEVEL": 2.428,
+        "DISCHARGE": 64.3
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T18:45:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T18:45:00Z",
+        "LEVEL": 2.41,
+        "DISCHARGE": 63.4
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T18:40:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T18:40:00Z",
+        "LEVEL": 2.416,
+        "DISCHARGE": 63.7
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T18:35:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T18:35:00Z",
+        "LEVEL": 2.431,
+        "DISCHARGE": 64.5
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T18:30:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T18:30:00Z",
+        "LEVEL": 2.432,
+        "DISCHARGE": 64.5
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T18:25:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T18:25:00Z",
+        "LEVEL": 2.427,
+        "DISCHARGE": 64.3
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T18:20:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T18:20:00Z",
+        "LEVEL": 2.421,
+        "DISCHARGE": 63.9
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T18:15:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T18:15:00Z",
+        "LEVEL": 2.404,
+        "DISCHARGE": 63.1
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T18:10:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T18:10:00Z",
+        "LEVEL": 2.438,
+        "DISCHARGE": 64.8
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T18:05:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T18:05:00Z",
+        "LEVEL": 2.444,
+        "DISCHARGE": 65.2
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T18:00:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T18:00:00Z",
+        "LEVEL": 2.433,
+        "DISCHARGE": 64.6
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T17:55:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T17:55:00Z",
+        "LEVEL": 2.442,
+        "DISCHARGE": 65.1
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T17:50:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T17:50:00Z",
+        "LEVEL": 2.434,
+        "DISCHARGE": 64.6
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T17:45:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T17:45:00Z",
+        "LEVEL": 2.432,
+        "DISCHARGE": 64.5
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T17:40:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T17:40:00Z",
+        "LEVEL": 2.44,
+        "DISCHARGE": 64.9
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T17:35:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T17:35:00Z",
+        "LEVEL": 2.433,
+        "DISCHARGE": 64.6
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T17:30:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T17:30:00Z",
+        "LEVEL": 2.441,
+        "DISCHARGE": 65.0
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T17:25:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T17:25:00Z",
+        "LEVEL": 2.443,
+        "DISCHARGE": 65.1
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T17:20:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T17:20:00Z",
+        "LEVEL": 2.437,
+        "DISCHARGE": 64.8
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T17:15:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T17:15:00Z",
+        "LEVEL": 2.427,
+        "DISCHARGE": 64.3
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T17:10:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T17:10:00Z",
+        "LEVEL": 2.419,
+        "DISCHARGE": 63.8
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T17:05:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T17:05:00Z",
+        "LEVEL": 2.445,
+        "DISCHARGE": 65.2
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T17:00:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T17:00:00Z",
+        "LEVEL": 2.416,
+        "DISCHARGE": 63.7
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T16:55:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T16:55:00Z",
+        "LEVEL": 2.428,
+        "DISCHARGE": 64.3
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T16:50:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T16:50:00Z",
+        "LEVEL": 2.429,
+        "DISCHARGE": 64.4
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T16:45:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T16:45:00Z",
+        "LEVEL": 2.408,
+        "DISCHARGE": 63.3
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T16:40:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T16:40:00Z",
+        "LEVEL": 2.405,
+        "DISCHARGE": 63.1
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T16:35:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T16:35:00Z",
+        "LEVEL": 2.421,
+        "DISCHARGE": 63.9
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T16:30:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T16:30:00Z",
+        "LEVEL": 2.407,
+        "DISCHARGE": 63.2
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T16:25:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T16:25:00Z",
+        "LEVEL": 2.41,
+        "DISCHARGE": 63.4
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T16:20:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T16:20:00Z",
+        "LEVEL": 2.41,
+        "DISCHARGE": 63.4
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T16:15:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T16:15:00Z",
+        "LEVEL": 2.406,
+        "DISCHARGE": 63.2
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T16:10:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T16:10:00Z",
+        "LEVEL": 2.417,
+        "DISCHARGE": 63.7
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T16:05:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T16:05:00Z",
+        "LEVEL": 2.389,
+        "DISCHARGE": 62.3
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T16:00:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T16:00:00Z",
+        "LEVEL": 2.403,
+        "DISCHARGE": 63.0
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T15:55:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T15:55:00Z",
+        "LEVEL": 2.393,
+        "DISCHARGE": 62.5
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T15:50:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T15:50:00Z",
+        "LEVEL": 2.396,
+        "DISCHARGE": 62.6
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T15:45:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T15:45:00Z",
+        "LEVEL": 2.387,
+        "DISCHARGE": 62.2
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T15:40:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T15:40:00Z",
+        "LEVEL": 2.386,
+        "DISCHARGE": 62.1
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T15:35:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T15:35:00Z",
+        "LEVEL": 2.398,
+        "DISCHARGE": 62.7
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T15:30:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T15:30:00Z",
+        "LEVEL": 2.378,
+        "DISCHARGE": 61.7
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T15:25:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T15:25:00Z",
+        "LEVEL": 2.375,
+        "DISCHARGE": 61.6
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T15:20:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T15:20:00Z",
+        "LEVEL": 2.375,
+        "DISCHARGE": 61.6
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T15:15:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T15:15:00Z",
+        "LEVEL": 2.381,
+        "DISCHARGE": 61.9
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T15:10:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T15:10:00Z",
+        "LEVEL": 2.394,
+        "DISCHARGE": 62.5
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T15:05:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T15:05:00Z",
+        "LEVEL": 2.374,
+        "DISCHARGE": 61.5
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T15:00:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T15:00:00Z",
+        "LEVEL": 2.371,
+        "DISCHARGE": 61.4
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T14:55:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T14:55:00Z",
+        "LEVEL": 2.384,
+        "DISCHARGE": 62.0
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T14:50:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T14:50:00Z",
+        "LEVEL": 2.384,
+        "DISCHARGE": 62.0
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T14:45:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T14:45:00Z",
+        "LEVEL": 2.355,
+        "DISCHARGE": 60.5
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T14:40:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T14:40:00Z",
+        "LEVEL": 2.353,
+        "DISCHARGE": 60.4
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T14:35:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T14:35:00Z",
+        "LEVEL": 2.377,
+        "DISCHARGE": 61.7
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T14:30:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T14:30:00Z",
+        "LEVEL": 2.368,
+        "DISCHARGE": 61.2
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T14:25:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T14:25:00Z",
+        "LEVEL": 2.366,
+        "DISCHARGE": 61.1
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T14:20:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T14:20:00Z",
+        "LEVEL": 2.368,
+        "DISCHARGE": 61.2
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T14:15:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T14:15:00Z",
+        "LEVEL": 2.372,
+        "DISCHARGE": 61.4
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T14:10:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T14:10:00Z",
+        "LEVEL": 2.379,
+        "DISCHARGE": 61.8
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T14:05:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T14:05:00Z",
+        "LEVEL": 2.374,
+        "DISCHARGE": 61.5
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T14:00:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T14:00:00Z",
+        "LEVEL": 2.379,
+        "DISCHARGE": 61.8
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T13:55:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T13:55:00Z",
+        "LEVEL": 2.378,
+        "DISCHARGE": 61.7
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T13:50:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T13:50:00Z",
+        "LEVEL": 2.379,
+        "DISCHARGE": 61.8
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T13:45:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T13:45:00Z",
+        "LEVEL": 2.377,
+        "DISCHARGE": 61.7
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T13:40:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T13:40:00Z",
+        "LEVEL": 2.383,
+        "DISCHARGE": 62.0
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T13:35:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T13:35:00Z",
+        "LEVEL": 2.388,
+        "DISCHARGE": 62.2
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T13:30:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T13:30:00Z",
+        "LEVEL": 2.396,
+        "DISCHARGE": 62.6
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T13:25:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T13:25:00Z",
+        "LEVEL": 2.367,
+        "DISCHARGE": 61.1
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T13:20:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T13:20:00Z",
+        "LEVEL": 2.383,
+        "DISCHARGE": 62.0
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T13:15:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T13:15:00Z",
+        "LEVEL": 2.387,
+        "DISCHARGE": 62.2
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T13:10:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T13:10:00Z",
+        "LEVEL": 2.376,
+        "DISCHARGE": 61.6
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T13:05:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T13:05:00Z",
+        "LEVEL": 2.392,
+        "DISCHARGE": 62.4
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T13:00:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T13:00:00Z",
+        "LEVEL": 2.392,
+        "DISCHARGE": 62.4
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T12:55:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T12:55:00Z",
+        "LEVEL": 2.378,
+        "DISCHARGE": 61.7
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T12:50:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T12:50:00Z",
+        "LEVEL": 2.393,
+        "DISCHARGE": 62.5
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T12:45:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T12:45:00Z",
+        "LEVEL": 2.389,
+        "DISCHARGE": 62.3
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T12:40:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T12:40:00Z",
+        "LEVEL": 2.395,
+        "DISCHARGE": 62.6
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T12:35:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T12:35:00Z",
+        "LEVEL": 2.389,
+        "DISCHARGE": 62.3
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T12:30:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T12:30:00Z",
+        "LEVEL": 2.397,
+        "DISCHARGE": 62.7
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T12:25:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T12:25:00Z",
+        "LEVEL": 2.394,
+        "DISCHARGE": 62.5
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T12:20:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T12:20:00Z",
+        "LEVEL": 2.4,
+        "DISCHARGE": 62.9
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T12:15:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T12:15:00Z",
+        "LEVEL": 2.385,
+        "DISCHARGE": 62.1
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T12:10:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T12:10:00Z",
+        "LEVEL": 2.443,
+        "DISCHARGE": 65.1
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T12:05:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T12:05:00Z",
+        "LEVEL": 2.403,
+        "DISCHARGE": 63.0
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T12:00:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T12:00:00Z",
+        "LEVEL": 2.403,
+        "DISCHARGE": 63.0
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T11:55:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T11:55:00Z",
+        "LEVEL": 2.409,
+        "DISCHARGE": 63.3
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T11:50:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T11:50:00Z",
+        "LEVEL": 2.45,
+        "DISCHARGE": 65.5
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T11:45:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T11:45:00Z",
+        "LEVEL": 2.475,
+        "DISCHARGE": 66.8
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T11:40:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T11:40:00Z",
+        "LEVEL": 2.478,
+        "DISCHARGE": 67.0
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T11:35:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T11:35:00Z",
+        "LEVEL": 2.504,
+        "DISCHARGE": 68.4
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T11:30:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T11:30:00Z",
+        "LEVEL": 2.5,
+        "DISCHARGE": 68.1
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T11:25:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T11:25:00Z",
+        "LEVEL": 2.504,
+        "DISCHARGE": 68.4
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T11:20:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T11:20:00Z",
+        "LEVEL": 2.475,
+        "DISCHARGE": 66.8
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T11:15:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T11:15:00Z",
+        "LEVEL": 2.503,
+        "DISCHARGE": 68.3
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T11:10:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T11:10:00Z",
+        "LEVEL": 2.507,
+        "DISCHARGE": 68.5
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T11:05:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T11:05:00Z",
+        "LEVEL": 2.502,
+        "DISCHARGE": 68.3
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T11:00:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T11:00:00Z",
+        "LEVEL": 2.501,
+        "DISCHARGE": 68.2
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T10:55:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T10:55:00Z",
+        "LEVEL": 2.523,
+        "DISCHARGE": 69.4
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T10:50:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T10:50:00Z",
+        "LEVEL": 2.501,
+        "DISCHARGE": 68.2
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T10:45:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T10:45:00Z",
+        "LEVEL": 2.475,
+        "DISCHARGE": 66.8
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T10:40:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T10:40:00Z",
+        "LEVEL": 2.54,
+        "DISCHARGE": 70.3
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T10:35:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T10:35:00Z",
+        "LEVEL": 2.488,
+        "DISCHARGE": 67.5
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T10:30:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T10:30:00Z",
+        "LEVEL": 2.51,
+        "DISCHARGE": 68.7
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T10:25:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T10:25:00Z",
+        "LEVEL": 2.489,
+        "DISCHARGE": 67.6
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T10:20:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T10:20:00Z",
+        "LEVEL": 2.502,
+        "DISCHARGE": 68.3
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T10:15:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T10:15:00Z",
+        "LEVEL": 2.501,
+        "DISCHARGE": 68.2
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T10:10:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T10:10:00Z",
+        "LEVEL": 2.498,
+        "DISCHARGE": 68.0
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T10:05:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T10:05:00Z",
+        "LEVEL": 2.523,
+        "DISCHARGE": 69.4
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T10:00:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T10:00:00Z",
+        "LEVEL": 2.5,
+        "DISCHARGE": 68.1
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T09:55:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T09:55:00Z",
+        "LEVEL": 2.493,
+        "DISCHARGE": 67.8
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T09:50:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T09:50:00Z",
+        "LEVEL": 2.53,
+        "DISCHARGE": 69.8
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T09:45:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T09:45:00Z",
+        "LEVEL": 2.519,
+        "DISCHARGE": 69.2
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T09:40:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T09:40:00Z",
+        "LEVEL": 2.515,
+        "DISCHARGE": 69.0
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T09:35:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T09:35:00Z",
+        "LEVEL": 2.513,
+        "DISCHARGE": 68.9
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T09:30:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T09:30:00Z",
+        "LEVEL": 2.496,
+        "DISCHARGE": 67.9
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T09:25:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T09:25:00Z",
+        "LEVEL": 2.501,
+        "DISCHARGE": 68.2
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T09:20:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T09:20:00Z",
+        "LEVEL": 2.52,
+        "DISCHARGE": 69.2
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T09:15:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T09:15:00Z",
+        "LEVEL": 2.504,
+        "DISCHARGE": 68.4
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T09:10:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T09:10:00Z",
+        "LEVEL": 2.524,
+        "DISCHARGE": 69.5
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T09:05:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T09:05:00Z",
+        "LEVEL": 2.517,
+        "DISCHARGE": 69.1
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T09:00:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T09:00:00Z",
+        "LEVEL": 2.535,
+        "DISCHARGE": 70.1
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T08:55:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T08:55:00Z",
+        "LEVEL": 2.543,
+        "DISCHARGE": 70.5
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T08:50:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T08:50:00Z",
+        "LEVEL": 2.516,
+        "DISCHARGE": 69.0
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T08:45:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T08:45:00Z",
+        "LEVEL": 2.536,
+        "DISCHARGE": 70.1
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T08:40:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T08:40:00Z",
+        "LEVEL": 2.523,
+        "DISCHARGE": 69.4
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T08:35:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T08:35:00Z",
+        "LEVEL": 2.541,
+        "DISCHARGE": 70.4
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T08:30:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T08:30:00Z",
+        "LEVEL": 2.534,
+        "DISCHARGE": 70.0
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T08:25:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T08:25:00Z",
+        "LEVEL": 2.533,
+        "DISCHARGE": 69.9
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T08:20:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T08:20:00Z",
+        "LEVEL": 2.513,
+        "DISCHARGE": 68.9
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T08:15:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T08:15:00Z",
+        "LEVEL": 2.527,
+        "DISCHARGE": 69.6
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T08:10:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T08:10:00Z",
+        "LEVEL": 2.538,
+        "DISCHARGE": 70.2
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T08:05:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T08:05:00Z",
+        "LEVEL": 2.527,
+        "DISCHARGE": 69.6
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T08:00:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T08:00:00Z",
+        "LEVEL": 2.485,
+        "DISCHARGE": 67.3
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T07:55:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T07:55:00Z",
+        "LEVEL": 2.539,
+        "DISCHARGE": 70.3
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T07:50:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T07:50:00Z",
+        "LEVEL": 2.529,
+        "DISCHARGE": 69.7
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T07:45:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T07:45:00Z",
+        "LEVEL": 2.517,
+        "DISCHARGE": 69.1
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T07:40:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T07:40:00Z",
+        "LEVEL": 2.539,
+        "DISCHARGE": 70.3
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T07:35:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T07:35:00Z",
+        "LEVEL": 2.533,
+        "DISCHARGE": 69.9
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T07:30:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T07:30:00Z",
+        "LEVEL": 2.526,
+        "DISCHARGE": 69.6
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T07:25:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T07:25:00Z",
+        "LEVEL": 2.512,
+        "DISCHARGE": 68.8
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T07:20:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T07:20:00Z",
+        "LEVEL": 2.508,
+        "DISCHARGE": 68.6
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T07:15:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T07:15:00Z",
+        "LEVEL": 2.523,
+        "DISCHARGE": 69.4
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T07:10:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T07:10:00Z",
+        "LEVEL": 2.508,
+        "DISCHARGE": 68.6
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T07:05:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T07:05:00Z",
+        "LEVEL": 2.523,
+        "DISCHARGE": 69.4
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T07:00:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T07:00:00Z",
+        "LEVEL": 2.509,
+        "DISCHARGE": 68.6
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T06:55:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T06:55:00Z",
+        "LEVEL": 2.506,
+        "DISCHARGE": 68.5
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T06:50:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T06:50:00Z",
+        "LEVEL": 2.532,
+        "DISCHARGE": 69.9
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T06:45:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T06:45:00Z",
+        "LEVEL": 2.518,
+        "DISCHARGE": 69.1
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T06:40:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T06:40:00Z",
+        "LEVEL": 2.525,
+        "DISCHARGE": 69.5
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T06:35:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T06:35:00Z",
+        "LEVEL": 2.506,
+        "DISCHARGE": 68.5
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T06:30:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T06:30:00Z",
+        "LEVEL": 2.503,
+        "DISCHARGE": 68.3
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T06:25:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T06:25:00Z",
+        "LEVEL": 2.504,
+        "DISCHARGE": 68.4
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T06:20:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T06:20:00Z",
+        "LEVEL": 2.508,
+        "DISCHARGE": 68.6
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T06:15:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T06:15:00Z",
+        "LEVEL": 2.517,
+        "DISCHARGE": 69.1
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T06:10:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T06:10:00Z",
+        "LEVEL": 2.506,
+        "DISCHARGE": 68.5
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T06:05:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T06:05:00Z",
+        "LEVEL": 2.48,
+        "DISCHARGE": 67.1
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T06:00:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T06:00:00Z",
+        "LEVEL": 2.487,
+        "DISCHARGE": 67.4
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T05:55:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T05:55:00Z",
+        "LEVEL": 2.49,
+        "DISCHARGE": 67.6
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T05:50:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T05:50:00Z",
+        "LEVEL": 2.491,
+        "DISCHARGE": 67.7
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T05:45:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T05:45:00Z",
+        "LEVEL": 2.476,
+        "DISCHARGE": 66.9
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T05:40:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T05:40:00Z",
+        "LEVEL": 2.468,
+        "DISCHARGE": 66.4
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T05:35:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T05:35:00Z",
+        "LEVEL": 2.472,
+        "DISCHARGE": 66.6
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T05:30:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T05:30:00Z",
+        "LEVEL": 2.462,
+        "DISCHARGE": 66.1
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T05:25:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T05:25:00Z",
+        "LEVEL": 2.467,
+        "DISCHARGE": 66.4
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T05:20:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T05:20:00Z",
+        "LEVEL": 2.449,
+        "DISCHARGE": 65.4
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T05:15:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T05:15:00Z",
+        "LEVEL": 2.462,
+        "DISCHARGE": 66.1
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T05:10:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T05:10:00Z",
+        "LEVEL": 2.454,
+        "DISCHARGE": 65.7
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T05:05:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T05:05:00Z",
+        "LEVEL": 2.426,
+        "DISCHARGE": 64.2
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T05:00:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T05:00:00Z",
+        "LEVEL": 2.453,
+        "DISCHARGE": 65.6
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T04:55:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T04:55:00Z",
+        "LEVEL": 2.434,
+        "DISCHARGE": 64.6
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T04:50:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T04:50:00Z",
+        "LEVEL": 2.434,
+        "DISCHARGE": 64.6
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T04:45:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T04:45:00Z",
+        "LEVEL": 2.377,
+        "DISCHARGE": 61.7
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T04:40:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T04:40:00Z",
+        "LEVEL": 2.415,
+        "DISCHARGE": 63.6
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T04:35:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T04:35:00Z",
+        "LEVEL": 2.41,
+        "DISCHARGE": 63.4
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T04:30:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T04:30:00Z",
+        "LEVEL": 2.403,
+        "DISCHARGE": 63.0
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T04:25:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T04:25:00Z",
+        "LEVEL": 2.399,
+        "DISCHARGE": 62.8
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T04:20:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T04:20:00Z",
+        "LEVEL": 2.401,
+        "DISCHARGE": 62.9
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T04:15:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T04:15:00Z",
+        "LEVEL": 2.399,
+        "DISCHARGE": 62.8
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T04:10:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T04:10:00Z",
+        "LEVEL": 2.383,
+        "DISCHARGE": 62.0
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T04:05:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T04:05:00Z",
+        "LEVEL": 2.38,
+        "DISCHARGE": 61.8
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T04:00:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T04:00:00Z",
+        "LEVEL": 2.376,
+        "DISCHARGE": 61.6
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T03:55:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T03:55:00Z",
+        "LEVEL": 2.391,
+        "DISCHARGE": 62.4
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T03:50:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T03:50:00Z",
+        "LEVEL": 2.404,
+        "DISCHARGE": 63.1
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T03:45:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T03:45:00Z",
+        "LEVEL": 2.383,
+        "DISCHARGE": 62.0
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T03:40:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T03:40:00Z",
+        "LEVEL": 2.369,
+        "DISCHARGE": 61.3
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T03:35:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T03:35:00Z",
+        "LEVEL": 2.347,
+        "DISCHARGE": 60.1
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T03:30:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T03:30:00Z",
+        "LEVEL": 2.338,
+        "DISCHARGE": 59.7
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T03:25:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T03:25:00Z",
+        "LEVEL": 2.328,
+        "DISCHARGE": 59.2
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T03:20:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T03:20:00Z",
+        "LEVEL": 2.307,
+        "DISCHARGE": 58.1
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T03:15:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T03:15:00Z",
+        "LEVEL": 2.29,
+        "DISCHARGE": 57.3
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T03:10:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T03:10:00Z",
+        "LEVEL": 2.271,
+        "DISCHARGE": 56.3
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T03:05:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T03:05:00Z",
+        "LEVEL": 2.231,
+        "DISCHARGE": 53.1
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T03:00:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T03:00:00Z",
+        "LEVEL": 2.23,
+        "DISCHARGE": 53.0
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T02:55:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T02:55:00Z",
+        "LEVEL": 2.225,
+        "DISCHARGE": 52.5
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T02:50:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T02:50:00Z",
+        "LEVEL": 2.209,
+        "DISCHARGE": 51.1
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T02:45:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T02:45:00Z",
+        "LEVEL": 2.201,
+        "DISCHARGE": 50.4
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T02:40:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T02:40:00Z",
+        "LEVEL": 2.188,
+        "DISCHARGE": 49.3
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T02:35:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T02:35:00Z",
+        "LEVEL": 2.194,
+        "DISCHARGE": 49.8
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T02:30:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T02:30:00Z",
+        "LEVEL": 2.185,
+        "DISCHARGE": 49.1
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T02:25:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T02:25:00Z",
+        "LEVEL": 2.177,
+        "DISCHARGE": 48.4
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T02:20:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T02:20:00Z",
+        "LEVEL": 2.15,
+        "DISCHARGE": 46.2
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T02:15:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T02:15:00Z",
+        "LEVEL": 2.148,
+        "DISCHARGE": 46.0
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T02:10:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T02:10:00Z",
+        "LEVEL": 2.13,
+        "DISCHARGE": 44.5
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T02:05:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T02:05:00Z",
+        "LEVEL": 2.123,
+        "DISCHARGE": 44.0
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T02:00:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T02:00:00Z",
+        "LEVEL": 2.097,
+        "DISCHARGE": 41.9
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T01:55:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T01:55:00Z",
+        "LEVEL": 2.07,
+        "DISCHARGE": 39.8
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T01:50:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T01:50:00Z",
+        "LEVEL": 2.064,
+        "DISCHARGE": 39.4
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T01:45:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T01:45:00Z",
+        "LEVEL": 2.053,
+        "DISCHARGE": 38.6
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T01:40:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T01:40:00Z",
+        "LEVEL": 2.045,
+        "DISCHARGE": 38.0
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T01:35:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T01:35:00Z",
+        "LEVEL": 2.042,
+        "DISCHARGE": 37.7
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T01:30:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T01:30:00Z",
+        "LEVEL": 2.035,
+        "DISCHARGE": 37.2
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T01:25:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T01:25:00Z",
+        "LEVEL": 2.03,
+        "DISCHARGE": 36.9
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T01:20:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T01:20:00Z",
+        "LEVEL": 2.028,
+        "DISCHARGE": 36.7
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T01:15:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T01:15:00Z",
+        "LEVEL": 2.022,
+        "DISCHARGE": 36.3
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T01:10:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T01:10:00Z",
+        "LEVEL": 2.015,
+        "DISCHARGE": 35.8
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T01:05:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T01:05:00Z",
+        "LEVEL": 2.023,
+        "DISCHARGE": 36.4
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T01:00:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T01:00:00Z",
+        "LEVEL": 2.021,
+        "DISCHARGE": 36.2
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T00:55:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T00:55:00Z",
+        "LEVEL": 2.014,
+        "DISCHARGE": 35.7
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T00:50:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T00:50:00Z",
+        "LEVEL": 2.0,
+        "DISCHARGE": 34.7
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T00:45:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T00:45:00Z",
+        "LEVEL": 2.014,
+        "DISCHARGE": 35.7
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T00:40:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T00:40:00Z",
+        "LEVEL": 2.014,
+        "DISCHARGE": 35.7
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T00:35:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T00:35:00Z",
+        "LEVEL": 2.012,
+        "DISCHARGE": 35.6
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T00:30:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T00:30:00Z",
+        "LEVEL": 2.01,
+        "DISCHARGE": 35.4
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T00:25:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T00:25:00Z",
+        "LEVEL": 2.008,
+        "DISCHARGE": 35.3
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T00:20:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T00:20:00Z",
+        "LEVEL": 1.993,
+        "DISCHARGE": 34.2
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T00:15:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T00:15:00Z",
+        "LEVEL": 1.99,
+        "DISCHARGE": 34.0
+      }
+    },
+    {
+      "id": "08GA075.2026-11-14T00:10:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-14T00:10:00Z",
+        "LEVEL": 1.992,
+        "DISCHARGE": 34.1
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T22:05:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T22:05:00Z",
+        "LEVEL": 1.989,
+        "DISCHARGE": 33.9
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T22:00:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T22:00:00Z",
+        "LEVEL": 1.997,
+        "DISCHARGE": 34.5
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T21:55:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T21:55:00Z",
+        "LEVEL": 1.987,
+        "DISCHARGE": 33.8
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T21:50:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T21:50:00Z",
+        "LEVEL": 1.988,
+        "DISCHARGE": 33.9
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T21:45:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T21:45:00Z",
+        "LEVEL": 1.988,
+        "DISCHARGE": 33.9
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T21:40:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T21:40:00Z",
+        "LEVEL": 1.991,
+        "DISCHARGE": 34.1
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T21:35:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T21:35:00Z",
+        "LEVEL": 1.986,
+        "DISCHARGE": 33.7
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T21:30:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T21:30:00Z",
+        "LEVEL": 1.994,
+        "DISCHARGE": 34.3
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T21:25:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T21:25:00Z",
+        "LEVEL": 1.99,
+        "DISCHARGE": 34.0
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T21:20:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T21:20:00Z",
+        "LEVEL": 1.99,
+        "DISCHARGE": 34.0
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T21:15:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T21:15:00Z",
+        "LEVEL": 1.999,
+        "DISCHARGE": 34.6
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T21:10:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T21:10:00Z",
+        "LEVEL": 1.99,
+        "DISCHARGE": 34.0
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T21:05:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T21:05:00Z",
+        "LEVEL": 1.987,
+        "DISCHARGE": 33.8
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T21:00:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T21:00:00Z",
+        "LEVEL": 1.984,
+        "DISCHARGE": 33.6
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T20:55:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T20:55:00Z",
+        "LEVEL": 1.994,
+        "DISCHARGE": 34.3
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T20:50:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T20:50:00Z",
+        "LEVEL": 1.992,
+        "DISCHARGE": 34.1
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T20:45:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T20:45:00Z",
+        "LEVEL": 1.992,
+        "DISCHARGE": 34.1
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T20:40:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T20:40:00Z",
+        "LEVEL": 1.997,
+        "DISCHARGE": 34.5
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T20:35:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T20:35:00Z",
+        "LEVEL": 1.996,
+        "DISCHARGE": 34.4
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T20:30:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T20:30:00Z",
+        "LEVEL": 1.999,
+        "DISCHARGE": 34.6
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T20:25:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T20:25:00Z",
+        "LEVEL": 1.998,
+        "DISCHARGE": 34.6
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T20:20:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T20:20:00Z",
+        "LEVEL": 1.998,
+        "DISCHARGE": 34.6
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T20:15:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T20:15:00Z",
+        "LEVEL": 2.002,
+        "DISCHARGE": 34.8
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T20:10:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T20:10:00Z",
+        "LEVEL": 2.0,
+        "DISCHARGE": 34.7
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T20:05:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T20:05:00Z",
+        "LEVEL": 2.005,
+        "DISCHARGE": 35.1
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T20:00:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T20:00:00Z",
+        "LEVEL": 2.005,
+        "DISCHARGE": 35.1
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T19:55:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T19:55:00Z",
+        "LEVEL": 2.01,
+        "DISCHARGE": 35.4
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T19:50:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T19:50:00Z",
+        "LEVEL": 2.006,
+        "DISCHARGE": 35.1
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T19:45:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T19:45:00Z",
+        "LEVEL": 2.007,
+        "DISCHARGE": 35.2
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T19:40:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T19:40:00Z",
+        "LEVEL": 2.015,
+        "DISCHARGE": 35.8
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T19:35:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T19:35:00Z",
+        "LEVEL": 2.011,
+        "DISCHARGE": 35.5
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T19:30:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T19:30:00Z",
+        "LEVEL": 2.007,
+        "DISCHARGE": 35.2
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T19:25:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T19:25:00Z",
+        "LEVEL": 2.01,
+        "DISCHARGE": 35.4
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T19:20:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T19:20:00Z",
+        "LEVEL": 2.013,
+        "DISCHARGE": 35.6
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T19:15:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T19:15:00Z",
+        "LEVEL": 2.008,
+        "DISCHARGE": 35.3
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T19:10:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T19:10:00Z",
+        "LEVEL": 2.015,
+        "DISCHARGE": 35.8
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T19:05:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T19:05:00Z",
+        "LEVEL": 2.001,
+        "DISCHARGE": 34.8
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T19:00:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T19:00:00Z",
+        "LEVEL": 2.001,
+        "DISCHARGE": 34.8
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T18:55:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T18:55:00Z",
+        "LEVEL": 2.005,
+        "DISCHARGE": 35.1
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T18:50:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T18:50:00Z",
+        "LEVEL": 1.997,
+        "DISCHARGE": 34.5
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T18:45:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T18:45:00Z",
+        "LEVEL": 2.01,
+        "DISCHARGE": 35.4
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T18:40:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T18:40:00Z",
+        "LEVEL": 2.014,
+        "DISCHARGE": 35.7
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T18:35:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T18:35:00Z",
+        "LEVEL": 2.021,
+        "DISCHARGE": 36.2
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T18:30:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T18:30:00Z",
+        "LEVEL": 2.023,
+        "DISCHARGE": 36.4
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T18:25:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T18:25:00Z",
+        "LEVEL": 2.016,
+        "DISCHARGE": 35.8
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T18:20:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T18:20:00Z",
+        "LEVEL": 2.023,
+        "DISCHARGE": 36.4
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T18:15:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T18:15:00Z",
+        "LEVEL": 2.02,
+        "DISCHARGE": 36.1
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T18:10:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T18:10:00Z",
+        "LEVEL": 2.021,
+        "DISCHARGE": 36.2
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T18:05:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T18:05:00Z",
+        "LEVEL": 2.032,
+        "DISCHARGE": 37.0
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T18:00:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T18:00:00Z",
+        "LEVEL": 2.035,
+        "DISCHARGE": 37.2
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T17:55:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T17:55:00Z",
+        "LEVEL": 2.034,
+        "DISCHARGE": 37.2
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T17:50:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T17:50:00Z",
+        "LEVEL": 2.03,
+        "DISCHARGE": 36.9
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T17:45:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T17:45:00Z",
+        "LEVEL": 2.031,
+        "DISCHARGE": 36.9
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T17:40:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T17:40:00Z",
+        "LEVEL": 2.033,
+        "DISCHARGE": 37.1
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T17:35:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T17:35:00Z",
+        "LEVEL": 2.037,
+        "DISCHARGE": 37.4
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T17:30:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T17:30:00Z",
+        "LEVEL": 2.032,
+        "DISCHARGE": 37.0
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T17:25:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T17:25:00Z",
+        "LEVEL": 2.03,
+        "DISCHARGE": 36.9
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T17:20:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T17:20:00Z",
+        "LEVEL": 2.036,
+        "DISCHARGE": 37.3
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T17:15:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T17:15:00Z",
+        "LEVEL": 2.038,
+        "DISCHARGE": 37.4
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T17:10:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T17:10:00Z",
+        "LEVEL": 2.044,
+        "DISCHARGE": 37.9
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T17:05:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T17:05:00Z",
+        "LEVEL": 2.04,
+        "DISCHARGE": 37.6
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T17:00:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T17:00:00Z",
+        "LEVEL": 2.042,
+        "DISCHARGE": 37.7
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T16:55:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T16:55:00Z",
+        "LEVEL": 2.045,
+        "DISCHARGE": 38.0
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T16:50:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T16:50:00Z",
+        "LEVEL": 2.045,
+        "DISCHARGE": 38.0
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T16:45:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T16:45:00Z",
+        "LEVEL": 2.05,
+        "DISCHARGE": 38.3
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T16:40:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T16:40:00Z",
+        "LEVEL": 2.046,
+        "DISCHARGE": 38.0
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T16:35:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T16:35:00Z",
+        "LEVEL": 2.05,
+        "DISCHARGE": 38.3
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T16:30:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T16:30:00Z",
+        "LEVEL": 2.047,
+        "DISCHARGE": 38.1
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T16:25:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T16:25:00Z",
+        "LEVEL": 2.06,
+        "DISCHARGE": 39.1
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T16:20:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T16:20:00Z",
+        "LEVEL": 2.043,
+        "DISCHARGE": 37.8
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T16:15:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T16:15:00Z",
+        "LEVEL": 2.05,
+        "DISCHARGE": 38.3
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T16:10:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T16:10:00Z",
+        "LEVEL": 2.052,
+        "DISCHARGE": 38.5
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T16:05:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T16:05:00Z",
+        "LEVEL": 2.054,
+        "DISCHARGE": 38.6
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T16:00:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T16:00:00Z",
+        "LEVEL": 2.059,
+        "DISCHARGE": 39.0
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T15:55:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T15:55:00Z",
+        "LEVEL": 2.051,
+        "DISCHARGE": 38.4
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T15:50:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T15:50:00Z",
+        "LEVEL": 2.055,
+        "DISCHARGE": 38.7
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T15:45:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T15:45:00Z",
+        "LEVEL": 2.07,
+        "DISCHARGE": 39.8
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T15:40:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T15:40:00Z",
+        "LEVEL": 2.07,
+        "DISCHARGE": 39.8
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T15:35:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T15:35:00Z",
+        "LEVEL": 2.063,
+        "DISCHARGE": 39.3
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T15:30:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T15:30:00Z",
+        "LEVEL": 2.07,
+        "DISCHARGE": 39.8
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T15:25:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T15:25:00Z",
+        "LEVEL": 2.067,
+        "DISCHARGE": 39.6
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T15:20:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T15:20:00Z",
+        "LEVEL": 2.076,
+        "DISCHARGE": 40.3
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T15:15:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T15:15:00Z",
+        "LEVEL": 2.07,
+        "DISCHARGE": 39.8
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T15:10:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T15:10:00Z",
+        "LEVEL": 2.076,
+        "DISCHARGE": 40.3
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T15:05:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T15:05:00Z",
+        "LEVEL": 2.075,
+        "DISCHARGE": 40.2
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T15:00:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T15:00:00Z",
+        "LEVEL": 2.063,
+        "DISCHARGE": 39.3
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T14:55:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T14:55:00Z",
+        "LEVEL": 2.08,
+        "DISCHARGE": 40.6
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T14:50:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T14:50:00Z",
+        "LEVEL": 2.081,
+        "DISCHARGE": 40.7
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T14:45:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T14:45:00Z",
+        "LEVEL": 2.082,
+        "DISCHARGE": 40.8
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T14:40:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T14:40:00Z",
+        "LEVEL": 2.083,
+        "DISCHARGE": 40.8
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T14:35:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T14:35:00Z",
+        "LEVEL": 2.092,
+        "DISCHARGE": 41.5
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T14:30:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T14:30:00Z",
+        "LEVEL": 2.083,
+        "DISCHARGE": 40.8
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T14:25:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T14:25:00Z",
+        "LEVEL": 2.081,
+        "DISCHARGE": 40.7
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T14:20:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T14:20:00Z",
+        "LEVEL": 2.093,
+        "DISCHARGE": 41.6
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T14:15:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T14:15:00Z",
+        "LEVEL": 2.094,
+        "DISCHARGE": 41.7
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T14:10:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T14:10:00Z",
+        "LEVEL": 2.092,
+        "DISCHARGE": 41.5
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T14:05:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T14:05:00Z",
+        "LEVEL": 2.091,
+        "DISCHARGE": 41.5
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T14:00:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T14:00:00Z",
+        "LEVEL": 2.094,
+        "DISCHARGE": 41.7
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T13:55:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T13:55:00Z",
+        "LEVEL": 2.094,
+        "DISCHARGE": 41.7
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T13:50:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T13:50:00Z",
+        "LEVEL": 2.099,
+        "DISCHARGE": 42.1
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T13:45:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T13:45:00Z",
+        "LEVEL": 2.096,
+        "DISCHARGE": 41.9
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T13:40:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T13:40:00Z",
+        "LEVEL": 2.1,
+        "DISCHARGE": 42.2
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T13:35:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T13:35:00Z",
+        "LEVEL": 2.102,
+        "DISCHARGE": 42.3
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T13:30:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T13:30:00Z",
+        "LEVEL": 2.098,
+        "DISCHARGE": 42.0
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T13:25:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T13:25:00Z",
+        "LEVEL": 2.107,
+        "DISCHARGE": 42.7
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T13:20:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T13:20:00Z",
+        "LEVEL": 2.109,
+        "DISCHARGE": 42.9
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T13:15:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T13:15:00Z",
+        "LEVEL": 2.113,
+        "DISCHARGE": 43.2
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T13:10:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T13:10:00Z",
+        "LEVEL": 2.112,
+        "DISCHARGE": 43.1
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T13:05:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T13:05:00Z",
+        "LEVEL": 2.106,
+        "DISCHARGE": 42.6
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T13:00:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T13:00:00Z",
+        "LEVEL": 2.108,
+        "DISCHARGE": 42.8
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T12:55:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T12:55:00Z",
+        "LEVEL": 2.117,
+        "DISCHARGE": 43.5
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T12:50:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T12:50:00Z",
+        "LEVEL": 2.123,
+        "DISCHARGE": 44.0
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T12:45:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T12:45:00Z",
+        "LEVEL": 2.119,
+        "DISCHARGE": 43.7
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T12:40:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T12:40:00Z",
+        "LEVEL": 2.126,
+        "DISCHARGE": 44.2
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T12:35:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T12:35:00Z",
+        "LEVEL": 2.125,
+        "DISCHARGE": 44.1
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T12:30:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T12:30:00Z",
+        "LEVEL": 2.127,
+        "DISCHARGE": 44.3
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T12:25:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T12:25:00Z",
+        "LEVEL": 2.129,
+        "DISCHARGE": 44.5
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T12:20:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T12:20:00Z",
+        "LEVEL": 2.141,
+        "DISCHARGE": 45.4
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T12:15:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T12:15:00Z",
+        "LEVEL": 2.131,
+        "DISCHARGE": 44.6
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T12:10:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T12:10:00Z",
+        "LEVEL": 2.133,
+        "DISCHARGE": 44.8
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T12:05:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T12:05:00Z",
+        "LEVEL": 2.139,
+        "DISCHARGE": 45.3
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T12:00:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T12:00:00Z",
+        "LEVEL": 2.145,
+        "DISCHARGE": 45.8
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T11:55:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T11:55:00Z",
+        "LEVEL": 2.136,
+        "DISCHARGE": 45.0
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T11:50:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T11:50:00Z",
+        "LEVEL": 2.149,
+        "DISCHARGE": 46.1
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T11:45:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T11:45:00Z",
+        "LEVEL": 2.141,
+        "DISCHARGE": 45.4
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T11:40:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T11:40:00Z",
+        "LEVEL": 2.142,
+        "DISCHARGE": 45.5
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T11:35:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T11:35:00Z",
+        "LEVEL": 2.149,
+        "DISCHARGE": 46.1
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T11:30:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T11:30:00Z",
+        "LEVEL": 2.154,
+        "DISCHARGE": 46.5
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T11:25:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T11:25:00Z",
+        "LEVEL": 2.166,
+        "DISCHARGE": 47.5
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T11:20:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T11:20:00Z",
+        "LEVEL": 2.148,
+        "DISCHARGE": 46.0
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T11:15:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T11:15:00Z",
+        "LEVEL": 2.163,
+        "DISCHARGE": 47.2
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T11:10:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T11:10:00Z",
+        "LEVEL": 2.168,
+        "DISCHARGE": 47.7
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T11:05:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T11:05:00Z",
+        "LEVEL": 2.162,
+        "DISCHARGE": 47.2
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T11:00:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T11:00:00Z",
+        "LEVEL": 2.164,
+        "DISCHARGE": 47.3
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T10:55:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T10:55:00Z",
+        "LEVEL": 2.164,
+        "DISCHARGE": 47.3
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T10:50:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T10:50:00Z",
+        "LEVEL": 2.165,
+        "DISCHARGE": 47.4
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T10:45:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T10:45:00Z",
+        "LEVEL": 2.163,
+        "DISCHARGE": 47.2
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T10:40:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T10:40:00Z",
+        "LEVEL": 2.172,
+        "DISCHARGE": 48.0
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T10:35:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T10:35:00Z",
+        "LEVEL": 2.178,
+        "DISCHARGE": 48.5
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T10:30:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T10:30:00Z",
+        "LEVEL": 2.187,
+        "DISCHARGE": 49.3
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T10:25:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T10:25:00Z",
+        "LEVEL": 2.174,
+        "DISCHARGE": 48.2
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T10:20:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T10:20:00Z",
+        "LEVEL": 2.182,
+        "DISCHARGE": 48.8
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T10:15:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T10:15:00Z",
+        "LEVEL": 2.186,
+        "DISCHARGE": 49.2
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T10:10:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T10:10:00Z",
+        "LEVEL": 2.183,
+        "DISCHARGE": 48.9
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T10:05:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T10:05:00Z",
+        "LEVEL": 2.19,
+        "DISCHARGE": 49.5
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T10:00:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T10:00:00Z",
+        "LEVEL": 2.17,
+        "DISCHARGE": 47.8
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T09:55:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T09:55:00Z",
+        "LEVEL": 2.183,
+        "DISCHARGE": 48.9
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T09:50:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T09:50:00Z",
+        "LEVEL": 2.186,
+        "DISCHARGE": 49.2
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T09:45:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T09:45:00Z",
+        "LEVEL": 2.195,
+        "DISCHARGE": 49.9
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T09:40:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T09:40:00Z",
+        "LEVEL": 2.193,
+        "DISCHARGE": 49.8
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T09:35:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T09:35:00Z",
+        "LEVEL": 2.202,
+        "DISCHARGE": 50.5
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T09:30:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T09:30:00Z",
+        "LEVEL": 2.204,
+        "DISCHARGE": 50.7
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T09:25:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T09:25:00Z",
+        "LEVEL": 2.209,
+        "DISCHARGE": 51.1
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T09:20:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T09:20:00Z",
+        "LEVEL": 2.216,
+        "DISCHARGE": 51.7
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T09:15:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T09:15:00Z",
+        "LEVEL": 2.205,
+        "DISCHARGE": 50.8
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T09:10:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T09:10:00Z",
+        "LEVEL": 2.207,
+        "DISCHARGE": 51.0
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T09:05:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T09:05:00Z",
+        "LEVEL": 2.218,
+        "DISCHARGE": 51.9
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T09:00:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T09:00:00Z",
+        "LEVEL": 2.2,
+        "DISCHARGE": 50.4
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T08:55:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T08:55:00Z",
+        "LEVEL": 2.217,
+        "DISCHARGE": 51.8
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T08:50:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T08:50:00Z",
+        "LEVEL": 2.207,
+        "DISCHARGE": 51.0
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T08:45:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T08:45:00Z",
+        "LEVEL": 2.214,
+        "DISCHARGE": 51.6
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T08:40:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T08:40:00Z",
+        "LEVEL": 2.233,
+        "DISCHARGE": 53.2
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T08:35:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T08:35:00Z",
+        "LEVEL": 2.22,
+        "DISCHARGE": 52.1
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T08:30:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T08:30:00Z",
+        "LEVEL": 2.217,
+        "DISCHARGE": 51.8
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T08:25:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T08:25:00Z",
+        "LEVEL": 2.234,
+        "DISCHARGE": 53.3
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T08:20:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T08:20:00Z",
+        "LEVEL": 2.225,
+        "DISCHARGE": 52.5
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T08:15:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T08:15:00Z",
+        "LEVEL": 2.218,
+        "DISCHARGE": 51.9
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T08:10:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T08:10:00Z",
+        "LEVEL": 2.251,
+        "DISCHARGE": 54.8
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T08:05:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T08:05:00Z",
+        "LEVEL": 2.236,
+        "DISCHARGE": 53.5
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T08:00:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T08:00:00Z",
+        "LEVEL": 2.248,
+        "DISCHARGE": 54.6
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T07:55:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T07:55:00Z",
+        "LEVEL": 2.244,
+        "DISCHARGE": 54.2
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T07:50:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T07:50:00Z",
+        "LEVEL": 2.237,
+        "DISCHARGE": 53.6
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T07:45:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T07:45:00Z",
+        "LEVEL": 2.238,
+        "DISCHARGE": 53.7
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T07:40:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T07:40:00Z",
+        "LEVEL": 2.238,
+        "DISCHARGE": 53.7
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T07:35:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T07:35:00Z",
+        "LEVEL": 2.235,
+        "DISCHARGE": 53.4
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T07:30:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T07:30:00Z",
+        "LEVEL": 2.248,
+        "DISCHARGE": 54.6
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T07:25:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T07:25:00Z",
+        "LEVEL": 2.244,
+        "DISCHARGE": 54.2
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T07:20:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T07:20:00Z",
+        "LEVEL": 2.257,
+        "DISCHARGE": 55.4
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T07:15:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T07:15:00Z",
+        "LEVEL": 2.249,
+        "DISCHARGE": 54.6
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T07:10:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T07:10:00Z",
+        "LEVEL": 2.248,
+        "DISCHARGE": 54.6
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T07:05:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T07:05:00Z",
+        "LEVEL": 2.266,
+        "DISCHARGE": 56.1
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T07:00:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T07:00:00Z",
+        "LEVEL": 2.239,
+        "DISCHARGE": 53.8
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T06:55:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T06:55:00Z",
+        "LEVEL": 2.254,
+        "DISCHARGE": 55.1
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T06:50:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T06:50:00Z",
+        "LEVEL": 2.268,
+        "DISCHARGE": 56.2
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T06:45:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T06:45:00Z",
+        "LEVEL": 2.242,
+        "DISCHARGE": 54.0
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T06:40:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T06:40:00Z",
+        "LEVEL": 2.264,
+        "DISCHARGE": 56.0
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T06:35:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T06:35:00Z",
+        "LEVEL": 2.267,
+        "DISCHARGE": 56.1
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T06:30:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T06:30:00Z",
+        "LEVEL": 2.259,
+        "DISCHARGE": 55.5
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T06:25:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T06:25:00Z",
+        "LEVEL": 2.267,
+        "DISCHARGE": 56.1
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T06:20:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T06:20:00Z",
+        "LEVEL": 2.275,
+        "DISCHARGE": 56.5
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T06:15:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T06:15:00Z",
+        "LEVEL": 2.275,
+        "DISCHARGE": 56.5
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T06:10:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T06:10:00Z",
+        "LEVEL": 2.285,
+        "DISCHARGE": 57.0
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T06:05:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T06:05:00Z",
+        "LEVEL": 2.279,
+        "DISCHARGE": 56.7
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T06:00:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T06:00:00Z",
+        "LEVEL": 2.29,
+        "DISCHARGE": 57.3
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T05:55:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T05:55:00Z",
+        "LEVEL": 2.291,
+        "DISCHARGE": 57.3
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T05:50:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T05:50:00Z",
+        "LEVEL": 2.278,
+        "DISCHARGE": 56.7
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T05:45:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T05:45:00Z",
+        "LEVEL": 2.286,
+        "DISCHARGE": 57.1
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T05:40:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T05:40:00Z",
+        "LEVEL": 2.29,
+        "DISCHARGE": 57.3
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T05:35:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T05:35:00Z",
+        "LEVEL": 2.294,
+        "DISCHARGE": 57.5
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T05:30:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T05:30:00Z",
+        "LEVEL": 2.304,
+        "DISCHARGE": 58.0
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T05:25:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T05:25:00Z",
+        "LEVEL": 2.309,
+        "DISCHARGE": 58.2
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T05:20:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T05:20:00Z",
+        "LEVEL": 2.306,
+        "DISCHARGE": 58.1
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T05:15:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T05:15:00Z",
+        "LEVEL": 2.301,
+        "DISCHARGE": 57.8
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T05:10:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T05:10:00Z",
+        "LEVEL": 2.31,
+        "DISCHARGE": 58.3
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T05:05:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T05:05:00Z",
+        "LEVEL": 2.32,
+        "DISCHARGE": 58.8
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T05:00:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T05:00:00Z",
+        "LEVEL": 2.294,
+        "DISCHARGE": 57.5
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T04:55:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T04:55:00Z",
+        "LEVEL": 2.311,
+        "DISCHARGE": 58.3
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T04:50:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T04:50:00Z",
+        "LEVEL": 2.309,
+        "DISCHARGE": 58.2
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T04:45:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T04:45:00Z",
+        "LEVEL": 2.309,
+        "DISCHARGE": 58.2
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T04:40:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T04:40:00Z",
+        "LEVEL": 2.327,
+        "DISCHARGE": 59.1
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T04:35:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T04:35:00Z",
+        "LEVEL": 2.329,
+        "DISCHARGE": 59.2
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T04:30:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T04:30:00Z",
+        "LEVEL": 2.324,
+        "DISCHARGE": 59.0
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T04:25:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T04:25:00Z",
+        "LEVEL": 2.34,
+        "DISCHARGE": 59.8
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T04:20:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T04:20:00Z",
+        "LEVEL": 2.326,
+        "DISCHARGE": 59.1
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T04:15:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T04:15:00Z",
+        "LEVEL": 2.333,
+        "DISCHARGE": 59.4
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T04:10:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T04:10:00Z",
+        "LEVEL": 2.327,
+        "DISCHARGE": 59.1
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T04:05:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T04:05:00Z",
+        "LEVEL": 2.34,
+        "DISCHARGE": 59.8
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T04:00:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T04:00:00Z",
+        "LEVEL": 2.338,
+        "DISCHARGE": 59.7
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T03:55:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T03:55:00Z",
+        "LEVEL": 2.346,
+        "DISCHARGE": 60.1
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T03:50:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T03:50:00Z",
+        "LEVEL": 2.333,
+        "DISCHARGE": 59.4
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T03:45:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T03:45:00Z",
+        "LEVEL": 2.354,
+        "DISCHARGE": 60.5
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T03:40:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T03:40:00Z",
+        "LEVEL": 2.339,
+        "DISCHARGE": 59.7
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T03:35:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T03:35:00Z",
+        "LEVEL": 2.348,
+        "DISCHARGE": 60.2
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T03:30:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T03:30:00Z",
+        "LEVEL": 2.357,
+        "DISCHARGE": 60.6
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T03:25:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T03:25:00Z",
+        "LEVEL": 2.348,
+        "DISCHARGE": 60.2
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T03:20:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T03:20:00Z",
+        "LEVEL": 2.352,
+        "DISCHARGE": 60.4
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T03:15:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T03:15:00Z",
+        "LEVEL": 2.377,
+        "DISCHARGE": 61.7
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T03:10:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T03:10:00Z",
+        "LEVEL": 2.358,
+        "DISCHARGE": 60.7
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T03:05:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T03:05:00Z",
+        "LEVEL": 2.371,
+        "DISCHARGE": 61.4
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T03:00:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T03:00:00Z",
+        "LEVEL": 2.377,
+        "DISCHARGE": 61.7
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T02:55:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T02:55:00Z",
+        "LEVEL": 2.373,
+        "DISCHARGE": 61.5
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T02:50:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T02:50:00Z",
+        "LEVEL": 2.369,
+        "DISCHARGE": 61.3
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T02:45:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T02:45:00Z",
+        "LEVEL": 2.356,
+        "DISCHARGE": 60.6
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T02:40:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T02:40:00Z",
+        "LEVEL": 2.359,
+        "DISCHARGE": 60.7
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T02:35:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T02:35:00Z",
+        "LEVEL": 2.37,
+        "DISCHARGE": 61.3
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T02:30:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T02:30:00Z",
+        "LEVEL": 2.378,
+        "DISCHARGE": 61.7
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T02:25:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T02:25:00Z",
+        "LEVEL": 2.367,
+        "DISCHARGE": 61.1
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T02:20:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T02:20:00Z",
+        "LEVEL": 2.376,
+        "DISCHARGE": 61.6
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T02:15:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T02:15:00Z",
+        "LEVEL": 2.378,
+        "DISCHARGE": 61.7
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T02:10:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T02:10:00Z",
+        "LEVEL": 2.397,
+        "DISCHARGE": 62.7
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T02:05:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T02:05:00Z",
+        "LEVEL": 2.385,
+        "DISCHARGE": 62.1
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T02:00:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T02:00:00Z",
+        "LEVEL": 2.402,
+        "DISCHARGE": 63.0
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T01:55:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T01:55:00Z",
+        "LEVEL": 2.387,
+        "DISCHARGE": 62.2
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T01:50:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T01:50:00Z",
+        "LEVEL": 2.401,
+        "DISCHARGE": 62.9
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T01:45:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T01:45:00Z",
+        "LEVEL": 2.395,
+        "DISCHARGE": 62.6
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T01:40:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T01:40:00Z",
+        "LEVEL": 2.419,
+        "DISCHARGE": 63.8
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T01:35:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T01:35:00Z",
+        "LEVEL": 2.428,
+        "DISCHARGE": 64.3
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T01:30:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T01:30:00Z",
+        "LEVEL": 2.42,
+        "DISCHARGE": 63.9
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T01:25:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T01:25:00Z",
+        "LEVEL": 2.435,
+        "DISCHARGE": 64.7
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T01:20:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T01:20:00Z",
+        "LEVEL": 2.406,
+        "DISCHARGE": 63.2
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T01:15:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T01:15:00Z",
+        "LEVEL": 2.418,
+        "DISCHARGE": 63.8
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T01:10:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T01:10:00Z",
+        "LEVEL": 2.416,
+        "DISCHARGE": 63.7
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T01:05:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T01:05:00Z",
+        "LEVEL": 2.423,
+        "DISCHARGE": 64.1
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T01:00:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T01:00:00Z",
+        "LEVEL": 2.43,
+        "DISCHARGE": 64.4
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T00:55:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T00:55:00Z",
+        "LEVEL": 2.45,
+        "DISCHARGE": 65.5
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T00:50:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T00:50:00Z",
+        "LEVEL": 2.424,
+        "DISCHARGE": 64.1
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T00:45:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T00:45:00Z",
+        "LEVEL": 2.433,
+        "DISCHARGE": 64.6
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T00:40:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T00:40:00Z",
+        "LEVEL": 2.449,
+        "DISCHARGE": 65.4
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T00:35:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T00:35:00Z",
+        "LEVEL": 2.441,
+        "DISCHARGE": 65.0
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T00:30:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T00:30:00Z",
+        "LEVEL": 2.448,
+        "DISCHARGE": 65.4
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T00:25:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T00:25:00Z",
+        "LEVEL": 2.456,
+        "DISCHARGE": 65.8
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T00:20:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T00:20:00Z",
+        "LEVEL": 2.475,
+        "DISCHARGE": 66.8
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T00:15:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T00:15:00Z",
+        "LEVEL": 2.469,
+        "DISCHARGE": 66.5
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T00:10:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T00:10:00Z",
+        "LEVEL": 2.47,
+        "DISCHARGE": 66.5
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T00:05:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T00:05:00Z",
+        "LEVEL": 2.483,
+        "DISCHARGE": 67.2
+      }
+    },
+    {
+      "id": "08GA075.2026-11-13T00:00:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-13T00:00:00Z",
+        "LEVEL": 2.47,
+        "DISCHARGE": 66.5
+      }
+    },
+    {
+      "id": "08GA075.2026-11-12T23:55:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-12T23:55:00Z",
+        "LEVEL": 2.491,
+        "DISCHARGE": 67.7
+      }
+    },
+    {
+      "id": "08GA075.2026-11-12T23:50:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-12T23:50:00Z",
+        "LEVEL": 2.469,
+        "DISCHARGE": 66.5
+      }
+    },
+    {
+      "id": "08GA075.2026-11-12T23:45:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-12T23:45:00Z",
+        "LEVEL": 2.495,
+        "DISCHARGE": 67.9
+      }
+    },
+    {
+      "id": "08GA075.2026-11-12T23:40:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-12T23:40:00Z",
+        "LEVEL": 2.477,
+        "DISCHARGE": 66.9
+      }
+    },
+    {
+      "id": "08GA075.2026-11-12T23:35:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-12T23:35:00Z",
+        "LEVEL": 2.476,
+        "DISCHARGE": 66.9
+      }
+    },
+    {
+      "id": "08GA075.2026-11-12T23:30:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-12T23:30:00Z",
+        "LEVEL": 2.484,
+        "DISCHARGE": 67.3
+      }
+    },
+    {
+      "id": "08GA075.2026-11-12T23:25:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-12T23:25:00Z",
+        "LEVEL": 2.515,
+        "DISCHARGE": 69.0
+      }
+    },
+    {
+      "id": "08GA075.2026-11-12T23:20:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-12T23:20:00Z",
+        "LEVEL": 2.535,
+        "DISCHARGE": 70.1
+      }
+    },
+    {
+      "id": "08GA075.2026-11-12T23:15:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-12T23:15:00Z",
+        "LEVEL": 2.503,
+        "DISCHARGE": 68.3
+      }
+    },
+    {
+      "id": "08GA075.2026-11-12T23:10:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-12T23:10:00Z",
+        "LEVEL": 2.517,
+        "DISCHARGE": 69.1
+      }
+    },
+    {
+      "id": "08GA075.2026-11-12T23:05:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-12T23:05:00Z",
+        "LEVEL": 2.543,
+        "DISCHARGE": 70.5
+      }
+    },
+    {
+      "id": "08GA075.2026-11-12T23:00:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-12T23:00:00Z",
+        "LEVEL": 2.529,
+        "DISCHARGE": 69.7
+      }
+    },
+    {
+      "id": "08GA075.2026-11-12T22:55:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-12T22:55:00Z",
+        "LEVEL": 2.547,
+        "DISCHARGE": 70.7
+      }
+    },
+    {
+      "id": "08GA075.2026-11-12T22:50:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-12T22:50:00Z",
+        "LEVEL": 2.515,
+        "DISCHARGE": 69.0
+      }
+    },
+    {
+      "id": "08GA075.2026-11-12T22:45:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-12T22:45:00Z",
+        "LEVEL": 2.509,
+        "DISCHARGE": 68.6
+      }
+    },
+    {
+      "id": "08GA075.2026-11-12T22:40:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-12T22:40:00Z",
+        "LEVEL": 2.525,
+        "DISCHARGE": 69.5
+      }
+    },
+    {
+      "id": "08GA075.2026-11-12T22:35:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-12T22:35:00Z",
+        "LEVEL": 2.524,
+        "DISCHARGE": 69.5
+      }
+    },
+    {
+      "id": "08GA075.2026-11-12T22:30:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-12T22:30:00Z",
+        "LEVEL": 2.531,
+        "DISCHARGE": 69.8
+      }
+    },
+    {
+      "id": "08GA075.2026-11-12T22:25:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-12T22:25:00Z",
+        "LEVEL": 2.53,
+        "DISCHARGE": 69.8
+      }
+    },
+    {
+      "id": "08GA075.2026-11-12T22:20:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-12T22:20:00Z",
+        "LEVEL": 2.533,
+        "DISCHARGE": 69.9
+      }
+    },
+    {
+      "id": "08GA075.2026-11-12T22:15:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-12T22:15:00Z",
+        "LEVEL": 2.55,
+        "DISCHARGE": 70.9
+      }
+    },
+    {
+      "id": "08GA075.2026-11-12T22:10:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-12T22:10:00Z",
+        "LEVEL": 2.551,
+        "DISCHARGE": 70.9
+      }
+    },
+    {
+      "id": "08GA075.2026-11-12T22:05:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-12T22:05:00Z",
+        "LEVEL": 2.556,
+        "DISCHARGE": 71.2
+      }
+    },
+    {
+      "id": "08GA075.2026-11-12T22:00:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-12T22:00:00Z",
+        "LEVEL": 2.557,
+        "DISCHARGE": 71.3
+      }
+    },
+    {
+      "id": "08GA075.2026-11-12T21:55:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-12T21:55:00Z",
+        "LEVEL": 2.573,
+        "DISCHARGE": 72.2
+      }
+    },
+    {
+      "id": "08GA075.2026-11-12T21:50:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-12T21:50:00Z",
+        "LEVEL": 2.577,
+        "DISCHARGE": 72.4
+      }
+    },
+    {
+      "id": "08GA075.2026-11-12T21:45:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-12T21:45:00Z",
+        "LEVEL": 2.54,
+        "DISCHARGE": 70.3
+      }
+    },
+    {
+      "id": "08GA075.2026-11-12T21:40:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-12T21:40:00Z",
+        "LEVEL": 2.583,
+        "DISCHARGE": 72.7
+      }
+    },
+    {
+      "id": "08GA075.2026-11-12T21:35:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-12T21:35:00Z",
+        "LEVEL": 2.589,
+        "DISCHARGE": 73.0
+      }
+    },
+    {
+      "id": "08GA075.2026-11-12T21:30:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-12T21:30:00Z",
+        "LEVEL": 2.573,
+        "DISCHARGE": 72.2
+      }
+    },
+    {
+      "id": "08GA075.2026-11-12T21:25:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-12T21:25:00Z",
+        "LEVEL": 2.61,
+        "DISCHARGE": 74.2
+      }
+    },
+    {
+      "id": "08GA075.2026-11-12T21:20:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-12T21:20:00Z",
+        "LEVEL": 2.596,
+        "DISCHARGE": 73.4
+      }
+    },
+    {
+      "id": "08GA075.2026-11-12T21:15:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-12T21:15:00Z",
+        "LEVEL": 2.607,
+        "DISCHARGE": 74.1
+      }
+    },
+    {
+      "id": "08GA075.2026-11-12T21:10:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-12T21:10:00Z",
+        "LEVEL": 2.617,
+        "DISCHARGE": 74.6
+      }
+    },
+    {
+      "id": "08GA075.2026-11-12T21:05:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-12T21:05:00Z",
+        "LEVEL": 2.621,
+        "DISCHARGE": 74.8
+      }
+    },
+    {
+      "id": "08GA075.2026-11-12T21:00:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-12T21:00:00Z",
+        "LEVEL": 2.618,
+        "DISCHARGE": 74.7
+      }
+    },
+    {
+      "id": "08GA075.2026-11-12T20:55:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-12T20:55:00Z",
+        "LEVEL": 2.645,
+        "DISCHARGE": 76.2
+      }
+    },
+    {
+      "id": "08GA075.2026-11-12T20:50:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-12T20:50:00Z",
+        "LEVEL": 2.657,
+        "DISCHARGE": 76.9
+      }
+    },
+    {
+      "id": "08GA075.2026-11-12T20:45:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-12T20:45:00Z",
+        "LEVEL": 2.638,
+        "DISCHARGE": 75.8
+      }
+    },
+    {
+      "id": "08GA075.2026-11-12T20:40:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-12T20:40:00Z",
+        "LEVEL": 2.637,
+        "DISCHARGE": 75.8
+      }
+    },
+    {
+      "id": "08GA075.2026-11-12T20:35:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-12T20:35:00Z",
+        "LEVEL": 2.655,
+        "DISCHARGE": 76.8
+      }
+    },
+    {
+      "id": "08GA075.2026-11-12T20:30:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-12T20:30:00Z",
+        "LEVEL": 2.635,
+        "DISCHARGE": 75.6
+      }
+    },
+    {
+      "id": "08GA075.2026-11-12T20:25:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-12T20:25:00Z",
+        "LEVEL": 2.629,
+        "DISCHARGE": 75.3
+      }
+    },
+    {
+      "id": "08GA075.2026-11-12T20:20:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-12T20:20:00Z",
+        "LEVEL": 2.669,
+        "DISCHARGE": 77.6
+      }
+    },
+    {
+      "id": "08GA075.2026-11-12T20:15:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-12T20:15:00Z",
+        "LEVEL": 2.644,
+        "DISCHARGE": 76.2
+      }
+    },
+    {
+      "id": "08GA075.2026-11-12T20:10:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-12T20:10:00Z",
+        "LEVEL": 2.663,
+        "DISCHARGE": 77.2
+      }
+    },
+    {
+      "id": "08GA075.2026-11-12T20:05:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-12T20:05:00Z",
+        "LEVEL": 2.645,
+        "DISCHARGE": 76.2
+      }
+    },
+    {
+      "id": "08GA075.2026-11-12T20:00:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-12T20:00:00Z",
+        "LEVEL": 2.634,
+        "DISCHARGE": 75.6
+      }
+    },
+    {
+      "id": "08GA075.2026-11-12T19:55:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-12T19:55:00Z",
+        "LEVEL": 2.63,
+        "DISCHARGE": 75.4
+      }
+    },
+    {
+      "id": "08GA075.2026-11-12T19:50:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-12T19:50:00Z",
+        "LEVEL": 2.649,
+        "DISCHARGE": 76.4
+      }
+    },
+    {
+      "id": "08GA075.2026-11-12T19:45:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-12T19:45:00Z",
+        "LEVEL": 2.672,
+        "DISCHARGE": 77.8
+      }
+    },
+    {
+      "id": "08GA075.2026-11-12T19:40:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-12T19:40:00Z",
+        "LEVEL": 2.642,
+        "DISCHARGE": 76.0
+      }
+    },
+    {
+      "id": "08GA075.2026-11-12T19:35:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-12T19:35:00Z",
+        "LEVEL": 2.654,
+        "DISCHARGE": 76.7
+      }
+    },
+    {
+      "id": "08GA075.2026-11-12T19:30:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-12T19:30:00Z",
+        "LEVEL": 2.658,
+        "DISCHARGE": 77.0
+      }
+    },
+    {
+      "id": "08GA075.2026-11-12T19:25:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-12T19:25:00Z",
+        "LEVEL": 2.689,
+        "DISCHARGE": 78.7
+      }
+    },
+    {
+      "id": "08GA075.2026-11-12T19:20:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-12T19:20:00Z",
+        "LEVEL": 2.701,
+        "DISCHARGE": 79.4
+      }
+    },
+    {
+      "id": "08GA075.2026-11-12T19:15:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-12T19:15:00Z",
+        "LEVEL": 2.729,
+        "DISCHARGE": 81.1
+      }
+    },
+    {
+      "id": "08GA075.2026-11-12T19:10:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-12T19:10:00Z",
+        "LEVEL": 2.708,
+        "DISCHARGE": 79.9
+      }
+    },
+    {
+      "id": "08GA075.2026-11-12T19:05:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-12T19:05:00Z",
+        "LEVEL": 2.717,
+        "DISCHARGE": 80.4
+      }
+    },
+    {
+      "id": "08GA075.2026-11-12T19:00:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-12T19:00:00Z",
+        "LEVEL": 2.722,
+        "DISCHARGE": 80.7
+      }
+    },
+    {
+      "id": "08GA075.2026-11-12T18:55:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-12T18:55:00Z",
+        "LEVEL": 2.735,
+        "DISCHARGE": 81.4
+      }
+    },
+    {
+      "id": "08GA075.2026-11-12T18:50:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-12T18:50:00Z",
+        "LEVEL": 2.736,
+        "DISCHARGE": 81.5
+      }
+    },
+    {
+      "id": "08GA075.2026-11-12T18:45:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-12T18:45:00Z",
+        "LEVEL": 2.814,
+        "DISCHARGE": 86.2
+      }
+    },
+    {
+      "id": "08GA075.2026-11-12T18:40:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-12T18:40:00Z",
+        "LEVEL": 2.864,
+        "DISCHARGE": 89.2
+      }
+    },
+    {
+      "id": "08GA075.2026-11-12T18:35:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-12T18:35:00Z",
+        "LEVEL": 2.839,
+        "DISCHARGE": 87.7
+      }
+    },
+    {
+      "id": "08GA075.2026-11-12T18:30:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-12T18:30:00Z",
+        "LEVEL": 2.858,
+        "DISCHARGE": 88.9
+      }
+    },
+    {
+      "id": "08GA075.2026-11-12T18:25:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-12T18:25:00Z",
+        "LEVEL": 2.883,
+        "DISCHARGE": 90.4
+      }
+    },
+    {
+      "id": "08GA075.2026-11-12T18:20:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-12T18:20:00Z",
+        "LEVEL": 2.852,
+        "DISCHARGE": 88.5
+      }
+    },
+    {
+      "id": "08GA075.2026-11-12T18:15:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-12T18:15:00Z",
+        "LEVEL": 2.85,
+        "DISCHARGE": 88.4
+      }
+    },
+    {
+      "id": "08GA075.2026-11-12T18:10:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-12T18:10:00Z",
+        "LEVEL": 2.899,
+        "DISCHARGE": 91.4
+      }
+    },
+    {
+      "id": "08GA075.2026-11-12T18:05:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-12T18:05:00Z",
+        "LEVEL": 2.902,
+        "DISCHARGE": 91.6
+      }
+    },
+    {
+      "id": "08GA075.2026-11-12T18:00:00Z",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATETIME": "2026-11-12T18:00:00Z",
+        "LEVEL": 2.905,
+        "DISCHARGE": 91.8
+      }
+    }
+  ],
+  "numberMatched": 734,
+  "numberReturned": 734,
+  "links": [
+    {
+      "type": "application/geo+json",
+      "rel": "self",
+      "title": "This document as GeoJSON",
+      "href": "https://api.weather.gc.ca/collections/hydrometric-realtime/items?f=json&STATION_NUMBER=08GA075&datetime=2026-11-12T18%3A00%3A00Z%2F..&sortby=-DATETIME&properties=DATETIME,LEVEL,DISCHARGE&skipGeometry=true&limit=3000"
+    },
+    {
+      "rel": "alternate",
+      "type": "application/ld+json",
+      "title": "This document as RDF (JSON-LD)",
+      "href": "https://api.weather.gc.ca/collections/hydrometric-realtime/items?f=jsonld&STATION_NUMBER=08GA075&datetime=2026-11-12T18%3A00%3A00Z%2F..&sortby=-DATETIME&properties=DATETIME,LEVEL,DISCHARGE&skipGeometry=true&limit=3000"
+    },
+    {
+      "type": "text/html",
+      "rel": "alternate",
+      "title": "This document as HTML",
+      "href": "https://api.weather.gc.ca/collections/hydrometric-realtime/items?f=html&STATION_NUMBER=08GA075&datetime=2026-11-12T18%3A00%3A00Z%2F..&sortby=-DATETIME&properties=DATETIME,LEVEL,DISCHARGE&skipGeometry=true&limit=3000"
+    },
+    {
+      "type": "application/json",
+      "title": "Hydrometric Data - Real-time",
+      "rel": "collection",
+      "href": "https://api.weather.gc.ca/collections/hydrometric-realtime"
+    }
+  ],
+  "timeStamp": "2026-11-15T18:44:37.589343Z"
+}

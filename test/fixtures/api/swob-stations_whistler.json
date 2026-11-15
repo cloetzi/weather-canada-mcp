@@ -1,0 +1,166 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "id": "1100875",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.9546,
+          50.1289,
+          661.8
+        ]
+      },
+      "properties": {
+        "iata_id": "CVOC",
+        "name": "WHISTLER - NESTERS",
+        "wmo_id": 71687,
+        "msc_id": "1100875",
+        "data_provider": "MSC",
+        "dataset_network": "CA",
+        "auto_man": "AUTO",
+        "province_territory": "British Columbia"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "1101300",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.110608,
+          50.14405,
+          887.4
+        ]
+      },
+      "properties": {
+        "iata_id": "CVOD",
+        "name": "CALLAGHAN VALLEY",
+        "wmo_id": 71688,
+        "msc_id": "1101300",
+        "data_provider": "MSC",
+        "dataset_network": "CA",
+        "auto_man": "AUTO",
+        "province_territory": "British Columbia"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "1048899",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.9,
+          50.1667,
+          657.8
+        ]
+      },
+      "properties": {
+        "iata_id": "CWAE",
+        "name": "Whistler",
+        "wmo_id": null,
+        "msc_id": "1048899",
+        "data_provider": "NAV CANADA",
+        "dataset_network": "NC-HWOS",
+        "auto_man": "MAN",
+        "province_territory": "British Columbia"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "1086082",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.733889,
+          50.305556,
+          207.0
+        ]
+      },
+      "properties": {
+        "iata_id": "CWGP",
+        "name": "PEMBERTON CS",
+        "wmo_id": 71777,
+        "msc_id": "1086082",
+        "data_provider": "MSC",
+        "dataset_network": "CA",
+        "auto_man": "AUTO",
+        "province_territory": "British Columbia"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "1086081",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.742199,
+          50.30251,
+          205.0
+        ]
+      },
+      "properties": {
+        "iata_id": "CWPN",
+        "name": "PEMBERTON AIRPORT (WINDS)",
+        "wmo_id": null,
+        "msc_id": "1086081",
+        "data_provider": "MSC",
+        "dataset_network": "CA",
+        "auto_man": "AUTO",
+        "province_territory": "British Columbia"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "10476F0",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.161232,
+          49.78319,
+          56.6
+        ]
+      },
+      "properties": {
+        "iata_id": "CWSK",
+        "name": "SQUAMISH AIRPORT",
+        "wmo_id": 71207,
+        "msc_id": "10476F0",
+        "data_provider": "MSC",
+        "dataset_network": "CA",
+        "auto_man": "AUTO",
+        "province_territory": "British Columbia"
+      }
+    }
+  ],
+  "numberMatched": 6,
+  "numberReturned": 6,
+  "links": [
+    {
+      "type": "application/geo+json",
+      "rel": "self",
+      "title": "This document as GeoJSON",
+      "href": "https://api.weather.gc.ca/collections/swob-stations/items?f=json&bbox=-123.66051,49.67084,-122.25949,50.56916&limit=500"
+    },
+    {
+      "rel": "alternate",
+      "type": "application/ld+json",
+      "title": "This document as RDF (JSON-LD)",
+      "href": "https://api.weather.gc.ca/collections/swob-stations/items?f=jsonld&bbox=-123.66051,49.67084,-122.25949,50.56916&limit=500"
+    },
+    {
+      "type": "text/html",
+      "rel": "alternate",
+      "title": "This document as HTML",
+      "href": "https://api.weather.gc.ca/collections/swob-stations/items?f=html&bbox=-123.66051,49.67084,-122.25949,50.56916&limit=500"
+    },
+    {
+      "type": "application/json",
+      "title": "SWOB - Stations",
+      "rel": "collection",
+      "href": "https://api.weather.gc.ca/collections/swob-stations"
+    }
+  ],
+  "timeStamp": "2026-11-15T18:44:29.897619Z"
+}

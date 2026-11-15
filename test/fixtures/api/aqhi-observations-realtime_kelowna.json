@@ -1,0 +1,138 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-JAFUV-20261115170000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -119.483333333333,
+          49.8833333333333
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-JAFUV-20261115170000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "amendment",
+        "location_name_en": "Central Okanagan",
+        "location_name_fr": "Okanagan - centre",
+        "location_id": "JAFUV",
+        "observation_datetime": "2026-11-15T17:00:00Z",
+        "observation_datetime_text_en": "10:00 AM PCT Sunday 15 November 2026",
+        "observation_datetime_text_fr": "10h00 AM HP dimanche 15 novembre 2026",
+        "aqhi": 1.47,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-JAFNW-20261115180000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -120.327222222222,
+          50.6733333333333
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-JAFNW-20261115180000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Kamloops",
+        "location_name_fr": "Kamloops",
+        "location_id": "JAFNW",
+        "observation_datetime": "2026-11-15T18:00:00Z",
+        "observation_datetime_text_en": "11:00 AM PCT Sunday 15 November 2026",
+        "observation_datetime_text_fr": "11h00 AM HP dimanche 15 novembre 2026",
+        "aqhi": 1.82,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-JBOAP-20261115180000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -119.266666666667,
+          50.2583333333333
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-JBOAP-20261115180000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "North Okanagan",
+        "location_name_fr": "Okanagan - nord",
+        "location_id": "JBOAP",
+        "observation_datetime": "2026-11-15T18:00:00Z",
+        "observation_datetime_text_en": "11:00 AM PCT Sunday 15 November 2026",
+        "observation_datetime_text_fr": "11h00 AM HP dimanche 15 novembre 2026",
+        "aqhi": 1.6,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-JBHJG-20261115180000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -119.45,
+          49.0333333333333
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-JBHJG-20261115180000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "South Okanagan",
+        "location_name_fr": "Okanagan - sud",
+        "location_id": "JBHJG",
+        "observation_datetime": "2026-11-15T18:00:00Z",
+        "observation_datetime_text_en": "11:00 AM PCT Sunday 15 November 2026",
+        "observation_datetime_text_fr": "11h00 AM HP dimanche 15 novembre 2026",
+        "aqhi": 1.55,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    }
+  ],
+  "numberMatched": 4,
+  "numberReturned": 4,
+  "links": [
+    {
+      "type": "application/geo+json",
+      "rel": "self",
+      "title": "This document as GeoJSON",
+      "href": "https://api.weather.gc.ca/collections/aqhi-observations-realtime/items?f=json&bbox=-120.89434,48.99169,-118.10566,50.78831&latest=true&limit=100"
+    },
+    {
+      "rel": "alternate",
+      "type": "application/ld+json",
+      "title": "This document as RDF (JSON-LD)",
+      "href": "https://api.weather.gc.ca/collections/aqhi-observations-realtime/items?f=jsonld&bbox=-120.89434,48.99169,-118.10566,50.78831&latest=true&limit=100"
+    },
+    {
+      "type": "text/html",
+      "rel": "alternate",
+      "title": "This document as HTML",
+      "href": "https://api.weather.gc.ca/collections/aqhi-observations-realtime/items?f=html&bbox=-120.89434,48.99169,-118.10566,50.78831&latest=true&limit=100"
+    },
+    {
+      "type": "application/json",
+      "title": "AQHI – Observations",
+      "rel": "collection",
+      "href": "https://api.weather.gc.ca/collections/aqhi-observations-realtime"
+    }
+  ],
+  "timeStamp": "2026-11-15T18:44:44.703031Z"
+}

@@ -11,7 +11,14 @@ module WeatherCanadaMcp
       # Seconds, before WEATHER_MCP_CACHE_SCALE.
       TTLS = {
         "citypageweather-realtime" => 600,
-        "weather-alerts" => 300
+        "weather-alerts" => 300,
+        "swob-realtime" => 300,
+        "swob-stations" => 86_400,
+        "hydrometric-stations" => 86_400,
+        "hydrometric-realtime" => 900,
+        "hydrometric-monthly-mean" => 7 * 86_400,
+        "aqhi-observations-realtime" => 900,
+        "aqhi-forecasts-realtime" => 900
       }.freeze
       DEFAULT_TTL = 600
       SITE_LIST_TTL = 86_400
