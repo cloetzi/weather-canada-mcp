@@ -22,21 +22,36 @@ class FakeEccc
 
   attr_reader :requests, :url
 
+  WMS_PLACES = { [50.12, -122.96] => "whistler", [60.72, -135.05] => "whitehorse" }.freeze
+
+  # Like GeoMet, a WMS request it cannot answer gets a 200 with an XML exception report (the real one names the
+  # problem; this one only has to be XML).
+  WMS_EXCEPTION = '<?xml version="1.0"?><ServiceExceptionReport><ServiceException code="NoMatch"/></ServiceExceptionReport>'
+
   def self.fixture(path) = File.read(File.join(FIXTURES, path), encoding: Encoding::UTF_8)
 
   def self.fixture_json(path) = JSON.parse(fixture(path))
+
+  def self.fixture_binary(path) = File.binread(File.join(FIXTURES, path))
 
   # Collections served from one fixture whatever the query (each was captured for one test location).
   FIXED_FIXTURES = {
     "citypageweather-realtime" => "api/citypage_sites.json",
     "swob-stations" => "api/swob-stations_whistler.json",
     "hydrometric-stations" => "api/hydrometric-stations_squamish.json",
-    "aqhi-observations-realtime" => "api/aqhi-observations-realtime_kelowna.json"
+    "aqhi-observations-realtime" => "api/aqhi-observations-realtime_kelowna.json",
+    "marineweather-realtime" => "api/marineweather-realtime_squamish.json",
+    "ltce-temperature" => "api/ltce-temperature_whistler.json",
+    "ltce-precipitation" => "api/ltce-precipitation_whistler.json",
+    "ltce-snowfall" => "api/ltce-snowfall_whistler.json",
+    # The normals stations; a query naming a station gets api/climate-normals_<id>.json (KEYED_FIXTURES).
+    "climate-normals" => "api/climate-normals_whistler.json"
   }.freeze
   # Collections served per station or location: the query parameter naming it, and fixtures named api/<collection>_<id>.json.
   KEYED_FIXTURES = {
     "swob-realtime" => "msc_id-value", "hydrometric-realtime" => "STATION_NUMBER",
-    "hydrometric-monthly-mean" => "STATION_NUMBER", "aqhi-forecasts-realtime" => "location_id"
+    "hydrometric-monthly-mean" => "STATION_NUMBER", "aqhi-forecasts-realtime" => "location_id",
+    "climate-normals" => "CLIMATE_IDENTIFIER"
   }.freeze
   # Avalanche Canada paths => fixture. Forecast points other than Lake Louise get the empty product captured for Toronto.
   AVALANCHE_FIXTURES = [
@@ -91,6 +106,9 @@ class FakeEccc
   end
 
   def fixture_response(request)
+    return wms_response(request.query) if request.path == "/geomet"
+    return basemap_response(request.query) if request.path == "/wms/CBMT"
+
     file = fixture_for(request)
     return [404, { "content-type" => "application/json" }, '{"code":"NotFound"}'] unless file
     return [200, { "content-type" => "application/zip" }, self.class.cgn_zip] if file == :cgn
@@ -106,7 +124,40 @@ class FakeEccc
     return keyed_fixture("citypage", item) if collection == "citypageweather-realtime" && item
     return alerts_fixture(request.query["bbox"]) if collection == "weather-alerts"
 
-    FIXED_FIXTURES[collection] || (keyed_fixture(collection, request.query[KEYED_FIXTURES[collection]]) if KEYED_FIXTURES.key?(collection))
+    key = request.query[KEYED_FIXTURES[collection]] if KEYED_FIXTURES.key?(collection)
+    key ? keyed_fixture(collection, key) : FIXED_FIXTURES[collection]
+  end
+
+  # GetFeatureInfo fixtures are named after the place, layer and time: geomet/<place>/<layer>_<yyyymmddThhmmZ>.json.
+  # GetFeatureInfo answers from geomet/<place>/<layer>_<time>.json and GetMap from the same name with .png; a request
+  # without TIME (the layer's latest) from <layer>_latest.
+  def wms_response(query)
+    map = query["REQUEST"] == "GetMap"
+    file = wms_fixture(query, map ? "png" : "json")
+    return [200, { "content-type" => "text/xml" }, WMS_EXCEPTION] unless file
+
+    [200, { "content-type" => map ? "image/png" : "application/json" }, File.binread(File.join(FIXTURES, file))]
+  end
+
+  def wms_fixture(query, extension)
+    place = WMS_PLACES.find { |(lat, lon), _| wms_point?(query["BBOX"], lat, lon) }&.last
+    time = query["TIME"] ? (Time.iso8601(query["TIME"]).utc.strftime("%Y%m%dT%H%MZ") rescue nil) : "latest" # rubocop:disable Style/RescueModifier
+    path = "geomet/#{place}/#{query["LAYERS"]}_#{time}.#{extension}"
+    path if place && time && query["LAYERS"].to_s.match?(/\A[\w.-]+\z/) && File.exist?(File.join(FIXTURES, path))
+  end
+
+  # NRCan's base map, captured once per place (nrcan/cbmt_<place>.png) whatever the size of the area.
+  def basemap_response(query)
+    place = WMS_PLACES.find { |(lat, lon), _| wms_point?(query["BBOX"], lat, lon) }&.last
+    path = "nrcan/cbmt_#{place}.png"
+    return [404, { "content-type" => "text/plain" }, "not found"] unless place && File.exist?(File.join(FIXTURES, path))
+
+    [200, { "content-type" => "image/png" }, File.binread(File.join(FIXTURES, path))]
+  end
+
+  def wms_point?(bbox, lat, lon)
+    min_lat, min_lon, max_lat, max_lon = bbox.to_s.split(",").map(&:to_f)
+    lat.between?(min_lat, max_lat) && lon.between?(min_lon, max_lon)
   end
 
   def avalanche_fixture(request)

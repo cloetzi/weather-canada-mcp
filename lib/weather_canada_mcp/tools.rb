@@ -6,12 +6,18 @@ module WeatherCanadaMcp
     # A problem with the arguments the model can fix; shown to it as a tool error.
     class InvalidArguments < WeatherCanadaMcp::Error; end
 
-    # What tools share: the upstream sources (avalanche is nil unless enabled), the locator, the gazetteer, the
-    # configuration and a clock (Time.now).
-    Context = Data.define(:ogc, :avalanche, :locator, :places, :config, :clock)
+    # What tools share: the upstream sources (avalanche is nil unless enabled), a cache for images, the locator, the
+    # gazetteer, the configuration and a clock (Time.now).
+    Context = Data.define(:ogc, :wms, :basemap, :images, :avalanche, :locator, :places, :config, :clock)
+
+    # An image a tool returns beside its JSON (Tools::Runner sends it as MCP image content).
+    Image = Data.define(:data, :mime_type)
 
     # The ECCC tools, always available.
-    def self.all = [FindLocation, GetForecast, GetAlerts, GetCurrentObservations, GetRiverConditions, GetAirQuality]
+    def self.all
+      [FindLocation, GetForecast, GetAlerts, GetCurrentObservations, GetRiverConditions, GetAirQuality, GetSnowOutlook, GetMarineForecast,
+       GetClimateContext, GetRadarMap]
+    end
 
     # Opt-in: AVALANCHE_CANADA_ENABLED, and AVALANCHE_CANADA_FIELD_REPORTS_ENABLED for field reports.
     def self.avalanche = [GetAvalancheForecast, GetAvalancheDangerOverview, GetMountainWeatherStations]

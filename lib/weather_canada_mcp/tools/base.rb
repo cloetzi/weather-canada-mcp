@@ -49,6 +49,9 @@ module WeatherCanadaMcp
       private
 
       def ogc = @context.ogc
+      def wms = @context.wms
+      def basemap = @context.basemap
+      def images = @context.images
       def locator = @context.locator
       def config = @context.config
 
@@ -116,6 +119,14 @@ module WeatherCanadaMcp
           distance = Geo.distance_km(point.lat, point.lon, lat, lon)
           [distance, feature] if distance <= radius_km
         end.min_by(count, &:first)
+      end
+
+      # A GeoMet WMS value at the point, or nil when the layer has none there or then (outside the model or radar
+      # domain, or a time it does not hold).
+      def wms_value(layer, point, time: nil, ttl: Sources::Wms::TTL)
+        wms.feature_info(layer, point.lat, point.lon, time:, ttl:)
+      rescue Sources::InvalidResponse
+        nil
       end
 
       # Runs the block for each item in its own fiber (the rate limiter still spaces the requests), in order.

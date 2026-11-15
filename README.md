@@ -8,8 +8,7 @@ configure for local use.
 >
 > "Is there a weather alert near Lake Louise right now?"
 
-**Status: early development (M2).** Six tools work today; snow outlook, radar, marine forecasts and climate context
-follow (see the [roadmap](#roadmap)).
+**Status: early development (M3).** All ten planned ECCC tools work, plus opt-in Avalanche Canada tools; v1.0 follows (see the [roadmap](#roadmap)).
 
 ## Tools
 
@@ -21,6 +20,10 @@ follow (see the [roadmap](#roadmap)).
 | `get_current_observations` | The latest measured temperature, wind and gusts, pressure, visibility, precipitation, snowfall and snow depth at the nearest weather stations, with their elevation | OGC API `swob-stations`, `swob-realtime` |
 | `get_river_conditions` | Real-time water level and flow at the nearest gauges, the 24-hour change and 3-day range, and how the flow compares with the historical mean for the month | OGC API `hydrometric-stations`, `hydrometric-realtime`, `hydrometric-monthly-mean` |
 | `get_air_quality` | The Air Quality Health Index now and forecast for the next days, with the health messages for each risk level | OGC API `aqhi-observations-realtime`, `aqhi-forecasts-realtime` |
+| `get_snow_outlook` | Model guidance for the next 12 to 48 hours: snow level, new snow (water equivalent) and blowing snow probability at a point | GeoMet WMS: HRDPS and RDPS model fields |
+| `get_marine_forecast` | The marine forecast for coastal waters and large lakes: wind, weather, waves, freezing spray, the extended outlook and marine warnings | OGC API `marineweather-realtime` |
+| `get_climate_context` | The daily records for a calendar day and the monthly climate normals, to judge how unusual a forecast is | OGC API `ltce-temperature`, `ltce-precipitation`, `ltce-snowfall`, `climate-normals` |
+| `get_radar_map` | The latest radar as a map image over NRCan's base map, with rain and snow rates at the point now and over the past hour | GeoMet WMS: 1 km radar composite; NRCan Canada Base Map |
 
 Every tool takes a `location` (`"Squamish"`, `"Lake Louise, AB"`) or `lat`/`lon`, and `lang` (`en` or `fr`).
 Results are compact JSON with units in the field names, name the forecast site or station used and its distance, and carry
@@ -71,6 +74,7 @@ and [docs/configuration.md](docs/configuration.md) for every setting.
   passed through exactly as issued.
 - Place names: Canadian Geographical Names, Natural Resources Canada, under the
   [Open Government Licence - Canada](https://open.canada.ca/en/open-government-licence-canada).
+- Radar base map: Canada Base Map (CBMT), Natural Resources Canada, under the same licence.
 - This project is not affiliated with or endorsed by ECCC or NRCan. For safety-critical decisions use
   [weather.gc.ca](https://weather.gc.ca).
 - The server stays well inside ECCC's fair-use guidance: one request per second sustained across all tools, a
@@ -94,9 +98,7 @@ them only where you have that consent or your use is otherwise permitted.
 
 ## Roadmap
 
-1. **M3:** `get_snow_outlook` (HRDPS/RDPS snow level, accumulation and blowing snow), `get_radar_map`,
-   `get_marine_forecast`, `get_climate_context` (normals and records).
-2. **M4:** v1.0 with the gem and image published.
+1. **M4:** v1.0 with the gem and image published.
 
 ## Development
 

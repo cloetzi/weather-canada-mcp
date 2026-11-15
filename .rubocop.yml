@@ -45,6 +45,7 @@ Metrics/PerceivedComplexity:
 Metrics/BlockLength:
   Exclude:
     - test/**/*
+    - "*.gemspec"
 
 Metrics/ParameterLists:
   CountKeywordArgs: false

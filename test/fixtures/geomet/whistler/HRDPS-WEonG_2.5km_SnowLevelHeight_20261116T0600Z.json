@@ -1,0 +1,25 @@
+{
+  "type": "FeatureCollection",
+  "layer": "HRDPS-WEonG_2.5km_SnowLevelHeight",
+  "features": [
+    {
+      "type": "Feature",
+      "id": "HRDPS-WEonG_2.5km_SnowLevelHeight(-122.9682,50.11939)",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.9682,
+          50.1194
+        ]
+      },
+      "properties": {
+        "value": 1104,
+        "class": "1100 - 1200",
+        "title_en": "HRDPS-WEonG - Height of snow level [m]",
+        "title_fr": "SHRPD-ETsurG - Hauteur du niveau de la neige [m]",
+        "time": "2026-11-16T06:00:00Z",
+        "dim_reference_time": "2026-11-15T12:00:00Z"
+      }
+    }
+  ]
+}

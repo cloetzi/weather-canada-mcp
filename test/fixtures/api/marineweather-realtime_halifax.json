@@ -1,0 +1,819 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "lastUpdated": "2026-11-15T13:55:02Z",
+        "area": {
+          "countryCode": {
+            "en": "CA",
+            "fr": "CA"
+          },
+          "region": {
+            "en": "Atlantic Coast",
+            "fr": "Côte Atlantique"
+          },
+          "subRegion": {
+            "en": "Maritimes",
+            "fr": "Maritimes"
+          },
+          "value": {
+            "en": "Halifax Harbour and Approaches",
+            "fr": "port d'Halifax et ses abords"
+          }
+        },
+        "regularForecast": {
+          "locations": [
+            {
+              "weatherCondition": {
+                "periodOfCoverage": {
+                  "en": "Today Tonight and Monday.",
+                  "fr": "aujourd'hui cette nuit et lundi."
+                },
+                "weatherVisibility": {
+                  "en": "Scattered showers ending this evening.",
+                  "fr": "Averses éparses cessant ce soir."
+                },
+                "airTemperature": {
+                  "en": "Temperatures near plus 5.",
+                  "fr": "Température près de plus 5."
+                },
+                "wind": {
+                  "en": "Wind northwesterly 10 to 15 knots increasing to northwest 15 to 20 early this evening then diminishing to northwest 10 to 15 early Monday morning.",
+                  "fr": "Vent du secteur nord-ouest de 10 à 15 noeuds augmentant du nord-ouest à 15 à 20 tôt ce soir puis diminuant du nord-ouest à 10 à 15 tôt lundi matin."
+                }
+              }
+            }
+          ],
+          "issuedDatetimeUTC": "2026-11-15T14:00:00Z",
+          "issuedDatetimeLocal": "2026-11-15T10:00:00-04:00"
+        },
+        "extendedForecast": {
+          "locations": [
+            {
+              "weatherCondition": {
+                "forecastPeriods": [
+                  {
+                    "name": {
+                      "en": "Tuesday",
+                      "fr": "Mardi"
+                    },
+                    "value": {
+                      "en": "Wind west 10 to 15 knots increasing to west 20  in the afternoon.",
+                      "fr": "Vent d'ouest de 10 à 15 noeuds augmentant  d'ouest à 20 en après-midi."
+                    }
+                  },
+                  {
+                    "name": {
+                      "en": "Wednesday",
+                      "fr": "Mercredi"
+                    },
+                    "value": {
+                      "en": "Wind west 15 to 20 knots.",
+                      "fr": "Vent d'ouest de 15 à 20 noeuds."
+                    }
+                  },
+                  {
+                    "name": {
+                      "en": "Thursday",
+                      "fr": "Jeudi"
+                    },
+                    "value": {
+                      "en": "Wind west 15 knots diminishing to  light.",
+                      "fr": "Vent d'ouest à 15 noeuds diminuant à  léger."
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "issuedDatetimeUTC": "2026-11-15T07:00:00Z",
+          "issuedDatetimeLocal": "2026-11-15T03:00:00-04:00"
+        },
+        "warnings": {
+          "locations": []
+        }
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -63.48415059618817,
+              44.55073807432244
+            ],
+            [
+              -63.52196299957825,
+              44.50868081375161
+            ],
+            [
+              -63.54108193072011,
+              44.50499284335871
+            ],
+            [
+              -63.54108193072024,
+              44.504992843358714
+            ],
+            [
+              -63.583693756916,
+              44.558578894027704
+            ],
+            [
+              -63.568220858541906,
+              44.59149016285234
+            ],
+            [
+              -63.70760685664306,
+              44.69696125556113
+            ],
+            [
+              -63.695009101671765,
+              44.747535245714396
+            ],
+            [
+              -63.55485136344271,
+              44.683434356046234
+            ],
+            [
+              -63.45079722610705,
+              44.60694834177602
+            ],
+            [
+              -63.45034387940008,
+              44.58871996134334
+            ],
+            [
+              -63.48415059618817,
+              44.55073807432244
+            ]
+          ]
+        ]
+      },
+      "id": "m0000053"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lastUpdated": "2026-11-15T13:55:53Z",
+        "area": {
+          "countryCode": {
+            "en": "CA",
+            "fr": "CA"
+          },
+          "region": {
+            "en": "Atlantic Coast",
+            "fr": "Côte Atlantique"
+          },
+          "subRegion": {
+            "en": "Maritimes",
+            "fr": "Maritimes"
+          },
+          "value": {
+            "en": "Eastern Shore",
+            "fr": "littoral Est"
+          }
+        },
+        "regularForecast": {
+          "locations": [
+            {
+              "name": {
+                "en": "Eastern Shore - eastern half",
+                "fr": "Littoral Est - moitié est"
+              },
+              "weatherCondition": {
+                "periodOfCoverage": {
+                  "en": "Today Tonight and Monday.",
+                  "fr": "aujourd'hui cette nuit et lundi."
+                },
+                "weatherVisibility": {
+                  "en": "Scattered showers ending Monday afternoon.",
+                  "fr": "Averses éparses cessant lundi après-midi."
+                },
+                "wind": {
+                  "en": "Wind northwesterly 20 knots diminishing to northwest 10 to 15 early Monday morning.",
+                  "fr": "Vent du secteur nord-ouest à 20 noeuds diminuant du nord-ouest à 10 à 15 tôt lundi matin."
+                }
+              }
+            },
+            {
+              "name": {
+                "en": "Eastern Shore - western half",
+                "fr": "Littoral Est - moitié ouest"
+              },
+              "weatherCondition": {
+                "periodOfCoverage": {
+                  "en": "Today Tonight and Monday.",
+                  "fr": "aujourd'hui cette nuit et lundi."
+                },
+                "weatherVisibility": {
+                  "en": "Scattered showers ending Monday morning.",
+                  "fr": "Averses éparses cessant lundi matin."
+                },
+                "wind": {
+                  "en": "Wind northwest 10 to 15 knots increasing to northwest 20 this afternoon then diminishing to northwest 10 to 15 late overnight. Wind northwest 10 to 15 Monday.",
+                  "fr": "Vent du nord-ouest de 10 à 15 noeuds augmentant du nord-ouest à 20 cet après-midi puis diminuant du nord-ouest à 10 à 15 en fin de nuit. Vent du nord-ouest de 10 à 15 lundi."
+                }
+              }
+            }
+          ],
+          "issuedDatetimeUTC": "2026-11-15T14:00:00Z",
+          "issuedDatetimeLocal": "2026-11-15T10:00:00-04:00"
+        },
+        "extendedForecast": {
+          "locations": [
+            {
+              "weatherCondition": {
+                "forecastPeriods": [
+                  {
+                    "name": {
+                      "en": "Tuesday",
+                      "fr": "Mardi"
+                    },
+                    "value": {
+                      "en": "Wind west 10 to 15 knots increasing to west 20  in the afternoon.",
+                      "fr": "Vent d'ouest de 10 à 15 noeuds augmentant  d'ouest à 20 en après-midi."
+                    }
+                  },
+                  {
+                    "name": {
+                      "en": "Wednesday",
+                      "fr": "Mercredi"
+                    },
+                    "value": {
+                      "en": "Wind west 20 to 25 knots.",
+                      "fr": "Vent d'ouest de 20 à 25 noeuds."
+                    }
+                  },
+                  {
+                    "name": {
+                      "en": "Thursday",
+                      "fr": "Jeudi"
+                    },
+                    "value": {
+                      "en": "Wind west 15 knots diminishing to  light.",
+                      "fr": "Vent d'ouest à 15 noeuds diminuant à  léger."
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "issuedDatetimeUTC": "2026-11-15T07:00:00Z",
+          "issuedDatetimeLocal": "2026-11-15T03:00:00-04:00"
+        },
+        "waveForecast": {
+          "locations": [
+            {
+              "weatherCondition": {
+                "periodOfCoverage": {
+                  "en": "Today Tonight and Monday.",
+                  "fr": "aujourd'hui cette nuit et lundi."
+                },
+                "textSummary": {
+                  "en": "Seas 1 to 2 metres subsiding to 1 or less Monday evening.",
+                  "fr": "Mer de 1 à 2 mètres diminuant à 1 ou moins lundi soir."
+                }
+              }
+            }
+          ],
+          "issuedDatetimeUTC": "2026-11-15T09:00:00Z",
+          "issuedDatetimeLocal": "2026-11-15T05:00:00-04:00"
+        },
+        "warnings": {
+          "locations": [
+            {
+              "name": {
+                "en": "Eastern Shore - eastern half",
+                "fr": "littoral Est - moitié est"
+              },
+              "events": [
+                {
+                  "name": {
+                    "en": "Strong wind warning",
+                    "fr": "Avertissement de vent fort"
+                  },
+                  "type": {
+                    "en": "warning",
+                    "fr": "avertissement"
+                  },
+                  "category": {
+                    "en": "marine",
+                    "fr": "maritime"
+                  },
+                  "status": {
+                    "en": "IN EFFECT",
+                    "fr": "EN VIGUEUR"
+                  }
+                }
+              ]
+            },
+            {
+              "name": {
+                "en": "Eastern Shore - western half",
+                "fr": "littoral Est - moitié ouest"
+              },
+              "events": [
+                {
+                  "name": {
+                    "en": "Strong wind warning",
+                    "fr": "Avertissement de vent fort"
+                  },
+                  "type": {
+                    "en": "warning",
+                    "fr": "avertissement"
+                  },
+                  "category": {
+                    "en": "marine",
+                    "fr": "maritime"
+                  },
+                  "status": {
+                    "en": "IN EFFECT",
+                    "fr": "EN VIGUEUR"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -62.998517625207015,
+              43.99999844137986
+            ],
+            [
+              -62.99897622218354,
+              44.00051852039082
+            ],
+            [
+              -63.482665980125226,
+              44.549076387627984
+            ],
+            [
+              -63.48266598012521,
+              44.54907638762807
+            ],
+            [
+              -63.48415059618817,
+              44.55073807432244
+            ],
+            [
+              -63.45034387940008,
+              44.58871996134334
+            ],
+            [
+              -63.45079722610705,
+              44.60694834177602
+            ],
+            [
+              -63.435002130362,
+              44.67684852564107
+            ],
+            [
+              -63.08654076183193,
+              44.84988122757852
+            ],
+            [
+              -62.7295282045243,
+              44.86578772773177
+            ],
+            [
+              -62.37074825783975,
+              45.00187667259456
+            ],
+            [
+              -62.11984300439494,
+              44.990551590133336
+            ],
+            [
+              -62.11652300378684,
+              45.0344366149446
+            ],
+            [
+              -62.01017029081673,
+              45.15432143821266
+            ],
+            [
+              -61.83519878940997,
+              45.15167035514894
+            ],
+            [
+              -61.8272455405384,
+              45.27627127198727
+            ],
+            [
+              -61.60720562138064,
+              45.20336647991449
+            ],
+            [
+              -61.23061802294,
+              45.32472702844747
+            ],
+            [
+              -60.97723747518906,
+              45.29755104733906
+            ],
+            [
+              -60.97610323533482,
+              45.29835504517386
+            ],
+            [
+              -60.970775106591525,
+              45.29962296011885
+            ],
+            [
+              -60.97063165014118,
+              45.299641983371885
+            ],
+            [
+              -60.95239744963948,
+              45.29864295384364
+            ],
+            [
+              -59.78300708687139,
+              45.12526989514546
+            ],
+            [
+              -58.998986766381954,
+              44.99978918427954
+            ],
+            [
+              -60.95352529899323,
+              44.53857816602192
+            ],
+            [
+              -61.430010462177975,
+              44.41830085304665
+            ],
+            [
+              -61.430010501470804,
+              44.418300842814055
+            ],
+            [
+              -61.4306284175145,
+              44.41814283326654
+            ],
+            [
+              -62.99851675478126,
+              43.99999868334879
+            ],
+            [
+              -62.998517625207015,
+              43.99999844137986
+            ]
+          ]
+        ]
+      },
+      "id": "m0000093"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lastUpdated": "2026-11-15T13:55:53Z",
+        "area": {
+          "countryCode": {
+            "en": "CA",
+            "fr": "CA"
+          },
+          "region": {
+            "en": "Atlantic Coast",
+            "fr": "Côte Atlantique"
+          },
+          "subRegion": {
+            "en": "Maritimes",
+            "fr": "Maritimes"
+          },
+          "value": {
+            "en": "Southwestern Shore",
+            "fr": "littoral Sud-Ouest"
+          }
+        },
+        "regularForecast": {
+          "locations": [
+            {
+              "weatherCondition": {
+                "periodOfCoverage": {
+                  "en": "Today Tonight and Monday.",
+                  "fr": "aujourd'hui cette nuit et lundi."
+                },
+                "weatherVisibility": {
+                  "en": "Scattered showers ending Monday morning.",
+                  "fr": "Averses éparses cessant lundi matin."
+                },
+                "wind": {
+                  "en": "Wind northwest 10 to 15 knots increasing to northwest 20 this afternoon then diminishing to northwest 10 to 15 late overnight. Wind northwest 10 to 15 Monday.",
+                  "fr": "Vent du nord-ouest de 10 à 15 noeuds augmentant du nord-ouest à 20 cet après-midi puis diminuant du nord-ouest à 10 à 15 en fin de nuit. Vent du nord-ouest de 10 à 15 lundi."
+                }
+              }
+            }
+          ],
+          "issuedDatetimeUTC": "2026-11-15T14:00:00Z",
+          "issuedDatetimeLocal": "2026-11-15T10:00:00-04:00"
+        },
+        "extendedForecast": {
+          "locations": [
+            {
+              "weatherCondition": {
+                "forecastPeriods": [
+                  {
+                    "name": {
+                      "en": "Tuesday",
+                      "fr": "Mardi"
+                    },
+                    "value": {
+                      "en": "Wind west 10 to 15 knots increasing to west 15  to 20 in the afternoon.",
+                      "fr": "Vent d'ouest de 10 à 15 noeuds augmentant  d'ouest à 15 à 20 en après-midi."
+                    }
+                  },
+                  {
+                    "name": {
+                      "en": "Wednesday",
+                      "fr": "Mercredi"
+                    },
+                    "value": {
+                      "en": "Wind west 15 knots.",
+                      "fr": "Vent d'ouest à 15 noeuds."
+                    }
+                  },
+                  {
+                    "name": {
+                      "en": "Thursday",
+                      "fr": "Jeudi"
+                    },
+                    "value": {
+                      "en": "Wind west 10 to 15 knots.",
+                      "fr": "Vent d'ouest de 10 à 15 noeuds."
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "issuedDatetimeUTC": "2026-11-15T07:00:00Z",
+          "issuedDatetimeLocal": "2026-11-15T03:00:00-04:00"
+        },
+        "waveForecast": {
+          "locations": [
+            {
+              "weatherCondition": {
+                "periodOfCoverage": {
+                  "en": "Today Tonight and Monday.",
+                  "fr": "aujourd'hui cette nuit et lundi."
+                },
+                "textSummary": {
+                  "en": "Seas 1 metre.",
+                  "fr": "Mer de 1 mètre."
+                }
+              }
+            }
+          ],
+          "issuedDatetimeUTC": "2026-11-15T09:00:00Z",
+          "issuedDatetimeLocal": "2026-11-15T05:00:00-04:00"
+        },
+        "warnings": {
+          "locations": [
+            {
+              "name": {
+                "en": "Southwestern Shore",
+                "fr": "littoral Sud-Ouest"
+              },
+              "events": [
+                {
+                  "name": {
+                    "en": "Strong wind warning",
+                    "fr": "Avertissement de vent fort"
+                  },
+                  "type": {
+                    "en": "warning",
+                    "fr": "avertissement"
+                  },
+                  "category": {
+                    "en": "marine",
+                    "fr": "maritime"
+                  },
+                  "status": {
+                    "en": "IN EFFECT",
+                    "fr": "EN VIGUEUR"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -65.49918507800983,
+              42.99987810943834
+            ],
+            [
+              -65.49918507576741,
+              42.99996975915182
+            ],
+            [
+              -65.4991850757674,
+              42.9999697591519
+            ],
+            [
+              -65.4991840551378,
+              43.05964055757758
+            ],
+            [
+              -65.49918405513777,
+              43.05964055757766
+            ],
+            [
+              -65.49918318008976,
+              43.110618867149824
+            ],
+            [
+              -65.49918318008974,
+              43.11061886714992
+            ],
+            [
+              -65.4991765751833,
+              43.49277971387008
+            ],
+            [
+              -65.49917657518324,
+              43.49277971387016
+            ],
+            [
+              -65.49871427881872,
+              43.49496033383012
+            ],
+            [
+              -65.5014900069653,
+              43.53763727826543
+            ],
+            [
+              -65.50193614997585,
+              43.6194250910512
+            ],
+            [
+              -65.36819451827284,
+              43.83068329567175
+            ],
+            [
+              -65.138433961197,
+              43.830683296493866
+            ],
+            [
+              -64.66693006664156,
+              44.08608452970775
+            ],
+            [
+              -64.65301090843194,
+              44.177620689962346
+            ],
+            [
+              -64.51339204036248,
+              44.21905875399403
+            ],
+            [
+              -64.40911609435187,
+              44.35514769895758
+            ],
+            [
+              -64.40911609440366,
+              44.556630034103875
+            ],
+            [
+              -63.838249480901595,
+              44.79169275666448
+            ],
+            [
+              -63.849764692650695,
+              44.57194118304101
+            ],
+            [
+              -63.61646935764833,
+              44.508315183138684
+            ],
+            [
+              -63.54108193072024,
+              44.504992843358714
+            ],
+            [
+              -63.54108193072011,
+              44.50499284335871
+            ],
+            [
+              -63.52196299957825,
+              44.50868081375161
+            ],
+            [
+              -63.48415059618817,
+              44.55073807432244
+            ],
+            [
+              -63.48266598012521,
+              44.54907638762807
+            ],
+            [
+              -63.482665980125226,
+              44.549076387627984
+            ],
+            [
+              -62.99897622218354,
+              44.00051852039082
+            ],
+            [
+              -62.998517625207015,
+              43.99999844137986
+            ],
+            [
+              -62.99910528074942,
+              43.99984171684782
+            ],
+            [
+              -64.11865924349871,
+              43.565607802248486
+            ],
+            [
+              -64.11881244261944,
+              43.56554689889144
+            ],
+            [
+              -64.11881437812957,
+              43.56554612936349
+            ],
+            [
+              -64.11881437812966,
+              43.56554612936352
+            ],
+            [
+              -64.11954952071814,
+              43.5652538723309
+            ],
+            [
+              -64.13530264914851,
+              43.5589889360678
+            ],
+            [
+              -65.49859147267189,
+              43.000128741279006
+            ],
+            [
+              -65.4985923649221,
+              43.00012836434951
+            ],
+            [
+              -65.49859236492213,
+              43.00012836434944
+            ],
+            [
+              -65.49859312779171,
+              43.000128042288566
+            ],
+            [
+              -65.49897519464754,
+              42.999966726623185
+            ],
+            [
+              -65.49918507800983,
+              42.99987810943834
+            ]
+          ]
+        ]
+      },
+      "id": "m0000046"
+    }
+  ],
+  "numberMatched": 3,
+  "numberReturned": 3,
+  "links": [
+    {
+      "type": "application/geo+json",
+      "rel": "self",
+      "title": "This document as GeoJSON",
+      "href": "https://api.weather.gc.ca/collections/marineweather-realtime/items?f=json&bbox=-63.88568,44.42542,-63.25432,44.87458&limit=50"
+    },
+    {
+      "rel": "alternate",
+      "type": "application/ld+json",
+      "title": "This document as RDF (JSON-LD)",
+      "href": "https://api.weather.gc.ca/collections/marineweather-realtime/items?f=jsonld&bbox=-63.88568,44.42542,-63.25432,44.87458&limit=50"
+    },
+    {
+      "type": "text/html",
+      "rel": "alternate",
+      "title": "This document as HTML",
+      "href": "https://api.weather.gc.ca/collections/marineweather-realtime/items?f=html&bbox=-63.88568,44.42542,-63.25432,44.87458&limit=50"
+    },
+    {
+      "type": "application/json",
+      "title": "Marine forecasts and warnings [experimental]",
+      "rel": "collection",
+      "href": "https://api.weather.gc.ca/collections/marineweather-realtime"
+    }
+  ],
+  "timeStamp": "2026-11-15T19:21:38.348275Z"
+}

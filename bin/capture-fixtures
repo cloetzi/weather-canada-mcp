@@ -28,15 +28,27 @@ AVALANCHE = "https://avcan-services-api.prod.avalanche.ca"
 AVALANCHE_WEATHER = "https://weather.prod.avalanche.ca"
 PERSONAL_FIELDS = %w[userID username].freeze
 
-# A point query against a WMS layer: a 3x3 pixel map 0.02 degrees wide, centred on the point.
-def feature_info(layer, lat, lon)
+# A point query against a WMS layer: a 3x3 pixel map 0.02 degrees wide, centred on the point (as Sources::Wms asks).
+def feature_info(layer, lat, lon, time = nil)
   d = 0.01
-  query = URI.encode_www_form(
+  params = {
     SERVICE: "WMS", VERSION: "1.3.0", REQUEST: "GetFeatureInfo", LAYERS: layer, QUERY_LAYERS: layer,
     CRS: "EPSG:4326", BBOX: [lat - d, lon - d, lat + d, lon + d].map { |v| v.round(4) }.join(","),
     WIDTH: 3, HEIGHT: 3, I: 1, J: 1, INFO_FORMAT: "application/json"
-  )
-  "#{GEOMET}?#{query}"
+  }
+  params[:TIME] = time.strftime("%Y-%m-%dT%H:%M:%SZ") if time
+  "#{GEOMET}?#{URI.encode_www_form(params)}"
+end
+
+# What Tools::GetSnowOutlook asks for 24 hours ahead: four 6-hour steps from the 6-hour UTC boundary before now, with
+# snow level, 6-hour snow and blowing snow at the end of each. The fake serves them as geomet/<place>/<layer>_<time>.json.
+SNOW_START = Time.at(Time.now.to_i / 21_600 * 21_600).utc
+SNOW_LAYERS = %w[HRDPS-WEonG_2.5km_SnowLevelHeight RDPS_10km_Snow-Accum6h HRDPS-WEonG_2.5km_BlowingSnow-Prob].freeze
+def snow_outlook(place, lat, lon, layers = SNOW_LAYERS)
+  ends = (1..4).map { |k| SNOW_START + (k * 21_600) }
+  ends.product(layers).to_h do |t, layer|
+    ["geomet/#{place}/#{layer}_#{t.strftime("%Y%m%dT%H%MZ")}.json", feature_info(layer, lat, lon, t)]
+  end
 end
 
 def items(collection, **params) = "#{API}/collections/#{collection}/items?#{URI.encode_www_form({ f: "json" }.merge(params))}"
@@ -69,6 +81,49 @@ def hydro_monthly(number)
   items("hydrometric-monthly-mean", STATION_NUMBER: number, properties: "DATE,MONTHLY_MEAN_DISCHARGE", skipGeometry: true, limit: 2000)
 end
 
+# A GetMap PNG of one layer over the area Tools::GetRadarMap asks for (Sources::Wms#get_map).
+def get_map(layer, style, bbox, time)
+  min_lon, min_lat, max_lon, max_lat = bbox.split(",")
+  params = { SERVICE: "WMS", VERSION: "1.3.0", REQUEST: "GetMap", LAYERS: layer, STYLES: style, CRS: "EPSG:4326",
+             BBOX: [min_lat, min_lon, max_lat, max_lon].join(","), WIDTH: 512, HEIGHT: 512, FORMAT: "image/png",
+             TRANSPARENT: "TRUE", TIME: time.strftime("%Y-%m-%dT%H:%M:%SZ") }
+  "#{GEOMET}?#{URI.encode_www_form(params)}"
+end
+
+def basemap(bbox)
+  min_lon, min_lat, max_lon, max_lat = bbox.split(",")
+  params = { SERVICE: "WMS", VERSION: "1.3.0", REQUEST: "GetMap", LAYERS: "CBMT", STYLES: "", CRS: "EPSG:4326",
+             BBOX: [min_lat, min_lon, max_lat, max_lon].join(","), WIDTH: 512, HEIGHT: 512, FORMAT: "image/png" }
+  "https://maps.geogratis.gc.ca/wms/CBMT?#{URI.encode_www_form(params)}"
+end
+
+# What Tools::GetRadarMap asks for at a place in snow mode, 100 km around: the latest snow rate first, then the rest
+# for that frame (layer_frame.json is renamed layer_<time>.json once the frame is known).
+def radar_map(place, lat, lon)
+  latest = "geomet/#{place}/RADAR_1KM_RSNO_latest.json"
+  bbox = bbox_km((lat / 0.05).round * 0.05, (lon / 0.05).round * 0.05, 100)
+  {
+    latest => feature_info("RADAR_1KM_RSNO", lat, lon),
+    "geomet/#{place}/Radar_1km_SfcPrecipType_latest.json" => feature_info("Radar_1km_SfcPrecipType", lat, lon),
+    "geomet/#{place}/RADAR_1KM_RRAI_frame.json" => at_frame(latest) { |time| feature_info("RADAR_1KM_RRAI", lat, lon, time) },
+    "geomet/#{place}/RADAR_1KM_RSNO_30.json" => at_frame(latest, 30) { |time| feature_info("RADAR_1KM_RSNO", lat, lon, time) },
+    "geomet/#{place}/RADAR_1KM_RSNO_60.json" => at_frame(latest, 60) { |time| feature_info("RADAR_1KM_RSNO", lat, lon, time) },
+    "geomet/#{place}/RADAR_1KM_RSNO_map.png" => at_frame(latest) { |time| get_map("RADAR_1KM_RSNO", "Radar-Snow_14colors", bbox, time) },
+    "geomet/#{place}/RADAR_COVERAGE_RRAI.INV_map.png" =>
+      at_frame(latest) { |time| get_map("RADAR_COVERAGE_RRAI.INV", "Radar-Coverage_Inv-LightGray", bbox, time) },
+    "nrcan/cbmt_#{place}.png" => basemap(bbox)
+  }
+end
+
+# A lambda giving [time for the file name, URL] for the frame minutes before the one in the latest fixture.
+def at_frame(latest, minutes_before = 0)
+  lambda do
+    frame = JSON.parse(File.read(File.join(ROOT, latest), encoding: Encoding::UTF_8)).dig("features", 0, "properties", "time")
+    time = Time.iso8601(frame).utc - (minutes_before * 60)
+    [time.strftime("%Y%m%dT%H%MZ"), yield(time)]
+  end
+end
+
 # As Tools::GetAvalancheForecast asks: the point rounded to 0.01 degrees.
 def avalanche_point(lang, lat, lon)
   "#{AVALANCHE}/forecasts/#{lang}/products/point?#{URI.encode_www_form(lat: format("%.2f", lat), long: format("%.2f", lon))}"
@@ -93,7 +148,9 @@ SQUAMISH = [49.7, -123.15].freeze
 WHISTLER = [50.12, -122.96].freeze
 EDMONTON = [53.54, -113.49].freeze
 KELOWNA = [49.89, -119.5].freeze
+WHITEHORSE = [60.72, -135.05].freeze
 OTTAWA = [45.42, -75.7].freeze
+HALIFAX = [44.65, -63.57].freeze
 LAKE_LOUISE = [51.42, -116.18].freeze
 TORONTO = [43.65, -79.38].freeze
 FARNHAM = [50.41, -116.5].freeze
@@ -125,6 +182,23 @@ FIXTURES = {
   "api/aqhi-forecasts-realtime_JAFUV.json" => items("aqhi-forecasts-realtime", location_id: "JAFUV", aqhi_type: "AQHI-Forecast-Period",
                                                                                sortby: "-publication_datetime", skipGeometry: true,
                                                                                limit: 1),
+  # M3: get_snow_outlook (Whistler, 24 hours; Whitehorse, whose snow level is below the ground or near it)
+  **snow_outlook("whistler", *WHISTLER),
+  **snow_outlook("whitehorse", *WHITEHORSE, %w[HRDPS-WEonG_2.5km_SnowLevelHeight]),
+  # get_marine_forecast (Squamish, at the head of Howe Sound; Halifax, whose areas are split and under warnings)
+  "api/marineweather-realtime_squamish.json" => items("marineweather-realtime", bbox: bbox_km(*SQUAMISH, 25), limit: 50),
+  "api/marineweather-realtime_halifax.json" => items("marineweather-realtime", bbox: bbox_km(*HALIFAX, 25), limit: 50),
+  # get_climate_context (Whistler, November 15)
+  "api/ltce-temperature_whistler.json" => items("ltce-temperature", bbox: bbox_km(*WHISTLER, 100), LOCAL_MONTH: 11, LOCAL_DAY: 15, limit: 50),
+  "api/ltce-precipitation_whistler.json" => items("ltce-precipitation", bbox: bbox_km(*WHISTLER, 100), LOCAL_MONTH: 11, LOCAL_DAY: 15,
+                                                                        limit: 50),
+  "api/ltce-snowfall_whistler.json" => items("ltce-snowfall", bbox: bbox_km(*WHISTLER, 100), LOCAL_MONTH: 11, LOCAL_DAY: 15, limit: 50),
+  "api/climate-normals_whistler.json" => items("climate-normals", bbox: bbox_km(*WHISTLER, 50), MONTH: 11, NORMAL_ID: 1,
+                                                                  properties: "STATION_NAME,CLIMATE_IDENTIFIER", limit: 200),
+  "api/climate-normals_1048898.json" => items("climate-normals", CLIMATE_IDENTIFIER: "1048898", MONTH: 11, skipGeometry: true,
+                                                                 limit: 200, properties: "NORMAL_ID,VALUE,PERIOD_BEGIN,PERIOD_END"),
+  # get_radar_map (Whistler, snow, 100 km)
+  **radar_map("whistler", *WHISTLER),
   # Avalanche Canada (opt-in): the forecast at Lake Louise, a point no forecast covers, every product, the station list,
   # the three stations nearest Lake Louise, and MIN reports around Farnham Glacier over 31 days within 10 km.
   "avalanche/point_en_lake-louise.json" => avalanche_point("en", *LAKE_LOUISE),
@@ -197,6 +271,11 @@ filter = ARGV.first.to_s
 FIXTURES.each do |path, url|
   next unless path.start_with?(filter)
 
+  # A lambda gives the frame time for the name, known only once the latest frame is captured (radar_map).
+  if url.respond_to?(:call)
+    time, url = url.call
+    path = path.sub(/_[^_]+(\.\w+)\z/, "_#{time}\\1")
+  end
   write(path, fetch(url))
   sleep 1
 end

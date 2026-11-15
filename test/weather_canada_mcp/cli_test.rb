@@ -17,7 +17,7 @@ class CLITest < Minitest::Test
     stdout, _stderr, status = cli("check-config", WEATHER_MCP_AUTH_TOKEN: TestHelpers::AUTH_TOKEN)
 
     assert_predicate status, :success?
-    assert_match(/Configuration OK for the http transport: 6 tools enabled/, stdout)
+    assert_match(/Configuration OK for the http transport: #{WeatherCanadaMcp::Tools.all.size} tools enabled/, stdout)
     assert_match(/MCP authentication: bearer token/, stdout)
     assert_match(/Place-name database: #{Regexp.escape(gazetteer_path)}/, stdout)
   end
