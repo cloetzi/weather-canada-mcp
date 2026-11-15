@@ -35,7 +35,7 @@ what a configuration enables.
 | `WEATHER_MCP_MAX_CONCURRENCY` | `4` | Requests to ECCC and NRCan in flight at once. |
 | `WEATHER_MCP_TIMEOUT` | `20` | Seconds per upstream request attempt. |
 | `WEATHER_MCP_MAX_DOWNLOAD_BYTES` | `5242880` | Largest upstream JSON response read, after decompression. Map images and the place-name archive have their own, fixed limits. |
-| `WEATHER_MCP_CACHE_SCALE` | `1.0` | Multiplier on every cache TTL (`0` disables caching). Defaults: forecasts 10 min, alerts 5 min, the forecast site list 24 h. An expired entry is kept as long again (at most 6 h): when the service cannot be reached the stale data is returned with a `note` giving its time, and a stale alert list says prominently that it could not be refreshed. |
+| `WEATHER_MCP_CACHE_SCALE` | `1.0` | Multiplier on every cache TTL (`0` disables caching). Defaults: forecasts 10 min, alerts 5 min, the forecast site list 24 h. An expired entry is kept as long again (at most 6 h): when the service cannot be reached or answers with a server error the stale data is returned for a few seconds before the next try,  with a `note` giving its time, and a stale alert list says prominently that it could not be refreshed. |
 | `WEATHER_MCP_ECCC_API_URL`, `WEATHER_MCP_GEOMET_URL`, `WEATHER_MCP_CGN_URL`, `WEATHER_MCP_BASEMAP_URL` | official services (`BASEMAP` is NRCan's maps.geogratis.gc.ca, for the radar base map) | Point a service at a mirror, caching proxy or local fake. Logged as a warning when not the default. |
 
 ### Limits that are not settings

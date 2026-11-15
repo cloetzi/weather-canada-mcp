@@ -203,9 +203,28 @@ class CacheTest < Minitest::Test
       trace.stale
     end
 
-    assert_equal [WeatherCanadaMCP::Sources::Trace::Stale.new("host", Time.utc(2026, 11, 15, 12))], stale
+    assert_equal [WeatherCanadaMCP::Sources::Trace::Stale.new("host", Time.utc(2026, 11, 15, 12), "k")], stale
     assert_equal 100, cache.bytes
-    assert_equal "new", cache.fetch("k", ttl: 10, source: "host") { "new" }, "the next call tries again"
+    assert_equal "old", cache.fetch("k", ttl: 10, source: "host") { flunk "held off after the failure" }
+    @now = 15 + WeatherCanadaMCP::Sources::Cache::HOLD_OFF
+
+    assert_equal "new", cache.fetch("k", ttl: 10, source: "host") { "new" }, "then it tries again"
+  end
+
+  def test_a_refresh_that_fails_for_another_reason_than_the_service_being_down_raises_and_keeps_the_stale_copy
+    cache = stale_cache
+
+    assert_raises(WeatherCanadaMCP::Sources::StatusError) { cache.fetch("k", ttl: 10, source: "host") { raise WeatherCanadaMCP::Sources::StatusError.new(404, "host") } }
+    assert_equal 100, cache.bytes
+    assert_equal "old", cache.fetch("k", ttl: 10, source: "host") { raise WeatherCanadaMCP::Sources::TransportError, "down" }
+  end
+
+  def test_a_refresh_that_is_stopped_keeps_the_stale_copy
+    cache = stale_cache
+    stopped = Class.new(Exception) # rubocop:disable Lint/InheritException -- like Async::Stop, not a StandardError
+    assert_raises(stopped) { cache.fetch("k", ttl: 10, source: "host") { raise stopped } }
+
+    assert_equal "old", cache.fetch("k", ttl: 10, source: "host") { raise WeatherCanadaMCP::Sources::TransportError, "down" }
   end
 
   def test_a_failed_refresh_without_a_source_or_past_the_grace_period_raises

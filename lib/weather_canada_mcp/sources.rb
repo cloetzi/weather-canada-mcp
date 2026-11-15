@@ -5,7 +5,11 @@ module WeatherCanadaMCP
   # a thin client per service, which returns parsed Ruby data and raises the errors below.
   module Sources
     # Base of every failure fetching data. Messages are written for the model and never quote a response body.
-    class Error < WeatherCanadaMCP::Error; end
+    class Error < WeatherCanadaMCP::Error
+      # Whether the service could not be reached or answered with a failure of its own, so that an older copy of the data
+      # is better than none. A 404, a rejected request or a reply in an unexpected shape is not that.
+      def unreachable? = false
+    end
 
     # The connection failed or timed out. retryable? marks failures worth retrying (connection refused, reset, DNS).
     class TransportError < Error
@@ -15,6 +19,7 @@ module WeatherCanadaMCP
       end
 
       def retryable? = @retryable
+      def unreachable? = true
     end
 
     # The body exceeded the byte limit and was not read further.
@@ -36,6 +41,8 @@ module WeatherCanadaMCP
         super(self.class.message_for(status, host))
       end
 
+      def unreachable? = status >= 500 || status == 429
+
       def self.message_for(status, host)
         case status
         when 404 then "#{host} has no data for this request (HTTP 404)."
@@ -52,6 +59,8 @@ module WeatherCanadaMCP
         super("This server is queuing more requests to the data provider than it may send (a wait of about #{wait.ceil} " \
               "seconds). Try again in a minute.")
       end
+
+      def unreachable? = true
     end
 
     # The body is not the JSON or XML the source expected.

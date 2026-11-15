@@ -14,10 +14,14 @@ module WeatherCanadaMCP
     # An expired entry is kept for a grace period (as long as its TTL, at most MAX_STALE seconds). When the refresh of a
     # key that names its source fails with a Sources::Error, that stale value is returned and noted in the call's Trace.
     class Cache
-      Entry = Data.define(:value, :expires_at, :stale_until, :stored_at, :weight)
+      # retry_at: until then a stale entry is served without asking the upstream again (set by a failed refresh).
+      Entry = Data.define(:value, :expires_at, :stale_until, :stored_at, :weight, :retry_at)
       # What a refresh that failed leaves for the callers waiting on it.
-      Stale = Data.define(:entry, :source)
+      Stale = Data.define(:entry, :source, :key)
       MAX_STALE = 6 * 3600
+      # After a failed refresh the stale value is served for this long (at most the entry's TTL) before the upstream is tried
+      # again, so a service that is down is not asked, and waited for, on every call.
+      HOLD_OFF = 10
 
       # A value and the memory it takes, in bytes.
       Weighed = Data.define(:value, :bytes) do
@@ -55,6 +59,7 @@ module WeatherCanadaMCP
           @bytes -= entry.weight
           entry = nil if entry.stale_until <= now
         end
+        return held(key, entry, source) if entry && source && entry.retry_at > now
 
         waiter = @pending[key]
         return served(waiter.wait) if waiter
@@ -72,15 +77,18 @@ module WeatherCanadaMCP
       private
 
       def load(key, ttl, stale, source)
+        loaded = false
         promise = Async::Promise.new
         @pending[key] = promise
         value, weight = unwrap(yield)
         value = deep_freeze(value)
         store(key, value, weight, ttl * @scale)
         promise.resolve(value)
+        loaded = true
         value
       rescue Sources::Error => e
-        fallback = fall_back(promise, key, stale, source, e)
+        fallback = fall_back(promise, key, ttl, stale, source) if e.unreachable?
+        promise.reject(e) unless fallback
         raise unless fallback
 
         fallback
@@ -92,26 +100,37 @@ module WeatherCanadaMCP
         # A loader stopped by something other than a StandardError (Async::Stop when its client goes away) must still
         # release the fibers waiting on it.
         promise.reject(Sources::Error.new("The request was cancelled; retry it.")) unless promise.resolved?
+        # A refresh that was stopped (a deadline, a client that left) does not lose the stale copy.
+        restore(key, stale) if stale && !loaded && !@entries.key?(key)
         @pending.delete(key)
       end
 
-      # Keeps the stale entry and hands it to the waiters when there is one to serve; otherwise they get the error.
-      def fall_back(promise, key, stale, source, error)
-        unless stale && source
-          promise.reject(error)
-          return
-        end
+      # Keeps the stale entry, held off for a while, and hands it to the waiters.
+      def fall_back(promise, key, ttl, stale, source)
+        return unless stale && source
 
-        @entries[key] = stale
-        @bytes += stale.weight
-        Stale.new(stale, source).tap { |fallback| promise.resolve(fallback) }
+        Stale.new(keep(key, stale, ttl), source, key).tap { |fallback| promise.resolve(fallback) }
+      end
+
+      def keep(key, entry, ttl) = restore(key, entry.with(retry_at: @clock.call + [HOLD_OFF, ttl * @scale].min))
+
+      def restore(key, entry)
+        @entries[key] = entry
+        @bytes += entry.weight
+        entry
+      end
+
+      # Served again from a failed refresh not long ago.
+      def held(key, entry, source)
+        restore(key, entry)
+        served(Stale.new(entry, source, key))
       end
 
       # The value, or the stale one a failed refresh fell back on, which the call's trace records.
       def served(result)
         return result unless result.is_a?(Stale)
 
-        Trace.stale(result.source, result.entry.stored_at)
+        Trace.stale(result.source, result.entry.stored_at, result.key)
         result.entry.value
       end
 
@@ -135,7 +154,7 @@ module WeatherCanadaMCP
 
         now = @clock.call
         @entries[key] = Entry.new(value:, expires_at: now + ttl, stale_until: now + ttl + [ttl, MAX_STALE].min,
-                                  stored_at: @wall_clock.call, weight:)
+                                  stored_at: @wall_clock.call, weight:, retry_at: 0)
         @bytes += weight
         evict
       end

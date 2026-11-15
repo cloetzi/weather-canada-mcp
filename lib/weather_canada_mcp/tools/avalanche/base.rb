@@ -31,6 +31,11 @@ module WeatherCanadaMCP
 
         def avalanche = @context.avalanche
 
+        # Conditions change within hours, so an old rating is flagged and the safety note repeated.
+        def stale_note(stale, zone)
+          "#{super} THIS AVALANCHE INFORMATION MAY BE OUT OF DATE. #{safety_note("en")}"
+        end
+
         def safety_note(lang, url = nil) = format(SAFETY_NOTE.fetch(lang), url: url || MAP_URL.fetch(lang))
 
         # "<what> by <owners>, via Avalanche Canada (avalanche.ca). Unofficial tool, ...": names every agency involved.

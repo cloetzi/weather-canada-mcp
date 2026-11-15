@@ -8,8 +8,9 @@ module WeatherCanadaMCP
     class Trace
       KEY = :weather_mcp_trace
 
-      # A stale answer: the source's name and when the copy was stored.
-      Stale = Data.define(:source, :at)
+      # A stale answer: the source's name, when the copy was stored and the cache key of the request (an origin and a path
+      # with its query, never logged).
+      Stale = Data.define(:source, :at, :key)
 
       attr_reader :requests, :cache_hits, :stale
 
@@ -33,14 +34,14 @@ module WeatherCanadaMCP
 
         def request = current&.request!
         def hit = current&.hit!
-        def stale(source, at) = current&.stale!(source, at)
+        def stale(source, at, key) = current&.stale!(source, at, key)
       end
 
       def request! = @requests += 1
       def hit! = @cache_hits += 1
 
-      def stale!(source, at)
-        @stale << Stale.new(source:, at:) unless @stale.any? { |entry| entry.source == source && entry.at == at }
+      def stale!(source, at, key)
+        @stale << Stale.new(source:, at:, key:) unless @stale.any? { |entry| entry.key == key }
       end
     end
   end

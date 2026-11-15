@@ -37,11 +37,16 @@ module WeatherCanadaMCP
 
       private
 
-      # A stale list could miss an alert issued since, so it says so in capitals and points to the official page.
+      # A stale list could miss an alert issued since, so it says so in capitals and points to the official page. Other
+      # stale data (the forecast site list that gives the time zone) is noted as usual.
       def stale_note(stale, zone)
-        at = LocalTime.iso8601(stale.map(&:at).min, zone)
-        "ALERTS COULD NOT BE REFRESHED: the alert service could not be reached, so these alerts are the ones from #{at} " \
-          "and may be out of date; an alert may have been issued or ended since. Check #{source_url(@lang)} before relying on this."
+        alerts, others = stale.partition { |entry| entry.key.include?("/collections/#{COLLECTION}/") }
+        return super(others, zone) if alerts.empty?
+
+        at = LocalTime.iso8601(alerts.map(&:at).min, zone)
+        note = "ALERTS COULD NOT BE REFRESHED: the alert service could not be reached, so these alerts are the ones from #{at} " \
+               "and may be out of date; an alert may have been issued or ended since. Check #{source_url(@lang)} before relying on this."
+        others.empty? ? note : "#{note} #{super(others, zone)}"
       end
 
       def source_url(lang) = lang == "fr" ? "https://meteo.gc.ca/warnings/index_f.html" : "https://weather.gc.ca/warnings/index_e.html"

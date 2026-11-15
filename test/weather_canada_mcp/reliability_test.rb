@@ -4,14 +4,14 @@ require_relative "../test_helper"
 
 # Stale answers when a refresh fails, and what the debug log and the tool_call lines say about upstream requests.
 class ReliabilityTest < Minitest::Test
-  SCALE = "0.001" # the alert list's 300 seconds become 0.3: it expires after 0.3 s and is kept for 0.3 s more
+  SCALE = "0.002" # the alert list's 300 seconds become 0.6: it expires after 0.6 s and is kept for 0.6 s more
   ALERTS = "/collections/weather-alerts/items"
   SWOB = "/collections/swob-realtime/items"
   WHISTLER = { lat: 50.12, lon: -122.96 }.freeze
 
   def teardown = @app&.close
 
-  def stale_after_failure(path, tool, wait: 0.4, **arguments)
+  def stale_after_failure(path, tool, wait: 0.8, **arguments)
     with_fake_eccc do |fake|
       @app = application(fake, clock: -> { STATIONS_CAPTURED_AT }, WEATHER_MCP_CACHE_SCALE: SCALE)
       first = call_tool(@app, tool, **arguments)
@@ -48,7 +48,7 @@ class ReliabilityTest < Minitest::Test
   end
 
   def test_data_past_its_grace_period_is_not_served
-    _, (message, error) = stale_after_failure(ALERTS, "get_alerts", wait: 0.7, lat: 53.54, lon: -113.49)
+    _, (message, error) = stale_after_failure(ALERTS, "get_alerts", wait: 1.5, lat: 53.54, lon: -113.49)
 
     assert error
     assert_match(/status 500|500/, message)
