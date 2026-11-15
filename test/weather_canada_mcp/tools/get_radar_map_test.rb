@@ -125,4 +125,14 @@ class GetRadarMapTest < Minitest::Test
     assert error
     assert_match(/could not draw RADAR_1KM_RSNO/, result)
   end
+
+  def test_readings_only_still_has_the_past_hour_and_no_image_requests
+    content, requests = radar_content(**WHISTLER, include_image: false)
+    result = JSON.parse(content.first[:text])
+
+    assert_equal 1, content.size
+    assert_equal(["2026-11-15T11:00:00-08:00", "2026-11-15T10:30:00-08:00"], result["past_hour"].map { |entry| entry["time"] })
+    assert_equal([0, 0], result["past_hour"].map { |entry| entry["snow_cm_per_h"] })
+    refute(requests.any? { |request| request.query["REQUEST"] == "GetMap" || request.path == "/wms/CBMT" })
+  end
 end

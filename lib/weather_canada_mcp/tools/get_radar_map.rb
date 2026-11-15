@@ -79,15 +79,15 @@ module WeatherCanadaMCP
         point = args.point
         other = RATE_LAYERS.keys.find { |key| key != kind }
         bbox = Geo.bbox(snap(point.lat), snap(point.lon), args.radius_km)
-        other_rate, type, *history, radar, coverage, (base_png, base_error) = fetch_all(args, bbox, [kind, other], at)
+        (other_rate, type, *history), images = fetch_all(args, bbox, [kind, other], at)
         data = { location: point.to_h, observed_at: at, **readings(kind, other, at, [latest, other_rate, type, history]) }
         return data.merge(map: { precipitation: kind, legend: LEGENDS.dig(args.lang, kind) }) unless args.include_image
 
-        with_image(data, args, [kind, at, bbox], [coverage, radar], [base_png, base_error])
+        with_image(data, args, [kind, at, bbox], images)
       end
 
-      def with_image(data, args, (kind, at, bbox), layers, (base_png, base_error))
-        image = compose(args.point, bbox, [kind, at], layers, base_png)
+      def with_image(data, args, (kind, at, bbox), (radar, coverage, (base_png, base_error)))
+        image = compose(args.point, bbox, [kind, at], [coverage, radar], base_png)
         data[:map] = map_info(kind, args, bbox, image.base_error || base_error)
         credits = base_png && !image.base_error ? [self.class.attribution, Sources::NRCan::Basemap::ATTRIBUTION] : []
         Result.new(data:, attributions: credits, image: Tools::Image.new(data: image.png, mime_type: "image/png"))
@@ -108,12 +108,13 @@ module WeatherCanadaMCP
           end }
       end
 
-      # [other rate, precipitation type, *rates in the past hour] and, with an image, [radar PNG, coverage PNG,
-      # [base map PNG, note]].
+      # [[other rate, precipitation type, *rates in the past hour], [radar PNG, coverage PNG, [base map PNG, note]]]; the
+      # images are left out without include_image.
       def fetch_all(args, bbox, (kind, other), at)
-        tasks = value_tasks(args.point, kind, other, at)
-        tasks += image_tasks(bbox, kind, at) if args.include_image
-        concurrently(tasks, &:call)
+        values = value_tasks(args.point, kind, other, at)
+        tasks = args.include_image ? values + image_tasks(bbox, kind, at) : values
+        found = concurrently(tasks, &:call)
+        [found.first(values.size), found.drop(values.size)]
       end
 
       def value_tasks(point, kind, other, at)
