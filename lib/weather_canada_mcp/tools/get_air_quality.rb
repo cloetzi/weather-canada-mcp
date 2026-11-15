@@ -20,8 +20,9 @@ module WeatherCanadaMcp
       RADIUS_KM = 100
       STALE_AFTER = 3 * 3600
       PERIODS = %w[period_1 period_2 period_3 period_4 period_5].freeze
-      # Health messages by risk category, as canada.ca's "About the AQHI" page gives them (MESSAGES_URL). Low risk has one
-      # message for everyone.
+      # Health messages by risk category, word for word as canada.ca's "About the AQHI" page gives them (MESSAGES_URL),
+      # with a capital and a full stop added. "Envisagez réduire" is the page's own wording. Low risk has one message for
+      # everyone.
       MESSAGES_URL = {
         "en" => "https://www.canada.ca/en/environment-climate-change/services/air-quality-health-index/about.html",
         "fr" => "https://www.canada.ca/fr/environnement-changement-climatique/services/cote-air-sante/a-propos.html"

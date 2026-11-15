@@ -30,7 +30,7 @@ module WeatherCanadaMcp
 
       def call(arguments)
         lang = lang(arguments)
-        limit = (arguments["limit"] || 5).clamp(1, MAX_CANDIDATES)
+        limit = integer_argument(arguments, "limit", 5, 1..MAX_CANDIDATES)
         if arguments["lat"].nil? && arguments["lon"].nil?
           by_name(arguments, limit, lang)
         else
