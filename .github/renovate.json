@@ -1,0 +1,38 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended", ":semanticCommits", "schedule:weekly"],
+  "labels": ["dependencies"],
+  "lockFileMaintenance": {
+    "enabled": true
+  },
+  "packageRules": [
+    {
+      "description": "Runtime changes ship in the image, so they are fixes and trigger a release.",
+      "matchManagers": ["bundler", "dockerfile", "ruby-version"],
+      "semanticCommitType": "fix"
+    },
+    {
+      "description": "Gemfile gems are development and test only.",
+      "matchManagers": ["bundler"],
+      "matchDepTypes": ["development", "test"],
+      "semanticCommitType": "chore",
+      "groupName": "development gems"
+    },
+    {
+      "description": "Gemspec gems reach Gemfile.lock only through lock file maintenance, and they ship in the image.",
+      "matchUpdateTypes": ["lockFileMaintenance"],
+      "semanticCommitType": "fix"
+    },
+    {
+      "description": "Keep .ruby-version and the Ruby base image in step.",
+      "matchManagers": ["dockerfile", "ruby-version"],
+      "matchDepNames": ["ruby"],
+      "groupName": "Ruby"
+    },
+    {
+      "matchManagers": ["github-actions"],
+      "semanticCommitType": "ci",
+      "groupName": "GitHub Actions"
+    }
+  ]
+}
