@@ -10,7 +10,8 @@ module WeatherCanadaMcp
     Context = Data.define(:ogc, :wms, :locator, :places, :config, :clock)
 
     def self.all
-      [FindLocation, GetForecast, GetAlerts, GetCurrentObservations, GetRiverConditions, GetAirQuality, GetSnowOutlook, GetMarineForecast]
+      [FindLocation, GetForecast, GetAlerts, GetCurrentObservations, GetRiverConditions, GetAirQuality, GetSnowOutlook, GetMarineForecast,
+       GetClimateContext]
     end
   end
 end

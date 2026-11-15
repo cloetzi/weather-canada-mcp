@@ -114,6 +114,15 @@ FIXTURES = {
   # get_marine_forecast (Squamish, at the head of Howe Sound; Halifax, whose areas are split and under warnings)
   "api/marineweather-realtime_squamish.json" => items("marineweather-realtime", bbox: bbox_km(*SQUAMISH, 25), limit: 50),
   "api/marineweather-realtime_halifax.json" => items("marineweather-realtime", bbox: bbox_km(*HALIFAX, 25), limit: 50),
+  # get_climate_context (Whistler, November 15)
+  "api/ltce-temperature_whistler.json" => items("ltce-temperature", bbox: bbox_km(*WHISTLER, 100), LOCAL_MONTH: 11, LOCAL_DAY: 15, limit: 50),
+  "api/ltce-precipitation_whistler.json" => items("ltce-precipitation", bbox: bbox_km(*WHISTLER, 100), LOCAL_MONTH: 11, LOCAL_DAY: 15,
+                                                                        limit: 50),
+  "api/ltce-snowfall_whistler.json" => items("ltce-snowfall", bbox: bbox_km(*WHISTLER, 100), LOCAL_MONTH: 11, LOCAL_DAY: 15, limit: 50),
+  "api/climate-normals_whistler.json" => items("climate-normals", bbox: bbox_km(*WHISTLER, 50), MONTH: 11, NORMAL_ID: 1,
+                                                                  properties: "STATION_NAME,CLIMATE_IDENTIFIER", limit: 200),
+  "api/climate-normals_1048898.json" => items("climate-normals", CLIMATE_IDENTIFIER: "1048898", MONTH: 11, skipGeometry: true,
+                                                                 limit: 200, properties: "NORMAL_ID,VALUE,PERIOD_BEGIN,PERIOD_END"),
   # M0 samples for M3
   "m0/marineweather-realtime_howe-sound.json" => items("marineweather-realtime", bbox: bbox(49.5, -123.3, 0.05), limit: 2),
   "m0/ltce-snowfall_whistler.json" => items("ltce-snowfall", bbox: bbox(*WHISTLER, 0.3), LOCAL_MONTH: 11, LOCAL_DAY: 15,

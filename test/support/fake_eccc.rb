@@ -38,12 +38,18 @@ class FakeEccc
     "swob-stations" => "api/swob-stations_whistler.json",
     "hydrometric-stations" => "api/hydrometric-stations_squamish.json",
     "aqhi-observations-realtime" => "api/aqhi-observations-realtime_kelowna.json",
-    "marineweather-realtime" => "api/marineweather-realtime_squamish.json"
+    "marineweather-realtime" => "api/marineweather-realtime_squamish.json",
+    "ltce-temperature" => "api/ltce-temperature_whistler.json",
+    "ltce-precipitation" => "api/ltce-precipitation_whistler.json",
+    "ltce-snowfall" => "api/ltce-snowfall_whistler.json",
+    # The normals stations; a query naming a station gets api/climate-normals_<id>.json (KEYED_FIXTURES).
+    "climate-normals" => "api/climate-normals_whistler.json"
   }.freeze
   # Collections served per station or location: the query parameter naming it, and fixtures named api/<collection>_<id>.json.
   KEYED_FIXTURES = {
     "swob-realtime" => "msc_id-value", "hydrometric-realtime" => "STATION_NUMBER",
-    "hydrometric-monthly-mean" => "STATION_NUMBER", "aqhi-forecasts-realtime" => "location_id"
+    "hydrometric-monthly-mean" => "STATION_NUMBER", "aqhi-forecasts-realtime" => "location_id",
+    "climate-normals" => "CLIMATE_IDENTIFIER"
   }.freeze
 
   # A one-member ZIP archive (deflated) of the real CGN sample, shaped like NRCan's download.
@@ -107,7 +113,8 @@ class FakeEccc
     return keyed_fixture("citypage", item) if collection == "citypageweather-realtime" && item
     return alerts_fixture(request.query["bbox"]) if collection == "weather-alerts"
 
-    FIXED_FIXTURES[collection] || (keyed_fixture(collection, request.query[KEYED_FIXTURES[collection]]) if KEYED_FIXTURES.key?(collection))
+    key = request.query[KEYED_FIXTURES[collection]] if KEYED_FIXTURES.key?(collection)
+    key ? keyed_fixture(collection, key) : FIXED_FIXTURES[collection]
   end
 
   # GetFeatureInfo fixtures are named after the place, layer and time: geomet/<place>/<layer>_<yyyymmddThhmmZ>.json.
