@@ -1,0 +1,88 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "id": "AQ_FCST-JBRIK-202611130000-202611130000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.113889,
+          49.261111
+        ]
+      },
+      "properties": {
+        "id": "AQ_FCST-JBRIK-202611130000-202611130000",
+        "aqhi_type": "AQHI-Forecast",
+        "forecast_type": "original",
+        "location_name_en": "Metro Vancouver - NW",
+        "location_name_fr": "Metro Vancouver - nord-ouest",
+        "location_id": "JBRIK",
+        "publication_datetime": "2026-11-13T00:00:00Z",
+        "forecast_datetime_text_en": "5:00 PM PCT Thursday 12 November 2026",
+        "forecast_datetime_text_fr": "5h00 PM HP jeudi 12 novembre 2026",
+        "forecast_datetime": "2026-11-13T00:00:00Z",
+        "aqhi": 2
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_FCST-JBRIK-202611130100-202611130000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.113889,
+          49.261111
+        ]
+      },
+      "properties": {
+        "id": "AQ_FCST-JBRIK-202611130100-202611130000",
+        "aqhi_type": "AQHI-Forecast",
+        "forecast_type": "original",
+        "location_name_en": "Metro Vancouver - NW",
+        "location_name_fr": "Metro Vancouver - nord-ouest",
+        "location_id": "JBRIK",
+        "publication_datetime": "2026-11-13T00:00:00Z",
+        "forecast_datetime_text_en": "6:00 PM PCT Thursday 12 November 2026",
+        "forecast_datetime_text_fr": "6h00 PM HP jeudi 12 novembre 2026",
+        "forecast_datetime": "2026-11-13T01:00:00Z",
+        "aqhi": 2
+      }
+    }
+  ],
+  "numberMatched": 456,
+  "numberReturned": 2,
+  "links": [
+    {
+      "type": "application/geo+json",
+      "rel": "self",
+      "title": "This document as GeoJSON",
+      "href": "https://api.weather.gc.ca/collections/aqhi-forecasts-realtime/items?f=json&bbox=-123.4,48.95,-122.8,49.55&limit=2"
+    },
+    {
+      "rel": "alternate",
+      "type": "application/ld+json",
+      "title": "This document as RDF (JSON-LD)",
+      "href": "https://api.weather.gc.ca/collections/aqhi-forecasts-realtime/items?f=jsonld&bbox=-123.4,48.95,-122.8,49.55&limit=2"
+    },
+    {
+      "type": "text/html",
+      "rel": "alternate",
+      "title": "This document as HTML",
+      "href": "https://api.weather.gc.ca/collections/aqhi-forecasts-realtime/items?f=html&bbox=-123.4,48.95,-122.8,49.55&limit=2"
+    },
+    {
+      "type": "application/geo+json",
+      "rel": "next",
+      "title": "Items (next)",
+      "href": "https://api.weather.gc.ca/collections/aqhi-forecasts-realtime/items?offset=2&bbox=-123.4,48.95,-122.8,49.55&limit=2"
+    },
+    {
+      "type": "application/json",
+      "title": "AQHI – Forecasts",
+      "rel": "collection",
+      "href": "https://api.weather.gc.ca/collections/aqhi-forecasts-realtime"
+    }
+  ],
+  "timeStamp": "2026-11-15T17:00:17.672121Z"
+}

@@ -1,0 +1,11 @@
+# Allowlist: only what the image needs.
+*
+!Gemfile
+!Gemfile.lock
+!.ruby-version
+!weather-canada-mcp.gemspec
+!bin/weather-canada-mcp
+!bin/healthcheck
+!lib/
+!LICENSE
+!NOTICE

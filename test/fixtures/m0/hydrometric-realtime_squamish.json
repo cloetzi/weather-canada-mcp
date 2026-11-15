@@ -1,0 +1,165 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.00404,
+          49.5203
+        ]
+      },
+      "properties": {
+        "IDENTIFIER": "08GA077.2026-11-15T16:15:00Z",
+        "STATION_NUMBER": "08GA077",
+        "STATION_NAME": "SEYMOUR RIVER BELOW ORCHID CREEK",
+        "PROV_TERR_STATE_LOC": "BC",
+        "DATETIME": "2026-11-15T16:15:00Z",
+        "DATETIME_LST": "2026-11-15T08:15:00-08:00",
+        "LEVEL": 2.707,
+        "DISCHARGE": 61.9,
+        "LEVEL_SYMBOL_EN": null,
+        "LEVEL_SYMBOL_FR": null,
+        "DISCHARGE_SYMBOL_EN": null,
+        "DISCHARGE_SYMBOL_FR": null
+      },
+      "id": "08GA077.2026-11-15T16:15:00Z"
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.00404,
+          49.5203
+        ]
+      },
+      "properties": {
+        "IDENTIFIER": "08GA077.2026-11-15T16:10:00Z",
+        "STATION_NUMBER": "08GA077",
+        "STATION_NAME": "SEYMOUR RIVER BELOW ORCHID CREEK",
+        "PROV_TERR_STATE_LOC": "BC",
+        "DATETIME": "2026-11-15T16:10:00Z",
+        "DATETIME_LST": "2026-11-15T08:10:00-08:00",
+        "LEVEL": 2.704,
+        "DISCHARGE": 61.5,
+        "LEVEL_SYMBOL_EN": null,
+        "LEVEL_SYMBOL_FR": null,
+        "DISCHARGE_SYMBOL_EN": null,
+        "DISCHARGE_SYMBOL_FR": null
+      },
+      "id": "08GA077.2026-11-15T16:10:00Z"
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.1021,
+          49.72595
+        ]
+      },
+      "properties": {
+        "IDENTIFIER": "08GA075.2026-11-15T16:05:00Z",
+        "STATION_NUMBER": "08GA075",
+        "STATION_NAME": "MAMQUAM RIVER ABOVE RING CREEK",
+        "PROV_TERR_STATE_LOC": "BC",
+        "DATETIME": "2026-11-15T16:05:00Z",
+        "DATETIME_LST": "2026-11-15T08:05:00-08:00",
+        "LEVEL": 3.084,
+        "DISCHARGE": 103.0,
+        "LEVEL_SYMBOL_EN": null,
+        "LEVEL_SYMBOL_FR": null,
+        "DISCHARGE_SYMBOL_EN": null,
+        "DISCHARGE_SYMBOL_FR": null
+      },
+      "id": "08GA075.2026-11-15T16:05:00Z"
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.20316,
+          49.79502
+        ]
+      },
+      "properties": {
+        "IDENTIFIER": "08GA022.2026-11-15T16:05:00Z",
+        "STATION_NUMBER": "08GA022",
+        "STATION_NAME": "SQUAMISH RIVER NEAR BRACKENDALE",
+        "PROV_TERR_STATE_LOC": "BC",
+        "DATETIME": "2026-11-15T16:05:00Z",
+        "DATETIME_LST": "2026-11-15T08:05:00-08:00",
+        "LEVEL": 4.602,
+        "DISCHARGE": 641.0,
+        "LEVEL_SYMBOL_EN": null,
+        "LEVEL_SYMBOL_FR": null,
+        "DISCHARGE_SYMBOL_EN": null,
+        "DISCHARGE_SYMBOL_FR": null
+      },
+      "id": "08GA022.2026-11-15T16:05:00Z"
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.15008,
+          49.81603
+        ]
+      },
+      "properties": {
+        "IDENTIFIER": "08GA043.2026-11-15T16:05:00Z",
+        "STATION_NUMBER": "08GA043",
+        "STATION_NAME": "CHEAKAMUS RIVER NEAR BRACKENDALE",
+        "PROV_TERR_STATE_LOC": "BC",
+        "DATETIME": "2026-11-15T16:05:00Z",
+        "DATETIME_LST": "2026-11-15T08:05:00-08:00",
+        "LEVEL": 2.148,
+        "DISCHARGE": 181.0,
+        "LEVEL_SYMBOL_EN": null,
+        "LEVEL_SYMBOL_FR": null,
+        "DISCHARGE_SYMBOL_EN": null,
+        "DISCHARGE_SYMBOL_FR": null
+      },
+      "id": "08GA043.2026-11-15T16:05:00Z"
+    }
+  ],
+  "numberMatched": 43377,
+  "numberReturned": 5,
+  "links": [
+    {
+      "type": "application/geo+json",
+      "rel": "self",
+      "title": "This document as GeoJSON",
+      "href": "https://api.weather.gc.ca/collections/hydrometric-realtime/items?f=json&bbox=-123.35,49.5,-122.95,49.9&limit=5&sortby=-DATETIME"
+    },
+    {
+      "rel": "alternate",
+      "type": "application/ld+json",
+      "title": "This document as RDF (JSON-LD)",
+      "href": "https://api.weather.gc.ca/collections/hydrometric-realtime/items?f=jsonld&bbox=-123.35,49.5,-122.95,49.9&limit=5&sortby=-DATETIME"
+    },
+    {
+      "type": "text/html",
+      "rel": "alternate",
+      "title": "This document as HTML",
+      "href": "https://api.weather.gc.ca/collections/hydrometric-realtime/items?f=html&bbox=-123.35,49.5,-122.95,49.9&limit=5&sortby=-DATETIME"
+    },
+    {
+      "type": "application/geo+json",
+      "rel": "next",
+      "title": "Items (next)",
+      "href": "https://api.weather.gc.ca/collections/hydrometric-realtime/items?offset=5&bbox=-123.35,49.5,-122.95,49.9&limit=5&sortby=-DATETIME"
+    },
+    {
+      "type": "application/json",
+      "title": "Hydrometric Data - Real-time",
+      "rel": "collection",
+      "href": "https://api.weather.gc.ca/collections/hydrometric-realtime"
+    }
+  ],
+  "timeStamp": "2026-11-15T17:00:15.123284Z"
+}
