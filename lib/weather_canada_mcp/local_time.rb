@@ -4,7 +4,8 @@ require "date"
 
 module WeatherCanadaMcp
   # Local calendar dates in Canadian time zones, without a time zone database: each zone's standard offset and whether
-  # it keeps daylight time (second Sunday in March to first Sunday in November, at 02:00 local). Unknown zones use UTC.
+  # it keeps daylight time (second Sunday in March to first Sunday in November, at 02:00 local). Unknown or missing
+  # zones use UTC-8, Canada's westernmost offset, so a day still counts as today while it is today anywhere in Canada.
   module LocalTime
     # IANA zone => [standard offset in hours, observes daylight time]
     ZONES = {
@@ -19,15 +20,20 @@ module WeatherCanadaMcp
       "America/Inuvik" => [-7, true],
       "America/Whitehorse" => [-7, false], "America/Dawson" => [-7, false], "America/Dawson_Creek" => [-7, false],
       "America/Fort_Nelson" => [-7, false], "America/Creston" => [-7, false],
-      "America/Vancouver" => [-8, true]
+      "America/Vancouver" => [-8, true],
+      "America/Atikokan" => [-5, false], "America/Blanc-Sablon" => [-4, false],
+      "Canada/Newfoundland" => [-3.5, true], "Canada/Atlantic" => [-4, true], "Canada/Eastern" => [-5, true],
+      "Canada/Central" => [-6, true], "Canada/Saskatchewan" => [-6, false], "Canada/Mountain" => [-7, true],
+      "Canada/Yukon" => [-7, false], "Canada/Pacific" => [-8, true]
     }.freeze
+    FALLBACK = [-8, false].freeze
 
     module_function
 
     def date(time, zone) = (time.utc + (offset_hours(time, zone) * 3600)).to_date
 
     def offset_hours(time, zone)
-      standard, daylight = ZONES.fetch(zone.to_s, [0, false])
+      standard, daylight = ZONES.fetch(zone.to_s, FALLBACK)
       daylight && daylight_time?(time.utc + (standard * 3600)) ? standard + 1 : standard
     end
 

@@ -53,6 +53,15 @@ module WeatherCanadaMcp
 
       def text(html) = HtmlText.call(html)
 
+      # Hash#dig that answers nil, rather than raising, when upstream data has an unexpected shape along the way.
+      def field(value, *keys) = keys.reduce(value) { |current, key| current.is_a?(Hash) ? current[key] : nil }
+
+      # A danger rating as Avalanche Canada gives it: its value (low ... extreme, earlyseason, norating, noforecast) and label.
+      def rating(value) = ({ rating: value["value"], display: value["display"] } if value.is_a?(Hash))
+
+      # Links handed to the model as official: avalanche.ca pages only.
+      def official_url(value) = (value if value.is_a?(String) && value.match?(%r{\Ahttps://(www\.)?avalanche\.ca/[^\s]*\z}))
+
       def number(value) = (value if value.is_a?(Numeric))
     end
   end

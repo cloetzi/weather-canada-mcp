@@ -46,9 +46,8 @@ module WeatherCanadaMcp
         product = avalanche.product_at(point.lat, point.lon, lang)
         return no_coverage(point, lang) unless covered?(product)
 
-        owner = product.dig("owner", "display")
-        url = product["url"] if product["url"].to_s.start_with?("https://")
-        { location: point.to_h, forecast: forecast(product, days, lang), safety_note: safety_note(lang, url),
+        owner = field(product, "owner", "display")
+        { location: point.to_h, forecast: forecast(product, days, lang), safety_note: safety_note(lang, official_url(product["url"])),
           attribution: attribution_for("Avalanche forecast", [owner]) }
       end
 
@@ -65,7 +64,7 @@ module WeatherCanadaMcp
       def forecast(product, days, lang)
         report = product["report"]
         ratings = danger_ratings(report, days)
-        { title: report["title"], owner: product.dig("owner", "display"), url: product["url"],
+        { title: report["title"], owner: field(product, "owner", "display"), url: official_url(product["url"]),
           issued_at: time(report["dateIssued"])&.utc&.iso8601, valid_until: time(report["validUntil"])&.utc&.iso8601,
           timezone: report["timezone"], note: (OUT_OF_DATE.fetch(lang) if out_of_date?(report, ratings)),
           translation_note: (PARTLY_TRANSLATED if lang == "fr" && report["isFullTranslation"] == false),
@@ -78,7 +77,16 @@ module WeatherCanadaMcp
           problems: Array(report["problems"]).filter_map { |problem| problem(problem) if problem.is_a?(Hash) },
           **summaries(report["summaries"]),
           terrain_and_travel_advice: Array(report["terrainAndTravelAdvice"]).filter_map { |advice| text(advice) },
-          notifications: notifications(product, report), comment: text(report["comment"]) }
+          notifications: notifications(product, report), comment: text(report["comment"]), links: links(product, report) }
+      end
+
+      # The links in the forecast text, which the text keeps only as words ("Click here for more information").
+      def links(product, report)
+        html = [report["highlights"], report["comment"], report["message"], *Array(report["terrainAndTravelAdvice"]),
+                *Array(report["problems"]).map { |problem| field(problem, "comment") },
+                *Array(report["summaries"]).map { |summary| field(summary, "content") },
+                *Array(product["notifications"]).map { |item| item.is_a?(Hash) ? item["content"] || item["message"] || item["text"] : item }]
+        html.flat_map { |fragment| HtmlText.links(fragment) }.uniq { |link| link[:url] }
       end
 
       # The days from today (in the forecast's time zone) on: a forecast issued yesterday still lists yesterday.
@@ -86,15 +94,13 @@ module WeatherCanadaMcp
         zone = report["timezone"]
         today = LocalTime.date(now, zone)
         Array(report["dangerRatings"]).filter_map do |day|
-          at = time(day.dig("date", "value")) if day.is_a?(Hash)
+          at = time(field(day, "date", "value")) if day.is_a?(Hash)
           next unless at && LocalTime.date(at, zone) >= today
 
-          { date: LocalTime.date(at, zone).iso8601, day: day.dig("date", "display"),
-            **BANDS.to_h { |key, band| [band, rating(day.dig("ratings", key, "rating"))] } }
+          { date: LocalTime.date(at, zone).iso8601, day: field(day, "date", "display"),
+            **BANDS.to_h { |key, band| [band, rating(field(day, "ratings", key, "rating"))] } }
         end.first(days)
       end
-
-      def rating(value) = ({ rating: value["value"], display: value["display"] } if value.is_a?(Hash))
 
       def out_of_date?(report, ratings)
         valid_until = time(report["validUntil"])
@@ -104,17 +110,17 @@ module WeatherCanadaMcp
       def confidence(value)
         return unless value.is_a?(Hash)
 
-        { rating: value.dig("rating", "value"), display: value.dig("rating", "display"),
+        { rating: field(value, "rating", "value"), display: field(value, "rating", "display"),
           statements: Array(value["statements"]).filter_map { |statement| text(statement) } }
       end
 
       def problem(problem)
         data = problem["data"].is_a?(Hash) ? problem["data"] : {}
         aspects = Array(data["aspects"]).filter_map { |aspect| aspect["value"] if aspect.is_a?(Hash) }
-        { type: problem.dig("type", "display"), type_id: problem.dig("type", "value"),
+        { type: field(problem, "type", "display"), type_id: field(problem, "type", "value"),
           elevations: Array(data["elevations"]).filter_map { |elevation| elevation["display"] if elevation.is_a?(Hash) },
           aspects: ASPECTS.select { |aspect| aspects.include?(aspect) }.map(&:upcase),
-          likelihood: data.dig("likelihood", "display"), likelihood_id: data.dig("likelihood", "value"),
+          likelihood: field(data, "likelihood", "display"), likelihood_id: field(data, "likelihood", "value"),
           expected_size: expected_size(data["expectedSize"]), comment: text(problem["comment"]) }
       end
 
@@ -127,7 +133,7 @@ module WeatherCanadaMcp
       # avalanche_summary, snowpack_summary, weather_summary (and any other summary type), keyed by Avalanche Canada's type.
       def summaries(summaries)
         Array(summaries).each_with_object({}) do |summary, result|
-          key = summary.dig("type", "value") if summary.is_a?(Hash)
+          key = field(summary, "type", "value") if summary.is_a?(Hash)
           result[key.tr("-", "_").to_sym] = text(summary["content"]) if key.is_a?(String) && key.match?(/\A[a-z-]{1,40}\z/)
         end
       end

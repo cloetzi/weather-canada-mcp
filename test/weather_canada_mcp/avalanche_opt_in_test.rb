@@ -59,6 +59,14 @@ class AvalancheOptInTest < Minitest::Test
     assert_match(/get_avalanche_forecast need AVALANCHE_CANADA_ENABLED/, error.message)
   end
 
+  def test_excluding_an_opt_in_tool_that_is_off_does_nothing
+    names = tool_names(AVALANCHE_CANADA_ENABLED: "true", WEATHER_MCP_EXCLUDE_TOOLS: "get_field_reports,get_avalanche_forecast")
+
+    refute_includes names, "get_avalanche_forecast"
+    assert_includes names, "get_mountain_weather_stations"
+    assert_raises(WeatherCanadaMcp::Error) { application(nil, WEATHER_MCP_EXCLUDE_TOOLS: "get_weather") }
+  end
+
   def test_instructions_mention_avalanche_canada_only_when_enabled
     refute_includes application(nil).mcp_server.instructions, "Avalanche Canada"
     assert_includes application(nil, AVALANCHE_CANADA_ENABLED: "true").mcp_server.instructions, "Avalanche Canada"

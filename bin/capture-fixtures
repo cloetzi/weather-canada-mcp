@@ -81,10 +81,11 @@ def measurements(station_id)
   "#{AVALANCHE_WEATHER}/stations/#{station_id}/measurements?#{query}"
 end
 
-# As Tools::GetFieldReports asks: the days up to today (UTC) within radius_km.
+# As Tools::GetFieldReports asks: from days - 1 before today at UTC-8 to today's UTC date, at most 31 days, within radius_km.
 def min_submissions(lat, lon, radius_km, days)
   today = Time.now.utc.to_date
-  query = URI.encode_www_form(fromdate: (today - (days - 1)).iso8601, todate: today.iso8601, bbox: bbox_km(lat, lon, radius_km))
+  from = [(Time.now.utc - (8 * 3600)).to_date - (days - 1), today - 30].max
+  query = URI.encode_www_form(fromdate: from.iso8601, todate: today.iso8601, bbox: bbox_km(lat, lon, radius_km))
   "#{AVALANCHE}/min/submissions?#{query}"
 end
 

@@ -6,7 +6,7 @@ class GetFieldReportsTest < Minitest::Test
   FARNHAM = { lat: 50.41, lon: -116.5, radius_km: 10, days: 31 }.freeze
   PATH = "/min/submissions"
 
-  def reports(**) = call_with_fake("get_field_reports", clock: -> { AVALANCHE_CAPTURED_AT }, env: AVALANCHE_ENABLED, **)
+  def reports(clock: -> { AVALANCHE_CAPTURED_AT }, **) = call_with_fake("get_field_reports", clock:, env: AVALANCHE_ENABLED, **)
 
   def fixture = FakeEccc.fixture_json("avalanche/min-submissions_farnham.json")
 
@@ -29,6 +29,19 @@ class GetFieldReportsTest < Minitest::Test
 
     assert_equal({ "fromdate" => "2026-10-16", "todate" => "2026-11-15", "bbox" => "-116.64096,50.32017,-116.35904,50.49983" },
                  requests.first.query)
+  end
+
+  # At 01:00 UTC it is still the 15th in western Canada: one day covers both dates.
+  def test_the_period_follows_canadian_dates
+    _, _, requests = reports(**FARNHAM, days: 1, clock: -> { Time.utc(2026, 11, 16, 1) })
+
+    assert_equal({ "fromdate" => "2026-11-15", "todate" => "2026-11-16" }, requests.first.query.slice("fromdate", "todate"))
+  end
+
+  def test_the_period_stays_within_31_days
+    _, _, requests = reports(**FARNHAM, days: 31, clock: -> { Time.utc(2026, 11, 16, 1) })
+
+    assert_equal({ "fromdate" => "2026-10-17", "todate" => "2026-11-16" }, requests.first.query.slice("fromdate", "todate"))
   end
 
   def test_avalanche_observations

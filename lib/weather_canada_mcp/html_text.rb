@@ -20,6 +20,16 @@ module WeatherCanadaMcp
       tidy(fragment.text)
     end
 
-    def tidy(text) = text.tr(" ", " ").gsub(/[ \t]+/, " ").gsub(/ *\n */, "\n").gsub(/\n{3,}/, "\n\n").strip
+    # [{text:, url:}] for each https link, in order.
+    def links(html)
+      return [] unless html.is_a?(String)
+
+      Nokogiri::HTML5.fragment(html, max_tree_depth: 64).css("a[href]").filter_map do |anchor|
+        url = anchor["href"].to_s.strip
+        { text: tidy(anchor.text), url: } if url.match?(%r{\Ahttps://[^\s<>"]+\z})
+      end
+    end
+
+    def tidy(text) = text.tr("\u00a0", " ").gsub(/[ \t]+/, " ").gsub(/ *\n */, "\n").gsub(/\n{3,}/, "\n\n").strip
   end
 end

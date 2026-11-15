@@ -21,11 +21,17 @@ class LocalTimeTest < Minitest::Test
     assert_equal(-8, LocalTime.offset_hours(Time.utc(2026, 11, 1, 9, 0), "America/Vancouver"))
   end
 
-  def test_zones_without_daylight_saving_newfoundland_and_unknown_zones
+  def test_zones_without_daylight_saving_newfoundland_and_aliases
     assert_equal(-7, LocalTime.offset_hours(Time.utc(2026, 7, 1), "America/Whitehorse"))
     assert_equal(-6, LocalTime.offset_hours(Time.utc(2026, 7, 1), "America/Regina"))
     assert_in_delta(-2.5, LocalTime.offset_hours(Time.utc(2026, 7, 1), "America/St_Johns"))
-    assert_equal 0, LocalTime.offset_hours(Time.utc(2026, 7, 1), "Europe/Paris")
-    assert_equal 0, LocalTime.offset_hours(Time.utc(2026, 7, 1), nil)
+    assert_equal(-5, LocalTime.offset_hours(Time.utc(2026, 7, 1), "America/Atikokan"))
+    assert_equal(-7, LocalTime.offset_hours(Time.utc(2026, 7, 1), "Canada/Pacific"))
+  end
+
+  # Westernmost, so a day is not over while it is still that day somewhere in Canada.
+  def test_unknown_zones_use_the_westernmost_offset
+    assert_equal(-8, LocalTime.offset_hours(Time.utc(2026, 7, 1), "Europe/Paris"))
+    assert_equal Date.new(2026, 11, 15), LocalTime.date(Time.utc(2026, 11, 16, 1), nil)
   end
 end

@@ -121,6 +121,15 @@ module WeatherCanadaMcp
       # Runs the block for each item in its own fiber (the rate limiter still spaces the requests), in order.
       def concurrently(items, &block) = items.map { |item| Async { block.call(item) } }.map(&:wait)
 
+      # Up to limit non-nil block results, in candidate order: candidates are tried concurrently, as many at a time as
+      # results are still missing, so a station that has not reported gives way to the next nearest.
+      def first_found(candidates, limit, &)
+        candidates = candidates.dup
+        found = []
+        found.concat(concurrently(candidates.shift(limit - found.size), &).compact) while found.size < limit && candidates.any?
+        found
+      end
+
       def time(value)
         Time.iso8601(value) if value.is_a?(String)
       rescue ArgumentError

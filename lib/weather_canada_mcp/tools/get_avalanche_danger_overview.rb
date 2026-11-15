@@ -27,11 +27,11 @@ module WeatherCanadaMcp
       private
 
       def product(entry)
-        name = entry.dig("product", "title") || entry.dig("area", "name")
+        name = field(entry, "product", "title") || field(entry, "area", "name")
         return unless name.is_a?(String)
 
-        { name:, type: entry.dig("product", "type"), owner: entry.dig("owner", "display"), centroid: centroid(entry["centroid"]),
-          url: entry["url"], highest_danger: rating(entry["highestDanger"]), current_ratings: current_ratings(entry["icons"]) }
+        { name:, type: field(entry, "product", "type"), owner: field(entry, "owner", "display"), centroid: centroid(entry["centroid"]),
+          url: official_url(entry["url"]), highest_danger: rating(entry["highestDanger"]), current_ratings: current_ratings(entry["icons"]) }
       end
 
       def centroid(value)
@@ -39,8 +39,6 @@ module WeatherCanadaMcp
 
         { lat: value["latitude"].round(3), lon: value["longitude"].round(3) }
       end
-
-      def rating(value) = ({ rating: value["value"], display: value["display"] } if value.is_a?(Hash))
 
       # The ratings icon in effect now.
       def current_ratings(icons)
@@ -51,7 +49,7 @@ module WeatherCanadaMcp
           to = time(icon["to"])
           from && to && from <= now && now < to
         end
-        BANDS.to_h { |key, band| [band, current.dig("ratings", key)] } if current&.dig("ratings").is_a?(Hash)
+        BANDS.to_h { |key, band| [band, field(current, "ratings", key)] } if field(current, "ratings").is_a?(Hash)
       end
     end
   end

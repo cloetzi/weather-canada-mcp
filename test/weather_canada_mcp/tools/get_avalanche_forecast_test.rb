@@ -60,6 +60,41 @@ class GetAvalancheForecastTest < Minitest::Test
     refute_includes summary, "&nbsp;"
   end
 
+  def test_links_in_the_text_are_listed_separately
+    links = forecast(**LAKE_LOUISE).first.dig("forecast", "links")
+    notification = fixture.dig("notifications", 0, "content")
+    url = notification[/href="([^"]+)"/, 1]
+
+    assert_includes links, { "text" => "here", "url" => url }
+    assert_includes links.map { |link| link["url"] }, "https://www.avalanche.ca/map"
+  end
+
+  # Variants of the captured product, served in place of it, for shapes the capture does not show.
+  def with_product(&change)
+    product = fixture
+    change.call(product)
+    { "/forecasts/en/products/point" => ->(_) { [200, {}, JSON.generate(product)] } }
+  end
+
+  def test_only_avalanche_ca_links_are_passed_on_as_official
+    result, = forecast(**LAKE_LOUISE, routes: with_product { |product| product["url"] = "javascript:alert(1)" })
+
+    assert_nil result.dig("forecast", "url")
+    assert result["safety_note"].end_with?("https://avalanche.ca/map")
+  end
+
+  def test_unexpected_shapes_are_skipped_not_fatal
+    result, error = forecast(**LAKE_LOUISE, routes: with_product do |product|
+      product["report"]["dangerRatings"][1]["ratings"] = []
+      product["report"]["dangerRatings"][2]["date"] = "Monday"
+      product["report"]["problems"] << "not a problem"
+    end)
+
+    refute error
+    assert_equal(["Sunday"], result.dig("forecast", "danger_ratings").map { |day| day["day"] })
+    assert_equal 1, result.dig("forecast", "problems").size
+  end
+
   def test_owner_url_attribution_and_safety_note
     result, = forecast(**LAKE_LOUISE)
 

@@ -25,9 +25,11 @@ module WeatherCanadaMcp
       selected.reject { |tool| config.exclude_tools.include?(tool.tool_name) }
     end
 
+    # WEATHER_MCP_TOOLS may name only tools this configuration serves; WEATHER_MCP_EXCLUDE_TOOLS any known tool, so
+    # excluding an opt-in tool that is off does nothing.
     def self.unknown_tools(config)
-      names = Tools.available(config).map(&:tool_name)
-      (Array(config.tools) + config.exclude_tools).uniq - names
+      known = (Tools.all + Tools.avalanche + Tools.field_reports).map(&:tool_name)
+      (Array(config.tools) - Tools.available(config).map(&:tool_name)) | (config.exclude_tools - known)
     end
 
     def self.unknown_tools_message(unknown)

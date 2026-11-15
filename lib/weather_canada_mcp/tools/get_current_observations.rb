@@ -76,12 +76,7 @@ module WeatherCanadaMcp
       # The nearest stations that have reported, skipping silent ones (closed or seasonal) for the next nearest.
       def reporting_stations(point, limit, lang)
         candidates = nearest_features(STATIONS_COLLECTION, point, radius_km: RADIUS_KM, count: limit + SPARE_STATIONS, limit: 500)
-        stations = []
-        while stations.size < limit && candidates.any?
-          batch = candidates.shift(limit - stations.size)
-          stations.concat(concurrently(batch) { |distance, feature| station(feature, distance, lang) }.compact)
-        end
-        stations
+        first_found(candidates, limit) { |distance, feature| station(feature, distance, lang) }
       end
 
       # nil for a station without reports.

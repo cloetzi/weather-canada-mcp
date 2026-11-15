@@ -46,7 +46,7 @@ module WeatherCanadaMcp
 
       def nearest(point, radius, count)
         avalanche.stations.filter_map do |station|
-          next unless station.is_a?(Hash) && station["stationId"].is_a?(Integer)
+          next unless station.is_a?(Hash) && station["stationId"].is_a?(Integer) && station["stationId"].positive?
 
           lat = station["latitude"]
           lon = station["longitude"]
@@ -61,12 +61,7 @@ module WeatherCanadaMcp
       def reporting_stations(candidates, limit, hours)
         to = Time.at((now.to_i + 3599) / 3600 * 3600).utc # the next full hour, so calls within an hour share a cache entry
         from = to - (hours * 3600)
-        stations = []
-        while stations.size < limit && candidates.any?
-          batch = candidates.shift(limit - stations.size)
-          stations.concat(concurrently(batch) { |distance, station| station(station, distance, from, to) }.compact)
-        end
-        stations
+        first_found(candidates, limit) { |distance, station| station(station, distance, from, to) }
       end
 
       def station(station, distance, from, to)

@@ -38,7 +38,7 @@ module WeatherCanadaMcp
         properties: {
           **Base::LOCATION_PROPERTIES,
           radius_km: { type: "integer", minimum: 1, maximum: MAX_RADIUS_KM, default: 25, description: "Search radius." },
-          days: { type: "integer", minimum: 1, maximum: MAX_DAYS, default: 7, description: "Days back from today to include." },
+          days: { type: "integer", minimum: 1, maximum: MAX_DAYS, default: 7, description: "Days to include, today included." },
           limit: { type: "integer", minimum: 1, maximum: MAX_REPORTS, default: 10, description: "Most reports to include." }
         },
         additionalProperties: false
@@ -49,8 +49,7 @@ module WeatherCanadaMcp
         radius = integer_argument(arguments, "radius_km", 25, 1..MAX_RADIUS_KM)
         days = integer_argument(arguments, "days", 7, 1..MAX_DAYS)
         limit = integer_argument(arguments, "limit", 10, 1..MAX_REPORTS)
-        to = now.utc.to_date
-        from = to - (days - 1)
+        from, to = period(days)
         found = nearby(avalanche.submissions(from:, to:, bbox: Geo.bbox(point.lat, point.lon, radius)), point, radius)
         reports = found.first(limit).map { |distance, item| report(item, distance) }
         { location: point.to_h, from: from.iso8601, to: to.iso8601, reports:, more_reports: (found.size - limit if found.size > limit),
@@ -60,11 +59,19 @@ module WeatherCanadaMcp
 
       private
 
+      # Report dates are local. Canadian dates run from UTC-2.5 to UTC-8, so the period ends on today's UTC date and starts
+      # days - 1 before today at UTC-8, within MIN's 31-day limit.
+      def period(days)
+        to = now.utc.to_date
+        from = [LocalTime.date(now, nil) - (days - 1), to - (MAX_DAYS - 1)].max
+        [from, to]
+      end
+
       # [[distance_km, item], ...] within the radius, newest first.
       def nearby(items, point, radius)
         found = items.filter_map do |item|
-          lat = item.dig("location", "latitude") if item.is_a?(Hash)
-          lon = item.dig("location", "longitude") if item.is_a?(Hash)
+          lat = field(item, "location", "latitude") if item.is_a?(Hash)
+          lon = field(item, "location", "longitude") if item.is_a?(Hash)
           next unless lat.is_a?(Numeric) && lon.is_a?(Numeric)
 
           distance = Geo.distance_km(point.lat, point.lon, lat, lon)
@@ -78,7 +85,7 @@ module WeatherCanadaMcp
         { id:, url: ("https://avalanche.ca/mountain-information-network/submissions/#{id}" if id), title: redact(item["title"]),
           observed_on: item["date"], submitted_at: time(item["submissionDatetime"])&.utc&.iso8601, region: item["region"],
           distance_km: round_km(distance),
-          location: { lat: item.dig("location", "latitude").round(3), lon: item.dig("location", "longitude").round(3) },
+          location: { lat: field(item, "location", "latitude").round(3), lon: field(item, "location", "longitude").round(3) },
           **observations(item), comments: redact(item["comments"]), image_count: number(item["imageCount"]) }
       end
 
