@@ -35,6 +35,9 @@ module WeatherCanadaMcp
         def description = self::DESCRIPTION
         def input_schema = self::INPUT_SCHEMA
         def manifest = { name: tool_name, title:, description:, input_schema: }
+
+        # Credits the data source: on results that set no attribution of their own, and on upstream errors.
+        def attribution = ATTRIBUTION
       end
 
       def initialize(context)

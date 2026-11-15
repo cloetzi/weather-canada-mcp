@@ -6,19 +6,27 @@
 #
 #   bin/capture-fixtures            # everything
 #   bin/capture-fixtures api/       # only fixtures whose path starts with api/
+#   bin/capture-fixtures avalanche  # only the Avalanche Canada fixtures
 #
-# Standard library only, so it runs before `bundle install`. One request at a time, a second apart.
+# Standard library only, so it runs before `bundle install`. One request at a time, a second apart. The one change
+# made to upstream data: field reports lose the submitter's username and user id (PERSONAL_FIELDS) before they are
+# written. Read the field reports' text before committing them, and pick another area if it holds contact details.
 
+require "date"
 require "fileutils"
 require "json"
 require "tmpdir"
 require "net/http"
+require "time"
 require "uri"
 
 ROOT = File.expand_path("../test/fixtures", __dir__)
 USER_AGENT = "weather-canada-mcp-fixture-capture (+https://github.com/cloetzi/weather-canada-mcp)"
 API = "https://api.weather.gc.ca"
 GEOMET = "https://geo.weather.gc.ca/geomet"
+AVALANCHE = "https://avcan-services-api.prod.avalanche.ca"
+AVALANCHE_WEATHER = "https://weather.prod.avalanche.ca"
+PERSONAL_FIELDS = %w[userID username].freeze
 
 # A point query against a WMS layer: a 3x3 pixel map 0.02 degrees wide, centred on the point.
 def feature_info(layer, lat, lon)
@@ -61,11 +69,33 @@ def hydro_monthly(number)
   items("hydrometric-monthly-mean", STATION_NUMBER: number, properties: "DATE,MONTHLY_MEAN_DISCHARGE", skipGeometry: true, limit: 2000)
 end
 
+# As Tools::GetAvalancheForecast asks: the point rounded to 0.01 degrees.
+def avalanche_point(lang, lat, lon)
+  "#{AVALANCHE}/forecasts/#{lang}/products/point?#{URI.encode_www_form(lat: format("%.2f", lat), long: format("%.2f", lon))}"
+end
+
+# As Tools::GetMountainWeatherStations asks by default: the 24 hours up to the next full hour.
+AVALANCHE_TO = Time.at((Time.now.to_i + 3599) / 3600 * 3600).utc
+def measurements(station_id)
+  query = URI.encode_www_form(fromDate: (AVALANCHE_TO - 86_400).iso8601, toDate: AVALANCHE_TO.iso8601)
+  "#{AVALANCHE_WEATHER}/stations/#{station_id}/measurements?#{query}"
+end
+
+# As Tools::GetFieldReports asks: the days up to today (UTC) within radius_km.
+def min_submissions(lat, lon, radius_km, days)
+  today = Time.now.utc.to_date
+  query = URI.encode_www_form(fromdate: (today - (days - 1)).iso8601, todate: today.iso8601, bbox: bbox_km(lat, lon, radius_km))
+  "#{AVALANCHE}/min/submissions?#{query}"
+end
+
 SQUAMISH = [49.7, -123.15].freeze
 WHISTLER = [50.12, -122.96].freeze
 EDMONTON = [53.54, -113.49].freeze
 KELOWNA = [49.89, -119.5].freeze
 OTTAWA = [45.42, -75.7].freeze
+LAKE_LOUISE = [51.42, -116.18].freeze
+TORONTO = [43.65, -79.38].freeze
+FARNHAM = [50.41, -116.5].freeze
 
 FIXTURES = {
   # M1: get_forecast, find_location (City Page site list), get_alerts
@@ -94,6 +124,18 @@ FIXTURES = {
   "api/aqhi-forecasts-realtime_JAFUV.json" => items("aqhi-forecasts-realtime", location_id: "JAFUV", aqhi_type: "AQHI-Forecast-Period",
                                                                                sortby: "-publication_datetime", skipGeometry: true,
                                                                                limit: 1),
+  # Avalanche Canada (opt-in): the forecast at Lake Louise, a point no forecast covers, every product, the station list,
+  # the three stations nearest Lake Louise, and MIN reports around Farnham Glacier over 31 days within 10 km.
+  "avalanche/point_en_lake-louise.json" => avalanche_point("en", *LAKE_LOUISE),
+  "avalanche/point_fr_lake-louise.json" => avalanche_point("fr", *LAKE_LOUISE),
+  "avalanche/point_en_toronto.json" => avalanche_point("en", *TORONTO),
+  "avalanche/metadata_en.json" => "#{AVALANCHE}/forecasts/en/metadata",
+  "avalanche/metadata_fr.json" => "#{AVALANCHE}/forecasts/fr/metadata",
+  "avalanche/stations.json" => "#{AVALANCHE_WEATHER}/stations",
+  "avalanche/measurements_110.json" => measurements(110),
+  "avalanche/measurements_111.json" => measurements(111),
+  "avalanche/measurements_109.json" => measurements(109),
+  "avalanche/min-submissions_farnham.json" => min_submissions(*FARNHAM, 10, 31),
   # M0 samples for M3
   "m0/marineweather-realtime_howe-sound.json" => items("marineweather-realtime", bbox: bbox(49.5, -123.3, 0.05), limit: 2),
   "m0/ltce-snowfall_whistler.json" => items("ltce-snowfall", bbox: bbox(*WHISTLER, 0.3), LOCAL_MONTH: 11, LOCAL_DAY: 15,
@@ -121,10 +163,19 @@ def fetch(url)
   end
 end
 
+# Field reports without who submitted them.
+def without_personal_fields(data)
+  data.merge("items" => data.fetch("items").map { |item| item.except(*PERSONAL_FIELDS) })
+end
+
 def write(path, body)
   file = File.join(ROOT, path)
   FileUtils.mkdir_p(File.dirname(file))
-  body = "#{JSON.pretty_generate(JSON.parse(body))}\n" if path.end_with?(".json")
+  if path.end_with?(".json")
+    data = JSON.parse(body)
+    data = without_personal_fields(data) if path.start_with?("avalanche/min-")
+    body = "#{JSON.pretty_generate(data)}\n"
+  end
   File.write(file, body)
   puts "wrote #{path} (#{body.bytesize} bytes)"
 end

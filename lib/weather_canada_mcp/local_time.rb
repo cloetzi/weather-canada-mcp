@@ -1,0 +1,47 @@
+# frozen_string_literal: true
+
+require "date"
+
+module WeatherCanadaMcp
+  # Local calendar dates in Canadian time zones, without a time zone database: each zone's standard offset and whether
+  # it keeps daylight time (second Sunday in March to first Sunday in November, at 02:00 local). Unknown zones use UTC.
+  module LocalTime
+    # IANA zone => [standard offset in hours, observes daylight time]
+    ZONES = {
+      "America/St_Johns" => [-3.5, true],
+      "America/Halifax" => [-4, true], "America/Moncton" => [-4, true], "America/Glace_Bay" => [-4, true],
+      "America/Goose_Bay" => [-4, true],
+      "America/Toronto" => [-5, true], "America/Montreal" => [-5, true], "America/Iqaluit" => [-5, true],
+      "America/Nipigon" => [-5, true], "America/Thunder_Bay" => [-5, true],
+      "America/Winnipeg" => [-6, true], "America/Rankin_Inlet" => [-6, true], "America/Resolute" => [-6, true],
+      "America/Regina" => [-6, false], "America/Swift_Current" => [-6, false],
+      "America/Edmonton" => [-7, true], "America/Yellowknife" => [-7, true], "America/Cambridge_Bay" => [-7, true],
+      "America/Inuvik" => [-7, true],
+      "America/Whitehorse" => [-7, false], "America/Dawson" => [-7, false], "America/Dawson_Creek" => [-7, false],
+      "America/Fort_Nelson" => [-7, false], "America/Creston" => [-7, false],
+      "America/Vancouver" => [-8, true]
+    }.freeze
+
+    module_function
+
+    def date(time, zone) = (time.utc + (offset_hours(time, zone) * 3600)).to_date
+
+    def offset_hours(time, zone)
+      standard, daylight = ZONES.fetch(zone.to_s, [0, false])
+      daylight && daylight_time?(time.utc + (standard * 3600)) ? standard + 1 : standard
+    end
+
+    # local_standard is the UTC time shifted by the standard offset; its wall-clock fields are local standard time.
+    def daylight_time?(local_standard)
+      year = local_standard.year
+      starts = Time.utc(year, 3, nth_sunday(year, 3, 2), 2)
+      ends = Time.utc(year, 11, nth_sunday(year, 11, 1), 1) # 02:00 daylight is 01:00 standard
+      local_standard >= starts && local_standard < ends
+    end
+
+    def nth_sunday(year, month, nth)
+      first = Date.new(year, month, 1)
+      1 + ((7 - first.wday) % 7) + (7 * (nth - 1))
+    end
+  end
+end

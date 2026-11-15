@@ -1,0 +1,162 @@
+[
+  {
+    "name": "get_avalanche_forecast",
+    "title": "Get avalanche forecast",
+    "description": "The public avalanche forecast covering a location, as published on avalanche.ca by Avalanche Canada or the agency that owns it (such as Parks Canada or Avalanche Québec): the danger rating for each day in the alpine, at treeline and below treeline, using Avalanche Canada's own values (low, moderate, considerable, high, extreme, plus earlyseason, norating and noforecast, which are not danger levels); the avalanche problems with their elevations, aspects, likelihood and expected size; highlights, confidence, the avalanche, snowpack and weather summaries, and terrain and travel advice. Text is as the forecaster wrote it, with the HTML removed: quote it rather than reword it. Report the ratings exactly. Pass on safety_note and the forecast url. Most forecasts cover western Canada's mountains, Gros Morne and the Chic-Chocs in winter; get_avalanche_danger_overview lists every current one.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "location": {
+          "type": "string",
+          "maxLength": 120,
+          "description": "A place in Canada: town, park, lake, peak or river, optionally with a province (\"Squamish\", \"Lake Louise, AB\", \"Mont-Tremblant, QC\"). Ignored when lat and lon are given."
+        },
+        "lat": {
+          "type": "number",
+          "minimum": 41.0,
+          "maximum": 84.0,
+          "description": "Latitude in decimal degrees."
+        },
+        "lon": {
+          "type": "number",
+          "minimum": -142.0,
+          "maximum": -52.0,
+          "description": "Longitude in decimal degrees (negative, west)."
+        },
+        "days": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 3,
+          "default": 3,
+          "description": "Days of danger ratings to include, from today."
+        },
+        "lang": {
+          "type": "string",
+          "enum": [
+            "en",
+            "fr"
+          ],
+          "description": "Language of text fields: en or fr."
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  {
+    "name": "get_avalanche_danger_overview",
+    "title": "Get avalanche danger overview",
+    "description": "Every avalanche forecast currently published on avalanche.ca, by Avalanche Canada and its partner agencies: the region name, owner, centre point, official url, the highest danger and the current rating in the alpine, at treeline and below treeline. Ratings are Avalanche Canada's own values (low, moderate, considerable, high, extreme, plus earlyseason, norating and noforecast, which are not danger levels). Use get_avalanche_forecast for one region's problems and advice. Pass on safety_note.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "lang": {
+          "type": "string",
+          "enum": [
+            "en",
+            "fr"
+          ],
+          "description": "Language of text fields: en or fr."
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  {
+    "name": "get_mountain_weather_stations",
+    "title": "Get mountain weather stations",
+    "description": "The mountain weather stations nearest a location from Avalanche Canada's station network (run by Parks Canada, provincial agencies, ski areas and others): each station's elevation, distance and operator, its latest hourly reading (air temperature, humidity, wind and gusts, snow height, new snow) and a summary of the past hours (snow height change, new snow, minimum and maximum temperature, strongest gust). Stations measure different things, and many are on ridges or in alpine terrain, so compare elevations. Times are UTC (ISO 8601). Pass on safety_note.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "location": {
+          "type": "string",
+          "maxLength": 120,
+          "description": "A place in Canada: town, park, lake, peak or river, optionally with a province (\"Squamish\", \"Lake Louise, AB\", \"Mont-Tremblant, QC\"). Ignored when lat and lon are given."
+        },
+        "lat": {
+          "type": "number",
+          "minimum": 41.0,
+          "maximum": 84.0,
+          "description": "Latitude in decimal degrees."
+        },
+        "lon": {
+          "type": "number",
+          "minimum": -142.0,
+          "maximum": -52.0,
+          "description": "Longitude in decimal degrees (negative, west)."
+        },
+        "radius_km": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100,
+          "default": 30,
+          "description": "Search radius."
+        },
+        "hours": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 168,
+          "default": 24,
+          "description": "Hours of readings to summarize."
+        },
+        "limit": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 6,
+          "default": 3,
+          "description": "Nearest stations to include."
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  {
+    "name": "get_field_reports",
+    "title": "Get avalanche field reports",
+    "description": "Recent public field reports from Avalanche Canada's Mountain Information Network (MIN) near a location: what backcountry users saw on a given day (avalanches with their size, aspect, elevation and trigger, signs of instability such as whumpfing or shooting cracks, and their comments), newest first. Reports are written by the public and are not verified by Avalanche Canada. Who submitted a report is never included, and email addresses and phone numbers in the text are replaced by \"[contact details removed]\". Pass on safety_note.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "location": {
+          "type": "string",
+          "maxLength": 120,
+          "description": "A place in Canada: town, park, lake, peak or river, optionally with a province (\"Squamish\", \"Lake Louise, AB\", \"Mont-Tremblant, QC\"). Ignored when lat and lon are given."
+        },
+        "lat": {
+          "type": "number",
+          "minimum": 41.0,
+          "maximum": 84.0,
+          "description": "Latitude in decimal degrees."
+        },
+        "lon": {
+          "type": "number",
+          "minimum": -142.0,
+          "maximum": -52.0,
+          "description": "Longitude in decimal degrees (negative, west)."
+        },
+        "radius_km": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100,
+          "default": 25,
+          "description": "Search radius."
+        },
+        "days": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 31,
+          "default": 7,
+          "description": "Days back from today to include."
+        },
+        "limit": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 20,
+          "default": 10,
+          "description": "Most reports to include."
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+]

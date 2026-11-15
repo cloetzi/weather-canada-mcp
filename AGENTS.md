@@ -16,7 +16,7 @@ Names. Users run it over stdio or from the Docker image on GHCR. No upstream cre
     tool errors
   - `sources/`: everything that fetches ECCC and NRCan data. `HttpClient` (GET only, fixed origins, gzip, size cap,
     retries), `RateLimiter` (GCRA, global), `Cache` (TTL with request coalescing), and a thin client per service
-    returning parsed data (`OgcApi` today); `sources.rb` holds the error classes
+    returning parsed data (`OgcApi`, and `AvalancheCanada` when enabled); `sources.rb` holds the error classes
   - `places/`: `Gazetteer`, offline place names in SQLite (FTS5; plain lat/lon index, since the bundled SQLite has
     no R*Tree), built from NRCan's CSV by `Builder`, downloaded (rubyzip) and built on demand by `Provider`;
     `Locator`, nearest City Page forecast sites
@@ -41,6 +41,11 @@ docker build -t weather-canada-mcp:dev . && bin/docker-smoke-test weather-canada
 
 - **Licence.** Every tool result carries `ATTRIBUTION` (`Tools::Runner` adds it). Alert text is passed through
   verbatim: never summarize, reword or truncate it. Never use ECCC logos or imply endorsement.
+- **Avalanche Canada.** It publishes no open licence, so its tools (`Tools::AvalancheBase` subclasses) exist only
+  behind `AVALANCHE_CANADA_ENABLED`, and its hosts are origins only then. Their results carry their own attribution
+  naming the owning agency, plus the fixed safety note with the official link. Forecast text is passed through with
+  only the HTML stripped; ratings keep Avalanche Canada's values; no coverage is never "low"; no logos or rating
+  graphics. Field reports never include who submitted them. Fixture captures drop `userID` and `username`.
 - **Fair use.** All upstream requests go through `Sources::HttpClient` (rate limiter, User-Agent) and should be
   cached through `Sources::Cache`. Prefer `bbox`, `limit` and `properties` to keep responses small.
 - **Fixtures are real.** Capture them with `bin/capture-fixtures`; never hand-write or edit upstream data.

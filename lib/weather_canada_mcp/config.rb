@@ -21,11 +21,18 @@ module WeatherCanadaMcp
       geomet: "https://geo.weather.gc.ca",
       cgn: "https://ftp.maps.canada.ca" # NRCan Canadian Geographical Names, for the gazetteer
     }.freeze
+    # Avalanche Canada's forecast and mountain weather services: origins only when AVALANCHE_CANADA_ENABLED is true.
+    AVALANCHE_UPSTREAMS = {
+      avalanche: "https://avcan-services-api.prod.avalanche.ca",
+      avalanche_weather: "https://weather.prod.avalanche.ca"
+    }.freeze
+    AVALANCHE_URL_VARIABLES = { avalanche: "AVALANCHE_CANADA_URL", avalanche_weather: "AVALANCHE_CANADA_WEATHER_URL" }.freeze
+    DEFAULT_UPSTREAMS = UPSTREAMS.merge(AVALANCHE_UPSTREAMS).freeze
 
     ATTRIBUTES = %i[
       auth_tokens auth_disabled listen_address path allowed_hosts allowed_origins tools exclude_tools lang
       user_agent_contact cache_scale upstreams timeout max_concurrency requests_per_second max_response_bytes
-      max_download_bytes gazetteer_path log_level log_format
+      max_download_bytes gazetteer_path log_level log_format avalanche_canada_enabled avalanche_canada_field_reports_enabled
     ].freeze
 
     attr_reader(*ATTRIBUTES)
@@ -48,7 +55,9 @@ module WeatherCanadaMcp
       @lang = choice("WEATHER_MCP_LANG", "en", LANGS)
       @user_agent_contact = contact_value
       @cache_scale = float("WEATHER_MCP_CACHE_SCALE", 1.0, 0.0..100.0)
-      @upstreams = UPSTREAMS.to_h { |name, default| [name, upstream_value(name, default)] }.freeze
+      @avalanche_canada_enabled = boolean("AVALANCHE_CANADA_ENABLED", false)
+      @avalanche_canada_field_reports_enabled = field_reports_value
+      @upstreams = upstreams_value
       @timeout = integer("WEATHER_MCP_TIMEOUT", 20, 1..300)
       @max_concurrency = integer("WEATHER_MCP_MAX_CONCURRENCY", 4, 1..16)
       @requests_per_second = float("WEATHER_MCP_REQUESTS_PER_SECOND", 1.0, 0.1..10.0)
@@ -113,9 +122,22 @@ module WeatherCanadaMcp
       DEFAULT_CONTACT
     end
 
+    # Avalanche Canada publishes no open licence, so its services are off unless enabled; field reports need both flags.
+    def field_reports_value
+      enabled = boolean("AVALANCHE_CANADA_FIELD_REPORTS_ENABLED", false)
+      @errors << "AVALANCHE_CANADA_FIELD_REPORTS_ENABLED=true needs AVALANCHE_CANADA_ENABLED=true as well" if enabled && !@avalanche_canada_enabled
+      enabled && @avalanche_canada_enabled
+    end
+
+    # The Avalanche Canada URLs are validated even when disabled, but only become origins once enabled.
+    def upstreams_value
+      eccc = UPSTREAMS.to_h { |name, default| [name, upstream_value("WEATHER_MCP_#{name.upcase}_URL", default)] }
+      avalanche = AVALANCHE_UPSTREAMS.to_h { |name, default| [name, upstream_value(AVALANCHE_URL_VARIABLES.fetch(name), default)] }
+      (@avalanche_canada_enabled ? eccc.merge(avalanche) : eccc).freeze
+    end
+
     # Requests carry no credentials, so any http(s) origin is allowed (a local fake, a caching proxy, a mirror).
-    def upstream_value(name, default)
-      variable = "WEATHER_MCP_#{name.upcase}_URL"
+    def upstream_value(variable, default)
       value = string(variable, default).chomp("/")
       uri = URI(value)
       return value if %w[http https].include?(uri.scheme) && uri.host && uri.userinfo.nil? && uri.query.nil? && uri.fragment.nil?

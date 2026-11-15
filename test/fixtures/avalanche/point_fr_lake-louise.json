@@ -1,0 +1,283 @@
+{
+  "id": "e0bcb512-913b-4bdd-957b-d91fd8ebeedb_afe9ffd14c0637d10e2530857f8e7a8cba0277f33351d3b31c8f37f4111c6ecf",
+  "slug": "e0bcb512-913b-4bdd-957b-d91fd8ebeedb_afe9ffd14c0637d10e2530857f8e7a8cba0277f33351d3b31c8f37f4111c6ecf",
+  "url": "https://avalanche.ca/forecasts/e0bcb512-913b-4bdd-957b-d91fd8ebeedb_afe9ffd14c0637d10e2530857f8e7a8cba0277f33351d3b31c8f37f4111c6ecf",
+  "type": "avalancheforecast",
+  "area": {
+    "id": "afe9ffd14c0637d10e2530857f8e7a8cba0277f33351d3b31c8f37f4111c6ecf",
+    "name": "afe9ffd14c0637d10e2530857f8e7a8cba0277f33351d3b31c8f37f4111c6ecf",
+    "bbox": null
+  },
+  "report": {
+    "id": "e0bcb512-913b-4bdd-957b-d91fd8ebeedb_afe9ffd14c0637d10e2530857f8e7a8cba0277f33351d3b31c8f37f4111c6ecf",
+    "forecaster": "Parcs Canada",
+    "dateIssued": "2026-11-14T18:30:37.400Z",
+    "validUntil": "2026-11-17T23:00:00.000Z",
+    "timezone": "America/Edmonton",
+    "title": "Banff-East Side 93N-Field-Kootenay-Lake Louise-Little Yoho-LLSA-Sunshine-West Side 93N",
+    "highlights": "<h1>Il convient de surveiller l'accumulation de neige plus importante et la formation de plaques de neige dans certains couloirs alpins isolés. Les alpinistes doivent rester vigilants face aux petites plaques de neige formées par le vent, qui peuvent avoir de graves conséquences.</h1><p></p>",
+    "confidence": {
+      "rating": {
+        "value": "low",
+        "display": "Faible"
+      },
+      "statements": [
+        "Nous sommes incertains en raison du nombre limité d'observations sur le terrain."
+      ]
+    },
+    "summaries": [
+      {
+        "type": {
+          "value": "avalanche-summary",
+          "display": "Sommaire des avalanches"
+        },
+        "content": " <p>Les informations sont limitées, mais aucune avalanche n'a été observée récemment ; on n'a constaté que des glissements et des fissures mineurs sur des terrains alpins escarpés. Le principal sujet de préoccupation concernant le manteau neigeux réside dans la présence de petites plaques de neige éoliennes isolées dans les couloirs alpins.</p>"
+      },
+      {
+        "type": {
+          "value": "snowpack-summary",
+          "display": "Sommaire du manteau neigeux"
+        },
+        "content": " <p>Une croûte superficielle jusqu’au sommet des crêtes. Les chutes de neige précédentes, de 5 à 15 cm, associées à de forts vents de sud-ouest à sud-est, ont formé des plaques de vent en zone alpine. Ces plaques de neige et de vent recouvrent 20 à 30 cm de neige facettée aux altitudes les plus élevées. Les observations indiquent des hauteurs de neige pouvant atteindre 80 cm sur les glaciers, tandis que le manteau neigeux reste minime à la limite forestière et en dessous. Dans l’ensemble, le manteau neigeux en ce début de saison est mince et variable.</p>"
+      },
+      {
+        "type": {
+          "value": "weather-summary",
+          "display": "Sommaire météo"
+        },
+        "content": " <p>Pour connaître les conditions météorologiques actuelles, consultez les <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://www.avalanche.ca/map\">stations de télémétrie sur </a>la page de la carte d'Avalanche Canada.</p><p>Pour les prévisions météorologiques, consultez les produits d'Environnement Canada pour <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://weather.gc.ca/city/pages/ab-49_metric_e.html\">Banff</a>, <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://weather.gc.ca/city/pages/bc-11_metric_e.html\">Kootenay</a> et <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://weather.gc.ca/city/pages/bc-68_metric_e.html\">Yoho</a>.</p><p>Pour les cartes météorologiques, les graphiques et les images satellite, consultez <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://www.avalanche.ca/weather/forecast\">Mountain Weather Forecast</a>.</p><p>Pour des prévisions météorologiques techniques, consultez <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://spotwx.com/\">SpotWx</a></p>"
+      }
+    ],
+    "dangerRatings": [
+      {
+        "date": {
+          "value": "2026-11-14T18:30:37Z",
+          "display": "samedi"
+        },
+        "ratings": {
+          "alp": {
+            "display": "Alpin",
+            "rating": {
+              "value": "earlyseason",
+              "display": "Conditions de début de saison"
+            }
+          },
+          "tln": {
+            "display": "Limite forestière",
+            "rating": {
+              "value": "earlyseason",
+              "display": "Conditions de début de saison"
+            }
+          },
+          "btl": {
+            "display": "sous la limite forestière",
+            "rating": {
+              "value": "norating",
+              "display": "Aucun indice"
+            }
+          }
+        }
+      },
+      {
+        "date": {
+          "value": "2026-11-15T18:30:37Z",
+          "display": "dimanche"
+        },
+        "ratings": {
+          "alp": {
+            "display": "Alpin",
+            "rating": {
+              "value": "earlyseason",
+              "display": "Conditions de début de saison"
+            }
+          },
+          "tln": {
+            "display": "Limite forestière",
+            "rating": {
+              "value": "earlyseason",
+              "display": "Conditions de début de saison"
+            }
+          },
+          "btl": {
+            "display": "sous la limite forestière",
+            "rating": {
+              "value": "norating",
+              "display": "Aucun indice"
+            }
+          }
+        }
+      },
+      {
+        "date": {
+          "value": "2026-11-16T18:30:37Z",
+          "display": "lundi"
+        },
+        "ratings": {
+          "alp": {
+            "display": "Alpin",
+            "rating": {
+              "value": "earlyseason",
+              "display": "Conditions de début de saison"
+            }
+          },
+          "tln": {
+            "display": "Limite forestière",
+            "rating": {
+              "value": "earlyseason",
+              "display": "Conditions de début de saison"
+            }
+          },
+          "btl": {
+            "display": "sous la limite forestière",
+            "rating": {
+              "value": "norating",
+              "display": "Aucun indice"
+            }
+          }
+        }
+      }
+    ],
+    "problems": [
+      {
+        "type": {
+          "value": "windslab",
+          "display": "Plaque à vent"
+        },
+        "comment": "<p>De petites plaques de neige soufflée isolées sont possibles sur les pentes raides situées sous le vent en milieu alpin.</p>",
+        "factors": [
+          {
+            "type": {
+              "value": "elevation",
+              "display": "Quelle altitude ?"
+            },
+            "graphic": {
+              "id": "elevation-0-0-1_fr",
+              "url": "https://assets.avalanche.ca/images/Elevation/Elevation-0-0-1_FR.png",
+              "alt": " Alpin"
+            }
+          },
+          {
+            "type": {
+              "value": "aspect",
+              "display": "Quelles pentes ?"
+            },
+            "graphic": {
+              "id": "aspect-1-1-1-1-1-1-1-1_fr",
+              "url": "https://assets.avalanche.ca/images/Compass/compass-1-1-1-1-1-1-1-1_FR.png",
+              "alt": " nord, nord-est, est, sud-est, south, sud-ouest, ouest, nord-ouest"
+            }
+          },
+          {
+            "type": {
+              "value": "likelihood",
+              "display": "Déclenchements d'avalanche ?"
+            },
+            "graphic": {
+              "id": "likelihood-unlikely_fr",
+              "url": "https://assets.avalanche.ca/images/Likelihood/Likelihood-1_FR.png",
+              "alt": " improbable"
+            }
+          },
+          {
+            "type": {
+              "value": "size",
+              "display": "Taille prévue ?"
+            },
+            "graphic": {
+              "id": "size-1-2_fr",
+              "url": "https://assets.avalanche.ca/images/size/Size-1-2_FR.png",
+              "alt": " petite - petite"
+            }
+          }
+        ],
+        "data": {
+          "elevations": [
+            {
+              "value": "alp",
+              "display": "Alpin"
+            }
+          ],
+          "aspects": [
+            {
+              "value": "ne",
+              "display": "nord-est"
+            },
+            {
+              "value": "e",
+              "display": "est"
+            },
+            {
+              "value": "se",
+              "display": "sud-est"
+            },
+            {
+              "value": "nw",
+              "display": "nord-ouest"
+            },
+            {
+              "value": "w",
+              "display": "ouest"
+            },
+            {
+              "value": "sw",
+              "display": "sud-ouest"
+            },
+            {
+              "value": "s",
+              "display": "s"
+            },
+            {
+              "value": "n",
+              "display": "nord"
+            }
+          ],
+          "aspectElevations": [
+            "n_alp",
+            "ne_alp",
+            "e_alp",
+            "se_alp",
+            "nw_alp",
+            "w_alp",
+            "sw_alp",
+            "s_alp"
+          ],
+          "likelihood": {
+            "value": "unlikely",
+            "display": "unlikely"
+          },
+          "expectedSize": {
+            "min": "1.0",
+            "max": "1.5"
+          }
+        }
+      }
+    ],
+    "terrainAndTravelAdvice": [
+      "Faites attention aux zones chargeés de neige transportée par le vent, en particulier près des crêtes et des convexités."
+    ],
+    "message": null,
+    "season": null,
+    "comment": null,
+    "isFullTranslation": true
+  },
+  "version": 1,
+  "owner": {
+    "value": "parks-byk",
+    "display": "Parcs Canada",
+    "isExternal": false,
+    "url": "Parcs Canada"
+  },
+  "notifications": [
+    {
+      "type": "info",
+      "content": "<p>De novembre à mai, des secteurs doivent fermer par intermittence pour permettre le déclenchement préventif d’avalanches. Pour en savoir plus et consulter des cartes, cliquez sur le lien <a href=\"https://www.pc.gc.ca/fr/pn-np/mtn/securiteenmontagne-mountainsafety/avalanche/declenchementpreventif-controlareas\">ici</a>.</p>"
+    },
+    {
+      "type": "info",
+      "content": "<p>Traduction en cours</p>"
+    }
+  ],
+  "media": {
+    "images": []
+  }
+}
