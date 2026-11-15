@@ -24,10 +24,11 @@ module WeatherCanadaMCP
 
     attr_reader :config, :logger, :tools
 
-    def initialize(config, logger: Logger.new(level: config.log_level, format: config.log_format), clock: -> { Time.now })
+    def initialize(config, logger: Logger.new(level: config.log_level, format: config.log_format), clock: -> { Time.now }, rate_limiters: nil)
       @config = config
       @logger = logger
       @clock = clock
+      @rate_limiters = rate_limiters
       registry = Tools::Registry.new(config)
       raise Error, registry.unknown_message if registry.unknown_names.any?
 
@@ -39,7 +40,7 @@ module WeatherCanadaMCP
       @http ||= Sources::HttpClient.new(
         origins: config.upstreams, user_agent: config.user_agent, timeout: config.timeout,
         max_concurrency: config.max_concurrency, max_body_bytes: config.max_download_bytes,
-        rate_limiters: Sources::RateLimiters.new(rate: config.requests_per_second), logger:
+        rate_limiters: @rate_limiters || Sources::RateLimiters.new(rate: config.requests_per_second), logger:
       )
     end
 

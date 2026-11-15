@@ -104,4 +104,35 @@ class ReliabilityTest < Minitest::Test
     assert_equal "/geomet RADAR_1KM_RRAI", resource
     assert_equal "/collections/swob-realtime/items/{id}", WeatherCanadaMCP::Sources::RequestLog.resource("/collections/swob-realtime/items/1234?f=json")
   end
+
+  # Limiters whose clock stands still and whose sleeps are instant: the waits the limiter hands out grow as if real.
+  def instant_limiters = WeatherCanadaMCP::Sources::RateLimiters.new(rate: 1, clock: -> { 0.0 }, sleeper: ->(_) {})
+
+  def test_simultaneous_cold_calls_queue_for_the_rate_limit_instead_of_being_refused
+    results = nil
+    with_fake_eccc do |fake|
+      @app = WeatherCanadaMCP::Application.new(WeatherCanadaMCP::Config.from_env(env(fake)), logger: null_logger,
+                                                                                             clock: lambda {
+                                                                                               GEOMET_CAPTURED_AT
+                                                                                             }, rate_limiters: instant_limiters)
+      points = [50.11, 50.12, 50.13].map { |lat| { lat:, lon: -122.96 } }
+      results = points.map { |point| Async { call_tool(@app, "get_snow_outlook", **point) } }.map(&:wait)
+      # 36 snow requests and a few more queue behind a burst of 12: over 20 seconds of waiting.
+      assert_operator fake.requests.size, :>, 33
+    end
+
+    assert_equal [false] * 3, results.map(&:last), results.map(&:first).inspect
+  end
+
+  def test_a_wait_longer_than_the_time_left_to_the_deadline_is_still_refused
+    limiter = WeatherCanadaMCP::Sources::RateLimiter.new(rate: 1, clock: -> { 0.0 }, sleeper: ->(_) {})
+    43.times { limiter.acquire(max_wait: 100) }
+    budget = WeatherCanadaMCP::Sources::Trace.around(deadline: Process.clock_gettime(Process::CLOCK_MONOTONIC) + 45) do
+      WeatherCanadaMCP::Sources::Trace.wait_budget
+    end
+
+    assert_in_delta 40, budget, 2
+    assert_raises(WeatherCanadaMCP::Sources::Busy) { limiter.acquire(max_wait: budget) }
+    assert_nil WeatherCanadaMCP::Sources::Trace.wait_budget
+  end
 end

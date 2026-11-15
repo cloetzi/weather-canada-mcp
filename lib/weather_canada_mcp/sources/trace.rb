@@ -12,9 +12,14 @@ module WeatherCanadaMCP
       # with its query, never logged).
       Stale = Data.define(:source, :at, :key)
 
+      # Time kept back from a call's deadline for the request itself once its rate slot comes.
+      REQUEST_MARGIN = 5
+
       attr_reader :requests, :cache_hits, :stale
 
-      def initialize
+      # deadline is when the call is stopped, on the monotonic clock.
+      def initialize(deadline: nil)
+        @deadline = deadline
         @requests = 0
         @cache_hits = 0
         @stale = []
@@ -24,20 +29,30 @@ module WeatherCanadaMCP
         def current = Fiber[KEY]
 
         # Runs the block with a new trace, which it returns, then restores the previous one.
-        def around
+        def around(deadline: nil)
           previous = current
-          trace = Fiber[KEY] = new
+          trace = Fiber[KEY] = new(deadline:)
           yield trace
         ensure
           Fiber[KEY] = previous
         end
 
         def request = current&.request!
+
+        # The longest the call can still wait for a rate limiter slot, or nil when it has no deadline.
+        def wait_budget = current&.wait_budget
         def hit = current&.hit!
         def stale(source, at, key) = current&.stale!(source, at, key)
       end
 
       def request! = @requests += 1
+
+      def wait_budget
+        return unless @deadline
+
+        [@deadline - Process.clock_gettime(Process::CLOCK_MONOTONIC) - REQUEST_MARGIN, 0].max
+      end
+
       def hit! = @cache_hits += 1
 
       def stale!(source, at, key)

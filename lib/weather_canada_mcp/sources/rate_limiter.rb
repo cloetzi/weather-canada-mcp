@@ -9,7 +9,8 @@ module WeatherCanadaMCP
     # all waking together. Fibers only switch while sleeping, so the reservation needs no lock under one reactor;
     # the mutex covers callers on other threads (tests, the CLI).
     class RateLimiter
-      # The longest a request may wait for its slot; beyond it the caller gets Sources::Busy at once.
+      # The longest a request may wait for its slot when its caller names no limit (a tool call names the time left until
+      # its deadline); beyond it the caller gets Sources::Busy at once.
       MAX_WAIT = 20
 
       def initialize(rate:, burst: 1, clock: -> { Process.clock_gettime(Process::CLOCK_MONOTONIC) }, sleeper: method(:sleep))
