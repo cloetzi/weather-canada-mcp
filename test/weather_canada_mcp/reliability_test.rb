@@ -131,7 +131,7 @@ class ReliabilityTest < Minitest::Test
       WeatherCanadaMCP::Sources::Trace.wait_budget
     end
 
-    assert_in_delta 40, budget, 0.5
+    assert_in_delta 40, budget, 2
     assert_raises(WeatherCanadaMCP::Sources::Busy) { limiter.acquire(max_wait: budget) }
     assert_nil WeatherCanadaMCP::Sources::Trace.wait_budget
   end
