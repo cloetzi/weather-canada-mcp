@@ -38,6 +38,22 @@ what a configuration enables.
 | `WEATHER_MCP_CACHE_SCALE` | `1.0` | Multiplier on every cache TTL (`0` disables caching). Defaults: forecasts 10 min, alerts 5 min, the forecast site list 24 h. |
 | `WEATHER_MCP_API_URL`, `WEATHER_MCP_DATAMART_URL`, `WEATHER_MCP_GEOMET_URL`, `WEATHER_MCP_CGN_URL` | official services | Point a service at a mirror, caching proxy or local fake. Logged as a warning when not the default. |
 
+## Avalanche Canada (opt-in)
+
+Off by default. Avalanche Canada publishes no open licence, and its Terms of Use forbid reproducing its content
+without prior written consent, so turn these on only where you have that consent or your use is otherwise
+permitted. While they are off, the tool manifest is unchanged and no request goes to Avalanche Canada.
+
+| Variable | Default | Purpose |
+| --- | --- | --- |
+| `AVALANCHE_CANADA_ENABLED` | `false` | Adds `get_avalanche_forecast`, `get_avalanche_danger_overview` and `get_mountain_weather_stations`, and allows requests to the two URLs below. |
+| `AVALANCHE_CANADA_FIELD_REPORTS_ENABLED` | `false` | Also adds `get_field_reports` (Mountain Information Network reports). Needs `AVALANCHE_CANADA_ENABLED=true`. Submitters' names and ids are never returned, and contact details in the text are removed. |
+| `AVALANCHE_CANADA_URL` | `https://avcan-services-api.prod.avalanche.ca` | Forecasts, forecast metadata and field reports. |
+| `AVALANCHE_CANADA_WEATHER_URL` | `https://weather.prod.avalanche.ca` | Mountain weather stations and their measurements. |
+
+These requests share the rate limit, concurrency limit and timeout above. Cache times: forecasts 20 min (per point,
+rounded to 0.01°), forecast metadata 1 h, the station list 24 h, station measurements 10 min, field reports 15 min.
+
 ## Place names
 
 | Variable | Default | Purpose |

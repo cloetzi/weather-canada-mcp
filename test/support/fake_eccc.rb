@@ -10,8 +10,8 @@ require "uri"
 require "stringio"
 require "zip"
 
-# Local stand-in for every upstream (api.weather.gc.ca, dd.weather.gc.ca, geo.weather.gc.ca, ftp.maps.canada.ca),
-# answering from the captured fixtures in test/fixtures. Records every request; routes can be overridden per test.
+# Local stand-in for every upstream (api.weather.gc.ca, dd.weather.gc.ca, geo.weather.gc.ca, ftp.maps.canada.ca and
+# Avalanche Canada's services), answering from the captured fixtures in test/fixtures. Records every request; routes can be overridden per test.
 class FakeEccc
   Request = Data.define(:path, :query, :headers)
 
@@ -38,6 +38,16 @@ class FakeEccc
     "swob-realtime" => "msc_id-value", "hydrometric-realtime" => "STATION_NUMBER",
     "hydrometric-monthly-mean" => "STATION_NUMBER", "aqhi-forecasts-realtime" => "location_id"
   }.freeze
+  # Avalanche Canada paths => fixture. Forecast points other than Lake Louise get the empty product captured for Toronto.
+  AVALANCHE_FIXTURES = [
+    [%r{\A/forecasts/(en|fr)/products/point\z}, lambda { |query, lang|
+      "avalanche/point_#{lang}_#{query["lat"] == "51.42" ? "lake-louise" : "toronto"}.json"
+    }],
+    [%r{\A/forecasts/(en|fr)/metadata\z}, ->(_, lang) { "avalanche/metadata_#{lang}.json" }],
+    [%r{\A/stations\z}, ->(*) { "avalanche/stations.json" }],
+    [%r{\A/stations/(\d+)/measurements\z}, ->(_, id) { "avalanche/measurements_#{id}.json" }],
+    [%r{\A/min/submissions\z}, ->(*) { "avalanche/min-submissions_farnham.json" }]
+  ].freeze
 
   # A one-member ZIP archive (deflated) of the real CGN sample, shaped like NRCan's download.
   def self.cgn_zip(csv = fixture("cgn/cgn_sample.csv"))
@@ -90,12 +100,22 @@ class FakeEccc
 
   def fixture_for(request)
     return :cgn if request.path == CGN_PATH
+    return avalanche_fixture(request) if AVALANCHE_FIXTURES.any? { |pattern, _| pattern.match?(request.path) }
 
     collection, item = request.path.match(%r{\A/collections/([\w-]+)/items(?:/([\w-]+))?\z})&.captures
     return keyed_fixture("citypage", item) if collection == "citypageweather-realtime" && item
     return alerts_fixture(request.query["bbox"]) if collection == "weather-alerts"
 
     FIXED_FIXTURES[collection] || (keyed_fixture(collection, request.query[KEYED_FIXTURES[collection]]) if KEYED_FIXTURES.key?(collection))
+  end
+
+  def avalanche_fixture(request)
+    AVALANCHE_FIXTURES.each do |pattern, file|
+      match = pattern.match(request.path) or next
+      path = file.call(request.query, *match.captures)
+      return path if File.exist?(File.join(FIXTURES, path))
+    end
+    nil
   end
 
   # The fixture captured for one station, location or site, named after its id.

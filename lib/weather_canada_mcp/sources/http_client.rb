@@ -15,8 +15,8 @@ module WeatherCanadaMcp
     # per origin, a shared concurrency limit and rate limiter, gzip, an overall deadline per attempt, a cap on the
     # decoded body, and bounded retries on transient failures. Only GET exists: the server is read-only.
     #
-    # Callers name an origin (:api, :datamart, :geomet, :cgn) and pass a path with its query; they cannot reach
-    # any other host.
+    # Callers name an origin (:api, :datamart, :geomet, :cgn, and :avalanche, :avalanche_weather when enabled) and pass a
+    # path with its query; they cannot reach any other host.
     class HttpClient
       RETRY_STATUSES = [429, 502, 503, 504].freeze
       MAX_RETRY_AFTER = 10
@@ -107,7 +107,7 @@ module WeatherCanadaMcp
       def transport_error(error, host, timeout)
         case error
         when Async::TimeoutError, IO::TimeoutError
-          TransportError.new("#{host} did not respond within #{timeout} seconds. ECCC services are sometimes slow; retrying later may help.")
+          TransportError.new("#{host} did not respond within #{timeout} seconds. The service is sometimes slow; retrying later may help.")
         when OpenSSL::SSL::SSLError
           reason = error.message[/[^:]+\z/].to_s.strip[0, 120]
           TransportError.new("The TLS connection to #{host} failed (#{reason}). Check the CA certificates, the system clock " \
@@ -156,8 +156,8 @@ module WeatherCanadaMcp
 
       def backoff(attempt) = (@base_delay * (2**(attempt - 1))) + rand(0.0..@base_delay)
 
-      # Logs keep the collection but never the query (a bbox) or an item id (a forecast site): both reveal locations.
-      def path_only(path) = path.split("?", 2).first.sub(%r{/items/.*\z}, "/items/{id}")
+      # Logs keep the collection but never the query (a bbox, a point) or an item or station id: each reveals a location.
+      def path_only(path) = path.split("?", 2).first.sub(%r{/items/.*\z}, "/items/{id}").sub(%r{/stations/[^/]+}, "/stations/{id}")
     end
   end
 end

@@ -14,7 +14,7 @@ module WeatherCanadaMcp
         stdio         Serve MCP over stdin/stdout
         check-config [http|stdio]
                       Validate configuration for a transport (default http), then exit
-        tools         Print every tool, including disabled ones, as JSON
+        tools         Print every tool this configuration can serve (including ones WEATHER_MCP_TOOLS hides) as JSON
         gazetteer update
                       Download NRCan's Canadian Geographical Names and (re)build the place-name database
         gazetteer info
@@ -32,7 +32,7 @@ module WeatherCanadaMcp
       when "http" then serve_http
       when "stdio" then serve_stdio
       when "check-config" then check_config(argv[1] || "http")
-      when "tools" then puts JSON.pretty_generate(Tools.all.map(&:manifest))
+      when "tools" then puts JSON.pretty_generate(Tools.available(Config.from_env(credentials: false)).map(&:manifest))
       when "gazetteer" then gazetteer(argv[1])
       when "version", "--version", "-v" then puts VERSION
       when "help", "--help", "-h" then puts USAGE
@@ -117,7 +117,7 @@ module WeatherCanadaMcp
 
     def warn_upstreams(app)
       app.config.upstreams.each do |name, url|
-        next if url == Config::UPSTREAMS[name]
+        next if url == Config::DEFAULT_UPSTREAMS[name]
 
         app.logger.warn("non_default_upstream", upstream: name, url:, message: "requests go to this URL instead of the official service")
       end

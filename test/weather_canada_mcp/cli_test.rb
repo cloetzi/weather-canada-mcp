@@ -8,7 +8,7 @@ class CLITest < Minitest::Test
 
   # Runs bin/weather-canada-mcp with only the given settings, ignoring any in the developer's environment.
   def cli(*, **values)
-    cleared = ENV.keys.grep(/\AWEATHER_MCP_/).to_h { |key| [key, nil] }
+    cleared = ENV.keys.grep(/\A(WEATHER_MCP|AVALANCHE_CANADA)_/).to_h { |key| [key, nil] }
     settings = { "WEATHER_MCP_GAZETTEER_PATH" => gazetteer_path, **values.transform_keys(&:to_s) }
     Open3.capture3(cleared.merge(settings), RbConfig.ruby, BIN, *)
   end
