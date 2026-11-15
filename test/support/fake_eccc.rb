@@ -7,7 +7,8 @@ require "json"
 require "protocol/http/response"
 require "socket"
 require "uri"
-require "zlib"
+require "stringio"
+require "zip"
 
 # Local stand-in for every upstream (api.weather.gc.ca, dd.weather.gc.ca, geo.weather.gc.ca, ftp.maps.canada.ca),
 # answering from the captured fixtures in test/fixtures. Records every request; routes can be overridden per test.
@@ -27,14 +28,10 @@ class FakeEccc
 
   # A one-member ZIP archive (deflated) of the real CGN sample, shaped like NRCan's download.
   def self.cgn_zip(csv = fixture("cgn/cgn_sample.csv"))
-    name = "cgn_canada_csv_eng.csv"
-    data = Zlib::Deflate.new(Zlib::DEFAULT_COMPRESSION, -Zlib::MAX_WBITS).then { |z| z.deflate(csv, Zlib::FINISH).tap { z.close } }
-    crc = Zlib.crc32(csv)
-    local = [0x04034b50, 20, 0, 8, 0, 0, crc, data.bytesize, csv.bytesize, name.bytesize, 0].pack("VvvvvvVVVvv") + name
-    central = [0x02014b50, 20, 20, 0, 8, 0, 0, crc, data.bytesize, csv.bytesize, name.bytesize, 0, 0, 0, 0, 0, 0]
-              .pack("VvvvvvvVVVvvvvvVV") + name
-    eocd = [0x06054b50, 0, 0, 1, 1, central.bytesize, local.bytesize + data.bytesize, 0].pack("VvvvvVVv")
-    (local + data + central + eocd).b
+    Zip::OutputStream.write_buffer(StringIO.new) do |zip|
+      zip.put_next_entry("cgn_canada_csv_eng.csv")
+      zip.write(csv)
+    end.string.b
   end
 
   def initialize

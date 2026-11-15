@@ -26,13 +26,13 @@ what a configuration enables.
 | `WEATHER_MCP_LANG` | `en` | Default language of text fields (`en` or `fr`); each call can override it with `lang`. |
 | `WEATHER_MCP_MAX_RESPONSE_BYTES` | `60000` | Largest tool result. A larger result is replaced by an error asking for less, never cut. |
 
-## Upstream requests
+## Requests to ECCC and NRCan
 
 | Variable | Default | Purpose |
 | --- | --- | --- |
 | `WEATHER_MCP_USER_AGENT_CONTACT` | repository URL | URL or email appended to the User-Agent, so ECCC can reach whoever runs the server. |
 | `WEATHER_MCP_REQUESTS_PER_SECOND` | `1.0` | Sustained rate for all upstream requests together (short bursts of 4 are allowed). |
-| `WEATHER_MCP_MAX_CONCURRENCY` | `4` | Upstream requests in flight at once. |
+| `WEATHER_MCP_MAX_CONCURRENCY` | `4` | Requests to ECCC and NRCan in flight at once. |
 | `WEATHER_MCP_TIMEOUT` | `20` | Seconds per upstream request attempt. |
 | `WEATHER_MCP_MAX_DOWNLOAD_BYTES` | `20971520` | Largest upstream response read, after decompression. |
 | `WEATHER_MCP_CACHE_SCALE` | `1.0` | Multiplier on every cache TTL (`0` disables caching). Defaults: forecasts 10 min, alerts 5 min, the forecast site list 24 h. |

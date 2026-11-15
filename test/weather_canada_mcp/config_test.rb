@@ -16,7 +16,7 @@ class ConfigTest < Minitest::Test
     config = Config.from_env({ "WEATHER_MCP_AUTH_TOKEN" => TestHelpers::AUTH_TOKEN })
 
     assert_equal Config::UPSTREAMS, config.upstreams
-    assert_equal WeatherCanadaMcp::ListenAddress.new(host: "127.0.0.1", port: 8080), config.listen_address
+    assert_equal WeatherCanadaMcp::Server::ListenAddress.new(host: "127.0.0.1", port: 8080), config.listen_address
     assert_equal "/mcp", config.path
     assert_equal "en", config.lang
     assert_in_delta 1.0, config.requests_per_second
