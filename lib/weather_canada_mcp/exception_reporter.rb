@@ -6,7 +6,7 @@ module WeatherCanadaMcp
   # The MCP SDK's exception_reporter, called for exceptions the server caught outside a tool's own handling
   # (ToolRunner rescues those): invalid requests, failing protocol handlers, notifications that could not be sent.
   #
-  # Neither the exception message nor the SDK's context is logged: messages can quote request arguments or Garmin
+  # Neither the exception message nor the SDK's context is logged: messages can quote request arguments (locations) or
   # responses, and the context carries the whole JSON-RPC request. Only the class, the JSON-RPC method, the tool
   # name, the SDK's notification label and the first file:line in lib/ are, each shaped like an identifier.
   class ExceptionReporter

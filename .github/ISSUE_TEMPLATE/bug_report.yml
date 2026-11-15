@@ -4,7 +4,7 @@ labels: [bug]
 body:
   - type: markdown
     attributes:
-      value: Never paste your Garmin API key, MCP tokens or personal Garmin data. Redact logs before posting.
+      value: Never paste your MCP tokens. Redact locations from logs if you prefer not to share them.
   - type: textarea
     id: what
     attributes:
@@ -16,7 +16,7 @@ body:
     id: version
     attributes:
       label: Image tag or version
-      placeholder: ghcr.io/cloetzi/garmin-connect-personal-api-mcp:0.1.0
+      placeholder: ghcr.io/cloetzi/weather-canada-mcp:0.1.0
     validations:
       required: true
   - type: input

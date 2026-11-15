@@ -1,6 +1,6 @@
 # Contributing
 
-Thanks for helping! Bug reports, spec refinements and fixes are all welcome.
+Thanks for helping! Bug reports, new data sources and fixes are all welcome.
 
 ## Setup
 
@@ -8,15 +8,19 @@ Requires Ruby 4.0 (see `.ruby-version`) and, for the image, Docker.
 
 ```sh
 bundle install
-bundle exec rake            # RuboCop and the test suite
-bin/weather-canada-mcp tools        # print the generated tool catalog
+bundle exec rake                 # RuboCop and the test suite
+bin/weather-canada-mcp tools     # print the tool manifest
 ```
 
-Run the server locally against Garmin:
+Run the server locally over stdio (no settings needed) or HTTP:
 
 ```sh
-GARMIN_PERSONAL_API_KEY=... WEATHER_MCP_AUTH_TOKEN=$(openssl rand -hex 32) bin/weather-canada-mcp
+bin/weather-canada-mcp stdio
+WEATHER_MCP_AUTH_TOKEN=$(openssl rand -hex 32) bin/weather-canada-mcp
 ```
+
+The first place-name lookup downloads NRCan's Canadian Geographical Names (about 16 MB) and builds the SQLite
+gazetteer (about 60 MB, 20 seconds). Run `bin/weather-canada-mcp gazetteer update` to do that up front.
 
 Build and smoke-test the image:
 
@@ -25,22 +29,13 @@ docker build -t weather-canada-mcp:dev .
 bin/docker-smoke-test weather-canada-mcp:dev
 ```
 
-Tests never call Garmin: `test/support/fake_garmin.rb` runs a local stand-in. Never commit real responses
-from your account; they are personal health data. Write fixtures by hand.
+## Fixtures
 
-## Garmin API changes
-
-`data/openapi.json` is fetched from Garmin's developer site and must not be edited by hand. To pick up a
-new version:
-
-```sh
-bin/fetch-openapi           # download and extract the spec
-bin/spec-diff               # summarize what changed
-```
-
-Then update `data/overrides.yml` until `bundle exec rake` passes, and regenerate the tool snapshot with
-`UPDATE_SNAPSHOTS=1 bundle exec rake test`. If you use Claude Code, the `sync-garmin-openapi` skill
-(`.claude/skills/`) does all of this. See [docs/overrides.md](docs/overrides.md) for the override format.
+Tests never call ECCC: `test/support/fake_eccc.rb` serves the files in `test/fixtures/` on a local port.
+Fixtures are real responses captured with `bin/capture-fixtures`; never write or edit them by hand. When an
+upstream changes shape, recapture (`bin/capture-fixtures api/` for one group), review the diff, and fix the tests.
+After changing a tool's name, description or schema, regenerate the manifest snapshot with
+`UPDATE_SNAPSHOTS=1 bundle exec rake test` and review it like code.
 
 ## Commits and pull requests
 
@@ -55,7 +50,7 @@ Then update `data/overrides.yml` until `bundle exec rake` passes, and regenerate
 ## Releases
 
 Maintainers merge the release PR that release-please keeps open. That creates the tag and GitHub release and
-publishes `ghcr.io/cloetzi/garmin-connect-personal-api-mcp:<version>`, `:<major>.<minor>` and `:latest`.
+publishes `ghcr.io/cloetzi/weather-canada-mcp:<version>`, `:<major>.<minor>` and `:latest`.
 Every push to `main` also publishes `:edge`.
 
 By contributing you agree to follow the [Code of Conduct](CODE_OF_CONDUCT.md) and that your contributions are

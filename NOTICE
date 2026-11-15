@@ -1,0 +1,16 @@
+weather-canada-mcp
+Copyright 2026 cloetzi
+
+This product is licensed under the Apache License, Version 2.0 (see LICENSE).
+
+This is an unofficial tool. It is not affiliated with, endorsed by or supported by Environment and Climate Change
+Canada (ECCC) or Natural Resources Canada (NRCan).
+
+Weather data: Data Source: Environment and Climate Change Canada, used under the ECCC Data Servers End-use
+Licence (https://eccc-msc.github.io/open-data/licence/readme_en/). Alert text is reproduced as issued.
+
+Place names: Canadian Geographical Names, Natural Resources Canada, used under the Open Government Licence -
+Canada (https://open.canada.ca/en/open-government-licence-canada). The place-name database built by this
+software, and included in its Docker image, contains information licensed under that licence.
+
+Test fixtures in test/fixtures/ are responses captured from the services above, under the same licences.

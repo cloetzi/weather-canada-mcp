@@ -5,5 +5,5 @@
 ## How it was tested
 
 - [ ] `bundle exec rake` passes
-- [ ] Docs updated (configuration, overrides, README tool table) if behavior or settings changed
-- [ ] No real Garmin data, keys or tokens in code, fixtures or logs
+- [ ] Docs updated (docs/configuration.md, README tool table, `test/fixtures/tools.json`) if tools or settings changed
+- [ ] Fixtures are real captured responses (`bin/capture-fixtures`), never hand-written; no tokens in code or logs

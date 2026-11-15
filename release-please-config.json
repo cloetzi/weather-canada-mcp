@@ -6,7 +6,7 @@
   "include-component-in-tag": false,
   "packages": {
     ".": {
-      "package-name": "garmin-connect-personal-api-mcp",
+      "package-name": "weather-canada-mcp",
       "version-file": "lib/weather_canada_mcp/version.rb",
       "changelog-path": "CHANGELOG.md"
     }

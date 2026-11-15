@@ -1,0 +1,28 @@
+# Example deployment. Create the token file first:
+#   mkdir -p secrets
+#   openssl rand -hex 32 > secrets/mcp_auth_token
+#   chmod 700 secrets && sudo chown 65532 secrets/*  # Linux: the container runs as uid 65532 and must read it
+#   chmod 400 secrets/*
+services:
+  weather-canada-mcp:
+    image: ghcr.io/cloetzi/weather-canada-mcp:latest
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8080:8080"
+    environment:
+      WEATHER_MCP_AUTH_TOKEN_FILE: /run/secrets/mcp_auth_token
+      # Lets ECCC reach whoever runs this server (appended to the User-Agent):
+      # WEATHER_MCP_USER_AGENT_CONTACT: you@example.com
+      # Names other containers or hosts use to reach this server, besides localhost:
+      # WEATHER_MCP_ALLOWED_HOSTS: weather-mcp,weather-mcp.lan
+    secrets:
+      - mcp_auth_token
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    mem_limit: 256m
+    pids_limit: 64
+
+secrets:
+  mcp_auth_token:
+    file: ./secrets/mcp_auth_token

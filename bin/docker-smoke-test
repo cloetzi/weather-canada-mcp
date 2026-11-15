@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Smoke-tests a built image the way users run it: hardened container, health check, bearer auth, Host checks, stdio.
-# No Garmin credentials are needed; tool calls against Garmin are not exercised.
+# Tool calls against ECCC are not exercised.
 #
 # Usage: bin/docker-smoke-test IMAGE
 set -euo pipefail
@@ -21,16 +21,17 @@ fail() { echo "FAIL: $*" >&2; docker logs "$name" >&2 2>/dev/null || true; exit 
 pass() { echo "ok - $*"; }
 
 if docker run --rm "${hardening[@]}" "$image" check-config >/dev/null 2>&1; then
-  fail "starts without credentials"
+  fail "starts over HTTP without an MCP token"
 fi
-pass "refuses to start without credentials"
+pass "refuses to serve HTTP without an MCP token"
 
-docker run --rm "${hardening[@]}" -e GARMIN_PERSONAL_API_KEY=smoke-test-key "$image" check-config stdio >/dev/null ||
-  fail "check-config stdio requires an MCP token"
+config="$(docker run --rm "${hardening[@]}" "$image" check-config stdio)" || fail "check-config stdio requires an MCP token"
 pass "check-config stdio needs no MCP token"
+echo "$config" | grep -q "Place-name database: /app/data/gazetteer.sqlite3" || fail "no place-name database in the image: $config"
+pass "place-name database is built into the image"
 
 docker run -d --name "$name" "${hardening[@]}" -p "127.0.0.1:${port}:8080" \
-  -e GARMIN_PERSONAL_API_KEY=smoke-test-key -e WEATHER_MCP_AUTH_TOKEN="$token" "$image" >/dev/null
+  -e WEATHER_MCP_AUTH_TOKEN="$token" "$image" >/dev/null
 
 for _ in $(seq 1 30); do
   curl -sf "$url/healthz" >/dev/null && break
@@ -55,7 +56,7 @@ status="$(curl -s -o /dev/null -w '%{http_code}' "${mcp_headers[@]}" -H "authori
 pass "rejects a foreign Host header"
 
 tools="$(curl -sf "${mcp_headers[@]}" -H "authorization: Bearer $token" "$url/mcp" -d "$list" | grep -o '"name":"[a-z0-9_]*"' | wc -l | tr -d ' ')"
-[ "$tools" -gt 10 ] || fail "tools/list returned $tools tools"
+[ "$tools" -ge 3 ] || fail "tools/list returned $tools tools"
 pass "tools/list returns $tools tools"
 
 user="$(docker exec "$name" id -u)"
@@ -68,7 +69,7 @@ pass "shuts down gracefully"
 
 docker rm "$name" >/dev/null
 docker run -d --name "$name" "${hardening[@]}" -e WEATHER_MCP_HOST=127.0.0.2 \
-  -e GARMIN_PERSONAL_API_KEY=smoke-test-key -e WEATHER_MCP_AUTH_TOKEN="$token" "$image" >/dev/null
+  -e WEATHER_MCP_AUTH_TOKEN="$token" "$image" >/dev/null
 for _ in $(seq 1 30); do
   docker exec "$name" ruby /app/bin/healthcheck 2>/dev/null && break
   sleep 1
@@ -78,6 +79,6 @@ pass "health check follows WEATHER_MCP_HOST"
 docker rm -f "$name" >/dev/null
 
 response="$(printf '%s\n' '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2025-11-25","capabilities":{},"clientInfo":{"name":"smoke","version":"1"}}}' |
-  docker run -i --rm "${hardening[@]}" -e GARMIN_PERSONAL_API_KEY=smoke-test-key "$image" stdio 2>/dev/null)"
+  docker run -i --rm "${hardening[@]}" "$image" stdio 2>/dev/null)"
 echo "$response" | grep -q '"serverInfo"' || fail "stdio initialize: $response"
 pass "stdio transport"

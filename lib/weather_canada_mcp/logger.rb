@@ -5,7 +5,7 @@ require "time"
 
 module WeatherCanadaMcp
   # Minimal structured logger writing to stderr (stdout belongs to the stdio transport).
-  # Callers pass fields, never secrets: the API key, Garmin tokens and MCP tokens are never logged.
+  # Callers pass fields, never secrets or tool arguments: MCP tokens and the locations people ask about are never logged.
   class Logger
     LEVELS = { "debug" => 0, "info" => 1, "warn" => 2, "error" => 3 }.freeze
 

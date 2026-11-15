@@ -30,7 +30,7 @@ class ListenAddressTest < Minitest::Test
 
   def test_rejects_anything_else
     ["[127.0.0.1]", "[localhost]", "[::1", "::1]", "[[::1]]", "10.0.0.0/8", "fe80::1%eth0", "300.1.1.1", "1.2.3",
-     "host:8080", "http://localhost", "-garmin", "garmin-", "garmin..mcp", "a b", "#{"a" * 64}.example"].each do |host|
+     "host:8080", "http://localhost", "-weather", "weather-", "weather..mcp", "a b", "#{"a" * 64}.example"].each do |host|
       assert_invalid_host(host)
     end
   end
