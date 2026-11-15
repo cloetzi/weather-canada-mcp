@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module WeatherCanadaMCP
-  # Everything that fetches ECCC and NRCan data: the shared HTTP client, the global rate limiter, the TTL cache and
+  # Everything that fetches ECCC and NRCan data: the shared HTTP client, the rate limiters (one per provider), the TTL cache and
   # a thin client per service, which returns parsed Ruby data and raises the errors below.
   module Sources
     # Base of every failure fetching data. Messages are written for the model and never quote a response body.

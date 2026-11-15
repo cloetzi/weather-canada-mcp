@@ -2,6 +2,8 @@
 
 require_relative "../../test_helper"
 
+class RateLimiterInterrupt < StandardError; end
+
 class RateLimiterTest < Minitest::Test
   def limiter(rate:, burst: 1)
     @now = 0.0
@@ -76,6 +78,22 @@ class RateLimiterTest < Minitest::Test
     assert_equal [0.0] * 12, Array.new(12) { limiters.acquire(:eccc_api) }
     assert_in_delta 1.0, limiters.acquire(:eccc_api), 0.001
   end
-end
 
-class RateLimiterInterrupt < StandardError; end
+  def test_a_stopped_caller_does_not_give_back_a_slot_a_later_caller_queued_behind
+    @now = 0.0
+    limiter = nil
+    stopped = false
+    sleeper = lambda do |_|
+      next if stopped
+
+      stopped = true
+      limiter.acquire # a second caller reserves the slot after this one
+      raise RateLimiterInterrupt
+    end
+    limiter = WeatherCanadaMCP::Sources::RateLimiter.new(rate: 1, clock: -> { @now }, sleeper:)
+    limiter.acquire
+    assert_raises(RateLimiterInterrupt) { limiter.acquire }
+
+    assert_in_delta 3.0, limiter.acquire(max_wait: 10), 0.001, "slots 0, 1 and 2 are spent"
+  end
+end

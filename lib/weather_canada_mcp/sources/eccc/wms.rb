@@ -45,7 +45,7 @@ module WeatherCanadaMCP
           path = "#{PATH}?#{URI.encode_www_form(query(layer, lat, lon, time))}"
           @cache.fetch("geomet:#{path}", ttl:) do
             body = fetch(path)
-            Cache::Weighed.new(parse(body, layer), body.bytesize)
+            Cache::Weighed.parsed(parse(body, layer), body)
           end
         end
 

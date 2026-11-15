@@ -61,7 +61,7 @@ module WeatherCanadaMCP
             response = @http.get(:eccc_api, path, accept: "application/geo+json, application/json")
             raise Sources::StatusError.new(response.status, "api.weather.gc.ca") unless response.success?
 
-            Cache::Weighed.new(parse(response.body), response.body.bytesize)
+            Cache::Weighed.parsed(parse(response.body), response.body)
           end
         end
 

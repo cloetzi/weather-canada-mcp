@@ -164,4 +164,27 @@ class CacheTest < Minitest::Test
 
     assert_equal "forecast", cache.fetch("forecast", ttl: 600) { flunk "the forecast was evicted" }
   end
+
+  def test_callers_waiting_on_a_loader_that_was_stopped_are_told_to_retry
+    cache = cache()
+    stopped = Class.new(StandardError)
+    results = Sync do |task|
+      loader = task.async do
+        cache.fetch("k", ttl: 10) do
+          sleep 0.05
+          raise stopped, "its own deadline"
+        end
+      rescue stopped
+        :stopped
+      end
+      waiter = task.async do
+        cache.fetch("k", ttl: 10) { flunk "joined the loader" }
+      rescue WeatherCanadaMCP::Sources::Error => e
+        e.message
+      end
+      [loader.wait, waiter.wait]
+    end
+
+    assert_equal [:stopped, "The request was cancelled; retry it."], results
+  end
 end

@@ -7,14 +7,18 @@ module WeatherCanadaMCP
     # In-process TTL cache keyed by request URL. Concurrent misses for the same key run the block once: the other
     # callers wait for its result (or its error, which is not cached). Meant for one reactor thread.
     #
-    # Bounded twice: by entry count and by a byte budget, where an entry weighs its response body (a block returns a
-    # Weighed for that; a String weighs its own size). When over either bound the expired entries go first, then the
+    # Bounded twice: by entry count and by a byte budget, where an entry weighs about its size in memory (a block returns
+    # a Weighed for that; a String weighs its own size). When over either bound the expired entries go first, then the
     # least recently used. Stored values are frozen, so a caller cannot change what the next one reads.
     class Cache
       Entry = Data.define(:value, :expires_at, :weight)
 
-      # A value and the size of the response it was made from.
-      Weighed = Data.define(:value, :bytes)
+      # A value and the memory it takes, in bytes.
+      Weighed = Data.define(:value, :bytes) do
+        # A value parsed from a response body: Ruby's hashes, arrays and strings take several times the JSON text.
+        def self.parsed(value, body) = new(value, body.bytesize * PARSED_FACTOR)
+      end
+      PARSED_FACTOR = 4
 
       DEFAULT_WEIGHT = 1024
 
@@ -62,8 +66,12 @@ module WeatherCanadaMCP
         store(key, value, weight, ttl * @scale)
         promise.resolve(value)
         value
-      rescue StandardError => e
+      rescue Sources::Error => e
         promise.reject(e)
+        raise
+      rescue StandardError
+        # Another caller's own failure (its deadline ran out) is not what the callers waiting on it should be told.
+        promise.reject(Sources::Error.new("The request was cancelled; retry it."))
         raise
       ensure
         # A loader stopped by something other than a StandardError (Async::Stop when its client goes away) must still
@@ -82,6 +90,7 @@ module WeatherCanadaMCP
         case value
         when Hash then value.each { |key, item| [key, item].each { |part| deep_freeze(part) } }
         when Array then value.each { |item| deep_freeze(item) }
+        when Data then value.to_h.each_value { |item| deep_freeze(item) }
         end
         value.freeze
       end

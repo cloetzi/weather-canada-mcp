@@ -20,7 +20,7 @@ Names. Users run it over stdio or from the Docker image on GHCR. No upstream cre
     upstream errors into tool errors
   - `maps/`: `Compositor`, PNG compositing (chunky_png)
   - `sources/`: everything that fetches upstream data. `HttpClient` (GET only, fixed origins, gzip, size cap,
-    retries), `RateLimiter` (GCRA, global), `Cache` (TTL with request coalescing), and a thin client per service
+    retries), `RateLimiters` (one GCRA `RateLimiter` per provider: ECCC, NRCan, Avalanche Canada), `Cache` (TTL, LRU and byte budget, request coalescing), and a thin client per service
     returning parsed data: `ECCC::OgcApi`; `ECCC::Wms`, GeoMet point values and map images; `ECCC::ForecastSites`,
     nearest City Page forecast sites; `NRCan::Basemap`, NRCan's base map; and, when enabled,
     `AvalancheCanada::Forecasts`, `::WeatherStations` and `::FieldReports` (bundled as `AvalancheCanada::Services`);
