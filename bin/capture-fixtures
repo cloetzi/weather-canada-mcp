@@ -13,6 +13,7 @@ require "fileutils"
 require "json"
 require "tmpdir"
 require "net/http"
+require "time"
 require "uri"
 
 ROOT = File.expand_path("../test/fixtures", __dir__)
@@ -73,6 +74,49 @@ def hydro_monthly(number)
   items("hydrometric-monthly-mean", STATION_NUMBER: number, properties: "DATE,MONTHLY_MEAN_DISCHARGE", skipGeometry: true, limit: 2000)
 end
 
+# A GetMap PNG of one layer over the area Tools::GetRadarMap asks for (Sources::Wms#get_map).
+def get_map(layer, style, bbox, time)
+  min_lon, min_lat, max_lon, max_lat = bbox.split(",")
+  params = { SERVICE: "WMS", VERSION: "1.3.0", REQUEST: "GetMap", LAYERS: layer, STYLES: style, CRS: "EPSG:4326",
+             BBOX: [min_lat, min_lon, max_lat, max_lon].join(","), WIDTH: 512, HEIGHT: 512, FORMAT: "image/png",
+             TRANSPARENT: "TRUE", TIME: time.strftime("%Y-%m-%dT%H:%M:%SZ") }
+  "#{GEOMET}?#{URI.encode_www_form(params)}"
+end
+
+def basemap(bbox)
+  min_lon, min_lat, max_lon, max_lat = bbox.split(",")
+  params = { SERVICE: "WMS", VERSION: "1.3.0", REQUEST: "GetMap", LAYERS: "CBMT", STYLES: "", CRS: "EPSG:4326",
+             BBOX: [min_lat, min_lon, max_lat, max_lon].join(","), WIDTH: 512, HEIGHT: 512, FORMAT: "image/png" }
+  "https://maps.geogratis.gc.ca/wms/CBMT?#{URI.encode_www_form(params)}"
+end
+
+# What Tools::GetRadarMap asks for at a place in snow mode, 100 km around: the latest snow rate first, then the rest
+# for that frame (layer_frame.json is renamed layer_<time>.json once the frame is known).
+def radar_map(place, lat, lon)
+  latest = "geomet/#{place}/RADAR_1KM_RSNO_latest.json"
+  bbox = bbox_km((lat / 0.05).round * 0.05, (lon / 0.05).round * 0.05, 100)
+  {
+    latest => feature_info("RADAR_1KM_RSNO", lat, lon),
+    "geomet/#{place}/Radar_1km_SfcPrecipType_latest.json" => feature_info("Radar_1km_SfcPrecipType", lat, lon),
+    "geomet/#{place}/RADAR_1KM_RRAI_frame.json" => at_frame(latest) { |time| feature_info("RADAR_1KM_RRAI", lat, lon, time) },
+    "geomet/#{place}/RADAR_1KM_RSNO_30.json" => at_frame(latest, 30) { |time| feature_info("RADAR_1KM_RSNO", lat, lon, time) },
+    "geomet/#{place}/RADAR_1KM_RSNO_60.json" => at_frame(latest, 60) { |time| feature_info("RADAR_1KM_RSNO", lat, lon, time) },
+    "geomet/#{place}/RADAR_1KM_RSNO_map.png" => at_frame(latest) { |time| get_map("RADAR_1KM_RSNO", "Radar-Snow_14colors", bbox, time) },
+    "geomet/#{place}/RADAR_COVERAGE_RRAI.INV_map.png" =>
+      at_frame(latest) { |time| get_map("RADAR_COVERAGE_RRAI.INV", "Radar-Coverage_Inv-LightGray", bbox, time) },
+    "nrcan/cbmt_#{place}.png" => basemap(bbox)
+  }
+end
+
+# A lambda giving [time for the file name, URL] for the frame minutes before the one in the latest fixture.
+def at_frame(latest, minutes_before = 0)
+  lambda do
+    frame = JSON.parse(File.read(File.join(ROOT, latest), encoding: Encoding::UTF_8)).dig("features", 0, "properties", "time")
+    time = Time.iso8601(frame).utc - (minutes_before * 60)
+    [time.strftime("%Y%m%dT%H%MZ"), yield(time)]
+  end
+end
+
 SQUAMISH = [49.7, -123.15].freeze
 WHISTLER = [50.12, -122.96].freeze
 EDMONTON = [53.54, -113.49].freeze
@@ -123,6 +167,8 @@ FIXTURES = {
                                                                   properties: "STATION_NAME,CLIMATE_IDENTIFIER", limit: 200),
   "api/climate-normals_1048898.json" => items("climate-normals", CLIMATE_IDENTIFIER: "1048898", MONTH: 11, skipGeometry: true,
                                                                  limit: 200, properties: "NORMAL_ID,VALUE,PERIOD_BEGIN,PERIOD_END"),
+  # get_radar_map (Whistler, snow, 100 km)
+  **radar_map("whistler", *WHISTLER),
   # M0 samples for M3
   "m0/marineweather-realtime_howe-sound.json" => items("marineweather-realtime", bbox: bbox(49.5, -123.3, 0.05), limit: 2),
   "m0/ltce-snowfall_whistler.json" => items("ltce-snowfall", bbox: bbox(*WHISTLER, 0.3), LOCAL_MONTH: 11, LOCAL_DAY: 15,
@@ -174,6 +220,11 @@ filter = ARGV.first.to_s
 FIXTURES.each do |path, url|
   next unless path.start_with?(filter)
 
+  # A lambda gives the frame time for the name, known only once the latest frame is captured (radar_map).
+  if url.respond_to?(:call)
+    time, url = url.call
+    path = path.sub(/_[^_]+(\.\w+)\z/, "_#{time}\\1")
+  end
   write(path, fetch(url))
   sleep 1
 end

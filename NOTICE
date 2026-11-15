@@ -13,4 +13,7 @@ Place names: Canadian Geographical Names, Natural Resources Canada, used under t
 Canada (https://open.canada.ca/en/open-government-licence-canada). The place-name database built by this
 software, and included in its Docker image, contains information licensed under that licence.
 
+Radar base map: Canada Base Map - Transportation (CBMT), Natural Resources Canada, used under the Open Government
+Licence - Canada.
+
 Test fixtures in test/fixtures/ are responses captured from the services above, under the same licences.

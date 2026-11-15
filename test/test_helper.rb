@@ -46,7 +46,7 @@ module TestHelpers
 
   # Every upstream points at the fake; requests are not rate limited.
   def env(fake = nil, **overrides)
-    upstreams = fake ? %w[API DATAMART GEOMET CGN].to_h { |name| ["WEATHER_MCP_#{name}_URL", fake.url] } : {}
+    upstreams = fake ? WeatherCanadaMcp::Config::UPSTREAMS.keys.to_h { |name| ["WEATHER_MCP_#{name.upcase}_URL", fake.url] } : {}
     {
       "WEATHER_MCP_AUTH_TOKEN" => AUTH_TOKEN,
       "WEATHER_MCP_GAZETTEER_PATH" => gazetteer_path,

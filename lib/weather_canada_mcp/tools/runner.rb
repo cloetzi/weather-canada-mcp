@@ -30,8 +30,9 @@ module WeatherCanadaMcp
         started = Process.clock_gettime(Process::CLOCK_MONOTONIC)
         result = tool.call(arguments.transform_keys(&:to_s))
         log(tool, started)
-        json = render(result)
-        json.bytesize <= @max_response_bytes ? text(json) : error(too_large(json.bytesize))
+        image = result[:image]
+        json = render(result.except(:image))
+        json.bytesize <= @max_response_bytes ? content(json, image) : error(too_large(json.bytesize))
       rescue Tools::InvalidArguments => e
         log(tool, started, error: "InvalidArguments")
         error(e.message)
@@ -83,7 +84,12 @@ module WeatherCanadaMcp
               "This is a bug in the MCP server, not an ECCC problem.")
       end
 
-      def text(content) = MCP::Tool::Response.new([{ type: "text", text: content }])
+      # The JSON, and the image a tool returned (Tools::Image), which the response size cap does not count.
+      def content(json, image)
+        parts = [{ type: "text", text: json }]
+        parts << { type: "image", data: [image.data].pack("m0"), mimeType: image.mime_type } if image.is_a?(Tools::Image)
+        MCP::Tool::Response.new(parts)
+      end
 
       def error(message) = MCP::Tool::Response.new([{ type: "text", text: message }], error: true)
 

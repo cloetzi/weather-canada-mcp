@@ -11,12 +11,14 @@ Names. Users run it over stdio or from the Docker image on GHCR. No upstream cre
 ## Layout
 
 - `lib/weather_canada_mcp/`
-  - `tools/`: one class per MCP tool (`Tools::Base` subclasses); `tools.rb` lists them in order;
-    `Tools::Runner` runs a tool call, drops nulls, adds the attribution, enforces the size cap, turns errors into
-    tool errors
+  - `tools/`: one class per MCP tool (`Tools::Base` subclasses), and `MapImage` (PNG compositing, chunky_png);
+    `tools.rb` lists them in order;
+    `Tools::Runner` runs a tool call, drops nulls, adds the attribution, enforces the size cap (on the JSON, not
+    on an image a tool returns), turns errors into tool errors
   - `sources/`: everything that fetches ECCC and NRCan data. `HttpClient` (GET only, fixed origins, gzip, size cap,
     retries), `RateLimiter` (GCRA, global), `Cache` (TTL with request coalescing), and a thin client per service
-    returning parsed data (`OgcApi` today); `sources.rb` holds the error classes
+    returning parsed data (`OgcApi`; `Wms`, GeoMet point values and map images; `Basemap`, NRCan's base map);
+    `sources.rb` holds the error classes
   - `places/`: `Gazetteer`, offline place names in SQLite (FTS5; plain lat/lon index, since the bundled SQLite has
     no R*Tree), built from NRCan's CSV by `Builder`, downloaded (rubyzip) and built on demand by `Provider`;
     `Locator`, nearest City Page forecast sites

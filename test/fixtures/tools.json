@@ -375,5 +375,60 @@
       },
       "additionalProperties": false
     }
+  },
+  {
+    "name": "get_radar_map",
+    "title": "Get the weather radar map",
+    "description": "The latest weather radar around a location (updated every 6 minutes): a 512x512 PNG map of precipitation over a base map, the location ringed in red at its centre (or near it), plus the radar's rain rate (mm/h), snow rate (cm/h) at the point, the surface precipitation type detected at or next to it (left out when there is none), and the rate there 30 and 60 minutes ago. radius_km sets the area shown (25 to 200 km from the point). precipitation picks the map's colour scale, rain or snow; it defaults to snow from November to April. Colours run from light blue (lightest) through green, yellow, orange and red to purple (heaviest); light grey shading marks areas outside radar coverage. Radar can miss precipitation below the beam in mountains and far from radars, and can show echoes that do not reach the ground. Times are UTC (ISO 8601).",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "location": {
+          "type": "string",
+          "maxLength": 120,
+          "description": "A place in Canada: town, park, lake, peak or river, optionally with a province (\"Squamish\", \"Lake Louise, AB\", \"Mont-Tremblant, QC\"). Ignored when lat and lon are given."
+        },
+        "lat": {
+          "type": "number",
+          "minimum": 41.0,
+          "maximum": 84.0,
+          "description": "Latitude in decimal degrees."
+        },
+        "lon": {
+          "type": "number",
+          "minimum": -142.0,
+          "maximum": -52.0,
+          "description": "Longitude in decimal degrees (negative, west)."
+        },
+        "radius_km": {
+          "type": "integer",
+          "enum": [
+            25,
+            50,
+            100,
+            200
+          ],
+          "default": 100,
+          "description": "Distance from the point to the map's edges."
+        },
+        "precipitation": {
+          "type": "string",
+          "enum": [
+            "rain",
+            "snow"
+          ],
+          "description": "The map's colour scale: rain or snow."
+        },
+        "lang": {
+          "type": "string",
+          "enum": [
+            "en",
+            "fr"
+          ],
+          "description": "Language of text fields: en or fr."
+        }
+      },
+      "additionalProperties": false
+    }
   }
 ]

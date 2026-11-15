@@ -24,7 +24,7 @@ what a configuration enables.
 | `WEATHER_MCP_TOOLS` | all | Only expose these tools (comma-separated names). |
 | `WEATHER_MCP_EXCLUDE_TOOLS` | | Hide these tools. Unknown names in either list stop the server. |
 | `WEATHER_MCP_LANG` | `en` | Default language of text fields (`en` or `fr`); each call can override it with `lang`. |
-| `WEATHER_MCP_MAX_RESPONSE_BYTES` | `60000` | Largest tool result. A larger result is replaced by an error asking for less, never cut. |
+| `WEATHER_MCP_MAX_RESPONSE_BYTES` | `60000` | Largest tool result. A larger result is replaced by an error asking for less, never cut. The radar map image (about 120 to 200 KB) is not counted. |
 
 ## Requests to ECCC and NRCan
 
@@ -36,7 +36,7 @@ what a configuration enables.
 | `WEATHER_MCP_TIMEOUT` | `20` | Seconds per upstream request attempt. |
 | `WEATHER_MCP_MAX_DOWNLOAD_BYTES` | `20971520` | Largest upstream response read, after decompression. |
 | `WEATHER_MCP_CACHE_SCALE` | `1.0` | Multiplier on every cache TTL (`0` disables caching). Defaults: forecasts 10 min, alerts 5 min, the forecast site list 24 h. |
-| `WEATHER_MCP_API_URL`, `WEATHER_MCP_DATAMART_URL`, `WEATHER_MCP_GEOMET_URL`, `WEATHER_MCP_CGN_URL` | official services | Point a service at a mirror, caching proxy or local fake. Logged as a warning when not the default. |
+| `WEATHER_MCP_API_URL`, `WEATHER_MCP_DATAMART_URL`, `WEATHER_MCP_GEOMET_URL`, `WEATHER_MCP_CGN_URL`, `WEATHER_MCP_BASEMAP_URL` | official services (`BASEMAP` is NRCan's maps.geogratis.gc.ca, for the radar base map) | Point a service at a mirror, caching proxy or local fake. Logged as a warning when not the default. |
 
 ## Place names
 

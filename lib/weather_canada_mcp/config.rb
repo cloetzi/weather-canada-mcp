@@ -19,7 +19,8 @@ module WeatherCanadaMcp
       api: "https://api.weather.gc.ca",
       datamart: "https://dd.weather.gc.ca",
       geomet: "https://geo.weather.gc.ca",
-      cgn: "https://ftp.maps.canada.ca" # NRCan Canadian Geographical Names, for the gazetteer
+      cgn: "https://ftp.maps.canada.ca", # NRCan Canadian Geographical Names, for the gazetteer
+      basemap: "https://maps.geogratis.gc.ca" # NRCan Canada Base Map (CBMT), under radar images
     }.freeze
 
     ATTRIBUTES = %i[

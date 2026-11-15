@@ -32,6 +32,8 @@ class FakeEccc
 
   def self.fixture_json(path) = JSON.parse(fixture(path))
 
+  def self.fixture_binary(path) = File.binread(File.join(FIXTURES, path))
+
   # Collections served from one fixture whatever the query (each was captured for one test location).
   FIXED_FIXTURES = {
     "citypageweather-realtime" => "api/citypage_sites.json",
@@ -94,10 +96,8 @@ class FakeEccc
   end
 
   def fixture_response(request)
-    if request.path == "/geomet"
-      file = wms_fixture(request.query)
-      return [200, { "content-type" => file ? "application/json" : "text/xml" }, file ? self.class.fixture(file) : WMS_EXCEPTION]
-    end
+    return wms_response(request.query) if request.path == "/geomet"
+    return basemap_response(request.query) if request.path == "/wms/CBMT"
 
     file = fixture_for(request)
     return [404, { "content-type" => "application/json" }, '{"code":"NotFound"}'] unless file
@@ -118,14 +118,32 @@ class FakeEccc
   end
 
   # GetFeatureInfo fixtures are named after the place, layer and time: geomet/<place>/<layer>_<yyyymmddThhmmZ>.json.
-  def wms_fixture(query)
+  # GetFeatureInfo answers from geomet/<place>/<layer>_<time>.json and GetMap from the same name with .png; a request
+  # without TIME (the layer's latest) from <layer>_latest.
+  def wms_response(query)
+    map = query["REQUEST"] == "GetMap"
+    file = wms_fixture(query, map ? "png" : "json")
+    return [200, { "content-type" => "text/xml" }, WMS_EXCEPTION] unless file
+
+    [200, { "content-type" => map ? "image/png" : "application/json" }, File.binread(File.join(FIXTURES, file))]
+  end
+
+  def wms_fixture(query, extension)
     place = WMS_PLACES.find { |(lat, lon), _| wms_point?(query["BBOX"], lat, lon) }&.last
-    time = Time.iso8601(query["TIME"].to_s).utc.strftime("%Y%m%dT%H%MZ") rescue nil # rubocop:disable Style/RescueModifier
-    path = "geomet/#{place}/#{query["LAYERS"]}_#{time}.json"
+    time = query["TIME"] ? (Time.iso8601(query["TIME"]).utc.strftime("%Y%m%dT%H%MZ") rescue nil) : "latest" # rubocop:disable Style/RescueModifier
+    path = "geomet/#{place}/#{query["LAYERS"]}_#{time}.#{extension}"
     path if place && time && query["LAYERS"].to_s.match?(/\A[\w.-]+\z/) && File.exist?(File.join(FIXTURES, path))
   end
 
-  # A WMS 1.3.0 EPSG:4326 bbox is min_lat,min_lon,max_lat,max_lon.
+  # NRCan's base map, captured once per place (nrcan/cbmt_<place>.png) whatever the size of the area.
+  def basemap_response(query)
+    place = WMS_PLACES.find { |(lat, lon), _| wms_point?(query["BBOX"], lat, lon) }&.last
+    path = "nrcan/cbmt_#{place}.png"
+    return [404, { "content-type" => "text/plain" }, "not found"] unless place && File.exist?(File.join(FIXTURES, path))
+
+    [200, { "content-type" => "image/png" }, File.binread(File.join(FIXTURES, path))]
+  end
+
   def wms_point?(bbox, lat, lon)
     min_lat, min_lon, max_lat, max_lon = bbox.to_s.split(",").map(&:to_f)
     lat.between?(min_lat, max_lat) && lon.between?(min_lon, max_lon)
