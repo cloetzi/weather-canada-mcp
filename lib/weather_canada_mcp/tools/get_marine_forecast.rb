@@ -15,15 +15,16 @@ module WeatherCanadaMCP
       tool_name "get_marine_forecast"
       title "Get the marine forecast"
       description <<~TEXT
-        Environment Canada's marine forecast for the marine area at a location: coastal waters, large lakes (Great
-        Lakes, Lake Winnipeg, Great Slave Lake and others) and Arctic waters. Gives wind (in knots), weather and
-        visibility, waves, air temperature and freezing spray for today to tomorrow, the extended wind forecast for the
-        following days, and the marine warnings in effect. A point on land (a harbour town, a beach) gets the nearest
-        areas within 25 km, with their distance. Some areas are seasonal and say so in status. Wind and waves are as
-        ECCC writes them; quote warnings as given. For weather alerts on land use get_alerts.
+        Environment Canada's marine forecast for the marine area at a location (coastal waters, large lakes, Arctic
+        waters): wind in knots, weather and visibility, waves, air temperature and freezing spray for today and tomorrow,
+        the extended wind forecast, and marine warnings in effect. A point on land gets the nearest areas within 25 km.
+        Quote warnings as given, without rewording or shortening. For alerts on land use get_alerts.
       TEXT
       location_arguments
       argument :lang, :language
+
+      output :marine_areas, :array, "The marine areas, nearest first."
+      output :source_url, :string, "The official marine forecast page."
 
       def call(args)
         lang = args.lang

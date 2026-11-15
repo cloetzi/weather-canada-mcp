@@ -18,19 +18,27 @@ module WeatherCanadaMCP
         -2 => { "en" => "snow to the surface: the snow level is below the ground here",
                 "fr" => "neige jusqu'à la surface : le niveau de la neige est sous le sol ici" }
       }.freeze
+      # Snow depth to water depth: the usual 10:1 (1 mm of water is 1 cm of snow), which the result states. Cold dry snow
+      # is lighter (a higher ratio) and wet snow near freezing is denser.
+      SNOW_TO_LIQUID = 10
       tool_name "get_snow_outlook"
       title "Get the snow outlook"
       description <<~TEXT
-        Model guidance for snow at a point over the next 12, 24 or 48 hours, in four steps: the snow level (the height
-        in metres above sea level below which snow turns to rain, from the 2.5 km HRDPS model), new snow as water
-        equivalent (mm, from the 10 km RDPS model; 1 mm is roughly 1 cm of fresh snow, more in cold dry snow) and the
-        probability of blowing snow. "snow to the surface" means the snow level is below the ground at this point (the
-        model's terrain is smoothed over 2.5 km), so precipitation falls as snow. This is raw model output, not a forecaster's forecast and not an avalanche
-        bulletin; for mountain text forecasts use get_forecast.
+        Model guidance for snow at a point over the next 12, 24 or 48 hours, in four steps: the snow level (metres above
+        sea level below which snow turns to rain, HRDPS 2.5 km), new snow as water equivalent (mm, RDPS 10 km) with an
+        estimate in cm, and the probability of blowing snow. Raw model output, not a forecaster's forecast or an avalanche
+        bulletin; for text forecasts use get_forecast.
       TEXT
       location_arguments
       argument :hours, :integer, in: STEP_HOURS.keys, default: 24, description: "How far ahead to look: 12, 24 or 48 hours."
       argument :lang, :language
+
+      output :step_hours, :integer, "Hours in each step."
+      output :steps, :array, "The steps, each with its snow level, new snow and blowing snow probability."
+      output :total_new_snow_water_mm, :number, "New snow over all steps, as water equivalent."
+      output :total_new_snow_cm_estimate, :number, "The same in cm of snow at snow_to_liquid_ratio."
+      output :snow_to_liquid_ratio, :number, "Snow depth to water depth used for the cm estimates (10 means 10:1)."
+      output :model_runs, :array, "The model runs the values come from."
 
       def call(args)
         lang = args.lang
@@ -51,6 +59,7 @@ module WeatherCanadaMCP
            -> { wms_value(BLOWING_SNOW, point, time: to) }], &:call
         )
         { valid_from: from, valid_until: to, **level, new_snow_water_mm: snow&.value&.round(1),
+          new_snow_cm_estimate: snow&.value&.then { |water| snow_cm(water) },
           blowing_snow_probability_pct: blowing&.value&.round, reference_times: [level[:run], time(snow&.reference_time)].compact }
       end
 
@@ -68,12 +77,16 @@ module WeatherCanadaMCP
         {}
       end
 
+      # Centimetres of snow for millimetres of water at SNOW_TO_LIQUID.
+      def snow_cm(water_mm) = (water_mm * SNOW_TO_LIQUID / 10.0).round(1)
+
       def shape(point, steps, step)
         runs = steps.flat_map { |entry| entry.delete(:reference_times) }.uniq.sort
         steps.each { |entry| entry.delete(:run) }
         amounts = steps.filter_map { |entry| entry[:new_snow_water_mm] }
         result = { location: point.to_h, step_hours: step, steps:, total_new_snow_water_mm: (amounts.sum.round(1) if amounts.any?),
-                   model_runs: runs }
+                   total_new_snow_cm_estimate: (snow_cm(amounts.sum) if amounts.any?),
+                   snow_to_liquid_ratio: (SNOW_TO_LIQUID if amounts.any?), model_runs: runs }
         missing = steps.count { |entry| entry.except(:valid_from, :valid_until).values.all?(&:nil?) }
         if missing.positive?
           result[:note] = "The models have no values for #{missing} of the steps (beyond the latest run, or outside the model area)."

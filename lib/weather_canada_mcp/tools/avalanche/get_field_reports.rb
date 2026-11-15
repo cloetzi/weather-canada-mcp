@@ -41,6 +41,11 @@ module WeatherCanadaMCP
         argument :limit, :integer, in: 1..MAX_REPORTS, default: 10, description: "Most reports to include."
         argument :lang, :language
 
+        output :from, :string, "First day covered."
+        output :to, :string, "Last day covered."
+        output :reports, :array, "Public field reports, newest first."
+        output :safety_note, :string, "A safety note to pass on."
+
         def call(args)
           point = args.point
           radius = args.radius_km

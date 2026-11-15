@@ -34,6 +34,9 @@ module WeatherCanadaMCP
         argument :days, :integer, in: 1..MAX_DAYS, default: MAX_DAYS, description: "Days of danger ratings to include, from today."
         argument :lang, :language
 
+        output :forecast, :object, "The forecast covering the point."
+        output :safety_note, :string, "A safety note to pass on."
+
         def call(args)
           lang = args.lang
           point = args.point

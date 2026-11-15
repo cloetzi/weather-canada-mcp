@@ -52,6 +52,26 @@ module WeatherCanadaMCP
 
         def argument(name, type, **) = arguments << Argument.new(name, type, **)
 
+        OUTPUT_TYPES = %i[string number integer boolean object array].freeze
+
+        # The result's top-level fields, in order, for the tool's outputSchema and structuredContent. The schema is open
+        # (other fields may appear) and lists only what is always or usually there; location, note and attribution are
+        # declared for every tool.
+        def output(name, type, description)
+          raise ArgumentError, "unknown output type #{type.inspect}" unless OUTPUT_TYPES.include?(type)
+
+          outputs[name] = { type: type.to_s, description: }
+        end
+
+        def outputs = @outputs ||= {}
+
+        def output_schema
+          common = location_arguments? ? { location: { type: "object", description: "The point the result is for." } } : {}
+          tail = { note: { type: "string", description: "Anything the caller should know about this result." },
+                   attribution: { type: "string", description: "The data credit to pass on." } }
+          { type: "object", properties: { **common, **outputs, **tail }, required: %w[attribution] }
+        end
+
         # location (a place name), lat and lon, and the point they resolve to as `args.point`.
         def location_arguments
           @location_arguments = true
@@ -84,7 +104,7 @@ module WeatherCanadaMCP
           { type: "object", properties: arguments.to_h { |argument| [argument.name, argument.schema] }, additionalProperties: false }
         end
 
-        def manifest = { name: tool_name, title:, description:, input_schema: }
+        def manifest = { name: tool_name, title:, description:, input_schema:, output_schema: }
 
         # Credits the data source: on results that name no source of their own, and on upstream errors.
         def attribution = ATTRIBUTION

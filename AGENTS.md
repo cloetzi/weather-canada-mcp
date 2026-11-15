@@ -13,7 +13,8 @@ Names. Users run it over stdio or from the Docker image on GHCR. No upstream cre
 - `lib/weather_canada_mcp/`
   - `tools/`: one class per MCP tool (`Tools::Base` subclasses; the opt-in Avalanche Canada tools live in
     `tools/avalanche/`, under `Tools::Avalanche::Base`). A tool declares `tool_name`, `title`, `description`,
-    `location_arguments`, `argument ...` and `enabled_when` at class level and implements `call(args)`; `Argument`
+    `location_arguments`, `argument ...`, `output ...` (a top-level result field, for `outputSchema`) and `enabled_when` at
+    class level and implements `call(args)`; `Argument`
     builds the schema and checks each value, and `Registry` lists the tools and selects them by configuration.
     `Tools::Runner` builds a new tool instance per call, drops nulls, joins the attributions the tool declared
     (`Tools::Result`), enforces the size cap (on the JSON, not on an image a tool returns), turns `Tools::Error`s and

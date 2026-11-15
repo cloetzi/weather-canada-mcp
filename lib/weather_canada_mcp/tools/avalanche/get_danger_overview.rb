@@ -17,6 +17,9 @@ module WeatherCanadaMCP
         enabled_when("WEATHER_MCP_AVALANCHE", &:avalanche_enabled)
         argument :lang, :language
 
+        output :products, :array, "Every current avalanche forecast region with its ratings."
+        output :safety_note, :string, "A safety note to pass on."
+
         def call(args)
           lang = args.lang
           products = avalanche.forecasts.metadata(lang).filter_map { |entry| product(entry) if entry.is_a?(Hash) }

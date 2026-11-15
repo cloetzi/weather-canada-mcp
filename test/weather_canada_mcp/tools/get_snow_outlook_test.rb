@@ -12,6 +12,15 @@ class GetSnowOutlookTest < Minitest::Test
     FakeEccc.fixture_json("geomet/#{place}/#{layer}_#{time}.json")["features"].first["properties"]["value"]
   end
 
+  def test_new_snow_is_also_estimated_in_cm_at_the_stated_ratio
+    result, = outlook(**WHISTLER)
+    steps = result["steps"]
+
+    assert_equal 10, result["snow_to_liquid_ratio"]
+    steps.each { |step| assert_in_delta step["new_snow_water_mm"], step["new_snow_cm_estimate"], 0.001 }
+    assert_in_delta steps.sum { |step| step["new_snow_cm_estimate"] }, result["total_new_snow_cm_estimate"], 0.15
+  end
+
   def test_four_six_hour_steps_from_the_step_that_contains_now
     result, error = outlook(**WHISTLER)
 

@@ -130,6 +130,7 @@ most_mm
 name
 nearby_alerts
 new_snow_cm
+new_snow_cm_estimate
 new_snow_water_mm
 normals
 note
@@ -178,6 +179,7 @@ snow_cm_per_h
 snow_depth_change_cm
 snow_depth_cm
 snow_level_m
+snow_to_liquid_ratio
 snowfall
 snowfall_cm
 snowpack_summary
@@ -208,6 +210,7 @@ timezone
 title
 to
 to_year
+total_new_snow_cm_estimate
 total_new_snow_water_mm
 total_precipitation_mm
 treeline

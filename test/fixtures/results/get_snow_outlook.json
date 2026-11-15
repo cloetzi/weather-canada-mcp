@@ -11,6 +11,7 @@
       "valid_until": "2026-11-15T16:00:00-08:00",
       "snow_level_m": 1100,
       "new_snow_water_mm": 1.9,
+      "new_snow_cm_estimate": 1.9,
       "blowing_snow_probability_pct": 0
     },
     {
@@ -18,6 +19,7 @@
       "valid_until": "2026-11-15T22:00:00-08:00",
       "snow_level_m": 1100,
       "new_snow_water_mm": 2.0,
+      "new_snow_cm_estimate": 2.0,
       "blowing_snow_probability_pct": 0
     },
     {
@@ -25,6 +27,7 @@
       "valid_until": "2026-11-16T04:00:00-08:00",
       "snow_level_m": 1010,
       "new_snow_water_mm": 0.2,
+      "new_snow_cm_estimate": 0.2,
       "blowing_snow_probability_pct": 0
     },
     {
@@ -32,10 +35,13 @@
       "valid_until": "2026-11-16T10:00:00-08:00",
       "snow_level_m": 980,
       "new_snow_water_mm": 0.3,
+      "new_snow_cm_estimate": 0.3,
       "blowing_snow_probability_pct": 0
     }
   ],
   "total_new_snow_water_mm": 4.4,
+  "total_new_snow_cm_estimate": 4.4,
+  "snow_to_liquid_ratio": 10,
   "model_runs": [
     "2026-11-15T04:00:00-08:00"
   ],
