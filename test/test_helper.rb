@@ -16,6 +16,8 @@ module TestHelpers
   CAPTURED_AT = Time.utc(2026, 11, 15, 17, 0, 0)
   # When the M2 station fixtures (observations, river gauges, AQHI) were captured.
   STATIONS_CAPTURED_AT = Time.utc(2026, 11, 15, 18, 45, 0)
+  # When the M3 GeoMet fixtures were captured (bin/capture-fixtures geomet/ names them after the times it asks for).
+  GEOMET_CAPTURED_AT = Time.utc(2026, 11, 15, 19, 13, 0)
   # When the Avalanche Canada fixtures were captured (station measurements cover the 24 hours to 20:00 UTC).
   AVALANCHE_CAPTURED_AT = Time.utc(2026, 11, 15, 19, 20, 0)
   AVALANCHE_ENABLED = { AVALANCHE_CANADA_ENABLED: "true", AVALANCHE_CANADA_FIELD_REPORTS_ENABLED: "true" }.freeze
@@ -47,7 +49,8 @@ module TestHelpers
 
   # Every upstream points at the fake; requests are not rate limited.
   def env(fake = nil, **overrides)
-    variables = [*%w[API DATAMART GEOMET CGN].map { |name| "WEATHER_MCP_#{name}_URL" }, *WeatherCanadaMcp::Config::AVALANCHE_URL_VARIABLES.values]
+    variables = [*WeatherCanadaMcp::Config::UPSTREAMS.keys.map { |name| "WEATHER_MCP_#{name.upcase}_URL" },
+                 *WeatherCanadaMcp::Config::AVALANCHE_URL_VARIABLES.values]
     upstreams = fake ? variables.to_h { |name| [name, fake.url] } : {}
     {
       "WEATHER_MCP_AUTH_TOKEN" => AUTH_TOKEN,

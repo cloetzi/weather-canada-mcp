@@ -1,0 +1,25 @@
+{
+  "type": "FeatureCollection",
+  "layer": "RDPS_10km_Snow-Accum6h",
+  "features": [
+    {
+      "type": "Feature",
+      "id": "RDPS_10km_Snow-Accum6h(-123.06668,50.200439)",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.0667,
+          50.2004
+        ]
+      },
+      "properties": {
+        "value": 1.89209,
+        "class": "1 - 2.5",
+        "title_en": "RDPS - Snow - 6-hour accumulation (liquid equivalent) [mm]",
+        "title_fr": "SRPD - Neige - accumulation sur 6 heures (équivalent liquide) [mm]",
+        "time": "2026-11-16T00:00:00Z",
+        "dim_reference_time": "2026-11-15T12:00:00Z"
+      }
+    }
+  ]
+}

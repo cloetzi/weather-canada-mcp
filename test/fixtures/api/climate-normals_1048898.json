@@ -1,0 +1,804 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "id": "348.98.11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "NORMAL_ID": 98,
+        "VALUE": 1.36,
+        "PERIOD_BEGIN": 1981,
+        "PERIOD_END": 2010
+      }
+    },
+    {
+      "id": "348.99.11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "NORMAL_ID": 99,
+        "VALUE": 0.18,
+        "PERIOD_BEGIN": 1981,
+        "PERIOD_END": 2010
+      }
+    },
+    {
+      "id": "348.100.11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "NORMAL_ID": 100,
+        "VALUE": 0,
+        "PERIOD_BEGIN": 1981,
+        "PERIOD_END": 2010
+      }
+    },
+    {
+      "id": "348.101.11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "NORMAL_ID": 101,
+        "VALUE": 0,
+        "PERIOD_BEGIN": 1981,
+        "PERIOD_END": 2010
+      }
+    },
+    {
+      "id": "348.102.11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "NORMAL_ID": 102,
+        "VALUE": 41.81,
+        "PERIOD_BEGIN": 1981,
+        "PERIOD_END": 2010
+      }
+    },
+    {
+      "id": "348.103.11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "NORMAL_ID": 103,
+        "VALUE": 15.63,
+        "PERIOD_BEGIN": 1981,
+        "PERIOD_END": 2010
+      }
+    },
+    {
+      "id": "348.105.11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "NORMAL_ID": 105,
+        "VALUE": 15.34,
+        "PERIOD_BEGIN": 1981,
+        "PERIOD_END": 2010
+      }
+    },
+    {
+      "id": "348.117.11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "NORMAL_ID": 117,
+        "VALUE": 85.76,
+        "PERIOD_BEGIN": 1981,
+        "PERIOD_END": 2010
+      }
+    },
+    {
+      "id": "348.1.11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "NORMAL_ID": 1,
+        "VALUE": 0.86,
+        "PERIOD_BEGIN": 1981,
+        "PERIOD_END": 2010
+      }
+    },
+    {
+      "id": "348.2.11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "NORMAL_ID": 2,
+        "VALUE": 2.22,
+        "PERIOD_BEGIN": 1981,
+        "PERIOD_END": 2010
+      }
+    },
+    {
+      "id": "348.5.11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "NORMAL_ID": 5,
+        "VALUE": 3.45,
+        "PERIOD_BEGIN": 1981,
+        "PERIOD_END": 2010
+      }
+    },
+    {
+      "id": "348.8.11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "NORMAL_ID": 8,
+        "VALUE": -1.76,
+        "PERIOD_BEGIN": 1981,
+        "PERIOD_END": 2010
+      }
+    },
+    {
+      "id": "348.22.11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "NORMAL_ID": 22,
+        "VALUE": 0,
+        "PERIOD_BEGIN": 1981,
+        "PERIOD_END": 2010
+      }
+    },
+    {
+      "id": "348.23.11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "NORMAL_ID": 23,
+        "VALUE": 0,
+        "PERIOD_BEGIN": 1981,
+        "PERIOD_END": 2010
+      }
+    },
+    {
+      "id": "348.24.11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "NORMAL_ID": 24,
+        "VALUE": 0,
+        "PERIOD_BEGIN": 1981,
+        "PERIOD_END": 2010
+      }
+    },
+    {
+      "id": "348.25.11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "NORMAL_ID": 25,
+        "VALUE": 0,
+        "PERIOD_BEGIN": 1981,
+        "PERIOD_END": 2010
+      }
+    },
+    {
+      "id": "348.26.11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "NORMAL_ID": 26,
+        "VALUE": 4.89,
+        "PERIOD_BEGIN": 1981,
+        "PERIOD_END": 2010
+      }
+    },
+    {
+      "id": "348.27.11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "NORMAL_ID": 27,
+        "VALUE": 59.17,
+        "PERIOD_BEGIN": 1981,
+        "PERIOD_END": 2010
+      }
+    },
+    {
+      "id": "348.28.11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "NORMAL_ID": 28,
+        "VALUE": 33.42,
+        "PERIOD_BEGIN": 1981,
+        "PERIOD_END": 2010
+      }
+    },
+    {
+      "id": "348.29.11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "NORMAL_ID": 29,
+        "VALUE": 129.14,
+        "PERIOD_BEGIN": 1981,
+        "PERIOD_END": 2010
+      }
+    },
+    {
+      "id": "348.30.11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "NORMAL_ID": 30,
+        "VALUE": 274.25,
+        "PERIOD_BEGIN": 1981,
+        "PERIOD_END": 2010
+      }
+    },
+    {
+      "id": "348.31.11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "NORMAL_ID": 31,
+        "VALUE": 424.25,
+        "PERIOD_BEGIN": 1981,
+        "PERIOD_END": 2010
+      }
+    },
+    {
+      "id": "348.32.11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "NORMAL_ID": 32,
+        "VALUE": 514.25,
+        "PERIOD_BEGIN": 1981,
+        "PERIOD_END": 2010
+      }
+    },
+    {
+      "id": "348.33.11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "NORMAL_ID": 33,
+        "VALUE": 3.31,
+        "PERIOD_BEGIN": 1981,
+        "PERIOD_END": 2010
+      }
+    },
+    {
+      "id": "348.34.11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "NORMAL_ID": 34,
+        "VALUE": 26.69,
+        "PERIOD_BEGIN": 1981,
+        "PERIOD_END": 2010
+      }
+    },
+    {
+      "id": "348.35.11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "NORMAL_ID": 35,
+        "VALUE": 0.81,
+        "PERIOD_BEGIN": 1981,
+        "PERIOD_END": 2010
+      }
+    },
+    {
+      "id": "348.36.11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "NORMAL_ID": 36,
+        "VALUE": 0,
+        "PERIOD_BEGIN": 1981,
+        "PERIOD_END": 2010
+      }
+    },
+    {
+      "id": "348.37.11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "NORMAL_ID": 37,
+        "VALUE": 0,
+        "PERIOD_BEGIN": 1981,
+        "PERIOD_END": 2010
+      }
+    },
+    {
+      "id": "348.38.11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "NORMAL_ID": 38,
+        "VALUE": 0,
+        "PERIOD_BEGIN": 1981,
+        "PERIOD_END": 2010
+      }
+    },
+    {
+      "id": "348.39.11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "NORMAL_ID": 39,
+        "VALUE": 11.15,
+        "PERIOD_BEGIN": 1981,
+        "PERIOD_END": 2010
+      }
+    },
+    {
+      "id": "348.40.11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "NORMAL_ID": 40,
+        "VALUE": 25.58,
+        "PERIOD_BEGIN": 1981,
+        "PERIOD_END": 2010
+      }
+    },
+    {
+      "id": "348.41.11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "NORMAL_ID": 41,
+        "VALUE": 18.85,
+        "PERIOD_BEGIN": 1981,
+        "PERIOD_END": 2010
+      }
+    },
+    {
+      "id": "348.42.11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "NORMAL_ID": 42,
+        "VALUE": 10.65,
+        "PERIOD_BEGIN": 1981,
+        "PERIOD_END": 2010
+      }
+    },
+    {
+      "id": "348.43.11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "NORMAL_ID": 43,
+        "VALUE": 1.88,
+        "PERIOD_BEGIN": 1981,
+        "PERIOD_END": 2010
+      }
+    },
+    {
+      "id": "348.44.11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "NORMAL_ID": 44,
+        "VALUE": 0.23,
+        "PERIOD_BEGIN": 1981,
+        "PERIOD_END": 2010
+      }
+    },
+    {
+      "id": "348.45.11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "NORMAL_ID": 45,
+        "VALUE": 0,
+        "PERIOD_BEGIN": 1981,
+        "PERIOD_END": 2010
+      }
+    },
+    {
+      "id": "348.52.11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "NORMAL_ID": 52,
+        "VALUE": 131.08,
+        "PERIOD_BEGIN": 1981,
+        "PERIOD_END": 2010
+      }
+    },
+    {
+      "id": "348.53.11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "NORMAL_ID": 53,
+        "VALUE": 83.35,
+        "PERIOD_BEGIN": 1981,
+        "PERIOD_END": 2010
+      }
+    },
+    {
+      "id": "348.54.11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "NORMAL_ID": 54,
+        "VALUE": 65.67,
+        "PERIOD_BEGIN": 1981,
+        "PERIOD_END": 2010
+      }
+    },
+    {
+      "id": "348.55.11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "NORMAL_ID": 55,
+        "VALUE": 46.57,
+        "PERIOD_BEGIN": 1981,
+        "PERIOD_END": 2010
+      }
+    },
+    {
+      "id": "348.56.11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "NORMAL_ID": 56,
+        "VALUE": 192.14,
+        "PERIOD_BEGIN": 1981,
+        "PERIOD_END": 2010
+      }
+    },
+    {
+      "id": "348.57.11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "NORMAL_ID": 57,
+        "VALUE": 94.48,
+        "PERIOD_BEGIN": 1981,
+        "PERIOD_END": 2010
+      }
+    },
+    {
+      "id": "348.61.11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "NORMAL_ID": 61,
+        "VALUE": 14.5,
+        "PERIOD_BEGIN": 1981,
+        "PERIOD_END": 2010
+      }
+    },
+    {
+      "id": "348.62.11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "NORMAL_ID": 62,
+        "VALUE": 7,
+        "PERIOD_BEGIN": 1981,
+        "PERIOD_END": 2010
+      }
+    },
+    {
+      "id": "348.63.11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "NORMAL_ID": 63,
+        "VALUE": 4.38,
+        "PERIOD_BEGIN": 1981,
+        "PERIOD_END": 2010
+      }
+    },
+    {
+      "id": "348.64.11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "NORMAL_ID": 64,
+        "VALUE": 1.27,
+        "PERIOD_BEGIN": 1981,
+        "PERIOD_END": 2010
+      }
+    },
+    {
+      "id": "348.65.11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "NORMAL_ID": 65,
+        "VALUE": 9.65,
+        "PERIOD_BEGIN": 1981,
+        "PERIOD_END": 2010
+      }
+    },
+    {
+      "id": "348.66.11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "NORMAL_ID": 66,
+        "VALUE": 4.04,
+        "PERIOD_BEGIN": 1981,
+        "PERIOD_END": 2010
+      }
+    },
+    {
+      "id": "348.67.11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "NORMAL_ID": 67,
+        "VALUE": 1.96,
+        "PERIOD_BEGIN": 1981,
+        "PERIOD_END": 2010
+      }
+    },
+    {
+      "id": "348.68.11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "NORMAL_ID": 68,
+        "VALUE": 0.42,
+        "PERIOD_BEGIN": 1981,
+        "PERIOD_END": 2010
+      }
+    },
+    {
+      "id": "348.69.11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "NORMAL_ID": 69,
+        "VALUE": 19.62,
+        "PERIOD_BEGIN": 1981,
+        "PERIOD_END": 2010
+      }
+    },
+    {
+      "id": "348.70.11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "NORMAL_ID": 70,
+        "VALUE": 10.92,
+        "PERIOD_BEGIN": 1981,
+        "PERIOD_END": 2010
+      }
+    },
+    {
+      "id": "348.71.11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "NORMAL_ID": 71,
+        "VALUE": 6.54,
+        "PERIOD_BEGIN": 1981,
+        "PERIOD_END": 2010
+      }
+    },
+    {
+      "id": "348.72.11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "NORMAL_ID": 72,
+        "VALUE": 1.65,
+        "PERIOD_BEGIN": 1981,
+        "PERIOD_END": 2010
+      }
+    },
+    {
+      "id": "348.73.11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "NORMAL_ID": 73,
+        "VALUE": 6.86,
+        "PERIOD_BEGIN": 1981,
+        "PERIOD_END": 2010
+      }
+    },
+    {
+      "id": "348.74.11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "NORMAL_ID": 74,
+        "VALUE": 4.02,
+        "PERIOD_BEGIN": 1981,
+        "PERIOD_END": 2010
+      }
+    },
+    {
+      "id": "348.76.11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "NORMAL_ID": 76,
+        "VALUE": 16.06,
+        "PERIOD_BEGIN": 1981,
+        "PERIOD_END": 2010
+      }
+    },
+    {
+      "id": "348.77.11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "NORMAL_ID": 77,
+        "VALUE": 10.75,
+        "PERIOD_BEGIN": 1981,
+        "PERIOD_END": 2010
+      }
+    },
+    {
+      "id": "348.78.11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "NORMAL_ID": 78,
+        "VALUE": 6.81,
+        "PERIOD_BEGIN": 1981,
+        "PERIOD_END": 2010
+      }
+    },
+    {
+      "id": "348.79.11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "NORMAL_ID": 79,
+        "VALUE": 3.94,
+        "PERIOD_BEGIN": 1981,
+        "PERIOD_END": 2010
+      }
+    },
+    {
+      "id": "348.80.11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "NORMAL_ID": 80,
+        "VALUE": 0.44,
+        "PERIOD_BEGIN": 1981,
+        "PERIOD_END": 2010
+      }
+    },
+    {
+      "id": "348.81.11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "NORMAL_ID": 81,
+        "VALUE": 0,
+        "PERIOD_BEGIN": 1981,
+        "PERIOD_END": 2010
+      }
+    },
+    {
+      "id": "348.82.11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "NORMAL_ID": 82,
+        "VALUE": 17.25,
+        "PERIOD_BEGIN": 1981,
+        "PERIOD_END": 2010
+      }
+    },
+    {
+      "id": "348.83.11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "NORMAL_ID": 83,
+        "VALUE": 0.43,
+        "PERIOD_BEGIN": 1981,
+        "PERIOD_END": 2010
+      }
+    },
+    {
+      "id": "348.84.11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "NORMAL_ID": 84,
+        "VALUE": 0.14,
+        "PERIOD_BEGIN": 1981,
+        "PERIOD_END": 2010
+      }
+    },
+    {
+      "id": "348.85.11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "NORMAL_ID": 85,
+        "VALUE": 0,
+        "PERIOD_BEGIN": 1981,
+        "PERIOD_END": 2010
+      }
+    },
+    {
+      "id": "348.90.11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "NORMAL_ID": 90,
+        "VALUE": 2.77,
+        "PERIOD_BEGIN": 1981,
+        "PERIOD_END": 2010
+      }
+    },
+    {
+      "id": "348.91.11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "NORMAL_ID": 91,
+        "VALUE": 180,
+        "PERIOD_BEGIN": 1981,
+        "PERIOD_END": 2010
+      }
+    },
+    {
+      "id": "348.96.11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "NORMAL_ID": 96,
+        "VALUE": 29.73,
+        "PERIOD_BEGIN": 1981,
+        "PERIOD_END": 2010
+      }
+    },
+    {
+      "id": "348.97.11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "NORMAL_ID": 97,
+        "VALUE": 14.73,
+        "PERIOD_BEGIN": 1981,
+        "PERIOD_END": 2010
+      }
+    }
+  ],
+  "numberMatched": 70,
+  "numberReturned": 70,
+  "links": [
+    {
+      "type": "application/geo+json",
+      "rel": "self",
+      "title": "This document as GeoJSON",
+      "href": "https://api.weather.gc.ca/collections/climate-normals/items?f=json&CLIMATE_IDENTIFIER=1048898&MONTH=11&skipGeometry=true&limit=200&properties=NORMAL_ID,VALUE,PERIOD_BEGIN,PERIOD_END"
+    },
+    {
+      "rel": "alternate",
+      "type": "application/ld+json",
+      "title": "This document as RDF (JSON-LD)",
+      "href": "https://api.weather.gc.ca/collections/climate-normals/items?f=jsonld&CLIMATE_IDENTIFIER=1048898&MONTH=11&skipGeometry=true&limit=200&properties=NORMAL_ID,VALUE,PERIOD_BEGIN,PERIOD_END"
+    },
+    {
+      "type": "text/html",
+      "rel": "alternate",
+      "title": "This document as HTML",
+      "href": "https://api.weather.gc.ca/collections/climate-normals/items?f=html&CLIMATE_IDENTIFIER=1048898&MONTH=11&skipGeometry=true&limit=200&properties=NORMAL_ID,VALUE,PERIOD_BEGIN,PERIOD_END"
+    },
+    {
+      "type": "application/json",
+      "title": "Climate - Normals 1981-2010",
+      "rel": "collection",
+      "href": "https://api.weather.gc.ca/collections/climate-normals"
+    }
+  ],
+  "timeStamp": "2026-11-15T19:25:41.300274Z"
+}

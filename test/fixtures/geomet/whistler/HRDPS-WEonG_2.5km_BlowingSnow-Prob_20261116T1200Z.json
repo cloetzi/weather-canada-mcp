@@ -1,0 +1,25 @@
+{
+  "type": "FeatureCollection",
+  "layer": "HRDPS-WEonG_2.5km_BlowingSnow-Prob",
+  "features": [
+    {
+      "type": "Feature",
+      "id": "HRDPS-WEonG_2.5km_BlowingSnow-Prob(-122.9682,50.11939)",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.9682,
+          50.1194
+        ]
+      },
+      "properties": {
+        "value": 0,
+        "class": "0 - 5",
+        "title_en": "HRDPS-WEonG - Probability of blowing snow [%]",
+        "title_fr": "SHRPD-ETsurG - Probabilité de poudrerie [%]",
+        "time": "2026-11-16T12:00:00Z",
+        "dim_reference_time": "2026-11-15T12:00:00Z"
+      }
+    }
+  ]
+}

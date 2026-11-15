@@ -1,0 +1,49 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "id": "348.1.11",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.95483333333334,
+          50.12888916666667
+        ]
+      },
+      "properties": {
+        "STATION_NAME": "WHISTLER",
+        "CLIMATE_IDENTIFIER": "1048898"
+      }
+    }
+  ],
+  "numberMatched": 1,
+  "numberReturned": 1,
+  "links": [
+    {
+      "type": "application/geo+json",
+      "rel": "self",
+      "title": "This document as GeoJSON",
+      "href": "https://api.weather.gc.ca/collections/climate-normals/items?f=json&bbox=-123.66051,49.67084,-122.25949,50.56916&MONTH=11&NORMAL_ID=1&properties=STATION_NAME,CLIMATE_IDENTIFIER&limit=200"
+    },
+    {
+      "rel": "alternate",
+      "type": "application/ld+json",
+      "title": "This document as RDF (JSON-LD)",
+      "href": "https://api.weather.gc.ca/collections/climate-normals/items?f=jsonld&bbox=-123.66051,49.67084,-122.25949,50.56916&MONTH=11&NORMAL_ID=1&properties=STATION_NAME,CLIMATE_IDENTIFIER&limit=200"
+    },
+    {
+      "type": "text/html",
+      "rel": "alternate",
+      "title": "This document as HTML",
+      "href": "https://api.weather.gc.ca/collections/climate-normals/items?f=html&bbox=-123.66051,49.67084,-122.25949,50.56916&MONTH=11&NORMAL_ID=1&properties=STATION_NAME,CLIMATE_IDENTIFIER&limit=200"
+    },
+    {
+      "type": "application/json",
+      "title": "Climate - Normals 1981-2010",
+      "rel": "collection",
+      "href": "https://api.weather.gc.ca/collections/climate-normals"
+    }
+  ],
+  "timeStamp": "2026-11-15T19:25:40.154039Z"
+}

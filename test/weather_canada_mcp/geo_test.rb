@@ -38,4 +38,14 @@ class GeoTest < Minitest::Test
     refute Geo.contains?({ "type" => "Point", "coordinates" => [5, 5] }, 5, 5)
     refute Geo.contains?(nil, 5, 5)
   end
+
+  def test_distance_to_edge
+    # A 0.2 degree square around 50N 120W; a point 0.1 degree of latitude north of its north edge.
+    square = [[-120.1, 49.9], [-119.9, 49.9], [-119.9, 50.1], [-120.1, 50.1], [-120.1, 49.9]]
+
+    assert_in_delta 11.13, Geo.distance_to_edge_km({ "type" => "Polygon", "coordinates" => [square] }, 50.2, -120.0), 0.05
+    assert_in_delta 11.13, Geo.distance_to_edge_km({ "type" => "MultiPolygon", "coordinates" => [[square]] }, 50.2, -120.0), 0.05
+    assert_in_delta 0.0, Geo.distance_to_edge_km({ "type" => "Polygon", "coordinates" => [square] }, 50.1, -120.0), 0.001
+    assert_nil Geo.distance_to_edge_km({ "type" => "Point", "coordinates" => [-120, 50] }, 50, -120)
+  end
 end

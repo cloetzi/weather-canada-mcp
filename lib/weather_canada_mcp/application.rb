@@ -13,6 +13,7 @@ module WeatherCanadaMcp
       Quote alert text as given. Times are UTC. This is an unofficial tool; for safety-critical decisions point
       people to weather.gc.ca.
     TEXT
+    IMAGE_CACHE_ENTRIES = 64
     AVALANCHE_INSTRUCTIONS = <<~TEXT.tr("\n", " ").strip
       The avalanche tools use Avalanche Canada data: report danger ratings exactly as given, quote forecast text rather
       than reword it, and always pass on the safety note and the official forecast link.
@@ -59,14 +60,22 @@ module WeatherCanadaMcp
 
     def cache = @cache ||= Sources::Cache.new(scale: config.cache_scale)
 
+    # Map images (100 KB or more each) are kept apart, so they never crowd out the small entries.
+    def image_cache = @image_cache ||= Sources::Cache.new(max_entries: IMAGE_CACHE_ENTRIES, scale: config.cache_scale)
+
     def ogc = @ogc ||= Sources::OgcApi.new(http:, cache:)
+
+    def wms = @wms ||= Sources::Wms.new(http:, cache:, image_cache:)
+
+    def basemap = @basemap ||= Sources::Basemap.new(http:, cache: image_cache)
 
     def avalanche = (@avalanche ||= Sources::AvalancheCanada.new(http:, cache:) if config.avalanche_canada_enabled)
 
     def places = @places ||= Places::Gazetteer::Provider.new(path: config.gazetteer_path, http:, logger:)
 
     def context
-      @context ||= Tools::Context.new(ogc:, avalanche:, locator: Places::Locator.new(ogc:), places:, config:, clock: @clock)
+      @context ||= Tools::Context.new(ogc:, wms:, basemap:, images: image_cache, avalanche:, locator: Places::Locator.new(ogc:),
+                                      places:, config:, clock: @clock)
     end
 
     def instructions = config.avalanche_canada_enabled ? "#{INSTRUCTIONS} #{AVALANCHE_INSTRUCTIONS}" : INSTRUCTIONS

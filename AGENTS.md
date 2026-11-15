@@ -11,12 +11,14 @@ Names. Users run it over stdio or from the Docker image on GHCR. No upstream cre
 ## Layout
 
 - `lib/weather_canada_mcp/`
-  - `tools/`: one class per MCP tool (`Tools::Base` subclasses); `tools.rb` lists them in order;
-    `Tools::Runner` runs a tool call, drops nulls, adds the attribution, enforces the size cap, turns errors into
-    tool errors
+  - `tools/`: one class per MCP tool (`Tools::Base` subclasses), and `MapImage` (PNG compositing, chunky_png);
+    `tools.rb` lists them in order;
+    `Tools::Runner` runs a tool call, drops nulls, adds the attribution, enforces the size cap (on the JSON, not
+    on an image a tool returns), turns errors into tool errors
   - `sources/`: everything that fetches ECCC and NRCan data. `HttpClient` (GET only, fixed origins, gzip, size cap,
     retries), `RateLimiter` (GCRA, global), `Cache` (TTL with request coalescing), and a thin client per service
-    returning parsed data (`OgcApi`, and `AvalancheCanada` when enabled); `sources.rb` holds the error classes
+    returning parsed data (`OgcApi`; `Wms`, GeoMet point values and map images; `Basemap`, NRCan's base map; and
+    `AvalancheCanada` when enabled); `sources.rb` holds the error classes
   - `places/`: `Gazetteer`, offline place names in SQLite (FTS5; plain lat/lon index, since the bundled SQLite has
     no R*Tree), built from NRCan's CSV by `Builder`, downloaded (rubyzip) and built on demand by `Provider`;
     `Locator`, nearest City Page forecast sites
@@ -53,8 +55,9 @@ docker build -t weather-canada-mcp:dev . && bin/docker-smoke-test weather-canada
   durations and error classes only.
 - **Security.** GET only, to configured origins only. Validate tool arguments and URL-encode anything that reaches
   a path. Cap sizes after decompression. MCP auth stays required by default for HTTP.
-- **Fibers.** Code runs under the Async fiber scheduler. Use non-blocking IO (async-http); CPU-heavy one-off work
-  (the gazetteer build) may use a thread. Logs go to stderr; stdout is the stdio transport's protocol channel.
+- **Fibers.** Code runs under the Async fiber scheduler. Use non-blocking IO (async-http); CPU-heavy work (the
+  gazetteer build, composing radar map images) may use a thread. Logs go to stderr; stdout is the stdio transport's
+  protocol channel.
 - **Style.** Follow the surrounding code: small classes, `Data` value objects, endless methods for one-liners,
   comments only where intent is not obvious. RuboCop is the arbiter.
 - **Loading.** Zeitwerk autoloads `lib/` (inflections in `lib/weather_canada_mcp.rb`): one top-level constant per

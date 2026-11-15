@@ -49,8 +49,13 @@ module WeatherCanadaMcp
     # The body is not the JSON or XML the source expected.
     class InvalidResponse < Error; end
 
+    PNG_SIGNATURE = "\x89PNG\r\n\x1A\n".b
+
     Response = Data.define(:status, :content_type, :body) do
       def success? = (200..299).cover?(status)
+
+      # A PNG image, by its type and signature (WMS servers report errors as XML with a 200).
+      def png? = content_type.to_s.start_with?("image/png") && body.start_with?(PNG_SIGNATURE)
     end
   end
 end

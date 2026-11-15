@@ -13,6 +13,9 @@ Place names: Canadian Geographical Names, Natural Resources Canada, used under t
 Canada (https://open.canada.ca/en/open-government-licence-canada). The place-name database built by this
 software, and included in its Docker image, contains information licensed under that licence.
 
+Radar base map: Canada Base Map - Transportation (CBMT), Natural Resources Canada, used under the Open Government
+Licence - Canada.
+
 Avalanche data (optional, off by default): avalanche forecasts, mountain weather station data and Mountain
 Information Network reports from Avalanche Canada (avalanche.ca) and the agencies that own its forecasts. Avalanche
 Canada publishes no open licence; its Terms of Use (https://avalanche.ca/terms-of-use) say its material may not be

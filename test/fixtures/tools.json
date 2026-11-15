@@ -252,5 +252,183 @@
       },
       "additionalProperties": false
     }
+  },
+  {
+    "name": "get_snow_outlook",
+    "title": "Get the snow outlook",
+    "description": "Model guidance for snow at a point over the next 12, 24 or 48 hours, in four steps: the snow level (the height in metres above sea level below which snow turns to rain, from the 2.5 km HRDPS model), new snow as water equivalent (mm, from the 10 km RDPS model; 1 mm is roughly 1 cm of fresh snow, more in cold dry snow) and the probability of blowing snow. \"snow to the surface\" means the snow level is below the ground at this point (the model's terrain is smoothed over 2.5 km), so precipitation falls as snow. This is raw model output, not a forecaster's forecast and not an avalanche bulletin; for mountain text forecasts use get_forecast. Times are UTC (ISO 8601).",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "location": {
+          "type": "string",
+          "maxLength": 120,
+          "description": "A place in Canada: town, park, lake, peak or river, optionally with a province (\"Squamish\", \"Lake Louise, AB\", \"Mont-Tremblant, QC\"). Ignored when lat and lon are given."
+        },
+        "lat": {
+          "type": "number",
+          "minimum": 41.0,
+          "maximum": 84.0,
+          "description": "Latitude in decimal degrees."
+        },
+        "lon": {
+          "type": "number",
+          "minimum": -142.0,
+          "maximum": -52.0,
+          "description": "Longitude in decimal degrees (negative, west)."
+        },
+        "hours": {
+          "type": "integer",
+          "enum": [
+            12,
+            24,
+            48
+          ],
+          "default": 24,
+          "description": "How far ahead to look: 12, 24 or 48 hours."
+        },
+        "lang": {
+          "type": "string",
+          "enum": [
+            "en",
+            "fr"
+          ],
+          "description": "Language of text fields: en or fr."
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  {
+    "name": "get_marine_forecast",
+    "title": "Get the marine forecast",
+    "description": "Environment Canada's marine forecast for the marine area at a location: coastal waters, large lakes (Great Lakes, Lake Winnipeg, Great Slave Lake and others) and Arctic waters. Gives wind (in knots), weather and visibility, waves, air temperature and freezing spray for today to tomorrow, the extended wind forecast for the following days, and the marine warnings in effect. A point on land (a harbour town, a beach) gets the nearest areas within 25 km, with their distance. Some areas are seasonal and say so in status. Wind and waves are as ECCC writes them; quote warnings as given. Times are UTC (ISO 8601). For weather alerts on land use get_alerts.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "location": {
+          "type": "string",
+          "maxLength": 120,
+          "description": "A place in Canada: town, park, lake, peak or river, optionally with a province (\"Squamish\", \"Lake Louise, AB\", \"Mont-Tremblant, QC\"). Ignored when lat and lon are given."
+        },
+        "lat": {
+          "type": "number",
+          "minimum": 41.0,
+          "maximum": 84.0,
+          "description": "Latitude in decimal degrees."
+        },
+        "lon": {
+          "type": "number",
+          "minimum": -142.0,
+          "maximum": -52.0,
+          "description": "Longitude in decimal degrees (negative, west)."
+        },
+        "lang": {
+          "type": "string",
+          "enum": [
+            "en",
+            "fr"
+          ],
+          "description": "Language of text fields: en or fr."
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  {
+    "name": "get_climate_context",
+    "title": "Get climate normals and records",
+    "description": "Climate context for a location and date, to judge whether a forecast is unusual: the daily records for that calendar day (highest and lowest temperatures, most precipitation and most snowfall, with the year of each) from Environment Canada's long-term climate extremes for the nearest of about 750 places (within 100 km, joining the records of nearby stations since as early as the 1840s; each span of records gives the years covered, with \"to\" only when the series has ended), and the monthly climate normals (1981-2010) at the nearest normals station (within 50 km): mean daily high and low, precipitation, rain, snowfall, days with precipitation or snow, snow depth and sunshine. The stations are usually in valleys and towns, so mountain conditions differ. date defaults to today.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "location": {
+          "type": "string",
+          "maxLength": 120,
+          "description": "A place in Canada: town, park, lake, peak or river, optionally with a province (\"Squamish\", \"Lake Louise, AB\", \"Mont-Tremblant, QC\"). Ignored when lat and lon are given."
+        },
+        "lat": {
+          "type": "number",
+          "minimum": 41.0,
+          "maximum": 84.0,
+          "description": "Latitude in decimal degrees."
+        },
+        "lon": {
+          "type": "number",
+          "minimum": -142.0,
+          "maximum": -52.0,
+          "description": "Longitude in decimal degrees (negative, west)."
+        },
+        "date": {
+          "type": "string",
+          "pattern": "^(?:\\d{4}-)?(\\d{2})-(\\d{2})$",
+          "description": "The calendar day, YYYY-MM-DD or MM-DD (the year is ignored). Defaults to today."
+        },
+        "lang": {
+          "type": "string",
+          "enum": [
+            "en",
+            "fr"
+          ],
+          "description": "Language of text fields: en or fr."
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  {
+    "name": "get_radar_map",
+    "title": "Get the weather radar map",
+    "description": "The latest weather radar around a location (updated every 6 minutes): a 512x512 PNG map of precipitation over a base map, the location ringed in red at its centre (or near it), plus the radar's rain rate (mm/h), snow rate (cm/h) at the point, the surface precipitation type detected at or next to it (left out when there is none), and the rate there 30 and 60 minutes ago. radius_km sets the area shown (25 to 200 km from the point). precipitation picks the map's colour scale, rain or snow; it defaults to snow from November to April. Colours run from light blue (lightest) through green, yellow, orange and red to purple (heaviest); light grey shading marks areas outside radar coverage. Radar can miss precipitation below the beam in mountains and far from radars, and can show echoes that do not reach the ground. Times are UTC (ISO 8601).",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "location": {
+          "type": "string",
+          "maxLength": 120,
+          "description": "A place in Canada: town, park, lake, peak or river, optionally with a province (\"Squamish\", \"Lake Louise, AB\", \"Mont-Tremblant, QC\"). Ignored when lat and lon are given."
+        },
+        "lat": {
+          "type": "number",
+          "minimum": 41.0,
+          "maximum": 84.0,
+          "description": "Latitude in decimal degrees."
+        },
+        "lon": {
+          "type": "number",
+          "minimum": -142.0,
+          "maximum": -52.0,
+          "description": "Longitude in decimal degrees (negative, west)."
+        },
+        "radius_km": {
+          "type": "integer",
+          "enum": [
+            25,
+            50,
+            100,
+            200
+          ],
+          "default": 100,
+          "description": "Distance from the point to the map's edges."
+        },
+        "precipitation": {
+          "type": "string",
+          "enum": [
+            "rain",
+            "snow"
+          ],
+          "description": "The map's colour scale: rain or snow."
+        },
+        "lang": {
+          "type": "string",
+          "enum": [
+            "en",
+            "fr"
+          ],
+          "description": "Language of text fields: en or fr."
+        }
+      },
+      "additionalProperties": false
+    }
   }
 ]

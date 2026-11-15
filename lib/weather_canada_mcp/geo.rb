@@ -57,6 +57,32 @@ module WeatherCanadaMcp
       inside
     end
 
+    # Approximate distance in km from a point to the nearest edge of a GeoJSON Polygon or MultiPolygon (on a plane
+    # tangent at the point, which is close enough within a few tens of km); nil for other geometry types.
+    def distance_to_edge_km(geometry, lat, lon)
+      scale = KM_PER_DEGREE_LAT * Math.cos(radians(lat))
+      project = ->((x, y)) { [(x - lon) * scale, (y - lat) * KM_PER_DEGREE_LAT] if x.is_a?(Numeric) && y.is_a?(Numeric) }
+      rings(geometry).flat_map { |ring| ring.filter_map(&project).each_cons(2).map { |a, b| segment_distance(a, b) } }.min
+    end
+
+    # Every ring of a Polygon or MultiPolygon; none for other geometry types.
+    def rings(geometry)
+      polygons = case geometry.is_a?(Hash) && geometry["type"]
+                 when "Polygon" then [geometry["coordinates"]]
+                 when "MultiPolygon" then geometry["coordinates"]
+                 end
+      Array(polygons).flat_map { |polygon| Array(polygon) }.grep(Array)
+    end
+
+    # Distance from the origin to the segment a-b, in the segment's units.
+    def segment_distance((ax, ay), (bx, by))
+      dx = bx - ax
+      dy = by - ay
+      length = (dx * dx) + (dy * dy)
+      t = length.zero? ? 0.0 : (-((ax * dx) + (ay * dy)) / length).clamp(0.0, 1.0)
+      Math.hypot(ax + (t * dx), ay + (t * dy))
+    end
+
     def radians(degrees) = degrees * Math::PI / 180
   end
 end
