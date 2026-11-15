@@ -16,6 +16,9 @@ module TestHelpers
   CAPTURED_AT = Time.utc(2026, 11, 15, 17, 0, 0)
   # When the M2 station fixtures (observations, river gauges, AQHI) were captured.
   STATIONS_CAPTURED_AT = Time.utc(2026, 11, 15, 18, 45, 0)
+  # When the Avalanche Canada fixtures were captured (station measurements cover the 24 hours to 20:00 UTC).
+  AVALANCHE_CAPTURED_AT = Time.utc(2026, 11, 15, 19, 20, 0)
+  AVALANCHE_ENABLED = { AVALANCHE_CANADA_ENABLED: "true", AVALANCHE_CANADA_FIELD_REPORTS_ENABLED: "true" }.freeze
 
   def null_logger = WeatherCanadaMcp::Logger.new(io: StringIO.new, level: "error")
 
@@ -44,7 +47,8 @@ module TestHelpers
 
   # Every upstream points at the fake; requests are not rate limited.
   def env(fake = nil, **overrides)
-    upstreams = fake ? %w[API DATAMART GEOMET CGN].to_h { |name| ["WEATHER_MCP_#{name}_URL", fake.url] } : {}
+    variables = [*%w[API DATAMART GEOMET CGN].map { |name| "WEATHER_MCP_#{name}_URL" }, *WeatherCanadaMcp::Config::AVALANCHE_URL_VARIABLES.values]
+    upstreams = fake ? variables.to_h { |name| [name, fake.url] } : {}
     {
       "WEATHER_MCP_AUTH_TOKEN" => AUTH_TOKEN,
       "WEATHER_MCP_GAZETTEER_PATH" => gazetteer_path,
@@ -66,11 +70,12 @@ module TestHelpers
   end
 
   # Calls one tool against the fake upstream; returns [result, error?] and the fake's recorded requests.
-  def call_with_fake(name, clock: -> { STATIONS_CAPTURED_AT }, routes: {}, **arguments)
+  # env: extra configuration, such as AVALANCHE_ENABLED.
+  def call_with_fake(name, clock: -> { STATIONS_CAPTURED_AT }, routes: {}, env: {}, **arguments)
     result = nil
     with_fake_eccc do |fake|
       routes.each { |path, handler| fake.route(path, &handler) }
-      app = application(fake, clock:)
+      app = application(fake, clock:, **env)
       result = [*call_tool(app, name, **arguments), fake.requests]
     ensure
       app&.close

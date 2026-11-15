@@ -41,7 +41,7 @@ module WeatherCanadaMcp
         when 404 then "#{host} has no data for this request (HTTP 404)."
         when 429 then "#{host} is rate limiting requests (HTTP 429). Wait a minute before retrying."
         when 400..499 then "#{host} rejected the request (HTTP #{status})."
-        else "#{host} failed to answer (HTTP #{status}). ECCC services are sometimes briefly unavailable; retrying later may help."
+        else "#{host} failed to answer (HTTP #{status}). The service is sometimes briefly unavailable; retrying later may help."
         end
       end
     end
