@@ -9,7 +9,7 @@ module WeatherCanadaMCP
     #
     # Types: :integer and :number (`in:` a Range), :string (`max_length:`, `pattern:`, `in:` an Array) and :language
     # (en or fr, the configured language when missing). `bounds:` puts a range in the schema without enforcing it, for a
-    # check the tool words better itself. A pattern appears in the schema only.
+    # check the tool words better itself. A pattern is checked and appears in the schema.
     class Argument
       TYPES = %i[integer number string language].freeze
       LANGUAGE_DESCRIPTION = "Language of text fields: en or fr."
@@ -67,7 +67,7 @@ module WeatherCanadaMCP
         value = value.to_i if value.is_a?(Float) && value.finite? && (value % 1).zero? # JSON Schema counts 2.0 as an integer
         return value if value.is_a?(Integer) && allowed?(value)
 
-        raise InvalidArguments, @allowed.is_a?(Array) ? one_of : "#{name} must be a whole number from #{@allowed.min} to #{@allowed.max}."
+        raise InvalidArguments, whole_number_message
       end
 
       def number(value)
@@ -81,6 +81,7 @@ module WeatherCanadaMCP
         raise InvalidArguments, "#{name} must be text." unless value.is_a?(String)
         raise InvalidArguments, "#{name} is longer than #{@max_length} characters." if @max_length && value.length > @max_length
         raise InvalidArguments, one_of unless allowed?(value)
+        raise InvalidArguments, "#{name} is not in the expected format." if @pattern && !value.match?(@pattern)
 
         value
       end
@@ -92,6 +93,14 @@ module WeatherCanadaMCP
         when Range then @allowed.cover?(value)
         when Array then @allowed.include?(value)
         else true
+        end
+      end
+
+      def whole_number_message
+        case @allowed
+        when Array then one_of
+        when Range then "#{name} must be a whole number from #{@allowed.min} to #{@allowed.max}."
+        else "#{name} must be a whole number."
         end
       end
 

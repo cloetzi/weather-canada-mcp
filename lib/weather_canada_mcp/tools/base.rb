@@ -126,7 +126,7 @@ module WeatherCanadaMCP
       def credits(declared)
         sources = [*declared, *@attributions]
         sources = [self.class.attribution] if sources.empty?
-        @place_names ? [*sources, Places::Gazetteer::ATTRIBUTION] : sources
+        (@place_names ? [*sources, Places::Gazetteer::ATTRIBUTION] : sources).uniq
       end
 
       def ogc = @context.ogc

@@ -42,9 +42,9 @@ module WeatherCanadaMCP
         end
 
         candidates = gazetteer.search(name, province:, limit: args.limit)
+        place_names_used!
         return { query:, candidates: [], note: "No matching place. Try a shorter name, another spelling, or lat and lon." } if candidates.empty?
 
-        place_names_used!
         best = candidates.first
         { query:, candidates: candidates.map(&:to_h), forecast_sites: sites(best.lat, best.lon, args.lang),
           note: "forecast_sites are for the first candidate." }
@@ -52,7 +52,7 @@ module WeatherCanadaMCP
 
       def by_point(point, limit, lang)
         nearby = nearby_places(point, limit)
-        place_names_used! if nearby&.any?
+        place_names_used! unless nearby.nil?
         { lat: point.lat, lon: point.lon, nearby_places: nearby, forecast_sites: sites(point.lat, point.lon, lang) }.compact
       end
 
