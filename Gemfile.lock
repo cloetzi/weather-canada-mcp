@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    weather-canada-mcp (0.2.0)
+    weather-canada-mcp (0.2.1)
       async-http (~> 0.105)
       chunky_png (~> 1.4)
       csv (~> 3.3)

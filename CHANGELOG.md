@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.1](https://github.com/cloetzi/weather-canada-mcp/compare/v0.2.0...v0.2.1) (2026-11-15)
+
+
+### Bug Fixes
+
+* build the image after a release bumps the version ([#24](https://github.com/cloetzi/weather-canada-mcp/issues/24)) ([863a659](https://github.com/cloetzi/weather-canada-mcp/commit/863a659ee5d7fde93162e7218c9afc0747d11fcd))
+
 ## [0.2.0](https://github.com/cloetzi/weather-canada-mcp/compare/v0.1.0...v0.2.0) (2026-11-15)
 
 
