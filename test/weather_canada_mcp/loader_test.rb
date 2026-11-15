@@ -15,7 +15,7 @@ class LoaderTest < Minitest::Test
     Zeitwerk::Loader.eager_load_namespace(WeatherCanadaMcp)
     errors = ObjectSpace.each_object(Class).select { |klass| klass < Exception && klass.name&.start_with?("WeatherCanadaMcp::") }
 
-    assert_includes errors, WeatherCanadaMcp::Upstream::StatusError
+    assert_includes errors, WeatherCanadaMcp::Sources::StatusError
     assert_empty(errors.reject { |klass| klass <= WeatherCanadaMcp::Error })
   end
 end
