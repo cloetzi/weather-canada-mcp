@@ -125,5 +125,132 @@
       },
       "additionalProperties": false
     }
+  },
+  {
+    "name": "get_current_observations",
+    "title": "Get current weather observations",
+    "description": "The latest measured weather at the Environment Canada and NAV CANADA stations nearest a location (within 50 km): temperature, dewpoint, humidity, wind and gusts, pressure, visibility, cloud cover, precipitation over the past 1, 6 and 24 hours, snowfall and snow depth. Stations report different sets of readings, so a reading missing at one station may be present at the next; readings that failed ECCC's automatic quality checks are left out. A reading missing from a station's newest report can come from one up to an hour older; earlier_readings gives the time of each such reading. Each station shows its elevation and distance, because a valley station can differ a lot from a ridge nearby. Times are UTC (ISO 8601). For the forecast use get_forecast.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "location": {
+          "type": "string",
+          "maxLength": 120,
+          "description": "A place in Canada: town, park, lake, peak or river, optionally with a province (\"Squamish\", \"Lake Louise, AB\", \"Mont-Tremblant, QC\"). Ignored when lat and lon are given."
+        },
+        "lat": {
+          "type": "number",
+          "minimum": 41.0,
+          "maximum": 84.0,
+          "description": "Latitude in decimal degrees."
+        },
+        "lon": {
+          "type": "number",
+          "minimum": -142.0,
+          "maximum": -52.0,
+          "description": "Longitude in decimal degrees (negative, west)."
+        },
+        "stations": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5,
+          "default": 3,
+          "description": "Nearest stations to include."
+        },
+        "lang": {
+          "type": "string",
+          "enum": [
+            "en",
+            "fr"
+          ],
+          "description": "Language of text fields: en or fr."
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  {
+    "name": "get_river_conditions",
+    "title": "Get river levels and flows",
+    "description": "Real-time water level (m) and flow (m3/s) at the Water Survey of Canada gauges nearest a location (within 50 km), with the change over the past 24 hours, the range over the past 3 days, and how today's flow compares with the historical mean flow for this month at the same gauge. Pass river to keep only gauges whose name contains it (\"Bow River\", \"Cheakamus\"). Real-time data are provisional and can be affected by ice. Water levels are relative to a local datum, so compare a level only with the same gauge. Times are UTC (ISO 8601). This is not a flood forecast; check provincial river forecast centres and get_alerts for warnings.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "location": {
+          "type": "string",
+          "maxLength": 120,
+          "description": "A place in Canada: town, park, lake, peak or river, optionally with a province (\"Squamish\", \"Lake Louise, AB\", \"Mont-Tremblant, QC\"). Ignored when lat and lon are given."
+        },
+        "lat": {
+          "type": "number",
+          "minimum": 41.0,
+          "maximum": 84.0,
+          "description": "Latitude in decimal degrees."
+        },
+        "lon": {
+          "type": "number",
+          "minimum": -142.0,
+          "maximum": -52.0,
+          "description": "Longitude in decimal degrees (negative, west)."
+        },
+        "river": {
+          "type": "string",
+          "maxLength": 60,
+          "description": "Only gauges whose name contains this text (\"Bow River\")."
+        },
+        "stations": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5,
+          "default": 3,
+          "description": "Nearest gauges to include."
+        },
+        "lang": {
+          "type": "string",
+          "enum": [
+            "en",
+            "fr"
+          ],
+          "description": "Language of text fields: en or fr."
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  {
+    "name": "get_air_quality",
+    "title": "Get air quality",
+    "description": "The Air Quality Health Index (AQHI, 1 to 10+, higher is worse) at the nearest of about 150 AQHI locations (within 100 km): the latest hourly observation and the forecast for today, tonight, tomorrow and later, each with its risk category (low, moderate, high, very high) and the health messages for the general population and for people at risk (children, people over 65, people with heart or lung conditions). During wildfire smoke the forecast may also give an in-smoke value. health_messages holds the messages once for each risk category that appears. Times are UTC (ISO 8601).",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "location": {
+          "type": "string",
+          "maxLength": 120,
+          "description": "A place in Canada: town, park, lake, peak or river, optionally with a province (\"Squamish\", \"Lake Louise, AB\", \"Mont-Tremblant, QC\"). Ignored when lat and lon are given."
+        },
+        "lat": {
+          "type": "number",
+          "minimum": 41.0,
+          "maximum": 84.0,
+          "description": "Latitude in decimal degrees."
+        },
+        "lon": {
+          "type": "number",
+          "minimum": -142.0,
+          "maximum": -52.0,
+          "description": "Longitude in decimal degrees (negative, west)."
+        },
+        "lang": {
+          "type": "string",
+          "enum": [
+            "en",
+            "fr"
+          ],
+          "description": "Language of text fields: en or fr."
+        }
+      },
+      "additionalProperties": false
+    }
   }
 ]

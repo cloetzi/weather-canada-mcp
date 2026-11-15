@@ -1,0 +1,3616 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "id": "08GA075.1990-01",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1990-01",
+        "MONTHLY_MEAN_DISCHARGE": 8.319999694824219
+      }
+    },
+    {
+      "id": "08GA075.1990-02",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1990-02",
+        "MONTHLY_MEAN_DISCHARGE": 5.980000019073486
+      }
+    },
+    {
+      "id": "08GA075.1990-03",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1990-03",
+        "MONTHLY_MEAN_DISCHARGE": 9.56999969482422
+      }
+    },
+    {
+      "id": "08GA075.1990-04",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1990-04",
+        "MONTHLY_MEAN_DISCHARGE": 28.399999618530277
+      }
+    },
+    {
+      "id": "08GA075.1990-05",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1990-05",
+        "MONTHLY_MEAN_DISCHARGE": 25.200000762939453
+      }
+    },
+    {
+      "id": "08GA075.1990-06",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1990-06",
+        "MONTHLY_MEAN_DISCHARGE": 40.5
+      }
+    },
+    {
+      "id": "08GA075.1990-07",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1990-07",
+        "MONTHLY_MEAN_DISCHARGE": 26.100000381469727
+      }
+    },
+    {
+      "id": "08GA075.1990-08",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1990-08",
+        "MONTHLY_MEAN_DISCHARGE": 17.600000381469727
+      }
+    },
+    {
+      "id": "08GA075.1990-09",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1990-09",
+        "MONTHLY_MEAN_DISCHARGE": 13.399999618530272
+      }
+    },
+    {
+      "id": "08GA075.1990-10",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1990-10",
+        "MONTHLY_MEAN_DISCHARGE": 20.299999237060547
+      }
+    },
+    {
+      "id": "08GA075.1990-11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1990-11",
+        "MONTHLY_MEAN_DISCHARGE": 51.79999923706055
+      }
+    },
+    {
+      "id": "08GA075.1990-12",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1990-12",
+        "MONTHLY_MEAN_DISCHARGE": 16.5
+      }
+    },
+    {
+      "id": "08GA075.1991-01",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1991-01",
+        "MONTHLY_MEAN_DISCHARGE": 15.5
+      }
+    },
+    {
+      "id": "08GA075.1991-02",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1991-02",
+        "MONTHLY_MEAN_DISCHARGE": 53.70000076293945
+      }
+    },
+    {
+      "id": "08GA075.1991-03",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1991-03",
+        "MONTHLY_MEAN_DISCHARGE": 15.600000381469728
+      }
+    },
+    {
+      "id": "08GA075.1991-05",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1991-05",
+        "MONTHLY_MEAN_DISCHARGE": 38.09999847412109
+      }
+    },
+    {
+      "id": "08GA075.1991-06",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1991-06",
+        "MONTHLY_MEAN_DISCHARGE": 33.20000076293945
+      }
+    },
+    {
+      "id": "08GA075.1991-07",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1991-07",
+        "MONTHLY_MEAN_DISCHARGE": 30.700000762939453
+      }
+    },
+    {
+      "id": "08GA075.1991-08",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1991-08",
+        "MONTHLY_MEAN_DISCHARGE": null
+      }
+    },
+    {
+      "id": "08GA075.1991-09",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1991-09",
+        "MONTHLY_MEAN_DISCHARGE": null
+      }
+    },
+    {
+      "id": "08GA075.1991-10",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1991-10",
+        "MONTHLY_MEAN_DISCHARGE": null
+      }
+    },
+    {
+      "id": "08GA075.1991-12",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1991-12",
+        "MONTHLY_MEAN_DISCHARGE": null
+      }
+    },
+    {
+      "id": "08GA075.1992-01",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1992-01",
+        "MONTHLY_MEAN_DISCHARGE": 42.0
+      }
+    },
+    {
+      "id": "08GA075.1992-02",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1992-02",
+        "MONTHLY_MEAN_DISCHARGE": 21.600000381469727
+      }
+    },
+    {
+      "id": "08GA075.1992-03",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1992-03",
+        "MONTHLY_MEAN_DISCHARGE": 20.299999237060547
+      }
+    },
+    {
+      "id": "08GA075.1992-04",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1992-04",
+        "MONTHLY_MEAN_DISCHARGE": 44.900001525878906
+      }
+    },
+    {
+      "id": "08GA075.1992-05",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1992-05",
+        "MONTHLY_MEAN_DISCHARGE": 34.099998474121094
+      }
+    },
+    {
+      "id": "08GA075.1992-06",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1992-06",
+        "MONTHLY_MEAN_DISCHARGE": 29.100000381469727
+      }
+    },
+    {
+      "id": "08GA075.1992-07",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1992-07",
+        "MONTHLY_MEAN_DISCHARGE": 23.399999618530277
+      }
+    },
+    {
+      "id": "08GA075.1992-08",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1992-08",
+        "MONTHLY_MEAN_DISCHARGE": 14.0
+      }
+    },
+    {
+      "id": "08GA075.1992-09",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1992-09",
+        "MONTHLY_MEAN_DISCHARGE": 12.399999618530272
+      }
+    },
+    {
+      "id": "08GA075.1992-10",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1992-10",
+        "MONTHLY_MEAN_DISCHARGE": null
+      }
+    },
+    {
+      "id": "08GA075.1994-01",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1994-01",
+        "MONTHLY_MEAN_DISCHARGE": 36.29999923706055
+      }
+    },
+    {
+      "id": "08GA075.1994-02",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1994-02",
+        "MONTHLY_MEAN_DISCHARGE": 12.800000190734863
+      }
+    },
+    {
+      "id": "08GA075.1994-03",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1994-03",
+        "MONTHLY_MEAN_DISCHARGE": 28.899999618530277
+      }
+    },
+    {
+      "id": "08GA075.1994-04",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1994-04",
+        "MONTHLY_MEAN_DISCHARGE": 28.399999618530277
+      }
+    },
+    {
+      "id": "08GA075.1994-05",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1994-05",
+        "MONTHLY_MEAN_DISCHARGE": 32.900001525878906
+      }
+    },
+    {
+      "id": "08GA075.1994-06",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1994-06",
+        "MONTHLY_MEAN_DISCHARGE": 32.400001525878906
+      }
+    },
+    {
+      "id": "08GA075.1994-07",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1994-07",
+        "MONTHLY_MEAN_DISCHARGE": 26.5
+      }
+    },
+    {
+      "id": "08GA075.1994-08",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1994-08",
+        "MONTHLY_MEAN_DISCHARGE": 11.699999809265137
+      }
+    },
+    {
+      "id": "08GA075.1994-09",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1994-09",
+        "MONTHLY_MEAN_DISCHARGE": 9.81999969482422
+      }
+    },
+    {
+      "id": "08GA075.1994-10",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1994-10",
+        "MONTHLY_MEAN_DISCHARGE": 11.0
+      }
+    },
+    {
+      "id": "08GA075.1994-11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1994-11",
+        "MONTHLY_MEAN_DISCHARGE": 10.199999809265137
+      }
+    },
+    {
+      "id": "08GA075.1994-12",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1994-12",
+        "MONTHLY_MEAN_DISCHARGE": 22.0
+      }
+    },
+    {
+      "id": "08GA075.1995-01",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1995-01",
+        "MONTHLY_MEAN_DISCHARGE": 20.200000762939453
+      }
+    },
+    {
+      "id": "08GA075.1995-02",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1995-02",
+        "MONTHLY_MEAN_DISCHARGE": 28.200000762939453
+      }
+    },
+    {
+      "id": "08GA075.1995-03",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1995-03",
+        "MONTHLY_MEAN_DISCHARGE": 22.600000381469727
+      }
+    },
+    {
+      "id": "08GA075.1995-04",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1995-04",
+        "MONTHLY_MEAN_DISCHARGE": 18.5
+      }
+    },
+    {
+      "id": "08GA075.1995-05",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1995-05",
+        "MONTHLY_MEAN_DISCHARGE": 35.599998474121094
+      }
+    },
+    {
+      "id": "08GA075.1995-06",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1995-06",
+        "MONTHLY_MEAN_DISCHARGE": 26.200000762939453
+      }
+    },
+    {
+      "id": "08GA075.1995-07",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1995-07",
+        "MONTHLY_MEAN_DISCHARGE": 13.5
+      }
+    },
+    {
+      "id": "08GA075.1995-08",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1995-08",
+        "MONTHLY_MEAN_DISCHARGE": 16.5
+      }
+    },
+    {
+      "id": "08GA075.1995-09",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1995-09",
+        "MONTHLY_MEAN_DISCHARGE": 9.789999961853027
+      }
+    },
+    {
+      "id": "08GA075.1995-10",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1995-10",
+        "MONTHLY_MEAN_DISCHARGE": 23.200000762939453
+      }
+    },
+    {
+      "id": "08GA075.1995-11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1995-11",
+        "MONTHLY_MEAN_DISCHARGE": 69.69999694824219
+      }
+    },
+    {
+      "id": "08GA075.1995-12",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1995-12",
+        "MONTHLY_MEAN_DISCHARGE": 49.5
+      }
+    },
+    {
+      "id": "08GA075.1996-01",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1996-01",
+        "MONTHLY_MEAN_DISCHARGE": 22.5
+      }
+    },
+    {
+      "id": "08GA075.1996-02",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1996-02",
+        "MONTHLY_MEAN_DISCHARGE": 22.399999618530277
+      }
+    },
+    {
+      "id": "08GA075.1996-03",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1996-03",
+        "MONTHLY_MEAN_DISCHARGE": 16.0
+      }
+    },
+    {
+      "id": "08GA075.1996-04",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1996-04",
+        "MONTHLY_MEAN_DISCHARGE": 32.099998474121094
+      }
+    },
+    {
+      "id": "08GA075.1996-05",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1996-05",
+        "MONTHLY_MEAN_DISCHARGE": 27.899999618530277
+      }
+    },
+    {
+      "id": "08GA075.1996-06",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1996-06",
+        "MONTHLY_MEAN_DISCHARGE": 31.899999618530277
+      }
+    },
+    {
+      "id": "08GA075.1996-07",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1996-07",
+        "MONTHLY_MEAN_DISCHARGE": 31.100000381469727
+      }
+    },
+    {
+      "id": "08GA075.1996-08",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1996-08",
+        "MONTHLY_MEAN_DISCHARGE": 16.299999237060547
+      }
+    },
+    {
+      "id": "08GA075.1996-09",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1996-09",
+        "MONTHLY_MEAN_DISCHARGE": 13.399999618530272
+      }
+    },
+    {
+      "id": "08GA075.1996-10",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1996-10",
+        "MONTHLY_MEAN_DISCHARGE": 24.200000762939453
+      }
+    },
+    {
+      "id": "08GA075.1996-11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1996-11",
+        "MONTHLY_MEAN_DISCHARGE": 26.799999237060547
+      }
+    },
+    {
+      "id": "08GA075.1996-12",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1996-12",
+        "MONTHLY_MEAN_DISCHARGE": 10.699999809265137
+      }
+    },
+    {
+      "id": "08GA075.1997-01",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1997-01",
+        "MONTHLY_MEAN_DISCHARGE": null
+      }
+    },
+    {
+      "id": "08GA075.1997-04",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1997-04",
+        "MONTHLY_MEAN_DISCHARGE": 31.0
+      }
+    },
+    {
+      "id": "08GA075.1997-05",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1997-05",
+        "MONTHLY_MEAN_DISCHARGE": 49.400001525878906
+      }
+    },
+    {
+      "id": "08GA075.1997-06",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1997-06",
+        "MONTHLY_MEAN_DISCHARGE": 45.09999847412109
+      }
+    },
+    {
+      "id": "08GA075.1997-07",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1997-07",
+        "MONTHLY_MEAN_DISCHARGE": 30.700000762939453
+      }
+    },
+    {
+      "id": "08GA075.1997-08",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1997-08",
+        "MONTHLY_MEAN_DISCHARGE": null
+      }
+    },
+    {
+      "id": "08GA075.1997-09",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1997-09",
+        "MONTHLY_MEAN_DISCHARGE": null
+      }
+    },
+    {
+      "id": "08GA075.1997-11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1997-11",
+        "MONTHLY_MEAN_DISCHARGE": 30.0
+      }
+    },
+    {
+      "id": "08GA075.1998-01",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1998-01",
+        "MONTHLY_MEAN_DISCHARGE": 25.5
+      }
+    },
+    {
+      "id": "08GA075.1998-02",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1998-02",
+        "MONTHLY_MEAN_DISCHARGE": 23.200000762939453
+      }
+    },
+    {
+      "id": "08GA075.1998-03",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1998-03",
+        "MONTHLY_MEAN_DISCHARGE": 17.200000762939453
+      }
+    },
+    {
+      "id": "08GA075.1998-04",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1998-04",
+        "MONTHLY_MEAN_DISCHARGE": 15.699999809265137
+      }
+    },
+    {
+      "id": "08GA075.1998-05",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1998-05",
+        "MONTHLY_MEAN_DISCHARGE": 42.59999847412109
+      }
+    },
+    {
+      "id": "08GA075.1998-06",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1998-06",
+        "MONTHLY_MEAN_DISCHARGE": 38.79999923706055
+      }
+    },
+    {
+      "id": "08GA075.1998-07",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1998-07",
+        "MONTHLY_MEAN_DISCHARGE": 28.200000762939453
+      }
+    },
+    {
+      "id": "08GA075.1998-08",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1998-08",
+        "MONTHLY_MEAN_DISCHARGE": 10.699999809265137
+      }
+    },
+    {
+      "id": "08GA075.1998-09",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1998-09",
+        "MONTHLY_MEAN_DISCHARGE": 5.139999866485596
+      }
+    },
+    {
+      "id": "08GA075.1998-10",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1998-10",
+        "MONTHLY_MEAN_DISCHARGE": 13.5
+      }
+    },
+    {
+      "id": "08GA075.1998-11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1998-11",
+        "MONTHLY_MEAN_DISCHARGE": 23.799999237060547
+      }
+    },
+    {
+      "id": "08GA075.1998-12",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1998-12",
+        "MONTHLY_MEAN_DISCHARGE": 21.299999237060547
+      }
+    },
+    {
+      "id": "08GA075.1999-01",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1999-01",
+        "MONTHLY_MEAN_DISCHARGE": 17.299999237060547
+      }
+    },
+    {
+      "id": "08GA075.1999-02",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1999-02",
+        "MONTHLY_MEAN_DISCHARGE": 12.199999809265137
+      }
+    },
+    {
+      "id": "08GA075.1999-03",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1999-03",
+        "MONTHLY_MEAN_DISCHARGE": 14.899999618530272
+      }
+    },
+    {
+      "id": "08GA075.1999-04",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1999-04",
+        "MONTHLY_MEAN_DISCHARGE": 19.299999237060547
+      }
+    },
+    {
+      "id": "08GA075.1999-05",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1999-05",
+        "MONTHLY_MEAN_DISCHARGE": 36.900001525878906
+      }
+    },
+    {
+      "id": "08GA075.1999-06",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1999-06",
+        "MONTHLY_MEAN_DISCHARGE": 62.0
+      }
+    },
+    {
+      "id": "08GA075.1999-07",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1999-07",
+        "MONTHLY_MEAN_DISCHARGE": 68.5999984741211
+      }
+    },
+    {
+      "id": "08GA075.1999-08",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1999-08",
+        "MONTHLY_MEAN_DISCHARGE": 48.400001525878906
+      }
+    },
+    {
+      "id": "08GA075.1999-09",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1999-09",
+        "MONTHLY_MEAN_DISCHARGE": 17.700000762939453
+      }
+    },
+    {
+      "id": "08GA075.1999-10",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1999-10",
+        "MONTHLY_MEAN_DISCHARGE": 20.200000762939453
+      }
+    },
+    {
+      "id": "08GA075.1999-11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1999-11",
+        "MONTHLY_MEAN_DISCHARGE": 46.70000076293945
+      }
+    },
+    {
+      "id": "08GA075.1999-12",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "1999-12",
+        "MONTHLY_MEAN_DISCHARGE": 20.299999237060547
+      }
+    },
+    {
+      "id": "08GA075.2000-01",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2000-01",
+        "MONTHLY_MEAN_DISCHARGE": 9.579999923706056
+      }
+    },
+    {
+      "id": "08GA075.2000-02",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2000-02",
+        "MONTHLY_MEAN_DISCHARGE": 10.899999618530272
+      }
+    },
+    {
+      "id": "08GA075.2000-03",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2000-03",
+        "MONTHLY_MEAN_DISCHARGE": 10.5
+      }
+    },
+    {
+      "id": "08GA075.2000-04",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2000-04",
+        "MONTHLY_MEAN_DISCHARGE": 22.100000381469727
+      }
+    },
+    {
+      "id": "08GA075.2000-05",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2000-05",
+        "MONTHLY_MEAN_DISCHARGE": 36.400001525878906
+      }
+    },
+    {
+      "id": "08GA075.2000-06",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2000-06",
+        "MONTHLY_MEAN_DISCHARGE": 49.59999847412109
+      }
+    },
+    {
+      "id": "08GA075.2000-07",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2000-07",
+        "MONTHLY_MEAN_DISCHARGE": 36.5
+      }
+    },
+    {
+      "id": "08GA075.2000-08",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2000-08",
+        "MONTHLY_MEAN_DISCHARGE": 29.0
+      }
+    },
+    {
+      "id": "08GA075.2000-09",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2000-09",
+        "MONTHLY_MEAN_DISCHARGE": 21.5
+      }
+    },
+    {
+      "id": "08GA075.2000-10",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2000-10",
+        "MONTHLY_MEAN_DISCHARGE": 26.399999618530277
+      }
+    },
+    {
+      "id": "08GA075.2000-11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2000-11",
+        "MONTHLY_MEAN_DISCHARGE": 11.300000190734863
+      }
+    },
+    {
+      "id": "08GA075.2000-12",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2000-12",
+        "MONTHLY_MEAN_DISCHARGE": 9.369999885559082
+      }
+    },
+    {
+      "id": "08GA075.2001-01",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2001-01",
+        "MONTHLY_MEAN_DISCHARGE": 13.899999618530272
+      }
+    },
+    {
+      "id": "08GA075.2001-02",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2001-02",
+        "MONTHLY_MEAN_DISCHARGE": 6.699999809265137
+      }
+    },
+    {
+      "id": "08GA075.2001-03",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2001-03",
+        "MONTHLY_MEAN_DISCHARGE": 11.699999809265137
+      }
+    },
+    {
+      "id": "08GA075.2001-04",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2001-04",
+        "MONTHLY_MEAN_DISCHARGE": 17.899999618530273
+      }
+    },
+    {
+      "id": "08GA075.2001-05",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2001-05",
+        "MONTHLY_MEAN_DISCHARGE": 30.700000762939453
+      }
+    },
+    {
+      "id": "08GA075.2001-06",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2001-06",
+        "MONTHLY_MEAN_DISCHARGE": 32.0
+      }
+    },
+    {
+      "id": "08GA075.2001-07",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2001-07",
+        "MONTHLY_MEAN_DISCHARGE": 23.299999237060547
+      }
+    },
+    {
+      "id": "08GA075.2001-08",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2001-08",
+        "MONTHLY_MEAN_DISCHARGE": 30.299999237060547
+      }
+    },
+    {
+      "id": "08GA075.2001-09",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2001-09",
+        "MONTHLY_MEAN_DISCHARGE": 13.800000190734863
+      }
+    },
+    {
+      "id": "08GA075.2001-10",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2001-10",
+        "MONTHLY_MEAN_DISCHARGE": 17.700000762939453
+      }
+    },
+    {
+      "id": "08GA075.2001-11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2001-11",
+        "MONTHLY_MEAN_DISCHARGE": 36.20000076293945
+      }
+    },
+    {
+      "id": "08GA075.2001-12",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2001-12",
+        "MONTHLY_MEAN_DISCHARGE": 16.100000381469727
+      }
+    },
+    {
+      "id": "08GA075.2002-01",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2002-01",
+        "MONTHLY_MEAN_DISCHARGE": 24.799999237060547
+      }
+    },
+    {
+      "id": "08GA075.2002-02",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2002-02",
+        "MONTHLY_MEAN_DISCHARGE": 10.899999618530272
+      }
+    },
+    {
+      "id": "08GA075.2002-03",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2002-03",
+        "MONTHLY_MEAN_DISCHARGE": 6.329999923706055
+      }
+    },
+    {
+      "id": "08GA075.2002-04",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2002-04",
+        "MONTHLY_MEAN_DISCHARGE": 18.399999618530277
+      }
+    },
+    {
+      "id": "08GA075.2002-05",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2002-05",
+        "MONTHLY_MEAN_DISCHARGE": 34.20000076293945
+      }
+    },
+    {
+      "id": "08GA075.2002-06",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2002-06",
+        "MONTHLY_MEAN_DISCHARGE": 55.900001525878906
+      }
+    },
+    {
+      "id": "08GA075.2002-07",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2002-07",
+        "MONTHLY_MEAN_DISCHARGE": 33.70000076293945
+      }
+    },
+    {
+      "id": "08GA075.2002-08",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2002-08",
+        "MONTHLY_MEAN_DISCHARGE": 13.899999618530272
+      }
+    },
+    {
+      "id": "08GA075.2002-09",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2002-09",
+        "MONTHLY_MEAN_DISCHARGE": 10.300000190734863
+      }
+    },
+    {
+      "id": "08GA075.2002-10",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2002-10",
+        "MONTHLY_MEAN_DISCHARGE": 6.130000114440918
+      }
+    },
+    {
+      "id": "08GA075.2002-11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2002-11",
+        "MONTHLY_MEAN_DISCHARGE": 27.299999237060547
+      }
+    },
+    {
+      "id": "08GA075.2002-12",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2002-12",
+        "MONTHLY_MEAN_DISCHARGE": 20.600000381469727
+      }
+    },
+    {
+      "id": "08GA075.2003-01",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2003-01",
+        "MONTHLY_MEAN_DISCHARGE": 28.0
+      }
+    },
+    {
+      "id": "08GA075.2003-02",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2003-02",
+        "MONTHLY_MEAN_DISCHARGE": 13.300000190734863
+      }
+    },
+    {
+      "id": "08GA075.2003-03",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2003-03",
+        "MONTHLY_MEAN_DISCHARGE": 28.299999237060547
+      }
+    },
+    {
+      "id": "08GA075.2003-04",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2003-04",
+        "MONTHLY_MEAN_DISCHARGE": 24.0
+      }
+    },
+    {
+      "id": "08GA075.2003-05",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2003-05",
+        "MONTHLY_MEAN_DISCHARGE": 29.0
+      }
+    },
+    {
+      "id": "08GA075.2003-06",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2003-06",
+        "MONTHLY_MEAN_DISCHARGE": 39.900001525878906
+      }
+    },
+    {
+      "id": "08GA075.2003-07",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2003-07",
+        "MONTHLY_MEAN_DISCHARGE": 23.399999618530277
+      }
+    },
+    {
+      "id": "08GA075.2003-08",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2003-08",
+        "MONTHLY_MEAN_DISCHARGE": 10.800000190734863
+      }
+    },
+    {
+      "id": "08GA075.2003-09",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2003-09",
+        "MONTHLY_MEAN_DISCHARGE": 8.720000267028809
+      }
+    },
+    {
+      "id": "08GA075.2003-10",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2003-10",
+        "MONTHLY_MEAN_DISCHARGE": 35.900001525878906
+      }
+    },
+    {
+      "id": "08GA075.2003-11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2003-11",
+        "MONTHLY_MEAN_DISCHARGE": 9.960000038146973
+      }
+    },
+    {
+      "id": "08GA075.2003-12",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2003-12",
+        "MONTHLY_MEAN_DISCHARGE": 15.300000190734863
+      }
+    },
+    {
+      "id": "08GA075.2004-01",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2004-01",
+        "MONTHLY_MEAN_DISCHARGE": 20.899999618530277
+      }
+    },
+    {
+      "id": "08GA075.2004-02",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2004-02",
+        "MONTHLY_MEAN_DISCHARGE": 9.550000190734863
+      }
+    },
+    {
+      "id": "08GA075.2004-03",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2004-03",
+        "MONTHLY_MEAN_DISCHARGE": 16.799999237060547
+      }
+    },
+    {
+      "id": "08GA075.2004-04",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2004-04",
+        "MONTHLY_MEAN_DISCHARGE": 23.200000762939453
+      }
+    },
+    {
+      "id": "08GA075.2004-05",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2004-05",
+        "MONTHLY_MEAN_DISCHARGE": 32.79999923706055
+      }
+    },
+    {
+      "id": "08GA075.2004-06",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2004-06",
+        "MONTHLY_MEAN_DISCHARGE": 33.400001525878906
+      }
+    },
+    {
+      "id": "08GA075.2004-07",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2004-07",
+        "MONTHLY_MEAN_DISCHARGE": 26.5
+      }
+    },
+    {
+      "id": "08GA075.2004-08",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2004-08",
+        "MONTHLY_MEAN_DISCHARGE": 27.0
+      }
+    },
+    {
+      "id": "08GA075.2004-09",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2004-09",
+        "MONTHLY_MEAN_DISCHARGE": 22.0
+      }
+    },
+    {
+      "id": "08GA075.2004-10",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2004-10",
+        "MONTHLY_MEAN_DISCHARGE": 17.200000762939453
+      }
+    },
+    {
+      "id": "08GA075.2004-11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2004-11",
+        "MONTHLY_MEAN_DISCHARGE": 27.200000762939453
+      }
+    },
+    {
+      "id": "08GA075.2004-12",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2004-12",
+        "MONTHLY_MEAN_DISCHARGE": 21.600000381469727
+      }
+    },
+    {
+      "id": "08GA075.2005-01",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2005-01",
+        "MONTHLY_MEAN_DISCHARGE": 34.099998474121094
+      }
+    },
+    {
+      "id": "08GA075.2005-02",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2005-02",
+        "MONTHLY_MEAN_DISCHARGE": 10.699999809265137
+      }
+    },
+    {
+      "id": "08GA075.2005-03",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2005-03",
+        "MONTHLY_MEAN_DISCHARGE": 15.300000190734863
+      }
+    },
+    {
+      "id": "08GA075.2005-04",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2005-04",
+        "MONTHLY_MEAN_DISCHARGE": 26.799999237060547
+      }
+    },
+    {
+      "id": "08GA075.2005-05",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2005-05",
+        "MONTHLY_MEAN_DISCHARGE": 37.400001525878906
+      }
+    },
+    {
+      "id": "08GA075.2005-06",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2005-06",
+        "MONTHLY_MEAN_DISCHARGE": 24.899999618530277
+      }
+    },
+    {
+      "id": "08GA075.2005-07",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2005-07",
+        "MONTHLY_MEAN_DISCHARGE": 23.5
+      }
+    },
+    {
+      "id": "08GA075.2005-08",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2005-08",
+        "MONTHLY_MEAN_DISCHARGE": 9.90999984741211
+      }
+    },
+    {
+      "id": "08GA075.2005-09",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2005-09",
+        "MONTHLY_MEAN_DISCHARGE": 7.679999828338623
+      }
+    },
+    {
+      "id": "08GA075.2005-10",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2005-10",
+        "MONTHLY_MEAN_DISCHARGE": 29.100000381469727
+      }
+    },
+    {
+      "id": "08GA075.2005-11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2005-11",
+        "MONTHLY_MEAN_DISCHARGE": 23.899999618530277
+      }
+    },
+    {
+      "id": "08GA075.2005-12",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2005-12",
+        "MONTHLY_MEAN_DISCHARGE": 31.299999237060547
+      }
+    },
+    {
+      "id": "08GA075.2006-01",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2006-01",
+        "MONTHLY_MEAN_DISCHARGE": null
+      }
+    },
+    {
+      "id": "08GA075.2006-03",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2006-03",
+        "MONTHLY_MEAN_DISCHARGE": null
+      }
+    },
+    {
+      "id": "08GA075.2006-05",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2006-05",
+        "MONTHLY_MEAN_DISCHARGE": null
+      }
+    },
+    {
+      "id": "08GA075.2006-06",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2006-06",
+        "MONTHLY_MEAN_DISCHARGE": 51.70000076293945
+      }
+    },
+    {
+      "id": "08GA075.2006-07",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2006-07",
+        "MONTHLY_MEAN_DISCHARGE": 24.100000381469727
+      }
+    },
+    {
+      "id": "08GA075.2006-08",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2006-08",
+        "MONTHLY_MEAN_DISCHARGE": 9.850000381469728
+      }
+    },
+    {
+      "id": "08GA075.2006-09",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2006-09",
+        "MONTHLY_MEAN_DISCHARGE": 8.9399995803833
+      }
+    },
+    {
+      "id": "08GA075.2006-10",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2006-10",
+        "MONTHLY_MEAN_DISCHARGE": 12.600000381469728
+      }
+    },
+    {
+      "id": "08GA075.2006-11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2006-11",
+        "MONTHLY_MEAN_DISCHARGE": null
+      }
+    },
+    {
+      "id": "08GA075.2007-01",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2007-01",
+        "MONTHLY_MEAN_DISCHARGE": 28.799999237060547
+      }
+    },
+    {
+      "id": "08GA075.2007-02",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2007-02",
+        "MONTHLY_MEAN_DISCHARGE": 32.29999923706055
+      }
+    },
+    {
+      "id": "08GA075.2007-03",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2007-03",
+        "MONTHLY_MEAN_DISCHARGE": 48.400001525878906
+      }
+    },
+    {
+      "id": "08GA075.2007-04",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2007-04",
+        "MONTHLY_MEAN_DISCHARGE": 35.79999923706055
+      }
+    },
+    {
+      "id": "08GA075.2007-05",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2007-05",
+        "MONTHLY_MEAN_DISCHARGE": 53.0
+      }
+    },
+    {
+      "id": "08GA075.2007-06",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2007-06",
+        "MONTHLY_MEAN_DISCHARGE": 67.0
+      }
+    },
+    {
+      "id": "08GA075.2007-07",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2007-07",
+        "MONTHLY_MEAN_DISCHARGE": 69.19999694824219
+      }
+    },
+    {
+      "id": "08GA075.2007-08",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2007-08",
+        "MONTHLY_MEAN_DISCHARGE": 32.0
+      }
+    },
+    {
+      "id": "08GA075.2007-09",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2007-09",
+        "MONTHLY_MEAN_DISCHARGE": 24.299999237060547
+      }
+    },
+    {
+      "id": "08GA075.2007-10",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2007-10",
+        "MONTHLY_MEAN_DISCHARGE": 48.70000076293945
+      }
+    },
+    {
+      "id": "08GA075.2007-11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2007-11",
+        "MONTHLY_MEAN_DISCHARGE": 39.400001525878906
+      }
+    },
+    {
+      "id": "08GA075.2007-12",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2007-12",
+        "MONTHLY_MEAN_DISCHARGE": 24.899999618530277
+      }
+    },
+    {
+      "id": "08GA075.2009-01",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2009-01",
+        "MONTHLY_MEAN_DISCHARGE": 10.199999809265137
+      }
+    },
+    {
+      "id": "08GA075.2009-02",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2009-02",
+        "MONTHLY_MEAN_DISCHARGE": 6.989999771118164
+      }
+    },
+    {
+      "id": "08GA075.2009-03",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2009-03",
+        "MONTHLY_MEAN_DISCHARGE": 10.600000381469728
+      }
+    },
+    {
+      "id": "08GA075.2009-04",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2009-04",
+        "MONTHLY_MEAN_DISCHARGE": 13.399999618530272
+      }
+    },
+    {
+      "id": "08GA075.2009-05",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2009-05",
+        "MONTHLY_MEAN_DISCHARGE": 45.79999923706055
+      }
+    },
+    {
+      "id": "08GA075.2009-06",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2009-06",
+        "MONTHLY_MEAN_DISCHARGE": 32.5
+      }
+    },
+    {
+      "id": "08GA075.2009-07",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2009-07",
+        "MONTHLY_MEAN_DISCHARGE": 17.100000381469727
+      }
+    },
+    {
+      "id": "08GA075.2009-08",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2009-08",
+        "MONTHLY_MEAN_DISCHARGE": 13.399999618530272
+      }
+    },
+    {
+      "id": "08GA075.2009-09",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2009-09",
+        "MONTHLY_MEAN_DISCHARGE": 14.600000381469728
+      }
+    },
+    {
+      "id": "08GA075.2009-10",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2009-10",
+        "MONTHLY_MEAN_DISCHARGE": 20.700000762939453
+      }
+    },
+    {
+      "id": "08GA075.2009-11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2009-11",
+        "MONTHLY_MEAN_DISCHARGE": 36.79999923706055
+      }
+    },
+    {
+      "id": "08GA075.2009-12",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2009-12",
+        "MONTHLY_MEAN_DISCHARGE": 19.600000381469727
+      }
+    },
+    {
+      "id": "08GA075.2010-01",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2010-01",
+        "MONTHLY_MEAN_DISCHARGE": 31.700000762939453
+      }
+    },
+    {
+      "id": "08GA075.2010-02",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2010-02",
+        "MONTHLY_MEAN_DISCHARGE": 15.600000381469728
+      }
+    },
+    {
+      "id": "08GA075.2010-03",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2010-03",
+        "MONTHLY_MEAN_DISCHARGE": 14.899999618530272
+      }
+    },
+    {
+      "id": "08GA075.2010-04",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2010-04",
+        "MONTHLY_MEAN_DISCHARGE": 22.100000381469727
+      }
+    },
+    {
+      "id": "08GA075.2010-05",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2010-05",
+        "MONTHLY_MEAN_DISCHARGE": 28.899999618530277
+      }
+    },
+    {
+      "id": "08GA075.2010-06",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2010-06",
+        "MONTHLY_MEAN_DISCHARGE": 41.79999923706055
+      }
+    },
+    {
+      "id": "08GA075.2010-07",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2010-07",
+        "MONTHLY_MEAN_DISCHARGE": 32.400001525878906
+      }
+    },
+    {
+      "id": "08GA075.2010-08",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2010-08",
+        "MONTHLY_MEAN_DISCHARGE": 17.600000381469727
+      }
+    },
+    {
+      "id": "08GA075.2010-09",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2010-09",
+        "MONTHLY_MEAN_DISCHARGE": 20.0
+      }
+    },
+    {
+      "id": "08GA075.2010-10",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2010-10",
+        "MONTHLY_MEAN_DISCHARGE": 18.899999618530277
+      }
+    },
+    {
+      "id": "08GA075.2010-11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2010-11",
+        "MONTHLY_MEAN_DISCHARGE": 21.200000762939453
+      }
+    },
+    {
+      "id": "08GA075.2010-12",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2010-12",
+        "MONTHLY_MEAN_DISCHARGE": 22.700000762939453
+      }
+    },
+    {
+      "id": "08GA075.2011-01",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2011-01",
+        "MONTHLY_MEAN_DISCHARGE": 19.700000762939453
+      }
+    },
+    {
+      "id": "08GA075.2011-02",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2011-02",
+        "MONTHLY_MEAN_DISCHARGE": 13.100000381469728
+      }
+    },
+    {
+      "id": "08GA075.2011-03",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2011-03",
+        "MONTHLY_MEAN_DISCHARGE": 14.0
+      }
+    },
+    {
+      "id": "08GA075.2011-04",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2011-04",
+        "MONTHLY_MEAN_DISCHARGE": 11.5
+      }
+    },
+    {
+      "id": "08GA075.2011-05",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2011-05",
+        "MONTHLY_MEAN_DISCHARGE": 32.0
+      }
+    },
+    {
+      "id": "08GA075.2011-06",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2011-06",
+        "MONTHLY_MEAN_DISCHARGE": 50.400001525878906
+      }
+    },
+    {
+      "id": "08GA075.2011-07",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2011-07",
+        "MONTHLY_MEAN_DISCHARGE": 53.20000076293945
+      }
+    },
+    {
+      "id": "08GA075.2011-08",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2011-08",
+        "MONTHLY_MEAN_DISCHARGE": 34.29999923706055
+      }
+    },
+    {
+      "id": "08GA075.2011-09",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2011-09",
+        "MONTHLY_MEAN_DISCHARGE": 22.799999237060547
+      }
+    },
+    {
+      "id": "08GA075.2011-10",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2011-10",
+        "MONTHLY_MEAN_DISCHARGE": 21.600000381469727
+      }
+    },
+    {
+      "id": "08GA075.2011-11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2011-11",
+        "MONTHLY_MEAN_DISCHARGE": 17.0
+      }
+    },
+    {
+      "id": "08GA075.2011-12",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2011-12",
+        "MONTHLY_MEAN_DISCHARGE": 9.079999923706056
+      }
+    },
+    {
+      "id": "08GA075.2012-01",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2012-01",
+        "MONTHLY_MEAN_DISCHARGE": 15.300000190734863
+      }
+    },
+    {
+      "id": "08GA075.2012-02",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2012-02",
+        "MONTHLY_MEAN_DISCHARGE": 9.5600004196167
+      }
+    },
+    {
+      "id": "08GA075.2012-03",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2012-03",
+        "MONTHLY_MEAN_DISCHARGE": 11.199999809265137
+      }
+    },
+    {
+      "id": "08GA075.2012-04",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2012-04",
+        "MONTHLY_MEAN_DISCHARGE": 25.799999237060547
+      }
+    },
+    {
+      "id": "08GA075.2012-05",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2012-05",
+        "MONTHLY_MEAN_DISCHARGE": 37.0
+      }
+    },
+    {
+      "id": "08GA075.2012-06",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2012-06",
+        "MONTHLY_MEAN_DISCHARGE": 49.0
+      }
+    },
+    {
+      "id": "08GA075.2012-07",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2012-07",
+        "MONTHLY_MEAN_DISCHARGE": 58.0
+      }
+    },
+    {
+      "id": "08GA075.2012-08",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2012-08",
+        "MONTHLY_MEAN_DISCHARGE": 32.5
+      }
+    },
+    {
+      "id": "08GA075.2012-09",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2012-09",
+        "MONTHLY_MEAN_DISCHARGE": 20.600000381469727
+      }
+    },
+    {
+      "id": "08GA075.2012-10",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2012-10",
+        "MONTHLY_MEAN_DISCHARGE": 28.0
+      }
+    },
+    {
+      "id": "08GA075.2012-11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2012-11",
+        "MONTHLY_MEAN_DISCHARGE": 35.20000076293945
+      }
+    },
+    {
+      "id": "08GA075.2012-12",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2012-12",
+        "MONTHLY_MEAN_DISCHARGE": 17.299999237060547
+      }
+    },
+    {
+      "id": "08GA075.2013-01",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2013-01",
+        "MONTHLY_MEAN_DISCHARGE": 7.0
+      }
+    },
+    {
+      "id": "08GA075.2013-02",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2013-02",
+        "MONTHLY_MEAN_DISCHARGE": 8.210000038146973
+      }
+    },
+    {
+      "id": "08GA075.2013-03",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2013-03",
+        "MONTHLY_MEAN_DISCHARGE": 21.399999618530277
+      }
+    },
+    {
+      "id": "08GA075.2013-04",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2013-04",
+        "MONTHLY_MEAN_DISCHARGE": 24.299999237060547
+      }
+    },
+    {
+      "id": "08GA075.2013-05",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2013-05",
+        "MONTHLY_MEAN_DISCHARGE": 38.09999847412109
+      }
+    },
+    {
+      "id": "08GA075.2013-06",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2013-06",
+        "MONTHLY_MEAN_DISCHARGE": 32.099998474121094
+      }
+    },
+    {
+      "id": "08GA075.2013-07",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2013-07",
+        "MONTHLY_MEAN_DISCHARGE": 22.100000381469727
+      }
+    },
+    {
+      "id": "08GA075.2013-08",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2013-08",
+        "MONTHLY_MEAN_DISCHARGE": 14.699999809265137
+      }
+    },
+    {
+      "id": "08GA075.2013-09",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2013-09",
+        "MONTHLY_MEAN_DISCHARGE": 21.5
+      }
+    },
+    {
+      "id": "08GA075.2013-10",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2013-10",
+        "MONTHLY_MEAN_DISCHARGE": 14.199999809265137
+      }
+    },
+    {
+      "id": "08GA075.2013-11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2013-11",
+        "MONTHLY_MEAN_DISCHARGE": 12.300000190734863
+      }
+    },
+    {
+      "id": "08GA075.2013-12",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2013-12",
+        "MONTHLY_MEAN_DISCHARGE": 7.110000133514404
+      }
+    },
+    {
+      "id": "08GA075.2014-01",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2014-01",
+        "MONTHLY_MEAN_DISCHARGE": 11.300000190734863
+      }
+    },
+    {
+      "id": "08GA075.2014-02",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2014-02",
+        "MONTHLY_MEAN_DISCHARGE": 6.289999961853027
+      }
+    },
+    {
+      "id": "08GA075.2014-03",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2014-03",
+        "MONTHLY_MEAN_DISCHARGE": 16.100000381469727
+      }
+    },
+    {
+      "id": "08GA075.2014-04",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2014-04",
+        "MONTHLY_MEAN_DISCHARGE": 17.899999618530273
+      }
+    },
+    {
+      "id": "08GA075.2014-05",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2014-05",
+        "MONTHLY_MEAN_DISCHARGE": 38.400001525878906
+      }
+    },
+    {
+      "id": "08GA075.2014-06",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2014-06",
+        "MONTHLY_MEAN_DISCHARGE": 28.399999618530277
+      }
+    },
+    {
+      "id": "08GA075.2014-07",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2014-07",
+        "MONTHLY_MEAN_DISCHARGE": 20.0
+      }
+    },
+    {
+      "id": "08GA075.2014-08",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2014-08",
+        "MONTHLY_MEAN_DISCHARGE": 9.229999542236328
+      }
+    },
+    {
+      "id": "08GA075.2014-09",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2014-09",
+        "MONTHLY_MEAN_DISCHARGE": 9.699999809265137
+      }
+    },
+    {
+      "id": "08GA075.2014-10",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2014-10",
+        "MONTHLY_MEAN_DISCHARGE": 38.900001525878906
+      }
+    },
+    {
+      "id": "08GA075.2014-11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2014-11",
+        "MONTHLY_MEAN_DISCHARGE": 48.70000076293945
+      }
+    },
+    {
+      "id": "08GA075.2014-12",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2014-12",
+        "MONTHLY_MEAN_DISCHARGE": 39.400001525878906
+      }
+    },
+    {
+      "id": "08GA075.2015-01",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2015-01",
+        "MONTHLY_MEAN_DISCHARGE": 21.799999237060547
+      }
+    },
+    {
+      "id": "08GA075.2015-02",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2015-02",
+        "MONTHLY_MEAN_DISCHARGE": 32.599998474121094
+      }
+    },
+    {
+      "id": "08GA075.2015-03",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2015-03",
+        "MONTHLY_MEAN_DISCHARGE": 24.799999237060547
+      }
+    },
+    {
+      "id": "08GA075.2015-04",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2015-04",
+        "MONTHLY_MEAN_DISCHARGE": 16.0
+      }
+    },
+    {
+      "id": "08GA075.2015-05",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2015-05",
+        "MONTHLY_MEAN_DISCHARGE": 23.399999618530277
+      }
+    },
+    {
+      "id": "08GA075.2015-06",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2015-06",
+        "MONTHLY_MEAN_DISCHARGE": 14.699999809265137
+      }
+    },
+    {
+      "id": "08GA075.2015-07",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2015-07",
+        "MONTHLY_MEAN_DISCHARGE": 10.899999618530272
+      }
+    },
+    {
+      "id": "08GA075.2015-08",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2015-08",
+        "MONTHLY_MEAN_DISCHARGE": 11.5
+      }
+    },
+    {
+      "id": "08GA075.2015-09",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2015-09",
+        "MONTHLY_MEAN_DISCHARGE": 20.600000381469727
+      }
+    },
+    {
+      "id": "08GA075.2015-10",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2015-10",
+        "MONTHLY_MEAN_DISCHARGE": 11.600000381469728
+      }
+    },
+    {
+      "id": "08GA075.2015-11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2015-11",
+        "MONTHLY_MEAN_DISCHARGE": 21.0
+      }
+    },
+    {
+      "id": "08GA075.2015-12",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2015-12",
+        "MONTHLY_MEAN_DISCHARGE": 32.0
+      }
+    },
+    {
+      "id": "08GA075.2016-01",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2016-01",
+        "MONTHLY_MEAN_DISCHARGE": 27.700000762939453
+      }
+    },
+    {
+      "id": "08GA075.2016-02",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2016-02",
+        "MONTHLY_MEAN_DISCHARGE": 16.399999618530273
+      }
+    },
+    {
+      "id": "08GA075.2016-03",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2016-03",
+        "MONTHLY_MEAN_DISCHARGE": 28.5
+      }
+    },
+    {
+      "id": "08GA075.2016-04",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2016-04",
+        "MONTHLY_MEAN_DISCHARGE": 36.0
+      }
+    },
+    {
+      "id": "08GA075.2016-05",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2016-05",
+        "MONTHLY_MEAN_DISCHARGE": 35.29999923706055
+      }
+    },
+    {
+      "id": "08GA075.2016-06",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2016-06",
+        "MONTHLY_MEAN_DISCHARGE": 32.0
+      }
+    },
+    {
+      "id": "08GA075.2016-07",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2016-07",
+        "MONTHLY_MEAN_DISCHARGE": 22.600000381469727
+      }
+    },
+    {
+      "id": "08GA075.2016-08",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2016-08",
+        "MONTHLY_MEAN_DISCHARGE": 11.699999809265137
+      }
+    },
+    {
+      "id": "08GA075.2016-09",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2016-09",
+        "MONTHLY_MEAN_DISCHARGE": 8.979999542236328
+      }
+    },
+    {
+      "id": "08GA075.2016-10",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2016-10",
+        "MONTHLY_MEAN_DISCHARGE": 29.799999237060547
+      }
+    },
+    {
+      "id": "08GA075.2016-11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2016-11",
+        "MONTHLY_MEAN_DISCHARGE": 44.59999847412109
+      }
+    },
+    {
+      "id": "08GA075.2016-12",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2016-12",
+        "MONTHLY_MEAN_DISCHARGE": 9.380000114440918
+      }
+    },
+    {
+      "id": "08GA075.2017-01",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2017-01",
+        "MONTHLY_MEAN_DISCHARGE": 12.699999809265137
+      }
+    },
+    {
+      "id": "08GA075.2017-02",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2017-02",
+        "MONTHLY_MEAN_DISCHARGE": 17.299999237060547
+      }
+    },
+    {
+      "id": "08GA075.2017-03",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2017-03",
+        "MONTHLY_MEAN_DISCHARGE": 19.200000762939453
+      }
+    },
+    {
+      "id": "08GA075.2017-04",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2017-04",
+        "MONTHLY_MEAN_DISCHARGE": 26.600000381469727
+      }
+    },
+    {
+      "id": "08GA075.2017-05",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2017-05",
+        "MONTHLY_MEAN_DISCHARGE": 45.70000076293945
+      }
+    },
+    {
+      "id": "08GA075.2017-06",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2017-06",
+        "MONTHLY_MEAN_DISCHARGE": 48.79999923706055
+      }
+    },
+    {
+      "id": "08GA075.2017-07",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2017-07",
+        "MONTHLY_MEAN_DISCHARGE": 29.700000762939453
+      }
+    },
+    {
+      "id": "08GA075.2017-08",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2017-08",
+        "MONTHLY_MEAN_DISCHARGE": 14.699999809265137
+      }
+    },
+    {
+      "id": "08GA075.2017-09",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2017-09",
+        "MONTHLY_MEAN_DISCHARGE": 8.609999656677246
+      }
+    },
+    {
+      "id": "08GA075.2017-10",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2017-10",
+        "MONTHLY_MEAN_DISCHARGE": 15.699999809265137
+      }
+    },
+    {
+      "id": "08GA075.2017-11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2017-11",
+        "MONTHLY_MEAN_DISCHARGE": 32.79999923706055
+      }
+    },
+    {
+      "id": "08GA075.2017-12",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2017-12",
+        "MONTHLY_MEAN_DISCHARGE": 15.300000190734863
+      }
+    },
+    {
+      "id": "08GA075.2018-01",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2018-01",
+        "MONTHLY_MEAN_DISCHARGE": 27.600000381469727
+      }
+    },
+    {
+      "id": "08GA075.2018-02",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2018-02",
+        "MONTHLY_MEAN_DISCHARGE": 12.5
+      }
+    },
+    {
+      "id": "08GA075.2018-03",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2018-03",
+        "MONTHLY_MEAN_DISCHARGE": 6.96999979019165
+      }
+    },
+    {
+      "id": "08GA075.2018-04",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2018-04",
+        "MONTHLY_MEAN_DISCHARGE": 20.600000381469727
+      }
+    },
+    {
+      "id": "08GA075.2018-05",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2018-05",
+        "MONTHLY_MEAN_DISCHARGE": 43.09999847412109
+      }
+    },
+    {
+      "id": "08GA075.2018-06",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2018-06",
+        "MONTHLY_MEAN_DISCHARGE": 30.5
+      }
+    },
+    {
+      "id": "08GA075.2018-07",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2018-07",
+        "MONTHLY_MEAN_DISCHARGE": 20.0
+      }
+    },
+    {
+      "id": "08GA075.2018-08",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2018-08",
+        "MONTHLY_MEAN_DISCHARGE": 10.100000381469728
+      }
+    },
+    {
+      "id": "08GA075.2018-09",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2018-09",
+        "MONTHLY_MEAN_DISCHARGE": 17.799999237060547
+      }
+    },
+    {
+      "id": "08GA075.2018-10",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2018-10",
+        "MONTHLY_MEAN_DISCHARGE": 16.799999237060547
+      }
+    },
+    {
+      "id": "08GA075.2018-11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2018-11",
+        "MONTHLY_MEAN_DISCHARGE": 29.399999618530277
+      }
+    },
+    {
+      "id": "08GA075.2018-12",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2018-12",
+        "MONTHLY_MEAN_DISCHARGE": 22.700000762939453
+      }
+    },
+    {
+      "id": "08GA075.2019-01",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2019-01",
+        "MONTHLY_MEAN_DISCHARGE": 19.799999237060547
+      }
+    },
+    {
+      "id": "08GA075.2019-02",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2019-02",
+        "MONTHLY_MEAN_DISCHARGE": 6.739999771118164
+      }
+    },
+    {
+      "id": "08GA075.2019-03",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2019-03",
+        "MONTHLY_MEAN_DISCHARGE": 7.590000152587891
+      }
+    },
+    {
+      "id": "08GA075.2019-04",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2019-04",
+        "MONTHLY_MEAN_DISCHARGE": 20.299999237060547
+      }
+    },
+    {
+      "id": "08GA075.2019-05",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2019-05",
+        "MONTHLY_MEAN_DISCHARGE": 34.599998474121094
+      }
+    },
+    {
+      "id": "08GA075.2019-06",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2019-06",
+        "MONTHLY_MEAN_DISCHARGE": 21.299999237060547
+      }
+    },
+    {
+      "id": "08GA075.2019-07",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2019-07",
+        "MONTHLY_MEAN_DISCHARGE": 17.600000381469727
+      }
+    },
+    {
+      "id": "08GA075.2019-08",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2019-08",
+        "MONTHLY_MEAN_DISCHARGE": 12.199999809265137
+      }
+    },
+    {
+      "id": "08GA075.2019-09",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2019-09",
+        "MONTHLY_MEAN_DISCHARGE": 18.200000762939453
+      }
+    },
+    {
+      "id": "08GA075.2019-10",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2019-10",
+        "MONTHLY_MEAN_DISCHARGE": 17.899999618530273
+      }
+    },
+    {
+      "id": "08GA075.2019-11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2019-11",
+        "MONTHLY_MEAN_DISCHARGE": 11.399999618530272
+      }
+    },
+    {
+      "id": "08GA075.2019-12",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2019-12",
+        "MONTHLY_MEAN_DISCHARGE": 11.300000190734863
+      }
+    },
+    {
+      "id": "08GA075.2020-01",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2020-01",
+        "MONTHLY_MEAN_DISCHARGE": 25.399999618530277
+      }
+    },
+    {
+      "id": "08GA075.2020-02",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2020-02",
+        "MONTHLY_MEAN_DISCHARGE": 16.799999237060547
+      }
+    },
+    {
+      "id": "08GA075.2020-03",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2020-03",
+        "MONTHLY_MEAN_DISCHARGE": 8.350000381469727
+      }
+    },
+    {
+      "id": "08GA075.2020-04",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2020-04",
+        "MONTHLY_MEAN_DISCHARGE": 17.5
+      }
+    },
+    {
+      "id": "08GA075.2020-05",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2020-05",
+        "MONTHLY_MEAN_DISCHARGE": 41.900001525878906
+      }
+    },
+    {
+      "id": "08GA075.2020-06",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2020-06",
+        "MONTHLY_MEAN_DISCHARGE": 39.20000076293945
+      }
+    },
+    {
+      "id": "08GA075.2020-07",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2020-07",
+        "MONTHLY_MEAN_DISCHARGE": 27.0
+      }
+    },
+    {
+      "id": "08GA075.2020-08",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2020-08",
+        "MONTHLY_MEAN_DISCHARGE": 14.100000381469728
+      }
+    },
+    {
+      "id": "08GA075.2020-09",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2020-09",
+        "MONTHLY_MEAN_DISCHARGE": 15.800000190734863
+      }
+    },
+    {
+      "id": "08GA075.2020-10",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2020-10",
+        "MONTHLY_MEAN_DISCHARGE": 19.299999237060547
+      }
+    },
+    {
+      "id": "08GA075.2020-11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2020-11",
+        "MONTHLY_MEAN_DISCHARGE": 21.5
+      }
+    },
+    {
+      "id": "08GA075.2020-12",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2020-12",
+        "MONTHLY_MEAN_DISCHARGE": 16.799999237060547
+      }
+    },
+    {
+      "id": "08GA075.2021-01",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2021-01",
+        "MONTHLY_MEAN_DISCHARGE": 20.399999618530277
+      }
+    },
+    {
+      "id": "08GA075.2021-02",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2021-02",
+        "MONTHLY_MEAN_DISCHARGE": 8.550000190734863
+      }
+    },
+    {
+      "id": "08GA075.2021-03",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2021-03",
+        "MONTHLY_MEAN_DISCHARGE": 11.100000381469728
+      }
+    },
+    {
+      "id": "08GA075.2021-04",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2021-04",
+        "MONTHLY_MEAN_DISCHARGE": 18.700000762939453
+      }
+    },
+    {
+      "id": "08GA075.2021-05",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2021-05",
+        "MONTHLY_MEAN_DISCHARGE": 34.20000076293945
+      }
+    },
+    {
+      "id": "08GA075.2021-06",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2021-06",
+        "MONTHLY_MEAN_DISCHARGE": 49.20000076293945
+      }
+    },
+    {
+      "id": "08GA075.2021-07",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2021-07",
+        "MONTHLY_MEAN_DISCHARGE": 18.0
+      }
+    },
+    {
+      "id": "08GA075.2021-08",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2021-08",
+        "MONTHLY_MEAN_DISCHARGE": 10.199999809265137
+      }
+    },
+    {
+      "id": "08GA075.2021-09",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2021-09",
+        "MONTHLY_MEAN_DISCHARGE": 16.299999237060547
+      }
+    },
+    {
+      "id": "08GA075.2021-10",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2021-10",
+        "MONTHLY_MEAN_DISCHARGE": 35.70000076293945
+      }
+    },
+    {
+      "id": "08GA075.2021-11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2021-11",
+        "MONTHLY_MEAN_DISCHARGE": 43.59999847412109
+      }
+    },
+    {
+      "id": "08GA075.2021-12",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2021-12",
+        "MONTHLY_MEAN_DISCHARGE": 18.299999237060547
+      }
+    },
+    {
+      "id": "08GA075.2022-01",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2022-01",
+        "MONTHLY_MEAN_DISCHARGE": 16.0
+      }
+    },
+    {
+      "id": "08GA075.2022-02",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2022-02",
+        "MONTHLY_MEAN_DISCHARGE": 9.59000015258789
+      }
+    },
+    {
+      "id": "08GA075.2022-03",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2022-03",
+        "MONTHLY_MEAN_DISCHARGE": 16.399999618530273
+      }
+    },
+    {
+      "id": "08GA075.2022-04",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2022-04",
+        "MONTHLY_MEAN_DISCHARGE": 15.5
+      }
+    },
+    {
+      "id": "08GA075.2022-05",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2022-05",
+        "MONTHLY_MEAN_DISCHARGE": 29.0
+      }
+    },
+    {
+      "id": "08GA075.2022-06",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2022-06",
+        "MONTHLY_MEAN_DISCHARGE": 50.900001525878906
+      }
+    },
+    {
+      "id": "08GA075.2022-07",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2022-07",
+        "MONTHLY_MEAN_DISCHARGE": 35.29999923706055
+      }
+    },
+    {
+      "id": "08GA075.2022-08",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2022-08",
+        "MONTHLY_MEAN_DISCHARGE": 15.399999618530272
+      }
+    },
+    {
+      "id": "08GA075.2022-09",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2022-09",
+        "MONTHLY_MEAN_DISCHARGE": 8.239999771118164
+      }
+    },
+    {
+      "id": "08GA075.2022-10",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2022-10",
+        "MONTHLY_MEAN_DISCHARGE": 9.119999885559082
+      }
+    },
+    {
+      "id": "08GA075.2022-11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2022-11",
+        "MONTHLY_MEAN_DISCHARGE": 8.75
+      }
+    },
+    {
+      "id": "08GA075.2022-12",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2022-12",
+        "MONTHLY_MEAN_DISCHARGE": 14.800000190734863
+      }
+    },
+    {
+      "id": "08GA075.2023-01",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2023-01",
+        "MONTHLY_MEAN_DISCHARGE": 20.799999237060547
+      }
+    },
+    {
+      "id": "08GA075.2023-02",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2023-02",
+        "MONTHLY_MEAN_DISCHARGE": 8.890000343322754
+      }
+    },
+    {
+      "id": "08GA075.2023-03",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2023-03",
+        "MONTHLY_MEAN_DISCHARGE": 6.050000190734863
+      }
+    },
+    {
+      "id": "08GA075.2023-04",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2023-04",
+        "MONTHLY_MEAN_DISCHARGE": 18.700000762939453
+      }
+    },
+    {
+      "id": "08GA075.2023-05",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2023-05",
+        "MONTHLY_MEAN_DISCHARGE": 48.09999847412109
+      }
+    },
+    {
+      "id": "08GA075.2023-06",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2023-06",
+        "MONTHLY_MEAN_DISCHARGE": 23.100000381469727
+      }
+    },
+    {
+      "id": "08GA075.2023-07",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2023-07",
+        "MONTHLY_MEAN_DISCHARGE": 12.300000190734863
+      }
+    },
+    {
+      "id": "08GA075.2023-08",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2023-08",
+        "MONTHLY_MEAN_DISCHARGE": 8.550000190734863
+      }
+    },
+    {
+      "id": "08GA075.2023-09",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2023-09",
+        "MONTHLY_MEAN_DISCHARGE": 11.100000381469728
+      }
+    },
+    {
+      "id": "08GA075.2023-10",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2023-10",
+        "MONTHLY_MEAN_DISCHARGE": 18.700000762939453
+      }
+    },
+    {
+      "id": "08GA075.2023-11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2023-11",
+        "MONTHLY_MEAN_DISCHARGE": 18.200000762939453
+      }
+    },
+    {
+      "id": "08GA075.2023-12",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2023-12",
+        "MONTHLY_MEAN_DISCHARGE": 27.200000762939453
+      }
+    },
+    {
+      "id": "08GA075.2024-01",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2024-01",
+        "MONTHLY_MEAN_DISCHARGE": 28.200000762939453
+      }
+    },
+    {
+      "id": "08GA075.2024-02",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2024-02",
+        "MONTHLY_MEAN_DISCHARGE": 19.299999237060547
+      }
+    },
+    {
+      "id": "08GA075.2024-03",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2024-03",
+        "MONTHLY_MEAN_DISCHARGE": 15.800000190734863
+      }
+    },
+    {
+      "id": "08GA075.2024-04",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2024-04",
+        "MONTHLY_MEAN_DISCHARGE": 16.5
+      }
+    },
+    {
+      "id": "08GA075.2024-05",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2024-05",
+        "MONTHLY_MEAN_DISCHARGE": 30.5
+      }
+    },
+    {
+      "id": "08GA075.2024-06",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2024-06",
+        "MONTHLY_MEAN_DISCHARGE": 34.20000076293945
+      }
+    },
+    {
+      "id": "08GA075.2024-07",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2024-07",
+        "MONTHLY_MEAN_DISCHARGE": 20.5
+      }
+    },
+    {
+      "id": "08GA075.2024-08",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2024-08",
+        "MONTHLY_MEAN_DISCHARGE": 12.800000190734863
+      }
+    },
+    {
+      "id": "08GA075.2024-09",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2024-09",
+        "MONTHLY_MEAN_DISCHARGE": 11.199999809265137
+      }
+    },
+    {
+      "id": "08GA075.2024-10",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2024-10",
+        "MONTHLY_MEAN_DISCHARGE": 22.200000762939453
+      }
+    },
+    {
+      "id": "08GA075.2024-11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2024-11",
+        "MONTHLY_MEAN_DISCHARGE": 24.799999237060547
+      }
+    },
+    {
+      "id": "08GA075.2024-12",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2024-12",
+        "MONTHLY_MEAN_DISCHARGE": 27.5
+      }
+    },
+    {
+      "id": "08GA075.2025-01",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2025-01",
+        "MONTHLY_MEAN_DISCHARGE": 9.289999961853027
+      }
+    },
+    {
+      "id": "08GA075.2025-02",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2025-02",
+        "MONTHLY_MEAN_DISCHARGE": 12.0
+      }
+    },
+    {
+      "id": "08GA075.2025-03",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2025-03",
+        "MONTHLY_MEAN_DISCHARGE": 23.399999618530277
+      }
+    },
+    {
+      "id": "08GA075.2025-04",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2025-04",
+        "MONTHLY_MEAN_DISCHARGE": 26.100000381469727
+      }
+    },
+    {
+      "id": "08GA075.2025-05",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2025-05",
+        "MONTHLY_MEAN_DISCHARGE": 32.5
+      }
+    },
+    {
+      "id": "08GA075.2025-06",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2025-06",
+        "MONTHLY_MEAN_DISCHARGE": 33.0
+      }
+    },
+    {
+      "id": "08GA075.2025-07",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2025-07",
+        "MONTHLY_MEAN_DISCHARGE": 19.600000381469727
+      }
+    },
+    {
+      "id": "08GA075.2025-08",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2025-08",
+        "MONTHLY_MEAN_DISCHARGE": 12.800000190734863
+      }
+    },
+    {
+      "id": "08GA075.2025-09",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2025-09",
+        "MONTHLY_MEAN_DISCHARGE": 11.100000381469728
+      }
+    },
+    {
+      "id": "08GA075.2025-10",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2025-10",
+        "MONTHLY_MEAN_DISCHARGE": 22.200000762939453
+      }
+    },
+    {
+      "id": "08GA075.2025-11",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2025-11",
+        "MONTHLY_MEAN_DISCHARGE": 36.400001525878906
+      }
+    },
+    {
+      "id": "08GA075.2025-12",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2025-12",
+        "MONTHLY_MEAN_DISCHARGE": 30.5
+      }
+    },
+    {
+      "id": "08GA075.2026-01",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "DATE": "2026-01",
+        "MONTHLY_MEAN_DISCHARGE": null
+      }
+    }
+  ],
+  "numberMatched": 398,
+  "numberReturned": 398,
+  "links": [
+    {
+      "type": "application/geo+json",
+      "rel": "self",
+      "title": "This document as GeoJSON",
+      "href": "https://api.weather.gc.ca/collections/hydrometric-monthly-mean/items?f=json&STATION_NUMBER=08GA075&properties=DATE,MONTHLY_MEAN_DISCHARGE&skipGeometry=true&limit=2000"
+    },
+    {
+      "rel": "alternate",
+      "type": "application/ld+json",
+      "title": "This document as RDF (JSON-LD)",
+      "href": "https://api.weather.gc.ca/collections/hydrometric-monthly-mean/items?f=jsonld&STATION_NUMBER=08GA075&properties=DATE,MONTHLY_MEAN_DISCHARGE&skipGeometry=true&limit=2000"
+    },
+    {
+      "type": "text/html",
+      "rel": "alternate",
+      "title": "This document as HTML",
+      "href": "https://api.weather.gc.ca/collections/hydrometric-monthly-mean/items?f=html&STATION_NUMBER=08GA075&properties=DATE,MONTHLY_MEAN_DISCHARGE&skipGeometry=true&limit=2000"
+    },
+    {
+      "type": "application/json",
+      "title": "Hydrometric Historical Data (HYDAT) - Monthly Mean of Water Level or Flow",
+      "rel": "collection",
+      "href": "https://api.weather.gc.ca/collections/hydrometric-monthly-mean"
+    }
+  ],
+  "timeStamp": "2026-11-15T18:44:41.105525Z"
+}

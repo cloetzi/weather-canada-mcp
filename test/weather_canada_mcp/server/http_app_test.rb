@@ -112,7 +112,7 @@ class HttpAppTest < Minitest::Test
     with_fake_eccc do |fake|
       tools = result(rpc(app(fake, WEATHER_MCP_EXCLUDE_TOOLS: "find_location"), "tools/list"))["tools"]
 
-      assert_equal %w[get_alerts get_forecast], tools.map { |tool| tool["name"] }.sort
+      assert_equal WeatherCanadaMcp::Tools.all.map(&:tool_name).sort - ["find_location"], tools.map { |tool| tool["name"] }.sort
       assert(tools.all? { |tool| tool.dig("annotations", "readOnlyHint") })
     end
   end
