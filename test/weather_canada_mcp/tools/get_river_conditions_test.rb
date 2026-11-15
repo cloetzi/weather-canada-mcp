@@ -86,6 +86,24 @@ class GetRiverConditionsTest < Minitest::Test
     refute result["gauges"].first.key?("latest")
   end
 
+  def test_without_the_history_the_real_time_readings_are_still_reported
+    result, = rivers(**SQUAMISH, stations: 1, routes: { "/collections/hydrometric-monthly-mean/items" => ->(_) { [404, {}, "gone"] } })
+    gauge = result["gauges"].first
+
+    assert gauge.key?("latest")
+    assert_match(/historical means could not be fetched/, gauge.dig("this_month_historically", "note"))
+  end
+
+  def test_fixtures_were_captured_with_the_query_the_tool_sends
+    _, _, requests = rivers(**SQUAMISH, stations: 1)
+    %w[hydrometric-realtime hydrometric-monthly-mean].each do |collection|
+      sent = requests.find { |request| request.path == "/collections/#{collection}/items" }.query
+      captured = FakeEccc.fixture_json("api/#{collection}_08GA076.json")["links"].find { |link| link["rel"] == "self" }["href"]
+
+      assert_equal sent.except("f"), URI.decode_www_form(URI(captured).query).to_h.except("f"), collection
+    end
+  end
+
   def test_old_readings_are_flagged
     result, = rivers(**SQUAMISH, stations: 1, clock: -> { STATIONS_CAPTURED_AT + (8 * 3600) })
 

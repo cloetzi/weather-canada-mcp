@@ -10,9 +10,10 @@ module WeatherCanadaMcp
         The latest measured weather at the Environment Canada and NAV CANADA stations nearest a location (within
         50 km): temperature, dewpoint, humidity, wind and gusts, pressure, visibility, cloud cover, precipitation over
         the past 1, 6 and 24 hours, snowfall and snow depth. Stations report different sets of readings, so a reading
-        missing at one station may be present at the next. Each station shows its elevation and distance, because a
-        valley station can differ a lot from a ridge nearby. Measurements are raw and unchecked by forecasters. Times
-        are UTC (ISO 8601). For the forecast use get_forecast.
+        missing at one station may be present at the next; readings that failed ECCC's automatic quality checks are left
+        out. A reading missing from a station's newest report can come from one up to an hour older; earlier_readings
+        gives the time of each such reading. Each station shows its elevation and distance, because a valley station can
+        differ a lot from a ridge nearby. Times are UTC (ISO 8601). For the forecast use get_forecast.
       TEXT
       STATIONS_COLLECTION = "swob-stations"
       COLLECTION = "swob-realtime"
@@ -21,7 +22,9 @@ module WeatherCanadaMcp
       # Reports fetched per station; a value missing from the newest report is taken from an older one within the hour.
       REPORTS = 6
       MERGE_WINDOW = 3600
+      SPARE_STATIONS = 3
       STALE_AFTER = 3 * 3600
+      QUALITY_PASSED = 100
       # Output field => SWOB elements, preferred first.
       FIELDS = {
         temperature_c: %w[air_temp],
@@ -59,24 +62,38 @@ module WeatherCanadaMcp
         lang = lang(arguments)
         point = resolve_point(arguments)
         limit = (arguments["stations"] || 3).clamp(1, MAX_STATIONS)
-        nearest = nearest_features(STATIONS_COLLECTION, point, radius_km: RADIUS_KM, count: limit, limit: 500)
-        stations = concurrently(nearest) { |distance, feature| station(feature, distance, lang) }
+        stations = reporting_stations(point, limit, lang)
         result = { location: point.to_h, stations: }
-        result[:note] = "No Environment Canada or NAV CANADA weather station within #{RADIUS_KM} km; try get_forecast." if stations.empty?
+        if stations.empty?
+          result[:note] =
+            "No Environment Canada or NAV CANADA weather station within #{RADIUS_KM} km has reported recently; try get_forecast."
+        end
         result
       end
 
       private
 
+      # The nearest stations that have reported, skipping silent ones (closed or seasonal) for the next nearest.
+      def reporting_stations(point, limit, lang)
+        candidates = nearest_features(STATIONS_COLLECTION, point, radius_km: RADIUS_KM, count: limit + SPARE_STATIONS, limit: 500)
+        stations = []
+        while stations.size < limit && candidates.any?
+          batch = candidates.shift(limit - stations.size)
+          stations.concat(concurrently(batch) { |distance, feature| station(feature, distance, lang) }.compact)
+        end
+        stations
+      end
+
+      # nil for a station without reports.
       def station(feature, distance, lang)
         info = station_info(feature, distance, lang)
         reports = reports(info[:id])
         newest = reports.first
-        return info.merge(note: "No recent report from this station.") unless newest
+        return unless newest
 
         info[:observed_at] = newest[:at].utc.iso8601
         info[:note] = "The latest report is more than #{STALE_AFTER / 3600} hours old." if now - newest[:at] > STALE_AFTER
-        info.merge(observations: observations(reports.select { |report| newest[:at] - report[:at] <= MERGE_WINDOW }))
+        info.merge(observations(reports.select { |report| newest[:at] - report[:at] <= MERGE_WINDOW }))
       rescue Sources::Error => e
         info.merge(note: "This station's reports could not be fetched: #{e.message}")
       end
@@ -100,12 +117,26 @@ module WeatherCanadaMcp
         reports.sort_by { |report| -report[:at].to_f }
       end
 
+      # {observations:, earlier_readings:}: each value with the time of the report it came from when that is not the
+      # newest report.
       def observations(reports)
-        fields = FIELDS.to_h do |field, elements|
-          [field, reports.lazy.flat_map { |report| elements.map { |element| reading(report[:values], element) } }.find { |v| !v.nil? }]
-        end
+        found = FIELDS.to_h { |field, elements| [field, first_reading(reports, elements)] }.compact
         first = %i[temperature_c dewpoint_c humidity_pct]
-        { **fields.slice(*first), **wind(reports), **fields.except(*first) }
+        found = { **found.slice(*first), **wind(reports), **found.except(*first) }
+        newest = reports.first[:at]
+        earlier = found.filter_map { |field, (_, at)| [field, at.utc.iso8601] if at != newest }.to_h
+        { observations: found.transform_values(&:first), earlier_readings: (earlier unless earlier.empty?) }
+      end
+
+      # [value, report time] from the newest report that has one of the elements.
+      def first_reading(reports, elements)
+        reports.each do |report|
+          elements.each do |element|
+            value = reading(report[:values], element)
+            return [value, report[:at]] unless value.nil?
+          end
+        end
+        nil
       end
 
       # Direction is left out in calm air, where stations report 0.
@@ -115,18 +146,20 @@ module WeatherCanadaMcp
             speed = reading(report[:values], speed_element)
             next if speed.nil?
 
+            wind = { wind_speed_kmh: [speed, report[:at]] }
             direction = reading(report[:values], direction_element) unless speed.zero?
-            return { wind_speed_kmh: speed, wind_direction_deg: direction }
+            return direction.nil? ? wind : wind.merge(wind_direction_deg: [direction, report[:at]])
           end
         end
         {}
       end
 
-      # A quality flag of -1 marks a missing reading.
+      # Only readings that passed ECCC's automatic quality checks (flag 100); other flags mark missing, doubtful,
+      # suspect or erroneous values. A reading without a flag is kept.
       def reading(values, element)
         value = values[element]
         quality = values["#{element}-qa"]
-        value if value.is_a?(Numeric) && !(quality.is_a?(Numeric) && quality.negative?)
+        value if value.is_a?(Numeric) && (quality.nil? || quality == QUALITY_PASSED)
       end
     end
   end

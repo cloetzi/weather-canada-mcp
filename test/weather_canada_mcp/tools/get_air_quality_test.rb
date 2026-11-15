@@ -54,6 +54,14 @@ class GetAirQualityTest < Minitest::Test
     assert_match(/No AQHI location within 100 km/, result["note"])
   end
 
+  def test_without_the_forecast_the_observation_is_still_reported
+    result, error = air_quality(**KELOWNA, routes: { "/collections/aqhi-forecasts-realtime/items" => ->(_) { [404, {}, "gone"] } })
+
+    refute error
+    assert_equal "low", result.dig("current", "risk")
+    assert_match(/forecast could not be fetched/, result.dig("forecast", "note"))
+  end
+
   def test_risk_categories_follow_the_rounded_index
     tool = WeatherCanadaMcp::Tools::GetAirQuality.new(nil)
     risks = [1.4, 3.4, 3.5, 6.4, 6.5, 10.4, 10.5, 12].map { |value| tool.send(:index, value, "en").values_at(:risk, :aqhi_display) }

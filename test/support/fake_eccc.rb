@@ -26,7 +26,6 @@ class FakeEccc
 
   def self.fixture_json(path) = JSON.parse(fixture(path))
 
-  # A one-member ZIP archive (deflated) of the real CGN sample, shaped like NRCan's download.
   # Collections served from one fixture whatever the query (each was captured for one test location).
   FIXED_FIXTURES = {
     "citypageweather-realtime" => "api/citypage_sites.json",
@@ -40,6 +39,7 @@ class FakeEccc
     "hydrometric-monthly-mean" => "STATION_NUMBER", "aqhi-forecasts-realtime" => "location_id"
   }.freeze
 
+  # A one-member ZIP archive (deflated) of the real CGN sample, shaped like NRCan's download.
   def self.cgn_zip(csv = fixture("cgn/cgn_sample.csv"))
     Zip::OutputStream.write_buffer(StringIO.new) do |zip|
       zip.put_next_entry("cgn_canada_csv_eng.csv")

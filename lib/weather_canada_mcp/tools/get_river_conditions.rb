@@ -70,13 +70,14 @@ module WeatherCanadaMcp
       def gauge(feature, distance, lang)
         info = gauge_info(feature["properties"], distance, lang)
         number = info[:station_number]
-        readings = readings(number)
+        # The history does not depend on the readings, so both are fetched at once.
+        readings, means = concurrently([-> { readings(number) }, -> { monthly_means(number, now.utc.month) }], &:call)
         return info.merge(note: "No real-time readings in the past #{TREND_HOURS / 24} days.") if readings.empty?
 
         latest = readings.first
         info[:note] = "The latest reading is more than #{STALE_AFTER / 3600} hours old." if now - latest[:at] > STALE_AFTER
         info.merge(latest: reading_h(latest), past_24h: change(readings, 24), past_3_days: range(readings),
-                   this_month_historically: historical(number, readings))
+                   this_month_historically: historical(means, readings))
       rescue Sources::Error => e
         info.merge(note: "This gauge's readings could not be fetched: #{e.message}")
       end
@@ -144,16 +145,15 @@ module WeatherCanadaMcp
       end
 
       # The mean flow over the past 24 hours against the mean, lowest and highest monthly mean for this calendar month.
-      def historical(number, readings)
-        month = readings.first[:at].utc.month
-        means = monthly_means(number, month)
+      def historical(means, readings)
+        return { note: "The historical means could not be fetched: #{means.message}" } if means.is_a?(Sources::Error)
         return if means.empty?
 
         current = mean_of(readings.select { |reading| readings.first[:at] - reading[:at] <= 86_400 }.filter_map { |reading| reading[:discharge] })
         mean = mean_of(means.values)
         lowest, highest = means.values.minmax
         {
-          month:, years: means.size, from_year: means.keys.min, to_year: means.keys.max, mean_discharge_m3s: discharge(mean),
+          month: now.utc.month, years: means.size, from_year: means.keys.min, to_year: means.keys.max, mean_discharge_m3s: discharge(mean),
           lowest_monthly_mean_m3s: discharge(lowest), highest_monthly_mean_m3s: discharge(highest),
           past_24h_mean_discharge_m3s: discharge(current), percent_of_mean: percent(current, mean)
         }
@@ -163,8 +163,12 @@ module WeatherCanadaMcp
 
       def percent(value, base) = ((value / base * 100).round if value && base&.positive?)
 
-      # {year => mean discharge} for one calendar month, from HYDAT (which lags real time by a year or two).
+      # {year => mean discharge} for one calendar month, from HYDAT (which lags real time by a year or two). HYDAT has
+      # no filter by calendar month, so the gauge's whole monthly record is fetched (cached for a week). A failure is
+      # returned, not raised, so the real-time readings are still reported.
       def monthly_means(number, month)
+        return {} unless number.is_a?(String)
+
         data = ogc.items(MONTHLY_COLLECTION, STATION_NUMBER: number, properties: "DATE,MONTHLY_MEAN_DISCHARGE", skipGeometry: true,
                                              limit: 2000)
         Array(data["features"]).each_with_object({}) do |feature, means|
@@ -173,6 +177,8 @@ module WeatherCanadaMcp
           value = p["MONTHLY_MEAN_DISCHARGE"]
           means[year] = value.to_f if m == month && value.is_a?(Numeric)
         end
+      rescue Sources::Error => e
+        e
       end
     end
   end

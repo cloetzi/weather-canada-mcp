@@ -20,7 +20,12 @@ module WeatherCanadaMcp
       RADIUS_KM = 100
       STALE_AFTER = 3 * 3600
       PERIODS = %w[period_1 period_2 period_3 period_4 period_5].freeze
-      # Health messages by risk category, from Health Canada's AQHI guidance. Low risk has one message for everyone.
+      # Health messages by risk category, as canada.ca's "About the AQHI" page gives them (MESSAGES_URL). Low risk has one
+      # message for everyone.
+      MESSAGES_URL = {
+        "en" => "https://www.canada.ca/en/environment-climate-change/services/air-quality-health-index/about.html",
+        "fr" => "https://www.canada.ca/fr/environnement-changement-climatique/services/cote-air-sante/a-propos.html"
+      }.freeze
       MESSAGES = {
         "en" => {
           "low" => { general: "Enjoy your usual outdoor activities.", at_risk: "Enjoy your usual outdoor activities." },
@@ -83,7 +88,7 @@ module WeatherCanadaMcp
           aqhi_location: { id: p["location_id"], name: p["location_name_#{lang}"] || p["location_name_en"],
                            distance_km: round_km(distance) },
           current:, forecast:,
-          health_messages: health_messages([current, *forecast&.dig(:periods)], lang),
+          health_messages: health_messages([current, *forecast&.dig(:periods)], lang), health_messages_source: MESSAGES_URL.fetch(lang),
           source_url: lang == "fr" ? "https://meteo.gc.ca/airquality/pages/index_f.html" : "https://weather.gc.ca/airquality/pages/index_e.html"
         }
       end
@@ -106,14 +111,19 @@ module WeatherCanadaMcp
         p = Array(data["features"]).first&.dig("properties")
         return unless p.is_a?(Hash)
 
-        periods = PERIODS.filter_map do |key|
-          period = p.dig("forecast_period", key)
+        { published_at: time(p["publication_datetime"])&.utc&.iso8601, periods: periods(p["forecast_period"], lang) }
+      rescue Sources::Error => e
+        { note: "The forecast could not be fetched: #{e.message}" }
+      end
+
+      def periods(forecast, lang)
+        PERIODS.filter_map do |key|
+          period = forecast.is_a?(Hash) ? forecast[key] : nil
           next unless period.is_a?(Hash) && period["aqhi"].is_a?(Numeric)
 
           { period: period["forecast_period_#{lang}"] || period["forecast_period_en"], **index(period["aqhi"], lang),
             aqhi_in_smoke: period["aqhi_insmoke"] }
         end
-        { published_at: time(p["publication_datetime"])&.utc&.iso8601, periods: }
       end
 
       def index(value, lang)

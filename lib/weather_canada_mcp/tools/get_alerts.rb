@@ -49,7 +49,7 @@ module WeatherCanadaMcp
         return false if properties["status_en"] == "ended"
 
         expires = time(properties["expiration_datetime"])
-        expires.nil? || expires > @context.clock.call
+        expires.nil? || expires > now
       end
 
       def alert(feature, lang)
