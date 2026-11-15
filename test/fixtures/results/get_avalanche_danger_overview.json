@@ -1,0 +1,158 @@
+{
+  "products": [
+    {
+      "name": "Brazeau-Churchill-Cirrus-Wilson-Fryatt-Icefields-Maligne-Marmot-Miette Lake-Pyramid",
+      "type": "avalancheforecast",
+      "owner": "Parks Canada",
+      "centroid": {
+        "lat": 52.556,
+        "lon": -117.626
+      },
+      "url": "https://avalanche.ca/en/forecasts/9811aa3d-5081-4be0-82ec-1d625fcdf658_426b4bc4f761f2890921214b32ed3bf9f5de086f39b6f755296daf3a3048587e",
+      "highest_danger": {
+        "rating": "earlyseason",
+        "display": "Early Season"
+      },
+      "current_ratings": {
+        "alpine": "earlyseason",
+        "treeline": "earlyseason",
+        "below_treeline": "norating"
+      }
+    },
+    {
+      "name": "Waterton",
+      "type": "avalancheforecast",
+      "owner": "Parks Canada",
+      "centroid": {
+        "lat": 49.081,
+        "lon": -113.933
+      },
+      "url": "https://avalanche.ca/en/forecasts/cf50334f-3c6b-478b-b02f-dd9ecb233074_010016cb778a7962e0174e68d5a278372db93924e19e450052de07b95eb72c85",
+      "highest_danger": {
+        "rating": "earlyseason",
+        "display": "Early Season"
+      },
+      "current_ratings": {
+        "alpine": "norating",
+        "treeline": "norating",
+        "below_treeline": "norating"
+      }
+    },
+    {
+      "name": "Corner Brook-Gros Morne-Northern Peninsula",
+      "type": "avalancheforecast",
+      "owner": "Avalanche Canada",
+      "centroid": {
+        "lat": 49.828,
+        "lon": -57.331
+      },
+      "url": "https://avalanche.ca/en/forecasts/5f1836ba-f92c-448a-a615-d8f413b0e1e9_2b27cc579bf40b0d3360a5ffe527102213d07f32526775c4e2f0af58e02f8d3d",
+      "highest_danger": {
+        "rating": "earlyseason",
+        "display": "Early Season"
+      },
+      "current_ratings": {
+        "alpine": "norating",
+        "treeline": "norating",
+        "below_treeline": "norating"
+      }
+    },
+    {
+      "name": "Akamina-Badshot-Battle-Birkenhead-Blue River-Bonnington-Boundary-Brandywine-Bull-Central Selkirk-Clearwater-Clemina-Coquihalla-Crawford-Crowsnest North-Crowsnest South-Dogtooth-Duffey-East Island-East Kakwa-East Purcell-Elkford East-Elkford West-Esplanade-Flathead-Garibaldi-Goat-Gold-Grohman-Haines Pass-Harrison-Fraser-Homathko-Howson-Jordan-Kakwa-Kispiox-Kitimat-Kokanee-Kootenay Pass-Lizard-Manning-McBride-McGregor-Microwave-Sinclair-Moyie-Nass-Ningunsaw-Norns-North Bulkley-North Island-North Monashee-North Okanagan-North Selkirk-North Shore-Pine Pass-Powell River-Premier-Quesnel-Renshaw-Retallack-Robson-Rossland-Rupert-Sasquatch-Seven Sisters-Shames-Shuswap-Skagit-Sky Pilot-South Bulkley-South Chilcotin-South Island-South Okanagan-Spearhead-Stein-Stewart-St. Mary-Sugarbowl-Tantalus-Taseko-Telkwa-Tetrahedron-Tumbler-Tutshi-Valhalla-West Island-West Purcell-Whatshan-Wheaton-White Pass East-White Pass West-Ymir",
+      "type": "avalancheforecast",
+      "owner": "Avalanche Canada",
+      "centroid": {
+        "lat": 52.958,
+        "lon": -123.346
+      },
+      "url": "https://avalanche.ca/en/forecasts/181218e0-ea42-4417-9387-9500569056ab_53bb614cadbd487077d867dec6007dfed090d20fbc0cbfe941451b6af2df33ed",
+      "highest_danger": {
+        "rating": "earlyseason",
+        "display": "Early Season"
+      },
+      "current_ratings": {
+        "alpine": "norating",
+        "treeline": "norating",
+        "below_treeline": "norating"
+      }
+    },
+    {
+      "name": "Bow Valley-Highwood Pass-North 40-Spray - KLakes",
+      "type": "avalancheforecast",
+      "owner": "Kananaskis",
+      "centroid": {
+        "lat": 50.789,
+        "lon": -115.196
+      },
+      "url": "https://avalanche.ca/en/forecasts/cc4ccdf5-b832-4639-8487-fc35016e482f_d15dff296f550c29a26e3203191d60ed0a36eeda9361320a324047b0850d77ea",
+      "highest_danger": {
+        "rating": "earlyseason",
+        "display": "Early Season"
+      },
+      "current_ratings": {
+        "alpine": "norating",
+        "treeline": "norating",
+        "below_treeline": "norating"
+      }
+    },
+    {
+      "name": "Chic-Chocs",
+      "type": "avalancheforecast",
+      "owner": "Avalanche Québec",
+      "centroid": {
+        "lat": 48.91,
+        "lon": -66.087
+      },
+      "url": "https://avalanche.ca/en/forecasts/f0c31cb6-b22b-41d2-8b8d-e3e95bf35bc0_03eb3e06c31ffda095ce133e8c6974197efdccd29c7723d078ef27742ff6a762",
+      "highest_danger": {
+        "rating": "noforecast",
+        "display": "No Forecast"
+      },
+      "current_ratings": {
+        "alpine": "norating",
+        "treeline": "norating",
+        "below_treeline": "norating"
+      }
+    },
+    {
+      "name": "Banff-East Side 93N-Field-Kootenay-Lake Louise-Little Yoho-LLSA-Sunshine-West Side 93N",
+      "type": "avalancheforecast",
+      "owner": "Parks Canada",
+      "centroid": {
+        "lat": 51.382,
+        "lon": -116.16
+      },
+      "url": "https://avalanche.ca/en/forecasts/e0bcb512-913b-4bdd-957b-d91fd8ebeedb_afe9ffd14c0637d10e2530857f8e7a8cba0277f33351d3b31c8f37f4111c6ecf",
+      "highest_danger": {
+        "rating": "earlyseason",
+        "display": "Early Season"
+      },
+      "current_ratings": {
+        "alpine": "earlyseason",
+        "treeline": "earlyseason",
+        "below_treeline": "norating"
+      }
+    },
+    {
+      "name": "Glacier",
+      "type": "avalancheforecast",
+      "owner": "Parks Canada",
+      "centroid": {
+        "lat": 51.269,
+        "lon": -117.524
+      },
+      "url": "https://avalanche.ca/en/forecasts/012c0184-38fb-4dc8-8917-0f5f035b4a37_b2a14eb464567902bcdf5b0cf1efe870416fee4de1d80d5b1f6d9cbc1b3bd73a",
+      "highest_danger": {
+        "rating": "earlyseason",
+        "display": "Early Season"
+      },
+      "current_ratings": {
+        "alpine": "norating",
+        "treeline": "norating",
+        "below_treeline": "norating"
+      }
+    }
+  ],
+  "safety_note": "Avalanche forecasts are regional and do not replace avalanche training, your own observations or terrain judgement. Check the official forecast before you go: https://avalanche.ca/map",
+  "attribution": "Avalanche forecasts by Parks Canada, Avalanche Canada, Kananaskis and Avalanche Québec, via Avalanche Canada (avalanche.ca). Unofficial tool, not affiliated with or endorsed by Avalanche Canada, Parks Canada, Kananaskis or Avalanche Québec."
+}

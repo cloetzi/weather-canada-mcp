@@ -21,18 +21,18 @@ module WeatherCanadaMCP
         50 km), with the change over the past 24 hours, the range over the past 3 days, and how today's flow compares
         with the historical mean flow for this month at the same gauge. Pass river to keep only gauges whose name
         contains it ("Bow River", "Cheakamus"). Real-time data are provisional and can be affected by ice. Water
-        levels are relative to a local datum, so compare a level only with the same gauge. Times are UTC (ISO 8601).
+        levels are relative to a local datum, so compare a level only with the same gauge.
         This is not a flood forecast; check provincial river forecast centres and get_alerts for warnings.
       TEXT
       location_arguments
       argument :river, :string, max_length: 60, description: "Only gauges whose name contains this text (\"Bow River\")."
-      argument :stations, :integer, in: 1..MAX_STATIONS, default: 3, description: "Nearest gauges to include."
+      argument :limit, :integer, in: 1..MAX_STATIONS, default: 3, description: "Nearest gauges to include."
       argument :lang, :language
 
       def call(args)
         lang = args.lang
         point = args.point
-        limit = args.stations
+        limit = args.limit
         filter = river_filter(args.river)
         stations = gauges(point, filter, limit).then { |nearest| concurrently(nearest) { |distance, feature| gauge(feature, distance, lang) } }
         result = { location: point.to_h, gauges: stations }
@@ -61,8 +61,8 @@ module WeatherCanadaMCP
       def normalize(text) = text.unicode_normalize(:nfkd).gsub(/\p{Mn}/, "").upcase.squeeze(" ").strip
 
       def gauge(feature, distance, lang)
-        info = gauge_info(feature["properties"], distance, lang)
-        number = info[:station_number]
+        info = gauge_info(feature, distance, lang)
+        number = info[:id]
         # The history does not depend on the readings, so both are fetched at once.
         readings, (means, means_note) = concurrently([-> { readings(number) }, -> { monthly_means(number, now.utc.month) }], &:call)
         return info.merge(note: "No real-time readings in the past #{TREND_HOURS / 24} days.") if readings.empty?
@@ -75,12 +75,14 @@ module WeatherCanadaMCP
         info.merge(note: "This gauge's readings could not be fetched: #{e.message}")
       end
 
-      def gauge_info(properties, distance, lang)
+      def gauge_info(feature, distance, lang)
+        properties = feature["properties"]
+        lon, lat = feature.dig("geometry", "coordinates")
         number = properties["STATION_NUMBER"]
         operator = properties["CONTRIBUTOR_#{lang.upcase}"].to_s
-        { name: properties["STATION_NAME"], station_number: number, province: properties["PROV_TERR_STATE_LOC"],
+        { name: properties["STATION_NAME"], id: number, province: properties["PROV_TERR_STATE_LOC"],
           operator: (operator unless operator.empty?), drainage_area_km2: properties["DRAINAGE_AREA_GROSS"]&.round,
-          distance_km: round_km(distance), url: "https://wateroffice.ec.gc.ca/report/real_time_#{lang == "fr" ? "f" : "e"}.html?stn=#{number}" }
+          distance_km: round_km(distance), lat:, lon:, url: "https://wateroffice.ec.gc.ca/report/real_time_#{lang == "fr" ? "f" : "e"}.html?stn=#{number}" }
       end
 
       # Newest first, as {at:, level:, discharge:}.
@@ -101,7 +103,7 @@ module WeatherCanadaMCP
       def number_or_nil(value) = value.is_a?(Numeric) ? value.to_f : nil
 
       def reading_h(reading)
-        { at: reading[:at].utc.iso8601, level_m: reading[:level]&.round(3), discharge_m3s: discharge(reading[:discharge]) }
+        { observed_at: reading[:at], level_m: reading[:level]&.round(3), discharge_m3s: discharge(reading[:discharge]) }
       end
 
       def discharge(value) = value && (value < 10 ? value.round(2) : value.round(1))

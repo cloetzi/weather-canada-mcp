@@ -1,0 +1,124 @@
+{
+  "location": {
+    "lat": 51.42,
+    "lon": -116.18,
+    "timezone": "America/Edmonton"
+  },
+  "forecast": {
+    "title": "Banff-East Side 93N-Field-Kootenay-Lake Louise-Little Yoho-LLSA-Sunshine-West Side 93N",
+    "owner": "Parks Canada",
+    "url": "https://avalanche.ca/forecasts/e0bcb512-913b-4bdd-957b-d91fd8ebeedb_afe9ffd14c0637d10e2530857f8e7a8cba0277f33351d3b31c8f37f4111c6ecf",
+    "issued_at": "2026-11-14T11:30:37-07:00",
+    "valid_until": "2026-11-17T16:00:00-07:00",
+    "timezone": "America/Edmonton",
+    "danger_ratings": [
+      {
+        "date": "2026-11-15",
+        "day": "Sunday",
+        "alpine": {
+          "rating": "earlyseason",
+          "display": "Early Season"
+        },
+        "treeline": {
+          "rating": "earlyseason",
+          "display": "Early Season"
+        },
+        "below_treeline": {
+          "rating": "norating",
+          "display": "No Rating"
+        }
+      },
+      {
+        "date": "2026-11-16",
+        "day": "Monday",
+        "alpine": {
+          "rating": "earlyseason",
+          "display": "Early Season"
+        },
+        "treeline": {
+          "rating": "earlyseason",
+          "display": "Early Season"
+        },
+        "below_treeline": {
+          "rating": "norating",
+          "display": "No Rating"
+        }
+      }
+    ],
+    "highlights": "Watch for deeper snow accumulation and slab formation in isolated alpine gully features. Climbers should watch for small wind slabs that can have serious consequences.",
+    "confidence": {
+      "rating": "low",
+      "display": "Low",
+      "statements": [
+        "We are uncertain due to a limited number of field observations."
+      ]
+    },
+    "problems": [
+      {
+        "type": "Wind Slab",
+        "type_id": "windslab",
+        "elevations": [
+          "Alpine"
+        ],
+        "aspects": [
+          "N",
+          "NE",
+          "E",
+          "SE",
+          "S",
+          "SW",
+          "W",
+          "NW"
+        ],
+        "likelihood": "unlikely",
+        "likelihood_id": "unlikely",
+        "expected_size": {
+          "min": 1.0,
+          "max": 1.5
+        },
+        "comment": "Isolated small wind slabs are possible in steep alpine lee terrain."
+      }
+    ],
+    "avalanche_summary": "Reports are limited, but there have been no recent avalanche observations; only minor sluffing/cracking in steep alpine terrain. The main snowpack concern is small, isolated wind slabs in alpine gullies.",
+    "snowpack_summary": "A surface crust to ridgetop. Previous snowfall of 5–15 cm, combined with strong SW–SE winds, has formed wind slabs in the alpine. This snow and wind slabs overlie 20–30 cm of faceted snow at higher elevations. Reports indicate snow depths of up to 80 cm on glaciers, while snow cover remains minimal at treeline and below. Overall, the early-season snowpack is thin and variable.",
+    "weather_summary": "For current weather conditions, see the telemetry stations on the Avalanche Canada map page.\nFor weather forecasts, check out Environment Canada's products for Banff, Kootenay and Yoho.\nFor weather maps, graphics and satellite images check out the Mountain Weather Forecast.\nFor a technical weather forecast check out SpotWx",
+    "terrain_and_travel_advice": [
+      "Be careful with wind-loaded pockets, especially near ridge crests and rollovers."
+    ],
+    "notifications": [
+      "Area closures for avalanche control are in effect periodically from November to May. Click here for more information and maps."
+    ],
+    "links": [
+      {
+        "text": "telemetry stations",
+        "url": "https://www.avalanche.ca/map"
+      },
+      {
+        "text": "Banff",
+        "url": "https://weather.gc.ca/city/pages/ab-49_metric_e.html"
+      },
+      {
+        "text": "Kootenay",
+        "url": "https://weather.gc.ca/city/pages/bc-11_metric_e.html"
+      },
+      {
+        "text": "Yoho",
+        "url": "https://weather.gc.ca/city/pages/bc-68_metric_e.html"
+      },
+      {
+        "text": "Mountain Weather Forecast",
+        "url": "https://www.avalanche.ca/weather/forecast"
+      },
+      {
+        "text": "SpotWx",
+        "url": "https://spotwx.com/"
+      },
+      {
+        "text": "here",
+        "url": "https://www.pc.gc.ca/en/pn-np/mtn/securiteenmontagne-mountainsafety/avalanche/declenchementpreventif-controlareas?_ga=2.80778963.573438189.1667223637-385521292.1638363862"
+      }
+    ]
+  },
+  "safety_note": "Avalanche forecasts are regional and do not replace avalanche training, your own observations or terrain judgement. Check the official forecast before you go: https://avalanche.ca/forecasts/e0bcb512-913b-4bdd-957b-d91fd8ebeedb_afe9ffd14c0637d10e2530857f8e7a8cba0277f33351d3b31c8f37f4111c6ecf",
+  "attribution": "Avalanche forecast by Parks Canada, via Avalanche Canada (avalanche.ca). Unofficial tool, not affiliated with or endorsed by Avalanche Canada or Parks Canada."
+}

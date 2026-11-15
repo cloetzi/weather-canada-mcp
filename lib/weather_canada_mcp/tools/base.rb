@@ -23,14 +23,22 @@ module WeatherCanadaMCP
     #   end
     class Base
       include Concurrency
+      include PointResolution
 
       CANADA_LAT = (41.0..84.0)
       CANADA_LON = (-142.0..-52.0)
       MAX_LOCATION_LENGTH = 120
 
       # A resolved point, with what it was resolved from.
-      Point = Data.define(:lat, :lon, :place) do
-        def to_h = place ? { query_match: place.to_h } : { lat:, lon: }
+      # others are the places of the same name that could have been meant (see AMBIGUITY_SHARE).
+      Point = Data.define(:lat, :lon, :place, :zone, :others) do
+        def initialize(lat:, lon:, place:, zone:, others: []) = super
+
+        def to_h
+          location = place ? { query_match: place.to_h } : { lat:, lon: }
+          location[:other_matches] = others.map { |other| other.to_h.slice(:name, :type, :province) } if others.any?
+          location.merge(timezone: zone)
+        end
       end
 
       class << self
@@ -110,7 +118,8 @@ module WeatherCanadaMCP
         args = args.with(point: resolve_point(args)) if self.class.location_arguments?
         result = call(args)
         result = Result.new(data: result) unless result.is_a?(Result)
-        Result.new(data: result.data, attributions: credits(result.attributions), image: result.image)
+        Result.new(data: localized_times(result.data, args.respond_to?(:point) ? args.point&.zone : nil),
+                   attributions: credits(result.attributions), image: result.image)
       end
 
       def call(_args) = raise NotImplementedError
@@ -122,6 +131,16 @@ module WeatherCanadaMCP
 
       # Records that gazetteer place names went into the result, which NRCan's licence asks to be credited.
       def place_names_used! = @place_names = true
+
+      # Every Time in the data becomes local ISO 8601 with its offset, so tools return Time objects and never format them.
+      def localized_times(value, zone)
+        case value
+        when Time then LocalTime.iso8601(value, zone)
+        when Hash then value.transform_values { |item| localized_times(item, zone) }
+        when Array then value.map { |item| localized_times(item, zone) }
+        else value
+        end
+      end
 
       def credits(declared)
         sources = [*declared, *@attributions]
@@ -135,42 +154,6 @@ module WeatherCanadaMCP
       def images = @context.image_cache
       def forecast_sites = @context.forecast_sites
       def config = @context.config
-
-      # lat/lon win over location; one of the two is required.
-      def resolve_point(args)
-        return coordinates(args.lat, args.lon) unless args.lat.nil? && args.lon.nil?
-
-        raise InvalidArguments, "Give a location name, or lat and lon." if args.location.nil? || args.location.strip.empty?
-
-        place = lookup(args.location)
-        place_names_used!
-        Point.new(lat: place.lat, lon: place.lon, place:)
-      end
-
-      def coordinates(lat, lon)
-        raise InvalidArguments, "Give both lat and lon." if lat.nil? || lon.nil?
-        raise InvalidArguments, "lat and lon must be numbers." unless lat.is_a?(Numeric) && lon.is_a?(Numeric)
-        unless CANADA_LAT.cover?(lat) && CANADA_LON.cover?(lon)
-          raise InvalidArguments, "#{lat}, #{lon} is outside Canada; ECCC data covers Canada only (lon is negative, west)."
-        end
-
-        Point.new(lat: lat.to_f, lon: lon.to_f, place: nil)
-      end
-
-      def lookup(location)
-        name, province = Places::Gazetteer.split_province(location)
-        place = gazetteer.search(name, province:, limit: 1).first
-        return place if place
-
-        raise NotFound, "No place named #{name.inspect}#{" in #{province}" if province} was found. " \
-                        "Try find_location with a shorter or different name, or pass lat and lon."
-      end
-
-      def gazetteer
-        @context.gazetteer.open
-      rescue Places::Gazetteer::Unavailable => e
-        raise Unavailable, "Place names cannot be looked up right now (#{e.message}). Pass lat and lon instead."
-      end
 
       # A bilingual ECCC field ({"en" => ..., "fr" => ...}) in the requested language.
       def localized(value, lang)

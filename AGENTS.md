@@ -30,9 +30,11 @@ Names. Users run it over stdio or from the Docker image on GHCR. No upstream cre
   - `server/`: the HTTP transport. `HttpApp`, `HostOriginGuard`, `StaticTokenVerifier`, `HealthCheck`,
     `ExceptionReporter`
   - `config.rb` (with `Config::ListenAddress`), `application.rb`, `cli.rb`, `logger.rb`: wiring; `geo.rb`: distance, bbox, point in polygon
-- `bin/`: `weather-canada-mcp` (CLI), `capture-fixtures`, `healthcheck`, `docker-smoke-test`
+- `bin/`: `weather-canada-mcp` (CLI), `capture-fixtures`, `generate-site-zones` (rewrites `sources/eccc/site_zones.json`,
+  the IANA zone of each City Page site; needs Python `timezonefinder`, offline), `healthcheck`, `docker-smoke-test`
 - `test/`: Minitest. `test/support/fake_eccc.rb` serves `test/fixtures/` on a local port;
-  `test/fixtures/tools.json` snapshots the tool manifest; `test/fixtures/m0/` holds samples for future tools.
+  `test/fixtures/tools.json` snapshots the tool manifest; `test/fixtures/results/` holds one result per tool and the
+  key vocabulary (see CONTRIBUTING.md); `test/fixtures/m0/` holds samples for future tools.
 
 ## Commands
 

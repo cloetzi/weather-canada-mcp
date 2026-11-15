@@ -1,0 +1,54 @@
+{
+  "query": "Whistler",
+  "candidates": [
+    {
+      "name": "Whistler",
+      "type": "Resort Municipality",
+      "province": "British Columbia",
+      "lat": 50.117222,
+      "lon": -122.954722
+    },
+    {
+      "name": "Whistler",
+      "type": "Recreational Community",
+      "province": "British Columbia",
+      "lat": 50.1166667,
+      "lon": -122.9541667
+    },
+    {
+      "name": "Whistler",
+      "type": "Railway Point",
+      "province": "British Columbia",
+      "lat": 50.1,
+      "lon": -123.0
+    }
+  ],
+  "forecast_sites": [
+    {
+      "id": "bc-86",
+      "name": "Whistler",
+      "region": "Whistler",
+      "lat": 50.12,
+      "lon": -122.96,
+      "distance_km": 0.5
+    },
+    {
+      "id": "bc-16",
+      "name": "Pemberton",
+      "region": "Whistler",
+      "lat": 50.32,
+      "lon": -122.8,
+      "distance_km": 25
+    },
+    {
+      "id": "bc-50",
+      "name": "Squamish",
+      "region": "Howe Sound",
+      "lat": 49.7,
+      "lon": -123.15,
+      "distance_km": 48
+    }
+  ],
+  "note": "forecast_sites are for the first candidate.",
+  "attribution": "Data Source: Environment and Climate Change Canada. Unofficial tool, not affiliated with or endorsed by ECCC. Place names: Canadian Geographical Names, Natural Resources Canada (Open Government Licence - Canada)."
+}

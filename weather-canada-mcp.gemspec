@@ -19,7 +19,7 @@ Gem::Specification.new do |spec|
     "rubygems_mfa_required" => "true"
   }
 
-  spec.files = Dir["lib/**/*.rb", "bin/weather-canada-mcp", "LICENSE", "NOTICE", "README.md", "CHANGELOG.md"]
+  spec.files = Dir["lib/**/*.{rb,json}", "bin/weather-canada-mcp", "LICENSE", "NOTICE", "README.md", "CHANGELOG.md"]
   spec.bindir = "bin"
   spec.executables = ["weather-canada-mcp"]
 

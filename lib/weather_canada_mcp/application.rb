@@ -10,7 +10,7 @@ module WeatherCanadaMCP
       Weather, alerts and outdoor conditions for Canada from Environment and Climate Change Canada (ECCC) open data.
       Tools take a Canadian place name (location) or lat/lon. Use find_location when a name is ambiguous. Results
       name the forecast site or station used and its distance: say so when it is far from the place asked about.
-      Quote alert text as given. Times are UTC. This is an unofficial tool; for safety-critical decisions point
+      Quote alert text as given. Times are local to the place asked about, with their UTC offset. This is an unofficial tool; for safety-critical decisions point
       people to weather.gc.ca.
     TEXT
     IMAGE_CACHE_ENTRIES = 64

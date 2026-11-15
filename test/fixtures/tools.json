@@ -6,7 +6,7 @@
     "input_schema": {
       "type": "object",
       "properties": {
-        "query": {
+        "location": {
           "type": "string",
           "maxLength": 120,
           "description": "Place name, optionally with a province (\"Garibaldi, BC\"). Omit when giving lat and lon."
@@ -50,7 +50,7 @@
   {
     "name": "get_forecast",
     "title": "Get the weather forecast",
-    "description": "Environment Canada's forecast for the nearest of ~850 forecast sites: current conditions, the official human-written forecast by period (today, tonight, then about 6 days, including snow levels in the mountains where ECCC issues them), an hourly forecast, sunrise/sunset and active warning headlines. All times are UTC (ISO 8601). The result names the site used and its distance from the location; a site tens of km away, or at a different elevation, may not match conditions in the backcountry. For full alert text use get_alerts.",
+    "description": "Environment Canada's forecast for the nearest of ~850 forecast sites: current conditions, the official human-written forecast by period (today, tonight, then about 6 days, including snow levels in the mountains where ECCC issues them), an hourly forecast, sunrise/sunset and active warning headlines. The result names the site used and its distance from the location; a site tens of km away, or at a different elevation, may not match conditions in the backcountry. For full alert text use get_alerts.",
     "input_schema": {
       "type": "object",
       "properties": {
@@ -93,7 +93,7 @@
   {
     "name": "get_alerts",
     "title": "Get weather alerts",
-    "description": "Active Environment Canada weather alerts (warnings, watches, advisories and statements) for a location, with the official alert text exactly as issued. Alerts whose area contains the point are in \"alerts\"; alerts for areas within a few km (for example a coastline or a neighbouring zone) are listed briefly in \"nearby_alerts\". An empty \"alerts\" list means ECCC has no alert in effect there right now. Quote alert text as given; do not reword or shorten safety instructions. Times are UTC (ISO 8601).",
+    "description": "Active Environment Canada weather alerts (warnings, watches, advisories and statements) for a location, with the official alert text exactly as issued. Alerts whose area contains the point are in \"alerts\"; alerts for areas within a few km (for example a coastline or a neighbouring zone) are listed briefly in \"nearby_alerts\". An empty \"alerts\" list means ECCC has no alert in effect there right now. Quote alert text as given; do not reword or shorten safety instructions.",
     "input_schema": {
       "type": "object",
       "properties": {
@@ -129,7 +129,7 @@
   {
     "name": "get_current_observations",
     "title": "Get current weather observations",
-    "description": "The latest measured weather at the Environment Canada and NAV CANADA stations nearest a location (within 50 km): temperature, dewpoint, humidity, wind and gusts, pressure, visibility, cloud cover, precipitation over the past 1, 6 and 24 hours, snowfall and snow depth. Stations report different sets of readings, so a reading missing at one station may be present at the next; readings that failed ECCC's automatic quality checks are left out. A reading missing from a station's newest report can come from one up to an hour older; earlier_readings gives the time of each such reading. Each station shows its elevation and distance, because a valley station can differ a lot from a ridge nearby. Times are UTC (ISO 8601). For the forecast use get_forecast.",
+    "description": "The latest measured weather at the Environment Canada and NAV CANADA stations nearest a location (within 50 km): temperature, dewpoint, humidity, wind and gusts, pressure, visibility, cloud cover, precipitation over the past 1, 6 and 24 hours, snowfall and snow depth. Stations report different sets of readings, so a reading missing at one station may be present at the next; readings that failed ECCC's automatic quality checks are left out. A reading missing from a station's newest report can come from one up to an hour older; earlier_readings gives the time of each such reading. Each station shows its elevation and distance, because a valley station can differ a lot from a ridge nearby. For the forecast use get_forecast.",
     "input_schema": {
       "type": "object",
       "properties": {
@@ -150,7 +150,7 @@
           "maximum": -52.0,
           "description": "Longitude in decimal degrees (negative, west)."
         },
-        "stations": {
+        "limit": {
           "type": "integer",
           "minimum": 1,
           "maximum": 5,
@@ -172,7 +172,7 @@
   {
     "name": "get_river_conditions",
     "title": "Get river levels and flows",
-    "description": "Real-time water level (m) and flow (m3/s) at the Water Survey of Canada gauges nearest a location (within 50 km), with the change over the past 24 hours, the range over the past 3 days, and how today's flow compares with the historical mean flow for this month at the same gauge. Pass river to keep only gauges whose name contains it (\"Bow River\", \"Cheakamus\"). Real-time data are provisional and can be affected by ice. Water levels are relative to a local datum, so compare a level only with the same gauge. Times are UTC (ISO 8601). This is not a flood forecast; check provincial river forecast centres and get_alerts for warnings.",
+    "description": "Real-time water level (m) and flow (m3/s) at the Water Survey of Canada gauges nearest a location (within 50 km), with the change over the past 24 hours, the range over the past 3 days, and how today's flow compares with the historical mean flow for this month at the same gauge. Pass river to keep only gauges whose name contains it (\"Bow River\", \"Cheakamus\"). Real-time data are provisional and can be affected by ice. Water levels are relative to a local datum, so compare a level only with the same gauge. This is not a flood forecast; check provincial river forecast centres and get_alerts for warnings.",
     "input_schema": {
       "type": "object",
       "properties": {
@@ -198,7 +198,7 @@
           "maxLength": 60,
           "description": "Only gauges whose name contains this text (\"Bow River\")."
         },
-        "stations": {
+        "limit": {
           "type": "integer",
           "minimum": 1,
           "maximum": 5,
@@ -220,7 +220,7 @@
   {
     "name": "get_air_quality",
     "title": "Get air quality",
-    "description": "The Air Quality Health Index (AQHI, 1 to 10+, higher is worse) at the nearest of about 150 AQHI locations (within 100 km): the latest hourly observation and the forecast for today, tonight, tomorrow and later, each with its risk category (low, moderate, high, very high) and the health messages for the general population and for people at risk (children, people over 65, people with heart or lung conditions). During wildfire smoke the forecast may also give an in-smoke value. health_messages holds the messages once for each risk category that appears. Times are UTC (ISO 8601).",
+    "description": "The Air Quality Health Index (AQHI, 1 to 10+, higher is worse) at the nearest of about 150 AQHI locations (within 100 km): the latest hourly observation and the forecast for today, tonight, tomorrow and later, each with its risk category (low, moderate, high, very high) and the health messages for the general population and for people at risk (children, people over 65, people with heart or lung conditions). During wildfire smoke the forecast may also give an in-smoke value. health_messages holds the messages once for each risk category that appears.",
     "input_schema": {
       "type": "object",
       "properties": {
@@ -256,7 +256,7 @@
   {
     "name": "get_snow_outlook",
     "title": "Get the snow outlook",
-    "description": "Model guidance for snow at a point over the next 12, 24 or 48 hours, in four steps: the snow level (the height in metres above sea level below which snow turns to rain, from the 2.5 km HRDPS model), new snow as water equivalent (mm, from the 10 km RDPS model; 1 mm is roughly 1 cm of fresh snow, more in cold dry snow) and the probability of blowing snow. \"snow to the surface\" means the snow level is below the ground at this point (the model's terrain is smoothed over 2.5 km), so precipitation falls as snow. This is raw model output, not a forecaster's forecast and not an avalanche bulletin; for mountain text forecasts use get_forecast. Times are UTC (ISO 8601).",
+    "description": "Model guidance for snow at a point over the next 12, 24 or 48 hours, in four steps: the snow level (the height in metres above sea level below which snow turns to rain, from the 2.5 km HRDPS model), new snow as water equivalent (mm, from the 10 km RDPS model; 1 mm is roughly 1 cm of fresh snow, more in cold dry snow) and the probability of blowing snow. \"snow to the surface\" means the snow level is below the ground at this point (the model's terrain is smoothed over 2.5 km), so precipitation falls as snow. This is raw model output, not a forecaster's forecast and not an avalanche bulletin; for mountain text forecasts use get_forecast.",
     "input_schema": {
       "type": "object",
       "properties": {
@@ -302,7 +302,7 @@
   {
     "name": "get_marine_forecast",
     "title": "Get the marine forecast",
-    "description": "Environment Canada's marine forecast for the marine area at a location: coastal waters, large lakes (Great Lakes, Lake Winnipeg, Great Slave Lake and others) and Arctic waters. Gives wind (in knots), weather and visibility, waves, air temperature and freezing spray for today to tomorrow, the extended wind forecast for the following days, and the marine warnings in effect. A point on land (a harbour town, a beach) gets the nearest areas within 25 km, with their distance. Some areas are seasonal and say so in status. Wind and waves are as ECCC writes them; quote warnings as given. Times are UTC (ISO 8601). For weather alerts on land use get_alerts.",
+    "description": "Environment Canada's marine forecast for the marine area at a location: coastal waters, large lakes (Great Lakes, Lake Winnipeg, Great Slave Lake and others) and Arctic waters. Gives wind (in knots), weather and visibility, waves, air temperature and freezing spray for today to tomorrow, the extended wind forecast for the following days, and the marine warnings in effect. A point on land (a harbour town, a beach) gets the nearest areas within 25 km, with their distance. Some areas are seasonal and say so in status. Wind and waves are as ECCC writes them; quote warnings as given. For weather alerts on land use get_alerts.",
     "input_schema": {
       "type": "object",
       "properties": {
@@ -379,7 +379,7 @@
   {
     "name": "get_radar_map",
     "title": "Get the weather radar map",
-    "description": "The latest weather radar around a location (updated every 6 minutes): a 512x512 PNG map of precipitation over a base map, the location ringed in red at its centre (or near it), plus the radar's rain rate (mm/h), snow rate (cm/h) at the point, the surface precipitation type detected at or next to it (left out when there is none), and the rate there 30 and 60 minutes ago. radius_km sets the area shown (25 to 200 km from the point). precipitation picks the map's colour scale, rain or snow; it defaults to snow from November to April. Colours run from light blue (lightest) through green, yellow, orange and red to purple (heaviest); light grey shading marks areas outside radar coverage. Radar can miss precipitation below the beam in mountains and far from radars, and can show echoes that do not reach the ground. Times are UTC (ISO 8601).",
+    "description": "The latest weather radar around a location (updated every 6 minutes): a 512x512 PNG map of precipitation over a base map, the location ringed in red at its centre (or near it), plus the radar's rain rate (mm/h), snow rate (cm/h) at the point, the surface precipitation type detected at or next to it (left out when there is none), and the rate there 30 and 60 minutes ago. radius_km sets the area shown (25 to 200 km from the point). precipitation picks the map's colour scale, rain or snow; it defaults to snow from November to April. Colours run from light blue (lightest) through green, yellow, orange and red to purple (heaviest); light grey shading marks areas outside radar coverage. Radar can miss precipitation below the beam in mountains and far from radars, and can show echoes that do not reach the ground.",
     "input_schema": {
       "type": "object",
       "properties": {
@@ -418,6 +418,11 @@
             "snow"
           ],
           "description": "The map's colour scale: rain or snow."
+        },
+        "include_image": {
+          "type": "boolean",
+          "default": true,
+          "description": "Return the map image too. false gives only the readings, with fewer upstream requests."
         },
         "lang": {
           "type": "string",

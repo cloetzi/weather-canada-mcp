@@ -20,11 +20,11 @@ class GetForecastTest < Minitest::Test
 
     refute error
     assert_equal "Squamish", result.dig("location", "query_match", "name")
-    assert_equal "bc-50", result.dig("forecast_site", "site_id")
+    assert_equal "bc-50", result.dig("forecast_site", "id")
     assert_in_delta 0.5, result.dig("forecast_site", "distance_km"), 0.2
     assert_equal "Today", result["forecast"].first["name"]
     assert_match(/Rain at times heavy/, result["forecast"].first["text"])
-    assert_equal({ "type" => "rain", "amount" => 15, "units" => "mm" }, result["forecast"].first["precipitation"])
+    assert_equal({ "type" => "rain", "amount_mm" => 15 }, result["forecast"].first["precipitation"])
     assert_match(/\AData Source: Environment and Climate Change Canada/, result["attribution"])
   end
 
@@ -32,7 +32,7 @@ class GetForecastTest < Minitest::Test
     result, = forecast(lat: 49.7, lon: -123.15, hours: 3)
     current = result["current_conditions"]
 
-    assert_equal({ "lat" => 49.7, "lon" => -123.15 }, result["location"])
+    assert_equal({ "lat" => 49.7, "lon" => -123.15, "timezone" => "America/Vancouver" }, result["location"])
     assert_equal "Squamish Airport", current["station"]
     assert_in_delta 11.3, current["temperature_c"]
     refute current.key?("wind_chill"), "a wind chill at +11 °C is stale data"
@@ -45,7 +45,7 @@ class GetForecastTest < Minitest::Test
   def test_french
     result, = forecast(lat: 53.54, lon: -113.49, lang: "fr", hours: 0)
 
-    assert_equal "ab-50", result.dig("forecast_site", "site_id")
+    assert_equal "ab-50", result.dig("forecast_site", "id")
     assert_equal "Aujourd'hui", result["forecast"].first["name"]
     assert_equal "AVIS JAUNE - BROUILLARD", result["warnings"].first["headline"]
     refute result.key?("hourly")

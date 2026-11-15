@@ -1,0 +1,90 @@
+{
+  "location": {
+    "lat": 51.42,
+    "lon": -116.18,
+    "timezone": "America/Edmonton"
+  },
+  "stations": [
+    {
+      "id": 111,
+      "name": "Bosworth Upper",
+      "source": "Parks Canada",
+      "elevation_m": 2745,
+      "distance_km": 13,
+      "lat": 51.46954,
+      "lon": -116.34969,
+      "latest": {
+        "observed_at": "2026-11-15T12:00:00-07:00",
+        "temperature_c": -4.5,
+        "humidity_pct": 96,
+        "wind_speed_kmh": 48,
+        "wind_direction": "S",
+        "wind_direction_deg": 159,
+        "wind_gust_kmh": 77.2,
+        "wind_gust_direction": "S"
+      },
+      "window": {
+        "from": "2026-11-14T13:00:00-07:00",
+        "readings": 24,
+        "min_temperature_c": -7.1,
+        "max_temperature_c": -2.2,
+        "max_gust_kmh": 82.9,
+        "max_gust_direction": "SE",
+        "max_gust_at": "2026-11-15T11:00:00-07:00"
+      }
+    },
+    {
+      "id": 110,
+      "name": "Bosworth Lower",
+      "source": "Parks Canada",
+      "elevation_m": 2210,
+      "distance_km": 13,
+      "lat": 51.45722,
+      "lon": -116.357834,
+      "latest": {
+        "observed_at": "2026-11-15T12:00:00-07:00",
+        "temperature_c": 0.7,
+        "humidity_pct": 63,
+        "snow_depth_cm": 14.6
+      },
+      "window": {
+        "from": "2026-11-14T13:00:00-07:00",
+        "readings": 24,
+        "snow_depth_change_cm": -0.1,
+        "new_snow_cm": 3,
+        "min_temperature_c": -2.1,
+        "max_temperature_c": 3.2
+      }
+    },
+    {
+      "id": 109,
+      "name": "Whymper",
+      "source": "Parks Canada",
+      "elevation_m": 2600,
+      "distance_km": 24,
+      "lat": 51.2126,
+      "lon": -116.11409,
+      "latest": {
+        "observed_at": "2026-11-15T12:00:00-07:00",
+        "temperature_c": -4.2,
+        "humidity_pct": 93,
+        "wind_speed_kmh": 31,
+        "wind_direction": "SW",
+        "wind_direction_deg": 242,
+        "wind_gust_kmh": 46.7,
+        "wind_gust_direction": "SW"
+      },
+      "window": {
+        "from": "2026-11-14T13:00:00-07:00",
+        "readings": 24,
+        "min_temperature_c": -5.9,
+        "max_temperature_c": -0.7,
+        "max_gust_kmh": 55.4,
+        "max_gust_direction": "W",
+        "max_gust_at": "2026-11-15T07:00:00-07:00"
+      }
+    }
+  ],
+  "safety_note": "Avalanche forecasts are regional and do not replace avalanche training, your own observations or terrain judgement. Check the official forecast before you go: https://avalanche.ca/map",
+  "attribution": "Mountain weather station data by Parks Canada, via Avalanche Canada (avalanche.ca). Unofficial tool, not affiliated with or endorsed by Avalanche Canada or Parks Canada."
+}

@@ -6,7 +6,15 @@ module WeatherCanadaMCP
     EARTH_RADIUS_KM = 6371.0088
     KM_PER_DEGREE_LAT = 111.32
 
+    COMPASS = %w[N NNE NE ENE E ESE SE SSE S SSW SW WSW W WNW NW NNW].freeze
+
     module_function
+
+    # The 16-point compass name for a bearing in degrees ("SW"); French writes west as O.
+    def compass(degrees, lang = "en")
+      name = COMPASS[((degrees % 360) / 22.5).round % 16]
+      lang == "fr" ? name.tr("W", "O") : name
+    end
 
     def distance_km(lat1, lon1, lat2, lon2)
       phi1 = radians(lat1)

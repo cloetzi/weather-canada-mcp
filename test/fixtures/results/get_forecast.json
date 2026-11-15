@@ -1,0 +1,188 @@
+{
+  "location": {
+    "lat": 49.7,
+    "lon": -123.15,
+    "timezone": "America/Vancouver"
+  },
+  "forecast_site": {
+    "id": "bc-50",
+    "name": "Squamish",
+    "region": "Howe Sound",
+    "distance_km": 0.0,
+    "lat": 49.7,
+    "lon": -123.15,
+    "url": "https://weather.gc.ca/en/location/index.html?coords=49.7,-123.15"
+  },
+  "issued_at": "2026-11-15T04:00:00-08:00",
+  "warnings": [
+    {
+      "headline": "YELLOW WARNING - RAINFALL",
+      "type": "warning",
+      "colour": "yellow",
+      "issued_at": "2026-11-15T03:53:05-08:00",
+      "expires_at": "2026-11-15T19:53:05-08:00",
+      "url": "https://weather.gc.ca/warnings/report_e.html?bc41#657086601636106236202611140502"
+    }
+  ],
+  "current_conditions": {
+    "observed_at": "2026-11-15T08:00:00-08:00",
+    "station": "Squamish Airport",
+    "temperature_c": 11.3,
+    "dewpoint_c": 8.9,
+    "humidity_pct": 85,
+    "wind_speed_kmh": 15,
+    "wind_gust_kmh": 34,
+    "wind_direction": "SE",
+    "pressure_kpa": 100.4,
+    "pressure_tendency": "rising"
+  },
+  "forecast": [
+    {
+      "name": "Today",
+      "text": "Rain at times heavy. Risk of thunderstorms this afternoon. Wind south 30 km/h gusting to 50 except southeast 60 gusting to 80 over southern sections early this morning. Temperature steady near 10.",
+      "temperatures": {
+        "high_c": 10
+      },
+      "precipitation": {
+        "type": "rain",
+        "amount_mm": 15
+      },
+      "wind": "Wind south 30 km/h gusting to 50 except southeast 60 gusting to 80 over southern sections early this morning.",
+      "humidity_pct": 95
+    },
+    {
+      "name": "Tonight",
+      "text": "A few showers ending near midnight then cloudy with 60 percent chance of showers. Wind south 20 km/h gusting to 40 becoming light late this evening except southeast 30 km/h over southern sections late this evening and overnight. Low 6.",
+      "temperatures": {
+        "low_c": 6
+      },
+      "wind": "Wind south 20 km/h gusting to 40 becoming light late this evening except southeast 30 km/h over southern sections late this evening and overnight.",
+      "humidity_pct": 85
+    },
+    {
+      "name": "Monday",
+      "text": "Cloudy with 60 percent chance of showers. Wind light except southeast 30 km/h over southern sections in the morning. Temperature steady near 8. UV index 1 or low.",
+      "temperatures": {
+        "high_c": 8
+      },
+      "wind": "Wind light except southeast 30 km/h over southern sections in the morning.",
+      "uv_index": 1,
+      "humidity_pct": 70
+    },
+    {
+      "name": "Monday night",
+      "text": "Cloudy periods with 60 percent chance of showers. Low plus 4.",
+      "temperatures": {
+        "low_c": 4
+      },
+      "humidity_pct": 70
+    },
+    {
+      "name": "Tuesday",
+      "text": "Cloudy. High 8.",
+      "temperatures": {
+        "high_c": 8
+      },
+      "humidity_pct": 70
+    },
+    {
+      "name": "Tuesday night",
+      "text": "Clear. Low plus 1.",
+      "temperatures": {
+        "low_c": 1
+      },
+      "humidity_pct": 65
+    },
+    {
+      "name": "Wednesday",
+      "text": "A mix of sun and cloud. High 8.",
+      "temperatures": {
+        "high_c": 8
+      },
+      "humidity_pct": 55
+    },
+    {
+      "name": "Wednesday night",
+      "text": "Cloudy periods. Low plus 1.",
+      "temperatures": {
+        "low_c": 1
+      },
+      "humidity_pct": 65
+    },
+    {
+      "name": "Thursday",
+      "text": "Sunny. High 7.",
+      "temperatures": {
+        "high_c": 7
+      },
+      "humidity_pct": 50
+    },
+    {
+      "name": "Thursday night",
+      "text": "Clear. Low minus 2.",
+      "temperatures": {
+        "low_c": -2
+      },
+      "humidity_pct": 60
+    },
+    {
+      "name": "Friday",
+      "text": "A mix of sun and cloud. High 6.",
+      "temperatures": {
+        "high_c": 6
+      },
+      "humidity_pct": 60
+    },
+    {
+      "name": "Friday night",
+      "text": "Cloudy periods. Low minus 2.",
+      "temperatures": {
+        "low_c": -2
+      },
+      "humidity_pct": 60
+    },
+    {
+      "name": "Saturday",
+      "text": "A mix of sun and cloud. High plus 5.",
+      "temperatures": {
+        "high_c": 5
+      },
+      "humidity_pct": 60
+    }
+  ],
+  "hourly": [
+    {
+      "time": "2026-11-15T09:00:00-08:00",
+      "condition": "Rain at times heavy",
+      "temperature_c": 10,
+      "precip_chance_pct": 100,
+      "wind_speed_kmh": 30,
+      "wind_gust_kmh": 50,
+      "wind_direction": "S"
+    },
+    {
+      "time": "2026-11-15T10:00:00-08:00",
+      "condition": "Rain at times heavy",
+      "temperature_c": 10,
+      "precip_chance_pct": 100,
+      "wind_speed_kmh": 30,
+      "wind_gust_kmh": 50,
+      "wind_direction": "S"
+    },
+    {
+      "time": "2026-11-15T11:00:00-08:00",
+      "condition": "A few showers. Risk of thunderstorms",
+      "temperature_c": 10,
+      "precip_chance_pct": 100,
+      "wind_speed_kmh": 30,
+      "wind_gust_kmh": 50,
+      "wind_direction": "S"
+    }
+  ],
+  "sun": {
+    "sunrise": "2026-11-15T07:24:00-08:00",
+    "sunset": "2026-11-15T16:30:00-08:00"
+  },
+  "normals": "Low zero. High plus 4.",
+  "attribution": "Data Source: Environment and Climate Change Canada. Unofficial tool, not affiliated with or endorsed by ECCC."
+}

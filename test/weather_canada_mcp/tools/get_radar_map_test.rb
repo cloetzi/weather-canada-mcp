@@ -15,7 +15,7 @@ class GetRadarMapTest < Minitest::Test
       routes.each { |path, handler| fake.route(path, &handler) }
       app = application(fake, clock: -> { RADAR_CAPTURED_AT })
       response = app.mcp_server.handle({ jsonrpc: "2.0", id: 1, method: "tools/call", params: { name: "get_radar_map", arguments: } })
-      result = [response.dig(:result, :content), fake.requests]
+      result = [response.dig(:result, :content), fake.tool_requests]
     ensure
       app&.close
     end
@@ -26,9 +26,9 @@ class GetRadarMapTest < Minitest::Test
     result, error = radar(**WHISTLER)
 
     refute error
-    assert_equal "2026-11-15T19:30:00Z", result["radar_time"]
+    assert_equal "2026-11-15T11:30:00-08:00", result["observed_at"]
     assert_equal({ "snow_cm_per_h" => 0, "rain_mm_per_h" => 0 }, result["at_point"])
-    assert_equal [{ "time" => "2026-11-15T19:00:00Z", "snow_cm_per_h" => 0 }, { "time" => "2026-11-15T18:30:00Z", "snow_cm_per_h" => 0 }],
+    assert_equal [{ "time" => "2026-11-15T11:00:00-08:00", "snow_cm_per_h" => 0 }, { "time" => "2026-11-15T10:30:00-08:00", "snow_cm_per_h" => 0 }],
                  result["past_hour"]
   end
 
@@ -124,5 +124,15 @@ class GetRadarMapTest < Minitest::Test
 
     assert error
     assert_match(/could not draw RADAR_1KM_RSNO/, result)
+  end
+
+  def test_readings_only_still_has_the_past_hour_and_no_image_requests
+    content, requests = radar_content(**WHISTLER, include_image: false)
+    result = JSON.parse(content.first[:text])
+
+    assert_equal 1, content.size
+    assert_equal(["2026-11-15T11:00:00-08:00", "2026-11-15T10:30:00-08:00"], result["past_hour"].map { |entry| entry["time"] })
+    assert_equal([0, 0], result["past_hour"].map { |entry| entry["snow_cm_per_h"] })
+    refute(requests.any? { |request| request.query["REQUEST"] == "GetMap" || request.path == "/wms/CBMT" })
   end
 end

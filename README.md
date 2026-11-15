@@ -25,9 +25,21 @@ configure for local use.
 | `get_climate_context` | The daily records for a calendar day and the monthly climate normals, to judge how unusual a forecast is | OGC API `ltce-temperature`, `ltce-precipitation`, `ltce-snowfall`, `climate-normals` |
 | `get_radar_map` | The latest radar as a map image over NRCan's base map, with rain and snow rates at the point now and over the past hour | GeoMet WMS: 1 km radar composite; NRCan Canada Base Map |
 
-Every tool takes a `location` (`"Squamish"`, `"Lake Louise, AB"`) or `lat`/`lon`, and `lang` (`en` or `fr`).
-Results are compact JSON with units in the field names, name the forecast site or station used and its distance, and carry
-the required attribution. `bin/weather-canada-mcp tools` prints the full schemas.
+Tools that work from a place take a `location` (`"Squamish"`, `"Lake Louise, AB"`) or `lat`/`lon`, and those with text
+in two languages take `lang` (`en` or `fr`); `get_avalanche_danger_overview` covers every forecast region, so it takes
+neither. Results are compact JSON with units in the field names, name the forecast site or station used and its
+distance, and carry the required attribution. Every time is local to the place asked about, in ISO 8601 with its UTC
+offset, and `location.timezone` names the zone. When a place name matches several places (a "Springfield" in two
+provinces), `location.other_matches` lists the others, so the assistant can ask which was meant.
+`bin/weather-canada-mcp tools` prints the full schemas.
+
+### Stability
+
+The server is pre-1.0 and the tool contract was settled for 1.0: tool names, argument names and result field names
+follow one vocabulary (see [CONTRIBUTING.md](CONTRIBUTING.md#result-vocabulary)), so the same thing has the same name
+in every tool. From 1.0, removing or renaming a tool, argument or result field is a breaking change and bumps the major
+version; adding fields or tools is not. Results are meant to be read by a language model, not parsed: text fields
+(forecast prose, alert text, avalanche summaries) are ECCC's or Avalanche Canada's own words and can change at any time.
 
 ### Avalanche Canada (opt-in)
 
@@ -38,7 +50,7 @@ Off unless `WEATHER_MCP_AVALANCHE=true` (and `WEATHER_MCP_AVALANCHE_REPORTS=true
 | --- | --- | --- |
 | `get_avalanche_forecast` | The avalanche forecast covering a point for up to 3 days: danger ratings in the alpine, at treeline and below treeline, avalanche problems (type, elevations, aspects, likelihood, expected size), highlights, confidence, summaries, travel advice, the owning agency and the official link | Avalanche Canada forecast products |
 | `get_avalanche_danger_overview` | Every current avalanche forecast with its owner, centre point, link, highest danger and current ratings | Avalanche Canada forecast metadata |
-| `get_mountain_weather_stations` | The nearest mountain weather stations with elevation, distance, the latest reading and a summary of up to 7 days (snow height change, new snow, temperature range, strongest gust) | Avalanche Canada weather stations |
+| `get_mountain_weather_stations` | The nearest mountain weather stations with elevation, distance, the latest reading and a summary of up to 7 days (snow depth change, new snow, temperature range, strongest gust) | Avalanche Canada weather stations |
 | `get_field_reports` | Recent Mountain Information Network field reports near a point: avalanches seen, signs of instability and comments, without who submitted them | Avalanche Canada MIN |
 
 ## Running it
@@ -102,7 +114,7 @@ them only where you have that consent or your use is otherwise permitted.
 
 ## Roadmap
 
-1. **Before 1.0:** settle the tool contract (names, units, times), then publish the gem to GitHub Packages and the
+1. **Before 1.0:** publish the gem to GitHub Packages and the
    `linux/amd64` + `linux/arm64` image to GHCR from the release workflow.
 2. **Later:** also publish the gem to RubyGems.org.
 

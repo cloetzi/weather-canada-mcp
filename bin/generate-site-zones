@@ -1,0 +1,34 @@
+#!/usr/bin/env python3
+"""Writes lib/weather_canada_mcp/sources/eccc/site_zones.json: the IANA time zone of every City Page forecast site.
+
+The server reads that file to put local times in results (Sources::ECCC::ForecastSites#zone_at). It is generated
+offline, once, from the site list captured by bin/capture-fixtures, and nothing here runs at runtime.
+
+    pip install timezonefinder
+    bin/generate-site-zones [citypage_sites.json]
+
+Review the diff: a site whose zone changes means the site list or tz boundaries changed.
+"""
+import json
+import os
+import sys
+
+from timezonefinder import TimezoneFinder
+
+root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+source = sys.argv[1] if len(sys.argv) > 1 else os.path.join(root, "test/fixtures/api/citypage_sites.json")
+target = os.path.join(root, "lib/weather_canada_mcp/sources/eccc/site_zones.json")
+
+finder = TimezoneFinder()
+zones = {}
+for feature in json.load(open(source))["features"]:
+    lon, lat = feature["geometry"]["coordinates"][:2]
+    zone = finder.timezone_at(lng=lon, lat=lat)
+    if zone is None:
+        sys.exit(f"no time zone for {feature['properties']['identifier']} at {lat}, {lon}")
+    zones[feature["properties"]["identifier"]] = zone
+
+with open(target, "w") as out:
+    json.dump(dict(sorted(zones.items())), out, indent=1, ensure_ascii=False)
+    out.write("\n")
+print(f"{len(zones)} sites, {len(set(zones.values()))} zones -> {target}")

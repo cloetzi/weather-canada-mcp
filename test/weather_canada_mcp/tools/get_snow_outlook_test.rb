@@ -17,11 +17,11 @@ class GetSnowOutlookTest < Minitest::Test
 
     refute error
     assert_equal 6, result["step_hours"]
-    starts = result["steps"].map { |step| step["from"] }
+    starts = result["steps"].map { |step| step["valid_from"] }
 
-    assert_equal %w[2026-11-15T18:00:00Z 2026-11-16T00:00:00Z 2026-11-16T06:00:00Z 2026-11-16T12:00:00Z], starts
-    assert_equal "2026-11-16T18:00:00Z", result["steps"].last["to"]
-    assert_equal ["2026-11-15T12:00:00Z"], result["model_runs"]
+    assert_equal %w[2026-11-15T10:00:00-08:00 2026-11-15T16:00:00-08:00 2026-11-15T22:00:00-08:00 2026-11-16T04:00:00-08:00], starts
+    assert_equal "2026-11-16T10:00:00-08:00", result["steps"].last["valid_until"]
+    assert_equal ["2026-11-15T04:00:00-08:00"], result["model_runs"]
   end
 
   def test_snow_level_new_snow_and_blowing_snow_at_the_end_of_each_step
@@ -96,7 +96,7 @@ class GetSnowOutlookTest < Minitest::Test
     result, error, requests = outlook(**WHITEHORSE, routes: { "/geomet" => geomet })
 
     refute error
-    first = result["steps"].find { |step| step["to"] == "2026-11-16T00:00:00Z" }
+    first = result["steps"].find { |step| step["valid_until"] == "2026-11-15T17:00:00-07:00" }
 
     refute first.key?("snow_level")
     refute first.key?("snow_level_m")

@@ -37,6 +37,37 @@ upstream changes shape, recapture (`bin/capture-fixtures api/` for one group), r
 After changing a tool's name, description or schema, regenerate the manifest snapshot with
 `UPDATE_SNAPSHOTS=1 bundle exec rake test` and review it like code.
 
+## Result vocabulary
+
+The same thing has the same key in every tool. Times are local ISO 8601 with an offset: a tool returns `Time` objects and
+`Tools::Base` converts them for the point's zone, so a tool never formats one. A key outside this list needs a reason;
+`test/weather_canada_mcp/tools/result_snapshots_test.rb` fails on keys missing from `test/fixtures/results/vocabulary.txt`.
+
+Arguments: `location`, `lat`, `lon`, `lang` wherever they apply; `limit` for "how many"; `hours`, `days`, `radius_km`,
+`date`, `river`, `province`, `precipitation`.
+
+| Concept | Key | Notes |
+| --- | --- | --- |
+| Air temperature | `temperature_c` | `min_temperature_c`, `max_temperature_c` for extremes |
+| Dew point | `dewpoint_c` | |
+| Relative humidity | `humidity_pct` | |
+| Wind speed, gust | `wind_speed_kmh`, `wind_gust_kmh` | marine stays in knots, as ECCC writes it |
+| Wind direction | `wind_direction` (compass text), `wind_direction_deg` (number) | never a number under `wind_direction` |
+| Pressure | `pressure_kpa`, `pressure_sea_level_kpa`, `pressure_station_kpa` | hPa divided by 10 |
+| Wind chill, humidex | `wind_chill`, `humidex` | unitless indices |
+| Visibility | `visibility_km` | |
+| Precipitation amounts | `..._mm` for rain and water equivalent, `..._cm` for snow | forecast `precipitation` is `{type:, amount_mm:}` or `{type:, amount_cm:}` |
+| Snow on the ground | `snow_depth_cm` | |
+| When measured | `observed_at` | `time` only for entries of a time series |
+| When issued | `issued_at` | |
+| Validity | `valid_from`, `valid_until`, `expires_at` | |
+| Site used | block with `id`, `name`, `distance_km`, and `elevation_m`, `lat`, `lon` where known | |
+| Caveat | `note` | one string |
+| Links, credit | `source_url`, `url`, `attribution` | |
+
+Result snapshots (`test/fixtures/results/`) are regenerated with `UPDATE_SNAPSHOTS=1 bundle exec rake test`; review them
+like code.
+
 ## Commits and pull requests
 
 - PRs are squash-merged, and the **PR title must follow [Conventional Commits](https://www.conventionalcommits.org)**

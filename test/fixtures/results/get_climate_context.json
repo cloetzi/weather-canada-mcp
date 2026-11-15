@@ -1,0 +1,84 @@
+{
+  "location": {
+    "lat": 50.12,
+    "lon": -122.96,
+    "timezone": "America/Vancouver"
+  },
+  "month": 11,
+  "day": 15,
+  "daily_records": {
+    "station": {
+      "name": "WHISTLER AREA",
+      "id": "VSBC86V",
+      "distance_km": 0.7
+    },
+    "temperature": {
+      "highest_max_c": {
+        "value": 14.6,
+        "year": 2019
+      },
+      "lowest_max_c": {
+        "value": -9.4,
+        "year": 1955
+      },
+      "max_records": {
+        "from": 1950
+      },
+      "highest_min_c": {
+        "value": 5.8,
+        "year": 2001
+      },
+      "lowest_min_c": {
+        "value": -17.8,
+        "year": 1955
+      },
+      "min_records": {
+        "from": 1950
+      }
+    },
+    "precipitation": {
+      "most_mm": {
+        "value": 45.8,
+        "year": 2021
+      },
+      "records": {
+        "from": 1931
+      }
+    },
+    "snowfall": {
+      "most_cm": {
+        "value": 19.3,
+        "year": 1950
+      },
+      "records": {
+        "from": 1931,
+        "to": 2024
+      }
+    }
+  },
+  "monthly_normals": {
+    "station": {
+      "name": "WHISTLER",
+      "id": "1048898",
+      "distance_km": 1.1
+    },
+    "period": "1981-2010",
+    "mean_temperature_c": 0.86,
+    "mean_daily_max_c": 3.45,
+    "mean_daily_min_c": -1.76,
+    "total_precipitation_mm": 192.14,
+    "rainfall_mm": 131.08,
+    "snowfall_cm": 65.67,
+    "days_with_precipitation": 19.62,
+    "days_with_rain": 14.5,
+    "days_with_snowfall": 9.65,
+    "days_with_snowfall_5cm": 4.04,
+    "mean_snow_depth_cm": 6.86,
+    "month_end_snow_depth_cm": 17.25,
+    "days_with_freezing_rain": 0.43,
+    "days_with_thunderstorms": 0.14,
+    "sunshine_hours": 41.81
+  },
+  "source_url": "https://climate.weather.gc.ca/",
+  "attribution": "Data Source: Environment and Climate Change Canada. Unofficial tool, not affiliated with or endorsed by ECCC."
+}
