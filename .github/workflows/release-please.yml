@@ -28,7 +28,6 @@ jobs:
           manifest-file: .release-please-manifest.json
 
   # Runs here rather than on the tag: tags created with GITHUB_TOKEN do not trigger other workflows.
-  # Runs here rather than on the tag: tags created with GITHUB_TOKEN do not trigger other workflows.
   image:
     name: Publish release image
     needs: release-please

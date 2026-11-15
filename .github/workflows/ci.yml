@@ -67,7 +67,7 @@ jobs:
   edge:
     name: Publish edge image
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-    needs: [test, docker]
+    needs: [test, gem, docker]
     permissions:
       contents: read
       packages: write

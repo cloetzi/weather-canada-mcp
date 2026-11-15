@@ -48,11 +48,11 @@ Off unless `AVALANCHE_CANADA_ENABLED=true` (and `AVALANCHE_CANADA_FIELD_REPORTS_
 With Ruby 4.0:
 
 ```sh
-gem install weather-canada-mcp --source https://rubygems.pkg.github.com/cloetzi
+gem install weather-canada-mcp --source https://rubygems.org --source https://rubygems.pkg.github.com/cloetzi
 claude mcp add weather-canada -- weather-canada-mcp stdio
 ```
 
-The gem is published to GitHub Packages, which asks for a token with the `read:packages` scope even for public
+The gem is published to GitHub Packages (rubygems.org is listed too, for its dependencies), which asks for a token with the `read:packages` scope even for public
 gems: add it to `~/.gem/credentials` or `~/.bundle/config` as GitHub describes. Until the first release, run
 `bin/weather-canada-mcp` from a checkout. (RubyGems.org may follow later.)
 

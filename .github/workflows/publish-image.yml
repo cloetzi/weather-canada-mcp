@@ -107,8 +107,16 @@ jobs:
       - name: Create manifest list and push
         working-directory: ${{ runner.temp }}/digests
         run: |
-          docker buildx imagetools create \
-            $(jq -cr '.tags | map("-t " + .) | join(" ")' <<< "$DOCKER_METADATA_OUTPUT_JSON") \
-            $(printf "$IMAGE@sha256:%s " *)
+          set -euo pipefail
+          digests=(*)
+          if [ "${#digests[@]}" -ne 2 ]; then
+            echo "Expected one digest per architecture (2), found ${#digests[@]}" >&2
+            exit 1
+          fi
+          tag_args=()
+          while read -r tag; do tag_args+=(-t "$tag"); done < <(jq -r '.tags[]' <<< "$DOCKER_METADATA_OUTPUT_JSON")
+          sources=()
+          for digest in "${digests[@]}"; do sources+=("$IMAGE@sha256:$digest"); done
+          docker buildx imagetools create "${tag_args[@]}" "${sources[@]}"
       - name: Inspect
         run: docker buildx imagetools inspect "$IMAGE:${{ steps.meta.outputs.version }}"
