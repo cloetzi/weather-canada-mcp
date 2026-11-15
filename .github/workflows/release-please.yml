@@ -20,12 +20,37 @@ jobs:
       release_created: ${{ steps.release.outputs.release_created }}
       tag_name: ${{ steps.release.outputs.tag_name }}
       version: ${{ steps.release.outputs.version }}
+      prs_created: ${{ steps.release.outputs.prs_created }}
+      pr: ${{ steps.release.outputs.pr }}
     steps:
       - id: release
         uses: googleapis/release-please-action@45996ed1f6d02564a971a2fa1b5860e934307cf7 # v5.0.0
         with:
           config-file: release-please-config.json
           manifest-file: .release-please-manifest.json
+
+  # release-please bumps version.rb and the lockfile's PATH entry but not its CHECKSUMS entry, which makes a frozen
+  # bundle install (the Docker build, CI) fail on the release PR's merge commit. Fix the lockfile on the PR branch.
+  sync-lockfile:
+    name: Sync Gemfile.lock in the release PR
+    needs: release-please
+    if: needs.release-please.outputs.prs_created == 'true'
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ fromJSON(needs.release-please.outputs.pr).headBranchName }}
+      - name: Set the lockfile's own version to version.rb's
+        run: |
+          version=$(sed -nE 's/^ *VERSION = "([^"]+)".*/\1/p' lib/weather_canada_mcp/version.rb)
+          sed -i -E "s/^  (weather-canada-mcp) \([^)]*\)$/  \1 (${version})/" Gemfile.lock
+          if git diff --quiet; then exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -am "chore: sync Gemfile.lock with the release version"
+          git push
 
   # Runs here rather than on the tag: tags created with GITHUB_TOKEN do not trigger other workflows.
   image:
@@ -46,7 +71,7 @@ jobs:
         type=semver,pattern={{major}}.{{minor}},value=${{ needs.release-please.outputs.version }}
         type=raw,value=latest
 
-  # Gems go to GitHub Packages only for now (RubyGems.org later).
+  # Gems go to GitHub Packages only.
   gem:
     name: Publish gem
     needs: release-please
