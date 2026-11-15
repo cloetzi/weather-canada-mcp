@@ -14,6 +14,8 @@ module WeatherCanadaMCP
       people to weather.gc.ca.
     TEXT
     IMAGE_CACHE_ENTRIES = 64
+    CACHE_BYTES = 64 * 1024 * 1024
+    IMAGE_CACHE_BYTES = 32 * 1024 * 1024
     COMPOSE_SLOTS = 2
     AVALANCHE_INSTRUCTIONS = <<~TEXT.tr("\n", " ").strip
       The avalanche tools use Avalanche Canada data: report danger ratings exactly as given, quote forecast text rather
@@ -37,14 +39,14 @@ module WeatherCanadaMCP
       @http ||= Sources::HttpClient.new(
         origins: config.upstreams, user_agent: config.user_agent, timeout: config.timeout,
         max_concurrency: config.max_concurrency, max_body_bytes: config.max_download_bytes,
-        rate_limiter: Sources::RateLimiter.new(rate: config.requests_per_second, burst: 4), logger:
+        rate_limiters: Sources::RateLimiters.new(rate: config.requests_per_second), logger:
       )
     end
 
-    def cache = @cache ||= Sources::Cache.new(scale: config.cache_scale)
+    def cache = @cache ||= Sources::Cache.new(max_bytes: CACHE_BYTES, scale: config.cache_scale)
 
     # Map images (100 KB or more each) are kept apart, so they never crowd out the small entries.
-    def image_cache = @image_cache ||= Sources::Cache.new(max_entries: IMAGE_CACHE_ENTRIES, scale: config.cache_scale)
+    def image_cache = @image_cache ||= Sources::Cache.new(max_entries: IMAGE_CACHE_ENTRIES, max_bytes: IMAGE_CACHE_BYTES, scale: config.cache_scale)
 
     def ogc = @ogc ||= Sources::ECCC::OgcApi.new(http:, cache:)
 

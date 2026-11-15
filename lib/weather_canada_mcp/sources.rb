@@ -46,6 +46,14 @@ module WeatherCanadaMCP
       end
     end
 
+    # A request waited, or would have to wait, too long for its provider's rate limit.
+    class Busy < Error
+      def initialize(wait)
+        super("This server is queuing more requests to the data provider than it may send (a wait of about #{wait.ceil} " \
+              "seconds). Try again in a minute.")
+      end
+    end
+
     # The body is not the JSON or XML the source expected.
     class InvalidResponse < Error; end
 

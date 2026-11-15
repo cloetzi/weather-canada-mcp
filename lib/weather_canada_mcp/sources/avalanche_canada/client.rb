@@ -21,7 +21,7 @@ module WeatherCanadaMCP
             response = @http.get(origin, path)
             raise StatusError.new(response.status, NAMES.fetch(origin)) unless response.success?
 
-            parse(response.body, NAMES.fetch(origin), shape)
+            Cache::Weighed.new(parse(response.body, NAMES.fetch(origin), shape), response.body.bytesize)
           end
         end
 

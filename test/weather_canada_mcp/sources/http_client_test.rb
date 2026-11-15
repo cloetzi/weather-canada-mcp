@@ -4,10 +4,12 @@ require_relative "../../test_helper"
 require "zlib"
 
 class HttpClientTest < Minitest::Test
+  def limiters = WeatherCanadaMCP::Sources::RateLimiters.new(rate: 100, burst: 10, providers: { api: :a, prefixed: :a })
+
   def client(fake, **)
     @client = WeatherCanadaMCP::Sources::HttpClient.new(
       origins: { api: fake.url, prefixed: "#{fake.url}/base" }, user_agent: "weather-canada-mcp/test (+contact)", timeout: 5,
-      max_concurrency: 2, max_body_bytes: 1000, rate_limiter: WeatherCanadaMCP::Sources::RateLimiter.new(rate: 100, burst: 10),
+      max_concurrency: 2, max_body_bytes: 1000, rate_limiters: limiters,
       base_delay: 0.001, logger: null_logger, **
     )
   end
@@ -86,7 +88,7 @@ class HttpClientTest < Minitest::Test
       port = TCPServer.open("127.0.0.1", 0) { |server| server.addr[1] }
       client = WeatherCanadaMCP::Sources::HttpClient.new(
         origins: { api: "http://127.0.0.1:#{port}" }, user_agent: "t", timeout: 2, max_concurrency: 1, max_body_bytes: 100,
-        rate_limiter: WeatherCanadaMCP::Sources::RateLimiter.new(rate: 100, burst: 10), logger: null_logger, base_delay: 0.001
+        rate_limiters: limiters, logger: null_logger, base_delay: 0.001
       )
       error = assert_raises(WeatherCanadaMCP::Sources::TransportError) { client.get(:api, "/x") }
 

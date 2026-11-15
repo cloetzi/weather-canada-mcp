@@ -10,11 +10,22 @@ module WeatherCanadaMCP
     # never protocol errors.
     class Runner
       ANNOTATIONS = { read_only_hint: true, destructive_hint: false, idempotent_hint: true, open_world_hint: true }.freeze
+      # A call that takes longer is stopped, and calls beyond MAX_CALLS at once are refused, so a slow upstream cannot pile
+      # up work. Both are seconds and counts per server process.
+      DEADLINE = 45
+      MAX_CALLS = 8
 
-      def initialize(context:, logger:, max_response_bytes:)
+      # Raised into a call that ran out of time. HttpClient lets every WeatherCanadaMCP::Error through, so it is not taken
+      # for a failed request.
+      class DeadlineExceeded < WeatherCanadaMCP::Error; end
+
+      def initialize(context:, logger:, max_response_bytes:, deadline: DEADLINE, max_calls: MAX_CALLS)
         @context = context
         @logger = logger
         @max_response_bytes = max_response_bytes
+        @deadline = deadline
+        @max_calls = max_calls
+        @active = 0
       end
 
       def mcp_tool(tool_class)
@@ -28,23 +39,55 @@ module WeatherCanadaMCP
       # A new tool instance serves each call, so a tool may keep state in instance variables.
       def call(tool_class, arguments)
         started = Process.clock_gettime(Process::CLOCK_MONOTONIC)
-        result = tool_class.new(@context).run(arguments.transform_keys(&:to_s))
-        log(tool_class, started)
-        json = render(result)
-        json.bytesize <= @max_response_bytes ? content(json, result.image) : error(too_large(json.bytesize, tool_class))
-      rescue Tools::Error => e
-        log(tool_class, started, error: e.class.name.split("::").last)
-        error(e.message)
-      rescue Sources::Error => e
-        log(tool_class, started, error: e.class.name.split("::").last)
-        error("#{e.message} #{tool_class.attribution}")
+        return busy(tool_class, started) if @active >= @max_calls
+
+        run(tool_class, arguments, started)
       rescue MCP::CancelledError
         raise
+      rescue DeadlineExceeded, Tools::Error, Sources::Error => e
+        failed(tool_class, started, e)
       rescue StandardError => e
         unexpected(tool_class, started, e)
       end
 
       private
+
+      def run(tool_class, arguments, started)
+        result = counted { within_deadline { tool_class.new(@context).run(arguments.transform_keys(&:to_s)) } }
+        log(tool_class, started)
+        json = render(result)
+        json.bytesize <= @max_response_bytes ? content(json, result.image) : error(too_large(json.bytesize, tool_class))
+      end
+
+      # A tool error carries its own message; an upstream failure and a deadline also credit the source.
+      def failed(tool_class, started, exception)
+        log(tool_class, started, error: exception.class.name.split("::").last)
+        case exception
+        when Tools::Error then error(exception.message)
+        when DeadlineExceeded
+          error("This took longer than #{@deadline} seconds and was stopped. The data services may be slow; try again, or ask " \
+                "for less. #{tool_class.attribution}")
+        else error("#{exception.message} #{tool_class.attribution}")
+        end
+      end
+
+      def counted
+        @active += 1
+        yield
+      ensure
+        @active -= 1
+      end
+
+      # Without a reactor (a plain call from a script) there is nothing to interrupt the call with, so it just runs.
+      def within_deadline(&)
+        task = Async::Task.current?
+        task ? task.with_timeout(@deadline, DeadlineExceeded, &) : yield
+      end
+
+      def busy(tool_class, started)
+        log(tool_class, started, error: "TooManyCalls")
+        error("This server is already running #{@max_calls} tool calls; try again in a few seconds.")
+      end
 
       # The credits are joined as the tool and the point resolution declared them (Tools::Result#attributions).
       def render(result) = JSON.generate(compact(result.data.merge(attribution: result.attributions.join(" "))))

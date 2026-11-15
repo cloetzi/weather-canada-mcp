@@ -9,6 +9,9 @@ module WeatherCanadaMCP
     # all waking together. Fibers only switch while sleeping, so the reservation needs no lock under one reactor;
     # the mutex covers callers on other threads (tests, the CLI).
     class RateLimiter
+      # The longest a request may wait for its slot; beyond it the caller gets Sources::Busy at once.
+      MAX_WAIT = 20
+
       def initialize(rate:, burst: 1, clock: -> { Process.clock_gettime(Process::CLOCK_MONOTONIC) }, sleeper: method(:sleep))
         raise ArgumentError, "rate must be positive" unless rate.positive?
 
@@ -20,22 +23,33 @@ module WeatherCanadaMCP
         @mutex = Thread::Mutex.new
       end
 
-      # Returns the seconds waited.
-      def acquire
-        delay = @mutex.synchronize { reserve }
-        @sleeper.call(delay) if delay.positive?
+      # Returns the seconds waited. Raises Busy, without taking a slot, when the wait would exceed max_wait. A caller
+      # stopped while it waits (its fiber is cancelled) gives its slot back.
+      def acquire(max_wait: MAX_WAIT)
+        delay = @mutex.synchronize { reserve(max_wait) }
+        waited = false
+        begin
+          @sleeper.call(delay) if delay.positive?
+          waited = true
+        ensure
+          release unless waited
+        end
         delay
       end
 
       private
 
-      def reserve
+      def reserve(max_wait)
         now = @clock.call
         arrival = [@theoretical_arrival || now, now].max
-        delay = arrival - @tolerance - now
+        delay = [arrival - @tolerance - now, 0.0].max
+        raise Busy, delay if delay > max_wait
+
         @theoretical_arrival = arrival + @interval
-        delay.positive? ? delay : 0.0
+        delay
       end
+
+      def release = @mutex.synchronize { @theoretical_arrival -= @interval }
     end
   end
 end

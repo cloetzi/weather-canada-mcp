@@ -43,7 +43,10 @@ module WeatherCanadaMCP
           raise ArgumentError, "invalid layer" unless layer.is_a?(String) && layer.match?(LAYER)
 
           path = "#{PATH}?#{URI.encode_www_form(query(layer, lat, lon, time))}"
-          @cache.fetch("geomet:#{path}", ttl:) { parse(fetch(path), layer) }
+          @cache.fetch("geomet:#{path}", ttl:) do
+            body = fetch(path)
+            Cache::Weighed.new(parse(body, layer), body.bytesize)
+          end
         end
 
         # PNG bytes of one layer (in one style) over bbox, [min_lon, min_lat, max_lon, max_lat] as Geo.bbox gives it.

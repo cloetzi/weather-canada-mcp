@@ -18,8 +18,19 @@ class RunnerTest < Minitest::Test
     end
   end
 
-  def runner(io: StringIO.new, max_response_bytes: 1000)
-    WeatherCanadaMCP::Tools::Runner.new(context: nil, logger: WeatherCanadaMCP::Logger.new(io:), max_response_bytes:)
+  class Slow < WeatherCanadaMCP::Tools::Base
+    tool_name "slow"
+    title "Slow"
+    description "Takes a while."
+
+    def call(_args)
+      sleep 0.2
+      { done: true }
+    end
+  end
+
+  def runner(io: StringIO.new, max_response_bytes: 1000, **)
+    WeatherCanadaMCP::Tools::Runner.new(context: nil, logger: WeatherCanadaMCP::Logger.new(io:), max_response_bytes:, **)
   end
 
   def text(response) = response.content.first[:text]
@@ -46,5 +57,30 @@ class RunnerTest < Minitest::Test
     assert_match(/bug in the MCP server/, text(response))
     refute_includes io.string, "home-address"
     refute_includes text(response), "home-address"
+  end
+
+  def test_a_call_that_runs_out_of_time_is_stopped_with_an_error_that_says_so
+    response = Sync { runner(deadline: 0.05).call(Slow, {}) }
+
+    assert_predicate response, :error?
+    assert_match(/took longer than 0.05 seconds/, text(response))
+  end
+
+  def test_a_call_within_its_deadline_is_untouched
+    response = Sync { runner(deadline: 5).call(Slow, {}) }
+
+    refute_predicate response, :error?
+  end
+
+  def test_calls_beyond_the_cap_are_refused_until_one_finishes
+    runner = runner(max_calls: 2, deadline: 5)
+    responses = Sync do |task|
+      calls = Array.new(3) { task.async { runner.call(Slow, {}) } }
+      calls.map(&:wait)
+    end
+
+    assert_equal [false, false, true], responses.map(&:error?)
+    assert_match(/already running 2 tool calls/, text(responses.last))
+    refute_predicate Sync { runner.call(Slow, {}) }, :error?, "the slots were released"
   end
 end

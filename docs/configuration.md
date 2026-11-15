@@ -31,12 +31,18 @@ what a configuration enables.
 | Variable | Default | Purpose |
 | --- | --- | --- |
 | `WEATHER_MCP_USER_AGENT_CONTACT` | repository URL | URL or email appended to the User-Agent, so ECCC can reach whoever runs the server. |
-| `WEATHER_MCP_REQUESTS_PER_SECOND` | `1.0` | Sustained rate for all upstream requests together (short bursts of 4 are allowed). |
+| `WEATHER_MCP_REQUESTS_PER_SECOND` | `1.0` | Sustained rate of upstream requests, applied to each provider separately (ECCC, NRCan, and Avalanche Canada when enabled), with bursts of up to 12. A request that would wait more than 20 seconds for its turn fails at once with a "try again" error. |
 | `WEATHER_MCP_MAX_CONCURRENCY` | `4` | Requests to ECCC and NRCan in flight at once. |
 | `WEATHER_MCP_TIMEOUT` | `20` | Seconds per upstream request attempt. |
-| `WEATHER_MCP_MAX_DOWNLOAD_BYTES` | `20971520` | Largest upstream response read, after decompression. |
+| `WEATHER_MCP_MAX_DOWNLOAD_BYTES` | `5242880` | Largest upstream JSON response read, after decompression. Map images and the place-name archive have their own, fixed limits. |
 | `WEATHER_MCP_CACHE_SCALE` | `1.0` | Multiplier on every cache TTL (`0` disables caching). Defaults: forecasts 10 min, alerts 5 min, the forecast site list 24 h. |
 | `WEATHER_MCP_ECCC_API_URL`, `WEATHER_MCP_GEOMET_URL`, `WEATHER_MCP_CGN_URL`, `WEATHER_MCP_BASEMAP_URL` | official services (`BASEMAP` is NRCan's maps.geogratis.gc.ca, for the radar base map) | Point a service at a mirror, caching proxy or local fake. Logged as a warning when not the default. |
+
+### Limits that are not settings
+
+A tool call is stopped after 45 seconds, and a call that arrives while 8 are already running is refused, so a slow
+upstream cannot pile up work. The caches keep at most 64 MB of data and 32 MB of map images, dropping the least recently
+used entries first.
 
 ## Avalanche Canada (opt-in)
 

@@ -62,7 +62,7 @@ module WeatherCanadaMCP
       @max_concurrency = integer("WEATHER_MCP_MAX_CONCURRENCY", 4, 1..16)
       @requests_per_second = float("WEATHER_MCP_REQUESTS_PER_SECOND", 1.0, 0.1..10.0)
       @max_response_bytes = integer("WEATHER_MCP_MAX_RESPONSE_BYTES", 60_000, 1_000..10_000_000)
-      @max_download_bytes = integer("WEATHER_MCP_MAX_DOWNLOAD_BYTES", 20 * 1024 * 1024, 1024..(512 * 1024 * 1024))
+      @max_download_bytes = integer("WEATHER_MCP_MAX_DOWNLOAD_BYTES", 5 * 1024 * 1024, 1024..(512 * 1024 * 1024))
       @gazetteer_path = string("WEATHER_MCP_GAZETTEER_PATH", Places::Gazetteer.default_path)
       @log_level = choice("WEATHER_MCP_LOG_LEVEL", "info", LOG_LEVELS)
       @log_format = choice("WEATHER_MCP_LOG_FORMAT", "text", LOG_FORMATS)

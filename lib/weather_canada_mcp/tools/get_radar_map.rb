@@ -147,10 +147,11 @@ module WeatherCanadaMCP
       def composed(key, &block)
         images.fetch("radar-map:#{key.flatten.join(",")}", ttl: FRAME_TTL) do
           @context.compose_slots.acquire do
-            Thread.new do
+            image = Thread.new do
               Thread.current.report_on_exception = false
               block.call
             end.value
+            Sources::Cache::Weighed.new(image, image.png.bytesize)
           end
         end
       end
