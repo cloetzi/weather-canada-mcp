@@ -1,0 +1,25 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+# Container health probe: stdlib plus the server's own listener settings, so it starts fast, needs no curl in the
+# image and probes wherever the server actually listens.
+require "bundler/setup"
+require "net/http"
+require_relative "../lib/weather_canada_mcp"
+
+begin
+  # In stdio mode there is no HTTP listener; the process being alive is the health signal.
+  exit 0 if File.read("/proc/1/cmdline").split("\0").include?("stdio")
+rescue SystemCallError
+  nil
+end
+
+begin
+  uri = URI(WeatherCanadaMcp::HealthCheck.url)
+  response = Net::HTTP.start(uri.hostname, uri.port, open_timeout: 2, read_timeout: 2) { |http| http.get(uri.path) }
+  exit(response.is_a?(Net::HTTPOK) ? 0 : 1)
+rescue StandardError => e
+  # Shown by `docker inspect`. Connection and configuration errors name addresses and settings, never secrets.
+  warn "healthcheck failed: #{e.message}"
+  exit 1
+end
