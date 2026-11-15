@@ -75,6 +75,13 @@ class GetSnowOutlookTest < Minitest::Test
     assert(result["steps"].none? { |step| step.key?("new_snow_water_mm") })
   end
 
+  def test_hours_given_as_a_whole_float_counts_as_the_integer
+    result, error = outlook(**WHISTLER, hours: 48.0)
+
+    refute error
+    assert_equal 12, result["step_hours"]
+  end
+
   def test_an_unknown_snow_level_code_gives_no_level
     data = FakeEccc.fixture_json("geomet/whitehorse/HRDPS-WEonG_2.5km_SnowLevelHeight_20261116T0000Z.json")
     data["features"].first["properties"]["value"] = -3
