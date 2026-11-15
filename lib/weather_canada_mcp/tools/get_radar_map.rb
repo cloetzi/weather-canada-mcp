@@ -144,15 +144,24 @@ module WeatherCanadaMCP
 
       # The composed map, made once per frame, area and marker. Decoding and encoding PNGs is CPU work, so it runs on a
       # thread (at most Application::COMPOSE_SLOTS at once) and other requests' fibers keep going.
-      def composed(key, &block)
+      def composed(key, &)
         images.fetch("radar-map:#{key.flatten.join(",")}", ttl: FRAME_TTL) do
           @context.compose_slots.acquire do
-            Thread.new do
-              Thread.current.report_on_exception = false
-              block.call
-            end.value
+            image = in_thread(&)
+            Sources::Cache::Weighed.new(image, image.png.bytesize)
           end
         end
+      end
+
+      # A call that is stopped meanwhile (its deadline) stops the thread too, so abandoned work does not use the slot's CPU.
+      def in_thread(&block)
+        thread = Thread.new do
+          Thread.current.report_on_exception = false
+          block.call
+        end
+        thread.value
+      ensure
+        thread&.kill
       end
 
       def map_info(kind, args, bbox, base_error)

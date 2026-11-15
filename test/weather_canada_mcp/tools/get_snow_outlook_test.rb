@@ -102,4 +102,22 @@ class GetSnowOutlookTest < Minitest::Test
     refute first.key?("snow_level_m")
     refute(requests.any? { |request| request.query["LAYERS"].start_with?("RDPS-WEonG") && request.query["TIME"] == "2026-11-16T00:00:00Z" })
   end
+
+  # The suite runs at 10 requests a second; this is the rate a real server has, with the provider's burst of 12.
+  def test_a_cold_outlook_is_fast_at_the_default_rate
+    elapsed = nil
+    with_fake_eccc do |fake|
+      app = application(fake, clock: -> { GEOMET_CAPTURED_AT }, WEATHER_MCP_REQUESTS_PER_SECOND: "1.0")
+      started = Process.clock_gettime(Process::CLOCK_MONOTONIC)
+      result, error = call_tool(app, "get_snow_outlook", **WHISTLER)
+      elapsed = Process.clock_gettime(Process::CLOCK_MONOTONIC) - started
+
+      refute error, result
+      assert_equal 4, result["steps"].size
+    ensure
+      app&.close
+    end
+
+    assert_operator elapsed, :<, 3.0
+  end
 end

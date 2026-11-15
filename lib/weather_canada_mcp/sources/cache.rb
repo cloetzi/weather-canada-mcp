@@ -5,23 +5,43 @@ require "async/promise"
 module WeatherCanadaMCP
   module Sources
     # In-process TTL cache keyed by request URL. Concurrent misses for the same key run the block once: the other
-    # callers wait for its result (or its error, which is not cached). Meant for one reactor thread. Bounded: the entry
-    # that expires first is evicted when full.
+    # callers wait for its result (or its error, which is not cached). Meant for one reactor thread.
+    #
+    # Bounded twice: by entry count and by a byte budget, where an entry weighs about its size in memory (a block returns
+    # a Weighed for that; a String weighs its own size). When over either bound the expired entries go first, then the
+    # least recently used. Stored values are frozen, so a caller cannot change what the next one reads.
     class Cache
-      Entry = Data.define(:value, :expires_at)
+      Entry = Data.define(:value, :expires_at, :weight)
 
-      def initialize(max_entries: 512, scale: 1.0, clock: -> { Process.clock_gettime(Process::CLOCK_MONOTONIC) })
+      # A value and the memory it takes, in bytes.
+      Weighed = Data.define(:value, :bytes) do
+        # A value parsed from a response body: Ruby's hashes, arrays and strings take several times the JSON text.
+        def self.parsed(value, body) = new(value, body.bytesize * PARSED_FACTOR)
+      end
+      PARSED_FACTOR = 4
+
+      DEFAULT_WEIGHT = 1024
+
+      def initialize(max_entries: 512, max_bytes: 64 * 1024 * 1024, scale: 1.0, clock: -> { Process.clock_gettime(Process::CLOCK_MONOTONIC) })
         @max_entries = max_entries
+        @max_bytes = max_bytes
         @scale = scale
         @clock = clock
         @entries = {}
+        @bytes = 0
         @pending = {}
       end
 
+      attr_reader :bytes
+
       # ttl is in seconds before scaling; a scale of 0 disables caching (but still coalesces concurrent calls).
       def fetch(key, ttl:, &)
-        entry = @entries[key]
-        return entry.value if entry && entry.expires_at > @clock.call
+        entry = @entries.delete(key)
+        if entry && entry.expires_at > @clock.call
+          @entries[key] = entry # most recently used goes last
+          return entry.value
+        end
+        @bytes -= entry.weight if entry
 
         waiter = @pending[key]
         return waiter.wait if waiter
@@ -31,19 +51,27 @@ module WeatherCanadaMCP
 
       def size = @entries.size
 
-      def clear = @entries.clear
+      def clear
+        @entries.clear
+        @bytes = 0
+      end
 
       private
 
       def load(key, ttl)
         promise = Async::Promise.new
         @pending[key] = promise
-        value = yield
-        store(key, value, ttl * @scale)
+        value, weight = unwrap(yield)
+        value = deep_freeze(value)
+        store(key, value, weight, ttl * @scale)
         promise.resolve(value)
         value
-      rescue StandardError => e
+      rescue Sources::Error => e
         promise.reject(e)
+        raise
+      rescue StandardError
+        # Another caller's own failure (its deadline ran out) is not what the callers waiting on it should be told.
+        promise.reject(Sources::Error.new("The request was cancelled; retry it."))
         raise
       ensure
         # A loader stopped by something other than a StandardError (Async::Stop when its client goes away) must still
@@ -52,19 +80,39 @@ module WeatherCanadaMCP
         @pending.delete(key)
       end
 
-      def store(key, value, ttl)
-        return unless ttl.positive?
+      def unwrap(result)
+        return [result.value, result.bytes] if result.is_a?(Weighed)
 
-        evict if @entries.size >= @max_entries && !@entries.key?(key)
-        @entries[key] = Entry.new(value:, expires_at: @clock.call + ttl)
+        [result, result.is_a?(String) ? result.bytesize : DEFAULT_WEIGHT]
       end
 
-      def evict
-        now = @clock.call
-        @entries.delete_if { |_, entry| entry.expires_at <= now }
-        return if @entries.size < @max_entries
+      def deep_freeze(value)
+        case value
+        when Hash then value.each { |key, item| [key, item].each { |part| deep_freeze(part) } }
+        when Array then value.each { |item| deep_freeze(item) }
+        when Data then value.to_h.each_value { |item| deep_freeze(item) }
+        end
+        value.freeze
+      end
 
-        @entries.delete(@entries.min_by { |_, entry| entry.expires_at }.first)
+      def store(key, value, weight, ttl)
+        return unless ttl.positive? && weight <= @max_bytes
+
+        @entries[key] = Entry.new(value:, expires_at: @clock.call + ttl, weight:)
+        @bytes += weight
+        evict
+      end
+
+      # Expired entries first, then the least recently used, until both bounds hold.
+      def evict
+        return unless @entries.size > @max_entries || @bytes > @max_bytes
+
+        now = @clock.call
+        @entries.delete_if { |_, entry| (entry.expires_at <= now).tap { |expired| @bytes -= entry.weight if expired } }
+        while @entries.size > @max_entries || @bytes > @max_bytes
+          _, entry = @entries.shift
+          @bytes -= entry.weight
+        end
       end
     end
   end

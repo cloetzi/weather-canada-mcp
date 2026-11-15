@@ -12,7 +12,7 @@ require "uri"
 module WeatherCanadaMCP
   module Sources
     # Fiber-based GET client for a fixed set of upstream origins (Config#upstreams): one persistent connection pool
-    # per origin, a shared concurrency limit and rate limiter, gzip, an overall deadline per attempt, a cap on the
+    # per origin, a shared concurrency limit, a rate limiter per provider, gzip, an overall deadline per attempt, a cap on the
     # decoded body, and bounded retries on transient failures. Only GET exists: the server is read-only.
     #
     # Callers name an origin (:eccc_api, :geomet, :cgn, :basemap, and :avalanche, :avalanche_weather when enabled) and pass a
@@ -21,13 +21,13 @@ module WeatherCanadaMCP
       RETRY_STATUSES = [429, 502, 503, 504].freeze
       MAX_RETRY_AFTER = 10
 
-      def initialize(origins:, user_agent:, timeout:, max_concurrency:, max_body_bytes:, rate_limiter:, logger:,
+      def initialize(origins:, user_agent:, timeout:, max_concurrency:, max_body_bytes:, rate_limiters:, logger:,
                      max_retries: 2, base_delay: 0.5)
         @origins = origins.to_h { |name, url| [name, URI(url)] }
         @user_agent = user_agent
         @timeout = timeout
         @max_body_bytes = max_body_bytes
-        @rate_limiter = rate_limiter
+        @rate_limiters = rate_limiters
         @logger = logger
         @max_retries = max_retries
         @base_delay = base_delay
@@ -76,8 +76,9 @@ module WeatherCanadaMCP
       end
 
       def perform(origin, uri, request_path, headers, limit, timeout) # rubocop:disable Metrics/ParameterLists -- one request's settings
+        # The wait for a rate slot comes first, so a throttled provider does not hold a concurrency slot others need.
+        @rate_limiters.acquire(origin)
         @semaphore.acquire do
-          @rate_limiter.acquire
           Async::Task.current.with_timeout(timeout) do
             response = client(origin, uri).call(Protocol::HTTP::Request["GET", request_path, Protocol::HTTP::Headers[headers]])
             begin
@@ -89,7 +90,7 @@ module WeatherCanadaMCP
             end
           end
         end
-      rescue Error
+      rescue WeatherCanadaMCP::Error
         raise
       rescue StandardError => e
         raise transport_error(e, uri.host, timeout)

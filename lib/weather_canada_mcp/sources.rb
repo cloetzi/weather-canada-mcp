@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module WeatherCanadaMCP
-  # Everything that fetches ECCC and NRCan data: the shared HTTP client, the global rate limiter, the TTL cache and
+  # Everything that fetches ECCC and NRCan data: the shared HTTP client, the rate limiters (one per provider), the TTL cache and
   # a thin client per service, which returns parsed Ruby data and raises the errors below.
   module Sources
     # Base of every failure fetching data. Messages are written for the model and never quote a response body.
@@ -43,6 +43,14 @@ module WeatherCanadaMCP
         when 400..499 then "#{host} rejected the request (HTTP #{status})."
         else "#{host} failed to answer (HTTP #{status}). The service is sometimes briefly unavailable; retrying later may help."
         end
+      end
+    end
+
+    # A request waited, or would have to wait, too long for its provider's rate limit.
+    class Busy < Error
+      def initialize(wait)
+        super("This server is queuing more requests to the data provider than it may send (a wait of about #{wait.ceil} " \
+              "seconds). Try again in a minute.")
       end
     end
 

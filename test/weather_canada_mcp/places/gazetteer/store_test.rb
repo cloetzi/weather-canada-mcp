@@ -90,6 +90,21 @@ class GazetteerStoreTest < Minitest::Test
     end
   end
 
+  def test_a_caller_that_stops_waiting_does_not_stop_the_build
+    with_fake_eccc do |fake|
+      store = store(fake)
+      fake.route(FakeEccc::CGN_PATH) do
+        sleep 0.3
+        [200, {}, FakeEccc.cgn_zip]
+      end
+      impatient = Async { Async::Task.current.with_timeout(0.05) { store.open } }
+      assert_raises(Async::TimeoutError) { impatient.wait }
+
+      assert_operator store.open.size, :>, 0, "the next call finds the build done, not failed"
+      assert_equal 1, fake.requests_to(FakeEccc::CGN_PATH).size
+    end
+  end
+
   private
 
   def assert_rejected(archive, message)

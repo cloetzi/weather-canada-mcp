@@ -62,30 +62,32 @@ module WeatherCanadaMCP
           return Gazetteer.new(@path) if File.file?(@path)
           raise Unavailable, "the place-name database is not installed (run `weather-canada-mcp gazetteer update`)" unless @auto_build
 
-          if @building
-            @building.wait
-          else
-            build_once
-          end
+          (@building || start_build).wait
           Gazetteer.new(@path)
         end
 
-        def build_once
+        # The build runs as a task of its own, so a caller that gives up (its tool call ran out of time) does not stop it
+        # halfway: the archive takes longer to download than a tool call may run, and the next call finds it done.
+        def start_build
           if @failure && @clock.call - @failure[:at] < RETRY_AFTER
             raise Unavailable, "#{@failure[:message]} (not retried for #{RETRY_AFTER / 60} minutes)"
           end
 
           @building = Async::Promise.new
+          scheduler = Fiber.scheduler
+          scheduler ? scheduler.async { build_once(@building) } : build_once(@building)
+          @building
+        end
+
+        def build_once(promise)
           build
           @failure = nil
-          @building.resolve(true)
+          promise.resolve(true)
         rescue Unavailable => e
           @failure = { at: @clock.call, message: e.message }
-          raise
+          promise.reject(e)
         ensure
-          if @building && !@building.resolved?
-            @building.reject(Unavailable.new(@failure ? @failure[:message] : "the place-name build was cancelled"))
-          end
+          promise.reject(Unavailable.new("the place-name build was cancelled")) unless promise.resolved?
           @building = nil
         end
 
