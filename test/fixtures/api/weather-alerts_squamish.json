@@ -1,0 +1,459 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "id": "657086601636106236202611140502_fea1-2326",
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -123.53741587,
+              49.32414239
+            ],
+            [
+              -123.51052329,
+              49.3175612
+            ],
+            [
+              -123.43203887,
+              49.28686854
+            ],
+            [
+              -123.37277975,
+              49.27070063
+            ],
+            [
+              -123.36326384,
+              49.29182299
+            ],
+            [
+              -123.29029456,
+              49.3448883
+            ],
+            [
+              -123.28180356,
+              49.35105152
+            ],
+            [
+              -123.29885476,
+              49.37670472
+            ],
+            [
+              -123.26299863,
+              49.38677641
+            ],
+            [
+              -123.26115813,
+              49.3878985
+            ],
+            [
+              -123.25613243,
+              49.39395074
+            ],
+            [
+              -123.25574471,
+              49.39450224
+            ],
+            [
+              -123.24945647,
+              49.40217032
+            ],
+            [
+              -123.24282289,
+              49.40970644
+            ],
+            [
+              -123.24187225,
+              49.4096719
+            ],
+            [
+              -123.2079739,
+              49.40857486
+            ],
+            [
+              -123.16294247,
+              49.40709922
+            ],
+            [
+              -123.14875849,
+              49.41201932
+            ],
+            [
+              -123.14206747,
+              49.41438827
+            ],
+            [
+              -123.13385076,
+              49.41729641
+            ],
+            [
+              -123.1269592,
+              49.41973471
+            ],
+            [
+              -123.09701504,
+              49.4303198
+            ],
+            [
+              -123.09841432,
+              49.48298463
+            ],
+            [
+              -123.09846166,
+              49.54661364
+            ],
+            [
+              -122.92990676,
+              49.54666896
+            ],
+            [
+              -122.92583672,
+              49.5466667
+            ],
+            [
+              -122.91733206,
+              49.54666144
+            ],
+            [
+              -122.91819581,
+              49.54787314
+            ],
+            [
+              -122.92032284,
+              49.55009007
+            ],
+            [
+              -122.9209701,
+              49.55153694
+            ],
+            [
+              -122.92163124,
+              49.55240997
+            ],
+            [
+              -122.92238761,
+              49.5534087
+            ],
+            [
+              -122.92670223,
+              49.55457946
+            ],
+            [
+              -122.92797081,
+              49.55574399
+            ],
+            [
+              -122.92960472,
+              49.55672904
+            ],
+            [
+              -122.93009876,
+              49.55793434
+            ],
+            [
+              -122.93160765,
+              49.55981082
+            ],
+            [
+              -122.93648509,
+              49.56244043
+            ],
+            [
+              -122.93708367,
+              49.56336464
+            ],
+            [
+              -122.93964523,
+              49.56502677
+            ],
+            [
+              -122.94052547,
+              49.56616567
+            ],
+            [
+              -122.94078782,
+              49.56722528
+            ],
+            [
+              -122.94076485,
+              49.56737043
+            ],
+            [
+              -122.94078782,
+              49.56746322
+            ],
+            [
+              -122.94064637,
+              49.56835693
+            ],
+            [
+              -122.94009318,
+              49.56908973
+            ],
+            [
+              -122.94027285,
+              49.5699822
+            ],
+            [
+              -122.94022495,
+              49.56998219
+            ],
+            [
+              -122.85397174,
+              49.56993974
+            ],
+            [
+              -122.81472622,
+              49.56989524
+            ],
+            [
+              -122.81691074,
+              49.5726124
+            ],
+            [
+              -122.91255951,
+              49.6912117
+            ],
+            [
+              -123.03436279,
+              49.75868607
+            ],
+            [
+              -123.11754608,
+              49.79346085
+            ],
+            [
+              -123.11754607,
+              49.79346538
+            ],
+            [
+              -123.11747742,
+              49.81954575
+            ],
+            [
+              -123.12587738,
+              49.81953812
+            ],
+            [
+              -123.12587738,
+              49.81954265
+            ],
+            [
+              -123.12587738,
+              49.83024216
+            ],
+            [
+              -123.1325531,
+              49.83024216
+            ],
+            [
+              -123.13255311,
+              49.83024669
+            ],
+            [
+              -123.13257599,
+              49.84260941
+            ],
+            [
+              -123.13972022,
+              49.84274904
+            ],
+            [
+              -123.14351654,
+              49.84282303
+            ],
+            [
+              -123.14351654,
+              49.84282756
+            ],
+            [
+              -123.14351654,
+              49.84783173
+            ],
+            [
+              -123.14910889,
+              49.84783173
+            ],
+            [
+              -123.14915466,
+              49.85688019
+            ],
+            [
+              -123.15317535,
+              49.85702896
+            ],
+            [
+              -123.15317536,
+              49.8570335
+            ],
+            [
+              -123.15319061,
+              49.87263489
+            ],
+            [
+              -123.20888352,
+              49.87415049
+            ],
+            [
+              -123.24993403,
+              49.87524738
+            ],
+            [
+              -123.24994241,
+              49.87525396
+            ],
+            [
+              -123.24995163,
+              49.87526119
+            ],
+            [
+              -123.25413851,
+              49.87536576
+            ],
+            [
+              -123.25876561,
+              49.87548112
+            ],
+            [
+              -123.25877684,
+              49.87548914
+            ],
+            [
+              -123.27143252,
+              49.88451782
+            ],
+            [
+              -123.29144832,
+              49.88846166
+            ],
+            [
+              -123.29292574,
+              49.88875257
+            ],
+            [
+              -123.29136878,
+              49.88440591
+            ],
+            [
+              -123.28833771,
+              49.87627029
+            ],
+            [
+              -123.26429749,
+              49.81161118
+            ],
+            [
+              -123.26306152,
+              49.80827331
+            ],
+            [
+              -123.22880554,
+              49.71621323
+            ],
+            [
+              -123.22818756,
+              49.71455002
+            ],
+            [
+              -123.22128832,
+              49.69619887
+            ],
+            [
+              -123.21445666,
+              49.67801207
+            ],
+            [
+              -123.21454104,
+              49.6779944
+            ],
+            [
+              -123.21450271,
+              49.67789094
+            ],
+            [
+              -123.24855122,
+              49.58813848
+            ],
+            [
+              -123.46829025,
+              49.51547614
+            ],
+            [
+              -123.46277246,
+              49.43137285
+            ],
+            [
+              -123.51800097,
+              49.37014673
+            ],
+            [
+              -123.50901031,
+              49.35396957
+            ],
+            [
+              -123.53741587,
+              49.32414239
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "alert_code": "RFW",
+        "alert_type": "warning",
+        "alert_name_en": "rainfall warning",
+        "alert_name_fr": "avertissement de pluie",
+        "alert_short_name_en": "Rainfall",
+        "alert_short_name_fr": "Pluie",
+        "publication_datetime": "2026-11-15T11:53:05.960Z",
+        "expiration_datetime": "2026-11-16T03:53:05.960Z",
+        "validity_datetime": "2026-11-15T11:45:00.000Z",
+        "event_end_datetime": "2026-11-16T03:30:00.000Z",
+        "alert_text_en": "Another period of rain for the west coast. \n\nWhen: Today.\n\nWhere: Howe Sound and Sea-to-Sky region.\n\nRemarks:\nAnother moisture laden low pressure system is moving across the South Coast today. Rain will ease to light to moderate showers this evening. Total rainfall amounts of 40 to 70 mm are possible.\n\nAlready saturated ground from a series of storms earlier in the week will lessen the soil's ability to absorb moisture, which could intensify the impacts of this round of heavy rain.\n\nWater will likely pool on roads and in low-lying areas. Visibility will likely be suddenly reduced at times.\n\nWatch for washouts near rivers, creeks and culverts.\n\nPlease continue to monitor alerts and forecasts issued by Environment Canada. To report severe weather, send an email to BCstorm@ec.gc.ca or post reports on social media using #BCStorm.",
+        "alert_text_fr": "Encore un épisode de pluie sur la côte ouest.\n\nQuand : aujourd'hui.\n\nOù : la baie Howe et la région de Sea to Sky.\n\nRemarques :\nUne autre dépression chargée d'humidité traverse la côte sud aujourd'hui. La pluie se changera en averses de pluie faibles à modérées ce soir. La quantité totale de pluie pourrait être de l'ordre de 40 à 70 mm.\n\nLe sol déjà saturé par une série de tempêtes plus tôt dans la semaine réduira la capacité du sol à absorber l'humidité, ce qui pourrait intensifier les répercussions de cet épisode de pluie forte.\n\nUne accumulation d’eau est probable sur les routes et dans les basses terres. Une visibilité soudainement réduite par moments est à prévoir.\n\nPrenez garde aux affaissements de route près des rivières, des ruisseaux et des ponceaux.\n\nVeuillez continuer à surveiller les alertes et les prévisions émises par Environnement Canada. Pour signaler du temps violent, envoyez un courriel à meteoBC@ec.gc.ca ou publiez un message sur les réseaux sociaux en utilisant #BCMeteo.",
+        "risk_colour_en": "yellow",
+        "risk_colour_fr": "jaune",
+        "confidence_en": "High",
+        "confidence_fr": "élevée",
+        "impact_en": "Moderate",
+        "impact_fr": "modéré",
+        "feature_name_en": "Howe Sound",
+        "feature_name_fr": "baie Howe",
+        "province": "BC",
+        "status_en": "continued",
+        "status_fr": "maintenu",
+        "feature_id": "fea1-2326"
+      }
+    }
+  ],
+  "numberMatched": 1,
+  "numberReturned": 1,
+  "links": [
+    {
+      "type": "application/geo+json",
+      "rel": "self",
+      "title": "This document as GeoJSON",
+      "href": "https://api.weather.gc.ca/collections/weather-alerts/items?f=json&bbox=-123.16,49.69,-123.14,49.71&limit=50"
+    },
+    {
+      "rel": "alternate",
+      "type": "application/ld+json",
+      "title": "This document as RDF (JSON-LD)",
+      "href": "https://api.weather.gc.ca/collections/weather-alerts/items?f=jsonld&bbox=-123.16,49.69,-123.14,49.71&limit=50"
+    },
+    {
+      "type": "text/html",
+      "rel": "alternate",
+      "title": "This document as HTML",
+      "href": "https://api.weather.gc.ca/collections/weather-alerts/items?f=html&bbox=-123.16,49.69,-123.14,49.71&limit=50"
+    },
+    {
+      "type": "application/json",
+      "title": "Weather Alerts",
+      "rel": "collection",
+      "href": "https://api.weather.gc.ca/collections/weather-alerts"
+    }
+  ],
+  "timeStamp": "2026-11-15T17:00:10.759965Z"
+}

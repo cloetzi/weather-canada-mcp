@@ -1,0 +1,425 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "lastUpdated": "2026-11-15T16:03:46Z",
+        "area": {
+          "countryCode": {
+            "en": "CA",
+            "fr": "CA"
+          },
+          "region": {
+            "en": "Pacific Coast",
+            "fr": "Côte Pacifique"
+          },
+          "subRegion": {
+            "en": "Georgia Basin",
+            "fr": "Bassin de Géorgie"
+          },
+          "value": {
+            "en": "Howe Sound",
+            "fr": "baie Howe"
+          }
+        },
+        "regularForecast": {
+          "locations": [
+            {
+              "weatherCondition": {
+                "periodOfCoverage": {
+                  "en": "Today Tonight and Monday.",
+                  "fr": "aujourd'hui cette nuit et lundi."
+                },
+                "weatherVisibility": {
+                  "en": "Periods of rain. Risk of thunderstorms today and early this evening.",
+                  "fr": "Pluie intermittente. Risque d'orages aujourd'hui et tôt ce soir."
+                },
+                "wind": {
+                  "en": "Wind southerly inflow 5 to 15 knots except southeasterly inflow 20 to 30 with gusts to 40 over southern sections. Wind becoming southerly inflow 20 to 30 early this morning then diminishing to southerly inflow 10 to 20 late this morning. Wind becoming southerly inflow 5 to 15 early this evening except southeasterly inflow 20 over southern sections tonight. Wind becoming northerly outflow 5 to 15 Monday afternoon.",
+                  "fr": "Vent de mer du sud de 5 à 15 noeuds sauf de mer du sud-est de 20 à 30 avec rafales à 40 sur le secteur sud. Vent devenant de mer du sud de 20 à 30 tôt ce matin puis diminuant de mer du sud à 10 à 20 tard ce matin. Vent devenant de mer du sud de 5 à 15 tôt ce soir sauf de mer du sud-est à 20 sur le secteur sud ce soir et cette nuit. Vent devenant de terre du nord de 5 à 15 lundi après-midi."
+                }
+              }
+            }
+          ],
+          "issuedDatetimeUTC": "2026-11-15T11:00:00Z",
+          "issuedDatetimeLocal": "2026-11-15T04:00:00-07:00"
+        },
+        "extendedForecast": {
+          "locations": [
+            {
+              "weatherCondition": {
+                "forecastPeriods": [
+                  {
+                    "name": {
+                      "en": "Tuesday",
+                      "fr": "Mardi"
+                    },
+                    "value": {
+                      "en": "Wind northerly outflow 15 knots increasing to  northerly outflow 25 in the afternoon.",
+                      "fr": "Vent de terre du nord à 15 noeuds augmentant de  terre du nord à 25 en après-midi."
+                    }
+                  },
+                  {
+                    "name": {
+                      "en": "Wednesday",
+                      "fr": "Mercredi"
+                    },
+                    "value": {
+                      "en": "Wind northerly outflow 25 to 35 knots  diminishing to northerly outflow 15 to 25.",
+                      "fr": "Vent de terre du nord de 25 à 35 noeuds  diminuant de terre du nord à 15 à 25."
+                    }
+                  },
+                  {
+                    "name": {
+                      "en": "Thursday",
+                      "fr": "Jeudi"
+                    },
+                    "value": {
+                      "en": "Wind northerly outflow 20 to 30  knots.",
+                      "fr": "Vent de terre du nord de 20 à 30  noeuds."
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "issuedDatetimeUTC": "2026-11-15T11:00:00Z",
+          "issuedDatetimeLocal": "2026-11-15T04:00:00-07:00"
+        },
+        "warnings": {
+          "locations": []
+        }
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -123.24757491715278,
+              49.340773166856984
+            ],
+            [
+              -123.26090091427122,
+              49.3331946957559
+            ],
+            [
+              -123.26583175814673,
+              49.332252565714064
+            ],
+            [
+              -123.26855392358365,
+              49.33673454065458
+            ],
+            [
+              -123.26862338644649,
+              49.33860711301008
+            ],
+            [
+              -123.26997481393302,
+              49.33857023786529
+            ],
+            [
+              -123.27006089233153,
+              49.33855147714023
+            ],
+            [
+              -123.35797407834076,
+              49.33611506894507
+            ],
+            [
+              -123.35979762099223,
+              49.33612416332699
+            ],
+            [
+              -123.38034820530838,
+              49.33549499503461
+            ],
+            [
+              -123.39551278145122,
+              49.33725308511345
+            ],
+            [
+              -123.41989657157912,
+              49.33736875180383
+            ],
+            [
+              -123.42801048320297,
+              49.339357986062396
+            ],
+            [
+              -123.43233852172008,
+              49.341511880600734
+            ],
+            [
+              -123.43292236305864,
+              49.34157943762914
+            ],
+            [
+              -123.45816803043392,
+              49.34860992501146
+            ],
+            [
+              -123.46281110286193,
+              49.35090166290244
+            ],
+            [
+              -123.49274232252718,
+              49.36567553380053
+            ],
+            [
+              -123.49384777836566,
+              49.366220819318684
+            ],
+            [
+              -123.47106809163051,
+              49.381697923154505
+            ],
+            [
+              -123.45283971987075,
+              49.38389220326639
+            ],
+            [
+              -123.43409090798242,
+              49.386145351639044
+            ],
+            [
+              -123.41363275124594,
+              49.400758328232506
+            ],
+            [
+              -123.47221171352278,
+              49.424012015658036
+            ],
+            [
+              -123.48613542731725,
+              49.41392929004536
+            ],
+            [
+              -123.49148358277277,
+              49.41432604663071
+            ],
+            [
+              -123.48211308297012,
+              49.440535928900935
+            ],
+            [
+              -123.51281438925305,
+              49.50424788101511
+            ],
+            [
+              -123.49000327855418,
+              49.534346930196456
+            ],
+            [
+              -123.37619796523207,
+              49.574098342323026
+            ],
+            [
+              -123.27601058085062,
+              49.59598363770072
+            ],
+            [
+              -123.25668956024568,
+              49.62656492892185
+            ],
+            [
+              -123.2711368933412,
+              49.6494728083419
+            ],
+            [
+              -123.26253256561651,
+              49.66425072117308
+            ],
+            [
+              -123.2319024855253,
+              49.67817673997433
+            ],
+            [
+              -123.20246496369604,
+              49.68499727204881
+            ],
+            [
+              -123.18642674426225,
+              49.68526928217874
+            ],
+            [
+              -123.15832439517665,
+              49.68401994283147
+            ],
+            [
+              -123.15530828020385,
+              49.6838853730715
+            ],
+            [
+              -123.1577931614549,
+              49.677789743207356
+            ],
+            [
+              -123.15785640745749,
+              49.677733202848
+            ],
+            [
+              -123.16549543839633,
+              49.67090288201315
+            ],
+            [
+              -123.17556759742358,
+              49.66189290402143
+            ],
+            [
+              -123.18002741364076,
+              49.66040056121808
+            ],
+            [
+              -123.18557680943428,
+              49.65854320075068
+            ],
+            [
+              -123.18891240834093,
+              49.6574265628939
+            ],
+            [
+              -123.19072044940567,
+              49.65750889276629
+            ],
+            [
+              -123.20941771228856,
+              49.653746482270535
+            ],
+            [
+              -123.2168674027888,
+              49.644677345591376
+            ],
+            [
+              -123.21106158831391,
+              49.633909264298694
+            ],
+            [
+              -123.20825487888098,
+              49.63072561979341
+            ],
+            [
+              -123.20579521584521,
+              49.62686323505415
+            ],
+            [
+              -123.20590114666832,
+              49.62433350388089
+            ],
+            [
+              -123.2060757841453,
+              49.62016231056845
+            ],
+            [
+              -123.20620213223977,
+              49.61987392190313
+            ],
+            [
+              -123.22003668025755,
+              49.588272879777186
+            ],
+            [
+              -123.23315700640124,
+              49.55300254032534
+            ],
+            [
+              -123.25561572320237,
+              49.52475191570008
+            ],
+            [
+              -123.23981155535819,
+              49.4760758733362
+            ],
+            [
+              -123.23330700454119,
+              49.44501909693486
+            ],
+            [
+              -123.23132917833165,
+              49.43556708953546
+            ],
+            [
+              -123.22983311090094,
+              49.42841473705345
+            ],
+            [
+              -123.23837082184781,
+              49.406104861273896
+            ],
+            [
+              -123.23983702615435,
+              49.40227121703875
+            ],
+            [
+              -123.26315489552458,
+              49.37323201396735
+            ],
+            [
+              -123.2631768887926,
+              49.37320460526944
+            ],
+            [
+              -123.27773259199041,
+              49.365736895433294
+            ],
+            [
+              -123.27185665254649,
+              49.35937830225073
+            ],
+            [
+              -123.26764556720441,
+              49.35481998882172
+            ],
+            [
+              -123.2615509029474,
+              49.3482208246322
+            ],
+            [
+              -123.25436816002478,
+              49.34509322093724
+            ],
+            [
+              -123.24309147231624,
+              49.34018102975435
+            ],
+            [
+              -123.24757491715278,
+              49.340773166856984
+            ]
+          ]
+        ]
+      },
+      "id": "m0000102"
+    }
+  ],
+  "numberMatched": 1,
+  "numberReturned": 1,
+  "links": [
+    {
+      "type": "application/geo+json",
+      "rel": "self",
+      "title": "This document as GeoJSON",
+      "href": "https://api.weather.gc.ca/collections/marineweather-realtime/items?f=json&bbox=-123.35,49.45,-123.25,49.55&limit=2"
+    },
+    {
+      "rel": "alternate",
+      "type": "application/ld+json",
+      "title": "This document as RDF (JSON-LD)",
+      "href": "https://api.weather.gc.ca/collections/marineweather-realtime/items?f=jsonld&bbox=-123.35,49.45,-123.25,49.55&limit=2"
+    },
+    {
+      "type": "text/html",
+      "rel": "alternate",
+      "title": "This document as HTML",
+      "href": "https://api.weather.gc.ca/collections/marineweather-realtime/items?f=html&bbox=-123.35,49.45,-123.25,49.55&limit=2"
+    },
+    {
+      "type": "application/json",
+      "title": "Marine forecasts and warnings [experimental]",
+      "rel": "collection",
+      "href": "https://api.weather.gc.ca/collections/marineweather-realtime"
+    }
+  ],
+  "timeStamp": "2026-11-15T17:00:19.326318Z"
+}

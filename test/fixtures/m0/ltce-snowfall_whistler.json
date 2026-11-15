@@ -1,0 +1,114 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "id": "VSBC16V-11-15",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.8,
+          50.32
+        ]
+      },
+      "properties": {
+        "WXO_CITY_CODE": "BC-16",
+        "VIRTUAL_STATION_NAME_E": "PEMBERTON AREA",
+        "VIRTUAL_STATION_NAME_F": "PEMBERTON",
+        "VIRTUAL_CLIMATE_ID": "VSBC16V",
+        "LOCAL_MONTH": 11,
+        "LOCAL_DAY": 15,
+        "RECORD_SNOWFALL": 10.2,
+        "RECORD_SNOWFALL_YR": 1930,
+        "PREV_RECORD_SNOWFALL": 7.6,
+        "PREV_RECORD_SNOWFALL_YR": 1920,
+        "FIRST_SNOWFALL": 10.2,
+        "FIRST_SNOWFALL_YEAR": 1930,
+        "SECOND_SNOWFALL": 7.6,
+        "SECOND_SNOWFALL_YEAR": 1920,
+        "THIRD_SNOWFALL": 7,
+        "THIRD_SNOWFALL_YEAR": 1982,
+        "FOURTH_SNOWFALL": 5,
+        "FOURTH_SNOWFALL_YEAR": 1978,
+        "FIFTH_SNOWFALL": 3,
+        "FIFTH_SNOWFALL_YEAR": 1973,
+        "PROVINCE_CODE": "BC",
+        "RECORD_BEGIN": "1908-04-01T00:00:00Z",
+        "RECORD_END": "1984-03-31T00:00:00Z",
+        "IDENTIFIER": "VSBC16V-11-15"
+      }
+    },
+    {
+      "id": "VSBC86V-11-15",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.97,
+          50.12
+        ]
+      },
+      "properties": {
+        "WXO_CITY_CODE": "BC-86",
+        "VIRTUAL_STATION_NAME_E": "WHISTLER AREA",
+        "VIRTUAL_STATION_NAME_F": "WHISTLER",
+        "VIRTUAL_CLIMATE_ID": "VSBC86V",
+        "LOCAL_MONTH": 11,
+        "LOCAL_DAY": 15,
+        "RECORD_SNOWFALL": 19.3,
+        "RECORD_SNOWFALL_YR": 1950,
+        "PREV_RECORD_SNOWFALL": 11.4,
+        "PREV_RECORD_SNOWFALL_YR": 1948,
+        "FIRST_SNOWFALL": 19.3,
+        "FIRST_SNOWFALL_YEAR": 1950,
+        "SECOND_SNOWFALL": 17.8,
+        "SECOND_SNOWFALL_YEAR": 1973,
+        "THIRD_SNOWFALL": 17.6,
+        "THIRD_SNOWFALL_YEAR": 1982,
+        "FOURTH_SNOWFALL": 13.4,
+        "FOURTH_SNOWFALL_YEAR": 2017,
+        "FIFTH_SNOWFALL": 11.4,
+        "FIFTH_SNOWFALL_YEAR": 1948,
+        "PROVINCE_CODE": "BC",
+        "RECORD_BEGIN": "1931-11-01T00:00:00Z",
+        "RECORD_END": "2024-10-05T00:00:00Z",
+        "IDENTIFIER": "VSBC86V-11-15"
+      }
+    }
+  ],
+  "numberMatched": 2,
+  "numberReturned": 2,
+  "links": [
+    {
+      "type": "application/geo+json",
+      "rel": "self",
+      "title": "This document as GeoJSON",
+      "href": "https://api.weather.gc.ca/collections/ltce-snowfall/items?f=json&bbox=-123.26,49.82,-122.66,50.42&LOCAL_MONTH=11&LOCAL_DAY=15&limit=2"
+    },
+    {
+      "rel": "alternate",
+      "type": "application/ld+json",
+      "title": "This document as RDF (JSON-LD)",
+      "href": "https://api.weather.gc.ca/collections/ltce-snowfall/items?f=jsonld&bbox=-123.26,49.82,-122.66,50.42&LOCAL_MONTH=11&LOCAL_DAY=15&limit=2"
+    },
+    {
+      "type": "text/html",
+      "rel": "alternate",
+      "title": "This document as HTML",
+      "href": "https://api.weather.gc.ca/collections/ltce-snowfall/items?f=html&bbox=-123.26,49.82,-122.66,50.42&LOCAL_MONTH=11&LOCAL_DAY=15&limit=2"
+    },
+    {
+      "type": "application/geo+json",
+      "rel": "next",
+      "title": "Items (next)",
+      "href": "https://api.weather.gc.ca/collections/ltce-snowfall/items?offset=2&bbox=-123.26,49.82,-122.66,50.42&LOCAL_MONTH=11&LOCAL_DAY=15&limit=2"
+    },
+    {
+      "type": "application/json",
+      "title": "LTCE – Snowfall",
+      "rel": "collection",
+      "href": "https://api.weather.gc.ca/collections/ltce-snowfall"
+    }
+  ],
+  "timeStamp": "2026-11-15T17:00:20.542925Z"
+}
