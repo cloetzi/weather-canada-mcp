@@ -38,7 +38,7 @@ module WeatherCanadaMcp
       def call(arguments)
         lang = lang(arguments)
         point = resolve_point(arguments)
-        limit = (arguments["stations"] || 3).clamp(1, MAX_STATIONS)
+        limit = integer_argument(arguments, "stations", 3, 1..MAX_STATIONS)
         filter = river_filter(arguments["river"])
         stations = gauges(point, filter, limit).then { |nearest| concurrently(nearest) { |distance, feature| gauge(feature, distance, lang) } }
         result = { location: point.to_h, gauges: stations }

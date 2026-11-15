@@ -107,6 +107,16 @@ module WeatherCanadaMcp
         value[lang] || value["en"]
       end
 
+      # The MCP server checks arguments against the schema first; this keeps a bad value a readable tool error, not a
+      # bug, if that check is ever off.
+      def integer_argument(arguments, name, default, range)
+        value = arguments[name].nil? ? default : arguments[name]
+        value = value.to_i if value.is_a?(Float) && value.finite? && (value % 1).zero? # JSON Schema counts 2.0 as an integer
+        return value if value.is_a?(Integer) && range.cover?(value)
+
+        raise InvalidArguments, "#{name} must be a whole number from #{range.min} to #{range.max}."
+      end
+
       def round_km(distance) = distance.round(distance < 10 ? 1 : 0)
 
       # [[distance_km, feature], ...] for the point features of a collection within radius_km, closest first.

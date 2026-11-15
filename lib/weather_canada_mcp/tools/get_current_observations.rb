@@ -61,7 +61,7 @@ module WeatherCanadaMcp
       def call(arguments)
         lang = lang(arguments)
         point = resolve_point(arguments)
-        limit = (arguments["stations"] || 3).clamp(1, MAX_STATIONS)
+        limit = integer_argument(arguments, "stations", 3, 1..MAX_STATIONS)
         stations = reporting_stations(point, limit, lang)
         result = { location: point.to_h, stations: }
         if stations.empty?

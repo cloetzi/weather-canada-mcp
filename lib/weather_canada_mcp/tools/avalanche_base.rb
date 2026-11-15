@@ -44,13 +44,6 @@ module WeatherCanadaMcp
         names.size <= 2 ? names.join(" #{conjunction} ") : "#{names[0..-2].join(", ")} #{conjunction} #{names.last}"
       end
 
-      def integer_argument(arguments, name, default, range)
-        value = arguments.fetch(name, default)
-        return value if value.is_a?(Integer) && range.cover?(value)
-
-        raise InvalidArguments, "#{name} must be a whole number from #{range.min} to #{range.max}."
-      end
-
       def text(html) = HtmlText.call(html)
 
       # Hash#dig that answers nil, rather than raising, when upstream data has an unexpected shape along the way.
