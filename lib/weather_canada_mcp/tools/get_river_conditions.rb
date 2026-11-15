@@ -16,17 +16,17 @@ module WeatherCanadaMCP
       tool_name "get_river_conditions"
       title "Get river levels and flows"
       description <<~TEXT
-        Real-time water level (m) and flow (m3/s) at the Water Survey of Canada gauges nearest a location (within
-        50 km), with the change over the past 24 hours, the range over the past 3 days, and how today's flow compares
-        with the historical mean flow for this month at the same gauge. Pass river to keep only gauges whose name
-        contains it ("Bow River", "Cheakamus"). Real-time data are provisional and can be affected by ice. Water
-        levels are relative to a local datum, so compare a level only with the same gauge.
-        This is not a flood forecast; check provincial river forecast centres and get_alerts for warnings.
+        Real-time water level (m) and flow (m3/s) at the Water Survey of Canada gauges nearest a location (within 50 km),
+        with the change over 24 hours, the range over 3 days, and today's flow against the historical mean for this month.
+        river keeps only gauges whose name contains it. Data are provisional and can be affected by ice; compare a level
+        only with the same gauge. This is not a flood forecast: use get_alerts for warnings.
       TEXT
       location_arguments
       argument :river, :string, max_length: 60, description: "Only gauges whose name contains this text (\"Bow River\")."
       argument :limit, :integer, in: 1..MAX_STATIONS, default: 3, description: "Nearest gauges to include."
       argument :lang, :language
+
+      output :gauges, :array, "The nearest gauges, closest first."
 
       def call(args)
         lang = args.lang

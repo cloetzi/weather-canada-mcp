@@ -25,18 +25,21 @@ module WeatherCanadaMCP
       title "Get climate normals and records"
       description <<~TEXT
         Climate context for a location and date, to judge whether a forecast is unusual: the daily records for that
-        calendar day (highest and lowest temperatures, most precipitation and most snowfall, with the year of each) from
-        Environment Canada's long-term climate extremes for the nearest of about 750 places (within 100 km, joining the
-        records of nearby stations since as early as the 1840s; each span of records gives the years covered, with "to"
-        only when the series has ended), and the monthly climate normals (1981-2010) at the nearest normals station
-        (within 50 km): mean daily high and low, precipitation, rain, snowfall, days with precipitation or snow, snow
-        depth and sunshine. The stations are usually in valleys and towns, so mountain
-        conditions differ. date defaults to today.
+        calendar day (highest and lowest temperatures, most precipitation and snowfall, with the year of each) from the
+        nearest long-term climate station (within 100 km), and the monthly 1981-2010 climate normals at the nearest normals
+        station (within 50 km). The stations are usually in valleys and towns, so mountain conditions differ. date defaults
+        to today.
       TEXT
       location_arguments
       argument :date, :string, pattern: DATE,
                                description: "The calendar day, YYYY-MM-DD or MM-DD (the year is ignored). Defaults to today."
       argument :lang, :language
+
+      output :month, :integer, "The month of the date."
+      output :day, :integer, "The day of the month."
+      output :daily_records, :object, "Records for the calendar day."
+      output :monthly_normals, :object, "Monthly climate normals."
+      output :source_url, :string, "The source of the data."
 
       def call(args)
         lang = args.lang

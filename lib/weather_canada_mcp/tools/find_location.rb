@@ -8,11 +8,9 @@ module WeatherCanadaMCP
       tool_name "find_location"
       title "Find a location"
       description <<~TEXT
-        Resolve a Canadian place name (town, park, lake, mountain, river) or coordinates to matching places and the
-        nearest Environment Canada forecast sites. Use it to disambiguate a name before other tools (several places
-        can share one name: check type and province), or to see which forecast site covers a remote spot and how far
-        away it is. Other tools accept the same location text directly, so call this only when the place is ambiguous
-        or you need the candidates.
+        Resolve a Canadian place name (town, park, lake, mountain, river) or coordinates to matching places and the nearest
+        Environment Canada forecast sites. Other tools accept the same location text, so call this only when a name is
+        ambiguous (check type and province) or to see which forecast site covers a remote spot.
       TEXT
       argument :location, :string, max_length: MAX_LOCATION_LENGTH,
                                    description: "Place name, optionally with a province (\"Garibaldi, BC\"). Omit when giving lat and lon."
@@ -20,6 +18,10 @@ module WeatherCanadaMCP
       coordinate_arguments
       argument :limit, :integer, in: 1..MAX_CANDIDATES, default: 5, description: "Most candidates to return."
       argument :lang, :language
+
+      output :query, :string, "The place name searched for."
+      output :candidates, :array, "Matching places, best first."
+      output :forecast_sites, :array, "The nearest forecast sites."
 
       def call(args)
         if args.lat.nil? && args.lon.nil?

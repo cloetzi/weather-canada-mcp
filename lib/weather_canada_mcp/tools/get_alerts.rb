@@ -12,14 +12,16 @@ module WeatherCanadaMCP
       tool_name "get_alerts"
       title "Get weather alerts"
       description <<~TEXT
-        Active Environment Canada weather alerts (warnings, watches, advisories and statements) for a location, with
-        the official alert text exactly as issued. Alerts whose area contains the point are in "alerts"; alerts for
-        areas within a few km (for example a coastline or a neighbouring zone) are listed briefly in "nearby_alerts".
-        An empty "alerts" list means ECCC has no alert in effect there right now. Quote alert text as given; do not
-        reword or shorten safety instructions.
+        Active Environment Canada weather alerts (warnings, watches, advisories, statements) for a location, with the
+        official text as issued. "alerts" are those whose area contains the point; "nearby_alerts" are brief entries for
+        areas within a few km. An empty "alerts" list means none in effect. Quote alert text as given.
       TEXT
       location_arguments
       argument :lang, :language
+
+      output :alerts, :array, "Alerts whose area contains the point, most severe first."
+      output :nearby_alerts, :array, "Brief entries for alerts in areas within a few km."
+      output :source_url, :string, "The official alerts page."
 
       def call(args)
         lang = @lang = args.lang

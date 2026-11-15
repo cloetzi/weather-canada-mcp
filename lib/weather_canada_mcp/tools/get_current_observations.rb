@@ -41,17 +41,17 @@ module WeatherCanadaMCP
       tool_name "get_current_observations"
       title "Get current weather observations"
       description <<~TEXT
-        The latest measured weather at the Environment Canada and NAV CANADA stations nearest a location (within
-        50 km): temperature, dewpoint, humidity, wind and gusts, pressure, visibility, cloud cover, precipitation over
-        the past 1, 6 and 24 hours, snowfall and snow depth. Stations report different sets of readings, so a reading
-        missing at one station may be present at the next; readings that failed ECCC's automatic quality checks are left
-        out. A reading missing from a station's newest report can come from one up to an hour older; earlier_readings
-        gives the time of each such reading. Each station shows its elevation and distance, because a valley station can
-        differ a lot from a ridge nearby. For the forecast use get_forecast.
+        The latest measured weather at the Environment Canada and NAV CANADA stations nearest a location (within 50 km):
+        temperature, dewpoint, humidity, wind and gusts, pressure, visibility, cloud cover, precipitation over the past 1,
+        6 and 24 hours, snowfall and snow depth. Stations report different sets of readings; readings that failed ECCC's
+        quality checks are left out, and one missing from the newest report may come from an older report (earlier_readings
+        gives its time). For the forecast use get_forecast.
       TEXT
       location_arguments
       argument :limit, :integer, in: 1..MAX_STATIONS, default: 3, description: "Nearest stations to include."
       argument :lang, :language
+
+      output :stations, :array, "The nearest reporting stations, closest first."
 
       def call(args)
         lang = args.lang

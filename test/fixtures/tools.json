@@ -2,7 +2,7 @@
   {
     "name": "find_location",
     "title": "Find a location",
-    "description": "Resolve a Canadian place name (town, park, lake, mountain, river) or coordinates to matching places and the nearest Environment Canada forecast sites. Use it to disambiguate a name before other tools (several places can share one name: check type and province), or to see which forecast site covers a remote spot and how far away it is. Other tools accept the same location text directly, so call this only when the place is ambiguous or you need the candidates.",
+    "description": "Resolve a Canadian place name (town, park, lake, mountain, river) or coordinates to matching places and the nearest Environment Canada forecast sites. Other tools accept the same location text, so call this only when a name is ambiguous (check type and province) or to see which forecast site covers a remote spot.",
     "input_schema": {
       "type": "object",
       "properties": {
@@ -45,12 +45,40 @@
         }
       },
       "additionalProperties": false
+    },
+    "output_schema": {
+      "type": "object",
+      "properties": {
+        "query": {
+          "type": "string",
+          "description": "The place name searched for."
+        },
+        "candidates": {
+          "type": "array",
+          "description": "Matching places, best first."
+        },
+        "forecast_sites": {
+          "type": "array",
+          "description": "The nearest forecast sites."
+        },
+        "note": {
+          "type": "string",
+          "description": "Anything the caller should know about this result."
+        },
+        "attribution": {
+          "type": "string",
+          "description": "The data credit to pass on."
+        }
+      },
+      "required": [
+        "attribution"
+      ]
     }
   },
   {
     "name": "get_forecast",
     "title": "Get the weather forecast",
-    "description": "Environment Canada's forecast for the nearest of ~850 forecast sites: current conditions, the official human-written forecast by period (today, tonight, then about 6 days, including snow levels in the mountains where ECCC issues them), an hourly forecast, sunrise/sunset and active warning headlines. The result names the site used and its distance from the location; a site tens of km away, or at a different elevation, may not match conditions in the backcountry. For full alert text use get_alerts.",
+    "description": "Environment Canada's forecast for the nearest forecast site: current conditions, the official forecast by period (today, tonight, then about 6 days, with snow levels in the mountains where ECCC issues them), an hourly forecast, sunrise and sunset, and active warning headlines. The result names the site and its distance. For full alert text use get_alerts.",
     "input_schema": {
       "type": "object",
       "properties": {
@@ -88,12 +116,64 @@
         }
       },
       "additionalProperties": false
+    },
+    "output_schema": {
+      "type": "object",
+      "properties": {
+        "location": {
+          "type": "object",
+          "description": "The point the result is for."
+        },
+        "forecast_site": {
+          "type": "object",
+          "description": "The forecast site used and its distance."
+        },
+        "issued_at": {
+          "type": "string",
+          "description": "When ECCC issued the forecast."
+        },
+        "warnings": {
+          "type": "array",
+          "description": "Active warning headlines."
+        },
+        "current_conditions": {
+          "type": "object",
+          "description": "Conditions at the site now."
+        },
+        "forecast": {
+          "type": "array",
+          "description": "The forecast by period."
+        },
+        "hourly": {
+          "type": "array",
+          "description": "The hourly forecast."
+        },
+        "sun": {
+          "type": "object",
+          "description": "Sunrise and sunset."
+        },
+        "normals": {
+          "type": "string",
+          "description": "The period's normal temperatures, as ECCC words them."
+        },
+        "note": {
+          "type": "string",
+          "description": "Anything the caller should know about this result."
+        },
+        "attribution": {
+          "type": "string",
+          "description": "The data credit to pass on."
+        }
+      },
+      "required": [
+        "attribution"
+      ]
     }
   },
   {
     "name": "get_alerts",
     "title": "Get weather alerts",
-    "description": "Active Environment Canada weather alerts (warnings, watches, advisories and statements) for a location, with the official alert text exactly as issued. Alerts whose area contains the point are in \"alerts\"; alerts for areas within a few km (for example a coastline or a neighbouring zone) are listed briefly in \"nearby_alerts\". An empty \"alerts\" list means ECCC has no alert in effect there right now. Quote alert text as given; do not reword or shorten safety instructions.",
+    "description": "Active Environment Canada weather alerts (warnings, watches, advisories, statements) for a location, with the official text as issued. \"alerts\" are those whose area contains the point; \"nearby_alerts\" are brief entries for areas within a few km. An empty \"alerts\" list means none in effect. Quote alert text as given.",
     "input_schema": {
       "type": "object",
       "properties": {
@@ -124,12 +204,44 @@
         }
       },
       "additionalProperties": false
+    },
+    "output_schema": {
+      "type": "object",
+      "properties": {
+        "location": {
+          "type": "object",
+          "description": "The point the result is for."
+        },
+        "alerts": {
+          "type": "array",
+          "description": "Alerts whose area contains the point, most severe first."
+        },
+        "nearby_alerts": {
+          "type": "array",
+          "description": "Brief entries for alerts in areas within a few km."
+        },
+        "source_url": {
+          "type": "string",
+          "description": "The official alerts page."
+        },
+        "note": {
+          "type": "string",
+          "description": "Anything the caller should know about this result."
+        },
+        "attribution": {
+          "type": "string",
+          "description": "The data credit to pass on."
+        }
+      },
+      "required": [
+        "attribution"
+      ]
     }
   },
   {
     "name": "get_current_observations",
     "title": "Get current weather observations",
-    "description": "The latest measured weather at the Environment Canada and NAV CANADA stations nearest a location (within 50 km): temperature, dewpoint, humidity, wind and gusts, pressure, visibility, cloud cover, precipitation over the past 1, 6 and 24 hours, snowfall and snow depth. Stations report different sets of readings, so a reading missing at one station may be present at the next; readings that failed ECCC's automatic quality checks are left out. A reading missing from a station's newest report can come from one up to an hour older; earlier_readings gives the time of each such reading. Each station shows its elevation and distance, because a valley station can differ a lot from a ridge nearby. For the forecast use get_forecast.",
+    "description": "The latest measured weather at the Environment Canada and NAV CANADA stations nearest a location (within 50 km): temperature, dewpoint, humidity, wind and gusts, pressure, visibility, cloud cover, precipitation over the past 1, 6 and 24 hours, snowfall and snow depth. Stations report different sets of readings; readings that failed ECCC's quality checks are left out, and one missing from the newest report may come from an older report (earlier_readings gives its time). For the forecast use get_forecast.",
     "input_schema": {
       "type": "object",
       "properties": {
@@ -167,12 +279,36 @@
         }
       },
       "additionalProperties": false
+    },
+    "output_schema": {
+      "type": "object",
+      "properties": {
+        "location": {
+          "type": "object",
+          "description": "The point the result is for."
+        },
+        "stations": {
+          "type": "array",
+          "description": "The nearest reporting stations, closest first."
+        },
+        "note": {
+          "type": "string",
+          "description": "Anything the caller should know about this result."
+        },
+        "attribution": {
+          "type": "string",
+          "description": "The data credit to pass on."
+        }
+      },
+      "required": [
+        "attribution"
+      ]
     }
   },
   {
     "name": "get_river_conditions",
     "title": "Get river levels and flows",
-    "description": "Real-time water level (m) and flow (m3/s) at the Water Survey of Canada gauges nearest a location (within 50 km), with the change over the past 24 hours, the range over the past 3 days, and how today's flow compares with the historical mean flow for this month at the same gauge. Pass river to keep only gauges whose name contains it (\"Bow River\", \"Cheakamus\"). Real-time data are provisional and can be affected by ice. Water levels are relative to a local datum, so compare a level only with the same gauge. This is not a flood forecast; check provincial river forecast centres and get_alerts for warnings.",
+    "description": "Real-time water level (m) and flow (m3/s) at the Water Survey of Canada gauges nearest a location (within 50 km), with the change over 24 hours, the range over 3 days, and today's flow against the historical mean for this month. river keeps only gauges whose name contains it. Data are provisional and can be affected by ice; compare a level only with the same gauge. This is not a flood forecast: use get_alerts for warnings.",
     "input_schema": {
       "type": "object",
       "properties": {
@@ -215,12 +351,36 @@
         }
       },
       "additionalProperties": false
+    },
+    "output_schema": {
+      "type": "object",
+      "properties": {
+        "location": {
+          "type": "object",
+          "description": "The point the result is for."
+        },
+        "gauges": {
+          "type": "array",
+          "description": "The nearest gauges, closest first."
+        },
+        "note": {
+          "type": "string",
+          "description": "Anything the caller should know about this result."
+        },
+        "attribution": {
+          "type": "string",
+          "description": "The data credit to pass on."
+        }
+      },
+      "required": [
+        "attribution"
+      ]
     }
   },
   {
     "name": "get_air_quality",
     "title": "Get air quality",
-    "description": "The Air Quality Health Index (AQHI, 1 to 10+, higher is worse) at the nearest of about 150 AQHI locations (within 100 km): the latest hourly observation and the forecast for today, tonight, tomorrow and later, each with its risk category (low, moderate, high, very high) and the health messages for the general population and for people at risk (children, people over 65, people with heart or lung conditions). During wildfire smoke the forecast may also give an in-smoke value. health_messages holds the messages once for each risk category that appears.",
+    "description": "The Air Quality Health Index (AQHI, 1 to 10+, higher is worse) at the nearest AQHI location (within 100 km): the latest hourly observation and the forecast for today, tonight, tomorrow and later, each with its risk category and health messages for the general population and for people at risk.",
     "input_schema": {
       "type": "object",
       "properties": {
@@ -251,12 +411,56 @@
         }
       },
       "additionalProperties": false
+    },
+    "output_schema": {
+      "type": "object",
+      "properties": {
+        "location": {
+          "type": "object",
+          "description": "The point the result is for."
+        },
+        "aqhi_location": {
+          "type": "object",
+          "description": "The AQHI location used."
+        },
+        "current": {
+          "type": "object",
+          "description": "The latest hourly observation."
+        },
+        "forecast": {
+          "type": "object",
+          "description": "The AQHI forecast."
+        },
+        "health_messages": {
+          "type": "object",
+          "description": "Health messages, once per risk category."
+        },
+        "health_messages_source": {
+          "type": "string",
+          "description": "Where the health messages come from."
+        },
+        "source_url": {
+          "type": "string",
+          "description": "The official AQHI page."
+        },
+        "note": {
+          "type": "string",
+          "description": "Anything the caller should know about this result."
+        },
+        "attribution": {
+          "type": "string",
+          "description": "The data credit to pass on."
+        }
+      },
+      "required": [
+        "attribution"
+      ]
     }
   },
   {
     "name": "get_snow_outlook",
     "title": "Get the snow outlook",
-    "description": "Model guidance for snow at a point over the next 12, 24 or 48 hours, in four steps: the snow level (the height in metres above sea level below which snow turns to rain, from the 2.5 km HRDPS model), new snow as water equivalent (mm, from the 10 km RDPS model; 1 mm is roughly 1 cm of fresh snow, more in cold dry snow) and the probability of blowing snow. \"snow to the surface\" means the snow level is below the ground at this point (the model's terrain is smoothed over 2.5 km), so precipitation falls as snow. This is raw model output, not a forecaster's forecast and not an avalanche bulletin; for mountain text forecasts use get_forecast.",
+    "description": "Model guidance for snow at a point over the next 12, 24 or 48 hours, in four steps: the snow level (metres above sea level below which snow turns to rain, HRDPS 2.5 km), new snow as water equivalent (mm, RDPS 10 km) with an estimate in cm, and the probability of blowing snow. Raw model output, not a forecaster's forecast or an avalanche bulletin; for text forecasts use get_forecast.",
     "input_schema": {
       "type": "object",
       "properties": {
@@ -297,12 +501,56 @@
         }
       },
       "additionalProperties": false
+    },
+    "output_schema": {
+      "type": "object",
+      "properties": {
+        "location": {
+          "type": "object",
+          "description": "The point the result is for."
+        },
+        "step_hours": {
+          "type": "integer",
+          "description": "Hours in each step."
+        },
+        "steps": {
+          "type": "array",
+          "description": "The steps, each with its snow level, new snow and blowing snow probability."
+        },
+        "total_new_snow_water_mm": {
+          "type": "number",
+          "description": "New snow over all steps, as water equivalent."
+        },
+        "total_new_snow_cm_estimate": {
+          "type": "number",
+          "description": "The same in cm of snow at snow_to_liquid_ratio."
+        },
+        "snow_to_liquid_ratio": {
+          "type": "number",
+          "description": "Snow depth to water depth used for the cm estimates (10 means 10:1)."
+        },
+        "model_runs": {
+          "type": "array",
+          "description": "The model runs the values come from."
+        },
+        "note": {
+          "type": "string",
+          "description": "Anything the caller should know about this result."
+        },
+        "attribution": {
+          "type": "string",
+          "description": "The data credit to pass on."
+        }
+      },
+      "required": [
+        "attribution"
+      ]
     }
   },
   {
     "name": "get_marine_forecast",
     "title": "Get the marine forecast",
-    "description": "Environment Canada's marine forecast for the marine area at a location: coastal waters, large lakes (Great Lakes, Lake Winnipeg, Great Slave Lake and others) and Arctic waters. Gives wind (in knots), weather and visibility, waves, air temperature and freezing spray for today to tomorrow, the extended wind forecast for the following days, and the marine warnings in effect. A point on land (a harbour town, a beach) gets the nearest areas within 25 km, with their distance. Some areas are seasonal and say so in status. Wind and waves are as ECCC writes them; quote warnings as given. For weather alerts on land use get_alerts.",
+    "description": "Environment Canada's marine forecast for the marine area at a location (coastal waters, large lakes, Arctic waters): wind in knots, weather and visibility, waves, air temperature and freezing spray for today and tomorrow, the extended wind forecast, and marine warnings in effect. A point on land gets the nearest areas within 25 km. Quote warnings as given. For alerts on land use get_alerts.",
     "input_schema": {
       "type": "object",
       "properties": {
@@ -333,12 +581,40 @@
         }
       },
       "additionalProperties": false
+    },
+    "output_schema": {
+      "type": "object",
+      "properties": {
+        "location": {
+          "type": "object",
+          "description": "The point the result is for."
+        },
+        "marine_areas": {
+          "type": "array",
+          "description": "The marine areas, nearest first."
+        },
+        "source_url": {
+          "type": "string",
+          "description": "The official marine forecast page."
+        },
+        "note": {
+          "type": "string",
+          "description": "Anything the caller should know about this result."
+        },
+        "attribution": {
+          "type": "string",
+          "description": "The data credit to pass on."
+        }
+      },
+      "required": [
+        "attribution"
+      ]
     }
   },
   {
     "name": "get_climate_context",
     "title": "Get climate normals and records",
-    "description": "Climate context for a location and date, to judge whether a forecast is unusual: the daily records for that calendar day (highest and lowest temperatures, most precipitation and most snowfall, with the year of each) from Environment Canada's long-term climate extremes for the nearest of about 750 places (within 100 km, joining the records of nearby stations since as early as the 1840s; each span of records gives the years covered, with \"to\" only when the series has ended), and the monthly climate normals (1981-2010) at the nearest normals station (within 50 km): mean daily high and low, precipitation, rain, snowfall, days with precipitation or snow, snow depth and sunshine. The stations are usually in valleys and towns, so mountain conditions differ. date defaults to today.",
+    "description": "Climate context for a location and date, to judge whether a forecast is unusual: the daily records for that calendar day (highest and lowest temperatures, most precipitation and snowfall, with the year of each) from the nearest long-term climate station (within 100 km), and the monthly 1981-2010 climate normals at the nearest normals station (within 50 km). The stations are usually in valleys and towns, so mountain conditions differ. date defaults to today.",
     "input_schema": {
       "type": "object",
       "properties": {
@@ -374,12 +650,52 @@
         }
       },
       "additionalProperties": false
+    },
+    "output_schema": {
+      "type": "object",
+      "properties": {
+        "location": {
+          "type": "object",
+          "description": "The point the result is for."
+        },
+        "month": {
+          "type": "integer",
+          "description": "The month of the date."
+        },
+        "day": {
+          "type": "integer",
+          "description": "The day of the month."
+        },
+        "daily_records": {
+          "type": "object",
+          "description": "Records for the calendar day."
+        },
+        "monthly_normals": {
+          "type": "object",
+          "description": "Monthly climate normals."
+        },
+        "source_url": {
+          "type": "string",
+          "description": "The source of the data."
+        },
+        "note": {
+          "type": "string",
+          "description": "Anything the caller should know about this result."
+        },
+        "attribution": {
+          "type": "string",
+          "description": "The data credit to pass on."
+        }
+      },
+      "required": [
+        "attribution"
+      ]
     }
   },
   {
     "name": "get_radar_map",
     "title": "Get the weather radar map",
-    "description": "The latest weather radar around a location (updated every 6 minutes): a 512x512 PNG map of precipitation over a base map, the location ringed in red at its centre (or near it), plus the radar's rain rate (mm/h), snow rate (cm/h) at the point, the surface precipitation type detected at or next to it (left out when there is none), and the rate there 30 and 60 minutes ago. radius_km sets the area shown (25 to 200 km from the point). precipitation picks the map's colour scale, rain or snow; it defaults to snow from November to April. Colours run from light blue (lightest) through green, yellow, orange and red to purple (heaviest); light grey shading marks areas outside radar coverage. Radar can miss precipitation below the beam in mountains and far from radars, and can show echoes that do not reach the ground.",
+    "description": "The latest weather radar around a location (updated every 6 minutes): a 512x512 PNG of precipitation over a base map with the location ringed in red, plus the radar's rain and snow rates at the point, the surface precipitation type, and the rate 30 and 60 minutes ago. radius_km sets the area (25 to 200 km); precipitation picks the colour scale (see legend), by default snow from November to April. Radar can miss precipitation below the beam in mountains and far from radars, and can show echoes that do not reach the ground.",
     "input_schema": {
       "type": "object",
       "properties": {
@@ -434,6 +750,42 @@
         }
       },
       "additionalProperties": false
+    },
+    "output_schema": {
+      "type": "object",
+      "properties": {
+        "location": {
+          "type": "object",
+          "description": "The point the result is for."
+        },
+        "observed_at": {
+          "type": "string",
+          "description": "When the radar frame is from."
+        },
+        "at_point": {
+          "type": "object",
+          "description": "Rain and snow rates and the precipitation type at the point."
+        },
+        "past_hour": {
+          "type": "array",
+          "description": "The rate 30 and 60 minutes earlier."
+        },
+        "map": {
+          "type": "object",
+          "description": "The image's area, size and legend."
+        },
+        "note": {
+          "type": "string",
+          "description": "Anything the caller should know about this result."
+        },
+        "attribution": {
+          "type": "string",
+          "description": "The data credit to pass on."
+        }
+      },
+      "required": [
+        "attribution"
+      ]
     }
   }
 ]

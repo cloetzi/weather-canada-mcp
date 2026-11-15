@@ -60,15 +60,19 @@ module WeatherCanadaMCP
       tool_name "get_air_quality"
       title "Get air quality"
       description <<~TEXT
-        The Air Quality Health Index (AQHI, 1 to 10+, higher is worse) at the nearest of about 150 AQHI locations
-        (within 100 km): the latest hourly observation and the forecast for today, tonight, tomorrow and later, each
-        with its risk category (low, moderate, high, very high) and the health messages for the general population and
-        for people at risk (children, people over 65, people with heart or lung conditions). During wildfire smoke the
-        forecast may also give an in-smoke value. health_messages holds the messages once for each risk category that
-        appears.
+        The Air Quality Health Index (AQHI, 1 to 10+, higher is worse) at the nearest AQHI location (within 100 km): the
+        latest hourly observation and the forecast for today, tonight, tomorrow and later, each with its risk category and
+        health messages for the general population and for people at risk.
       TEXT
       location_arguments
       argument :lang, :language
+
+      output :aqhi_location, :object, "The AQHI location used."
+      output :current, :object, "The latest hourly observation."
+      output :forecast, :object, "The AQHI forecast."
+      output :health_messages, :object, "Health messages, once per risk category."
+      output :health_messages_source, :string, "Where the health messages come from."
+      output :source_url, :string, "The official AQHI page."
 
       def call(args)
         lang = args.lang

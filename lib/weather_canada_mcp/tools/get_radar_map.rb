@@ -40,15 +40,11 @@ module WeatherCanadaMCP
       tool_name "get_radar_map"
       title "Get the weather radar map"
       description <<~TEXT
-        The latest weather radar around a location (updated every 6 minutes): a 512x512 PNG map of precipitation over
-        a base map, the location ringed in red at its centre (or near it), plus the radar's rain rate (mm/h), snow rate
-        (cm/h) at the point, the surface precipitation type detected at or next to it (left out when there is none),
-        and the rate there 30 and 60 minutes ago. radius_km sets
-        the area shown (25 to 200 km from the point). precipitation picks the map's colour scale, rain or snow; it
-        defaults to snow from November to April. Colours run from light blue (lightest) through green, yellow, orange
-        and red to purple (heaviest); light grey shading marks areas outside radar coverage. Radar can miss
-        precipitation below the beam in mountains and far from radars, and can show echoes that do not reach the
-        ground.
+        The latest weather radar around a location (updated every 6 minutes): a 512x512 PNG of precipitation over a base
+        map with the location ringed in red, plus the radar's rain and snow rates at the point, the surface precipitation
+        type, and the rate 30 and 60 minutes ago. radius_km sets the area (25 to 200 km); precipitation picks the colour
+        scale (see legend), by default snow from November to April. Radar can miss precipitation below the beam in
+        mountains and far from radars, and can show echoes that do not reach the ground.
       TEXT
       location_arguments
       argument :radius_km, :integer, in: RADII, default: 100, description: "Distance from the point to the map's edges."
@@ -56,6 +52,11 @@ module WeatherCanadaMCP
       argument :include_image, :boolean, default: true,
                                          description: "Return the map image too. false gives only the readings, with fewer upstream requests."
       argument :lang, :language
+
+      output :observed_at, :string, "When the radar frame is from."
+      output :at_point, :object, "Rain and snow rates and the precipitation type at the point."
+      output :past_hour, :array, "The rate 30 and 60 minutes earlier."
+      output :map, :object, "The image's area, size and legend."
 
       def call(args)
         point = args.point

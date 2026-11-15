@@ -32,7 +32,7 @@ module WeatherCanadaMCP
         runner = self
         MCP::Tool.define(
           name: tool_class.tool_name, title: tool_class.title, description: tool_class.description,
-          input_schema: tool_class.input_schema, annotations: ANNOTATIONS.merge(title: tool_class.title)
+          input_schema: tool_class.input_schema, output_schema: tool_class.output_schema, annotations: ANNOTATIONS.merge(title: tool_class.title)
         ) { |**arguments| runner.call(tool_class, arguments.except(:server_context)) }
       end
 
@@ -127,7 +127,7 @@ module WeatherCanadaMCP
       def content(json, image)
         parts = [{ type: "text", text: json }]
         parts << { type: "image", data: [image.data].pack("m0"), mimeType: image.mime_type } if image.is_a?(Tools::Image)
-        MCP::Tool::Response.new(parts)
+        MCP::Tool::Response.new(parts, structured_content: JSON.parse(json))
       end
 
       def error(message) = MCP::Tool::Response.new([{ type: "text", text: message }], error: true)

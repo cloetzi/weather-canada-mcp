@@ -80,4 +80,25 @@ class ResultSnapshotsTest < Minitest::Test
     assert_empty used - vocabulary, "keys missing from #{VOCABULARY}: add them only if the CONTRIBUTING.md vocabulary has no name for them"
     assert_empty vocabulary & RETIRED
   end
+
+  def test_results_satisfy_their_tools_output_schemas
+    snapshots.each do |tool, result|
+      tool_class = WeatherCanadaMCP::Tools::Registry::ALL.find { |candidate| candidate.tool_name == tool }
+
+      MCP::Tool::OutputSchema.new(tool_class.output_schema).validate_result(result)
+    end
+  end
+
+  def test_structured_content_is_the_result_as_text_too
+    with_fake_eccc do |fake|
+      app = application(fake)
+      result = app.mcp_server.handle({ jsonrpc: "2.0", id: 1, method: "tools/call",
+                                       params: { name: "get_alerts", arguments: { lat: 53.54, lon: -113.49 } } }).fetch(:result)
+
+      assert_equal JSON.parse(result[:content].first[:text]), result[:structuredContent]
+      assert_includes app.mcp_server.handle({ jsonrpc: "2.0", id: 2, method: "tools/list" }).dig(:result, :tools).first.keys, :outputSchema
+    ensure
+      app&.close
+    end
+  end
 end

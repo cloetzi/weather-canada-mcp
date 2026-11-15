@@ -27,6 +27,9 @@ module WeatherCanadaMCP
         argument :limit, :integer, in: 1..MAX_STATIONS, default: 3, description: "Nearest stations to include."
         argument :lang, :language
 
+        output :stations, :array, "The nearest stations, closest first."
+        output :safety_note, :string, "A safety note to pass on."
+
         def call(args)
           point = args.point
           radius = args.radius_km

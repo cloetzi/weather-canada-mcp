@@ -40,6 +40,34 @@
         }
       },
       "additionalProperties": false
+    },
+    "output_schema": {
+      "type": "object",
+      "properties": {
+        "location": {
+          "type": "object",
+          "description": "The point the result is for."
+        },
+        "forecast": {
+          "type": "object",
+          "description": "The forecast covering the point."
+        },
+        "safety_note": {
+          "type": "string",
+          "description": "A safety note to pass on."
+        },
+        "note": {
+          "type": "string",
+          "description": "Anything the caller should know about this result."
+        },
+        "attribution": {
+          "type": "string",
+          "description": "The data credit to pass on."
+        }
+      },
+      "required": [
+        "attribution"
+      ]
     }
   },
   {
@@ -59,6 +87,30 @@
         }
       },
       "additionalProperties": false
+    },
+    "output_schema": {
+      "type": "object",
+      "properties": {
+        "products": {
+          "type": "array",
+          "description": "Every current avalanche forecast region with its ratings."
+        },
+        "safety_note": {
+          "type": "string",
+          "description": "A safety note to pass on."
+        },
+        "note": {
+          "type": "string",
+          "description": "Anything the caller should know about this result."
+        },
+        "attribution": {
+          "type": "string",
+          "description": "The data credit to pass on."
+        }
+      },
+      "required": [
+        "attribution"
+      ]
     }
   },
   {
@@ -116,6 +168,34 @@
         }
       },
       "additionalProperties": false
+    },
+    "output_schema": {
+      "type": "object",
+      "properties": {
+        "location": {
+          "type": "object",
+          "description": "The point the result is for."
+        },
+        "stations": {
+          "type": "array",
+          "description": "The nearest stations, closest first."
+        },
+        "safety_note": {
+          "type": "string",
+          "description": "A safety note to pass on."
+        },
+        "note": {
+          "type": "string",
+          "description": "Anything the caller should know about this result."
+        },
+        "attribution": {
+          "type": "string",
+          "description": "The data credit to pass on."
+        }
+      },
+      "required": [
+        "attribution"
+      ]
     }
   },
   {
@@ -173,6 +253,42 @@
         }
       },
       "additionalProperties": false
+    },
+    "output_schema": {
+      "type": "object",
+      "properties": {
+        "location": {
+          "type": "object",
+          "description": "The point the result is for."
+        },
+        "from": {
+          "type": "string",
+          "description": "First day covered."
+        },
+        "to": {
+          "type": "string",
+          "description": "Last day covered."
+        },
+        "reports": {
+          "type": "array",
+          "description": "Public field reports, newest first."
+        },
+        "safety_note": {
+          "type": "string",
+          "description": "A safety note to pass on."
+        },
+        "note": {
+          "type": "string",
+          "description": "Anything the caller should know about this result."
+        },
+        "attribution": {
+          "type": "string",
+          "description": "The data credit to pass on."
+        }
+      },
+      "required": [
+        "attribution"
+      ]
     }
   }
 ]
