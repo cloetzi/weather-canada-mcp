@@ -1,0 +1,36 @@
+{
+  "location": {
+    "lat": 50.12,
+    "lon": -122.96,
+    "timezone": "America/Vancouver"
+  },
+  "observed_at": "2026-11-15T11:30:00-08:00",
+  "at_point": {
+    "snow_cm_per_h": 0,
+    "rain_mm_per_h": 0
+  },
+  "past_hour": [
+    {
+      "time": "2026-11-15T11:00:00-08:00",
+      "snow_cm_per_h": 0
+    },
+    {
+      "time": "2026-11-15T10:30:00-08:00",
+      "snow_cm_per_h": 0
+    }
+  ],
+  "map": {
+    "precipitation": "snow",
+    "radius_km": 100,
+    "width": 512,
+    "height": 512,
+    "bounds": {
+      "min_lat": 49.20169,
+      "min_lon": -124.35044,
+      "max_lat": 50.99831,
+      "max_lon": -121.54956
+    },
+    "legend": "cm/h: light blue 0.1, cyan 0.3, greens 0.5 to 1, yellow 1.5, orange 2 to 3, red 4 to 5, magenta and purple 7.5 to 20"
+  },
+  "attribution": "Data Source: Environment and Climate Change Canada. Unofficial tool, not affiliated with or endorsed by ECCC. Base map: Natural Resources Canada, Canada Base Map (CBMT), Open Government Licence - Canada."
+}

@@ -11,10 +11,18 @@ module WeatherCanadaMCP
       STYLES = { "rain" => "Radar-Rain_14colors", "snow" => "Radar-Snow_14colors" }.freeze
       RATE_FIELDS = { "rain" => :rain_mm_per_h, "snow" => :snow_cm_per_h }.freeze
       LEGENDS = {
-        "rain" => "mm/h: light blue 0.1, cyan 1, greens 2 to 12, yellow 16, orange 24 to 32, red 50 to 64, magenta and " \
-                  "purple 100 to 200",
-        "snow" => "cm/h: light blue 0.1, cyan 0.3, greens 0.5 to 1, yellow 1.5, orange 2 to 3, red 4 to 5, magenta and " \
-                  "purple 7.5 to 20"
+        "en" => {
+          "rain" => "mm/h: light blue 0.1, cyan 1, greens 2 to 12, yellow 16, orange 24 to 32, red 50 to 64, magenta and " \
+                    "purple 100 to 200",
+          "snow" => "cm/h: light blue 0.1, cyan 0.3, greens 0.5 to 1, yellow 1.5, orange 2 to 3, red 4 to 5, magenta and " \
+                    "purple 7.5 to 20"
+        },
+        "fr" => {
+          "rain" => "mm/h : bleu pâle 0,1, cyan 1, verts 2 à 12, jaune 16, orange 24 à 32, rouge 50 à 64, magenta et " \
+                    "violet 100 à 200",
+          "snow" => "cm/h : bleu pâle 0,1, cyan 0,3, verts 0,5 à 1, jaune 1,5, orange 2 à 3, rouge 4 à 5, magenta et " \
+                    "violet 7,5 à 20"
+        }
       }.freeze
       TYPE_LAYER = "Radar_1km_SfcPrecipType"
       COVERAGE_LAYER = "RADAR_COVERAGE_RRAI.INV"
@@ -40,22 +48,23 @@ module WeatherCanadaMCP
         defaults to snow from November to April. Colours run from light blue (lightest) through green, yellow, orange
         and red to purple (heaviest); light grey shading marks areas outside radar coverage. Radar can miss
         precipitation below the beam in mountains and far from radars, and can show echoes that do not reach the
-        ground. Times are UTC (ISO 8601).
+        ground.
       TEXT
       location_arguments
       argument :radius_km, :integer, in: RADII, default: 100, description: "Distance from the point to the map's edges."
       argument :precipitation, :string, in: RATE_LAYERS.keys, description: "The map's colour scale: rain or snow."
+      argument :include_image, :boolean, default: true,
+                                         description: "Return the map image too. false gives only the readings, with fewer upstream requests."
       argument :lang, :language
 
       def call(args)
         point = args.point
-        radius = args.radius_km
         kind = precipitation(args.precipitation)
         latest = wms_value(RATE_LAYERS.fetch(kind), point, ttl: LATEST_TTL)
         at = time(latest&.time)
         return { location: point.to_h, note: "The radar has no image for this location right now." } unless at
 
-        radar(point, radius, kind, latest, at)
+        radar(args, kind, latest, at)
       end
 
       private
@@ -66,37 +75,56 @@ module WeatherCanadaMCP
         kind
       end
 
-      def radar(point, radius, kind, latest, at)
-        bbox = Geo.bbox(snap(point.lat), snap(point.lon), radius)
+      def radar(args, kind, latest, at)
+        point = args.point
         other = RATE_LAYERS.keys.find { |key| key != kind }
-        other_rate, type, *history, radar, coverage, (base_png, base_error) = fetch_all(point, bbox, kind, other, at)
-        marker = marker(point, bbox)
-        image = composed([kind, at.to_i, bbox, marker, base_png ? 1 : 0]) do
-          Maps::Compositor.compose([coverage, radar], width: SIZE, height: SIZE, marker:, base: base_png)
-        end
-        data = { location: point.to_h, radar_time: at.utc.iso8601, **readings(kind, other, at, [latest, other_rate, type, history]),
-                 map: map_info(kind, radius, bbox, image.base_error || base_error) }
+        bbox = Geo.bbox(snap(point.lat), snap(point.lon), args.radius_km)
+        other_rate, type, *history, radar, coverage, (base_png, base_error) = fetch_all(args, bbox, [kind, other], at)
+        data = { location: point.to_h, observed_at: at, **readings(kind, other, at, [latest, other_rate, type, history]) }
+        return data.merge(map: { precipitation: kind, legend: LEGENDS.dig(args.lang, kind) }) unless args.include_image
+
+        with_image(data, args, [kind, at, bbox], [coverage, radar], [base_png, base_error])
+      end
+
+      def with_image(data, args, (kind, at, bbox), layers, (base_png, base_error))
+        image = compose(args.point, bbox, [kind, at], layers, base_png)
+        data[:map] = map_info(kind, args, bbox, image.base_error || base_error)
         credits = base_png && !image.base_error ? [self.class.attribution, Sources::NRCan::Basemap::ATTRIBUTION] : []
         Result.new(data:, attributions: credits, image: Tools::Image.new(data: image.png, mime_type: "image/png"))
       end
 
+      def compose(point, bbox, (kind, at), layers, base_png)
+        marker = marker(point, bbox)
+        composed([kind, at.to_i, bbox, marker, base_png ? 1 : 0]) do
+          Maps::Compositor.compose(layers, width: SIZE, height: SIZE, marker:, base: base_png)
+        end
+      end
+
       def readings(kind, other, at, (latest, other_rate, type, history))
         { at_point: { RATE_FIELDS.fetch(kind) => rate(latest), RATE_FIELDS.fetch(other) => rate(other_rate),
-                      precipitation_type: type&.label, precipitation_type_time: type&.time },
+                      precipitation_type: type&.label, precipitation_type_time: time(type&.time) },
           past_hour: HISTORY_MINUTES.zip(history).map do |minutes, found|
-            { time: (at - (minutes * 60)).utc.iso8601, RATE_FIELDS.fetch(kind) => rate(found) }
+            { time: at - (minutes * 60), RATE_FIELDS.fetch(kind) => rate(found) }
           end }
       end
 
-      # [other rate, precipitation type, *rates in the past hour, radar PNG, coverage PNG, [base map PNG, note]].
-      def fetch_all(point, bbox, kind, other, at)
+      # [other rate, precipitation type, *rates in the past hour] and, with an image, [radar PNG, coverage PNG,
+      # [base map PNG, note]].
+      def fetch_all(args, bbox, (kind, other), at)
+        tasks = value_tasks(args.point, kind, other, at)
+        tasks += image_tasks(bbox, kind, at) if args.include_image
+        concurrently(tasks, &:call)
+      end
+
+      def value_tasks(point, kind, other, at)
         layer = RATE_LAYERS.fetch(kind)
+        [-> { wms_value(RATE_LAYERS.fetch(other), point, time: at, ttl: FRAME_TTL) }, -> { wms_value(TYPE_LAYER, point, ttl: LATEST_TTL) },
+         *HISTORY_MINUTES.map { |minutes| -> { wms_value(layer, point, time: at - (minutes * 60), ttl: FRAME_TTL) } }]
+      end
+
+      def image_tasks(bbox, kind, at)
         map = ->(name, style) { wms.get_map(name, bbox, width: SIZE, height: SIZE, style:, time: at, ttl: FRAME_TTL) }
-        concurrently(
-          [-> { wms_value(RATE_LAYERS.fetch(other), point, time: at, ttl: FRAME_TTL) }, -> { wms_value(TYPE_LAYER, point, ttl: LATEST_TTL) },
-           *HISTORY_MINUTES.map { |minutes| -> { wms_value(layer, point, time: at - (minutes * 60), ttl: FRAME_TTL) } },
-           -> { map.call(layer, STYLES.fetch(kind)) }, -> { map.call(COVERAGE_LAYER, COVERAGE_STYLE) }, -> { base_map(bbox) }], &:call
-        )
+        [-> { map.call(RATE_LAYERS.fetch(kind), STYLES.fetch(kind)) }, -> { map.call(COVERAGE_LAYER, COVERAGE_STYLE) }, -> { base_map(bbox) }]
       end
 
       def snap(degrees) = ((degrees / SNAP).round * SNAP).round(2)
@@ -126,10 +154,10 @@ module WeatherCanadaMCP
         end
       end
 
-      def map_info(kind, radius, bbox, base_error)
+      def map_info(kind, args, bbox, base_error)
         min_lon, min_lat, max_lon, max_lat = bbox
-        info = { precipitation: kind, radius_km: radius, width: SIZE, height: SIZE,
-                 bounds: { min_lat:, min_lon:, max_lat:, max_lon: }, legend: LEGENDS.fetch(kind) }
+        info = { precipitation: kind, radius_km: args.radius_km, width: SIZE, height: SIZE,
+                 bounds: { min_lat:, min_lon:, max_lat:, max_lon: }, legend: LEGENDS.dig(args.lang, kind) }
         return info unless base_error
 
         info.merge(note: "The base map could not be used (#{base_error}); the radar is drawn on white.")

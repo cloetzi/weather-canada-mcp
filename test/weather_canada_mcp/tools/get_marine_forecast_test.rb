@@ -26,7 +26,7 @@ class GetMarineForecastTest < Minitest::Test
 
     assert_equal ["Howe Sound", "Pacific Coast", "Georgia Basin"], area.values_at("name", "region", "sub_region")
     refute area.key?("distance_km")
-    assert_equal "2026-11-15T17:30:00Z", area["issued_at"]
+    assert_equal "2026-11-15T09:30:00-08:00", area["issued_at"]
     forecast = area["forecast"].sole
 
     assert_equal "Today Tonight and Monday.", forecast["period"]
@@ -37,7 +37,7 @@ class GetMarineForecastTest < Minitest::Test
   def test_extended_forecast_with_spaces_closed_up
     extended = marine(**HOWE_SOUND).first.dig("marine_areas", 0, "extended_forecast")
 
-    assert_equal "2026-11-15T11:00:00Z", extended["issued_at"]
+    assert_equal "2026-11-15T03:00:00-08:00", extended["issued_at"]
     assert_equal(%w[Tuesday Wednesday Thursday], extended["periods"].map { |period| period["period"] })
     assert_equal "Wind northerly outflow 15 knots increasing to northerly outflow 25 in the afternoon.", extended.dig("periods", 0, "forecast")
   end

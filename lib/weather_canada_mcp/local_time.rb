@@ -3,7 +3,7 @@
 require "date"
 
 module WeatherCanadaMCP
-  # Local calendar dates in Canadian time zones, without a time zone database: each zone's standard offset and whether
+  # Local calendar dates and times in Canadian time zones, without a time zone database: each zone's standard offset and whether
   # it keeps daylight time (second Sunday in March to first Sunday in November, at 02:00 local). Unknown or missing
   # zones use UTC-8, Canada's westernmost offset, so a day still counts as today while it is today anywhere in Canada.
   module LocalTime
@@ -29,6 +29,16 @@ module WeatherCanadaMCP
     FALLBACK = [-8, false].freeze
 
     module_function
+
+    def known?(zone) = ZONES.key?(zone.to_s)
+
+    # The time as ISO 8601 with the zone's UTC offset at that moment ("2026-11-15T08:00:00-08:00"). An unknown or nil zone
+    # gives UTC ("...Z").
+    def iso8601(time, zone)
+      return time.utc.iso8601 unless known?(zone)
+
+      time.getlocal((offset_hours(time, zone) * 3600).round).iso8601
+    end
 
     def date(time, zone) = (time.utc + (offset_hours(time, zone) * 3600)).to_date
 

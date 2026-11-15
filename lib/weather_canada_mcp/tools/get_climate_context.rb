@@ -53,7 +53,7 @@ module WeatherCanadaMCP
 
       private
 
-      # The local calendar day at the point (from its longitude, close enough for a date), unless one is given.
+      # The local calendar day at the point, unless one is given.
       def month_day(date, point)
         return local_today(point) if date.nil?
 
@@ -64,8 +64,8 @@ module WeatherCanadaMCP
       end
 
       def local_today(point)
-        local = now.utc + ((point.lon / 15).round * 3600)
-        [local.month, local.day]
+        today = LocalTime.date(now, point.zone)
+        [today.month, today.day]
       end
 
       def daily(collection, bbox, month, day)
@@ -142,7 +142,7 @@ module WeatherCanadaMCP
                                   properties: "NORMAL_ID,VALUE,PERIOD_BEGIN,PERIOD_END")
         rows = Array(data["features"]).filter_map { |feature| feature["properties"] }.to_h { |row| [row["NORMAL_ID"], row] }
         first = rows.values.first || {}
-        { station: { name: station.dig("properties", "STATION_NAME"), climate_id: id, distance_km: round_km(distance) },
+        { station: { name: station.dig("properties", "STATION_NAME"), id:, distance_km: round_km(distance) },
           period: ("#{first["PERIOD_BEGIN"]}-#{first["PERIOD_END"]}" if first["PERIOD_BEGIN"]),
           **NORMAL_IDS.to_h { |field, normal_id| [field, rows.dig(normal_id, "VALUE")] } }
       end

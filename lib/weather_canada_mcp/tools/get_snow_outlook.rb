@@ -26,7 +26,7 @@ module WeatherCanadaMCP
         equivalent (mm, from the 10 km RDPS model; 1 mm is roughly 1 cm of fresh snow, more in cold dry snow) and the
         probability of blowing snow. "snow to the surface" means the snow level is below the ground at this point (the
         model's terrain is smoothed over 2.5 km), so precipitation falls as snow. This is raw model output, not a forecaster's forecast and not an avalanche
-        bulletin; for mountain text forecasts use get_forecast. Times are UTC (ISO 8601).
+        bulletin; for mountain text forecasts use get_forecast.
       TEXT
       location_arguments
       argument :hours, :integer, in: STEP_HOURS.keys, default: 24, description: "How far ahead to look: 12, 24 or 48 hours."
@@ -50,8 +50,8 @@ module WeatherCanadaMCP
           [-> { snow_level(point, to, lang) }, -> { wms_value("RDPS_10km_Snow-Accum#{hours}h", point, time: to) },
            -> { wms_value(BLOWING_SNOW, point, time: to) }], &:call
         )
-        { from: from.iso8601, to: to.iso8601, **level, new_snow_water_mm: snow&.value&.round(1),
-          blowing_snow_probability_pct: blowing&.value&.round, reference_times: [level[:run], snow&.reference_time].compact }
+        { valid_from: from, valid_until: to, **level, new_snow_water_mm: snow&.value&.round(1),
+          blowing_snow_probability_pct: blowing&.value&.round, reference_times: [level[:run], time(snow&.reference_time)].compact }
       end
 
       # The HRDPS covers southern Canada; north of it the RDPS fills in. A negative value is a code, not a height; one
@@ -60,10 +60,10 @@ module WeatherCanadaMCP
         SNOW_LEVEL.each do |layer|
           found = wms_value(layer, point, time:)
           next unless found
-          return { snow_level_m: (found.value / 10.0).round * 10, run: found.reference_time } unless found.value.negative?
+          return { snow_level_m: (found.value / 10.0).round * 10, run: time(found.reference_time) } unless found.value.negative?
 
           code = SNOW_LEVEL_CODES[found.value.round]
-          return { snow_level: code&.dig(lang), run: found.reference_time }
+          return { snow_level: code&.dig(lang), run: time(found.reference_time) }
         end
         {}
       end
@@ -74,7 +74,7 @@ module WeatherCanadaMCP
         amounts = steps.filter_map { |entry| entry[:new_snow_water_mm] }
         result = { location: point.to_h, step_hours: step, steps:, total_new_snow_water_mm: (amounts.sum.round(1) if amounts.any?),
                    model_runs: runs }
-        missing = steps.count { |entry| entry.except(:from, :to).values.all?(&:nil?) }
+        missing = steps.count { |entry| entry.except(:valid_from, :valid_until).values.all?(&:nil?) }
         if missing.positive?
           result[:note] = "The models have no values for #{missing} of the steps (beyond the latest run, or outside the model area)."
         end

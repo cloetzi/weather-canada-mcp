@@ -1,0 +1,77 @@
+{
+  "location": {
+    "lat": 50.12,
+    "lon": -122.96,
+    "timezone": "America/Vancouver"
+  },
+  "stations": [
+    {
+      "name": "WHISTLER - NESTERS",
+      "id": "1100875",
+      "provider": "MSC",
+      "elevation_m": 661.8,
+      "distance_km": 1.1,
+      "observed_at": "2026-11-15T10:41:00-08:00",
+      "observations": {
+        "temperature_c": 6.5,
+        "dewpoint_c": 4.2,
+        "humidity_pct": 86,
+        "pressure_station_kpa": 92.93,
+        "precipitation_past_hour_mm": 0
+      }
+    },
+    {
+      "name": "Whistler",
+      "id": "1048899",
+      "provider": "NAV CANADA",
+      "elevation_m": 657.8,
+      "distance_km": 6.7,
+      "observed_at": "2026-11-15T10:28:00-08:00",
+      "observations": {
+        "temperature_c": 6.1,
+        "dewpoint_c": 4.7,
+        "humidity_pct": 91,
+        "wind_speed_kmh": 0.0,
+        "pressure_sea_level_kpa": 100.63,
+        "pressure_station_kpa": 92.94,
+        "visibility_km": 19.31,
+        "cloud_cover_pct": 100,
+        "precipitation_past_6h_mm": 12.4,
+        "max_temperature_past_24h_c": 8.3,
+        "min_temperature_past_24h_c": 5.2
+      },
+      "earlier_readings": {
+        "cloud_cover_pct": "2026-11-15T10:00:00-08:00",
+        "precipitation_past_6h_mm": "2026-11-15T10:00:00-08:00",
+        "max_temperature_past_24h_c": "2026-11-15T10:00:00-08:00",
+        "min_temperature_past_24h_c": "2026-11-15T10:00:00-08:00"
+      }
+    },
+    {
+      "name": "CALLAGHAN VALLEY",
+      "id": "1101300",
+      "provider": "MSC",
+      "elevation_m": 887.4,
+      "distance_km": 11,
+      "observed_at": "2026-11-15T10:00:00-08:00",
+      "observations": {
+        "temperature_c": 4.7,
+        "dewpoint_c": 3.9,
+        "humidity_pct": 94,
+        "wind_speed_kmh": 4.1,
+        "wind_direction": "S",
+        "wind_direction_deg": 171,
+        "max_wind_past_hour_kmh": 30.1,
+        "pressure_sea_level_kpa": 100.61,
+        "pressure_station_kpa": 90.39,
+        "precipitation_past_hour_mm": 1.0,
+        "precipitation_past_6h_mm": 12.4,
+        "precipitation_past_24h_mm": 39.8,
+        "snow_depth_cm": 3,
+        "max_temperature_past_24h_c": 6.2,
+        "min_temperature_past_24h_c": 3.8
+      }
+    }
+  ],
+  "attribution": "Data Source: Environment and Climate Change Canada. Unofficial tool, not affiliated with or endorsed by ECCC."
+}

@@ -14,6 +14,8 @@ module WeatherCanadaMCP
       SPARE_STATIONS = 3
       STALE_AFTER = 3 * 3600
       QUALITY_PASSED = 100
+      # SWOB reports pressure in hPa; results are in kPa.
+      HECTOPASCALS = %i[pressure_sea_level_kpa pressure_station_kpa].freeze
       # Output field => SWOB elements, preferred first.
       FIELDS = {
         temperature_c: %w[air_temp],
@@ -21,8 +23,8 @@ module WeatherCanadaMCP
         humidity_pct: %w[rel_hum],
         wind_gust_kmh: %w[max_wnd_gst_spd_10m_pst10mts],
         max_wind_past_hour_kmh: %w[max_wnd_spd_10m_pst1hr],
-        pressure_sea_level_hpa: %w[mslp],
-        pressure_station_hpa: %w[stn_pres],
+        pressure_sea_level_kpa: %w[mslp],
+        pressure_station_kpa: %w[stn_pres],
         visibility_km: %w[vis],
         cloud_cover_pct: %w[tot_cld_amt],
         precipitation_past_hour_mm: %w[pcpn_amt_pst1hr],
@@ -46,16 +48,16 @@ module WeatherCanadaMCP
         missing at one station may be present at the next; readings that failed ECCC's automatic quality checks are left
         out. A reading missing from a station's newest report can come from one up to an hour older; earlier_readings
         gives the time of each such reading. Each station shows its elevation and distance, because a valley station can
-        differ a lot from a ridge nearby. Times are UTC (ISO 8601). For the forecast use get_forecast.
+        differ a lot from a ridge nearby. For the forecast use get_forecast.
       TEXT
       location_arguments
-      argument :stations, :integer, in: 1..MAX_STATIONS, default: 3, description: "Nearest stations to include."
+      argument :limit, :integer, in: 1..MAX_STATIONS, default: 3, description: "Nearest stations to include."
       argument :lang, :language
 
       def call(args)
         lang = args.lang
         point = args.point
-        limit = args.stations
+        limit = args.limit
         stations = reporting_stations(point, limit, lang)
         result = { location: point.to_h, stations: }
         if stations.empty?
@@ -80,9 +82,9 @@ module WeatherCanadaMCP
         newest = reports.first
         return unless newest
 
-        info[:observed_at] = newest[:at].utc.iso8601
+        info[:observed_at] = newest[:at]
         info[:note] = "The latest report is more than #{STALE_AFTER / 3600} hours old." if now - newest[:at] > STALE_AFTER
-        info.merge(observations(reports.select { |report| newest[:at] - report[:at] <= MERGE_WINDOW }))
+        info.merge(observations(reports.select { |report| newest[:at] - report[:at] <= MERGE_WINDOW }, lang))
       rescue Sources::Error => e
         info.merge(note: "This station's reports could not be fetched: #{e.message}")
       end
@@ -109,12 +111,13 @@ module WeatherCanadaMCP
 
       # {observations:, earlier_readings:}: each value with the time of the report it came from when that is not the
       # newest report.
-      def observations(reports)
+      def observations(reports, lang)
         found = FIELDS.to_h { |field, elements| [field, first_reading(reports, elements)] }.compact
+        found = found.to_h { |field, (value, at)| [field, [HECTOPASCALS.include?(field) ? (value / 10.0).round(3) : value, at]] }
         first = %i[temperature_c dewpoint_c humidity_pct]
-        found = { **found.slice(*first), **wind(reports), **found.except(*first) }
+        found = { **found.slice(*first), **wind(reports, lang), **found.except(*first) }
         newest = reports.first[:at]
-        earlier = found.filter_map { |field, (_, at)| [field, at.utc.iso8601] if at != newest }.to_h
+        earlier = found.filter_map { |field, (_, at)| [field, at] if at != newest }.to_h
         { observations: found.transform_values(&:first), earlier_readings: (earlier unless earlier.empty?) }
       end
 
@@ -130,7 +133,7 @@ module WeatherCanadaMCP
       end
 
       # Direction is left out in calm air, where stations report 0.
-      def wind(reports)
+      def wind(reports, lang)
         reports.each do |report|
           WIND.each do |speed_element, direction_element|
             speed = reading(report[:values], speed_element)
@@ -138,7 +141,9 @@ module WeatherCanadaMCP
 
             wind = { wind_speed_kmh: [speed, report[:at]] }
             direction = reading(report[:values], direction_element) unless speed.zero?
-            return direction.nil? ? wind : wind.merge(wind_direction_deg: [direction, report[:at]])
+            return wind if direction.nil?
+
+            return wind.merge(wind_direction: [Geo.compass(direction, lang), report[:at]], wind_direction_deg: [direction, report[:at]])
           end
         end
         {}

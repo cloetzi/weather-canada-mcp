@@ -11,14 +11,15 @@ class GetAirQualityTest < Minitest::Test
     result, error = air_quality(**KELOWNA)
 
     refute error
-    assert_equal({ "id" => "JAFUV", "name" => "Central Okanagan", "distance_km" => 1.4 }, result["aqhi_location"])
-    assert_equal({ "observed_at" => "2026-11-15T17:00:00Z", "aqhi" => 1.5, "aqhi_display" => "1", "risk" => "low" }, result["current"])
+    assert_equal({ "id" => "JAFUV", "name" => "Central Okanagan", "distance_km" => 1.4, "lat" => 49.8833333333333, "lon" => -119.483333333333 },
+                 result["aqhi_location"])
+    assert_equal({ "observed_at" => "2026-11-15T09:00:00-08:00", "aqhi" => 1.5, "aqhi_display" => "1", "risk" => "low" }, result["current"])
   end
 
   def test_forecast_periods_from_the_latest_publication
     forecast = air_quality(**KELOWNA).first["forecast"]
 
-    assert_equal "2026-11-15T13:00:00Z", forecast["published_at"]
+    assert_equal "2026-11-15T05:00:00-08:00", forecast["issued_at"]
     assert_equal(["Today", "Tonight", "Tomorrow", "Tomorrow Night"], forecast["periods"].map { |period| period["period"] })
     assert_equal [2, "low"], forecast["periods"].first.values_at("aqhi", "risk")
   end

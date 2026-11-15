@@ -16,7 +16,7 @@ module WeatherCanadaMCP
         the official alert text exactly as issued. Alerts whose area contains the point are in "alerts"; alerts for
         areas within a few km (for example a coastline or a neighbouring zone) are listed briefly in "nearby_alerts".
         An empty "alerts" list means ECCC has no alert in effect there right now. Quote alert text as given; do not
-        reword or shorten safety instructions. Times are UTC (ISO 8601).
+        reword or shorten safety instructions.
       TEXT
       location_arguments
       argument :lang, :language
@@ -55,8 +55,8 @@ module WeatherCanadaMCP
           headline: field(properties, "alert_name", lang), type: properties["alert_type"], code: properties["alert_code"],
           colour: field(properties, "risk_colour", lang), status: field(properties, "status", lang),
           area: field(properties, "feature_name", lang), province: properties["province"],
-          issued_at: properties["publication_datetime"], valid_from: properties["validity_datetime"], event_ends_at: properties["event_end_datetime"],
-          expires_at: properties["expiration_datetime"],
+          issued_at: time(properties["publication_datetime"]), valid_from: time(properties["validity_datetime"]),
+          event_ends_at: time(properties["event_end_datetime"]), expires_at: time(properties["expiration_datetime"]),
           confidence: field(properties, "confidence", lang), impact: field(properties, "impact", lang),
           text: field(properties, "alert_text", lang)
         }
@@ -65,12 +65,12 @@ module WeatherCanadaMCP
       def brief(feature, lang)
         properties = feature["properties"]
         { headline: field(properties, "alert_name", lang), type: properties["alert_type"], area: field(properties, "feature_name", lang),
-          expires_at: properties["expiration_datetime"] }
+          expires_at: time(properties["expiration_datetime"]) }
       end
 
       def field(properties, name, lang) = properties["#{name}_#{lang}"] || properties["#{name}_en"]
 
-      def severity_order(alert) = [SEVERITY.fetch(alert[:type], 9), alert[:issued_at].to_s]
+      def severity_order(alert) = [SEVERITY.fetch(alert[:type], 9), alert[:issued_at].to_i]
     end
   end
 end

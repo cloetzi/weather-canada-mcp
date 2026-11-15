@@ -14,8 +14,8 @@ module WeatherCanadaMCP
         away it is. Other tools accept the same location text directly, so call this only when the place is ambiguous
         or you need the candidates.
       TEXT
-      argument :query, :string, max_length: MAX_LOCATION_LENGTH,
-                                description: "Place name, optionally with a province (\"Garibaldi, BC\"). Omit when giving lat and lon."
+      argument :location, :string, max_length: MAX_LOCATION_LENGTH,
+                                   description: "Place name, optionally with a province (\"Garibaldi, BC\"). Omit when giving lat and lon."
       argument :province, :string, max_length: 40, description: "Only places in this province or territory: code or name (\"AB\")."
       coordinate_arguments
       argument :limit, :integer, in: 1..MAX_CANDIDATES, default: 5, description: "Most candidates to return."
@@ -32,8 +32,8 @@ module WeatherCanadaMCP
       private
 
       def by_name(args)
-        query = args.query
-        raise InvalidArguments, "Give a query, or lat and lon." if query.nil? || query.strip.empty?
+        query = args.location
+        raise InvalidArguments, "Give a location, or lat and lon." if query.nil? || query.strip.empty?
 
         name, province = Places::Gazetteer.split_province(query)
         if args.province
@@ -69,7 +69,7 @@ module WeatherCanadaMCP
 
       def sites(lat, lon, lang)
         forecast_sites.nearest_sites(lat, lon, limit: 3).map do |distance, site|
-          { site_id: site.id, name: site.name_in(lang), region: site.region_in(lang), lat: site.lat, lon: site.lon,
+          { id: site.id, name: site.name_in(lang), region: site.region_in(lang), lat: site.lat, lon: site.lon,
             distance_km: round_km(distance) }
         end
       end

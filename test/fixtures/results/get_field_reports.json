@@ -1,0 +1,101 @@
+{
+  "location": {
+    "lat": 50.41,
+    "lon": -116.5,
+    "timezone": "America/Edmonton"
+  },
+  "from": "2026-10-16",
+  "to": "2026-11-15",
+  "reports": [
+    {
+      "id": "5dd6e794-9cd4-43c3-a6c2-4537a0fede34",
+      "url": "https://avalanche.ca/mountain-information-network/submissions/5dd6e794-9cd4-43c3-a6c2-4537a0fede34",
+      "title": "Farnham season opener",
+      "observed_on": "2026-11-12",
+      "submitted_at": "2026-11-13T20:31:38-07:00",
+      "region": "Purcells",
+      "distance_km": 0.7,
+      "location": {
+        "lat": 50.411,
+        "lon": -116.51
+      },
+      "activities": [
+        "skiing"
+      ],
+      "saw_avalanche": "yes",
+      "caught_in_avalanche": "no",
+      "instability": [
+        "whumpfing"
+      ],
+      "avalanches": [
+        {
+          "when": "yesterday",
+          "date": "2026-11-12",
+          "size": "1.5",
+          "problem": "persistentSlab",
+          "trigger": "person",
+          "started_by": [
+            "accidental"
+          ],
+          "aspects": [
+            "NE",
+            "N"
+          ],
+          "elevation": "alpine",
+          "crown_depth_cm": 40,
+          "width_m": 70,
+          "run_length_m": 40,
+          "start_zone_elevation_m": 2500,
+          "incline_deg": 35,
+          "weak_layers": [
+            "facets",
+            "depthHoar"
+          ],
+          "crust": false
+        }
+      ],
+      "comments": "Still early season conditions in the Farnham zone but some slopes have certainly reached threshold! Overall the area had been hammered by wind and warm temps since the storm last weekend and we saw evidence of natural activity from the last week up to size 3. There is now a thin surface crust extending well into the alpine on NE aspects. We had a couple of small to medium whumpfs before remote triggering a size 1.5 avalanche while ascending the toe of the glacier. The slab failed on large facets just above glacier ice. We stuck to fairly mellow terrain afterwards. Overall the ski quality was not great. Breakable crust and/or windboard with a few pockets of soft that skied okay. Won’t be making the trek back until we start getting a fair bit more snow.",
+      "image_count": 3
+    },
+    {
+      "id": "5dfd275c-6da7-4865-9c11-1a4ba8de7b6b",
+      "url": "https://avalanche.ca/mountain-information-network/submissions/5dfd275c-6da7-4865-9c11-1a4ba8de7b6b",
+      "title": "Early Farnham ski trip",
+      "observed_on": "2026-10-25",
+      "submitted_at": "2026-10-26T19:27:47-06:00",
+      "region": "Purcells",
+      "distance_km": 1.4,
+      "location": {
+        "lat": 50.401,
+        "lon": -116.486
+      },
+      "activities": [
+        "skiing"
+      ],
+      "saw_avalanche": "yes",
+      "caught_in_avalanche": "no",
+      "instability": [
+        "windLoading"
+      ],
+      "avalanches": [
+        {
+          "when": "today",
+          "date": "2026-10-26",
+          "size": "1",
+          "problem": "windSlab",
+          "started_by": [
+            "natural"
+          ],
+          "aspects": [
+            "NE"
+          ],
+          "elevation": "alpine"
+        }
+      ],
+      "comments": "We started our trip on October 24, driving most of the way toward the Farnham Safety Shelter before travelling the remaining 3 km on foot.\n\nSnow conditions on the 24th were quite variable and heavily wind affected, with snow depths ranging from approximately 10 cm in some areas to 40 cm in others. We also encountered areas of thick wind crust, making for challenging early season skiing conditions.\n\nOn the morning of October 25, we woke up to about 10 cm of fresh snow at the shelter. The new snow improved the overall ski quality compared to the previous day, although conditions remained variable.",
+      "image_count": 1
+    }
+  ],
+  "safety_note": "Avalanche forecasts are regional and do not replace avalanche training, your own observations or terrain judgement. Check the official forecast before you go: https://avalanche.ca/map",
+  "attribution": "Field reports from the public through the Mountain Information Network of Avalanche Canada (avalanche.ca), not verified by Avalanche Canada. Unofficial tool, not affiliated with or endorsed by Avalanche Canada."
+}

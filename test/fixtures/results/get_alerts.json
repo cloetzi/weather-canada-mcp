@@ -1,0 +1,28 @@
+{
+  "location": {
+    "lat": 53.54,
+    "lon": -113.49,
+    "timezone": "America/Edmonton"
+  },
+  "alerts": [
+    {
+      "headline": "fog advisory",
+      "type": "advisory",
+      "code": "FGA",
+      "colour": "yellow",
+      "status": "continued",
+      "area": "City of Edmonton - St. Albert - Sherwood Park",
+      "province": "AB",
+      "issued_at": "2026-11-15T07:07:28-07:00",
+      "valid_from": "2026-11-15T07:05:00-07:00",
+      "event_ends_at": "2026-11-15T14:00:00-07:00",
+      "expires_at": "2026-11-15T16:01:28-07:00",
+      "confidence": "High",
+      "impact": "Moderate",
+      "text": "Dense fog is expected or occurring.\n\nThere is also risk of freezing drizzle.\n\nConditions will slowly improve through the day today.\n\nVisibility will likely be suddenly reduced at times.\n\nBe prepared for areas of near-zero visibility and allow extra time to reach your destination. If driving, turn on your lights, slow down and maintain a safe following distance.\n\nPlease continue to monitor alerts and forecasts issued by Environment Canada. To report severe weather, send an email to ABstorm@ec.gc.ca, call 1-800-239-0484 or post reports on social media using #ABStorm."
+    }
+  ],
+  "nearby_alerts": [],
+  "source_url": "https://weather.gc.ca/warnings/index_e.html",
+  "attribution": "Data Source: Environment and Climate Change Canada. Unofficial tool, not affiliated with or endorsed by ECCC."
+}

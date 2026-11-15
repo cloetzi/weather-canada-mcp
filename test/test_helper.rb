@@ -79,7 +79,7 @@ module TestHelpers
     with_fake_eccc do |fake|
       routes.each { |path, handler| fake.route(path, &handler) }
       app = application(fake, clock:, **env)
-      result = [*call_tool(app, name, **arguments), fake.requests]
+      result = [*call_tool(app, name, **arguments), fake.tool_requests]
     ensure
       app&.close
     end

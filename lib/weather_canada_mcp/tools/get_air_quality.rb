@@ -66,7 +66,7 @@ module WeatherCanadaMCP
         with its risk category (low, moderate, high, very high) and the health messages for the general population and
         for people at risk (children, people over 65, people with heart or lung conditions). During wildfire smoke the
         forecast may also give an in-smoke value. health_messages holds the messages once for each risk category that
-        appears. Times are UTC (ISO 8601).
+        appears.
       TEXT
       location_arguments
       argument :lang, :language
@@ -84,7 +84,7 @@ module WeatherCanadaMCP
         {
           location: point.to_h,
           aqhi_location: { id: properties["location_id"], name: properties["location_name_#{lang}"] || properties["location_name_en"],
-                           distance_km: round_km(distance) },
+                           distance_km: round_km(distance), lat: coordinates_of(observation)&.last, lon: coordinates_of(observation)&.first },
           current:, forecast:,
           health_messages: health_messages([current, *forecast&.dig(:periods)], lang), health_messages_source: MESSAGES_URL.fetch(lang),
           source_url: lang == "fr" ? "https://meteo.gc.ca/airquality/pages/index_f.html" : "https://weather.gc.ca/airquality/pages/index_e.html"
@@ -93,10 +93,15 @@ module WeatherCanadaMCP
 
       private
 
+      def coordinates_of(feature)
+        lon, lat = feature.dig("geometry", "coordinates")
+        [lon, lat] if lon.is_a?(Numeric) && lat.is_a?(Numeric)
+      end
+
       def current(observation, lang)
         observed_at = time(observation["observation_datetime"])
         notes = observation["special_notes_#{lang}"].to_s.strip
-        result = { observed_at: observed_at&.utc&.iso8601, **index(observation["aqhi"], lang), special_notes: notes.empty? ? nil : notes }
+        result = { observed_at:, **index(observation["aqhi"], lang), special_notes: notes.empty? ? nil : notes }
         result[:note] = "The latest observation is more than #{STALE_AFTER / 3600} hours old." if observed_at && now - observed_at > STALE_AFTER
         result
       end
@@ -109,7 +114,7 @@ module WeatherCanadaMCP
         properties = Array(data["features"]).first&.dig("properties")
         return unless properties.is_a?(Hash)
 
-        { published_at: time(properties["publication_datetime"])&.utc&.iso8601, periods: periods(properties["forecast_period"], lang) }
+        { issued_at: time(properties["publication_datetime"]), periods: periods(properties["forecast_period"], lang) }
       rescue Sources::Error => e
         { note: "The forecast could not be fetched: #{e.message}" }
       end

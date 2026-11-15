@@ -60,7 +60,7 @@ module WeatherCanadaMCP
           report = product["report"]
           ratings = danger_ratings(report, days)
           { title: report["title"], owner: field(product, "owner", "display"), url: official_url(product["url"]),
-            issued_at: time(report["dateIssued"])&.utc&.iso8601, valid_until: time(report["validUntil"])&.utc&.iso8601,
+            issued_at: time(report["dateIssued"]), valid_until: time(report["validUntil"]),
             timezone: report["timezone"], note: (OUT_OF_DATE.fetch(lang) if out_of_date?(report, ratings)),
             translation_note: (PARTLY_TRANSLATED if lang == "fr" && report["isFullTranslation"] == false),
             danger_ratings: ratings, **assessment(product, report) }

@@ -13,6 +13,7 @@ require "zip"
 # Local stand-in for every upstream (api.weather.gc.ca, geo.weather.gc.ca, ftp.maps.canada.ca and
 # Avalanche Canada's services), answering from the captured fixtures in test/fixtures. Records every request; routes can be overridden per test.
 class FakeEccc
+  SITE_LIST_PROPERTIES = WeatherCanadaMCP::Sources::ECCC::ForecastSites::SITE_PROPERTIES
   Request = Data.define(:path, :query, :headers)
 
   FIXTURES = File.expand_path("../fixtures", __dir__)
@@ -91,6 +92,10 @@ class FakeEccc
   def stop = @task&.stop
 
   def requests_to(path) = requests.select { |request| request.path == path }
+
+  # The requests a tool made for its data: without the forecast site list, which every tool with a location reads to find
+  # the point's time zone.
+  def tool_requests = requests.reject { |request| request.query["properties"] == SITE_LIST_PROPERTIES }
 
   private
 

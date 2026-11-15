@@ -1,0 +1,124 @@
+{
+  "location": {
+    "lat": 49.7,
+    "lon": -123.15,
+    "timezone": "America/Vancouver"
+  },
+  "gauges": [
+    {
+      "name": "STAWAMUS RIVER AT HIGHWAY NO. 99",
+      "id": "08GA076",
+      "province": "BC",
+      "operator": "WATER SURVEY OF CANADA (DOE) (CANADA)",
+      "drainage_area_km2": 52,
+      "distance_km": 1.2,
+      "lat": 49.6898193359375,
+      "lon": -123.14647674560548,
+      "url": "https://wateroffice.ec.gc.ca/report/real_time_e.html?stn=08GA076",
+      "latest": {
+        "observed_at": "2026-11-15T09:35:00-08:00",
+        "level_m": 2.654,
+        "discharge_m3s": 43.4
+      },
+      "past_24h": {
+        "level_change_m": 0.382,
+        "discharge_change_m3s": 25.7,
+        "trend": "rising"
+      },
+      "past_3_days": {
+        "min_level_m": 2.012,
+        "max_level_m": 2.757,
+        "min_discharge_m3s": 7.82,
+        "max_discharge_m3s": 53.2
+      },
+      "this_month_historically": {
+        "month": 11,
+        "years": 29,
+        "from_year": 1992,
+        "to_year": 2024,
+        "mean_discharge_m3s": 5.7,
+        "lowest_monthly_mean_m3s": 1.24,
+        "highest_monthly_mean_m3s": 15.5,
+        "past_24h_mean_discharge_m3s": 26.6,
+        "percent_of_mean": 466
+      }
+    },
+    {
+      "name": "MAMQUAM RIVER ABOVE RING CREEK",
+      "id": "08GA075",
+      "province": "BC",
+      "operator": "WATER SURVEY OF CANADA (DOE) (CANADA)",
+      "drainage_area_km2": 275,
+      "distance_km": 4.5,
+      "lat": 49.72594833374024,
+      "lon": -123.1020965576172,
+      "url": "https://wateroffice.ec.gc.ca/report/real_time_e.html?stn=08GA075",
+      "latest": {
+        "observed_at": "2026-11-15T08:05:00-08:00",
+        "level_m": 3.084,
+        "discharge_m3s": 103.0
+      },
+      "past_24h": {
+        "level_change_m": 0.695,
+        "discharge_change_m3s": 40.7,
+        "trend": "rising"
+      },
+      "past_3_days": {
+        "min_level_m": 1.984,
+        "max_level_m": 3.085,
+        "min_discharge_m3s": 33.6,
+        "max_discharge_m3s": 103.0
+      },
+      "this_month_historically": {
+        "month": 11,
+        "years": 31,
+        "from_year": 1990,
+        "to_year": 2025,
+        "mean_discharge_m3s": 29.0,
+        "lowest_monthly_mean_m3s": 8.75,
+        "highest_monthly_mean_m3s": 69.7,
+        "past_24h_mean_discharge_m3s": 66.2,
+        "percent_of_mean": 229
+      }
+    },
+    {
+      "name": "SQUAMISH RIVER NEAR BRACKENDALE",
+      "id": "08GA022",
+      "province": "BC",
+      "operator": "BRITISH COLUMBIA HYDRO AND POWER AUTHORITY",
+      "drainage_area_km2": 2353,
+      "distance_km": 11,
+      "lat": 49.795021057128906,
+      "lon": -123.20316314697266,
+      "url": "https://wateroffice.ec.gc.ca/report/real_time_e.html?stn=08GA022",
+      "latest": {
+        "observed_at": "2026-11-15T10:05:00-08:00",
+        "level_m": 4.66,
+        "discharge_m3s": 660.0
+      },
+      "past_24h": {
+        "level_change_m": 0.395,
+        "discharge_change_m3s": 122.0,
+        "trend": "rising"
+      },
+      "past_3_days": {
+        "min_level_m": 3.898,
+        "max_level_m": 8.41,
+        "min_discharge_m3s": 435.0,
+        "max_discharge_m3s": 2360.0
+      },
+      "this_month_historically": {
+        "month": 11,
+        "years": 73,
+        "from_year": 1923,
+        "to_year": 2025,
+        "mean_discharge_m3s": 172.4,
+        "lowest_monthly_mean_m3s": 56.7,
+        "highest_monthly_mean_m3s": 416.0,
+        "past_24h_mean_discharge_m3s": 509.9,
+        "percent_of_mean": 296
+      }
+    }
+  ],
+  "attribution": "Data Source: Environment and Climate Change Canada. Unofficial tool, not affiliated with or endorsed by ECCC."
+}

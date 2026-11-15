@@ -20,7 +20,7 @@ module WeatherCanadaMCP
         visibility, waves, air temperature and freezing spray for today to tomorrow, the extended wind forecast for the
         following days, and the marine warnings in effect. A point on land (a harbour town, a beach) gets the nearest
         areas within 25 km, with their distance. Some areas are seasonal and say so in status. Wind and waves are as
-        ECCC writes them; quote warnings as given. Times are UTC (ISO 8601). For weather alerts on land use get_alerts.
+        ECCC writes them; quote warnings as given. For weather alerts on land use get_alerts.
       TEXT
       location_arguments
       argument :lang, :language
@@ -106,7 +106,7 @@ module WeatherCanadaMCP
 
       def locations(section) = section.is_a?(Hash) ? Array(section["locations"]).grep(Hash) : []
 
-      def issued(section) = time(section["issuedDatetimeUTC"])&.utc&.iso8601
+      def issued(section) = time(section["issuedDatetimeUTC"])
 
       # ECCC's text with runs of spaces closed up; nil when empty.
       def text(value, lang)

@@ -42,7 +42,7 @@ class GetClimateContextTest < Minitest::Test
   def test_monthly_normals_of_the_nearest_normals_station
     normals = climate(**WHISTLER).first["monthly_normals"]
 
-    assert_equal({ "name" => "WHISTLER", "climate_id" => "1048898", "distance_km" => 1.1 }, normals["station"])
+    assert_equal({ "name" => "WHISTLER", "id" => "1048898", "distance_km" => 1.1 }, normals["station"])
     assert_equal "1981-2010", normals["period"]
     assert_equal [3.45, -1.76, 192.14, 65.67, 9.65, 17.25],
                  normals.values_at("mean_daily_max_c", "mean_daily_min_c", "total_precipitation_mm", "snowfall_cm",

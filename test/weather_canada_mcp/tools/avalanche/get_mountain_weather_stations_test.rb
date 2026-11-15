@@ -18,13 +18,16 @@ class AvalancheGetMountainWeatherStationsTest < Minitest::Test
     assert_equal ["Parks Canada"], result["stations"].map { |station| station["source"] }.uniq
   end
 
+  # Lake Louise is on Mountain Standard Time in November.
+  def local(utc) = Time.iso8601(utc).getlocal("-07:00").iso8601
+
   def test_latest_reading
     upper = stations(**LAKE_LOUISE).first["stations"].find { |station| station["id"] == 111 }
     newest = measurements(111).first
 
-    assert_equal newest["measurementDateTime"], upper.dig("latest", "observed_at")
+    assert_equal local(newest["measurementDateTime"]), upper.dig("latest", "observed_at")
     assert_equal newest.values_at("airTempAvg", "windSpeedAvg", "windDirCompass", "windSpeedGust"),
-                 upper["latest"].values_at("air_temp_c", "wind_speed_kmh", "wind_direction", "wind_gust_kmh")
+                 upper["latest"].values_at("temperature_c", "wind_speed_kmh", "wind_direction", "wind_gust_kmh")
   end
 
   def test_window_summary
@@ -33,16 +36,16 @@ class AvalancheGetMountainWeatherStationsTest < Minitest::Test
     heights = readings.filter_map { |reading| reading["snowHeight"] }
 
     assert_equal readings.size, lower.dig("window", "readings")
-    assert_in_delta (heights.first - heights.last).round(1), lower.dig("window", "snow_height_change_cm")
+    assert_in_delta (heights.first - heights.last).round(1), lower.dig("window", "snow_depth_change_cm")
     assert_in_delta readings.sum { |reading| reading["newSnow"].to_f }, lower.dig("window", "new_snow_cm")
-    assert_in_delta readings.map { |reading| reading["airTempAvg"] }.min, lower.dig("window", "min_air_temp_c")
+    assert_in_delta readings.map { |reading| reading["airTempAvg"] }.min, lower.dig("window", "min_temperature_c")
   end
 
   def test_max_gust
     upper = stations(**LAKE_LOUISE).first["stations"].find { |station| station["id"] == 111 }
     gust = measurements(111).max_by { |reading| reading["windSpeedGust"].to_f }
 
-    assert_equal [gust["windSpeedGust"], gust["windDirGustCompass"], gust["measurementDateTime"]],
+    assert_equal [gust["windSpeedGust"], gust["windDirGustCompass"], local(gust["measurementDateTime"])],
                  upper["window"].values_at("max_gust_kmh", "max_gust_direction", "max_gust_at")
   end
 

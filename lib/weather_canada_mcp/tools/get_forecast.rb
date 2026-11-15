@@ -13,8 +13,7 @@ module WeatherCanadaMCP
       description <<~TEXT
         Environment Canada's forecast for the nearest of ~850 forecast sites: current conditions, the official
         human-written forecast by period (today, tonight, then about 6 days, including snow levels in the mountains
-        where ECCC issues them), an hourly forecast, sunrise/sunset and active warning headlines. All times are UTC
-        (ISO 8601). The result names the site used and its distance from the location; a site tens of km away, or at a
+        where ECCC issues them), an hourly forecast, sunrise/sunset and active warning headlines. The result names the site used and its distance from the location; a site tens of km away, or at a
         different elevation, may not match conditions in the backcountry. For full alert text use get_alerts.
       TEXT
       location_arguments
@@ -38,7 +37,7 @@ module WeatherCanadaMCP
         {
           location: point.to_h,
           forecast_site: site_info(properties, site, distance),
-          issued_at: text(properties.dig("forecastGroup", "timestamp")),
+          issued_at: instant(properties.dig("forecastGroup", "timestamp")),
           warnings: warnings(properties["warnings"]),
           current_conditions: current(properties["currentConditions"]),
           forecast: Array(properties.dig("forecastGroup", "forecasts")).map { |period| period(period) },
@@ -49,8 +48,8 @@ module WeatherCanadaMCP
       end
 
       def site_info(properties, site, distance)
-        info = { site_id: site.id, name: site.name_in(@lang), region: site.region_in(@lang), distance_km: round_km(distance),
-                 url: text(properties["url"]) }
+        info = { id: site.id, name: site.name_in(@lang), region: site.region_in(@lang), distance_km: round_km(distance),
+                 lat: site.lat, lon: site.lon, url: text(properties["url"]) }
         info[:note] = "The nearest forecast site is #{round_km(distance)} km away; conditions there may differ." if distance > DISTANT_SITE_KM
         info
       end
@@ -58,7 +57,7 @@ module WeatherCanadaMCP
       def warnings(list)
         Array(list).map do |warning|
           { headline: text(warning["description"]), type: text(warning["type"]), colour: text(warning["alertColourLevel"]),
-            issued_at: text(warning["eventIssue"]), expires_at: text(warning["expiryTime"]), url: text(warning["url"]) }
+            issued_at: instant(warning["eventIssue"]), expires_at: instant(warning["expiryTime"]), url: text(warning["url"]) }
         end
       end
 
@@ -67,10 +66,10 @@ module WeatherCanadaMCP
 
         temperature = value(conditions["temperature"])
         {
-          observed_at: text(conditions["timestamp"]), station: value(conditions["station"]),
+          observed_at: instant(conditions["timestamp"]), station: value(conditions["station"]),
           condition: text(conditions["condition"]), temperature_c: temperature, dewpoint_c: value(conditions["dewpoint"]),
           humidity_pct: value(conditions["relativeHumidity"]),
-          wind_kmh: value(conditions.dig("wind", "speed")), wind_gust_kmh: positive(value(conditions.dig("wind", "gust"))),
+          wind_speed_kmh: value(conditions.dig("wind", "speed")), wind_gust_kmh: positive(value(conditions.dig("wind", "gust"))),
           wind_direction: value(conditions.dig("wind", "direction")),
           pressure_kpa: value(conditions["pressure"]), pressure_tendency: text(conditions.dig("pressure", "tendency")),
           wind_chill: feels_like(value(conditions["windChill"]), temperature, WIND_CHILL_MAX_C, :below),
@@ -100,15 +99,17 @@ module WeatherCanadaMCP
         amount = precipitation&.dig("accumulation", "amount")
         return unless amount
 
-        { type: text(precipitation.dig("accumulation", "name")), amount: value(amount), units: text(amount["units"]) }
+        quantity = value(amount)
+        unit = text(amount["units"])
+        { type: text(precipitation.dig("accumulation", "name")), (unit == "cm" ? :amount_cm : :amount_mm) => quantity }
       end
 
       def hourly(list, hours)
         Array(list).first(hours).map do |hour|
           {
-            time: hour["timestamp"], condition: text(hour["condition"]), temperature_c: value(hour["temperature"]),
+            time: time(hour["timestamp"]), condition: text(hour["condition"]), temperature_c: value(hour["temperature"]),
             precip_chance_pct: value(hour["lop"]),
-            wind_kmh: value(hour.dig("wind", "speed")), wind_gust_kmh: positive(value(hour.dig("wind", "gust"))),
+            wind_speed_kmh: value(hour.dig("wind", "speed")), wind_gust_kmh: positive(value(hour.dig("wind", "gust"))),
             wind_direction: value(hour.dig("wind", "direction")),
             wind_chill: value(hour["windChill"]), humidex: value(hour["humidex"])
           }
@@ -118,13 +119,15 @@ module WeatherCanadaMCP
       def sun(rise_set)
         return unless rise_set.is_a?(Hash)
 
-        { sunrise: text(rise_set["sunrise"]), sunset: text(rise_set["sunset"]) }
+        { sunrise: instant(rise_set["sunrise"]), sunset: instant(rise_set["sunset"]) }
       end
 
       # City Page puts the reading under "value" as a bilingual pair ({"value" => {"en" => 4.2, "fr" => 4.2}}).
       def value(node) = node.is_a?(Hash) ? text(node["value"]) : nil
 
       def text(node) = localized(node, @lang)
+
+      def instant(node) = time(text(node))
 
       def positive(number) = number.is_a?(Numeric) && number.positive? ? number : nil
 

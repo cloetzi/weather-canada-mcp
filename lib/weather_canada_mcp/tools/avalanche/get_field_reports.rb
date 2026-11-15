@@ -39,6 +39,7 @@ module WeatherCanadaMCP
         argument :radius_km, :integer, in: 1..MAX_RADIUS_KM, default: 25, description: "Search radius."
         argument :days, :integer, in: 1..MAX_DAYS, default: 7, description: "Days to include, today included."
         argument :limit, :integer, in: 1..MAX_REPORTS, default: 10, description: "Most reports to include."
+        argument :lang, :language
 
         def call(args)
           point = args.point
@@ -51,7 +52,7 @@ module WeatherCanadaMCP
           attribute(REPORTS_ATTRIBUTION)
           { location: point.to_h, from: from.iso8601, to: to.iso8601, reports:, more_reports: (found.size - limit if found.size > limit),
             note: ("No field report within #{radius} km in the past #{days} days." if found.empty?),
-            safety_note: safety_note(config.lang) }
+            safety_note: safety_note(args.lang) }
         end
 
         private
@@ -80,7 +81,7 @@ module WeatherCanadaMCP
         def report(item, distance)
           id = item["submissionID"] if item["submissionID"].to_s.match?(SUBMISSION_ID)
           { id:, url: ("https://avalanche.ca/mountain-information-network/submissions/#{id}" if id), title: redact(item["title"]),
-            observed_on: item["date"], submitted_at: time(item["submissionDatetime"])&.utc&.iso8601, region: item["region"],
+            observed_on: item["date"], submitted_at: time(item["submissionDatetime"]), region: item["region"],
             distance_km: round_km(distance),
             location: { lat: field(item, "location", "latitude").round(3), lon: field(item, "location", "longitude").round(3) },
             **observations(item), comments: redact(item["comments"]), image_count: number(item["imageCount"]) }

@@ -15,7 +15,7 @@ class GetRadarMapTest < Minitest::Test
       routes.each { |path, handler| fake.route(path, &handler) }
       app = application(fake, clock: -> { RADAR_CAPTURED_AT })
       response = app.mcp_server.handle({ jsonrpc: "2.0", id: 1, method: "tools/call", params: { name: "get_radar_map", arguments: } })
-      result = [response.dig(:result, :content), fake.requests]
+      result = [response.dig(:result, :content), fake.tool_requests]
     ensure
       app&.close
     end
@@ -26,9 +26,9 @@ class GetRadarMapTest < Minitest::Test
     result, error = radar(**WHISTLER)
 
     refute error
-    assert_equal "2026-11-15T19:30:00Z", result["radar_time"]
+    assert_equal "2026-11-15T11:30:00-08:00", result["observed_at"]
     assert_equal({ "snow_cm_per_h" => 0, "rain_mm_per_h" => 0 }, result["at_point"])
-    assert_equal [{ "time" => "2026-11-15T19:00:00Z", "snow_cm_per_h" => 0 }, { "time" => "2026-11-15T18:30:00Z", "snow_cm_per_h" => 0 }],
+    assert_equal [{ "time" => "2026-11-15T11:00:00-08:00", "snow_cm_per_h" => 0 }, { "time" => "2026-11-15T10:30:00-08:00", "snow_cm_per_h" => 0 }],
                  result["past_hour"]
   end
 

@@ -18,13 +18,14 @@ module WeatherCanadaMCP
           provincial agencies, ski areas and others): each station's elevation, distance and operator, its latest hourly
           reading (air temperature, humidity, wind and gusts, snow height, new snow) and a summary of the past hours (snow
           height change, new snow, minimum and maximum temperature, strongest gust). Stations measure different things,
-          and many are on ridges or in alpine terrain, so compare elevations. Times are UTC (ISO 8601). Pass on safety_note.
+          and many are on ridges or in alpine terrain, so compare elevations. Pass on safety_note.
         TEXT
         enabled_when("WEATHER_MCP_AVALANCHE", &:avalanche_enabled)
         location_arguments
         argument :radius_km, :integer, in: 1..MAX_RADIUS_KM, default: 30, description: "Search radius."
         argument :hours, :integer, in: 1..MAX_HOURS, default: 24, description: "Hours of readings to summarize."
         argument :limit, :integer, in: 1..MAX_STATIONS, default: 3, description: "Nearest stations to include."
+        argument :lang, :language
 
         def call(args)
           point = args.point
@@ -33,7 +34,7 @@ module WeatherCanadaMCP
           limit = args.limit
           stations = reporting_stations(nearest(point, radius, limit + SPARE_STATIONS), limit, hours)
           attribute(attribution_for("Mountain weather station data", stations.map { |station| station[:source] }))
-          result = { location: point.to_h, stations:, safety_note: safety_note(config.lang) }
+          result = { location: point.to_h, stations:, safety_note: safety_note(args.lang) }
           result[:note] = "No Avalanche Canada weather station within #{radius} km has reported in the past #{hours} hours." if stations.empty?
           result
         end
@@ -62,7 +63,7 @@ module WeatherCanadaMCP
 
         def station(station, distance, from, to)
           info = { id: station["stationId"], name: station["name"], source: station["source"], elevation_m: number(station["elevation"]),
-                   distance_km: round_km(distance) }
+                   distance_km: round_km(distance), lat: number(station["latitude"]), lon: number(station["longitude"]) }
           readings = readings(avalanche.weather_stations.measurements(station["stationId"], from:, to:))
           return if readings.empty?
 
@@ -83,20 +84,20 @@ module WeatherCanadaMCP
         end
 
         def latest(reading)
-          { observed_at: reading[:at].utc.iso8601, air_temp_c: number(reading["airTempAvg"]),
-            relative_humidity_pct: number(reading["relativeHumidity"]), wind_speed_kmh: number(reading["windSpeedAvg"]),
+          { observed_at: reading[:at], temperature_c: number(reading["airTempAvg"]),
+            humidity_pct: number(reading["relativeHumidity"]), wind_speed_kmh: number(reading["windSpeedAvg"]),
             wind_direction: reading["windDirCompass"], wind_direction_deg: number(reading["windDirAvg"]),
             wind_gust_kmh: number(reading["windSpeedGust"]), wind_gust_direction: reading["windDirGustCompass"],
-            snow_height_cm: number(reading["snowHeight"]), new_snow_cm: number(reading["newSnow"]) }
+            snow_depth_cm: number(reading["snowHeight"]), new_snow_cm: number(reading["newSnow"]) }
         end
 
         def window(readings, from)
           heights = readings.filter_map { |reading| number(reading["snowHeight"]) }
           new_snow = readings.filter_map { |reading| number(reading["newSnow"]) }
-          { from: from.iso8601, readings: readings.size,
-            snow_height_change_cm: ((heights.first - heights.last).round(1) if heights.size > 1),
+          { from:, readings: readings.size,
+            snow_depth_change_cm: ((heights.first - heights.last).round(1) if heights.size > 1),
             new_snow_cm: (new_snow.sum.round(1) if new_snow.any?),
-            min_air_temp_c: extreme(readings, "airTempMin", :min), max_air_temp_c: extreme(readings, "airTempMax", :max),
+            min_temperature_c: extreme(readings, "airTempMin", :min), max_temperature_c: extreme(readings, "airTempMax", :max),
             **max_gust(readings) }
         end
 
@@ -104,7 +105,7 @@ module WeatherCanadaMCP
           gust = readings.select { |reading| number(reading["windSpeedGust"]) }.max_by { |reading| reading["windSpeedGust"] }
           return {} unless gust
 
-          { max_gust_kmh: gust["windSpeedGust"], max_gust_direction: gust["windDirGustCompass"], max_gust_at: gust[:at].utc.iso8601 }
+          { max_gust_kmh: gust["windSpeedGust"], max_gust_direction: gust["windDirGustCompass"], max_gust_at: gust[:at] }
         end
 
         # The hourly minimum or maximum where the station reports one, else its hourly mean.

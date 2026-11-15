@@ -7,11 +7,11 @@ module WeatherCanadaMCP
     #
     #   argument :hours, :integer, in: 0..24, default: 12, description: "..."
     #
-    # Types: :integer and :number (`in:` a Range), :string (`max_length:`, `pattern:`, `in:` an Array) and :language
+    # Types: :integer and :number (`in:` a Range), :boolean, :string (`max_length:`, `pattern:`, `in:` an Array) and :language
     # (en or fr, the configured language when missing). `bounds:` puts a range in the schema without enforcing it, for a
     # check the tool words better itself. A pattern is checked and appears in the schema.
     class Argument
-      TYPES = %i[integer number string language].freeze
+      TYPES = %i[integer number string boolean language].freeze
       LANGUAGE_DESCRIPTION = "Language of text fields: en or fr."
 
       attr_reader :name, :type, :default
@@ -53,6 +53,7 @@ module WeatherCanadaMCP
         when :integer then integer(value)
         when :number then number(value)
         when :string then string(value)
+        when :boolean then boolean(value)
         when :language then language(value)
         end
       end
@@ -85,6 +86,8 @@ module WeatherCanadaMCP
 
         value
       end
+
+      def boolean(value) = [true, false].include?(value) ? value : raise(InvalidArguments, "#{name} must be true or false.")
 
       def language(value) = Config::LANGS.include?(value) ? value : raise(InvalidArguments, "#{name} must be en or fr")
 

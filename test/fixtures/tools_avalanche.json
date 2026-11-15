@@ -64,7 +64,7 @@
   {
     "name": "get_mountain_weather_stations",
     "title": "Get mountain weather stations",
-    "description": "The mountain weather stations nearest a location from Avalanche Canada's station network (run by Parks Canada, provincial agencies, ski areas and others): each station's elevation, distance and operator, its latest hourly reading (air temperature, humidity, wind and gusts, snow height, new snow) and a summary of the past hours (snow height change, new snow, minimum and maximum temperature, strongest gust). Stations measure different things, and many are on ridges or in alpine terrain, so compare elevations. Times are UTC (ISO 8601). Pass on safety_note.",
+    "description": "The mountain weather stations nearest a location from Avalanche Canada's station network (run by Parks Canada, provincial agencies, ski areas and others): each station's elevation, distance and operator, its latest hourly reading (air temperature, humidity, wind and gusts, snow height, new snow) and a summary of the past hours (snow height change, new snow, minimum and maximum temperature, strongest gust). Stations measure different things, and many are on ridges or in alpine terrain, so compare elevations. Pass on safety_note.",
     "input_schema": {
       "type": "object",
       "properties": {
@@ -105,6 +105,14 @@
           "maximum": 6,
           "default": 3,
           "description": "Nearest stations to include."
+        },
+        "lang": {
+          "type": "string",
+          "enum": [
+            "en",
+            "fr"
+          ],
+          "description": "Language of text fields: en or fr."
         }
       },
       "additionalProperties": false
@@ -154,6 +162,14 @@
           "maximum": 20,
           "default": 10,
           "description": "Most reports to include."
+        },
+        "lang": {
+          "type": "string",
+          "enum": [
+            "en",
+            "fr"
+          ],
+          "description": "Language of text fields: en or fr."
         }
       },
       "additionalProperties": false

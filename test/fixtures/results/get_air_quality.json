@@ -1,0 +1,58 @@
+{
+  "location": {
+    "lat": 49.89,
+    "lon": -119.5,
+    "timezone": "America/Vancouver"
+  },
+  "aqhi_location": {
+    "id": "JAFUV",
+    "name": "Central Okanagan",
+    "distance_km": 1.4,
+    "lat": 49.8833333333333,
+    "lon": -119.483333333333
+  },
+  "current": {
+    "observed_at": "2026-11-15T09:00:00-08:00",
+    "aqhi": 1.5,
+    "aqhi_display": "1",
+    "risk": "low"
+  },
+  "forecast": {
+    "issued_at": "2026-11-15T05:00:00-08:00",
+    "periods": [
+      {
+        "period": "Today",
+        "aqhi": 2,
+        "aqhi_display": "2",
+        "risk": "low"
+      },
+      {
+        "period": "Tonight",
+        "aqhi": 2,
+        "aqhi_display": "2",
+        "risk": "low"
+      },
+      {
+        "period": "Tomorrow",
+        "aqhi": 2,
+        "aqhi_display": "2",
+        "risk": "low"
+      },
+      {
+        "period": "Tomorrow Night",
+        "aqhi": 2,
+        "aqhi_display": "2",
+        "risk": "low"
+      }
+    ]
+  },
+  "health_messages": {
+    "low": {
+      "general": "Enjoy your usual outdoor activities.",
+      "at_risk": "Enjoy your usual outdoor activities."
+    }
+  },
+  "health_messages_source": "https://www.canada.ca/en/environment-climate-change/services/air-quality-health-index/about.html",
+  "source_url": "https://weather.gc.ca/airquality/pages/index_e.html",
+  "attribution": "Data Source: Environment and Climate Change Canada. Unofficial tool, not affiliated with or endorsed by ECCC."
+}

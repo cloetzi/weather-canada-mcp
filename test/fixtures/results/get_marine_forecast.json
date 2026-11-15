@@ -1,0 +1,42 @@
+{
+  "location": {
+    "lat": 49.5,
+    "lon": -123.3,
+    "timezone": "America/Vancouver"
+  },
+  "marine_areas": [
+    {
+      "name": "Howe Sound",
+      "region": "Pacific Coast",
+      "sub_region": "Georgia Basin",
+      "issued_at": "2026-11-15T09:30:00-08:00",
+      "warnings": [],
+      "forecast": [
+        {
+          "period": "Today Tonight and Monday.",
+          "wind": "Wind southerly inflow 10 to 20 knots becoming southerly inflow 5 to 15 early this evening except southeasterly inflow 20 over southern sections tonight. Wind becoming northerly outflow 5 to 15 Monday afternoon.",
+          "weather_visibility": "Periods of rain. Risk of thunderstorms today and early this evening."
+        }
+      ],
+      "extended_forecast": {
+        "issued_at": "2026-11-15T03:00:00-08:00",
+        "periods": [
+          {
+            "period": "Tuesday",
+            "forecast": "Wind northerly outflow 15 knots increasing to northerly outflow 25 in the afternoon."
+          },
+          {
+            "period": "Wednesday",
+            "forecast": "Wind northerly outflow 25 to 35 knots diminishing to northerly outflow 15 to 25."
+          },
+          {
+            "period": "Thursday",
+            "forecast": "Wind northerly outflow 20 to 30 knots."
+          }
+        ]
+      }
+    }
+  ],
+  "source_url": "https://weather.gc.ca/marine/index_e.html",
+  "attribution": "Data Source: Environment and Climate Change Canada. Unofficial tool, not affiliated with or endorsed by ECCC."
+}

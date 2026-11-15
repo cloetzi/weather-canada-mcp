@@ -23,9 +23,9 @@ class GetRiverConditionsTest < Minitest::Test
     squamish = result["gauges"].last
 
     refute error
-    assert_equal(%w[08GA076 08GA075 08GA022], result["gauges"].map { |gauge| gauge["station_number"] })
+    assert_equal(%w[08GA076 08GA075 08GA022], result["gauges"].map { |gauge| gauge["id"] })
     assert_equal ["SQUAMISH RIVER NEAR BRACKENDALE", "BC", 2353, 11], squamish.values_at("name", "province", "drainage_area_km2", "distance_km")
-    assert_equal({ "at" => "2026-11-15T18:05:00Z", "level_m" => 4.66, "discharge_m3s" => 660.0 }, squamish["latest"])
+    assert_equal({ "observed_at" => "2026-11-15T10:05:00-08:00", "level_m" => 4.66, "discharge_m3s" => 660.0 }, squamish["latest"])
     assert_equal "https://wateroffice.ec.gc.ca/report/real_time_e.html?stn=08GA022", squamish["url"]
   end
 
@@ -54,7 +54,7 @@ class GetRiverConditionsTest < Minitest::Test
   end
 
   def test_asks_for_the_past_three_days_from_the_start_of_the_hour
-    _, _, requests = rivers(**SQUAMISH, stations: 1)
+    _, _, requests = rivers(**SQUAMISH, limit: 1)
     realtime = requests.find { |request| request.path == "/collections/hydrometric-realtime/items" }
     stations = requests.find { |request| request.path == "/collections/hydrometric-stations/items" }
 
@@ -65,7 +65,7 @@ class GetRiverConditionsTest < Minitest::Test
 
   def test_river_keeps_matching_gauges_ignoring_case_and_accents
     result, = rivers(**SQUAMISH, river: "mamquam")
-    accented, = rivers(**SQUAMISH, river: "SQUÂMISH river", stations: 1)
+    accented, = rivers(**SQUAMISH, river: "SQUÂMISH river", limit: 1)
 
     assert_equal(["MAMQUAM RIVER ABOVE RING CREEK"], result["gauges"].map { |gauge| gauge["name"] })
     assert_equal(["SQUAMISH RIVER NEAR BRACKENDALE"], accented["gauges"].map { |gauge| gauge["name"] })
@@ -79,7 +79,7 @@ class GetRiverConditionsTest < Minitest::Test
   end
 
   def test_a_gauge_whose_readings_fail_is_listed_with_a_note
-    result, error = rivers(**SQUAMISH, stations: 1, routes: { "/collections/hydrometric-realtime/items" => ->(_) { [404, {}, "gone"] } })
+    result, error = rivers(**SQUAMISH, limit: 1, routes: { "/collections/hydrometric-realtime/items" => ->(_) { [404, {}, "gone"] } })
 
     refute error
     assert_match(/could not be fetched/, result["gauges"].first["note"])
@@ -87,7 +87,7 @@ class GetRiverConditionsTest < Minitest::Test
   end
 
   def test_without_the_history_the_real_time_readings_are_still_reported
-    result, = rivers(**SQUAMISH, stations: 1, routes: { "/collections/hydrometric-monthly-mean/items" => ->(_) { [404, {}, "gone"] } })
+    result, = rivers(**SQUAMISH, limit: 1, routes: { "/collections/hydrometric-monthly-mean/items" => ->(_) { [404, {}, "gone"] } })
     gauge = result["gauges"].first
 
     assert gauge.key?("latest")
@@ -95,7 +95,7 @@ class GetRiverConditionsTest < Minitest::Test
   end
 
   def test_fixtures_were_captured_with_the_query_the_tool_sends
-    _, _, requests = rivers(**SQUAMISH, stations: 1)
+    _, _, requests = rivers(**SQUAMISH, limit: 1)
     %w[hydrometric-realtime hydrometric-monthly-mean].each do |collection|
       sent = requests.find { |request| request.path == "/collections/#{collection}/items" }.query
       captured = FakeEccc.fixture_json("api/#{collection}_08GA076.json")["links"].find { |link| link["rel"] == "self" }["href"]
@@ -105,7 +105,7 @@ class GetRiverConditionsTest < Minitest::Test
   end
 
   def test_old_readings_are_flagged
-    result, = rivers(**SQUAMISH, stations: 1, clock: -> { STATIONS_CAPTURED_AT + (8 * 3600) })
+    result, = rivers(**SQUAMISH, limit: 1, clock: -> { STATIONS_CAPTURED_AT + (8 * 3600) })
 
     assert_match(/more than 6 hours old/, result["gauges"].first["note"])
   end
