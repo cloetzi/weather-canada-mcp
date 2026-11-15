@@ -3,7 +3,7 @@
 require_relative "../../test_helper"
 
 class ListenAddressTest < Minitest::Test
-  ListenAddress = WeatherCanadaMCP::Server::ListenAddress
+  ListenAddress = WeatherCanadaMCP::Config::ListenAddress
 
   def address(host) = ListenAddress.from_env({ "WEATHER_MCP_HOST" => host })
 

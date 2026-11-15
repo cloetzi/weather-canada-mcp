@@ -5,7 +5,7 @@ require "ipaddr"
 module WeatherCanadaMCP
   module Server
     # The unauthenticated liveness endpoint served beside MCP, and where the container health check (bin/healthcheck)
-    # reaches it. Loads no more than ListenAddress, because Docker runs the check every few seconds.
+    # reaches it. Loads no more than Config::ListenAddress, because Docker runs the check every few seconds.
     module HealthCheck
       PATH = "/healthz"
 
@@ -13,7 +13,7 @@ module WeatherCanadaMCP
       def self.url(env = ENV) = target(env).url(PATH)
 
       def self.target(env = ENV)
-        address = ListenAddress.from_env(env)
+        address = Config::ListenAddress.from_env(env)
         address.with(host: probe_host(address.host))
       end
 

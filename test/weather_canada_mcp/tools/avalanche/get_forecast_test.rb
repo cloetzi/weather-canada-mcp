@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require_relative "../../test_helper"
+require_relative "../../../test_helper"
 
-class GetAvalancheForecastTest < Minitest::Test
+class AvalancheGetForecastTest < Minitest::Test
   LAKE_LOUISE = { lat: 51.42, lon: -116.18 }.freeze
   TORONTO = { lat: 43.65, lon: -79.38 }.freeze
   SAFETY_NOTE = "Avalanche forecasts are regional and do not replace avalanche training, your own observations or terrain " \
@@ -47,7 +47,7 @@ class GetAvalancheForecastTest < Minitest::Test
     summary = report["summaries"].find { |s| s.dig("type", "value") == "snowpack-summary" }["content"]
 
     assert_equal summary.strip.delete_prefix("<p>").delete_suffix("</p>"), result["snowpack_summary"]
-    assert_equal WeatherCanadaMCP::HtmlText.call(report["highlights"]), result["highlights"]
+    assert_equal WeatherCanadaMCP::HtmlText.plain(report["highlights"]), result["highlights"]
     assert_equal report["terrainAndTravelAdvice"], result["terrain_and_travel_advice"]
     assert_equal report.dig("confidence", "statements"), result.dig("confidence", "statements")
     refute_match(/<[a-z]/i, JSON.generate(result))

@@ -2,31 +2,31 @@
 
 require_relative "../../../test_helper"
 
-class GazetteerProviderTest < Minitest::Test
-  def provider(fake, path: File.join(Dir.mktmpdir, "g.sqlite3"), auto_build: true)
+class GazetteerStoreTest < Minitest::Test
+  def store(fake, path: File.join(Dir.mktmpdir, "g.sqlite3"), auto_build: true)
     @now = 0
     @app = application(fake, WEATHER_MCP_GAZETTEER_PATH: path)
-    WeatherCanadaMCP::Places::Gazetteer::Provider.new(path:, http: @app.http, logger: null_logger, auto_build:, clock: -> { @now })
+    WeatherCanadaMCP::Places::Gazetteer::Store.new(path:, http: @app.http, logger: null_logger, auto_build:, clock: -> { @now })
   end
 
   def teardown = @app&.close
 
   def test_builds_once_from_the_download_on_first_use
     with_fake_eccc do |fake|
-      provider = provider(fake)
+      store = store(fake)
 
-      refute_predicate provider, :available?
-      gazetteers = Array.new(3) { Async { provider.get } }.map(&:wait)
+      refute_predicate store, :available?
+      gazetteers = Array.new(3) { Async { store.open } }.map(&:wait)
 
       assert_equal 1, fake.requests_to(FakeEccc::CGN_PATH).size
       assert_equal "Squamish", gazetteers.first.search("Squamish").first.name
-      assert_predicate provider, :available?
+      assert_predicate store, :available?
     end
   end
 
   def test_without_auto_build_a_missing_database_is_unavailable
     with_fake_eccc do |fake|
-      error = assert_raises(WeatherCanadaMCP::Places::Gazetteer::Unavailable) { provider(fake, auto_build: false).get }
+      error = assert_raises(WeatherCanadaMCP::Places::Gazetteer::Unavailable) { store(fake, auto_build: false).open }
 
       assert_match(/gazetteer update/, error.message)
       assert_empty fake.requests
@@ -36,24 +36,24 @@ class GazetteerProviderTest < Minitest::Test
   def test_a_failed_download_is_reported_and_retried_only_after_a_pause
     with_fake_eccc do |fake|
       fake.route(FakeEccc::CGN_PATH) { [404, {}, "gone"] }
-      provider = provider(fake)
+      store = store(fake)
 
-      assert_raises(WeatherCanadaMCP::Places::Gazetteer::Unavailable) { provider.get }
+      assert_raises(WeatherCanadaMCP::Places::Gazetteer::Unavailable) { store.open }
       fake.route(FakeEccc::CGN_PATH) { [200, {}, FakeEccc.cgn_zip] }
-      error = assert_raises(WeatherCanadaMCP::Places::Gazetteer::Unavailable) { provider.get }
+      error = assert_raises(WeatherCanadaMCP::Places::Gazetteer::Unavailable) { store.open }
 
       assert_match(/not retried/, error.message)
       assert_equal 1, fake.requests_to(FakeEccc::CGN_PATH).size
-      @now = WeatherCanadaMCP::Places::Gazetteer::Provider::RETRY_AFTER + 1
+      @now = WeatherCanadaMCP::Places::Gazetteer::Store::RETRY_AFTER + 1
 
-      assert_operator provider.get.size, :>, 0
+      assert_operator store.open.size, :>, 0
     end
   end
 
   def test_unreadable_data_is_unavailable_not_a_crash
     with_fake_eccc do |fake|
       fake.route(FakeEccc::CGN_PATH) { [200, {}, FakeEccc.cgn_zip("Geographical Name,Latitude\n\"unterminated,1\n")] }
-      error = assert_raises(WeatherCanadaMCP::Places::Gazetteer::Unavailable) { provider(fake).get }
+      error = assert_raises(WeatherCanadaMCP::Places::Gazetteer::Unavailable) { store(fake).open }
 
       assert_match(/could not be built/, error.message)
     end
@@ -73,7 +73,7 @@ class GazetteerProviderTest < Minitest::Test
   end
 
   def test_a_csv_declared_over_the_size_cap_is_rejected_before_inflating
-    assert_rejected(declare(size: WeatherCanadaMCP::Places::Gazetteer::Provider::MAX_CSV_BYTES + 1), /larger than/)
+    assert_rejected(declare(size: WeatherCanadaMCP::Places::Gazetteer::Store::MAX_CSV_BYTES + 1), /larger than/)
   end
 
   def test_an_archive_without_a_csv_is_rejected
@@ -86,7 +86,7 @@ class GazetteerProviderTest < Minitest::Test
     with_fake_eccc do |fake|
       fake.route(FakeEccc::CGN_PATH) { [200, {}, "PK not really a zip"] }
 
-      assert_raises(WeatherCanadaMCP::Places::Gazetteer::Unavailable) { provider(fake).get }
+      assert_raises(WeatherCanadaMCP::Places::Gazetteer::Unavailable) { store(fake).open }
     end
   end
 
@@ -95,11 +95,11 @@ class GazetteerProviderTest < Minitest::Test
   def assert_rejected(archive, message)
     with_fake_eccc do |fake|
       fake.route(FakeEccc::CGN_PATH) { [200, {}, archive] }
-      provider = provider(fake)
-      error = assert_raises(WeatherCanadaMCP::Places::Gazetteer::Unavailable) { provider.get }
+      store = store(fake)
+      error = assert_raises(WeatherCanadaMCP::Places::Gazetteer::Unavailable) { store.open }
 
       assert_match(message, error.message)
-      assert_empty Dir.children(File.dirname(provider.path)), "no database, staging or temporary file is left"
+      assert_empty Dir.children(File.dirname(store.path)), "no database, staging or temporary file is left"
     end
   end
 

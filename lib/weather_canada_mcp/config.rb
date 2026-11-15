@@ -46,7 +46,7 @@ module WeatherCanadaMCP
       @errors = @reader.errors # Config's own checks add theirs here too, so validate! lists every problem
       @auth_disabled = boolean("WEATHER_MCP_AUTH_DISABLED", false)
       @auth_tokens = credentials && transport == :http ? auth_tokens_value : []
-      @listen_address = Server::ListenAddress.read(@reader)
+      @listen_address = Config::ListenAddress.read(@reader)
       @path = path_value
       @allowed_hosts = list("WEATHER_MCP_ALLOWED_HOSTS")
       @allowed_origins = list("WEATHER_MCP_ALLOWED_ORIGINS")

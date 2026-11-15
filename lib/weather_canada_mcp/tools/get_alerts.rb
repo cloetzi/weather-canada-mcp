@@ -53,22 +53,22 @@ module WeatherCanadaMCP
       end
 
       def alert(feature, lang)
-        p = feature["properties"]
+        properties = feature["properties"]
         {
-          headline: field(p, "alert_name", lang), type: p["alert_type"], code: p["alert_code"],
-          colour: field(p, "risk_colour", lang), status: field(p, "status", lang),
-          area: field(p, "feature_name", lang), province: p["province"],
-          issued_at: p["publication_datetime"], valid_from: p["validity_datetime"], event_ends_at: p["event_end_datetime"],
-          expires_at: p["expiration_datetime"],
-          confidence: field(p, "confidence", lang), impact: field(p, "impact", lang),
-          text: field(p, "alert_text", lang)
+          headline: field(properties, "alert_name", lang), type: properties["alert_type"], code: properties["alert_code"],
+          colour: field(properties, "risk_colour", lang), status: field(properties, "status", lang),
+          area: field(properties, "feature_name", lang), province: properties["province"],
+          issued_at: properties["publication_datetime"], valid_from: properties["validity_datetime"], event_ends_at: properties["event_end_datetime"],
+          expires_at: properties["expiration_datetime"],
+          confidence: field(properties, "confidence", lang), impact: field(properties, "impact", lang),
+          text: field(properties, "alert_text", lang)
         }
       end
 
       def brief(feature, lang)
-        p = feature["properties"]
-        { headline: field(p, "alert_name", lang), type: p["alert_type"], area: field(p, "feature_name", lang),
-          expires_at: p["expiration_datetime"] }
+        properties = feature["properties"]
+        { headline: field(properties, "alert_name", lang), type: properties["alert_type"], area: field(properties, "feature_name", lang),
+          expires_at: properties["expiration_datetime"] }
       end
 
       def field(properties, name, lang) = properties["#{name}_#{lang}"] || properties["#{name}_en"]

@@ -54,13 +54,13 @@ module WeatherCanadaMCP
       end
 
       def area(feature, distance, lang)
-        p = feature["properties"]
-        regular = p["regularForecast"].is_a?(Hash) ? p["regularForecast"] : {}
+        properties = feature["properties"]
+        regular = properties["regularForecast"].is_a?(Hash) ? properties["regularForecast"] : {}
         {
-          name: text(p.dig("area", "value"), lang), region: text(p.dig("area", "region"), lang),
-          sub_region: text(p.dig("area", "subRegion"), lang), distance_km: distance && round_km(distance),
-          issued_at: issued(regular), warnings: warnings(p["warnings"], lang),
-          forecast: forecast(regular, p["waveForecast"], lang), extended_forecast: extended(p["extendedForecast"], lang)
+          name: text(properties.dig("area", "value"), lang), region: text(properties.dig("area", "region"), lang),
+          sub_region: text(properties.dig("area", "subRegion"), lang), distance_km: distance && round_km(distance),
+          issued_at: issued(regular), warnings: warnings(properties["warnings"], lang),
+          forecast: forecast(regular, properties["waveForecast"], lang), extended_forecast: extended(properties["extendedForecast"], lang)
         }
       end
 

@@ -66,9 +66,9 @@ module WeatherCanadaMCP
 
       # Reverse lookup is optional: without the gazetteer, coordinates still resolve to forecast sites.
       def nearby_places(point, limit)
-        return unless @context.places.available?
+        return unless @context.gazetteer.available?
 
-        @context.places.get.nearest(point.lat, point.lon, radius_km: 15, limit:).map do |distance, place|
+        @context.gazetteer.open.nearest(point.lat, point.lon, radius_km: 15, limit:).map do |distance, place|
           place.to_h.merge(distance_km: round_km(distance))
         end
       rescue Places::Gazetteer::Unavailable
@@ -76,7 +76,7 @@ module WeatherCanadaMCP
       end
 
       def sites(lat, lon, lang)
-        locator.nearest_sites(lat, lon, limit: 3).map do |distance, site|
+        forecast_sites.nearest_sites(lat, lon, limit: 3).map do |distance, site|
           { site_id: site.id, name: site.name_in(lang), region: site.region_in(lang), lat: site.lat, lon: site.lon,
             distance_km: round_km(distance) }
         end

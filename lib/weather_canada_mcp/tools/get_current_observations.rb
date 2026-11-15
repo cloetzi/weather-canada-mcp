@@ -94,8 +94,9 @@ module WeatherCanadaMCP
       end
 
       def station_info(feature, distance, lang)
-        p = feature["properties"]
-        { name: p["name_#{lang}"] || p["name"], id: p["msc_id"], provider: p["data_provider_#{lang}"] || p["data_provider"],
+        properties = feature["properties"]
+        { name: properties["name_#{lang}"] || properties["name"], id: properties["msc_id"],
+          provider: properties["data_provider_#{lang}"] || properties["data_provider"],
           elevation_m: feature.dig("geometry", "coordinates", 2), distance_km: round_km(distance) }
       end
 

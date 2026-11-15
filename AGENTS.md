@@ -11,20 +11,22 @@ Names. Users run it over stdio or from the Docker image on GHCR. No upstream cre
 ## Layout
 
 - `lib/weather_canada_mcp/`
-  - `tools/`: one class per MCP tool (`Tools::Base` subclasses), and `MapImage` (PNG compositing, chunky_png);
-    `tools.rb` lists them in order;
+  - `tools/`: one class per MCP tool (`Tools::Base` subclasses; the opt-in Avalanche Canada tools live in
+    `tools/avalanche/`, under `Tools::Avalanche::Base`); `tools.rb` lists them in order;
     `Tools::Runner` runs a tool call, drops nulls, adds the attribution, enforces the size cap (on the JSON, not
     on an image a tool returns), turns errors into tool errors
-  - `sources/`: everything that fetches ECCC and NRCan data. `HttpClient` (GET only, fixed origins, gzip, size cap,
+  - `maps/`: `Compositor`, PNG compositing (chunky_png)
+  - `sources/`: everything that fetches upstream data. `HttpClient` (GET only, fixed origins, gzip, size cap,
     retries), `RateLimiter` (GCRA, global), `Cache` (TTL with request coalescing), and a thin client per service
-    returning parsed data (`OgcApi`; `Wms`, GeoMet point values and map images; `Basemap`, NRCan's base map; and
-    `AvalancheCanada` when enabled); `sources.rb` holds the error classes
+    returning parsed data: `ECCC::OgcApi`; `ECCC::Wms`, GeoMet point values and map images; `ECCC::ForecastSites`,
+    nearest City Page forecast sites; `NRCan::Basemap`, NRCan's base map; and, when enabled,
+    `AvalancheCanada::Forecasts`, `::WeatherStations` and `::FieldReports` (bundled as `AvalancheCanada::Services`);
+    `sources.rb` holds the error classes
   - `places/`: `Gazetteer`, offline place names in SQLite (FTS5; plain lat/lon index, since the bundled SQLite has
-    no R*Tree), built from NRCan's CSV by `Builder`, downloaded (rubyzip) and built on demand by `Provider`;
-    `Locator`, nearest City Page forecast sites
+    no R*Tree), built from NRCan's CSV by `Builder`, downloaded (rubyzip) and built on demand by `Store`
   - `server/`: the HTTP transport. `HttpApp`, `HostOriginGuard`, `StaticTokenVerifier`, `HealthCheck`,
-    `ListenAddress`, `ExceptionReporter`
-  - `config.rb`, `application.rb`, `cli.rb`, `logger.rb`: wiring; `geo.rb`: distance, bbox, point in polygon
+    `ExceptionReporter`
+  - `config.rb` (with `Config::ListenAddress`), `application.rb`, `cli.rb`, `logger.rb`: wiring; `geo.rb`: distance, bbox, point in polygon
 - `bin/`: `weather-canada-mcp` (CLI), `capture-fixtures`, `healthcheck`, `docker-smoke-test`
 - `test/`: Minitest. `test/support/fake_eccc.rb` serves `test/fixtures/` on a local port;
   `test/fixtures/tools.json` snapshots the tool manifest; `test/fixtures/m0/` holds samples for future tools.
@@ -43,7 +45,7 @@ docker build -t weather-canada-mcp:dev . && bin/docker-smoke-test weather-canada
 
 - **Licence.** Every tool result carries `ATTRIBUTION` (`Tools::Runner` adds it). Alert text is passed through
   verbatim: never summarize, reword or truncate it. Never use ECCC logos or imply endorsement.
-- **Avalanche Canada.** It publishes no open licence, so its tools (`Tools::AvalancheBase` subclasses) exist only
+- **Avalanche Canada.** It publishes no open licence, so its tools (`Tools::Avalanche::Base` subclasses) exist only
   behind `WEATHER_MCP_AVALANCHE`, and its hosts are origins only then. Their results carry their own attribution
   naming the owning agency, plus the fixed safety note with the official link. Forecast text is passed through with
   only the HTML stripped; ratings keep Avalanche Canada's values; no coverage is never "low"; no logos or rating

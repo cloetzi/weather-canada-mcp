@@ -3,7 +3,7 @@
 require "zeitwerk"
 
 loader = Zeitwerk::Loader.for_gem
-loader.inflector.inflect("cli" => "CLI", "ogc_api" => "OgcApi", "http" => "HTTP",
+loader.inflector.inflect("cli" => "CLI", "ogc_api" => "OgcApi", "http" => "HTTP", "eccc" => "ECCC", "nrcan" => "NRCan",
                          "weather_canada_mcp" => "WeatherCanadaMCP")
 loader.setup
 

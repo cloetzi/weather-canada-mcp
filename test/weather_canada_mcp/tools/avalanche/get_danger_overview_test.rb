@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require_relative "../../test_helper"
+require_relative "../../../test_helper"
 
-class GetAvalancheDangerOverviewTest < Minitest::Test
+class AvalancheGetDangerOverviewTest < Minitest::Test
   def overview(**) = call_with_fake("get_avalanche_danger_overview", clock: -> { AVALANCHE_CAPTURED_AT }, env: AVALANCHE_ENABLED, **)
 
   def metadata(lang = "en") = FakeEccc.fixture_json("avalanche/metadata_#{lang}.json")

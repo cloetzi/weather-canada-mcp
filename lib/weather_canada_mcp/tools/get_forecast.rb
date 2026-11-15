@@ -32,8 +32,8 @@ module WeatherCanadaMCP
         lang = lang(arguments)
         point = resolve_point(arguments)
         hours = integer_argument(arguments, "hours", 12, 0..MAX_HOURS)
-        distance, site = locator.nearest_sites(point.lat, point.lon, limit: 1).first
-        properties = ogc.item(Places::Locator::COLLECTION, site.id).fetch("properties") do
+        distance, site = forecast_sites.nearest_sites(point.lat, point.lon, limit: 1).first
+        properties = ogc.item(Sources::ECCC::ForecastSites::COLLECTION, site.id).fetch("properties") do
           raise Sources::InvalidResponse, "api.weather.gc.ca returned a forecast without properties."
         end
         @lang = lang
@@ -46,27 +46,27 @@ module WeatherCanadaMCP
         {
           location: point.to_h,
           forecast_site: site_info(properties, site, distance),
-          issued_at: t(properties.dig("forecastGroup", "timestamp")),
+          issued_at: text(properties.dig("forecastGroup", "timestamp")),
           warnings: warnings(properties["warnings"]),
           current_conditions: current(properties["currentConditions"]),
           forecast: Array(properties.dig("forecastGroup", "forecasts")).map { |period| period(period) },
           hourly: (hourly(properties.dig("hourlyForecastGroup", "hourlyForecasts"), hours) if hours.positive?),
           sun: sun(properties["riseSet"]),
-          normals: t(properties.dig("forecastGroup", "regionalNormals", "textSummary"))
+          normals: text(properties.dig("forecastGroup", "regionalNormals", "textSummary"))
         }
       end
 
       def site_info(properties, site, distance)
         info = { site_id: site.id, name: site.name_in(@lang), region: site.region_in(@lang), distance_km: round_km(distance),
-                 url: t(properties["url"]) }
+                 url: text(properties["url"]) }
         info[:note] = "The nearest forecast site is #{round_km(distance)} km away; conditions there may differ." if distance > DISTANT_SITE_KM
         info
       end
 
       def warnings(list)
         Array(list).map do |warning|
-          { headline: t(warning["description"]), type: t(warning["type"]), colour: t(warning["alertColourLevel"]),
-            issued_at: t(warning["eventIssue"]), expires_at: t(warning["expiryTime"]), url: t(warning["url"]) }
+          { headline: text(warning["description"]), type: text(warning["type"]), colour: text(warning["alertColourLevel"]),
+            issued_at: text(warning["eventIssue"]), expires_at: text(warning["expiryTime"]), url: text(warning["url"]) }
         end
       end
 
@@ -75,12 +75,12 @@ module WeatherCanadaMCP
 
         temperature = value(conditions["temperature"])
         {
-          observed_at: t(conditions["timestamp"]), station: value(conditions["station"]),
-          condition: t(conditions["condition"]), temperature_c: temperature, dewpoint_c: value(conditions["dewpoint"]),
+          observed_at: text(conditions["timestamp"]), station: value(conditions["station"]),
+          condition: text(conditions["condition"]), temperature_c: temperature, dewpoint_c: value(conditions["dewpoint"]),
           humidity_pct: value(conditions["relativeHumidity"]),
           wind_kmh: value(conditions.dig("wind", "speed")), wind_gust_kmh: positive(value(conditions.dig("wind", "gust"))),
           wind_direction: value(conditions.dig("wind", "direction")),
-          pressure_kpa: value(conditions["pressure"]), pressure_tendency: t(conditions.dig("pressure", "tendency")),
+          pressure_kpa: value(conditions["pressure"]), pressure_tendency: text(conditions.dig("pressure", "tendency")),
           wind_chill: feels_like(value(conditions["windChill"]), temperature, WIND_CHILL_MAX_C, :below),
           humidex: feels_like(value(conditions["humidex"]), temperature, HUMIDEX_MIN_C, :above),
           visibility_km: value(conditions["visibility"])
@@ -89,32 +89,32 @@ module WeatherCanadaMCP
 
       def period(forecast)
         {
-          name: t(forecast.dig("period", "textForecastName")),
-          text: t(forecast["textSummary"]),
+          name: text(forecast.dig("period", "textForecastName")),
+          text: text(forecast["textSummary"]),
           temperatures: temperatures(forecast.dig("temperatures", "temperature")),
           precipitation: precipitation(forecast["precipitation"]),
-          snow_level: t(forecast.dig("snowLevel", "textSummary")),
-          wind: t(forecast.dig("winds", "textSummary")),
-          uv_index: t(forecast.dig("uv", "index"))&.then { |index| Integer(index, exception: false) || index },
+          snow_level: text(forecast.dig("snowLevel", "textSummary")),
+          wind: text(forecast.dig("winds", "textSummary")),
+          uv_index: text(forecast.dig("uv", "index"))&.then { |index| Integer(index, exception: false) || index },
           humidity_pct: value(forecast["relativeHumidity"])
         }
       end
 
       def temperatures(list)
-        Array(list).to_h { |entry| [:"#{t(entry["class"])}_c", value(entry)] }.except(:_c)
+        Array(list).to_h { |entry| [:"#{text(entry["class"])}_c", value(entry)] }.except(:_c)
       end
 
       def precipitation(precipitation)
         amount = precipitation&.dig("accumulation", "amount")
         return unless amount
 
-        { type: t(precipitation.dig("accumulation", "name")), amount: value(amount), units: t(amount["units"]) }
+        { type: text(precipitation.dig("accumulation", "name")), amount: value(amount), units: text(amount["units"]) }
       end
 
       def hourly(list, hours)
         Array(list).first(hours).map do |hour|
           {
-            time: hour["timestamp"], condition: t(hour["condition"]), temperature_c: value(hour["temperature"]),
+            time: hour["timestamp"], condition: text(hour["condition"]), temperature_c: value(hour["temperature"]),
             precip_chance_pct: value(hour["lop"]),
             wind_kmh: value(hour.dig("wind", "speed")), wind_gust_kmh: positive(value(hour.dig("wind", "gust"))),
             wind_direction: value(hour.dig("wind", "direction")),
@@ -126,13 +126,13 @@ module WeatherCanadaMCP
       def sun(rise_set)
         return unless rise_set.is_a?(Hash)
 
-        { sunrise: t(rise_set["sunrise"]), sunset: t(rise_set["sunset"]) }
+        { sunrise: text(rise_set["sunrise"]), sunset: text(rise_set["sunset"]) }
       end
 
       # City Page puts the reading under "value" as a bilingual pair ({"value" => {"en" => 4.2, "fr" => 4.2}}).
-      def value(node) = node.is_a?(Hash) ? t(node["value"]) : nil
+      def value(node) = node.is_a?(Hash) ? text(node["value"]) : nil
 
-      def t(node) = localized(node, @lang)
+      def text(node) = localized(node, @lang)
 
       def positive(number) = number.is_a?(Numeric) && number.positive? ? number : nil
 

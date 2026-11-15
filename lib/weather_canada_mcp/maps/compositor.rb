@@ -4,11 +4,11 @@ require "chunky_png"
 require "zlib"
 
 module WeatherCanadaMCP
-  module Tools
+  module Maps
     # Stacks PNG map layers of one size (an optional opaque base map, then transparent overlays) and rings a point, in
     # pure Ruby (chunky_png). Before a layer is decoded, its header must give the size asked for and its pixel data
     # must inflate to no more than that size can hold, so an upstream cannot make the server decode a huge image.
-    module MapImage
+    module Compositor
       MARKER = ChunkyPNG::Color.rgb(200, 0, 0)
       HALO = ChunkyPNG::Color::WHITE
       # The most bytes a pixel takes in a PNG (RGBA, 16 bits a channel).

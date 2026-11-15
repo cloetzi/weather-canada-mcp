@@ -10,7 +10,7 @@ module WeatherCanadaMCP
 
     module_function
 
-    def call(html)
+    def plain(html)
       return unless html.is_a?(String)
 
       fragment = Nokogiri::HTML5.fragment(html, max_tree_depth: 64)

@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require_relative "../../test_helper"
+require_relative "../../../test_helper"
 
-class GetMountainWeatherStationsTest < Minitest::Test
+class AvalancheGetMountainWeatherStationsTest < Minitest::Test
   LAKE_LOUISE = { lat: 51.42, lon: -116.18 }.freeze
 
   def stations(**) = call_with_fake("get_mountain_weather_stations", clock: -> { AVALANCHE_CAPTURED_AT }, env: AVALANCHE_ENABLED, **)
