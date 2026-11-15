@@ -27,6 +27,21 @@ jobs:
       - run: bundle exec rubocop
       - run: bundle exec rake test
 
+  audit:
+    name: Dependency advisories
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      # Checks Gemfile.lock against the OSV database (which includes RubyGems advisories); fails on any finding.
+      # Needs neither a gem nor the dependency graph setting.
+      - uses: google/osv-scanner-action/osv-scanner-action@32d3cd482bdadfb38b186c0ad1b031902d55d932 # v2.7.1
+        with:
+          scan-args: --lockfile=Gemfile.lock
+
   gem:
     name: Build and install gem
     runs-on: ubuntu-24.04
@@ -71,6 +86,8 @@ jobs:
     permissions:
       contents: read
       packages: write
+      id-token: write
+      attestations: write
     uses: ./.github/workflows/publish-image.yml
     with:
       version: edge-${{ github.sha }}

@@ -64,6 +64,10 @@ jobs:
           platforms: ${{ matrix.platform }}
           labels: ${{ steps.meta.outputs.labels }}
           build-args: VERSION=${{ inputs.version }}
+          # An SBOM is attached to each architecture's image. Provenance is attested on the assembled manifest list
+          # in the merge job, so BuildKit's own provenance is off.
+          sbom: true
+          provenance: false
           outputs: type=image,name=${{ env.IMAGE }},push-by-digest=true,name-canonical=true,push=true
           cache-from: type=gha,scope=image-${{ env.PLATFORM_PAIR }}
           cache-to: type=gha,mode=max,scope=image-${{ env.PLATFORM_PAIR }}
@@ -87,6 +91,8 @@ jobs:
     permissions:
       contents: read
       packages: write
+      id-token: write
+      attestations: write
     steps:
       - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
         with:
@@ -118,5 +124,22 @@ jobs:
           sources=()
           for digest in "${digests[@]}"; do sources+=("$IMAGE@sha256:$digest"); done
           docker buildx imagetools create "${tag_args[@]}" "${sources[@]}"
-      - name: Inspect
-        run: docker buildx imagetools inspect "$IMAGE:${{ steps.meta.outputs.version }}"
+      - name: Inspect and check attestations
+        id: inspect
+        run: |
+          set -euo pipefail
+          docker buildx imagetools inspect "$IMAGE:$VERSION"
+          manifest=$(docker buildx imagetools inspect "$IMAGE:$VERSION" --format '{{json .Manifest}}')
+          digest=$(jq -r .digest <<< "$manifest")
+          images=$(jq '[.manifests[] | select(.platform.os == "linux")] | length' <<< "$manifest")
+          sboms=$(jq '[.manifests[] | select(.annotations["vnd.docker.reference.type"] == "attestation-manifest")] | length' <<< "$manifest")
+          [ -n "$digest" ] && [ "$images" -eq 2 ] && [ "$sboms" -eq 2 ] || { echo "Expected 2 images and 2 SBOM attestations, found $images and $sboms" >&2; exit 1; }
+          echo "digest=$digest" >> "$GITHUB_OUTPUT"
+        env:
+          VERSION: ${{ steps.meta.outputs.version }}
+      # Verify with: gh attestation verify oci://ghcr.io/<owner>/weather-canada-mcp:<tag> --repo <owner>/weather-canada-mcp
+      - uses: actions/attest-build-provenance@4d101475d8b20a2381f78447822ac1eab6504dd8 # v4.2.2
+        with:
+          subject-name: ${{ env.IMAGE }}
+          subject-digest: ${{ steps.inspect.outputs.digest }}
+          push-to-registry: true
