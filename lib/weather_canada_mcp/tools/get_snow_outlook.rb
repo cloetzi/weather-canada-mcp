@@ -53,31 +53,26 @@ module WeatherCanadaMcp
       private
 
       def step(point, from, to, hours, lang)
-        level = snow_level(point, to, lang)
-        snow = value("RDPS_10km_Snow-Accum#{hours}h", point, to)
-        blowing = value(BLOWING_SNOW, point, to)
+        level, snow, blowing = concurrently(
+          [-> { snow_level(point, to, lang) }, -> { wms_value("RDPS_10km_Snow-Accum#{hours}h", point, time: to) },
+           -> { wms_value(BLOWING_SNOW, point, time: to) }], &:call
+        )
         { from: from.iso8601, to: to.iso8601, **level, new_snow_water_mm: snow&.value&.round(1),
           blowing_snow_probability_pct: blowing&.value&.round, reference_times: [level[:run], snow&.reference_time].compact }
       end
 
-      # The HRDPS covers southern Canada; north of it the RDPS fills in.
+      # The HRDPS covers southern Canada; north of it the RDPS fills in. A negative value is a code, not a height; one
+      # this tool does not know gives no snow level rather than the other model's.
       def snow_level(point, time, lang)
         SNOW_LEVEL.each do |layer|
-          found = value(layer, point, time)
+          found = wms_value(layer, point, time:)
           next unless found
-
-          code = SNOW_LEVEL_CODES[found.value.round] if found.value.negative?
-          return { snow_level: code[lang], run: found.reference_time } if code
           return { snow_level_m: (found.value / 10.0).round * 10, run: found.reference_time } unless found.value.negative?
+
+          code = SNOW_LEVEL_CODES[found.value.round]
+          return { snow_level: code&.dig(lang), run: found.reference_time }
         end
         {}
-      end
-
-      # nil when the model has no value there or then (outside its domain, or beyond its latest run).
-      def value(layer, point, time)
-        wms.feature_info(layer, point.lat, point.lon, time:)
-      rescue Sources::InvalidResponse
-        nil
       end
 
       def shape(point, steps, step)

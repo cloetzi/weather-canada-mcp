@@ -74,4 +74,25 @@ class GetSnowOutlookTest < Minitest::Test
     assert_match(/no values for 2 of the steps/, result["note"])
     assert(result["steps"].none? { |step| step.key?("new_snow_water_mm") })
   end
+
+  def test_an_unknown_snow_level_code_gives_no_level
+    data = FakeEccc.fixture_json("geomet/whitehorse/HRDPS-WEonG_2.5km_SnowLevelHeight_20261116T0000Z.json")
+    data["features"].first["properties"]["value"] = -3
+    real = FakeEccc.new
+    geomet = lambda do |request|
+      if request.query["LAYERS"] == "HRDPS-WEonG_2.5km_SnowLevelHeight" && request.query["TIME"] == "2026-11-16T00:00:00Z"
+        return [200, { "content-type" => "application/json" }, JSON.generate(data)]
+      end
+
+      real.send(:wms_response, request.query)
+    end
+    result, error, requests = outlook(**WHITEHORSE, routes: { "/geomet" => geomet })
+
+    refute error
+    first = result["steps"].find { |step| step["to"] == "2026-11-16T00:00:00Z" }
+
+    refute first.key?("snow_level")
+    refute first.key?("snow_level_m")
+    refute(requests.any? { |request| request.query["LAYERS"].start_with?("RDPS-WEonG") && request.query["TIME"] == "2026-11-16T00:00:00Z" })
+  end
 end

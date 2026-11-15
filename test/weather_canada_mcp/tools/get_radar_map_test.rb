@@ -75,9 +75,34 @@ class GetRadarMapTest < Minitest::Test
     content, = radar_content(**WHISTLER, routes: { "/wms/CBMT" => ->(_) { [503, {}, "busy"] } })
     result = JSON.parse(content.first[:text])
 
-    assert_match(/base map could not be fetched/, result.dig("map", "note"))
+    assert_match(/base map could not be used \(maps.geogratis.gc.ca failed/, result.dig("map", "note"))
     refute result["map"].key?("base_map")
     assert_equal "image", content.last[:type]
+  end
+
+  def test_an_unreadable_base_map_is_left_out
+    content, = radar_content(**WHISTLER, routes: { "/wms/CBMT" => lambda { |_|
+      [200, { "content-type" => "image/png" }, "#{WeatherCanadaMcp::Sources::PNG_SIGNATURE}junk"]
+    } })
+    result = JSON.parse(content.first[:text])
+
+    assert_match(/base map could not be used \(A map image was not the 512x512/, result.dig("map", "note"))
+    assert_equal "image", content.last[:type]
+  end
+
+  def test_the_composed_map_is_kept_for_the_frame
+    with_fake_eccc do |fake|
+      app = application(fake, clock: -> { RADAR_CAPTURED_AT })
+      call = -> { app.mcp_server.handle({ jsonrpc: "2.0", id: 1, method: "tools/call", params: { name: "get_radar_map", arguments: WHISTLER } }) }
+      first = call.call.dig(:result, :content).last[:data]
+      keys = app.image_cache.instance_variable_get(:@entries).keys
+
+      assert_equal(1, keys.count { |key| key.start_with?("radar-map:snow,") })
+      assert_equal first, call.call.dig(:result, :content).last[:data]
+      assert_equal keys, app.image_cache.instance_variable_get(:@entries).keys
+    ensure
+      app&.close
+    end
   end
 
   def test_rain_scale_asks_for_the_rain_layer

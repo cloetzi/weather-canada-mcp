@@ -13,9 +13,10 @@ module WeatherCanadaMcp
         Climate context for a location and date, to judge whether a forecast is unusual: the daily records for that
         calendar day (highest and lowest temperatures, most precipitation and most snowfall, with the year of each) from
         Environment Canada's long-term climate extremes for the nearest of about 750 places (within 100 km, joining the
-        records of nearby stations since as early as the 1840s), and the monthly climate normals (1981-2010) at the
-        nearest normals station (within 50 km): mean daily high and low, precipitation, rain, snowfall, days with
-        precipitation or snow, snow depth and sunshine. The stations are usually in valleys and towns, so mountain
+        records of nearby stations since as early as the 1840s; each span of records gives the years covered, with "to"
+        only when the series has ended), and the monthly climate normals (1981-2010) at the nearest normals station
+        (within 50 km): mean daily high and low, precipitation, rain, snowfall, days with precipitation or snow, snow
+        depth and sunshine. The stations are usually in valleys and towns, so mountain
         conditions differ. date defaults to today.
       TEXT
       RECORDS_KM = 100
@@ -77,9 +78,9 @@ module WeatherCanadaMcp
         Array(ogc.items(collection, bbox:, LOCAL_MONTH: month, LOCAL_DAY: day, limit: 50)["features"])
       end
 
-      # The records of the nearest virtual station that has temperature records (or else any records).
+      # The records of the nearest virtual station that has temperature records (or else of the nearest with any).
       def records(point, collections, lang)
-        nearest = collections.flatten.filter_map { |feature| located(feature, point) }.min_by(&:first)
+        nearest = nearest_record(collections.first, point) || nearest_record(collections.flatten, point)
         return { note: "No climate records within #{RECORDS_KM} km." } unless nearest
 
         distance, feature = nearest
@@ -94,6 +95,8 @@ module WeatherCanadaMcp
           **amount_record(snowfall, "SNOWFALL", "cm") }
       end
 
+      def nearest_record(features, point) = features.filter_map { |feature| located(feature, point) }.min_by(&:first)
+
       def located(feature, point)
         lon, lat = feature.dig("geometry", "coordinates")
         return unless lat.is_a?(Numeric) && lon.is_a?(Numeric) && feature.dig("properties", "VIRTUAL_CLIMATE_ID")
@@ -106,16 +109,20 @@ module WeatherCanadaMcp
         return {} if row.empty?
 
         { temperature: { highest_max_c: record(row, "RECORD_HIGH_MAX_TEMP"), lowest_max_c: record(row, "RECORD_LOW_MAX_TEMP"),
+                         max_records: span(row, "MAX_TEMP_RECORD"),
                          highest_min_c: record(row, "RECORD_HIGH_MIN_TEMP"), lowest_min_c: record(row, "RECORD_LOW_MIN_TEMP"),
-                         records_since: year(row["MAX_TEMP_RECORD_BEGIN"]) } }
+                         min_records: span(row, "MIN_TEMP_RECORD") } }
       end
 
-      # {precipitation: {most_mm:, records_since:}}, or snowfall with most_cm.
+      # {precipitation: {most_mm:, records:}}, or snowfall with most_cm.
       def amount_record(row, element, unit)
         return {} if row.empty?
 
-        { element.downcase.to_sym => { "most_#{unit}": record(row, "RECORD_#{element}"), records_since: year(row["RECORD_BEGIN"]) } }
+        { element.downcase.to_sym => { "most_#{unit}": record(row, "RECORD_#{element}"), records: span(row, "RECORD") } }
       end
+
+      # The years the records cover: {from:, to:}, without to while they are still kept.
+      def span(row, prefix) = { from: year(row["#{prefix}_BEGIN"]), to: year(row["#{prefix}_END"]) }
 
       def record(row, key)
         value = row[key]

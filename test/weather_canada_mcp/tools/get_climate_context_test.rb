@@ -17,8 +17,26 @@ class GetClimateContextTest < Minitest::Test
     assert_equal({ "name" => "WHISTLER AREA", "id" => "VSBC86V", "distance_km" => 0.7 }, records["station"])
     assert_equal({ "value" => 14.6, "year" => 2019 }, records.dig("temperature", "highest_max_c"))
     assert_equal({ "value" => -17.8, "year" => 1955 }, records.dig("temperature", "lowest_min_c"))
-    assert_equal({ "most_mm" => { "value" => 45.8, "year" => 2021 }, "records_since" => 1931 }, records["precipitation"])
-    assert_equal({ "most_cm" => { "value" => 19.3, "year" => 1950 }, "records_since" => 1931 }, records["snowfall"])
+    assert_equal({ "most_mm" => { "value" => 45.8, "year" => 2021 }, "records" => { "from" => 1931 } }, records["precipitation"])
+    assert_equal({ "most_cm" => { "value" => 19.3, "year" => 1950 }, "records" => { "from" => 1931, "to" => 2024 } }, records["snowfall"])
+  end
+
+  def test_max_and_min_temperature_records_have_their_own_spans
+    temperature = climate(**WHISTLER).first.dig("daily_records", "temperature")
+    row = FakeEccc.fixture_json("api/ltce-temperature_whistler.json")["features"]
+                  .find { |feature| feature.dig("properties", "VIRTUAL_CLIMATE_ID") == "VSBC86V" }["properties"]
+
+    assert_equal row["MAX_TEMP_RECORD_BEGIN"][0, 4].to_i, temperature.dig("max_records", "from")
+    assert_equal row["MIN_TEMP_RECORD_BEGIN"][0, 4].to_i, temperature.dig("min_records", "from")
+  end
+
+  def test_the_nearest_place_with_temperature_records_wins
+    # Pemberton's precipitation records moved next to the point: still Whistler, which has temperature records too.
+    data = FakeEccc.fixture_json("api/ltce-precipitation_whistler.json")
+    data["features"].find { |feature| feature.dig("properties", "VIRTUAL_CLIMATE_ID") == "VSBC16V" }["geometry"]["coordinates"] = [-122.96, 50.12]
+    routes = { "/collections/ltce-precipitation/items" => ->(_) { [200, {}, JSON.generate(data)] } }
+
+    assert_equal "VSBC86V", climate(**WHISTLER, routes:).first.dig("daily_records", "station", "id")
   end
 
   def test_monthly_normals_of_the_nearest_normals_station

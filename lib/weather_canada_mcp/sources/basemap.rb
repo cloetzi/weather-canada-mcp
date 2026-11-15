@@ -20,10 +20,7 @@ module WeatherCanadaMcp
 
       # PNG bytes over bbox, [min_lon, min_lat, max_lon, max_lat] as Geo.bbox gives it.
       def get_map(bbox, width:, height:)
-        min_lon, min_lat, max_lon, max_lat = bbox
-        params = { SERVICE: "WMS", VERSION: "1.3.0", REQUEST: "GetMap", LAYERS: "CBMT", STYLES: "", CRS: "EPSG:4326",
-                   BBOX: [min_lat, min_lon, max_lat, max_lon].map { |v| v.round(5) }.join(","), WIDTH: width, HEIGHT: height,
-                   FORMAT: "image/png" }
+        params = Wms.get_map_params("CBMT", bbox, width:, height:, transparent: false)
         path = "#{PATH}?#{URI.encode_www_form(params)}"
         @cache.fetch("basemap:#{path}", ttl: TTL) do
           response = @http.get(:basemap, path, accept: "image/png", max_body_bytes: MAX_BYTES)

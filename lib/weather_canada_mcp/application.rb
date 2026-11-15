@@ -13,6 +13,7 @@ module WeatherCanadaMcp
       Quote alert text as given. Times are UTC. This is an unofficial tool; for safety-critical decisions point
       people to weather.gc.ca.
     TEXT
+    IMAGE_CACHE_ENTRIES = 64
 
     attr_reader :config, :logger, :tools
 
@@ -47,15 +48,20 @@ module WeatherCanadaMcp
 
     def cache = @cache ||= Sources::Cache.new(scale: config.cache_scale)
 
+    # Map images (100 KB or more each) are kept apart, so they never crowd out the small entries.
+    def image_cache = @image_cache ||= Sources::Cache.new(max_entries: IMAGE_CACHE_ENTRIES, scale: config.cache_scale)
+
     def ogc = @ogc ||= Sources::OgcApi.new(http:, cache:)
 
-    def wms = @wms ||= Sources::Wms.new(http:, cache:)
+    def wms = @wms ||= Sources::Wms.new(http:, cache:, image_cache:)
 
-    def basemap = @basemap ||= Sources::Basemap.new(http:, cache:)
+    def basemap = @basemap ||= Sources::Basemap.new(http:, cache: image_cache)
 
     def places = @places ||= Places::Gazetteer::Provider.new(path: config.gazetteer_path, http:, logger:)
 
-    def context = @context ||= Tools::Context.new(ogc:, wms:, basemap:, locator: Places::Locator.new(ogc:), places:, config:, clock: @clock)
+    def context
+      @context ||= Tools::Context.new(ogc:, wms:, basemap:, images: image_cache, locator: Places::Locator.new(ogc:), places:, config:, clock: @clock)
+    end
 
     # A fresh MCP server per transport; the SDK binds one transport to one server.
     def mcp_server

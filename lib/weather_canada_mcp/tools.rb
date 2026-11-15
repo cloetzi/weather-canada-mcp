@@ -6,8 +6,9 @@ module WeatherCanadaMcp
     # A problem with the arguments the model can fix; shown to it as a tool error.
     class InvalidArguments < WeatherCanadaMcp::Error; end
 
-    # What tools share: the upstream sources, the locator, the gazetteer, the configuration and a clock (Time.now).
-    Context = Data.define(:ogc, :wms, :basemap, :locator, :places, :config, :clock)
+    # What tools share: the upstream sources, a cache for images, the locator, the gazetteer, the configuration and a
+    # clock (Time.now).
+    Context = Data.define(:ogc, :wms, :basemap, :images, :locator, :places, :config, :clock)
 
     # An image a tool returns beside its JSON (Tools::Runner sends it as MCP image content).
     Image = Data.define(:data, :mime_type)

@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "async/semaphore"
+
 module WeatherCanadaMcp
   module Tools
     # The latest weather radar (the North American 1 km composite on GeoMet) as a map image over NRCan's base map, with
@@ -39,6 +41,8 @@ module WeatherCanadaMcp
       # The latest frame changes every 6 minutes; a given frame never changes.
       LATEST_TTL = 120
       FRAME_TTL = 3600
+      # Composing is CPU work on a thread; at most this many run at once.
+      COMPOSE_SLOTS = 2
       INPUT_SCHEMA = {
         type: "object",
         properties: {
@@ -50,6 +54,11 @@ module WeatherCanadaMcp
         additionalProperties: false
       }.freeze
 
+      def initialize(context)
+        super
+        @compose_slots = Async::Semaphore.new(COMPOSE_SLOTS)
+      end
+
       def call(arguments)
         lang(arguments)
         point = resolve_point(arguments)
@@ -57,7 +66,7 @@ module WeatherCanadaMcp
         raise InvalidArguments, "radius_km must be one of #{RADII.join(", ")}." unless RADII.include?(radius)
 
         kind = precipitation(arguments["precipitation"])
-        latest = value(RATE_LAYERS.fetch(kind), point, nil, LATEST_TTL)
+        latest = wms_value(RATE_LAYERS.fetch(kind), point, ttl: LATEST_TTL)
         at = time(latest&.time)
         return { location: point.to_h, note: "The radar has no image for this location right now." } unless at
 
@@ -77,10 +86,15 @@ module WeatherCanadaMcp
         bbox = Geo.bbox(snap(point.lat), snap(point.lon), radius)
         other = RATE_LAYERS.keys.find { |key| key != kind }
         other_rate, type, *history, radar, coverage, base = fetch_all(point, bbox, kind, other, at)
+        marker = marker(point, bbox)
+        base_png = base if base.is_a?(String)
+        image = composed([kind, at.to_i, bbox, marker, base_png ? 1 : 0]) do
+          MapImage.compose([coverage, radar], width: SIZE, height: SIZE, marker:, base: base_png)
+        end
         {
           location: point.to_h, radar_time: at.utc.iso8601, **readings(kind, other, at, [latest, other_rate, type, history]),
-          map: map_info(kind, radius, bbox, base),
-          image: Tools::Image.new(data: compose([base, coverage, radar], marker(point, bbox)), mime_type: "image/png")
+          map: map_info(kind, radius, bbox, image.base_error || (base.message if base.is_a?(Sources::Error))),
+          image: Tools::Image.new(data: image.png, mime_type: "image/png")
         }
       end
 
@@ -97,20 +111,13 @@ module WeatherCanadaMcp
         layer = RATE_LAYERS.fetch(kind)
         map = ->(name, style) { wms.get_map(name, bbox, width: SIZE, height: SIZE, style:, time: at, ttl: FRAME_TTL) }
         concurrently(
-          [-> { value(RATE_LAYERS.fetch(other), point, at, FRAME_TTL) }, -> { value(TYPE_LAYER, point, nil, LATEST_TTL) },
-           *HISTORY_MINUTES.map { |minutes| -> { value(layer, point, at - (minutes * 60), FRAME_TTL) } },
+          [-> { wms_value(RATE_LAYERS.fetch(other), point, time: at, ttl: FRAME_TTL) }, -> { wms_value(TYPE_LAYER, point, ttl: LATEST_TTL) },
+           *HISTORY_MINUTES.map { |minutes| -> { wms_value(layer, point, time: at - (minutes * 60), ttl: FRAME_TTL) } },
            -> { map.call(layer, STYLES.fetch(kind)) }, -> { map.call(COVERAGE_LAYER, COVERAGE_STYLE) }, -> { base_map(bbox) }], &:call
         )
       end
 
       def snap(degrees) = ((degrees / SNAP).round * SNAP).round(2)
-
-      # nil when the radar has no value there or then.
-      def value(layer, point, time, ttl)
-        wms.feature_info(layer, point.lat, point.lon, time:, ttl:)
-      rescue Sources::InvalidResponse
-        nil
-      end
 
       def rate(found) = found&.value&.then { |number| number.round(2) }
 
@@ -128,22 +135,26 @@ module WeatherCanadaMcp
          ((max_lat - point.lat) / (max_lat - min_lat) * SIZE).floor.clamp(0, SIZE - 1)]
       end
 
-      # Decoding and encoding PNGs is CPU work, so it runs on a thread and other requests' fibers keep going.
-      def compose(layers, marker)
-        layers = layers.grep(String)
-        Thread.new do
-          Thread.current.report_on_exception = false
-          MapImage.compose(layers, width: SIZE, height: SIZE, marker:)
-        end.value
+      # The composed map, made once per frame, area and marker. Decoding and encoding PNGs is CPU work, so it runs on a
+      # thread (at most COMPOSE_SLOTS at once) and other requests' fibers keep going.
+      def composed(key, &block)
+        images.fetch("radar-map:#{key.flatten.join(",")}", ttl: FRAME_TTL) do
+          @compose_slots.acquire do
+            Thread.new do
+              Thread.current.report_on_exception = false
+              block.call
+            end.value
+          end
+        end
       end
 
-      def map_info(kind, radius, bbox, base)
+      def map_info(kind, radius, bbox, base_error)
         min_lon, min_lat, max_lon, max_lat = bbox
         info = { precipitation: kind, radius_km: radius, width: SIZE, height: SIZE,
                  bounds: { min_lat:, min_lon:, max_lat:, max_lon: }, legend: LEGENDS.fetch(kind) }
-        return info.merge(base_map: Sources::Basemap::ATTRIBUTION) if base.is_a?(String)
+        return info.merge(base_map: Sources::Basemap::ATTRIBUTION) unless base_error
 
-        info.merge(note: "The base map could not be fetched (#{base.message}); the radar is drawn on white.")
+        info.merge(note: "The base map could not be used (#{base_error}); the radar is drawn on white.")
       end
     end
   end

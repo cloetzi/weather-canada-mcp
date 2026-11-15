@@ -50,8 +50,9 @@ docker build -t weather-canada-mcp:dev . && bin/docker-smoke-test weather-canada
   durations and error classes only.
 - **Security.** GET only, to configured origins only. Validate tool arguments and URL-encode anything that reaches
   a path. Cap sizes after decompression. MCP auth stays required by default for HTTP.
-- **Fibers.** Code runs under the Async fiber scheduler. Use non-blocking IO (async-http); CPU-heavy one-off work
-  (the gazetteer build) may use a thread. Logs go to stderr; stdout is the stdio transport's protocol channel.
+- **Fibers.** Code runs under the Async fiber scheduler. Use non-blocking IO (async-http); CPU-heavy work (the
+  gazetteer build, composing radar map images) may use a thread. Logs go to stderr; stdout is the stdio transport's
+  protocol channel.
 - **Style.** Follow the surrounding code: small classes, `Data` value objects, endless methods for one-liners,
   comments only where intent is not obvious. RuboCop is the arbiter.
 - **Loading.** Zeitwerk autoloads `lib/` (inflections in `lib/weather_canada_mcp.rb`): one top-level constant per

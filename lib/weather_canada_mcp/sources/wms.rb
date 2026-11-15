@@ -19,9 +19,21 @@ module WeatherCanadaMcp
       # A point value: value is a number, label is GeoMet's class for it ("1200 - 1300", "Not Melted").
       Value = Data.define(:value, :label, :time, :reference_time)
 
-      def initialize(http:, cache:)
+      # image_cache holds map images apart from the small point values.
+      def initialize(http:, cache:, image_cache: cache)
         @http = http
         @cache = cache
+        @image_cache = image_cache
+      end
+
+      # GetMap parameters for one layer over bbox ([min_lon, min_lat, max_lon, max_lat], as Geo.bbox gives it). WMS 1.3.0
+      # in EPSG:4326 takes the bbox latitude first. Shared with Sources::Basemap, another WMS.
+      def self.get_map_params(layer, bbox, width:, height:, style: "", transparent: true)
+        min_lon, min_lat, max_lon, max_lat = bbox
+        params = { SERVICE: "WMS", VERSION: "1.3.0", REQUEST: "GetMap", LAYERS: layer, STYLES: style.to_s, CRS: "EPSG:4326",
+                   BBOX: [min_lat, min_lon, max_lat, max_lon].map { |v| v.round(5) }.join(","), WIDTH: width, HEIGHT: height,
+                   FORMAT: "image/png" }
+        transparent ? params.merge(TRANSPARENT: "TRUE") : params
       end
 
       # time is a Time (rounded to the second) or nil for the layer's default time. Returns nil when the layer has no
@@ -37,13 +49,10 @@ module WeatherCanadaMcp
       def get_map(layer, bbox, width:, height:, style: nil, time: nil, ttl: TTL)
         raise ArgumentError, "invalid layer" unless [layer, style || "x"].all? { |name| name.is_a?(String) && name.match?(LAYER) }
 
-        min_lon, min_lat, max_lon, max_lat = bbox
-        params = { SERVICE: "WMS", VERSION: "1.3.0", REQUEST: "GetMap", LAYERS: layer, STYLES: style.to_s, CRS: "EPSG:4326",
-                   BBOX: [min_lat, min_lon, max_lat, max_lon].map { |v| v.round(5) }.join(","), WIDTH: width, HEIGHT: height,
-                   FORMAT: "image/png", TRANSPARENT: "TRUE" }
+        params = self.class.get_map_params(layer, bbox, width:, height:, style:)
         params[:TIME] = time.utc.strftime("%Y-%m-%dT%H:%M:%SZ") if time
         path = "#{PATH}?#{URI.encode_www_form(params)}"
-        @cache.fetch("geomet:#{path}", ttl:) do
+        @image_cache.fetch("geomet:#{path}", ttl:) do
           response = response(path, accept: "image/png", max_body_bytes: MAX_IMAGE_BYTES)
           raise Sources::InvalidResponse, "geo.weather.gc.ca could not draw #{layer} for that area and time." unless response.png?
 
