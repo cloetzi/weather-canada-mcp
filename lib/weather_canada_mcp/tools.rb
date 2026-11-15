@@ -7,8 +7,8 @@ module WeatherCanadaMcp
     class InvalidArguments < WeatherCanadaMcp::Error; end
 
     # What tools share: the upstream sources, the locator, the gazetteer, the configuration and a clock (Time.now).
-    Context = Data.define(:ogc, :locator, :places, :config, :clock)
+    Context = Data.define(:ogc, :wms, :locator, :places, :config, :clock)
 
-    def self.all = [FindLocation, GetForecast, GetAlerts, GetCurrentObservations, GetRiverConditions, GetAirQuality]
+    def self.all = [FindLocation, GetForecast, GetAlerts, GetCurrentObservations, GetRiverConditions, GetAirQuality, GetSnowOutlook]
   end
 end

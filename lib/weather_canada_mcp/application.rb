@@ -49,9 +49,11 @@ module WeatherCanadaMcp
 
     def ogc = @ogc ||= Sources::OgcApi.new(http:, cache:)
 
+    def wms = @wms ||= Sources::Wms.new(http:, cache:)
+
     def places = @places ||= Places::Gazetteer::Provider.new(path: config.gazetteer_path, http:, logger:)
 
-    def context = @context ||= Tools::Context.new(ogc:, locator: Places::Locator.new(ogc:), places:, config:, clock: @clock)
+    def context = @context ||= Tools::Context.new(ogc:, wms:, locator: Places::Locator.new(ogc:), places:, config:, clock: @clock)
 
     # A fresh MCP server per transport; the SDK binds one transport to one server.
     def mcp_server

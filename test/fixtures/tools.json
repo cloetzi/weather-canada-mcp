@@ -252,5 +252,51 @@
       },
       "additionalProperties": false
     }
+  },
+  {
+    "name": "get_snow_outlook",
+    "title": "Get the snow outlook",
+    "description": "Model guidance for snow at a point over the next 12, 24 or 48 hours, in four steps: the snow level (the height in metres above sea level below which snow turns to rain, from the 2.5 km HRDPS model), new snow as water equivalent (mm, from the 10 km RDPS model; 1 mm is roughly 1 cm of fresh snow, more in cold dry snow) and the probability of blowing snow. \"snow to the surface\" means the snow level is below the ground at this point (the model's terrain is smoothed over 2.5 km), so precipitation falls as snow. This is raw model output, not a forecaster's forecast and not an avalanche bulletin; for mountain text forecasts use get_forecast. Times are UTC (ISO 8601).",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "location": {
+          "type": "string",
+          "maxLength": 120,
+          "description": "A place in Canada: town, park, lake, peak or river, optionally with a province (\"Squamish\", \"Lake Louise, AB\", \"Mont-Tremblant, QC\"). Ignored when lat and lon are given."
+        },
+        "lat": {
+          "type": "number",
+          "minimum": 41.0,
+          "maximum": 84.0,
+          "description": "Latitude in decimal degrees."
+        },
+        "lon": {
+          "type": "number",
+          "minimum": -142.0,
+          "maximum": -52.0,
+          "description": "Longitude in decimal degrees (negative, west)."
+        },
+        "hours": {
+          "type": "integer",
+          "enum": [
+            12,
+            24,
+            48
+          ],
+          "default": 24,
+          "description": "How far ahead to look: 12, 24 or 48 hours."
+        },
+        "lang": {
+          "type": "string",
+          "enum": [
+            "en",
+            "fr"
+          ],
+          "description": "Language of text fields: en or fr."
+        }
+      },
+      "additionalProperties": false
+    }
   }
 ]

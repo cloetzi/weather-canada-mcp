@@ -20,15 +20,27 @@ USER_AGENT = "weather-canada-mcp-fixture-capture (+https://github.com/cloetzi/we
 API = "https://api.weather.gc.ca"
 GEOMET = "https://geo.weather.gc.ca/geomet"
 
-# A point query against a WMS layer: a 3x3 pixel map 0.02 degrees wide, centred on the point.
-def feature_info(layer, lat, lon)
+# A point query against a WMS layer: a 3x3 pixel map 0.02 degrees wide, centred on the point (as Sources::Wms asks).
+def feature_info(layer, lat, lon, time = nil)
   d = 0.01
-  query = URI.encode_www_form(
+  params = {
     SERVICE: "WMS", VERSION: "1.3.0", REQUEST: "GetFeatureInfo", LAYERS: layer, QUERY_LAYERS: layer,
     CRS: "EPSG:4326", BBOX: [lat - d, lon - d, lat + d, lon + d].map { |v| v.round(4) }.join(","),
     WIDTH: 3, HEIGHT: 3, I: 1, J: 1, INFO_FORMAT: "application/json"
-  )
-  "#{GEOMET}?#{query}"
+  }
+  params[:TIME] = time.strftime("%Y-%m-%dT%H:%M:%SZ") if time
+  "#{GEOMET}?#{URI.encode_www_form(params)}"
+end
+
+# What Tools::GetSnowOutlook asks for 24 hours ahead: four 6-hour steps from the 6-hour UTC boundary before now, with
+# snow level, 6-hour snow and blowing snow at the end of each. The fake serves them as geomet/<place>/<layer>_<time>.json.
+SNOW_START = Time.at(Time.now.to_i / 21_600 * 21_600).utc
+SNOW_LAYERS = %w[HRDPS-WEonG_2.5km_SnowLevelHeight RDPS_10km_Snow-Accum6h HRDPS-WEonG_2.5km_BlowingSnow-Prob].freeze
+def snow_outlook(place, lat, lon, layers = SNOW_LAYERS)
+  ends = (1..4).map { |k| SNOW_START + (k * 21_600) }
+  ends.product(layers).to_h do |t, layer|
+    ["geomet/#{place}/#{layer}_#{t.strftime("%Y%m%dT%H%MZ")}.json", feature_info(layer, lat, lon, t)]
+  end
 end
 
 def items(collection, **params) = "#{API}/collections/#{collection}/items?#{URI.encode_www_form({ f: "json" }.merge(params))}"
@@ -65,6 +77,7 @@ SQUAMISH = [49.7, -123.15].freeze
 WHISTLER = [50.12, -122.96].freeze
 EDMONTON = [53.54, -113.49].freeze
 KELOWNA = [49.89, -119.5].freeze
+WHITEHORSE = [60.72, -135.05].freeze
 OTTAWA = [45.42, -75.7].freeze
 
 FIXTURES = {
@@ -94,6 +107,9 @@ FIXTURES = {
   "api/aqhi-forecasts-realtime_JAFUV.json" => items("aqhi-forecasts-realtime", location_id: "JAFUV", aqhi_type: "AQHI-Forecast-Period",
                                                                                sortby: "-publication_datetime", skipGeometry: true,
                                                                                limit: 1),
+  # M3: get_snow_outlook (Whistler, 24 hours; Whitehorse, whose snow level is below the ground or near it)
+  **snow_outlook("whistler", *WHISTLER),
+  **snow_outlook("whitehorse", *WHITEHORSE, %w[HRDPS-WEonG_2.5km_SnowLevelHeight]),
   # M0 samples for M3
   "m0/marineweather-realtime_howe-sound.json" => items("marineweather-realtime", bbox: bbox(49.5, -123.3, 0.05), limit: 2),
   "m0/ltce-snowfall_whistler.json" => items("ltce-snowfall", bbox: bbox(*WHISTLER, 0.3), LOCAL_MONTH: 11, LOCAL_DAY: 15,

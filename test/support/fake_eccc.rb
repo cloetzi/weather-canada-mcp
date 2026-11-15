@@ -22,6 +22,12 @@ class FakeEccc
 
   attr_reader :requests, :url
 
+  WMS_PLACES = { [50.12, -122.96] => "whistler", [60.72, -135.05] => "whitehorse" }.freeze
+
+  # Like GeoMet, a WMS request it cannot answer gets a 200 with an XML exception report (the real one names the
+  # problem; this one only has to be XML).
+  WMS_EXCEPTION = '<?xml version="1.0"?><ServiceExceptionReport><ServiceException code="NoMatch"/></ServiceExceptionReport>'
+
   def self.fixture(path) = File.read(File.join(FIXTURES, path), encoding: Encoding::UTF_8)
 
   def self.fixture_json(path) = JSON.parse(fixture(path))
@@ -81,6 +87,11 @@ class FakeEccc
   end
 
   def fixture_response(request)
+    if request.path == "/geomet"
+      file = wms_fixture(request.query)
+      return [200, { "content-type" => file ? "application/json" : "text/xml" }, file ? self.class.fixture(file) : WMS_EXCEPTION]
+    end
+
     file = fixture_for(request)
     return [404, { "content-type" => "application/json" }, '{"code":"NotFound"}'] unless file
     return [200, { "content-type" => "application/zip" }, self.class.cgn_zip] if file == :cgn
@@ -96,6 +107,20 @@ class FakeEccc
     return alerts_fixture(request.query["bbox"]) if collection == "weather-alerts"
 
     FIXED_FIXTURES[collection] || (keyed_fixture(collection, request.query[KEYED_FIXTURES[collection]]) if KEYED_FIXTURES.key?(collection))
+  end
+
+  # GetFeatureInfo fixtures are named after the place, layer and time: geomet/<place>/<layer>_<yyyymmddThhmmZ>.json.
+  def wms_fixture(query)
+    place = WMS_PLACES.find { |(lat, lon), _| wms_point?(query["BBOX"], lat, lon) }&.last
+    time = Time.iso8601(query["TIME"].to_s).utc.strftime("%Y%m%dT%H%MZ") rescue nil # rubocop:disable Style/RescueModifier
+    path = "geomet/#{place}/#{query["LAYERS"]}_#{time}.json"
+    path if place && time && query["LAYERS"].to_s.match?(/\A[\w.-]+\z/) && File.exist?(File.join(FIXTURES, path))
+  end
+
+  # A WMS 1.3.0 EPSG:4326 bbox is min_lat,min_lon,max_lat,max_lon.
+  def wms_point?(bbox, lat, lon)
+    min_lat, min_lon, max_lat, max_lon = bbox.to_s.split(",").map(&:to_f)
+    lat.between?(min_lat, max_lat) && lon.between?(min_lon, max_lon)
   end
 
   # The fixture captured for one station, location or site, named after its id.

@@ -16,6 +16,8 @@ module TestHelpers
   CAPTURED_AT = Time.utc(2026, 11, 15, 17, 0, 0)
   # When the M2 station fixtures (observations, river gauges, AQHI) were captured.
   STATIONS_CAPTURED_AT = Time.utc(2026, 11, 15, 18, 45, 0)
+  # When the M3 GeoMet fixtures were captured (bin/capture-fixtures geomet/ names them after the times it asks for).
+  GEOMET_CAPTURED_AT = Time.utc(2026, 11, 15, 19, 13, 0)
 
   def null_logger = WeatherCanadaMcp::Logger.new(io: StringIO.new, level: "error")
 

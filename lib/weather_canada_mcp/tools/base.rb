@@ -46,6 +46,7 @@ module WeatherCanadaMcp
       private
 
       def ogc = @context.ogc
+      def wms = @context.wms
       def locator = @context.locator
       def config = @context.config
 
