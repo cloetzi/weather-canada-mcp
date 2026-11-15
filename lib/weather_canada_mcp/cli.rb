@@ -73,7 +73,12 @@ module WeatherCanadaMCP
       app = boot(:stdio)
       transport = MCP::Server::Transports::StdioTransport.new(app.mcp_server)
       app.logger.info("stdio_ready", tools: app.tools.size)
-      with_shutdown(app) { Sync { transport.open } }
+      with_shutdown(app) do
+        Sync do
+          app.gazetteer.warm_up!
+          transport.open
+        end
+      end
     end
 
     def check_config(transport)

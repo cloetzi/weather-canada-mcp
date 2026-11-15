@@ -22,7 +22,7 @@ module WeatherCanadaMCP
       argument :lang, :language
 
       def call(args)
-        lang = args.lang
+        lang = @lang = args.lang
         point = args.point
         data = ogc.items(COLLECTION, bbox: Geo.bbox(point.lat, point.lon, NEARBY_KM).join(","), limit: MAX_FEATURES)
         active = Array(data["features"]).select { |feature| active?(feature["properties"]) }
@@ -31,11 +31,25 @@ module WeatherCanadaMCP
           location: point.to_h,
           alerts: covering.map { |feature| alert(feature, lang) }.sort_by { |alert| severity_order(alert) },
           nearby_alerts: nearby.map { |feature| brief(feature, lang) }.uniq,
-          source_url: lang == "fr" ? "https://meteo.gc.ca/warnings/index_f.html" : "https://weather.gc.ca/warnings/index_e.html"
+          source_url: source_url(lang)
         }
       end
 
       private
+
+      # A stale list could miss an alert issued since, so it says so in capitals and points to the official page. Other
+      # stale data (the forecast site list that gives the time zone) is noted as usual.
+      def stale_note(stale, zone)
+        alerts, others = stale.partition { |entry| entry.key.include?("/collections/#{COLLECTION}/") }
+        return super(others, zone) if alerts.empty?
+
+        at = LocalTime.iso8601(alerts.map(&:at).min, zone)
+        note = "ALERTS COULD NOT BE REFRESHED: the alert service could not be reached, so these alerts are the ones from #{at} " \
+               "and may be out of date; an alert may have been issued or ended since. Check #{source_url(@lang)} before relying on this."
+        others.empty? ? note : "#{note} #{super(others, zone)}"
+      end
+
+      def source_url(lang) = lang == "fr" ? "https://meteo.gc.ca/warnings/index_f.html" : "https://weather.gc.ca/warnings/index_e.html"
 
       SEVERITY = { "warning" => 0, "watch" => 1, "advisory" => 2, "statement" => 3 }.freeze
       private_constant :SEVERITY

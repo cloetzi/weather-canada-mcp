@@ -113,7 +113,7 @@ class CacheTest < Minitest::Test
     cache = cache(max_entries: 2)
     cache.fetch("old", ttl: 5) { 1 }
     cache.fetch("long", ttl: 100) { 2 }
-    @now = 6
+    @now = 11 # past the grace period, which is as long as the TTL
     cache.fetch("new", ttl: 100) { 3 }
 
     assert_equal 2, cache.fetch("long", ttl: 100) { flunk "long stays" }
@@ -186,5 +186,82 @@ class CacheTest < Minitest::Test
     end
 
     assert_equal [:stopped, "The request was cancelled; retry it."], results
+  end
+
+  def stale_cache
+    cache = cache(wall_clock: -> { Time.utc(2026, 11, 15, 12) + @now })
+    cache.fetch("k", ttl: 10, source: "host") { Weighed.new("old", 100) }
+    @now = 15 # expired, within the grace period
+    cache
+  end
+
+  def test_a_failed_refresh_serves_the_expired_value_and_records_it
+    cache = stale_cache
+    failing = -> { raise WeatherCanadaMCP::Sources::TransportError, "down" }
+    stale = WeatherCanadaMCP::Sources::Trace.around do |trace|
+      assert_equal "old", cache.fetch("k", ttl: 10, source: "host", &failing)
+      trace.stale
+    end
+
+    assert_equal [WeatherCanadaMCP::Sources::Trace::Stale.new("host", Time.utc(2026, 11, 15, 12), "k")], stale
+    assert_equal 100, cache.bytes
+    assert_equal "old", cache.fetch("k", ttl: 10, source: "host") { flunk "held off after the failure" }
+    @now = 15 + WeatherCanadaMCP::Sources::Cache::HOLD_OFF
+
+    assert_equal "new", cache.fetch("k", ttl: 10, source: "host") { "new" }, "then it tries again"
+  end
+
+  def test_a_refresh_that_fails_for_another_reason_than_the_service_being_down_raises_and_keeps_the_stale_copy
+    cache = stale_cache
+
+    assert_raises(WeatherCanadaMCP::Sources::StatusError) { cache.fetch("k", ttl: 10, source: "host") { raise WeatherCanadaMCP::Sources::StatusError.new(404, "host") } }
+    assert_equal 100, cache.bytes
+    assert_equal "old", cache.fetch("k", ttl: 10, source: "host") { raise WeatherCanadaMCP::Sources::TransportError, "down" }
+  end
+
+  def test_a_refresh_that_is_stopped_keeps_the_stale_copy
+    cache = stale_cache
+    stopped = Class.new(Exception) # rubocop:disable Lint/InheritException -- like Async::Stop, not a StandardError
+    assert_raises(stopped) { cache.fetch("k", ttl: 10, source: "host") { raise stopped } }
+
+    assert_equal "old", cache.fetch("k", ttl: 10, source: "host") { raise WeatherCanadaMCP::Sources::TransportError, "down" }
+  end
+
+  def test_a_failed_refresh_without_a_source_or_past_the_grace_period_raises
+    cache = stale_cache
+
+    assert_raises(WeatherCanadaMCP::Sources::TransportError) { cache.fetch("k", ttl: 10) { raise WeatherCanadaMCP::Sources::TransportError, "down" } }
+    @now = 25 # a TTL of grace is over at 20
+
+    assert_raises(WeatherCanadaMCP::Sources::TransportError) do
+      cache.fetch("k", ttl: 10, source: "host") { raise WeatherCanadaMCP::Sources::TransportError, "down" }
+    end
+    assert_equal 0, cache.bytes
+  end
+
+  def test_the_grace_period_is_capped
+    cache = cache(wall_clock: -> { Time.utc(2026) })
+    cache.fetch("k", ttl: 100_000, source: "host") { 1 }
+    @now = 100_000 + (6 * 3600) + 1
+
+    assert_raises(WeatherCanadaMCP::Sources::TransportError) do
+      cache.fetch("k", ttl: 100_000, source: "host") { raise WeatherCanadaMCP::Sources::TransportError, "down" }
+    end
+  end
+
+  def test_callers_waiting_on_a_failed_refresh_are_served_the_stale_value_too
+    cache = stale_cache
+    results = Sync do |task|
+      loader = task.async do
+        cache.fetch("k", ttl: 10, source: "host") do
+          task.sleep(0.01)
+          raise WeatherCanadaMCP::Sources::TransportError, "down"
+        end
+      end
+      waiter = task.async { cache.fetch("k", ttl: 10, source: "host") { flunk "joined the loader" } }
+      [loader.wait, waiter.wait]
+    end
+
+    assert_equal %w[old old], results
   end
 end

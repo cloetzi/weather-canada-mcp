@@ -21,6 +21,9 @@ module WeatherCanadaMCP
       RETRY_STATUSES = [429, 502, 503, 504].freeze
       MAX_RETRY_AFTER = 10
 
+      # When a request began and how long it waited for the rate limiter, in seconds.
+      Timing = Struct.new(:started, :limiter_wait)
+
       def initialize(origins:, user_agent:, timeout:, max_concurrency:, max_body_bytes:, rate_limiters:, logger:,
                      max_retries: 2, base_delay: 0.5)
         @origins = origins.to_h { |name, url| [name, Origin.build(name, url)] }
@@ -44,9 +47,22 @@ module WeatherCanadaMCP
 
         request_path = "#{uri.path}#{path}"
         headers = [["user-agent", @user_agent], ["accept", accept]]
-        with_retries(uri.host, path) do
-          perform(origin, uri, request_path, headers, max_body_bytes || @max_body_bytes, timeout || @timeout)
+        timing = Timing.new(Process.clock_gettime(Process::CLOCK_MONOTONIC), 0.0)
+        Trace.request
+        response = with_retries(uri.host, path) do
+          perform(origin, uri, request_path, headers, max_body_bytes || @max_body_bytes, timeout || @timeout, timing)
         end
+        log_request(origin, path, timing, status: response.status)
+        response
+      rescue WeatherCanadaMCP::Error => e
+        log_request(origin, path, timing, error: e.class.name.split("::").last) if timing
+        raise
+      end
+
+      # An answer served from the cache instead of a request, for the debug log and the call's trace.
+      def cache_hit(origin, path)
+        Trace.hit
+        @logger.debug("upstream_request", origin:, resource: RequestLog.resource(path), cache_hit: true)
       end
 
       # The configured upstream (Sources::Origin) named by key.
@@ -67,20 +83,20 @@ module WeatherCanadaMCP
           return response unless delay
 
           attempt += 1
-          @logger.warn("upstream_retry", host:, path: path_only(path), status: response.status, delay: delay.round(2))
+          @logger.warn("upstream_retry", host:, path: RequestLog.path_only(path), status: response.status, delay: delay.round(2))
           sleep(delay)
         rescue TransportError => e
           raise unless e.retryable? && attempt < @max_retries
 
           attempt += 1
-          @logger.warn("upstream_retry", host:, path: path_only(path), error: e.cause&.class&.name)
+          @logger.warn("upstream_retry", host:, path: RequestLog.path_only(path), error: e.cause&.class&.name)
           sleep(backoff(attempt))
         end
       end
 
-      def perform(origin, uri, request_path, headers, limit, timeout) # rubocop:disable Metrics/ParameterLists -- one request's settings
+      def perform(origin, uri, request_path, headers, limit, timeout, timing) # rubocop:disable Metrics/ParameterLists -- one request's settings
         # The wait for a rate slot comes first, so a throttled provider does not hold a concurrency slot others need.
-        @rate_limiters.acquire(origin)
+        timing.limiter_wait += @rate_limiters.acquire(origin)
         @semaphore.acquire do
           Async::Task.current.with_timeout(timeout) do
             response = client(origin, uri).call(Protocol::HTTP::Request["GET", request_path, Protocol::HTTP::Headers[headers]])
@@ -160,8 +176,11 @@ module WeatherCanadaMCP
 
       def backoff(attempt) = (@base_delay * (2**(attempt - 1))) + rand(0.0..@base_delay)
 
-      # Logs keep the collection but never the query (a bbox, a point) or an item or station id: each reveals a location.
-      def path_only(path) = path.split("?", 2).first.sub(%r{/items/.*\z}, "/items/{id}").sub(%r{/stations/[^/]+}, "/stations/{id}")
+      def log_request(origin, path, timing, **outcome)
+        elapsed = Process.clock_gettime(Process::CLOCK_MONOTONIC) - timing.started
+        @logger.debug("upstream_request", origin:, resource: RequestLog.resource(path), **outcome, duration_ms: (elapsed * 1000).round,
+                                          limiter_wait_ms: (timing.limiter_wait * 1000).round, cache_hit: false)
+      end
     end
   end
 end

@@ -35,7 +35,7 @@ module WeatherCanadaMCP
       def feature_info(layer, lat, lon, time: nil, ttl: TTL)
         check(layer)
         path = "#{@path}?#{URI.encode_www_form(feature_params(layer, snap(lat), snap(lon), time))}"
-        @cache.fetch("#{@origin.key}:#{path}", ttl:) do
+        cached(@cache, path, ttl) do
           body = fetch(path, accept: "application/json").body
           Cache::Weighed.parsed(parse(body, layer), body)
         end
@@ -48,7 +48,7 @@ module WeatherCanadaMCP
         params = map_params(layer, bbox, width:, height:, style:, transparent:)
         params[:TIME] = format_time(time) if time
         path = "#{@path}?#{URI.encode_www_form(params)}"
-        @image_cache.fetch("#{@origin.key}:#{path}", ttl:) do
+        cached(@image_cache, path, ttl) do
           response = fetch(path, accept: "image/png", max_body_bytes: max_bytes)
           raise InvalidResponse, "#{@origin.label} could not draw #{layer} for that area and time." unless response.png?
 
@@ -57,6 +57,16 @@ module WeatherCanadaMCP
       end
 
       private
+
+      def cached(cache, path, ttl)
+        fetched = false
+        value = cache.fetch("#{@origin.key}:#{path}", ttl:, source: @origin.label) do
+          fetched = true
+          yield
+        end
+        @http.cache_hit(@origin.key, path) unless fetched
+        value
+      end
 
       def check(name) = (raise ArgumentError, "invalid layer" unless name.is_a?(String) && name.match?(LAYER))
 

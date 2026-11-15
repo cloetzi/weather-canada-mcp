@@ -118,8 +118,9 @@ module WeatherCanadaMCP
         args = args.with(point: resolve_point(args)) if self.class.location_arguments?
         result = call(args)
         result = Result.new(data: result) unless result.is_a?(Result)
-        Result.new(data: localized_times(result.data, args.respond_to?(:point) ? args.point&.zone : nil),
-                   attributions: credits(result.attributions), image: result.image)
+        zone = args.respond_to?(:point) ? args.point&.zone : nil
+        Result.new(data: with_stale_note(localized_times(result.data, zone), zone), attributions: credits(result.attributions),
+                   image: result.image)
       end
 
       def call(_args) = raise NotImplementedError
@@ -131,6 +132,21 @@ module WeatherCanadaMCP
 
       # Records that gazetteer place names went into the result, which NRCan's licence asks to be credited.
       def place_names_used! = @place_names = true
+
+      # Data served from an expired cache entry because its refresh failed (see Sources::Cache) says so, first in the result.
+      def with_stale_note(data, zone)
+        stale = Sources::Trace.current&.stale
+        return data if stale.nil? || stale.empty?
+
+        { note: [stale_note(stale, zone), data[:note]].compact.join(" "), **data.except(:note) }
+      end
+
+      # The oldest copy of each source is named, with its time.
+      def stale_note(stale, zone)
+        stale.group_by(&:source).map do |source, entries|
+          "#{source} could not be reached; this is the data from #{LocalTime.iso8601(entries.map(&:at).min, zone)}."
+        end.join(" ")
+      end
 
       # Every Time in the data becomes local ISO 8601 with its offset, so tools return Time objects and never format them.
       def localized_times(value, zone)
