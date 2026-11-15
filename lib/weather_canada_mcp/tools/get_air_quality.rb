@@ -1,0 +1,145 @@
+# frozen_string_literal: true
+
+module WeatherCanadaMcp
+  module Tools
+    # The Air Quality Health Index (AQHI) observed and forecast at the nearest AQHI location, with Health Canada's
+    # messages for the risk category.
+    class GetAirQuality < Base
+      NAME = "get_air_quality"
+      TITLE = "Get air quality"
+      DESCRIPTION = <<~TEXT.tr("\n", " ").strip
+        The Air Quality Health Index (AQHI, 1 to 10+, higher is worse) at the nearest of about 150 AQHI locations
+        (within 100 km): the latest hourly observation and the forecast for today, tonight, tomorrow and later, each
+        with its risk category (low, moderate, high, very high) and the health messages for the general population and
+        for people at risk (children, people over 65, people with heart or lung conditions). During wildfire smoke the
+        forecast may also give an in-smoke value. health_messages holds the messages once for each risk category that
+        appears. Times are UTC (ISO 8601).
+      TEXT
+      OBSERVATIONS_COLLECTION = "aqhi-observations-realtime"
+      FORECASTS_COLLECTION = "aqhi-forecasts-realtime"
+      RADIUS_KM = 100
+      STALE_AFTER = 3 * 3600
+      PERIODS = %w[period_1 period_2 period_3 period_4 period_5].freeze
+      # Health messages by risk category, from Health Canada's AQHI guidance. Low risk has one message for everyone.
+      MESSAGES = {
+        "en" => {
+          "low" => { general: "Enjoy your usual outdoor activities.", at_risk: "Enjoy your usual outdoor activities." },
+          "moderate" => {
+            general: "Continue usual outdoor activities unless you have symptoms like coughing and throat irritation.",
+            at_risk: "Consider reducing or rescheduling strenuous outdoor activities if you have symptoms like coughing " \
+                     "or throat irritation."
+          },
+          "high" => {
+            general: "Consider reducing or rescheduling strenuous outdoor activities if you have symptoms like coughing " \
+                     "and throat irritation.",
+            at_risk: "Reduce or reschedule strenuous outdoor activities."
+          },
+          "very high" => {
+            general: "Reduce or reschedule strenuous outdoor activities, especially if you have symptoms like coughing " \
+                     "and throat irritation.",
+            at_risk: "Avoid strenuous activities outdoors."
+          }
+        },
+        "fr" => {
+          "low" => { general: "Profitez de vos activités habituelles en plein air.",
+                     at_risk: "Profitez de vos activités habituelles en plein air." },
+          "moderate" => {
+            general: "Poursuivez vos activités habituelles en plein air, sauf si vous ressentez des symptômes comme de " \
+                     "la toux ou une irritation de la gorge.",
+            at_risk: "Envisagez réduire ou reporter les activités exténuantes en plein air si vous ressentez des " \
+                     "symptômes comme de la toux ou une irritation de la gorge."
+          },
+          "high" => {
+            general: "Envisagez réduire ou reporter les activités exténuantes en plein air si vous ressentez des " \
+                     "symptômes comme de la toux et une irritation de la gorge.",
+            at_risk: "Réduisez ou reportez les activités exténuantes en plein air."
+          },
+          "very high" => {
+            general: "Réduisez ou reportez les activités exténuantes en plein air, particulièrement si vous ressentez " \
+                     "des symptômes comme de la toux et une irritation de la gorge.",
+            at_risk: "Évitez les activités exténuantes en plein air."
+          }
+        }
+      }.freeze
+      RISK_FR = { "low" => "faible", "moderate" => "modéré", "high" => "élevé", "very high" => "très élevé" }.freeze
+      INPUT_SCHEMA = {
+        type: "object",
+        properties: { **Base::LOCATION_PROPERTIES, **Base::LANG_PROPERTY },
+        additionalProperties: false
+      }.freeze
+
+      def call(arguments)
+        lang = lang(arguments)
+        point = resolve_point(arguments)
+        distance, observation = nearest_features(OBSERVATIONS_COLLECTION, point, radius_km: RADIUS_KM, count: 1, latest: true,
+                                                                                 limit: 100).first
+        return { location: point.to_h, note: "No AQHI location within #{RADIUS_KM} km. AQHI covers mostly populated areas." } unless observation
+
+        p = observation["properties"]
+        current = current(p, lang)
+        forecast = forecast(p["location_id"], lang)
+        {
+          location: point.to_h,
+          aqhi_location: { id: p["location_id"], name: p["location_name_#{lang}"] || p["location_name_en"],
+                           distance_km: round_km(distance) },
+          current:, forecast:,
+          health_messages: health_messages([current, *forecast&.dig(:periods)], lang),
+          source_url: lang == "fr" ? "https://meteo.gc.ca/airquality/pages/index_f.html" : "https://weather.gc.ca/airquality/pages/index_e.html"
+        }
+      end
+
+      private
+
+      def current(observation, lang)
+        observed_at = time(observation["observation_datetime"])
+        notes = observation["special_notes_#{lang}"].to_s.strip
+        result = { observed_at: observed_at&.utc&.iso8601, **index(observation["aqhi"], lang), special_notes: notes.empty? ? nil : notes }
+        result[:note] = "The latest observation is more than #{STALE_AFTER / 3600} hours old." if observed_at && now - observed_at > STALE_AFTER
+        result
+      end
+
+      def forecast(location_id, lang)
+        return unless location_id.is_a?(String)
+
+        data = ogc.items(FORECASTS_COLLECTION, location_id:, aqhi_type: "AQHI-Forecast-Period", sortby: "-publication_datetime",
+                                               skipGeometry: true, limit: 1)
+        p = Array(data["features"]).first&.dig("properties")
+        return unless p.is_a?(Hash)
+
+        periods = PERIODS.filter_map do |key|
+          period = p.dig("forecast_period", key)
+          next unless period.is_a?(Hash) && period["aqhi"].is_a?(Numeric)
+
+          { period: period["forecast_period_#{lang}"] || period["forecast_period_en"], **index(period["aqhi"], lang),
+            aqhi_in_smoke: period["aqhi_insmoke"] }
+        end
+        { published_at: time(p["publication_datetime"])&.utc&.iso8601, periods: }
+      end
+
+      def index(value, lang)
+        return { aqhi: nil } unless value.is_a?(Numeric)
+
+        category = risk(value.round)
+        { aqhi: value.round(1), aqhi_display: value.round > 10 ? "10+" : value.round.to_s, risk: label(category, lang) }
+      end
+
+      # The messages for each risk category that appears, once each, keyed by the risk label.
+      def health_messages(entries, lang)
+        risks = entries.filter_map { |entry| entry&.dig(:risk) }.uniq
+        MESSAGES.fetch(lang).filter_map do |category, messages|
+          [label(category, lang), messages] if risks.include?(label(category, lang))
+        end.to_h
+      end
+
+      def label(category, lang) = lang == "fr" ? RISK_FR.fetch(category) : category
+
+      def risk(rounded)
+        if rounded <= 3 then "low"
+        elsif rounded <= 6 then "moderate"
+        elsif rounded <= 10 then "high"
+        else "very high"
+        end
+      end
+    end
+  end
+end

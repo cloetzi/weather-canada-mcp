@@ -1,0 +1,262 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "id": "2026-11-15-1828-CWAE-MAN-swob.xml",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.9,
+          50.1667,
+          657.8
+        ]
+      },
+      "properties": {
+        "date_tm-value": "2026-11-15T18:28:00.000Z",
+        "air_temp": 6.1,
+        "dwpt_temp": 4.7,
+        "rel_hum": 91,
+        "avg_wnd_spd_10m_pst2mts": 0.0,
+        "avg_wnd_dir_10m_pst2mts": 0,
+        "max_wnd_gst_spd_10m_pst10mts": null,
+        "mslp": 1006.3,
+        "stn_pres": 929.4,
+        "vis": 19.31,
+        "air_temp-qa": 100,
+        "dwpt_temp-qa": 100,
+        "rel_hum-qa": 100,
+        "avg_wnd_spd_10m_pst2mts-qa": 100,
+        "avg_wnd_dir_10m_pst2mts-qa": 100,
+        "max_wnd_gst_spd_10m_pst10mts-qa": -1,
+        "mslp-qa": 100,
+        "stn_pres-qa": 100,
+        "vis-qa": 100
+      }
+    },
+    {
+      "id": "2026-11-15-1800-CWAE-MAN-swob.xml",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.9,
+          50.1667,
+          657.8
+        ]
+      },
+      "properties": {
+        "date_tm-value": "2026-11-15T18:00:00.000Z",
+        "air_temp": 6.3,
+        "dwpt_temp": 5.8,
+        "rel_hum": 96,
+        "avg_wnd_spd_10m_pst2mts": 9.4,
+        "avg_wnd_spd_10m_pst10mts": null,
+        "avg_wnd_dir_10m_pst2mts": 180,
+        "avg_wnd_dir_10m_pst10mts": 0,
+        "max_wnd_gst_spd_10m_pst10mts": null,
+        "mslp": 1005.7,
+        "stn_pres": 928.9,
+        "vis": 19.31,
+        "tot_cld_amt": 100,
+        "pcpn_amt_pst6hrs": 12.4,
+        "pcpn_amt_pst24hrs": null,
+        "snw_dpth": null,
+        "max_air_temp_pst24hrs": 8.3,
+        "min_air_temp_pst24hrs": 5.2,
+        "air_temp-qa": 100,
+        "dwpt_temp-qa": 100,
+        "rel_hum-qa": 100,
+        "avg_wnd_spd_10m_pst2mts-qa": 100,
+        "avg_wnd_spd_10m_pst10mts-qa": -1,
+        "avg_wnd_dir_10m_pst2mts-qa": 100,
+        "avg_wnd_dir_10m_pst10mts-qa": 100,
+        "max_wnd_gst_spd_10m_pst10mts-qa": -1,
+        "mslp-qa": 100,
+        "stn_pres-qa": 100,
+        "vis-qa": 100,
+        "tot_cld_amt-qa": 100,
+        "pcpn_amt_pst6hrs-qa": 100,
+        "pcpn_amt_pst24hrs-qa": -1,
+        "snw_dpth-qa": -1,
+        "max_air_temp_pst24hrs-qa": 100,
+        "min_air_temp_pst24hrs-qa": 100
+      }
+    },
+    {
+      "id": "2026-11-15-1731-CWAE-MAN-swob.xml",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.9,
+          50.1667,
+          657.8
+        ]
+      },
+      "properties": {
+        "date_tm-value": "2026-11-15T17:31:00.000Z",
+        "air_temp": 6.1,
+        "dwpt_temp": 5.8,
+        "rel_hum": 98,
+        "avg_wnd_spd_10m_pst2mts": 0.0,
+        "avg_wnd_dir_10m_pst2mts": 0,
+        "max_wnd_gst_spd_10m_pst10mts": null,
+        "mslp": 1005.2,
+        "stn_pres": 928.4,
+        "vis": 19.31,
+        "air_temp-qa": 100,
+        "dwpt_temp-qa": 100,
+        "rel_hum-qa": 100,
+        "avg_wnd_spd_10m_pst2mts-qa": 100,
+        "avg_wnd_dir_10m_pst2mts-qa": 100,
+        "max_wnd_gst_spd_10m_pst10mts-qa": -1,
+        "mslp-qa": 100,
+        "stn_pres-qa": 100,
+        "vis-qa": 100
+      }
+    },
+    {
+      "id": "2026-11-15-1700-CWAE-MAN-swob.xml",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.9,
+          50.1667,
+          657.8
+        ]
+      },
+      "properties": {
+        "date_tm-value": "2026-11-15T17:00:00.000Z",
+        "air_temp": 5.4,
+        "dwpt_temp": 5.2,
+        "rel_hum": 98,
+        "avg_wnd_spd_10m_pst2mts": 9.4,
+        "avg_wnd_dir_10m_pst2mts": 180,
+        "max_wnd_gst_spd_10m_pst10mts": null,
+        "mslp": 1004.4,
+        "stn_pres": 927.6,
+        "vis": 19.31,
+        "max_air_temp_pst24hrs": 8.3,
+        "min_air_temp_pst24hrs": 5.2,
+        "air_temp-qa": 100,
+        "dwpt_temp-qa": 100,
+        "rel_hum-qa": 100,
+        "avg_wnd_spd_10m_pst2mts-qa": 100,
+        "avg_wnd_dir_10m_pst2mts-qa": 100,
+        "max_wnd_gst_spd_10m_pst10mts-qa": -1,
+        "mslp-qa": 100,
+        "stn_pres-qa": 100,
+        "vis-qa": 100,
+        "max_air_temp_pst24hrs-qa": 100,
+        "min_air_temp_pst24hrs-qa": 100
+      }
+    },
+    {
+      "id": "2026-11-15-1638-CWAE-MAN-swob.xml",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.9,
+          50.1667,
+          657.8
+        ]
+      },
+      "properties": {
+        "date_tm-value": "2026-11-15T16:38:00.000Z",
+        "air_temp": 5.8,
+        "dwpt_temp": 5.5,
+        "rel_hum": 98,
+        "avg_wnd_spd_10m_pst2mts": 3.6,
+        "avg_wnd_dir_10m_pst2mts": 180,
+        "max_wnd_gst_spd_10m_pst10mts": null,
+        "mslp": 1004.3,
+        "stn_pres": 927.5,
+        "vis": 16.09,
+        "air_temp-qa": 100,
+        "dwpt_temp-qa": 100,
+        "rel_hum-qa": 100,
+        "avg_wnd_spd_10m_pst2mts-qa": 100,
+        "avg_wnd_dir_10m_pst2mts-qa": 100,
+        "max_wnd_gst_spd_10m_pst10mts-qa": -1,
+        "mslp-qa": 100,
+        "stn_pres-qa": 100,
+        "vis-qa": 100
+      }
+    },
+    {
+      "id": "2026-11-15-1600-CWAE-MAN-swob.xml",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.9,
+          50.1667,
+          657.8
+        ]
+      },
+      "properties": {
+        "date_tm-value": "2026-11-15T16:00:00.000Z",
+        "air_temp": 5.5,
+        "dwpt_temp": 5.2,
+        "rel_hum": 99,
+        "avg_wnd_spd_10m_pst2mts": 0.0,
+        "avg_wnd_dir_10m_pst2mts": 0,
+        "max_wnd_gst_spd_10m_pst10mts": null,
+        "mslp": 1003.5,
+        "stn_pres": 926.8,
+        "vis": 24.14,
+        "max_air_temp_pst24hrs": 8.3,
+        "min_air_temp_pst24hrs": 5.2,
+        "air_temp-qa": 100,
+        "dwpt_temp-qa": 100,
+        "rel_hum-qa": 100,
+        "avg_wnd_spd_10m_pst2mts-qa": 100,
+        "avg_wnd_dir_10m_pst2mts-qa": 100,
+        "max_wnd_gst_spd_10m_pst10mts-qa": -1,
+        "mslp-qa": 100,
+        "stn_pres-qa": 100,
+        "vis-qa": 100,
+        "max_air_temp_pst24hrs-qa": 100,
+        "min_air_temp_pst24hrs-qa": 100
+      }
+    }
+  ],
+  "numberMatched": 454,
+  "numberReturned": 6,
+  "links": [
+    {
+      "type": "application/geo+json",
+      "rel": "self",
+      "title": "This document as GeoJSON",
+      "href": "https://api.weather.gc.ca/collections/swob-realtime/items?f=json&msc_id-value=1048899&sortby=-date_tm-value&limit=6&properties=date_tm-value,air_temp,dwpt_temp,rel_hum,avg_wnd_spd_10m_pst2mts,avg_wnd_spd_10m_pst10mts,avg_wnd_dir_10m_pst2mts,avg_wnd_dir_10m_pst10mts,max_wnd_gst_spd_10m_pst10mts,max_wnd_spd_10m_pst1hr,mslp,stn_pres,vis,tot_cld_amt,pcpn_amt_pst1hr,pcpn_amt_pst6hrs,pcpn_amt_pst24hrs,snwfl_amt_pst1hr,snw_dpth,avg_snw_dpth_pst5mts,max_air_temp_pst24hrs,min_air_temp_pst24hrs,air_temp-qa,dwpt_temp-qa,rel_hum-qa,avg_wnd_spd_10m_pst2mts-qa,avg_wnd_spd_10m_pst10mts-qa,avg_wnd_dir_10m_pst2mts-qa,avg_wnd_dir_10m_pst10mts-qa,max_wnd_gst_spd_10m_pst10mts-qa,max_wnd_spd_10m_pst1hr-qa,mslp-qa,stn_pres-qa,vis-qa,tot_cld_amt-qa,pcpn_amt_pst1hr-qa,pcpn_amt_pst6hrs-qa,pcpn_amt_pst24hrs-qa,snwfl_amt_pst1hr-qa,snw_dpth-qa,avg_snw_dpth_pst5mts-qa,max_air_temp_pst24hrs-qa,min_air_temp_pst24hrs-qa"
+    },
+    {
+      "rel": "alternate",
+      "type": "application/ld+json",
+      "title": "This document as RDF (JSON-LD)",
+      "href": "https://api.weather.gc.ca/collections/swob-realtime/items?f=jsonld&msc_id-value=1048899&sortby=-date_tm-value&limit=6&properties=date_tm-value,air_temp,dwpt_temp,rel_hum,avg_wnd_spd_10m_pst2mts,avg_wnd_spd_10m_pst10mts,avg_wnd_dir_10m_pst2mts,avg_wnd_dir_10m_pst10mts,max_wnd_gst_spd_10m_pst10mts,max_wnd_spd_10m_pst1hr,mslp,stn_pres,vis,tot_cld_amt,pcpn_amt_pst1hr,pcpn_amt_pst6hrs,pcpn_amt_pst24hrs,snwfl_amt_pst1hr,snw_dpth,avg_snw_dpth_pst5mts,max_air_temp_pst24hrs,min_air_temp_pst24hrs,air_temp-qa,dwpt_temp-qa,rel_hum-qa,avg_wnd_spd_10m_pst2mts-qa,avg_wnd_spd_10m_pst10mts-qa,avg_wnd_dir_10m_pst2mts-qa,avg_wnd_dir_10m_pst10mts-qa,max_wnd_gst_spd_10m_pst10mts-qa,max_wnd_spd_10m_pst1hr-qa,mslp-qa,stn_pres-qa,vis-qa,tot_cld_amt-qa,pcpn_amt_pst1hr-qa,pcpn_amt_pst6hrs-qa,pcpn_amt_pst24hrs-qa,snwfl_amt_pst1hr-qa,snw_dpth-qa,avg_snw_dpth_pst5mts-qa,max_air_temp_pst24hrs-qa,min_air_temp_pst24hrs-qa"
+    },
+    {
+      "type": "text/html",
+      "rel": "alternate",
+      "title": "This document as HTML",
+      "href": "https://api.weather.gc.ca/collections/swob-realtime/items?f=html&msc_id-value=1048899&sortby=-date_tm-value&limit=6&properties=date_tm-value,air_temp,dwpt_temp,rel_hum,avg_wnd_spd_10m_pst2mts,avg_wnd_spd_10m_pst10mts,avg_wnd_dir_10m_pst2mts,avg_wnd_dir_10m_pst10mts,max_wnd_gst_spd_10m_pst10mts,max_wnd_spd_10m_pst1hr,mslp,stn_pres,vis,tot_cld_amt,pcpn_amt_pst1hr,pcpn_amt_pst6hrs,pcpn_amt_pst24hrs,snwfl_amt_pst1hr,snw_dpth,avg_snw_dpth_pst5mts,max_air_temp_pst24hrs,min_air_temp_pst24hrs,air_temp-qa,dwpt_temp-qa,rel_hum-qa,avg_wnd_spd_10m_pst2mts-qa,avg_wnd_spd_10m_pst10mts-qa,avg_wnd_dir_10m_pst2mts-qa,avg_wnd_dir_10m_pst10mts-qa,max_wnd_gst_spd_10m_pst10mts-qa,max_wnd_spd_10m_pst1hr-qa,mslp-qa,stn_pres-qa,vis-qa,tot_cld_amt-qa,pcpn_amt_pst1hr-qa,pcpn_amt_pst6hrs-qa,pcpn_amt_pst24hrs-qa,snwfl_amt_pst1hr-qa,snw_dpth-qa,avg_snw_dpth_pst5mts-qa,max_air_temp_pst24hrs-qa,min_air_temp_pst24hrs-qa"
+    },
+    {
+      "type": "application/geo+json",
+      "rel": "next",
+      "title": "Items (next)",
+      "href": "https://api.weather.gc.ca/collections/swob-realtime/items?offset=6&msc_id-value=1048899&sortby=-date_tm-value&limit=6&properties=date_tm-value,air_temp,dwpt_temp,rel_hum,avg_wnd_spd_10m_pst2mts,avg_wnd_spd_10m_pst10mts,avg_wnd_dir_10m_pst2mts,avg_wnd_dir_10m_pst10mts,max_wnd_gst_spd_10m_pst10mts,max_wnd_spd_10m_pst1hr,mslp,stn_pres,vis,tot_cld_amt,pcpn_amt_pst1hr,pcpn_amt_pst6hrs,pcpn_amt_pst24hrs,snwfl_amt_pst1hr,snw_dpth,avg_snw_dpth_pst5mts,max_air_temp_pst24hrs,min_air_temp_pst24hrs,air_temp-qa,dwpt_temp-qa,rel_hum-qa,avg_wnd_spd_10m_pst2mts-qa,avg_wnd_spd_10m_pst10mts-qa,avg_wnd_dir_10m_pst2mts-qa,avg_wnd_dir_10m_pst10mts-qa,max_wnd_gst_spd_10m_pst10mts-qa,max_wnd_spd_10m_pst1hr-qa,mslp-qa,stn_pres-qa,vis-qa,tot_cld_amt-qa,pcpn_amt_pst1hr-qa,pcpn_amt_pst6hrs-qa,pcpn_amt_pst24hrs-qa,snwfl_amt_pst1hr-qa,snw_dpth-qa,avg_snw_dpth_pst5mts-qa,max_air_temp_pst24hrs-qa,min_air_temp_pst24hrs-qa"
+    },
+    {
+      "type": "application/json",
+      "title": "SWOB - Real-Time Data",
+      "rel": "collection",
+      "href": "https://api.weather.gc.ca/collections/swob-realtime"
+    }
+  ],
+  "timeStamp": "2026-11-15T18:44:32.695642Z"
+}

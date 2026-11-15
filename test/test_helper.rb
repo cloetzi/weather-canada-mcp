@@ -14,6 +14,8 @@ module TestHelpers
   AUTH_TOKEN = "t" * 40
   # When the fixtures were captured: alerts in them are active at this time.
   CAPTURED_AT = Time.utc(2026, 11, 15, 17, 0, 0)
+  # When the M2 station fixtures (observations, river gauges, AQHI) were captured.
+  STATIONS_CAPTURED_AT = Time.utc(2026, 11, 15, 18, 45, 0)
 
   def null_logger = WeatherCanadaMcp::Logger.new(io: StringIO.new, level: "error")
 
@@ -61,6 +63,19 @@ module TestHelpers
     result = response.fetch(:result) { flunk("protocol error: #{response.inspect}") }
     text = result[:content].first[:text]
     [result[:isError] ? text : JSON.parse(text), result[:isError]]
+  end
+
+  # Calls one tool against the fake upstream; returns [result, error?] and the fake's recorded requests.
+  def call_with_fake(name, clock: -> { STATIONS_CAPTURED_AT }, routes: {}, **arguments)
+    result = nil
+    with_fake_eccc do |fake|
+      routes.each { |path, handler| fake.route(path, &handler) }
+      app = application(fake, clock:)
+      result = [*call_tool(app, name, **arguments), fake.requests]
+    ensure
+      app&.close
+    end
+    result # a return inside the reactor block would raise LocalJumpError
   end
 
   def write_tempfile(name, content)

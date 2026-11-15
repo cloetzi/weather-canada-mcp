@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+require "async"
+require "time"
+
 module WeatherCanadaMcp
   module Tools
     # A tool declares name, title, description and input schema as class-level constants and implements #call,
@@ -99,6 +102,29 @@ module WeatherCanadaMcp
       end
 
       def round_km(distance) = distance.round(distance < 10 ? 1 : 0)
+
+      # [[distance_km, feature], ...] for the point features of a collection within radius_km, closest first.
+      def nearest_features(collection, point, radius_km:, count:, **params)
+        data = ogc.items(collection, bbox: Geo.bbox(point.lat, point.lon, radius_km).join(","), **params)
+        Array(data["features"]).filter_map do |feature|
+          lon, lat = feature.dig("geometry", "coordinates")
+          next unless lat.is_a?(Numeric) && lon.is_a?(Numeric) && feature["properties"].is_a?(Hash)
+
+          distance = Geo.distance_km(point.lat, point.lon, lat, lon)
+          [distance, feature] if distance <= radius_km
+        end.min_by(count, &:first)
+      end
+
+      # Runs the block for each item in its own fiber (the rate limiter still spaces the requests), in order.
+      def concurrently(items, &block) = items.map { |item| Async { block.call(item) } }.map(&:wait)
+
+      def time(value)
+        Time.iso8601(value) if value.is_a?(String)
+      rescue ArgumentError
+        nil
+      end
+
+      def now = @context.clock.call
     end
   end
 end
