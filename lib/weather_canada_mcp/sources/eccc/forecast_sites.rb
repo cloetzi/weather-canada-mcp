@@ -22,7 +22,8 @@ module WeatherCanadaMCP
 
         def initialize(ogc:)
           @directory = StationDirectory.new(ogc:, collection: COLLECTION, properties: SITE_PROPERTIES, ttl: OgcApi::SITE_LIST_TTL)
-          @sites = {}.compare_by_identity
+          @index_of = nil
+          @index = {}
         end
 
         # [[distance_km, Site], ...] closest first.
@@ -51,12 +52,20 @@ module WeatherCanadaMCP
 
         def identified?(feature) = feature.dig("properties", "identifier").is_a?(String)
 
+        # The Site of a feature of the current list; the sites are built once for each list read.
         def site(feature)
-          @sites[feature] ||= begin
-            properties = feature["properties"]
-            lon, lat = feature.dig("geometry", "coordinates")
-            Site.new(id: properties["identifier"], name: properties["name"] || {}, region: properties["region"] || {}, lat:, lon:)
+          list = @directory.features
+          unless @index_of.equal?(list)
+            @index = list.select { |entry| identified?(entry) }.to_h { |entry| [entry, build(entry)] }.compare_by_identity
+            @index_of = list
           end
+          @index.fetch(feature)
+        end
+
+        def build(feature)
+          properties = feature["properties"]
+          lon, lat = feature.dig("geometry", "coordinates")
+          Site.new(id: properties["identifier"], name: properties["name"] || {}, region: properties["region"] || {}, lat:, lon:)
         end
       end
     end

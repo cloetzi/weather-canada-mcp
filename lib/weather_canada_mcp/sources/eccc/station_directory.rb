@@ -5,12 +5,13 @@ module WeatherCanadaMCP
     module ECCC
       # The stations (or locations) of one OGC API collection, searched for the nearest to a point in memory.
       #
-      # A collection small enough to fetch whole (up to LIST_LIMIT features: the SWOB stations, the AQHI locations, the City
-      # Page sites) is read once per TTL, so every point shares one cached response. A collection too large for that (the
-      # real-time hydrometric gauges, 2,600 of them, or the climate normals) is read for the 0.5 degree grid cell around the
-      # point instead (Geo.snapped_bbox), so points in the same cell share a response and the response stays small.
+      # A collection small enough to fetch whole (about a thousand features at most, asked for with a LIST_LIMIT that leaves
+      # room to grow: the SWOB stations, the AQHI locations, the City Page sites) is read once per TTL, so every point shares
+      # one cached response. A collection too large for that (the real-time hydrometric gauges, 2,600 of them, or the climate
+      # normals) is read for the 0.5 degree grid cell around the point instead (Geo.snapped_bbox), so points in the same cell
+      # share a response and the response stays small.
       class StationDirectory
-        LIST_LIMIT = 1000
+        LIST_LIMIT = 5000
         AREA_LIMIT = 500
 
         # grid: true reads the cell around the point instead of the whole collection. params are OGC API query parameters
@@ -27,7 +28,7 @@ module WeatherCanadaMCP
         # [[distance_km, feature], ...] closest first: the count nearest point features within radius_km (any distance
         # without one) that the block, when given, accepts.
         def nearest(lat, lon, count:, radius_km: nil, &accept)
-          located(lat, lon, radius_km).filter_map do |feature, station_lat, station_lon|
+          located(lat, lon, radius_km).points.filter_map do |feature, station_lat, station_lon|
             next if accept && !accept.call(feature)
 
             distance = Geo.distance_km(lat, lon, station_lat, station_lon)
@@ -35,8 +36,8 @@ module WeatherCanadaMCP
           end.min_by(count, &:first)
         end
 
-        # Every point feature of the collection (the whole-list mode only).
-        def features = located(nil, nil, nil).map(&:first)
+        # Every point feature of the collection (the whole-list mode only); the same array until the list is read again.
+        def features = located(nil, nil, nil).features
 
         private
 
@@ -54,12 +55,16 @@ module WeatherCanadaMCP
 
         def ttl_params = @ttl ? { ttl: @ttl } : {}
 
-        # The cache hands back the same object until it expires, so each response is parsed once.
+        # The point features of one response: [feature, lat, lon] each, and the features alone. The cache hands back the same
+        # object until it expires, so each response is parsed once.
+        Located = Data.define(:points, :features)
+
         def parse(data)
-          Array(data["features"]).filter_map do |feature|
+          points = Array(data["features"]).filter_map do |feature|
             lon, lat = feature.dig("geometry", "coordinates")
             [feature, lat, lon] if lat.is_a?(Numeric) && lon.is_a?(Numeric) && feature["properties"].is_a?(Hash)
           end.freeze
+          Located.new(points:, features: points.map(&:first).freeze)
         end
       end
     end

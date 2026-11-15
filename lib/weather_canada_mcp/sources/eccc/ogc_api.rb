@@ -38,9 +38,9 @@ module WeatherCanadaMCP
         # params are OGC API query parameters (bbox, limit, properties, sortby, datetime, lang, or property filters).
         def items(collection, ttl: nil, **params)
           check(collection, COLLECTION, "collection")
-          data = get("/collections/#{collection}/items?#{URI.encode_www_form({ f: "json" }.merge(params))}", ttl || ttl_for(collection))
-          warn_if_truncated(collection, data) unless params.key?(:sortby)
-          data
+          get("/collections/#{collection}/items?#{URI.encode_www_form({ f: "json" }.merge(params))}", ttl || ttl_for(collection)) do |data|
+            warn_if_truncated(collection, data) unless params.key?(:sortby)
+          end
         end
 
         def item(collection, id, ttl: nil)
@@ -67,7 +67,7 @@ module WeatherCanadaMCP
           @logger.warn("ogc_truncated", collection:, matched:, returned:)
         end
 
-        def get(path, ttl) = @json.get(path, ttl, accept: "application/geo+json, application/json")
+        def get(path, ttl, &) = @json.get(path, ttl, accept: "application/geo+json, application/json", &)
       end
     end
   end

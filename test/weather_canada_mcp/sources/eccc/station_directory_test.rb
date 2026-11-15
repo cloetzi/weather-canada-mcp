@@ -28,7 +28,7 @@ class StationDirectoryTest < Minitest::Test
       assert_equal 1, fake.requests_to("/collections/swob-stations/items").size
       query = fake.requests_to("/collections/swob-stations/items").first.query
 
-      assert_equal "1000", query["limit"]
+      assert_equal "5000", query["limit"]
       assert_equal "name,msc_id,data_provider", query["properties"]
     end
   end

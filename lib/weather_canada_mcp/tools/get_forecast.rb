@@ -24,7 +24,7 @@ module WeatherCanadaMCP
         properties = ogc.item(Sources::ECCC::ForecastSites::COLLECTION, site.id).fetch("properties") do
           raise Sources::InvalidResponse, "#{Sources::ECCC::ForecastSites::COLLECTION} returned a forecast without properties."
         end
-        forecast = Sources::ECCC::CityPage.parse(properties, lang: args.lang)
+        forecast = Sources::ECCC::CityPage.parse(properties, lang: args.lang, hours: args.hours)
         { location: point.to_h, forecast_site: site_info(forecast, site, distance, args.lang), **shape(forecast, args.hours) }
       end
 
@@ -33,7 +33,7 @@ module WeatherCanadaMCP
       def shape(forecast, hours)
         {
           issued_at: forecast.issued_at, warnings: forecast.warnings.map(&:to_h), current_conditions: forecast.conditions&.to_h,
-          forecast: forecast.periods.map(&:to_h), hourly: (forecast.hours.first(hours).map(&:to_h) if hours.positive?),
+          forecast: forecast.periods.map(&:to_h), hourly: (forecast.hours.map(&:to_h) if hours.positive?),
           sun: { sunrise: forecast.sunrise, sunset: forecast.sunset }, normals: forecast.normals
         }
       end

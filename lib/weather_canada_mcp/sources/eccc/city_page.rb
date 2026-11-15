@@ -21,10 +21,12 @@ module WeatherCanadaMCP
         # conditions is nil without a current report; periods and hours are in order; normals is the regional normals text.
         Forecast = Data.define(:url, :issued_at, :warnings, :conditions, :periods, :hours, :sunrise, :sunset, :normals)
 
-        def self.parse(properties, lang:) = new(lang).parse(properties)
+        # hours is how many hourly entries to build (all by default).
+        def self.parse(properties, lang:, hours: nil) = new(lang, hours).parse(properties)
 
-        def initialize(lang)
+        def initialize(lang, hours)
           @lang = lang
+          @hours = hours
         end
 
         def parse(properties)
@@ -34,7 +36,7 @@ module WeatherCanadaMCP
             warnings: Array(properties["warnings"]).map { |warning| warning(warning) },
             conditions: conditions(properties["currentConditions"]),
             periods: Array(properties.dig("forecastGroup", "forecasts")).map { |period| period(period) },
-            hours: Array(properties.dig("hourlyForecastGroup", "hourlyForecasts")).map { |hour| hour(hour) },
+            hours: hourly(properties.dig("hourlyForecastGroup", "hourlyForecasts")),
             sunrise: instant(rise_set["sunrise"]), sunset: instant(rise_set["sunset"]),
             normals: text(properties.dig("forecastGroup", "regionalNormals", "textSummary"))
           )
@@ -72,6 +74,11 @@ module WeatherCanadaMCP
             uv_index: text(forecast.dig("uv", "index"))&.then { |index| Integer(index, exception: false) || index },
             humidity_pct: value(forecast["relativeHumidity"])
           )
+        end
+
+        def hourly(list)
+          list = Array(list)
+          (@hours ? list.first(@hours) : list).map { |hour| hour(hour) }
         end
 
         def hour(hour)

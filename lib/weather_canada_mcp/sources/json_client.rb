@@ -13,13 +13,16 @@ module WeatherCanadaMCP
         @origin_key = origin
       end
 
-      # shape is the class the document must have (Hash or Array).
+      # shape is the class the document must have (Hash or Array). The block, when given, sees each document as it is
+      # fetched, not when it comes from the cache.
       def get(path, ttl, shape: Hash, accept: "application/json")
         @cache.fetch("#{@origin_key}:#{path}", ttl:) do
           response = @http.get(@origin_key, path, accept:)
           raise StatusError.new(response.status, origin.label) unless response.success?
 
-          Cache::Weighed.parsed(parse(response.body, shape), response.body)
+          data = parse(response.body, shape)
+          yield data if block_given?
+          Cache::Weighed.parsed(data, response.body)
         end
       end
 
