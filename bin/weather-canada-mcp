@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+# From a checkout (or the Docker image) use the bundle; an installed gem resolves its dependencies through RubyGems.
+require "bundler/setup" if File.exist?(File.expand_path("../Gemfile", __dir__))
+require_relative "../lib/weather_canada_mcp"
+
+Warning[:experimental] = false # io-event uses IO::Buffer under the fiber scheduler
+$stdout.sync = true
+$stderr.sync = true
+
+WeatherCanadaMcp::CLI.start(ARGV)

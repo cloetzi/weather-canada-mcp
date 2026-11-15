@@ -1,0 +1,129 @@
+[
+  {
+    "name": "find_location",
+    "title": "Find a location",
+    "description": "Resolve a Canadian place name (town, park, lake, mountain, river) or coordinates to matching places and the nearest Environment Canada forecast sites. Use it to disambiguate a name before other tools (several places can share one name: check type and province), or to see which forecast site covers a remote spot and how far away it is. Other tools accept the same location text directly, so call this only when the place is ambiguous or you need the candidates.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "query": {
+          "type": "string",
+          "maxLength": 120,
+          "description": "Place name, optionally with a province (\"Garibaldi, BC\"). Omit when giving lat and lon."
+        },
+        "province": {
+          "type": "string",
+          "maxLength": 40,
+          "description": "Only places in this province or territory: code or name (\"AB\")."
+        },
+        "lat": {
+          "type": "number",
+          "minimum": 41.0,
+          "maximum": 84.0,
+          "description": "Latitude in decimal degrees."
+        },
+        "lon": {
+          "type": "number",
+          "minimum": -142.0,
+          "maximum": -52.0,
+          "description": "Longitude in decimal degrees (negative, west)."
+        },
+        "limit": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10,
+          "default": 5,
+          "description": "Most candidates to return."
+        },
+        "lang": {
+          "type": "string",
+          "enum": [
+            "en",
+            "fr"
+          ],
+          "description": "Language of text fields: en or fr."
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  {
+    "name": "get_forecast",
+    "title": "Get the weather forecast",
+    "description": "Environment Canada's forecast for the nearest of ~850 forecast sites: current conditions, the official human-written forecast by period (today, tonight, then about 6 days, including snow levels in the mountains where ECCC issues them), an hourly forecast, sunrise/sunset and active warning headlines. All times are UTC (ISO 8601). The result names the site used and its distance from the location; a site tens of km away, or at a different elevation, may not match conditions in the backcountry. For full alert text use get_alerts.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "location": {
+          "type": "string",
+          "maxLength": 120,
+          "description": "A place in Canada: town, park, lake, peak or river, optionally with a province (\"Squamish\", \"Lake Louise, AB\", \"Mont-Tremblant, QC\"). Ignored when lat and lon are given."
+        },
+        "lat": {
+          "type": "number",
+          "minimum": 41.0,
+          "maximum": 84.0,
+          "description": "Latitude in decimal degrees."
+        },
+        "lon": {
+          "type": "number",
+          "minimum": -142.0,
+          "maximum": -52.0,
+          "description": "Longitude in decimal degrees (negative, west)."
+        },
+        "hours": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 24,
+          "default": 12,
+          "description": "Hourly forecast entries to include (0 to omit)."
+        },
+        "lang": {
+          "type": "string",
+          "enum": [
+            "en",
+            "fr"
+          ],
+          "description": "Language of text fields: en or fr."
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  {
+    "name": "get_alerts",
+    "title": "Get weather alerts",
+    "description": "Active Environment Canada weather alerts (warnings, watches, advisories and statements) for a location, with the official alert text exactly as issued. Alerts whose area contains the point are in \"alerts\"; alerts for areas within a few km (for example a coastline or a neighbouring zone) are listed briefly in \"nearby_alerts\". An empty \"alerts\" list means ECCC has no alert in effect there right now. Quote alert text as given; do not reword or shorten safety instructions. Times are UTC (ISO 8601).",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "location": {
+          "type": "string",
+          "maxLength": 120,
+          "description": "A place in Canada: town, park, lake, peak or river, optionally with a province (\"Squamish\", \"Lake Louise, AB\", \"Mont-Tremblant, QC\"). Ignored when lat and lon are given."
+        },
+        "lat": {
+          "type": "number",
+          "minimum": 41.0,
+          "maximum": 84.0,
+          "description": "Latitude in decimal degrees."
+        },
+        "lon": {
+          "type": "number",
+          "minimum": -142.0,
+          "maximum": -52.0,
+          "description": "Longitude in decimal degrees (negative, west)."
+        },
+        "lang": {
+          "type": "string",
+          "enum": [
+            "en",
+            "fr"
+          ],
+          "description": "Language of text fields: en or fr."
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+]

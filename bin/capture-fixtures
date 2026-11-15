@@ -1,0 +1,114 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+# Captures real ECCC and NRCan responses into test/fixtures/. Run it by hand when a source's shape changes,
+# then review the diff: tests depend on these files, and fixtures are never hand-written.
+#
+#   bin/capture-fixtures            # everything
+#   bin/capture-fixtures api/       # only fixtures whose path starts with api/
+#
+# Standard library only, so it runs before `bundle install`. One request at a time, a second apart.
+
+require "fileutils"
+require "json"
+require "tmpdir"
+require "net/http"
+require "uri"
+
+ROOT = File.expand_path("../test/fixtures", __dir__)
+USER_AGENT = "weather-canada-mcp-fixture-capture (+https://github.com/cloetzi/weather-canada-mcp)"
+API = "https://api.weather.gc.ca"
+GEOMET = "https://geo.weather.gc.ca/geomet"
+
+# A point query against a WMS layer: a 3x3 pixel map 0.02 degrees wide, centred on the point.
+def feature_info(layer, lat, lon)
+  d = 0.01
+  query = URI.encode_www_form(
+    SERVICE: "WMS", VERSION: "1.3.0", REQUEST: "GetFeatureInfo", LAYERS: layer, QUERY_LAYERS: layer,
+    CRS: "EPSG:4326", BBOX: [lat - d, lon - d, lat + d, lon + d].map { |v| v.round(4) }.join(","),
+    WIDTH: 3, HEIGHT: 3, I: 1, J: 1, INFO_FORMAT: "application/json"
+  )
+  "#{GEOMET}?#{query}"
+end
+
+def items(collection, **params) = "#{API}/collections/#{collection}/items?#{URI.encode_www_form({ f: "json" }.merge(params))}"
+
+def bbox(lat, lon, half = 0.01) = [lon - half, lat - half, lon + half, lat + half].map { |v| v.round(4) }.join(",")
+
+SQUAMISH = [49.7, -123.15].freeze
+WHISTLER = [50.12, -122.96].freeze
+EDMONTON = [53.54, -113.49].freeze
+OTTAWA = [45.42, -75.7].freeze
+
+FIXTURES = {
+  # M1: get_forecast, find_location (City Page site list), get_alerts
+  "api/citypage_sites.json" => items("citypageweather-realtime", limit: 1000,
+                                                                 properties: "identifier,name.en,name.fr,region.en,region.fr"),
+  "api/citypage_bc-50.json" => "#{API}/collections/citypageweather-realtime/items/bc-50?f=json",
+  "api/citypage_ab-50.json" => "#{API}/collections/citypageweather-realtime/items/ab-50?f=json",
+  "api/weather-alerts_edmonton.json" => items("weather-alerts", bbox: bbox(*EDMONTON), limit: 50),
+  "api/weather-alerts_squamish.json" => items("weather-alerts", bbox: bbox(*SQUAMISH), limit: 50),
+  # No alert was in effect in Ottawa at capture time: the shape of an empty result.
+  "api/weather-alerts_ottawa.json" => items("weather-alerts", bbox: bbox(*OTTAWA), limit: 50),
+  # M0 samples for later milestones (M2, M3)
+  "m0/swob-realtime_whistler.json" => items("swob-realtime", bbox: bbox(*WHISTLER, 0.2), limit: 2, sortby: "-date_tm-value"),
+  "m0/hydrometric-stations_squamish.json" => items("hydrometric-stations", bbox: bbox(*SQUAMISH, 0.2), limit: 5),
+  "m0/hydrometric-realtime_squamish.json" => items("hydrometric-realtime", bbox: bbox(*SQUAMISH, 0.2), limit: 5,
+                                                                           sortby: "-DATETIME"),
+  "m0/aqhi-observations-realtime_vancouver.json" => items("aqhi-observations-realtime", bbox: bbox(49.25, -123.1, 0.3),
+                                                                                        latest: "true", limit: 5),
+  "m0/aqhi-forecasts-realtime_vancouver.json" => items("aqhi-forecasts-realtime", bbox: bbox(49.25, -123.1, 0.3), limit: 2),
+  "m0/marineweather-realtime_howe-sound.json" => items("marineweather-realtime", bbox: bbox(49.5, -123.3, 0.05), limit: 2),
+  "m0/ltce-snowfall_whistler.json" => items("ltce-snowfall", bbox: bbox(*WHISTLER, 0.3), LOCAL_MONTH: 11, LOCAL_DAY: 15,
+                                                             limit: 2),
+  "m0/geomet_snow-level_whistler.json" => feature_info("HRDPS-WEonG_2.5km_SnowLevelHeight", *WHISTLER),
+  "m0/geomet_snow-accum_whistler.json" => feature_info("RDPS_10km_Snow-Accum", *WHISTLER),
+  "m0/geomet_blowing-snow-prob_whistler.json" => feature_info("HRDPS-WEonG_2.5km_BlowingSnow-Prob", *WHISTLER),
+  "m0/geomet_radar-snow-rate_whistler.json" => feature_info("RADAR_1KM_RSNO", *WHISTLER),
+  "m0/geomet_radar-precip-type_whistler.json" => feature_info("Radar_1km_SfcPrecipType", *WHISTLER)
+}.freeze
+
+CGN_URL = "https://ftp.maps.canada.ca/pub/nrcan_rncan/vector/geobase_cgn_toponyme/prov_csv_eng/cgn_canada_csv_eng.zip"
+# Real rows only: the header plus every row whose name is one of these, so tests cover ranking and ambiguity.
+CGN_NAMES = ["Squamish", "Whistler", "Lake Louise", "Banff", "Canmore", "Revelstoke", "Edmonton", "Tofino",
+             "Mount Robson", "Bow River", "Rivière-du-Loup", "Trois-Rivières", "Garibaldi", "Kelowna", "Jasper"].freeze
+
+def fetch(url)
+  uri = URI(url)
+  Net::HTTP.start(uri.host, uri.port, use_ssl: uri.scheme == "https", open_timeout: 15, read_timeout: 120) do |http|
+    response = http.request(Net::HTTP::Get.new(uri, "user-agent" => USER_AGENT))
+    response = fetch(URI.join(url, response["location"]).to_s) if response.is_a?(Net::HTTPRedirection)
+    raise "#{url}: HTTP #{response.code}" unless response.is_a?(Net::HTTPSuccess)
+
+    response.body
+  end
+end
+
+def write(path, body)
+  file = File.join(ROOT, path)
+  FileUtils.mkdir_p(File.dirname(file))
+  body = "#{JSON.pretty_generate(JSON.parse(body))}\n" if path.end_with?(".json")
+  File.write(file, body)
+  puts "wrote #{path} (#{body.bytesize} bytes)"
+end
+
+def capture_cgn
+  Dir.mktmpdir do |dir|
+    archive = File.join(dir, "cgn.zip")
+    File.binwrite(archive, fetch(CGN_URL))
+    system("unzip", "-q", archive, "-d", dir, exception: true)
+    csv = Dir[File.join(dir, "*.csv")].first
+    lines = File.readlines(csv, encoding: "bom|utf-8")
+    keep = lines.drop(1).select { |line| CGN_NAMES.include?(line.split(",", 3)[1]) }
+    write("cgn/cgn_sample.csv", [lines.first, *keep].join)
+  end
+end
+
+filter = ARGV.first.to_s
+FIXTURES.each do |path, url|
+  next unless path.start_with?(filter)
+
+  write(path, fetch(url))
+  sleep 1
+end
+capture_cgn if "cgn/".start_with?(filter) || filter.start_with?("cgn/")
