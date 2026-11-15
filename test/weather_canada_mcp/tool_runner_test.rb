@@ -30,9 +30,9 @@ class ToolRunnerTest < Minitest::Test
 
   def test_oversized_results_are_replaced_not_truncated
     response = runner.call(Echo.new(nil), { size: 5000 })
-    data = JSON.parse(text(response))
 
-    assert_match(/over this server's 1000-byte limit/, data["error"])
+    assert_predicate response, :error?
+    assert_match(/over this server's 1000-byte limit/, text(response))
     refute_includes text(response), "yyyy"
   end
 

@@ -89,17 +89,17 @@ module WeatherCanadaMcp
         insert&.close
       end
 
-      def each_row(io, &)
-        csv = CSV.new(io, headers: true, return_headers: false, liberal_parsing: true)
+      def each_row(io)
+        csv = CSV.new(io, headers: true, liberal_parsing: true, header_converters: ->(header) { header.to_s.delete_prefix("\uFEFF") })
         header_checked = false
         csv.each do |row|
           unless header_checked
-            missing = REQUIRED_COLUMNS - row.headers.map { |header| header.to_s.delete_prefix("﻿") }
+            missing = REQUIRED_COLUMNS - row.headers
             raise Error, "the gazetteer CSV lacks the columns #{missing.join(", ")}" if missing.any?
 
             header_checked = true
           end
-          yield row.to_h.transform_keys { |key| key.to_s.delete_prefix("﻿") }
+          yield row
         end
       end
 

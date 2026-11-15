@@ -36,14 +36,17 @@ module WeatherCanadaMcp
       end
 
       # path includes the query string and is relative to the origin's URL (which may carry a path prefix).
-      # max_body_bytes overrides the default cap for this request (the gazetteer download is larger than any API reply).
-      def get(origin, path, accept: "application/json", max_body_bytes: nil)
+      # max_body_bytes and timeout override the defaults for this request (the gazetteer download is larger and slower
+      # than any API reply).
+      def get(origin, path, accept: "application/json", max_body_bytes: nil, timeout: nil)
         uri = @origins.fetch(origin) { raise ArgumentError, "unknown upstream #{origin.inspect}" }
         raise ArgumentError, "path must start with /" unless path.start_with?("/")
 
         request_path = "#{uri.path}#{path}"
         headers = [["user-agent", @user_agent], ["accept", accept]]
-        with_retries(uri.host, path) { perform(origin, uri, request_path, headers, max_body_bytes || @max_body_bytes) }
+        with_retries(uri.host, path) do
+          perform(origin, uri, request_path, headers, max_body_bytes || @max_body_bytes, timeout || @timeout)
+        end
       end
 
       def close
@@ -72,10 +75,10 @@ module WeatherCanadaMcp
         end
       end
 
-      def perform(origin, uri, request_path, headers, limit)
+      def perform(origin, uri, request_path, headers, limit, timeout) # rubocop:disable Metrics/ParameterLists -- one request's settings
         @semaphore.acquire do
           @rate_limiter.acquire
-          Async::Task.current.with_timeout(@timeout) do
+          Async::Task.current.with_timeout(timeout) do
             response = client(origin, uri).call(Protocol::HTTP::Request["GET", request_path, Protocol::HTTP::Headers[headers]])
             begin
               [Response.new(status: response.status, content_type: response.headers["content-type"]&.to_s,
@@ -89,7 +92,7 @@ module WeatherCanadaMcp
       rescue Error
         raise
       rescue StandardError => e
-        raise transport_error(e, uri.host)
+        raise transport_error(e, uri.host, timeout)
       end
 
       def client(origin, uri)
@@ -101,10 +104,10 @@ module WeatherCanadaMcp
 
       # Messages name the failure and the host, never the exception message, which can quote the response.
       # A timeout already used a whole attempt and TLS failures are configuration, so neither is retried.
-      def transport_error(error, host)
+      def transport_error(error, host, timeout)
         case error
         when Async::TimeoutError, IO::TimeoutError
-          TransportError.new("#{host} did not respond within #{@timeout} seconds. ECCC services are sometimes slow; retrying later may help.")
+          TransportError.new("#{host} did not respond within #{timeout} seconds. ECCC services are sometimes slow; retrying later may help.")
         when OpenSSL::SSL::SSLError
           reason = error.message[/[^:]+\z/].to_s.strip[0, 120]
           TransportError.new("The TLS connection to #{host} failed (#{reason}). Check the CA certificates, the system clock " \
@@ -153,7 +156,8 @@ module WeatherCanadaMcp
 
       def backoff(attempt) = (@base_delay * (2**(attempt - 1))) + rand(0.0..@base_delay)
 
-      def path_only(path) = path.split("?", 2).first
+      # Logs keep the collection but never the query (a bbox) or an item id (a forecast site): both reveal locations.
+      def path_only(path) = path.split("?", 2).first.sub(%r{/items/.*\z}, "/items/{id}")
     end
   end
 end

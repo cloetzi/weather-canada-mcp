@@ -16,7 +16,7 @@ module WeatherCanadaMcp
       def self.first(archive, suffix:, max_bytes:, &) = new(archive).first(suffix:, max_bytes:, &)
 
       def initialize(archive)
-        @archive = archive.b
+        @archive = archive.encoding == Encoding::BINARY ? archive : archive.b
       end
 
       # Yields the decompressed bytes of the first member whose name ends with suffix, chunk by chunk.
@@ -31,31 +31,38 @@ module WeatherCanadaMcp
 
       def entries
         eocd = @archive.rindex(EOCD_SIGNATURE) or raise Error, "not a ZIP archive"
-        count, _size, offset = @archive.byteslice(eocd + 10, 10).unpack("vVV")
+        count, _size, offset = slice(eocd + 10, 10).unpack("vVV")
         Array.new(count) do
           signature, method, compressed, name_length, extra_length, comment_length, local =
-            @archive.byteslice(offset, 46).unpack("V x6 v x8 V x4 v v v x8 V")
+            slice(offset, 46).unpack("V x6 v x8 V x4 v v v x8 V")
           raise Error, "corrupt ZIP central directory" unless signature == CENTRAL_SIGNATURE
 
-          name = @archive.byteslice(offset + 46, name_length).force_encoding(Encoding::UTF_8)
+          name = slice(offset + 46, name_length).dup.force_encoding(Encoding::UTF_8)
           offset += 46 + name_length + extra_length + comment_length
           { name:, method:, compressed:, local: }
         end
       end
 
       def extract(entry, max_bytes, &)
-        signature, name_length, extra_length = @archive.byteslice(entry[:local], 30).unpack("V x22 v v")
+        signature, name_length, extra_length = slice(entry[:local], 30).unpack("V x22 v v")
         raise Error, "corrupt ZIP local header" unless signature == LOCAL_SIGNATURE
 
         start = entry[:local] + 30 + name_length + extra_length
-        data = @archive.byteslice(start, entry[:compressed])
-        raise Error, "truncated ZIP archive" unless data&.bytesize == entry[:compressed]
+        data = slice(start, entry[:compressed])
 
         case entry[:method]
         when 0 then emit(data, max_bytes, 0, &)
         when 8 then inflate(data, max_bytes, &)
         else raise Error, "unsupported ZIP compression method #{entry[:method]}"
         end
+      end
+
+      # Raises instead of returning a short or nil slice, so truncated archives fail with a clear error.
+      def slice(offset, length)
+        data = @archive.byteslice(offset, length) if offset && length && offset >= 0
+        raise Error, "truncated or corrupt ZIP archive" unless data&.bytesize == length
+
+        data
       end
 
       def inflate(data, max_bytes, &)

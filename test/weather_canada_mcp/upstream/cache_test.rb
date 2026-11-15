@@ -69,6 +69,23 @@ class CacheTest < Minitest::Test
     assert_equal :ok, cache.fetch("k", ttl: 10) { :ok }
   end
 
+  def test_waiters_are_released_when_the_loader_is_stopped
+    cache = cache()
+    outcome = Sync do |task|
+      loader = task.async { cache.fetch("k", ttl: 10) { sleep 10 } }
+      waiter = task.async do
+        cache.fetch("k", ttl: 10) { flunk "coalesced callers do not load" }
+      rescue WeatherCanadaMcp::Upstream::Error => e
+        e.message
+      end
+      sleep 0.01
+      loader.stop
+      waiter.wait
+    end
+
+    assert_match(/cancelled/, outcome)
+  end
+
   def test_evicts_when_full
     cache = cache(max_entries: 2)
     cache.fetch("a", ttl: 5) { 1 }

@@ -29,6 +29,13 @@ class FindLocationTest < Minitest::Test
     assert(result["candidates"].all? { |place| place["province"] == "Alberta" })
   end
 
+  def test_unknown_province_is_an_error
+    message, error = find(query: "Bow River", province: "Alta")
+
+    assert error
+    assert_match(/Unknown province/, message)
+  end
+
   def test_coordinates_give_nearby_places_and_sites
     result, = find(lat: 49.7, lon: -123.15)
 

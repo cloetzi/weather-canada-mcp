@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "sqlite3"
+require "tmpdir"
 
 module WeatherCanadaMcp
   # Offline place-name lookup over NRCan's Canadian Geographical Names, loaded into SQLite by Gazetteer::Builder.

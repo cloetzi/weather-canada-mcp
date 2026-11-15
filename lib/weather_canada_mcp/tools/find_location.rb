@@ -46,7 +46,11 @@ module WeatherCanadaMcp
         raise InvalidArguments, "query is longer than #{MAX_LOCATION_LENGTH} characters." if query.length > MAX_LOCATION_LENGTH
 
         name, province = Gazetteer.split_province(query)
-        province = Gazetteer.province_name(arguments["province"]) || province if arguments["province"]
+        if arguments["province"]
+          province = Gazetteer.province_name(arguments["province"]) or
+            raise InvalidArguments, "Unknown province #{arguments["province"].to_s[0, 40].inspect}; use a code such as AB or a name such as Alberta."
+        end
+
         candidates = gazetteer.search(name, province:, limit:)
         return { query:, candidates: [], note: "No matching place. Try a shorter name, another spelling, or lat and lon." } if candidates.empty?
 

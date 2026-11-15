@@ -5,8 +5,8 @@ require "async/promise"
 module WeatherCanadaMcp
   module Upstream
     # In-process TTL cache keyed by request URL. Concurrent misses for the same key run the block once: the other
-    # callers wait for its result (or its error, which is not cached). Bounded: the entry that expires first is
-    # evicted when full.
+    # callers wait for its result (or its error, which is not cached). Meant for one reactor thread. Bounded: the entry
+    # that expires first is evicted when full.
     class Cache
       Entry = Data.define(:value, :expires_at)
 
@@ -46,6 +46,9 @@ module WeatherCanadaMcp
         promise.reject(e)
         raise
       ensure
+        # A loader stopped by something other than a StandardError (Async::Stop when its client goes away) must still
+        # release the fibers waiting on it.
+        promise.reject(Upstream::Error.new("The request was cancelled; retry it.")) unless promise.resolved?
         @pending.delete(key)
       end
 

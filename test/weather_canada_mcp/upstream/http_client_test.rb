@@ -8,7 +8,7 @@ class HttpClientTest < Minitest::Test
     @client = WeatherCanadaMcp::Upstream::HttpClient.new(
       origins: { api: fake.url, prefixed: "#{fake.url}/base" }, user_agent: "weather-canada-mcp/test (+contact)", timeout: 5,
       max_concurrency: 2, max_body_bytes: 1000, rate_limiter: WeatherCanadaMcp::Upstream::RateLimiter.new(rate: 100, burst: 10),
-      logger: null_logger, base_delay: 0.001, **
+      base_delay: 0.001, logger: null_logger, **
     )
   end
 
@@ -56,6 +56,19 @@ class HttpClientTest < Minitest::Test
 
       assert_equal "ok", client(fake).get(:api, "/flaky").body
       assert_equal 3, calls
+    end
+  end
+
+  def test_retry_logs_hide_queries_and_item_ids
+    with_fake_eccc do |fake|
+      io = StringIO.new
+      calls = 0
+      fake.route("/collections/c/items/bc-50") { (calls += 1) < 2 ? [503, {}, ""] : [200, {}, "ok"] }
+      client(fake, logger: WeatherCanadaMcp::Logger.new(io:)).get(:api, "/collections/c/items/bc-50?bbox=1,2,3,4")
+
+      assert_includes io.string, "path=/collections/c/items/{id}"
+      refute_includes io.string, "bc-50"
+      refute_includes io.string, "bbox"
     end
   end
 

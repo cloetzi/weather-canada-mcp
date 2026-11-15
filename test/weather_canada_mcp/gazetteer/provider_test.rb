@@ -4,8 +4,9 @@ require_relative "../../test_helper"
 
 class GazetteerProviderTest < Minitest::Test
   def provider(fake, path: File.join(Dir.mktmpdir, "g.sqlite3"), auto_build: true)
+    @now = 0
     @app = application(fake, WEATHER_MCP_GAZETTEER_PATH: path)
-    WeatherCanadaMcp::Gazetteer::Provider.new(path:, http: @app.http, logger: null_logger, auto_build:)
+    WeatherCanadaMcp::Gazetteer::Provider.new(path:, http: @app.http, logger: null_logger, auto_build:, clock: -> { @now })
   end
 
   def teardown = @app&.close
@@ -32,16 +33,37 @@ class GazetteerProviderTest < Minitest::Test
     end
   end
 
-  def test_a_failed_download_is_reported_and_retried_later
+  def test_a_failed_download_is_reported_and_retried_only_after_a_pause
     with_fake_eccc do |fake|
       fake.route(FakeEccc::CGN_PATH) { [404, {}, "gone"] }
       provider = provider(fake)
 
       assert_raises(WeatherCanadaMcp::Gazetteer::Unavailable) { provider.get }
       fake.route(FakeEccc::CGN_PATH) { [200, {}, FakeEccc.cgn_zip] }
+      error = assert_raises(WeatherCanadaMcp::Gazetteer::Unavailable) { provider.get }
+
+      assert_match(/not retried/, error.message)
+      assert_equal 1, fake.requests_to(FakeEccc::CGN_PATH).size
+      @now = WeatherCanadaMcp::Gazetteer::Provider::RETRY_AFTER + 1
 
       assert_operator provider.get.size, :>, 0
     end
+  end
+
+  def test_unreadable_data_is_unavailable_not_a_crash
+    with_fake_eccc do |fake|
+      fake.route(FakeEccc::CGN_PATH) { [200, {}, FakeEccc.cgn_zip("Geographical Name,Latitude\n\"unterminated,1\n")] }
+      error = assert_raises(WeatherCanadaMcp::Gazetteer::Unavailable) { provider(fake).get }
+
+      assert_match(/could not be built/, error.message)
+    end
+  end
+
+  def test_truncated_archives_are_rejected
+    archive = FakeEccc.cgn_zip
+
+    assert_raises(WeatherCanadaMcp::Error) { WeatherCanadaMcp::Gazetteer::ZipEntry.first(archive.byteslice(0, archive.bytesize - 30), suffix: ".csv", max_bytes: 1 << 20) { nil } }
+    assert_raises(WeatherCanadaMcp::Error) { WeatherCanadaMcp::Gazetteer::ZipEntry.first(archive.byteslice(200, archive.bytesize), suffix: ".csv", max_bytes: 1 << 20) { nil } }
   end
 
   def test_corrupt_archives_are_rejected

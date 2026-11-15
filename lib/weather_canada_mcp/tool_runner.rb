@@ -29,7 +29,8 @@ module WeatherCanadaMcp
       started = Process.clock_gettime(Process::CLOCK_MONOTONIC)
       result = tool.call(arguments.transform_keys(&:to_s))
       log(tool, started)
-      text(render(result))
+      json = render(result)
+      json.bytesize <= @max_response_bytes ? text(json) : error(too_large(json.bytesize))
     rescue Tools::InvalidArguments => e
       log(tool, started, error: "InvalidArguments")
       error(e.message)
@@ -44,13 +45,12 @@ module WeatherCanadaMcp
 
     private
 
-    def render(result)
-      json = JSON.generate(compact(result.merge(attribution: attribution(result))))
-      return json if json.bytesize <= @max_response_bytes
+    def render(result) = JSON.generate(compact(result.merge(attribution: attribution(result))))
 
-      # Never cut JSON mid-way (alert text must stay whole): say what was too large instead.
-      JSON.generate(error: "The result is #{json.bytesize} bytes, over this server's #{@max_response_bytes}-byte limit. " \
-                           "Ask for less (fewer hours, a smaller limit).", attribution: ATTRIBUTION)
+    # Results over the cap are never cut mid-way, since alert text must stay whole.
+    def too_large(size)
+      "The result is #{size} bytes, over this server's #{@max_response_bytes}-byte limit (WEATHER_MCP_MAX_RESPONSE_BYTES). " \
+        "Ask for less (fewer hours, a smaller limit). #{ATTRIBUTION}"
     end
 
     def attribution(result)
