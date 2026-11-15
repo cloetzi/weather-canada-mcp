@@ -33,12 +33,14 @@ class GetRadarMapTest < Minitest::Test
   end
 
   def test_map_details_and_base_map_attribution
-    map = radar(**WHISTLER).first["map"]
+    result = radar(**WHISTLER).first
+    map = result["map"]
 
     assert_equal ["snow", 100, 512, 512], map.values_at("precipitation", "radius_km", "width", "height")
     assert_equal WeatherCanadaMCP::Geo.bbox(50.1, -122.95, 100), map["bounds"].values_at("min_lon", "min_lat", "max_lon", "max_lat")
     assert_match(%r{\Acm/h: light blue 0.1}, map["legend"])
-    assert_equal WeatherCanadaMCP::Sources::NRCan::Basemap::ATTRIBUTION, map["base_map"]
+    assert_includes result["attribution"], WeatherCanadaMCP::Sources::NRCan::Basemap::ATTRIBUTION
+    assert_includes result["attribution"], WeatherCanadaMCP::ATTRIBUTION
   end
 
   def test_the_image_is_a_png_with_the_point_ringed

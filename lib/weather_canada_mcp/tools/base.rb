@@ -5,24 +5,28 @@ require "time"
 
 module WeatherCanadaMCP
   module Tools
-    # A tool declares name, title, description and input schema as class-level constants and implements #call,
-    # which returns a Hash (Tools::Runner serializes it and adds the attribution). Arguments arrive with string keys.
+    # A tool declares its name, title, description and arguments at class level and implements #call(args), which
+    # returns a Hash (or a Tools::Result) that Tools::Runner serializes with the attribution. A new instance serves each
+    # call, so instance variables are safe to use.
+    #
+    #   class GetForecast < Base
+    #     tool_name "get_forecast"
+    #     title "Get the weather forecast"
+    #     description <<~TEXT
+    #       ...
+    #     TEXT
+    #     location_arguments
+    #     argument :hours, :integer, in: 0..24, default: 12, description: "Hourly forecast entries to include (0 to omit)."
+    #     argument :lang, :language
+    #
+    #     def call(args) = ... args.hours ... args.point ... args.lang
+    #   end
     class Base
+      include Concurrency
+
       CANADA_LAT = (41.0..84.0)
       CANADA_LON = (-142.0..-52.0)
       MAX_LOCATION_LENGTH = 120
-
-      LOCATION_PROPERTIES = {
-        location: {
-          type: "string", maxLength: MAX_LOCATION_LENGTH,
-          description: "A place in Canada: town, park, lake, peak or river, optionally with a province " \
-                       "(\"Squamish\", \"Lake Louise, AB\", \"Mont-Tremblant, QC\"). Ignored when lat and lon are given."
-        },
-        lat: { type: "number", minimum: CANADA_LAT.min, maximum: CANADA_LAT.max, description: "Latitude in decimal degrees." },
-        lon: { type: "number", minimum: CANADA_LON.min, maximum: CANADA_LON.max,
-               description: "Longitude in decimal degrees (negative, west)." }
-      }.freeze
-      LANG_PROPERTY = { lang: { type: "string", enum: Config::LANGS, description: "Language of text fields: en or fr." } }.freeze
 
       # A resolved point, with what it was resolved from.
       Point = Data.define(:lat, :lon, :place) do
@@ -30,23 +34,100 @@ module WeatherCanadaMCP
       end
 
       class << self
-        def tool_name = self::NAME
-        def title = self::TITLE
-        def description = self::DESCRIPTION
-        def input_schema = self::INPUT_SCHEMA
+        # Each of these reads when called without a value and sets when called with one.
+        def tool_name(value = nil) = value ? @tool_name = value : @tool_name
+        def title(value = nil) = value ? @title = value : @title
+        def description(value = nil) = value ? @description = value.tr("\n", " ").strip : @description
+
+        # The arguments declared on this class, in order.
+        def arguments = @arguments ||= []
+
+        def argument(name, type, **) = arguments << Argument.new(name, type, **)
+
+        # location (a place name), lat and lon, and the point they resolve to as `args.point`.
+        def location_arguments
+          @location_arguments = true
+          argument :location, :string, max_length: MAX_LOCATION_LENGTH,
+                                       description: "A place in Canada: town, park, lake, peak or river, optionally with a province " \
+                                                    "(\"Squamish\", \"Lake Louise, AB\", \"Mont-Tremblant, QC\"). Ignored when lat and lon are given."
+          coordinate_arguments
+        end
+
+        # lat and lon alone, for a tool that treats them its own way.
+        def coordinate_arguments
+          argument :lat, :number, bounds: CANADA_LAT, description: "Latitude in decimal degrees."
+          argument :lon, :number, bounds: CANADA_LON, description: "Longitude in decimal degrees (negative, west)."
+        end
+
+        def location_arguments? = @location_arguments || false
+
+        # The condition for the tool to exist; without one it always does. `setting` names what switches it on.
+        def enabled_when(setting, &block)
+          @setting = setting
+          @condition = block
+        end
+
+        def conditional? = !@condition.nil?
+        attr_reader :setting
+
+        def enabled?(config) = @condition.nil? || @condition.call(config)
+
+        def input_schema
+          { type: "object", properties: arguments.to_h { |argument| [argument.name, argument.schema] }, additionalProperties: false }
+        end
+
         def manifest = { name: tool_name, title:, description:, input_schema: }
 
-        # Credits the data source: on results that set no attribution of their own, and on upstream errors.
+        # Credits the data source: on results that name no source of their own, and on upstream errors.
         def attribution = ATTRIBUTION
+
+        # The value object `call` receives: one member per declared argument, and `point` for location arguments.
+        def arguments_class
+          @arguments_class ||= Data.define(*arguments.map(&:name), *(:point if location_arguments?))
+        end
+
+        # Checks raw (string-keyed) arguments and returns arguments_class.
+        def parse_arguments(raw, config)
+          raise InvalidArguments, "arguments must be an object." unless raw.is_a?(Hash)
+
+          unknown = raw.keys.map(&:to_s) - arguments.map { |argument| argument.name.to_s }
+          raise InvalidArguments, "unknown arguments: #{unknown.join(", ")}." if unknown.any?
+
+          values = arguments.to_h { |argument| [argument.name, argument.parse(raw[argument.name.to_s], config)] }
+          arguments_class.new(**values, **(location_arguments? ? { point: nil } : {}))
+        end
       end
 
       def initialize(context)
         @context = context
+        @attributions = []
+        @place_names = false
       end
 
-      def call(_arguments) = raise NotImplementedError
+      # Parses the raw arguments, resolves the point and calls the tool. Returns a Tools::Result.
+      def run(raw_arguments)
+        args = self.class.parse_arguments(raw_arguments, @context&.config)
+        args = args.with(point: resolve_point(args)) if self.class.location_arguments?
+        result = call(args)
+        result = Result.new(data: result) unless result.is_a?(Result)
+        Result.new(data: result.data, attributions: credits(result.attributions), image: result.image)
+      end
+
+      def call(_args) = raise NotImplementedError
 
       private
+
+      # Credits a source for the result. Without any, the tool class's own credit is used.
+      def attribute(text) = @attributions << text
+
+      # Records that gazetteer place names went into the result, which NRCan's licence asks to be credited.
+      def place_names_used! = @place_names = true
+
+      def credits(declared)
+        sources = [*declared, *@attributions]
+        sources = [self.class.attribution] if sources.empty?
+        (@place_names ? [*sources, Places::Gazetteer::ATTRIBUTION] : sources).uniq
+      end
 
       def ogc = @context.ogc
       def wms = @context.wms
@@ -55,21 +136,14 @@ module WeatherCanadaMCP
       def forecast_sites = @context.forecast_sites
       def config = @context.config
 
-      def lang(arguments)
-        value = arguments["lang"] || config.lang
-        Config::LANGS.include?(value) ? value : raise(InvalidArguments, "lang must be en or fr")
-      end
-
       # lat/lon win over location; one of the two is required.
-      def resolve_point(arguments)
-        lat = arguments["lat"]
-        lon = arguments["lon"]
-        return coordinates(lat, lon) unless lat.nil? && lon.nil?
+      def resolve_point(args)
+        return coordinates(args.lat, args.lon) unless args.lat.nil? && args.lon.nil?
 
-        location = arguments["location"]
-        raise InvalidArguments, "Give a location name, or lat and lon." unless location.is_a?(String) && !location.strip.empty?
+        raise InvalidArguments, "Give a location name, or lat and lon." if args.location.nil? || args.location.strip.empty?
 
-        place = lookup(location)
+        place = lookup(args.location)
+        place_names_used!
         Point.new(lat: place.lat, lon: place.lon, place:)
       end
 
@@ -84,20 +158,18 @@ module WeatherCanadaMCP
       end
 
       def lookup(location)
-        raise InvalidArguments, "location is longer than #{MAX_LOCATION_LENGTH} characters." if location.length > MAX_LOCATION_LENGTH
-
         name, province = Places::Gazetteer.split_province(location)
         place = gazetteer.search(name, province:, limit: 1).first
         return place if place
 
-        raise InvalidArguments, "No place named #{name.inspect}#{" in #{province}" if province} was found. " \
-                                "Try find_location with a shorter or different name, or pass lat and lon."
+        raise NotFound, "No place named #{name.inspect}#{" in #{province}" if province} was found. " \
+                        "Try find_location with a shorter or different name, or pass lat and lon."
       end
 
       def gazetteer
         @context.gazetteer.open
       rescue Places::Gazetteer::Unavailable => e
-        raise InvalidArguments, "Place names cannot be looked up right now (#{e.message}). Pass lat and lon instead."
+        raise Unavailable, "Place names cannot be looked up right now (#{e.message}). Pass lat and lon instead."
       end
 
       # A bilingual ECCC field ({"en" => ..., "fr" => ...}) in the requested language.
@@ -106,18 +178,6 @@ module WeatherCanadaMCP
 
         value[lang] || value["en"]
       end
-
-      # The MCP server checks arguments against the schema first; this keeps a bad value a readable tool error, not a
-      # bug, if that check is ever off.
-      def integer_argument(arguments, name, default, range)
-        value = whole_number(arguments[name].nil? ? default : arguments[name])
-        return value if value.is_a?(Integer) && range.cover?(value)
-
-        raise InvalidArguments, "#{name} must be a whole number from #{range.min} to #{range.max}."
-      end
-
-      # JSON Schema counts 2.0 as an integer, so the server's schema check lets it through.
-      def whole_number(value) = value.is_a?(Float) && value.finite? && (value % 1).zero? ? value.to_i : value
 
       def round_km(distance) = distance.round(distance < 10 ? 1 : 0)
 
@@ -141,16 +201,12 @@ module WeatherCanadaMCP
         nil
       end
 
-      # Runs the block for each item in its own fiber (the rate limiter still spaces the requests), in order.
-      def concurrently(items, &block) = items.map { |item| Async { block.call(item) } }.map(&:wait)
-
-      # Up to limit non-nil block results, in candidate order: candidates are tried concurrently, as many at a time as
-      # results are still missing, so a station that has not reported gives way to the next nearest.
-      def first_found(candidates, limit, &)
-        candidates = candidates.dup
-        found = []
-        found.concat(concurrently(candidates.shift(limit - found.size), &).compact) while found.size < limit && candidates.any?
-        found
+      # The block's value and no note, or no value and a note saying why when an upstream failure stopped it: for results
+      # that are useful without one of their parts.
+      def attempt
+        [yield, nil]
+      rescue Sources::Error => e
+        [nil, e.message]
       end
 
       def time(value)

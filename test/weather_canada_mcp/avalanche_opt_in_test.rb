@@ -21,14 +21,14 @@ class AvalancheOptInTest < Minitest::Test
     refute defaults.avalanche_enabled
     refute defaults.avalanche_reports_enabled
     assert_equal Config::UPSTREAMS, defaults.upstreams
-    assert_equal WeatherCanadaMCP::Tools.core.map(&:tool_name), tool_names
+    assert_equal WeatherCanadaMCP::Tools::Registry.core.map(&:tool_name), tool_names
   end
 
   def test_enabling_adds_the_origins_and_tools
     enabled = config(WEATHER_MCP_AVALANCHE: "true")
 
     assert_equal Config::DEFAULT_UPSTREAMS, enabled.upstreams
-    assert_equal WeatherCanadaMCP::Tools.core.map(&:tool_name) + AVALANCHE_TOOLS, tool_names(WEATHER_MCP_AVALANCHE: "true")
+    assert_equal WeatherCanadaMCP::Tools::Registry.core.map(&:tool_name) + AVALANCHE_TOOLS, tool_names(WEATHER_MCP_AVALANCHE: "true")
   end
 
   def test_field_reports_have_their_own_flag
@@ -73,7 +73,7 @@ class AvalancheOptInTest < Minitest::Test
   end
 
   def test_opt_in_tool_manifest_matches_the_snapshot
-    tools = WeatherCanadaMCP::Tools.avalanche + WeatherCanadaMCP::Tools.field_reports
+    tools = WeatherCanadaMCP::Tools::Registry::ALL - WeatherCanadaMCP::Tools::Registry.core
     manifest = "#{JSON.pretty_generate(JSON.parse(JSON.generate(tools.map(&:manifest))))}\n"
     path = File.join(TestHelpers::ROOT, "test/fixtures/tools_avalanche.json")
     File.write(path, manifest) if ENV["UPDATE_SNAPSHOTS"]

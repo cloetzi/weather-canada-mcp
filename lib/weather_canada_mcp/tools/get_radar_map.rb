@@ -7,19 +7,6 @@ module WeatherCanadaMCP
     # The latest weather radar (the North American 1 km composite on GeoMet) as a map image over NRCan's base map, with
     # the rain and snow rates and the precipitation type at the point now and over the past hour.
     class GetRadarMap < Base
-      NAME = "get_radar_map"
-      TITLE = "Get the weather radar map"
-      DESCRIPTION = <<~TEXT.tr("\n", " ").strip
-        The latest weather radar around a location (updated every 6 minutes): a 512x512 PNG map of precipitation over
-        a base map, the location ringed in red at its centre (or near it), plus the radar's rain rate (mm/h), snow rate
-        (cm/h) at the point, the surface precipitation type detected at or next to it (left out when there is none),
-        and the rate there 30 and 60 minutes ago. radius_km sets
-        the area shown (25 to 200 km from the point). precipitation picks the map's colour scale, rain or snow; it
-        defaults to snow from November to April. Colours run from light blue (lightest) through green, yellow, orange
-        and red to purple (heaviest); light grey shading marks areas outside radar coverage. Radar can miss
-        precipitation below the beam in mountains and far from radars, and can show echoes that do not reach the
-        ground. Times are UTC (ISO 8601).
-      TEXT
       RATE_LAYERS = { "rain" => "RADAR_1KM_RRAI", "snow" => "RADAR_1KM_RSNO" }.freeze
       STYLES = { "rain" => "Radar-Rain_14colors", "snow" => "Radar-Snow_14colors" }.freeze
       RATE_FIELDS = { "rain" => :rain_mm_per_h, "snow" => :snow_cm_per_h }.freeze
@@ -42,30 +29,28 @@ module WeatherCanadaMCP
       LATEST_TTL = 120
       FRAME_TTL = 3600
       # Composing is CPU work on a thread; at most this many run at once.
-      COMPOSE_SLOTS = 2
-      INPUT_SCHEMA = {
-        type: "object",
-        properties: {
-          **Base::LOCATION_PROPERTIES,
-          radius_km: { type: "integer", enum: RADII, default: 100, description: "Distance from the point to the map's edges." },
-          precipitation: { type: "string", enum: RATE_LAYERS.keys, description: "The map's colour scale: rain or snow." },
-          **Base::LANG_PROPERTY
-        },
-        additionalProperties: false
-      }.freeze
+      tool_name "get_radar_map"
+      title "Get the weather radar map"
+      description <<~TEXT
+        The latest weather radar around a location (updated every 6 minutes): a 512x512 PNG map of precipitation over
+        a base map, the location ringed in red at its centre (or near it), plus the radar's rain rate (mm/h), snow rate
+        (cm/h) at the point, the surface precipitation type detected at or next to it (left out when there is none),
+        and the rate there 30 and 60 minutes ago. radius_km sets
+        the area shown (25 to 200 km from the point). precipitation picks the map's colour scale, rain or snow; it
+        defaults to snow from November to April. Colours run from light blue (lightest) through green, yellow, orange
+        and red to purple (heaviest); light grey shading marks areas outside radar coverage. Radar can miss
+        precipitation below the beam in mountains and far from radars, and can show echoes that do not reach the
+        ground. Times are UTC (ISO 8601).
+      TEXT
+      location_arguments
+      argument :radius_km, :integer, in: RADII, default: 100, description: "Distance from the point to the map's edges."
+      argument :precipitation, :string, in: RATE_LAYERS.keys, description: "The map's colour scale: rain or snow."
+      argument :lang, :language
 
-      def initialize(context)
-        super
-        @compose_slots = Async::Semaphore.new(COMPOSE_SLOTS)
-      end
-
-      def call(arguments)
-        lang(arguments)
-        point = resolve_point(arguments)
-        radius = whole_number(arguments["radius_km"] || 100)
-        raise InvalidArguments, "radius_km must be one of #{RADII.join(", ")}." unless RADII.include?(radius)
-
-        kind = precipitation(arguments["precipitation"])
+      def call(args)
+        point = args.point
+        radius = args.radius_km
+        kind = precipitation(args.precipitation)
         latest = wms_value(RATE_LAYERS.fetch(kind), point, ttl: LATEST_TTL)
         at = time(latest&.time)
         return { location: point.to_h, note: "The radar has no image for this location right now." } unless at
@@ -77,7 +62,6 @@ module WeatherCanadaMCP
 
       def precipitation(kind)
         return SNOW_MONTHS.include?(now.utc.month) ? "snow" : "rain" if kind.nil?
-        raise InvalidArguments, "precipitation must be rain or snow." unless RATE_LAYERS.key?(kind)
 
         kind
       end
@@ -85,17 +69,15 @@ module WeatherCanadaMCP
       def radar(point, radius, kind, latest, at)
         bbox = Geo.bbox(snap(point.lat), snap(point.lon), radius)
         other = RATE_LAYERS.keys.find { |key| key != kind }
-        other_rate, type, *history, radar, coverage, base = fetch_all(point, bbox, kind, other, at)
+        other_rate, type, *history, radar, coverage, (base_png, base_error) = fetch_all(point, bbox, kind, other, at)
         marker = marker(point, bbox)
-        base_png = base if base.is_a?(String)
         image = composed([kind, at.to_i, bbox, marker, base_png ? 1 : 0]) do
           Maps::Compositor.compose([coverage, radar], width: SIZE, height: SIZE, marker:, base: base_png)
         end
-        {
-          location: point.to_h, radar_time: at.utc.iso8601, **readings(kind, other, at, [latest, other_rate, type, history]),
-          map: map_info(kind, radius, bbox, image.base_error || (base.message if base.is_a?(Sources::Error))),
-          image: Tools::Image.new(data: image.png, mime_type: "image/png")
-        }
+        data = { location: point.to_h, radar_time: at.utc.iso8601, **readings(kind, other, at, [latest, other_rate, type, history]),
+                 map: map_info(kind, radius, bbox, image.base_error || base_error) }
+        credits = base_png && !image.base_error ? [self.class.attribution, Sources::NRCan::Basemap::ATTRIBUTION] : []
+        Result.new(data:, attributions: credits, image: Tools::Image.new(data: image.png, mime_type: "image/png"))
       end
 
       def readings(kind, other, at, (latest, other_rate, type, history))
@@ -106,7 +88,7 @@ module WeatherCanadaMCP
           end }
       end
 
-      # [other rate, precipitation type, *rates in the past hour, radar PNG, coverage PNG, base map PNG or its error].
+      # [other rate, precipitation type, *rates in the past hour, radar PNG, coverage PNG, [base map PNG, note]].
       def fetch_all(point, bbox, kind, other, at)
         layer = RATE_LAYERS.fetch(kind)
         map = ->(name, style) { wms.get_map(name, bbox, width: SIZE, height: SIZE, style:, time: at, ttl: FRAME_TTL) }
@@ -122,11 +104,7 @@ module WeatherCanadaMCP
       def rate(found) = found&.value&.then { |number| number.round(2) }
 
       # Without the base map the radar is still drawn, over white.
-      def base_map(bbox)
-        basemap.get_map(bbox, width: SIZE, height: SIZE)
-      rescue Sources::Error => e
-        e
-      end
+      def base_map(bbox) = attempt { basemap.get_map(bbox, width: SIZE, height: SIZE) }
 
       # The pixel of the point; the map's centre is snapped, so the point can sit a little off centre.
       def marker(point, bbox)
@@ -136,10 +114,10 @@ module WeatherCanadaMCP
       end
 
       # The composed map, made once per frame, area and marker. Decoding and encoding PNGs is CPU work, so it runs on a
-      # thread (at most COMPOSE_SLOTS at once) and other requests' fibers keep going.
+      # thread (at most Application::COMPOSE_SLOTS at once) and other requests' fibers keep going.
       def composed(key, &block)
         images.fetch("radar-map:#{key.flatten.join(",")}", ttl: FRAME_TTL) do
-          @compose_slots.acquire do
+          @context.compose_slots.acquire do
             Thread.new do
               Thread.current.report_on_exception = false
               block.call
@@ -152,7 +130,7 @@ module WeatherCanadaMCP
         min_lon, min_lat, max_lon, max_lat = bbox
         info = { precipitation: kind, radius_km: radius, width: SIZE, height: SIZE,
                  bounds: { min_lat:, min_lon:, max_lat:, max_lon: }, legend: LEGENDS.fetch(kind) }
-        return info.merge(base_map: Sources::NRCan::Basemap::ATTRIBUTION) unless base_error
+        return info unless base_error
 
         info.merge(note: "The base map could not be used (#{base_error}); the radar is drawn on white.")
       end

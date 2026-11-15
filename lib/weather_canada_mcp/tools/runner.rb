@@ -19,47 +19,40 @@ module WeatherCanadaMCP
 
       def mcp_tool(tool_class)
         runner = self
-        tool = tool_class.new(@context)
         MCP::Tool.define(
           name: tool_class.tool_name, title: tool_class.title, description: tool_class.description,
           input_schema: tool_class.input_schema, annotations: ANNOTATIONS.merge(title: tool_class.title)
-        ) { |**arguments| runner.call(tool, arguments.except(:server_context)) }
+        ) { |**arguments| runner.call(tool_class, arguments.except(:server_context)) }
       end
 
-      def call(tool, arguments)
+      # A new tool instance serves each call, so a tool may keep state in instance variables.
+      def call(tool_class, arguments)
         started = Process.clock_gettime(Process::CLOCK_MONOTONIC)
-        result = tool.call(arguments.transform_keys(&:to_s))
-        log(tool, started)
-        image = result[:image]
-        json = render(result.except(:image), tool.class)
-        json.bytesize <= @max_response_bytes ? content(json, image) : error(too_large(json.bytesize, tool.class))
-      rescue Tools::InvalidArguments => e
-        log(tool, started, error: "InvalidArguments")
+        result = tool_class.new(@context).run(arguments.transform_keys(&:to_s))
+        log(tool_class, started)
+        json = render(result)
+        json.bytesize <= @max_response_bytes ? content(json, result.image) : error(too_large(json.bytesize, tool_class))
+      rescue Tools::Error => e
+        log(tool_class, started, error: e.class.name.split("::").last)
         error(e.message)
       rescue Sources::Error => e
-        log(tool, started, error: e.class.name.split("::").last)
-        error("#{e.message} #{tool.class.attribution}")
+        log(tool_class, started, error: e.class.name.split("::").last)
+        error("#{e.message} #{tool_class.attribution}")
       rescue MCP::CancelledError
         raise
       rescue StandardError => e
-        unexpected(tool, started, e)
+        unexpected(tool_class, started, e)
       end
 
       private
 
-      def render(result, tool_class) = JSON.generate(compact(result.merge(attribution: attribution(result, tool_class))))
+      # The credits are joined as the tool and the point resolution declared them (Tools::Result#attributions).
+      def render(result) = JSON.generate(compact(result.data.merge(attribution: result.attributions.join(" "))))
 
       # Results over the cap are never cut mid-way, since alert text must stay whole.
       def too_large(size, tool_class)
         "The result is #{size} bytes, over this server's #{@max_response_bytes}-byte limit (WEATHER_MCP_MAX_RESPONSE_BYTES). " \
           "Ask for less (fewer hours, a smaller limit). #{tool_class.attribution}"
-      end
-
-      # The tool's attribution (or the one its result names), plus NRCan's when place names were used.
-      def attribution(result, tool_class)
-        source = result[:attribution] || tool_class.attribution
-        place_names = result.key?(:candidates) || result.key?(:nearby_places) || result.dig(:location, :query_match)
-        place_names ? "#{source} #{Places::Gazetteer::ATTRIBUTION}" : source
       end
 
       def compact(value)
@@ -74,9 +67,9 @@ module WeatherCanadaMCP
       end
 
       # A bug, not an upstream failure. Only the class is logged: the message could quote a response.
-      def unexpected(tool, started, exception)
-        log(tool, started, error: exception.class.name)
-        @logger.error("tool_exception", tool: tool.class.tool_name, error: exception.class.name,
+      def unexpected(tool_class, started, exception)
+        log(tool_class, started, error: exception.class.name)
+        @logger.error("tool_exception", tool: tool_class.tool_name, error: exception.class.name,
                                         location: exception.backtrace_locations&.first&.then { |l| "#{File.basename(l.path)}:#{l.lineno}" })
         error("The server failed unexpectedly while handling this request (#{exception.class.name}). " \
               "This is a bug in the MCP server, not an ECCC problem.")
@@ -91,9 +84,9 @@ module WeatherCanadaMCP
 
       def error(message) = MCP::Tool::Response.new([{ type: "text", text: message }], error: true)
 
-      def log(tool, started, **fields)
+      def log(tool_class, started, **fields)
         duration_ms = ((Process.clock_gettime(Process::CLOCK_MONOTONIC) - started) * 1000).round
-        @logger.info("tool_call", tool: tool.class.tool_name, duration_ms:, **fields)
+        @logger.info("tool_call", tool: tool_class.tool_name, duration_ms:, **fields)
       end
     end
   end

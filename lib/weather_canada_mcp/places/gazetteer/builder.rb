@@ -36,7 +36,7 @@ module WeatherCanadaMCP
           temp = "#{path}.#{Process.pid}.tmp"
           FileUtils.rm_f(temp)
           count = write(io, temp, source)
-          raise Error, "the gazetteer CSV contained no places" if count.zero?
+          raise BuildError, "the gazetteer CSV contained no places" if count.zero?
 
           File.rename(temp, path)
           @logger.info("gazetteer_built", path:, places: count, bytes: File.size(path))
@@ -96,7 +96,7 @@ module WeatherCanadaMCP
           csv.each do |row|
             unless header_checked
               missing = REQUIRED_COLUMNS - row.headers
-              raise Error, "the gazetteer CSV lacks the columns #{missing.join(", ")}" if missing.any?
+              raise BuildError, "the gazetteer CSV lacks the columns #{missing.join(", ")}" if missing.any?
 
               header_checked = true
             end

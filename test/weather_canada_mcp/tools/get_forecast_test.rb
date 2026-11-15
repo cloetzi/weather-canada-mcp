@@ -76,4 +76,17 @@ class GetForecastTest < Minitest::Test
       app&.close
     end
   end
+
+  def test_concurrent_calls_keep_their_own_language
+    with_fake_eccc do |fake|
+      app = application(fake)
+      alone = %w[en fr].map { |lang| call_tool(app, "get_forecast", lat: 49.7, lon: -123.15, lang:).first }
+      together = %w[en fr].map { |lang| Async { call_tool(app, "get_forecast", lat: 49.7, lon: -123.15, lang:).first } }.map(&:wait)
+
+      refute_equal alone.first["forecast"], alone.last["forecast"]
+      assert_equal alone, together
+    ensure
+      app&.close
+    end
+  end
 end

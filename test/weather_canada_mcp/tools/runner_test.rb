@@ -4,15 +4,17 @@ require_relative "../../test_helper"
 
 class RunnerTest < Minitest::Test
   class Echo < WeatherCanadaMCP::Tools::Base
-    NAME = "echo"
-    TITLE = "Echo"
-    DESCRIPTION = "Echoes."
-    INPUT_SCHEMA = { type: "object", properties: {} }.freeze
+    tool_name "echo"
+    title "Echo"
+    description "Echoes."
+    argument :size, :integer, in: 1..10_000, default: 1, description: "Size."
+    argument :crash, :string, max_length: 20, description: "Crash."
+    argument :secret, :string, max_length: 20, description: "Secret."
 
-    def call(arguments)
-      raise ArgumentError, "secret #{arguments["secret"]}" if arguments["crash"]
+    def call(args)
+      raise ArgumentError, "secret #{args.secret}" if args.crash
 
-      { kept: "x", empty: "", none: nil, list: [nil, {}, 1], blob: "y" * arguments.fetch("size", 1) }
+      { kept: "x", empty: "", none: nil, list: [nil, {}, 1], blob: "y" * args.size }
     end
   end
 
@@ -23,13 +25,13 @@ class RunnerTest < Minitest::Test
   def text(response) = response.content.first[:text]
 
   def test_drops_nulls_and_empty_values_and_adds_the_attribution
-    data = JSON.parse(text(runner.call(Echo.new(nil), {})))
+    data = JSON.parse(text(runner.call(Echo, {})))
 
     assert_equal({ "kept" => "x", "list" => [1], "blob" => "y", "attribution" => WeatherCanadaMCP::ATTRIBUTION }, data)
   end
 
   def test_oversized_results_are_replaced_not_truncated
-    response = runner.call(Echo.new(nil), { size: 5000 })
+    response = runner.call(Echo, { size: 5000 })
 
     assert_predicate response, :error?
     assert_match(/over this server's 1000-byte limit/, text(response))
@@ -38,7 +40,7 @@ class RunnerTest < Minitest::Test
 
   def test_unexpected_errors_are_logged_without_their_message
     io = StringIO.new
-    response = runner(io:).call(Echo.new(nil), { crash: true, secret: "home-address" })
+    response = runner(io:).call(Echo, { crash: "yes", secret: "home-address" })
 
     assert_predicate response, :error?
     assert_match(/bug in the MCP server/, text(response))

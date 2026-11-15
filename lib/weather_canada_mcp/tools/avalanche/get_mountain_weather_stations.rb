@@ -6,39 +6,34 @@ module WeatherCanadaMCP
       # The mountain weather stations on Avalanche Canada's map nearest a point: the latest hourly reading and a summary
       # of the past hours.
       class GetMountainWeatherStations < Base
-        NAME = "get_mountain_weather_stations"
-        TITLE = "Get mountain weather stations"
-        DESCRIPTION = <<~TEXT.tr("\n", " ").strip
+        MAX_RADIUS_KM = 100
+        MAX_HOURS = 168
+        MAX_STATIONS = 6
+        SPARE_STATIONS = 2
+        STALE_AFTER = 3 * 3600
+        tool_name "get_mountain_weather_stations"
+        title "Get mountain weather stations"
+        description <<~TEXT
           The mountain weather stations nearest a location from Avalanche Canada's station network (run by Parks Canada,
           provincial agencies, ski areas and others): each station's elevation, distance and operator, its latest hourly
           reading (air temperature, humidity, wind and gusts, snow height, new snow) and a summary of the past hours (snow
           height change, new snow, minimum and maximum temperature, strongest gust). Stations measure different things,
           and many are on ridges or in alpine terrain, so compare elevations. Times are UTC (ISO 8601). Pass on safety_note.
         TEXT
-        MAX_RADIUS_KM = 100
-        MAX_HOURS = 168
-        MAX_STATIONS = 6
-        SPARE_STATIONS = 2
-        STALE_AFTER = 3 * 3600
-        INPUT_SCHEMA = {
-          type: "object",
-          properties: {
-            **Base::LOCATION_PROPERTIES,
-            radius_km: { type: "integer", minimum: 1, maximum: MAX_RADIUS_KM, default: 30, description: "Search radius." },
-            hours: { type: "integer", minimum: 1, maximum: MAX_HOURS, default: 24, description: "Hours of readings to summarize." },
-            limit: { type: "integer", minimum: 1, maximum: MAX_STATIONS, default: 3, description: "Nearest stations to include." }
-          },
-          additionalProperties: false
-        }.freeze
+        enabled_when("WEATHER_MCP_AVALANCHE", &:avalanche_enabled)
+        location_arguments
+        argument :radius_km, :integer, in: 1..MAX_RADIUS_KM, default: 30, description: "Search radius."
+        argument :hours, :integer, in: 1..MAX_HOURS, default: 24, description: "Hours of readings to summarize."
+        argument :limit, :integer, in: 1..MAX_STATIONS, default: 3, description: "Nearest stations to include."
 
-        def call(arguments)
-          point = resolve_point(arguments)
-          radius = integer_argument(arguments, "radius_km", 30, 1..MAX_RADIUS_KM)
-          hours = integer_argument(arguments, "hours", 24, 1..MAX_HOURS)
-          limit = integer_argument(arguments, "limit", 3, 1..MAX_STATIONS)
+        def call(args)
+          point = args.point
+          radius = args.radius_km
+          hours = args.hours
+          limit = args.limit
           stations = reporting_stations(nearest(point, radius, limit + SPARE_STATIONS), limit, hours)
-          result = { location: point.to_h, stations:, safety_note: safety_note(config.lang),
-                     attribution: attribution_for("Mountain weather station data", stations.map { |station| station[:source] }) }
+          attribute(attribution_for("Mountain weather station data", stations.map { |station| station[:source] }))
+          result = { location: point.to_h, stations:, safety_note: safety_note(config.lang) }
           result[:note] = "No Avalanche Canada weather station within #{radius} km has reported in the past #{hours} hours." if stations.empty?
           result
         end

@@ -6,27 +6,24 @@ module WeatherCanadaMCP
   module Tools
     # Active ECCC weather alerts whose area covers a point, from the OGC API weather-alerts collection.
     class GetAlerts < Base
-      NAME = "get_alerts"
-      TITLE = "Get weather alerts"
-      DESCRIPTION = <<~TEXT.tr("\n", " ").strip
+      COLLECTION = "weather-alerts"
+      NEARBY_KM = 5
+      MAX_FEATURES = 100
+      tool_name "get_alerts"
+      title "Get weather alerts"
+      description <<~TEXT
         Active Environment Canada weather alerts (warnings, watches, advisories and statements) for a location, with
         the official alert text exactly as issued. Alerts whose area contains the point are in "alerts"; alerts for
         areas within a few km (for example a coastline or a neighbouring zone) are listed briefly in "nearby_alerts".
         An empty "alerts" list means ECCC has no alert in effect there right now. Quote alert text as given; do not
         reword or shorten safety instructions. Times are UTC (ISO 8601).
       TEXT
-      COLLECTION = "weather-alerts"
-      NEARBY_KM = 5
-      MAX_FEATURES = 100
-      INPUT_SCHEMA = {
-        type: "object",
-        properties: { **Base::LOCATION_PROPERTIES, **Base::LANG_PROPERTY },
-        additionalProperties: false
-      }.freeze
+      location_arguments
+      argument :lang, :language
 
-      def call(arguments)
-        lang = lang(arguments)
-        point = resolve_point(arguments)
+      def call(args)
+        lang = args.lang
+        point = args.point
         data = ogc.items(COLLECTION, bbox: Geo.bbox(point.lat, point.lon, NEARBY_KM).join(","), limit: MAX_FEATURES)
         active = Array(data["features"]).select { |feature| active?(feature["properties"]) }
         covering, nearby = active.partition { |feature| Geo.contains?(feature["geometry"], point.lat, point.lon) }

@@ -6,15 +6,6 @@ module WeatherCanadaMCP
       # Recent Mountain Information Network (MIN) reports near a point. Only listed fields are copied, so the submitter's
       # username, user id and anything else about them never reach the result; contact details in the text are removed.
       class GetFieldReports < Base
-        NAME = "get_field_reports"
-        TITLE = "Get avalanche field reports"
-        DESCRIPTION = <<~TEXT.tr("\n", " ").strip
-          Recent public field reports from Avalanche Canada's Mountain Information Network (MIN) near a location: what
-          backcountry users saw on a given day (avalanches with their size, aspect, elevation and trigger, signs of
-          instability such as whumpfing or shooting cracks, and their comments), newest first. Reports are written by the
-          public and are not verified by Avalanche Canada. Who submitted a report is never included, and email addresses
-          and phone numbers in the text are replaced by "[contact details removed]". Pass on safety_note.
-        TEXT
         MAX_RADIUS_KM = 100
         MAX_DAYS = Sources::AvalancheCanada::FieldReports::MAX_SUBMISSION_DAYS
         MAX_REPORTS = 20
@@ -34,28 +25,33 @@ module WeatherCanadaMCP
         }.freeze
         REPORTS_ATTRIBUTION = "Field reports from the public through the Mountain Information Network of Avalanche Canada " \
                               "(avalanche.ca), not verified by Avalanche Canada. #{format(UNOFFICIAL, agencies: AVALANCHE_CANADA)}".freeze
-        INPUT_SCHEMA = {
-          type: "object",
-          properties: {
-            **Base::LOCATION_PROPERTIES,
-            radius_km: { type: "integer", minimum: 1, maximum: MAX_RADIUS_KM, default: 25, description: "Search radius." },
-            days: { type: "integer", minimum: 1, maximum: MAX_DAYS, default: 7, description: "Days to include, today included." },
-            limit: { type: "integer", minimum: 1, maximum: MAX_REPORTS, default: 10, description: "Most reports to include." }
-          },
-          additionalProperties: false
-        }.freeze
+        tool_name "get_field_reports"
+        title "Get avalanche field reports"
+        description <<~TEXT
+          Recent public field reports from Avalanche Canada's Mountain Information Network (MIN) near a location: what
+          backcountry users saw on a given day (avalanches with their size, aspect, elevation and trigger, signs of
+          instability such as whumpfing or shooting cracks, and their comments), newest first. Reports are written by the
+          public and are not verified by Avalanche Canada. Who submitted a report is never included, and email addresses
+          and phone numbers in the text are replaced by "[contact details removed]". Pass on safety_note.
+        TEXT
+        enabled_when("WEATHER_MCP_AVALANCHE_REPORTS", &:avalanche_reports_enabled)
+        location_arguments
+        argument :radius_km, :integer, in: 1..MAX_RADIUS_KM, default: 25, description: "Search radius."
+        argument :days, :integer, in: 1..MAX_DAYS, default: 7, description: "Days to include, today included."
+        argument :limit, :integer, in: 1..MAX_REPORTS, default: 10, description: "Most reports to include."
 
-        def call(arguments)
-          point = resolve_point(arguments)
-          radius = integer_argument(arguments, "radius_km", 25, 1..MAX_RADIUS_KM)
-          days = integer_argument(arguments, "days", 7, 1..MAX_DAYS)
-          limit = integer_argument(arguments, "limit", 10, 1..MAX_REPORTS)
+        def call(args)
+          point = args.point
+          radius = args.radius_km
+          days = args.days
+          limit = args.limit
           from, to = period(days)
           found = nearby(avalanche.field_reports.submissions(from:, to:, bbox: Geo.bbox(point.lat, point.lon, radius)), point, radius)
           reports = found.first(limit).map { |distance, item| report(item, distance) }
+          attribute(REPORTS_ATTRIBUTION)
           { location: point.to_h, from: from.iso8601, to: to.iso8601, reports:, more_reports: (found.size - limit if found.size > limit),
             note: ("No field report within #{radius} km in the past #{days} days." if found.empty?),
-            safety_note: safety_note(config.lang), attribution: REPORTS_ATTRIBUTION }
+            safety_note: safety_note(config.lang) }
         end
 
         private

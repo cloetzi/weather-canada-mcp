@@ -4,10 +4,15 @@ require_relative "../../test_helper"
 
 class BaseTest < Minitest::Test
   class Count < WeatherCanadaMCP::Tools::Base
-    def call(arguments) = integer_argument(arguments, "stations", 3, 1..5)
+    tool_name "count"
+    title "Count"
+    description "Counts."
+    argument :stations, :integer, in: 1..5, default: 3, description: "How many."
+
+    def call(args) = args.stations
   end
 
-  def count(arguments) = Count.new(nil).call(arguments)
+  def count(arguments) = Count.new(nil).run(arguments).data
 
   def test_integer_arguments_default_when_missing_or_null
     assert_equal [3, 3, 5], [count({}), count({ "stations" => nil }), count({ "stations" => 5 })]

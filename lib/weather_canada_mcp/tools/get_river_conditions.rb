@@ -5,16 +5,6 @@ module WeatherCanadaMCP
     # Real-time water level and flow at the nearest hydrometric gauges, with the recent trend and how the flow compares
     # with the historical mean for the month (HYDAT monthly means).
     class GetRiverConditions < Base
-      NAME = "get_river_conditions"
-      TITLE = "Get river levels and flows"
-      DESCRIPTION = <<~TEXT.tr("\n", " ").strip
-        Real-time water level (m) and flow (m3/s) at the Water Survey of Canada gauges nearest a location (within
-        50 km), with the change over the past 24 hours, the range over the past 3 days, and how today's flow compares
-        with the historical mean flow for this month at the same gauge. Pass river to keep only gauges whose name
-        contains it ("Bow River", "Cheakamus"). Real-time data are provisional and can be affected by ice. Water
-        levels are relative to a local datum, so compare a level only with the same gauge. Times are UTC (ISO 8601).
-        This is not a flood forecast; check provincial river forecast centres and get_alerts for warnings.
-      TEXT
       STATIONS_COLLECTION = "hydrometric-stations"
       REALTIME_COLLECTION = "hydrometric-realtime"
       MONTHLY_COLLECTION = "hydrometric-monthly-mean"
@@ -24,26 +14,30 @@ module WeatherCanadaMCP
       # A flow change under this share of the flow counts as steady.
       STEADY_SHARE = 0.05
       STALE_AFTER = 6 * 3600
-      INPUT_SCHEMA = {
-        type: "object",
-        properties: {
-          **Base::LOCATION_PROPERTIES,
-          river: { type: "string", maxLength: 60, description: "Only gauges whose name contains this text (\"Bow River\")." },
-          stations: { type: "integer", minimum: 1, maximum: MAX_STATIONS, default: 3, description: "Nearest gauges to include." },
-          **Base::LANG_PROPERTY
-        },
-        additionalProperties: false
-      }.freeze
+      tool_name "get_river_conditions"
+      title "Get river levels and flows"
+      description <<~TEXT
+        Real-time water level (m) and flow (m3/s) at the Water Survey of Canada gauges nearest a location (within
+        50 km), with the change over the past 24 hours, the range over the past 3 days, and how today's flow compares
+        with the historical mean flow for this month at the same gauge. Pass river to keep only gauges whose name
+        contains it ("Bow River", "Cheakamus"). Real-time data are provisional and can be affected by ice. Water
+        levels are relative to a local datum, so compare a level only with the same gauge. Times are UTC (ISO 8601).
+        This is not a flood forecast; check provincial river forecast centres and get_alerts for warnings.
+      TEXT
+      location_arguments
+      argument :river, :string, max_length: 60, description: "Only gauges whose name contains this text (\"Bow River\")."
+      argument :stations, :integer, in: 1..MAX_STATIONS, default: 3, description: "Nearest gauges to include."
+      argument :lang, :language
 
-      def call(arguments)
-        lang = lang(arguments)
-        point = resolve_point(arguments)
-        limit = integer_argument(arguments, "stations", 3, 1..MAX_STATIONS)
-        filter = river_filter(arguments["river"])
+      def call(args)
+        lang = args.lang
+        point = args.point
+        limit = args.stations
+        filter = river_filter(args.river)
         stations = gauges(point, filter, limit).then { |nearest| concurrently(nearest) { |distance, feature| gauge(feature, distance, lang) } }
         result = { location: point.to_h, gauges: stations }
         if stations.empty?
-          result[:note] = "No real-time gauge#{" named like #{arguments["river"].inspect}" if filter} within #{RADIUS_KM} km."
+          result[:note] = "No real-time gauge#{" named like #{args.river.inspect}" if filter} within #{RADIUS_KM} km."
         end
         result
       end
@@ -52,7 +46,6 @@ module WeatherCanadaMCP
 
       def river_filter(river)
         return if river.nil?
-        raise InvalidArguments, "river must be text of at most 60 characters." unless river.is_a?(String) && river.length <= 60
 
         normalized = normalize(river)
         normalized.empty? ? nil : normalized
@@ -71,13 +64,13 @@ module WeatherCanadaMCP
         info = gauge_info(feature["properties"], distance, lang)
         number = info[:station_number]
         # The history does not depend on the readings, so both are fetched at once.
-        readings, means = concurrently([-> { readings(number) }, -> { monthly_means(number, now.utc.month) }], &:call)
+        readings, (means, means_note) = concurrently([-> { readings(number) }, -> { monthly_means(number, now.utc.month) }], &:call)
         return info.merge(note: "No real-time readings in the past #{TREND_HOURS / 24} days.") if readings.empty?
 
         latest = readings.first
         info[:note] = "The latest reading is more than #{STALE_AFTER / 3600} hours old." if now - latest[:at] > STALE_AFTER
         info.merge(latest: reading_h(latest), past_24h: change(readings, 24), past_3_days: range(readings),
-                   this_month_historically: historical(means, readings))
+                   this_month_historically: historical(means, means_note, readings))
       rescue Sources::Error => e
         info.merge(note: "This gauge's readings could not be fetched: #{e.message}")
       end
@@ -145,8 +138,8 @@ module WeatherCanadaMCP
       end
 
       # The mean flow over the past 24 hours against the mean, lowest and highest monthly mean for this calendar month.
-      def historical(means, readings)
-        return { note: "The historical means could not be fetched: #{means.message}" } if means.is_a?(Sources::Error)
+      def historical(means, means_note, readings)
+        return { note: "The historical means could not be fetched: #{means_note}" } if means_note
         return if means.empty?
 
         current = mean_of(readings.select { |reading| readings.first[:at] - reading[:at] <= 86_400 }.filter_map { |reading| reading[:discharge] })
@@ -165,10 +158,14 @@ module WeatherCanadaMCP
 
       # {year => mean discharge} for one calendar month, from HYDAT (which lags real time by a year or two). HYDAT has
       # no filter by calendar month, so the gauge's whole monthly record is fetched (cached for a week). A failure is
-      # returned, not raised, so the real-time readings are still reported.
+      # reported as a note, not raised, so the real-time readings are still reported.
       def monthly_means(number, month)
-        return {} unless number.is_a?(String)
+        return [{}, nil] unless number.is_a?(String)
 
+        attempt { monthly_record(number, month) }
+      end
+
+      def monthly_record(number, month)
         data = ogc.items(MONTHLY_COLLECTION, STATION_NUMBER: number, properties: "DATE,MONTHLY_MEAN_DISCHARGE", skipGeometry: true,
                                              limit: 2000)
         Array(data["features"]).each_with_object({}) do |feature, means|
@@ -177,8 +174,6 @@ module WeatherCanadaMCP
           value = properties["MONTHLY_MEAN_DISCHARGE"]
           means[year] = value.to_f if m == month && value.is_a?(Numeric)
         end
-      rescue Sources::Error => e
-        e
       end
     end
   end

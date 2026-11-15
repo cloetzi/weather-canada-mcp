@@ -5,18 +5,6 @@ module WeatherCanadaMCP
     module Avalanche
       # The avalanche forecast covering a point, from Avalanche Canada or the partner agency that owns it.
       class GetForecast < Base
-        NAME = "get_avalanche_forecast"
-        TITLE = "Get avalanche forecast"
-        DESCRIPTION = <<~TEXT.tr("\n", " ").strip
-          The public avalanche forecast covering a location, as published on avalanche.ca by Avalanche Canada or the agency
-          that owns it (such as Parks Canada or Avalanche Québec): the danger rating for each day in the alpine, at treeline
-          and below treeline, using Avalanche Canada's own values (low, moderate, considerable, high, extreme, plus
-          earlyseason, norating and noforecast, which are not danger levels); the avalanche problems with their elevations,
-          aspects, likelihood and expected size; highlights, confidence, the avalanche, snowpack and weather summaries,
-          and terrain and travel advice. Text is as the forecaster wrote it, with the HTML removed: quote it rather than
-          reword it. Report the ratings exactly. Pass on safety_note and the forecast url. Most forecasts cover western
-          Canada's mountains, Gros Morne and the Chic-Chocs in winter; get_avalanche_danger_overview lists every current one.
-        TEXT
         MAX_DAYS = 3
         ASPECTS = %w[n ne e se s sw w nw].freeze
         NO_COVERAGE = {
@@ -29,27 +17,33 @@ module WeatherCanadaMCP
           "fr" => "Cette prévision n'est plus à jour. Consultez la prévision officielle."
         }.freeze
         PARTLY_TRANSLATED = "Part of this forecast is only available in English."
-        INPUT_SCHEMA = {
-          type: "object",
-          properties: {
-            **Base::LOCATION_PROPERTIES,
-            days: { type: "integer", minimum: 1, maximum: MAX_DAYS, default: MAX_DAYS,
-                    description: "Days of danger ratings to include, from today." },
-            **Base::LANG_PROPERTY
-          },
-          additionalProperties: false
-        }.freeze
+        tool_name "get_avalanche_forecast"
+        title "Get avalanche forecast"
+        description <<~TEXT
+          The public avalanche forecast covering a location, as published on avalanche.ca by Avalanche Canada or the agency
+          that owns it (such as Parks Canada or Avalanche Québec): the danger rating for each day in the alpine, at treeline
+          and below treeline, using Avalanche Canada's own values (low, moderate, considerable, high, extreme, plus
+          earlyseason, norating and noforecast, which are not danger levels); the avalanche problems with their elevations,
+          aspects, likelihood and expected size; highlights, confidence, the avalanche, snowpack and weather summaries,
+          and terrain and travel advice. Text is as the forecaster wrote it, with the HTML removed: quote it rather than
+          reword it. Report the ratings exactly. Pass on safety_note and the forecast url. Most forecasts cover western
+          Canada's mountains, Gros Morne and the Chic-Chocs in winter; get_avalanche_danger_overview lists every current one.
+        TEXT
+        enabled_when("WEATHER_MCP_AVALANCHE", &:avalanche_enabled)
+        location_arguments
+        argument :days, :integer, in: 1..MAX_DAYS, default: MAX_DAYS, description: "Days of danger ratings to include, from today."
+        argument :lang, :language
 
-        def call(arguments)
-          lang = lang(arguments)
-          point = resolve_point(arguments)
-          days = integer_argument(arguments, "days", MAX_DAYS, 1..MAX_DAYS)
+        def call(args)
+          lang = args.lang
+          point = args.point
+          days = args.days
           product = avalanche.forecasts.product_at(point.lat, point.lon, lang)
           return no_coverage(point, lang) unless covered?(product)
 
           owner = field(product, "owner", "display")
-          { location: point.to_h, forecast: forecast(product, days, lang), safety_note: safety_note(lang, official_url(product["url"])),
-            attribution: attribution_for("Avalanche forecast", [owner]) }
+          attribute(attribution_for("Avalanche forecast", [owner]))
+          { location: point.to_h, forecast: forecast(product, days, lang), safety_note: safety_note(lang, official_url(product["url"])) }
         end
 
         private
@@ -58,8 +52,8 @@ module WeatherCanadaMCP
         def covered?(product) = !product["id"].to_s.empty? && product["report"].is_a?(Hash)
 
         def no_coverage(point, lang)
-          { location: point.to_h, forecast: nil, note: NO_COVERAGE.fetch(lang), safety_note: safety_note(lang),
-            attribution: attribution_for("Avalanche forecasts", []) }
+          attribute(attribution_for("Avalanche forecasts", []))
+          { location: point.to_h, forecast: nil, note: NO_COVERAGE.fetch(lang), safety_note: safety_note(lang) }
         end
 
         def forecast(product, days, lang)

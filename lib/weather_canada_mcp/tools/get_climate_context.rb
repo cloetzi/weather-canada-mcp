@@ -7,18 +7,6 @@ module WeatherCanadaMCP
     # What is normal and what is extreme for a place and date: the daily records (LTCE) of the nearest climate
     # "virtual station" and the monthly climate normals of the nearest normals station.
     class GetClimateContext < Base
-      NAME = "get_climate_context"
-      TITLE = "Get climate normals and records"
-      DESCRIPTION = <<~TEXT.tr("\n", " ").strip
-        Climate context for a location and date, to judge whether a forecast is unusual: the daily records for that
-        calendar day (highest and lowest temperatures, most precipitation and most snowfall, with the year of each) from
-        Environment Canada's long-term climate extremes for the nearest of about 750 places (within 100 km, joining the
-        records of nearby stations since as early as the 1840s; each span of records gives the years covered, with "to"
-        only when the series has ended), and the monthly climate normals (1981-2010) at the nearest normals station
-        (within 50 km): mean daily high and low, precipitation, rain, snowfall, days with precipitation or snow, snow
-        depth and sunshine. The stations are usually in valleys and towns, so mountain
-        conditions differ. date defaults to today.
-      TEXT
       RECORDS_KM = 100
       NORMALS_KM = 50
       TEMPERATURE = "ltce-temperature"
@@ -33,21 +21,27 @@ module WeatherCanadaMCP
         sunshine_hours: 102
       }.freeze
       DATE = /\A(?:\d{4}-)?(\d{2})-(\d{2})\z/
-      INPUT_SCHEMA = {
-        type: "object",
-        properties: {
-          **Base::LOCATION_PROPERTIES,
-          date: { type: "string", pattern: DATE.source.sub("\\A", "^").sub("\\z", "$"),
-                  description: "The calendar day, YYYY-MM-DD or MM-DD (the year is ignored). Defaults to today." },
-          **Base::LANG_PROPERTY
-        },
-        additionalProperties: false
-      }.freeze
+      tool_name "get_climate_context"
+      title "Get climate normals and records"
+      description <<~TEXT
+        Climate context for a location and date, to judge whether a forecast is unusual: the daily records for that
+        calendar day (highest and lowest temperatures, most precipitation and most snowfall, with the year of each) from
+        Environment Canada's long-term climate extremes for the nearest of about 750 places (within 100 km, joining the
+        records of nearby stations since as early as the 1840s; each span of records gives the years covered, with "to"
+        only when the series has ended), and the monthly climate normals (1981-2010) at the nearest normals station
+        (within 50 km): mean daily high and low, precipitation, rain, snowfall, days with precipitation or snow, snow
+        depth and sunshine. The stations are usually in valleys and towns, so mountain
+        conditions differ. date defaults to today.
+      TEXT
+      location_arguments
+      argument :date, :string, pattern: DATE,
+                               description: "The calendar day, YYYY-MM-DD or MM-DD (the year is ignored). Defaults to today."
+      argument :lang, :language
 
-      def call(arguments)
-        lang = lang(arguments)
-        point = resolve_point(arguments)
-        month, day = month_day(arguments["date"], point)
+      def call(args)
+        lang = args.lang
+        point = args.point
+        month, day = month_day(args.date, point)
         bbox = Geo.bbox(point.lat, point.lon, RECORDS_KM).join(",")
         temperature, precipitation, snowfall, normals = concurrently(
           [-> { daily(TEMPERATURE, bbox, month, day) }, -> { daily(PRECIPITATION, bbox, month, day) },
