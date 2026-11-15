@@ -79,6 +79,7 @@ EDMONTON = [53.54, -113.49].freeze
 KELOWNA = [49.89, -119.5].freeze
 WHITEHORSE = [60.72, -135.05].freeze
 OTTAWA = [45.42, -75.7].freeze
+HALIFAX = [44.65, -63.57].freeze
 
 FIXTURES = {
   # M1: get_forecast, find_location (City Page site list), get_alerts
@@ -110,6 +111,9 @@ FIXTURES = {
   # M3: get_snow_outlook (Whistler, 24 hours; Whitehorse, whose snow level is below the ground or near it)
   **snow_outlook("whistler", *WHISTLER),
   **snow_outlook("whitehorse", *WHITEHORSE, %w[HRDPS-WEonG_2.5km_SnowLevelHeight]),
+  # get_marine_forecast (Squamish, at the head of Howe Sound; Halifax, whose areas are split and under warnings)
+  "api/marineweather-realtime_squamish.json" => items("marineweather-realtime", bbox: bbox_km(*SQUAMISH, 25), limit: 50),
+  "api/marineweather-realtime_halifax.json" => items("marineweather-realtime", bbox: bbox_km(*HALIFAX, 25), limit: 50),
   # M0 samples for M3
   "m0/marineweather-realtime_howe-sound.json" => items("marineweather-realtime", bbox: bbox(49.5, -123.3, 0.05), limit: 2),
   "m0/ltce-snowfall_whistler.json" => items("ltce-snowfall", bbox: bbox(*WHISTLER, 0.3), LOCAL_MONTH: 11, LOCAL_DAY: 15,

@@ -9,6 +9,8 @@ module WeatherCanadaMcp
     # What tools share: the upstream sources, the locator, the gazetteer, the configuration and a clock (Time.now).
     Context = Data.define(:ogc, :wms, :locator, :places, :config, :clock)
 
-    def self.all = [FindLocation, GetForecast, GetAlerts, GetCurrentObservations, GetRiverConditions, GetAirQuality, GetSnowOutlook]
+    def self.all
+      [FindLocation, GetForecast, GetAlerts, GetCurrentObservations, GetRiverConditions, GetAirQuality, GetSnowOutlook, GetMarineForecast]
+    end
   end
 end

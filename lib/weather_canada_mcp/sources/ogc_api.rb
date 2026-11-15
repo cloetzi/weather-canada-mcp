@@ -18,7 +18,8 @@ module WeatherCanadaMcp
         "hydrometric-realtime" => 900,
         "hydrometric-monthly-mean" => 7 * 86_400,
         "aqhi-observations-realtime" => 900,
-        "aqhi-forecasts-realtime" => 900
+        "aqhi-forecasts-realtime" => 900,
+        "marineweather-realtime" => 900
       }.freeze
       DEFAULT_TTL = 600
       SITE_LIST_TTL = 86_400

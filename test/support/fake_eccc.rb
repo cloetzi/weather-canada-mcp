@@ -37,7 +37,8 @@ class FakeEccc
     "citypageweather-realtime" => "api/citypage_sites.json",
     "swob-stations" => "api/swob-stations_whistler.json",
     "hydrometric-stations" => "api/hydrometric-stations_squamish.json",
-    "aqhi-observations-realtime" => "api/aqhi-observations-realtime_kelowna.json"
+    "aqhi-observations-realtime" => "api/aqhi-observations-realtime_kelowna.json",
+    "marineweather-realtime" => "api/marineweather-realtime_squamish.json"
   }.freeze
   # Collections served per station or location: the query parameter naming it, and fixtures named api/<collection>_<id>.json.
   KEYED_FIXTURES = {

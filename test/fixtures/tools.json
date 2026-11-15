@@ -298,5 +298,41 @@
       },
       "additionalProperties": false
     }
+  },
+  {
+    "name": "get_marine_forecast",
+    "title": "Get the marine forecast",
+    "description": "Environment Canada's marine forecast for the marine area at a location: coastal waters, large lakes (Great Lakes, Lake Winnipeg, Great Slave Lake and others) and Arctic waters. Gives wind (in knots), weather and visibility, waves, air temperature and freezing spray for today to tomorrow, the extended wind forecast for the following days, and the marine warnings in effect. A point on land (a harbour town, a beach) gets the nearest areas within 25 km, with their distance. Some areas are seasonal and say so in status. Wind and waves are as ECCC writes them; quote warnings as given. Times are UTC (ISO 8601). For weather alerts on land use get_alerts.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "location": {
+          "type": "string",
+          "maxLength": 120,
+          "description": "A place in Canada: town, park, lake, peak or river, optionally with a province (\"Squamish\", \"Lake Louise, AB\", \"Mont-Tremblant, QC\"). Ignored when lat and lon are given."
+        },
+        "lat": {
+          "type": "number",
+          "minimum": 41.0,
+          "maximum": 84.0,
+          "description": "Latitude in decimal degrees."
+        },
+        "lon": {
+          "type": "number",
+          "minimum": -142.0,
+          "maximum": -52.0,
+          "description": "Longitude in decimal degrees (negative, west)."
+        },
+        "lang": {
+          "type": "string",
+          "enum": [
+            "en",
+            "fr"
+          ],
+          "description": "Language of text fields: en or fr."
+        }
+      },
+      "additionalProperties": false
+    }
   }
 ]
