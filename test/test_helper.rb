@@ -32,7 +32,7 @@ module TestHelpers
     @gazetteer_path ||= begin
       path = File.join(Dir.mktmpdir("gazetteer"), "gazetteer.sqlite3")
       File.open(File.join(ROOT, "test/fixtures/cgn/cgn_sample.csv"), encoding: "bom|utf-8") do |csv|
-        WeatherCanadaMcp::Gazetteer::Builder.new(logger: WeatherCanadaMcp::Logger.new(io: StringIO.new)).build(csv, path, source: "test")
+        WeatherCanadaMcp::Places::Gazetteer::Builder.new(logger: WeatherCanadaMcp::Logger.new(io: StringIO.new)).build(csv, path, source: "test")
       end
       path
     end

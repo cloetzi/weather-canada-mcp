@@ -39,7 +39,7 @@ module WeatherCanadaMcp
       @errors = @reader.errors # Config's own checks add theirs here too, so validate! lists every problem
       @auth_disabled = boolean("WEATHER_MCP_AUTH_DISABLED", false)
       @auth_tokens = credentials && transport == :http ? auth_tokens_value : []
-      @listen_address = ListenAddress.read(@reader)
+      @listen_address = Server::ListenAddress.read(@reader)
       @path = path_value
       @allowed_hosts = list("WEATHER_MCP_ALLOWED_HOSTS")
       @allowed_origins = list("WEATHER_MCP_ALLOWED_ORIGINS")
@@ -54,7 +54,7 @@ module WeatherCanadaMcp
       @requests_per_second = float("WEATHER_MCP_REQUESTS_PER_SECOND", 1.0, 0.1..10.0)
       @max_response_bytes = integer("WEATHER_MCP_MAX_RESPONSE_BYTES", 60_000, 1_000..10_000_000)
       @max_download_bytes = integer("WEATHER_MCP_MAX_DOWNLOAD_BYTES", 20 * 1024 * 1024, 1024..(512 * 1024 * 1024))
-      @gazetteer_path = string("WEATHER_MCP_GAZETTEER_PATH", Gazetteer.default_path)
+      @gazetteer_path = string("WEATHER_MCP_GAZETTEER_PATH", Places::Gazetteer.default_path)
       @log_level = choice("WEATHER_MCP_LOG_LEVEL", "info", LOG_LEVELS)
       @log_format = choice("WEATHER_MCP_LOG_FORMAT", "text", LOG_FORMATS)
       validate!
@@ -96,8 +96,8 @@ module WeatherCanadaMcp
 
     def path_value
       value = string("WEATHER_MCP_PATH", "/mcp")
-      if value == HealthCheck::PATH
-        @errors << "WEATHER_MCP_PATH cannot be #{HealthCheck::PATH}, which serves health checks"
+      if value == Server::HealthCheck::PATH
+        @errors << "WEATHER_MCP_PATH cannot be #{Server::HealthCheck::PATH}, which serves health checks"
       elsif !value.match?(%r{\A/[A-Za-z0-9/_.~-]*\z})
         @errors << "WEATHER_MCP_PATH must start with / and contain only URL path characters"
       end

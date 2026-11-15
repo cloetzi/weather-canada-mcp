@@ -46,7 +46,7 @@ module WeatherCanadaMcp
       def get(path, ttl)
         @cache.fetch("api:#{path}", ttl:) do
           response = @http.get(:api, path, accept: "application/geo+json, application/json")
-          raise Upstream::StatusError.new(response.status, "api.weather.gc.ca") unless response.success?
+          raise Sources::StatusError.new(response.status, "api.weather.gc.ca") unless response.success?
 
           parse(response.body)
         end
@@ -54,11 +54,11 @@ module WeatherCanadaMcp
 
       def parse(body)
         data = JSON.parse(body.dup.force_encoding(Encoding::UTF_8), max_nesting: 64)
-        raise Upstream::InvalidResponse, "api.weather.gc.ca returned JSON that is not an object." unless data.is_a?(Hash)
+        raise Sources::InvalidResponse, "api.weather.gc.ca returned JSON that is not an object." unless data.is_a?(Hash)
 
         data
       rescue JSON::ParserError
-        raise Upstream::InvalidResponse, "api.weather.gc.ca returned a response that is not valid JSON."
+        raise Sources::InvalidResponse, "api.weather.gc.ca returned a response that is not valid JSON."
       end
     end
   end

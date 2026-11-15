@@ -3,7 +3,7 @@
 module WeatherCanadaMcp
   module Tools
     # A tool declares name, title, description and input schema as class-level constants and implements #call,
-    # which returns a Hash (ToolRunner serializes it and adds the attribution). Arguments arrive with string keys.
+    # which returns a Hash (Tools::Runner serializes it and adds the attribution). Arguments arrive with string keys.
     class Base
       CANADA_LAT = (41.0..84.0)
       CANADA_LON = (-142.0..-52.0)
@@ -77,7 +77,7 @@ module WeatherCanadaMcp
       def lookup(location)
         raise InvalidArguments, "location is longer than #{MAX_LOCATION_LENGTH} characters." if location.length > MAX_LOCATION_LENGTH
 
-        name, province = Gazetteer.split_province(location)
+        name, province = Places::Gazetteer.split_province(location)
         place = gazetteer.search(name, province:, limit: 1).first
         return place if place
 
@@ -87,7 +87,7 @@ module WeatherCanadaMcp
 
       def gazetteer
         @context.places.get
-      rescue Gazetteer::Unavailable => e
+      rescue Places::Gazetteer::Unavailable => e
         raise InvalidArguments, "Place names cannot be looked up right now (#{e.message}). Pass lat and lon instead."
       end
 

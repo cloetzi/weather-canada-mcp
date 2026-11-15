@@ -38,24 +38,24 @@ module WeatherCanadaMcp
     end
 
     def http
-      @http ||= Upstream::HttpClient.new(
+      @http ||= Sources::HttpClient.new(
         origins: config.upstreams, user_agent: config.user_agent, timeout: config.timeout,
         max_concurrency: config.max_concurrency, max_body_bytes: config.max_download_bytes,
-        rate_limiter: Upstream::RateLimiter.new(rate: config.requests_per_second, burst: 4), logger:
+        rate_limiter: Sources::RateLimiter.new(rate: config.requests_per_second, burst: 4), logger:
       )
     end
 
-    def cache = @cache ||= Upstream::Cache.new(scale: config.cache_scale)
+    def cache = @cache ||= Sources::Cache.new(scale: config.cache_scale)
 
     def ogc = @ogc ||= Sources::OgcApi.new(http:, cache:)
 
-    def places = @places ||= Gazetteer::Provider.new(path: config.gazetteer_path, http:, logger:)
+    def places = @places ||= Places::Gazetteer::Provider.new(path: config.gazetteer_path, http:, logger:)
 
-    def context = @context ||= Tools::Context.new(ogc:, locator: Locator.new(ogc:), places:, config:, clock: @clock)
+    def context = @context ||= Tools::Context.new(ogc:, locator: Places::Locator.new(ogc:), places:, config:, clock: @clock)
 
     # A fresh MCP server per transport; the SDK binds one transport to one server.
     def mcp_server
-      runner = ToolRunner.new(context:, logger:, max_response_bytes: config.max_response_bytes)
+      runner = Tools::Runner.new(context:, logger:, max_response_bytes: config.max_response_bytes)
       MCP::Server.new(
         name: SERVER_NAME,
         title: "Weather Canada (unofficial)",
@@ -63,11 +63,11 @@ module WeatherCanadaMcp
         instructions: INSTRUCTIONS,
         tools: tools.map { |tool| runner.mcp_tool(tool) },
         capabilities: { tools: {} },
-        configuration: MCP::Configuration.new(exception_reporter: ExceptionReporter.new(logger))
+        configuration: MCP::Configuration.new(exception_reporter: Server::ExceptionReporter.new(logger))
       )
     end
 
-    def rack_app = HttpApp.new(server: mcp_server, config:, logger:)
+    def rack_app = Server::HttpApp.new(server: mcp_server, config:, logger:)
 
     def close
       @places&.close
