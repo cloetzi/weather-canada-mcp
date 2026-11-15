@@ -14,11 +14,12 @@ module WeatherCanadaMcp
     LANGS = %w[en fr].freeze
     DEFAULT_CONTACT = "https://github.com/cloetzi/weather-canada-mcp"
 
-    # ECCC hosts. Each can be pointed at a local fake for tests (WEATHER_MCP_<NAME>_URL).
+    # ECCC and NRCan hosts. Each can be pointed at a local fake for tests (WEATHER_MCP_<NAME>_URL).
     UPSTREAMS = {
       api: "https://api.weather.gc.ca",
       datamart: "https://dd.weather.gc.ca",
-      geomet: "https://geo.weather.gc.ca"
+      geomet: "https://geo.weather.gc.ca",
+      cgn: "https://ftp.maps.canada.ca" # NRCan Canadian Geographical Names, for the gazetteer
     }.freeze
 
     ATTRIBUTES = %i[
@@ -33,7 +34,7 @@ module WeatherCanadaMcp
     # credentials: false skips the MCP tokens, for commands that never serve.
     def self.from_env(env = ENV, transport: :http, credentials: true) = new(env, transport, credentials).freeze
 
-    def initialize(env, transport, credentials) # rubocop:disable Metrics/AbcSize,Metrics/MethodLength -- one assignment per setting
+    def initialize(env, transport, credentials) # rubocop:disable Metrics/AbcSize -- one assignment per setting
       @reader = EnvReader.new(env)
       @errors = @reader.errors # Config's own checks add theirs here too, so validate! lists every problem
       @auth_disabled = boolean("WEATHER_MCP_AUTH_DISABLED", false)

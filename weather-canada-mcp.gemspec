@@ -23,6 +23,7 @@ Gem::Specification.new do |spec|
   spec.executables = ["weather-canada-mcp"]
 
   spec.add_dependency "async-http", "~> 0.105"
+  spec.add_dependency "csv", "~> 3.3"
   spec.add_dependency "falcon", "~> 0.57"
   spec.add_dependency "mcp", "~> 1.9"
   spec.add_dependency "nokogiri", "~> 1.18"

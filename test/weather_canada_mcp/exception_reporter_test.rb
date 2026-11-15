@@ -3,7 +3,7 @@
 require_relative "../test_helper"
 
 class ExceptionReporterTest < Minitest::Test
-  SECRET = "s3cr3t-token-and-heart-rate-142"
+  SECRET = "s3cr3t-token-and-home-address-142"
 
   def setup
     @io = StringIO.new
@@ -12,21 +12,21 @@ class ExceptionReporterTest < Minitest::Test
 
   def logged = JSON.parse(@io.string.lines.last)
 
-  def tool_call(name = "get_activity", **arguments) = { jsonrpc: "2.0", id: 1, method: "tools/call", params: { name:, arguments: } }
+  def tool_call(name = "get_forecast", **arguments) = { jsonrpc: "2.0", id: 1, method: "tools/call", params: { name:, arguments: } }
 
   def test_logs_neither_the_message_nor_the_request
     @reporter.call(JSON::ParserError.new("unexpected token at '{\"token\":\"#{SECRET}\"'"), { request: tool_call(note: SECRET) })
 
     refute_includes @io.string, SECRET
     assert_equal({ "level" => "error", "msg" => "unhandled_exception", "error" => "JSON::ParserError",
-                   "method" => "tools/call", "tool" => "get_activity" }, logged.except("time"))
+                   "method" => "tools/call", "tool" => "get_forecast" }, logged.except("time"))
   end
 
   def test_reads_the_method_from_raw_json_and_string_keys
     @reporter.call(ArgumentError.new(SECRET), { request: JSON.generate(tool_call(note: SECRET)) })
 
     refute_includes @io.string, SECRET
-    assert_equal %w[tools/call get_activity], logged.values_at("method", "tool")
+    assert_equal %w[tools/call get_forecast], logged.values_at("method", "tool")
   end
 
   def test_drops_values_that_are_not_identifiers
@@ -57,9 +57,9 @@ class ExceptionReporterTest < Minitest::Test
   end
 
   def test_the_server_reports_a_failed_request_without_its_arguments
-    with_fake_garmin do |fake|
-      app = WeatherCanadaMcp::Application.new(WeatherCanadaMcp::Config.from_env(env(fake)), logger: WeatherCanadaMcp::Logger.new(io: @io, format: "json"))
-      response = app.mcp_server.handle(tool_call("no_such_tool", activityId: SECRET))
+    with_fake_eccc do |fake|
+      app = application(fake, logger: WeatherCanadaMcp::Logger.new(io: @io, format: "json"))
+      response = app.mcp_server.handle(tool_call("no_such_tool", location: SECRET))
 
       assert response.key?(:error)
       refute_includes @io.string, SECRET

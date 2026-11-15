@@ -33,11 +33,12 @@ end
 
 def items(collection, **params) = "#{API}/collections/#{collection}/items?#{URI.encode_www_form({ f: "json" }.merge(params))}"
 
-def bbox(lat, lon, d = 0.01) = [lon - d, lat - d, lon + d, lat + d].map { |v| v.round(4) }.join(",")
+def bbox(lat, lon, half = 0.01) = [lon - half, lat - half, lon + half, lat + half].map { |v| v.round(4) }.join(",")
 
 SQUAMISH = [49.7, -123.15].freeze
 WHISTLER = [50.12, -122.96].freeze
 EDMONTON = [53.54, -113.49].freeze
+OTTAWA = [45.42, -75.7].freeze
 
 FIXTURES = {
   # M1: get_forecast, find_location (City Page site list), get_alerts
@@ -47,13 +48,15 @@ FIXTURES = {
   "api/citypage_ab-50.json" => "#{API}/collections/citypageweather-realtime/items/ab-50?f=json",
   "api/weather-alerts_edmonton.json" => items("weather-alerts", bbox: bbox(*EDMONTON), limit: 50),
   "api/weather-alerts_squamish.json" => items("weather-alerts", bbox: bbox(*SQUAMISH), limit: 50),
+  # No alert was in effect in Ottawa at capture time: the shape of an empty result.
+  "api/weather-alerts_ottawa.json" => items("weather-alerts", bbox: bbox(*OTTAWA), limit: 50),
   # M0 samples for later milestones (M2, M3)
   "m0/swob-realtime_whistler.json" => items("swob-realtime", bbox: bbox(*WHISTLER, 0.2), limit: 2, sortby: "-date_tm-value"),
   "m0/hydrometric-stations_squamish.json" => items("hydrometric-stations", bbox: bbox(*SQUAMISH, 0.2), limit: 5),
   "m0/hydrometric-realtime_squamish.json" => items("hydrometric-realtime", bbox: bbox(*SQUAMISH, 0.2), limit: 5,
                                                                            sortby: "-DATETIME"),
   "m0/aqhi-observations-realtime_vancouver.json" => items("aqhi-observations-realtime", bbox: bbox(49.25, -123.1, 0.3),
-                                                                                         latest: "true", limit: 5),
+                                                                                        latest: "true", limit: 5),
   "m0/aqhi-forecasts-realtime_vancouver.json" => items("aqhi-forecasts-realtime", bbox: bbox(49.25, -123.1, 0.3), limit: 2),
   "m0/marineweather-realtime_howe-sound.json" => items("marineweather-realtime", bbox: bbox(49.5, -123.3, 0.05), limit: 2),
   "m0/ltce-snowfall_whistler.json" => items("ltce-snowfall", bbox: bbox(*WHISTLER, 0.3), LOCAL_MONTH: 11, LOCAL_DAY: 15,

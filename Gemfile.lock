@@ -3,6 +3,7 @@ PATH
   specs:
     weather-canada-mcp (0.1.0)
       async-http (~> 0.105)
+      csv (~> 3.3)
       falcon (~> 0.57)
       mcp (~> 1.9)
       nokogiri (~> 1.18)
@@ -46,6 +47,7 @@ GEM
       fiber-annotation
       fiber-local (~> 1.1)
       json
+    csv (3.3.7)
     drb (2.2.3)
     falcon (0.57.0)
       async
@@ -201,6 +203,7 @@ CHECKSUMS
   bake (0.25.0) sha256=a47bdc6a26addc048827debc36fe27bb4d5d71ac2958ad910b5386e9baf49869
   bigdecimal (4.1.3) sha256=61ebe1e5e559bdc3cc6f2c0ee7f427321fc838f59611c294356eb04d6e21cf66
   console (1.38.0) sha256=35b82f59130e95e9be6b832d9e539c8b3988fc192e4a8e9a86ab4922f44ad5de
+  csv (3.3.7) sha256=15a3f16f6628da8664d455eb634e7f22031bcf53044923caf56975109e71b9f8
   drb (2.2.3) sha256=0b00d6fdb50995fe4a45dea13663493c841112e4068656854646f418fda13373
   falcon (0.57.0) sha256=c9b060bc23a3b90a80376078aae037d8f48e0b2f12f5f30f360d4b29d7baf0f7
   fiber-annotation (0.2.0) sha256=7abfadf1d119f508867d4103bf231c0354d019cc39a5738945dec2edadaf6c03

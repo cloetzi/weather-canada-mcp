@@ -1,0 +1,33 @@
+{
+  "type": "FeatureCollection",
+  "features": [],
+  "numberMatched": 0,
+  "numberReturned": 0,
+  "links": [
+    {
+      "type": "application/geo+json",
+      "rel": "self",
+      "title": "This document as GeoJSON",
+      "href": "https://api.weather.gc.ca/collections/weather-alerts/items?f=json&bbox=-75.71,45.41,-75.69,45.43&limit=50"
+    },
+    {
+      "rel": "alternate",
+      "type": "application/ld+json",
+      "title": "This document as RDF (JSON-LD)",
+      "href": "https://api.weather.gc.ca/collections/weather-alerts/items?f=jsonld&bbox=-75.71,45.41,-75.69,45.43&limit=50"
+    },
+    {
+      "type": "text/html",
+      "rel": "alternate",
+      "title": "This document as HTML",
+      "href": "https://api.weather.gc.ca/collections/weather-alerts/items?f=html&bbox=-75.71,45.41,-75.69,45.43&limit=50"
+    },
+    {
+      "type": "application/json",
+      "title": "Weather Alerts",
+      "rel": "collection",
+      "href": "https://api.weather.gc.ca/collections/weather-alerts"
+    }
+  ],
+  "timeStamp": "2026-11-15T17:10:18.702366Z"
+}
