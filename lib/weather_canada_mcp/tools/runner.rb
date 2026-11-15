@@ -39,7 +39,9 @@ module WeatherCanadaMCP
       # A new tool instance serves each call, so a tool may keep state in instance variables. The call's trace counts its
       # upstream requests and cache hits for the log.
       def call(tool_class, arguments)
-        Sources::Trace.around { |trace| call_traced(tool_class, arguments, trace) }
+        Sources::Trace.around(deadline: Process.clock_gettime(Process::CLOCK_MONOTONIC) + @deadline) do |trace|
+          call_traced(tool_class, arguments, trace)
+        end
       end
 
       private

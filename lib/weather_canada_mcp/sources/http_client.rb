@@ -96,7 +96,8 @@ module WeatherCanadaMCP
 
       def perform(origin, uri, request_path, headers, limit, timeout, timing) # rubocop:disable Metrics/ParameterLists -- one request's settings
         # The wait for a rate slot comes first, so a throttled provider does not hold a concurrency slot others need.
-        timing.limiter_wait += @rate_limiters.acquire(origin)
+        # A call may wait for a slot as long as its deadline leaves room: a burst of calls queues instead of being refused.
+        timing.limiter_wait += @rate_limiters.acquire(origin, max_wait: Trace.wait_budget || RateLimiter::MAX_WAIT)
         @semaphore.acquire do
           Async::Task.current.with_timeout(timeout) do
             response = client(origin, uri).call(Protocol::HTTP::Request["GET", request_path, Protocol::HTTP::Headers[headers]])
