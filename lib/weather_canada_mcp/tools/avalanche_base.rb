@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-module WeatherCanadaMcp
+module WeatherCanadaMCP
   module Tools
     # What the Avalanche Canada tools share: the safety note every result carries, attribution naming Avalanche Canada
     # and the owning agency in place of ECCC's, and Avalanche Canada's elevation bands. These tools exist only when
-    # AVALANCHE_CANADA_ENABLED is true: Avalanche Canada publishes no open licence.
+    # WEATHER_MCP_AVALANCHE is true: Avalanche Canada publishes no open licence.
     class AvalancheBase < Base
       MAP_URL = { "en" => "https://avalanche.ca/map", "fr" => "https://avalanche.ca/fr/map" }.freeze
       SAFETY_NOTE = {

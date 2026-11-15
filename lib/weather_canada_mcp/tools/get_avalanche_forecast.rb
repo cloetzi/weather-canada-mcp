@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module WeatherCanadaMcp
+module WeatherCanadaMCP
   module Tools
     # The avalanche forecast covering a point, from Avalanche Canada or the partner agency that owns it.
     class GetAvalancheForecast < AvalancheBase

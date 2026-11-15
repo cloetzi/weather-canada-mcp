@@ -9,4 +9,4 @@ Warning[:experimental] = false # io-event uses IO::Buffer under the fiber schedu
 $stdout.sync = true
 $stderr.sync = true
 
-WeatherCanadaMcp::CLI.start(ARGV)
+WeatherCanadaMCP::CLI.start(ARGV)

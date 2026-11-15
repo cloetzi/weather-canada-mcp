@@ -3,12 +3,12 @@
 require_relative "../../test_helper"
 
 class ListenAddressTest < Minitest::Test
-  ListenAddress = WeatherCanadaMcp::Server::ListenAddress
+  ListenAddress = WeatherCanadaMCP::Server::ListenAddress
 
   def address(host) = ListenAddress.from_env({ "WEATHER_MCP_HOST" => host })
 
   def assert_invalid_host(host)
-    error = assert_raises(WeatherCanadaMcp::Config::Error) { address(host) }
+    error = assert_raises(WeatherCanadaMCP::Config::Error) { address(host) }
     assert_match(/WEATHER_MCP_HOST must be an IP address or host name/, error.message)
   end
 
@@ -36,7 +36,7 @@ class ListenAddressTest < Minitest::Test
   end
 
   def test_reports_host_and_port_together
-    error = assert_raises(WeatherCanadaMcp::Config::Error) do
+    error = assert_raises(WeatherCanadaMCP::Config::Error) do
       ListenAddress.from_env({ "WEATHER_MCP_HOST" => "[localhost]", "WEATHER_MCP_PORT" => "port" })
     end
 

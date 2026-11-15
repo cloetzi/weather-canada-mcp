@@ -3,7 +3,7 @@
 require_relative "../../test_helper"
 
 class MapImageTest < Minitest::Test
-  MapImage = WeatherCanadaMcp::Tools::MapImage
+  MapImage = WeatherCanadaMCP::Tools::MapImage
   BASE = FakeEccc.fixture_binary("nrcan/cbmt_whistler.png")
   RADAR = FakeEccc.fixture_binary("geomet/whistler/RADAR_1KM_RSNO_20261115T1930Z.png")
 
@@ -42,13 +42,13 @@ class MapImageTest < Minitest::Test
     bomb = header + idat + [0].pack("N") + "IEND".b + [Zlib.crc32("IEND")].pack("N")
 
     refute MapImage.inflates_within?(bomb, 512, 512)
-    error = assert_raises(WeatherCanadaMcp::Sources::InvalidResponse) { MapImage.compose([bomb], width: 512, height: 512, marker: [0, 0]) }
+    error = assert_raises(WeatherCanadaMCP::Sources::InvalidResponse) { MapImage.compose([bomb], width: 512, height: 512, marker: [0, 0]) }
     assert_match(/more data than its size allows/, error.message)
     assert MapImage.inflates_within?(BASE, 512, 512)
   end
 
   def test_an_image_of_another_size_is_refused_before_decoding
-    error = assert_raises(WeatherCanadaMcp::Sources::InvalidResponse) { MapImage.compose([BASE], width: 256, height: 256, marker: [0, 0]) }
+    error = assert_raises(WeatherCanadaMCP::Sources::InvalidResponse) { MapImage.compose([BASE], width: 256, height: 256, marker: [0, 0]) }
 
     assert_match(/not the 256x256 pixels/, error.message)
   end
@@ -56,6 +56,6 @@ class MapImageTest < Minitest::Test
   def test_a_broken_png_is_an_invalid_response
     broken = BASE.byteslice(0, 200)
 
-    assert_raises(WeatherCanadaMcp::Sources::InvalidResponse) { MapImage.compose([broken], width: 512, height: 512, marker: [0, 0]) }
+    assert_raises(WeatherCanadaMCP::Sources::InvalidResponse) { MapImage.compose([broken], width: 512, height: 512, marker: [0, 0]) }
   end
 end

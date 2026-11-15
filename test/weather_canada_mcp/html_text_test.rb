@@ -3,7 +3,7 @@
 require_relative "../test_helper"
 
 class HtmlTextTest < Minitest::Test
-  def text(html) = WeatherCanadaMcp::HtmlText.call(html)
+  def text(html) = WeatherCanadaMCP::HtmlText.call(html)
 
   def test_removes_tags_and_keeps_the_words
     assert_equal "Watch for wind slabs near ridge crests.", text("<h1>Watch for <strong>wind slabs</strong> near ridge crests.</h1><p></p>")

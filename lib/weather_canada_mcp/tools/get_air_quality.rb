@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module WeatherCanadaMcp
+module WeatherCanadaMCP
   module Tools
     # The Air Quality Health Index (AQHI) observed and forecast at the nearest AQHI location, with Health Canada's
     # messages for the risk category.

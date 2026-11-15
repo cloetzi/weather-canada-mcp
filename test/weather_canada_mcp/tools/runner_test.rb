@@ -3,7 +3,7 @@
 require_relative "../../test_helper"
 
 class RunnerTest < Minitest::Test
-  class Echo < WeatherCanadaMcp::Tools::Base
+  class Echo < WeatherCanadaMCP::Tools::Base
     NAME = "echo"
     TITLE = "Echo"
     DESCRIPTION = "Echoes."
@@ -17,7 +17,7 @@ class RunnerTest < Minitest::Test
   end
 
   def runner(io: StringIO.new, max_response_bytes: 1000)
-    WeatherCanadaMcp::Tools::Runner.new(context: nil, logger: WeatherCanadaMcp::Logger.new(io:), max_response_bytes:)
+    WeatherCanadaMCP::Tools::Runner.new(context: nil, logger: WeatherCanadaMCP::Logger.new(io:), max_response_bytes:)
   end
 
   def text(response) = response.content.first[:text]
@@ -25,7 +25,7 @@ class RunnerTest < Minitest::Test
   def test_drops_nulls_and_empty_values_and_adds_the_attribution
     data = JSON.parse(text(runner.call(Echo.new(nil), {})))
 
-    assert_equal({ "kept" => "x", "list" => [1], "blob" => "y", "attribution" => WeatherCanadaMcp::ATTRIBUTION }, data)
+    assert_equal({ "kept" => "x", "list" => [1], "blob" => "y", "attribution" => WeatherCanadaMCP::ATTRIBUTION }, data)
   end
 
   def test_oversized_results_are_replaced_not_truncated

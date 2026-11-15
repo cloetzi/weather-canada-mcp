@@ -3,7 +3,7 @@
 require "async"
 require "time"
 
-module WeatherCanadaMcp
+module WeatherCanadaMCP
   module Tools
     # A tool declares name, title, description and input schema as class-level constants and implements #call,
     # which returns a Hash (Tools::Runner serializes it and adds the attribution). Arguments arrive with string keys.

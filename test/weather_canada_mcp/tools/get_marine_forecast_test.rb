@@ -88,7 +88,7 @@ class GetMarineForecastTest < Minitest::Test
     _, _, requests = marine(**SQUAMISH)
     query = requests.sole.query
 
-    assert_equal WeatherCanadaMcp::Geo.bbox(49.7, -123.15, 25).join(","), query["bbox"]
+    assert_equal WeatherCanadaMCP::Geo.bbox(49.7, -123.15, 25).join(","), query["bbox"]
   end
 
   def test_no_area_nearby

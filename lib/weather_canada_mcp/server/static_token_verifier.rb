@@ -4,7 +4,7 @@ require "digest"
 require "mcp"
 require "openssl"
 
-module WeatherCanadaMcp
+module WeatherCanadaMCP
   module Server
     # Bearer token check for the HTTP transport, plugged into the SDK's OAuth resource-server hook so the
     # SDK handles header parsing and RFC 6750 challenges. Accepts several tokens to allow rotation.

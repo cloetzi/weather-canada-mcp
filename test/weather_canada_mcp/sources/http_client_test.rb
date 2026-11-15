@@ -5,9 +5,9 @@ require "zlib"
 
 class HttpClientTest < Minitest::Test
   def client(fake, **)
-    @client = WeatherCanadaMcp::Sources::HttpClient.new(
+    @client = WeatherCanadaMCP::Sources::HttpClient.new(
       origins: { api: fake.url, prefixed: "#{fake.url}/base" }, user_agent: "weather-canada-mcp/test (+contact)", timeout: 5,
-      max_concurrency: 2, max_body_bytes: 1000, rate_limiter: WeatherCanadaMcp::Sources::RateLimiter.new(rate: 100, burst: 10),
+      max_concurrency: 2, max_body_bytes: 1000, rate_limiter: WeatherCanadaMCP::Sources::RateLimiter.new(rate: 100, burst: 10),
       base_delay: 0.001, logger: null_logger, **
     )
   end
@@ -44,7 +44,7 @@ class HttpClientTest < Minitest::Test
       client = client(fake)
 
       assert_equal "a" * 500, client.get(:api, "/small").body
-      assert_raises(WeatherCanadaMcp::Sources::ResponseTooLarge) { client.get(:api, "/bomb") }
+      assert_raises(WeatherCanadaMCP::Sources::ResponseTooLarge) { client.get(:api, "/bomb") }
       assert_equal 100_000, client.get(:api, "/bomb", max_body_bytes: 200_000).body.bytesize
     end
   end
@@ -64,7 +64,7 @@ class HttpClientTest < Minitest::Test
       io = StringIO.new
       calls = 0
       fake.route("/collections/c/items/bc-50") { (calls += 1) < 2 ? [503, {}, ""] : [200, {}, "ok"] }
-      client(fake, logger: WeatherCanadaMcp::Logger.new(io:)).get(:api, "/collections/c/items/bc-50?bbox=1,2,3,4")
+      client(fake, logger: WeatherCanadaMCP::Logger.new(io:)).get(:api, "/collections/c/items/bc-50?bbox=1,2,3,4")
 
       assert_includes io.string, "path=/collections/c/items/{id}"
       refute_includes io.string, "bc-50"
@@ -84,11 +84,11 @@ class HttpClientTest < Minitest::Test
   def test_connection_failures_name_the_host_without_details
     Sync do
       port = TCPServer.open("127.0.0.1", 0) { |server| server.addr[1] }
-      client = WeatherCanadaMcp::Sources::HttpClient.new(
+      client = WeatherCanadaMCP::Sources::HttpClient.new(
         origins: { api: "http://127.0.0.1:#{port}" }, user_agent: "t", timeout: 2, max_concurrency: 1, max_body_bytes: 100,
-        rate_limiter: WeatherCanadaMcp::Sources::RateLimiter.new(rate: 100, burst: 10), logger: null_logger, base_delay: 0.001
+        rate_limiter: WeatherCanadaMCP::Sources::RateLimiter.new(rate: 100, burst: 10), logger: null_logger, base_delay: 0.001
       )
-      error = assert_raises(WeatherCanadaMcp::Sources::TransportError) { client.get(:api, "/x") }
+      error = assert_raises(WeatherCanadaMCP::Sources::TransportError) { client.get(:api, "/x") }
 
       assert_match(/Could not reach 127\.0\.0\.1/, error.message)
     ensure

@@ -2,7 +2,7 @@
 
 require "nokogiri"
 
-module WeatherCanadaMcp
+module WeatherCanadaMCP
   # Plain text from an HTML fragment, words unchanged: tags are dropped (link text is kept), entities decoded, block
   # elements and <br> end a line, and whitespace is tidied. Used for upstream text that must be passed through verbatim.
   module HtmlText

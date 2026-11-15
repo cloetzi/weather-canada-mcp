@@ -6,7 +6,7 @@ require "stringio"
 require "zip"
 require "zlib"
 
-module WeatherCanadaMcp
+module WeatherCanadaMCP
   module Places
     class Gazetteer
       # Opens the gazetteer, building it on first use when the database is missing and auto_build is on: downloads the

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module WeatherCanadaMcp
+module WeatherCanadaMCP
   module Tools
     # The ECCC marine forecast (wind, weather and visibility, waves, freezing spray) for the marine area at a point, or
     # the nearest ones when the point is on land, from the marineweather-realtime collection.

@@ -3,7 +3,7 @@
 require "json"
 require "mcp"
 
-module WeatherCanadaMcp
+module WeatherCanadaMCP
   module Tools
     # Runs tool calls and shapes results for an assistant: compact JSON without nulls or empty values, the licence
     # attribution, and a size cap. Argument problems and upstream failures become tool errors the model can read,

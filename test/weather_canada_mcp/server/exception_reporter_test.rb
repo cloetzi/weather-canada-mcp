@@ -7,7 +7,7 @@ class ExceptionReporterTest < Minitest::Test
 
   def setup
     @io = StringIO.new
-    @reporter = WeatherCanadaMcp::Server::ExceptionReporter.new(WeatherCanadaMcp::Logger.new(io: @io, format: "json"))
+    @reporter = WeatherCanadaMCP::Server::ExceptionReporter.new(WeatherCanadaMCP::Logger.new(io: @io, format: "json"))
   end
 
   def logged = JSON.parse(@io.string.lines.last)
@@ -43,7 +43,7 @@ class ExceptionReporterTest < Minitest::Test
   end
 
   def test_logs_the_first_frame_in_lib
-    error = assert_raises(KeyError) { WeatherCanadaMcp::Logger.new(level: SECRET) }
+    error = assert_raises(KeyError) { WeatherCanadaMCP::Logger.new(level: SECRET) }
     @reporter.call(error, {})
 
     refute_includes @io.string, SECRET
@@ -58,7 +58,7 @@ class ExceptionReporterTest < Minitest::Test
 
   def test_the_server_reports_a_failed_request_without_its_arguments
     with_fake_eccc do |fake|
-      app = application(fake, logger: WeatherCanadaMcp::Logger.new(io: @io, format: "json"))
+      app = application(fake, logger: WeatherCanadaMCP::Logger.new(io: @io, format: "json"))
       response = app.mcp_server.handle(tool_call("no_such_tool", location: SECRET))
 
       assert response.key?(:error)

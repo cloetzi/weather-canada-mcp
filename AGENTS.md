@@ -5,7 +5,7 @@ Guidance for AI coding agents working in this repository. Human contributors: se
 ## What this is
 
 An unofficial, read-only MCP server (Ruby 4, Falcon, official `mcp` gem) with outdoor-focused weather tools for
-Canada, built on ECCC open data (MSC GeoMet OGC API, GeoMet WMS, Datamart) and NRCan's Canadian Geographical
+Canada, built on ECCC open data (MSC GeoMet OGC API, GeoMet WMS) and NRCan's Canadian Geographical
 Names. Users run it over stdio or from the Docker image on GHCR. No upstream credentials exist.
 
 ## Layout
@@ -44,7 +44,7 @@ docker build -t weather-canada-mcp:dev . && bin/docker-smoke-test weather-canada
 - **Licence.** Every tool result carries `ATTRIBUTION` (`Tools::Runner` adds it). Alert text is passed through
   verbatim: never summarize, reword or truncate it. Never use ECCC logos or imply endorsement.
 - **Avalanche Canada.** It publishes no open licence, so its tools (`Tools::AvalancheBase` subclasses) exist only
-  behind `AVALANCHE_CANADA_ENABLED`, and its hosts are origins only then. Their results carry their own attribution
+  behind `WEATHER_MCP_AVALANCHE`, and its hosts are origins only then. Their results carry their own attribution
   naming the owning agency, plus the fixed safety note with the official link. Forecast text is passed through with
   only the HTML stripped; ratings keep Avalanche Canada's values; no coverage is never "low"; no logos or rating
   graphics. Field reports never include who submitted them. Fixture captures drop `userID` and `username`.

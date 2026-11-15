@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module WeatherCanadaMcp
+module WeatherCanadaMCP
   module Tools
     # Snow level, new snow and blowing snow at a point over the next 12 to 48 hours, from the HRDPS and RDPS model
     # fields on GeoMet WMS, in four equal steps.

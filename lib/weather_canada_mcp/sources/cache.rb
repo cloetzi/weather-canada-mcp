@@ -2,7 +2,7 @@
 
 require "async/promise"
 
-module WeatherCanadaMcp
+module WeatherCanadaMCP
   module Sources
     # In-process TTL cache keyed by request URL. Concurrent misses for the same key run the block once: the other
     # callers wait for its result (or its error, which is not cached). Meant for one reactor thread. Bounded: the entry

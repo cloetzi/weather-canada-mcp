@@ -2,7 +2,7 @@
 
 require "async/semaphore"
 
-module WeatherCanadaMcp
+module WeatherCanadaMCP
   module Tools
     # The latest weather radar (the North American 1 km composite on GeoMet) as a map image over NRCan's base map, with
     # the rain and snow rates and the precipitation type at the point now and over the past hour.

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module WeatherCanadaMcp
+module WeatherCanadaMCP
   module Tools
     # The mountain weather stations on Avalanche Canada's map nearest a point: the latest hourly reading and a summary
     # of the past hours.

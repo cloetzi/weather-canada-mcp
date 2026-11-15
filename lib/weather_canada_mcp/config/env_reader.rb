@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module WeatherCanadaMcp
+module WeatherCanadaMCP
   class Config
     # Typed reads of environment variables. A malformed value is recorded in errors and replaced by the default,
     # so validate! can report every problem at once.

@@ -3,7 +3,7 @@
 require_relative "../test_helper"
 
 class GeoTest < Minitest::Test
-  Geo = WeatherCanadaMcp::Geo
+  Geo = WeatherCanadaMCP::Geo
 
   def test_distance
     # Squamish to Whistler City Page sites

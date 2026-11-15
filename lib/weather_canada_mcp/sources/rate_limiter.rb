@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module WeatherCanadaMcp
+module WeatherCanadaMCP
   module Sources
     # Generic cell rate algorithm: on average `rate` requests per second, with bursts of up to `burst` back to back.
     # ECCC asks clients to stay well under one request per second sustained.

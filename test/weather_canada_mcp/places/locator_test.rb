@@ -6,7 +6,7 @@ class LocatorTest < Minitest::Test
   def test_nearest_sites_from_the_real_site_list
     with_fake_eccc do |fake|
       app = application(fake)
-      locator = WeatherCanadaMcp::Places::Locator.new(ogc: app.ogc)
+      locator = WeatherCanadaMCP::Places::Locator.new(ogc: app.ogc)
       nearest = locator.nearest_sites(50.06, -122.95, limit: 2)
 
       assert_equal(%w[bc-86 bc-16], nearest.map { |_, site| site.id })

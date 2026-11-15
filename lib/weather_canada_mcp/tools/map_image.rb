@@ -3,7 +3,7 @@
 require "chunky_png"
 require "zlib"
 
-module WeatherCanadaMcp
+module WeatherCanadaMCP
   module Tools
     # Stacks PNG map layers of one size (an optional opaque base map, then transparent overlays) and rings a point, in
     # pure Ruby (chunky_png). Before a layer is decoded, its header must give the size asked for and its pixel data

@@ -2,7 +2,7 @@
 
 require "date"
 
-module WeatherCanadaMcp
+module WeatherCanadaMCP
   module Tools
     # What is normal and what is extreme for a place and date: the daily records (LTCE) of the nearest climate
     # "virtual station" and the monthly climate normals of the nearest normals station.

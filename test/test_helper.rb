@@ -20,9 +20,9 @@ module TestHelpers
   GEOMET_CAPTURED_AT = Time.utc(2026, 11, 15, 19, 13, 0)
   # When the Avalanche Canada fixtures were captured (station measurements cover the 24 hours to 20:00 UTC).
   AVALANCHE_CAPTURED_AT = Time.utc(2026, 11, 15, 19, 20, 0)
-  AVALANCHE_ENABLED = { AVALANCHE_CANADA_ENABLED: "true", AVALANCHE_CANADA_FIELD_REPORTS_ENABLED: "true" }.freeze
+  AVALANCHE_ENABLED = { WEATHER_MCP_AVALANCHE: "true", WEATHER_MCP_AVALANCHE_REPORTS: "true" }.freeze
 
-  def null_logger = WeatherCanadaMcp::Logger.new(io: StringIO.new, level: "error")
+  def null_logger = WeatherCanadaMCP::Logger.new(io: StringIO.new, level: "error")
 
   # Runs the block inside a reactor with a fake upstream, which is stopped afterwards.
   def with_fake_eccc
@@ -39,7 +39,7 @@ module TestHelpers
     @gazetteer_path ||= begin
       path = File.join(Dir.mktmpdir("gazetteer"), "gazetteer.sqlite3")
       File.open(File.join(ROOT, "test/fixtures/cgn/cgn_sample.csv"), encoding: "bom|utf-8") do |csv|
-        WeatherCanadaMcp::Places::Gazetteer::Builder.new(logger: WeatherCanadaMcp::Logger.new(io: StringIO.new)).build(csv, path, source: "test")
+        WeatherCanadaMCP::Places::Gazetteer::Builder.new(logger: WeatherCanadaMCP::Logger.new(io: StringIO.new)).build(csv, path, source: "test")
       end
       path
     end
@@ -49,8 +49,8 @@ module TestHelpers
 
   # Every upstream points at the fake; requests are not rate limited.
   def env(fake = nil, **overrides)
-    variables = [*WeatherCanadaMcp::Config::UPSTREAMS.keys.map { |name| "WEATHER_MCP_#{name.upcase}_URL" },
-                 *WeatherCanadaMcp::Config::AVALANCHE_URL_VARIABLES.values]
+    variables = [*WeatherCanadaMCP::Config::UPSTREAMS.keys.map { |name| "WEATHER_MCP_#{name.upcase}_URL" },
+                 *WeatherCanadaMCP::Config::AVALANCHE_URL_VARIABLES.values]
     upstreams = fake ? variables.to_h { |name| [name, fake.url] } : {}
     {
       "WEATHER_MCP_AUTH_TOKEN" => AUTH_TOKEN,
@@ -61,7 +61,7 @@ module TestHelpers
   end
 
   def application(fake, logger: null_logger, clock: -> { CAPTURED_AT }, transport: :http, **values)
-    WeatherCanadaMcp::Application.new(WeatherCanadaMcp::Config.from_env(env(fake, **values), transport:), logger:, clock:)
+    WeatherCanadaMCP::Application.new(WeatherCanadaMCP::Config.from_env(env(fake, **values), transport:), logger:, clock:)
   end
 
   # Calls a tool through the MCP server and returns [parsed JSON or text, error?].

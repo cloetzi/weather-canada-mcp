@@ -3,7 +3,7 @@
 require "json"
 require "uri"
 
-module WeatherCanadaMcp
+module WeatherCanadaMCP
   module Sources
     # MSC GeoMet OGC API Features (api.weather.gc.ca): /collections/{id}/items queries and single items, as parsed
     # GeoJSON. Responses are cached per URL for the collection's TTL.
@@ -57,7 +57,7 @@ module WeatherCanadaMcp
 
       def get(path, ttl)
         @cache.fetch("api:#{path}", ttl:) do
-          response = @http.get(:api, path, accept: "application/geo+json, application/json")
+          response = @http.get(:eccc_api, path, accept: "application/geo+json, application/json")
           raise Sources::StatusError.new(response.status, "api.weather.gc.ca") unless response.success?
 
           parse(response.body)

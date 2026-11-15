@@ -3,13 +3,13 @@
 require "sqlite3"
 require "tmpdir"
 
-module WeatherCanadaMcp
+module WeatherCanadaMCP
   module Places
     # Offline place-name lookup over NRCan's Canadian Geographical Names, loaded into SQLite by Gazetteer::Builder.
     # Read-only once built. Search matches whole names first, then word prefixes (FTS5, diacritics ignored), and ranks
     # by feature type and NRCan's relevance-at-scale; nearest finds the closest named features to a point.
     class Gazetteer
-      class Unavailable < WeatherCanadaMcp::Error; end
+      class Unavailable < WeatherCanadaMCP::Error; end
 
       SCHEMA_VERSION = 1
       ATTRIBUTION = "Place names: Canadian Geographical Names, Natural Resources Canada (Open Government Licence - Canada)."

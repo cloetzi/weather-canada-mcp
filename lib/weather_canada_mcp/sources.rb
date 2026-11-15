@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-module WeatherCanadaMcp
+module WeatherCanadaMCP
   # Everything that fetches ECCC and NRCan data: the shared HTTP client, the global rate limiter, the TTL cache and
   # a thin client per service, which returns parsed Ruby data and raises the errors below.
   module Sources
     # Base of every failure fetching data. Messages are written for the model and never quote a response body.
-    class Error < WeatherCanadaMcp::Error; end
+    class Error < WeatherCanadaMCP::Error; end
 
     # The connection failed or timed out. retryable? marks failures worth retrying (connection refused, reset, DNS).
     class TransportError < Error
