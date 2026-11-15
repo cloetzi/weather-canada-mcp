@@ -94,19 +94,3 @@ jobs:
       tags: |
         type=edge,branch=main
         type=sha,format=short
-
-  # TEMPORARY: exercises the image pipeline from the PR; removed before merge.
-  tmp-image-test:
-    name: TMP image pipeline test
-    if: github.event_name == 'pull_request'
-    needs: [test]
-    permissions:
-      contents: read
-      packages: write
-      id-token: write
-      attestations: write
-    uses: ./.github/workflows/publish-image.yml
-    with:
-      version: wp9-test
-      tags: |
-        type=raw,value=wp9-test
