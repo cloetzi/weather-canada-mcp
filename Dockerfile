@@ -12,7 +12,10 @@ ENV BUNDLE_DEPLOYMENT=1 \
 WORKDIR /app
 COPY Gemfile Gemfile.lock .ruby-version weather-canada-mcp.gemspec ./
 COPY lib/weather_canada_mcp/version.rb lib/weather_canada_mcp/
-RUN bundle install --jobs 4 \
+# release-please bumps the version in version.rb and in the PATH entry of Gemfile.lock but not in its CHECKSUMS entry, and
+# frozen mode refuses a lockfile that is out of date: set the gem's own version in that entry from version.rb.
+RUN sed -i -E "s/^  (weather-canada-mcp) \([^)]*\)$/  \1 ($(ruby -r./lib/weather_canada_mcp/version -e 'print WeatherCanadaMCP::VERSION'))/" Gemfile.lock \
+    && bundle install --jobs 4 \
     && rm -rf /usr/local/bundle/cache /usr/local/bundle/ruby/*/cache \
     && find /usr/local/bundle -type f \( -name "*.o" -o -name "*.c" -o -name "*.h" -o -name "Makefile" -o -name "mkmf.log" \) -delete \
     && find /usr/local/bundle/ruby/*/gems -maxdepth 2 -type d \( -name test -o -name spec -o -name examples -o -name ext \) -prune -exec rm -rf {} +
