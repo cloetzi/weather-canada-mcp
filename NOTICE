@@ -16,4 +16,11 @@ software, and included in its Docker image, contains information licensed under 
 Radar base map: Canada Base Map - Transportation (CBMT), Natural Resources Canada, used under the Open Government
 Licence - Canada.
 
-Test fixtures in test/fixtures/ are responses captured from the services above, under the same licences.
+Avalanche data (optional, off by default): avalanche forecasts, mountain weather station data and Mountain
+Information Network reports from Avalanche Canada (avalanche.ca) and the agencies that own its forecasts. Avalanche
+Canada publishes no open licence; its Terms of Use (https://avalanche.ca/terms-of-use) say its material may not be
+reproduced without prior written consent. This tool is not affiliated with or endorsed by Avalanche Canada or any
+forecasting agency.
+
+Test fixtures in test/fixtures/ are responses captured from the services above, under the same licences and
+terms; the Avalanche Canada field reports among them have the submitters' usernames and user ids removed.

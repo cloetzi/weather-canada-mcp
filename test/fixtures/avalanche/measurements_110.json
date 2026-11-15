@@ -1,0 +1,173 @@
+[
+  {
+    "stationId": 110,
+    "measurementDateTime": "2026-11-15T19:00:00Z",
+    "snowHeight": 14.6,
+    "airTempAvg": 0.7,
+    "relativeHumidity": 63
+  },
+  {
+    "stationId": 110,
+    "measurementDateTime": "2026-11-15T18:00:00Z",
+    "snowHeight": 14.9,
+    "airTempAvg": -0.3,
+    "relativeHumidity": 69
+  },
+  {
+    "stationId": 110,
+    "measurementDateTime": "2026-11-15T17:00:00Z",
+    "snowHeight": 14.8,
+    "airTempAvg": -0.2,
+    "relativeHumidity": 65
+  },
+  {
+    "stationId": 110,
+    "measurementDateTime": "2026-11-15T16:00:00Z",
+    "snowHeight": 14.9,
+    "airTempAvg": -0.9,
+    "relativeHumidity": 67
+  },
+  {
+    "stationId": 110,
+    "measurementDateTime": "2026-11-15T15:00:00Z",
+    "snowHeight": 15,
+    "airTempAvg": -1.2,
+    "relativeHumidity": 71
+  },
+  {
+    "stationId": 110,
+    "measurementDateTime": "2026-11-15T14:00:00Z",
+    "snowHeight": 15,
+    "airTempAvg": -1.2,
+    "relativeHumidity": 69
+  },
+  {
+    "stationId": 110,
+    "measurementDateTime": "2026-11-15T13:00:00Z",
+    "snowHeight": 15,
+    "airTempAvg": -1.7,
+    "relativeHumidity": 72
+  },
+  {
+    "stationId": 110,
+    "measurementDateTime": "2026-11-15T12:00:00Z",
+    "snowHeight": 15,
+    "airTempAvg": -1.8,
+    "relativeHumidity": 69,
+    "newSnow": 1
+  },
+  {
+    "stationId": 110,
+    "measurementDateTime": "2026-11-15T11:00:00Z",
+    "snowHeight": 14.9,
+    "airTempAvg": -1.7,
+    "relativeHumidity": 66
+  },
+  {
+    "stationId": 110,
+    "measurementDateTime": "2026-11-15T10:00:00Z",
+    "snowHeight": 15,
+    "airTempAvg": -1.9,
+    "relativeHumidity": 65
+  },
+  {
+    "stationId": 110,
+    "measurementDateTime": "2026-11-15T09:00:00Z",
+    "snowHeight": 15,
+    "airTempAvg": -2.1,
+    "relativeHumidity": 63,
+    "newSnow": 1
+  },
+  {
+    "stationId": 110,
+    "measurementDateTime": "2026-11-15T08:00:00Z",
+    "snowHeight": 14.9,
+    "airTempAvg": -2,
+    "relativeHumidity": 65
+  },
+  {
+    "stationId": 110,
+    "measurementDateTime": "2026-11-15T07:00:00Z",
+    "snowHeight": 15.1,
+    "airTempAvg": -1.8,
+    "relativeHumidity": 63
+  },
+  {
+    "stationId": 110,
+    "measurementDateTime": "2026-11-15T06:00:00Z",
+    "snowHeight": 15,
+    "airTempAvg": -1.9,
+    "relativeHumidity": 70
+  },
+  {
+    "stationId": 110,
+    "measurementDateTime": "2026-11-15T05:00:00Z",
+    "snowHeight": 15,
+    "airTempAvg": -1.6,
+    "relativeHumidity": 69
+  },
+  {
+    "stationId": 110,
+    "measurementDateTime": "2026-11-15T04:00:00Z",
+    "snowHeight": 15.1,
+    "airTempAvg": -1.6,
+    "relativeHumidity": 70
+  },
+  {
+    "stationId": 110,
+    "measurementDateTime": "2026-11-15T03:00:00Z",
+    "snowHeight": 15,
+    "airTempAvg": -1,
+    "relativeHumidity": 66
+  },
+  {
+    "stationId": 110,
+    "measurementDateTime": "2026-11-15T02:00:00Z",
+    "snowHeight": 15,
+    "airTempAvg": -0.7,
+    "relativeHumidity": 63
+  },
+  {
+    "stationId": 110,
+    "measurementDateTime": "2026-11-15T01:00:00Z",
+    "snowHeight": 15.1,
+    "airTempAvg": -0.5,
+    "relativeHumidity": 66
+  },
+  {
+    "stationId": 110,
+    "measurementDateTime": "2026-11-15T00:00:00Z",
+    "snowHeight": 15,
+    "airTempAvg": -0.3,
+    "relativeHumidity": 70
+  },
+  {
+    "stationId": 110,
+    "measurementDateTime": "2026-11-14T23:00:00Z",
+    "snowHeight": 15.1,
+    "airTempAvg": -0.2,
+    "relativeHumidity": 70,
+    "newSnow": 1
+  },
+  {
+    "stationId": 110,
+    "measurementDateTime": "2026-11-14T22:00:00Z",
+    "snowHeight": 14.9,
+    "airTempAvg": 1.7,
+    "relativeHumidity": 58
+  },
+  {
+    "stationId": 110,
+    "measurementDateTime": "2026-11-14T21:00:00Z",
+    "snowHeight": 14.9,
+    "airTempAvg": 1.1,
+    "relativeHumidity": 58
+  },
+  {
+    "stationId": 110,
+    "measurementDateTime": "2026-11-14T20:00:00Z",
+    "snowHeight": 14.7,
+    "airTempAvg": 3.2,
+    "relativeHumidity": 48
+  }
+]

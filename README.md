@@ -8,7 +8,7 @@ configure for local use.
 >
 > "Is there a weather alert near Lake Louise right now?"
 
-**Status: early development (M3).** All ten planned tools work; v1.0 follows (see the [roadmap](#roadmap)).
+**Status: early development (M3).** All ten planned ECCC tools work, plus opt-in Avalanche Canada tools; v1.0 follows (see the [roadmap](#roadmap)).
 
 ## Tools
 
@@ -28,6 +28,18 @@ configure for local use.
 Every tool takes a `location` (`"Squamish"`, `"Lake Louise, AB"`) or `lat`/`lon`, and `lang` (`en` or `fr`).
 Results are compact JSON with units in the field names, name the forecast site or station used and its distance, and carry
 the required attribution. `bin/weather-canada-mcp tools` prints the full schemas.
+
+### Avalanche Canada (opt-in)
+
+Off unless `AVALANCHE_CANADA_ENABLED=true` (and `AVALANCHE_CANADA_FIELD_REPORTS_ENABLED=true` for field reports): see
+[Avalanche Canada data](#avalanche-canada-data) and [docs/configuration.md](docs/configuration.md).
+
+| Tool | What it answers | Source |
+| --- | --- | --- |
+| `get_avalanche_forecast` | The avalanche forecast covering a point for up to 3 days: danger ratings in the alpine, at treeline and below treeline, avalanche problems (type, elevations, aspects, likelihood, expected size), highlights, confidence, summaries, travel advice, the owning agency and the official link | Avalanche Canada forecast products |
+| `get_avalanche_danger_overview` | Every current avalanche forecast with its owner, centre point, link, highest danger and current ratings | Avalanche Canada forecast metadata |
+| `get_mountain_weather_stations` | The nearest mountain weather stations with elevation, distance, the latest reading and a summary of up to 7 days (snow height change, new snow, temperature range, strongest gust) | Avalanche Canada weather stations |
+| `get_field_reports` | Recent Mountain Information Network field reports near a point: avalanches seen, signs of instability and comments, without who submitted them | Avalanche Canada MIN |
 
 ## Running it
 
@@ -67,6 +79,22 @@ and [docs/configuration.md](docs/configuration.md) for every setting.
   [weather.gc.ca](https://weather.gc.ca).
 - The server stays well inside ECCC's fair-use guidance: one request per second sustained across all tools, a
   cache, and a User-Agent that names the project (add your own contact with `WEATHER_MCP_USER_AGENT_CONTACT`).
+
+### Avalanche Canada data
+
+The avalanche tools are off by default because **Avalanche Canada publishes no open licence, and its
+[Terms of Use](https://avalanche.ca/terms-of-use) forbid reproducing its content without prior written consent**. Enable
+them only where you have that consent or your use is otherwise permitted.
+
+- Forecasts are by Avalanche Canada or the agency that owns them (Parks Canada, Avalanche Québec, Kananaskis
+  Country and others); every result names that agency and links to the official forecast on avalanche.ca. Forecast
+  text is passed through as written, with only the HTML removed, and danger ratings keep Avalanche Canada's own
+  values. A point no forecast covers is reported as such, never as low danger. No logos or rating graphics are used.
+- Every avalanche result carries a safety note: avalanche forecasts are regional and do not replace avalanche
+  training, your own observations or terrain judgement.
+- Field reports come from the public through the Mountain Information Network and are not verified. Who submitted
+  them is never returned, and contact details in their text are removed.
+- This project is not affiliated with or endorsed by Avalanche Canada or any forecasting agency.
 
 ## Roadmap
 

@@ -14,17 +14,29 @@ module WeatherCanadaMcp
       people to weather.gc.ca.
     TEXT
     IMAGE_CACHE_ENTRIES = 64
+    AVALANCHE_INSTRUCTIONS = <<~TEXT.tr("\n", " ").strip
+      The avalanche tools use Avalanche Canada data: report danger ratings exactly as given, quote forecast text rather
+      than reword it, and always pass on the safety note and the official forecast link.
+    TEXT
 
     attr_reader :config, :logger, :tools
 
     def self.tool_classes(config)
-      selected = Tools.all.select { |tool| config.tools.nil? || config.tools.include?(tool.tool_name) }
+      selected = Tools.available(config).select { |tool| config.tools.nil? || config.tools.include?(tool.tool_name) }
       selected.reject { |tool| config.exclude_tools.include?(tool.tool_name) }
     end
 
+    # WEATHER_MCP_TOOLS may name only tools this configuration serves; WEATHER_MCP_EXCLUDE_TOOLS any known tool, so
+    # excluding an opt-in tool that is off does nothing.
     def self.unknown_tools(config)
-      names = Tools.all.map(&:tool_name)
-      (Array(config.tools) + config.exclude_tools).uniq - names
+      known = (Tools.all + Tools.avalanche + Tools.field_reports).map(&:tool_name)
+      (Array(config.tools) - Tools.available(config).map(&:tool_name)) | (config.exclude_tools - known)
+    end
+
+    def self.unknown_tools_message(unknown)
+      message = "unknown tools in WEATHER_MCP_TOOLS or WEATHER_MCP_EXCLUDE_TOOLS: #{unknown.join(", ")}"
+      opt_in = (Tools.avalanche + Tools.field_reports).map(&:tool_name) & unknown
+      opt_in.any? ? "#{message} (#{opt_in.join(", ")} need AVALANCHE_CANADA_ENABLED; see docs/configuration.md)" : message
     end
 
     def initialize(config, logger: Logger.new(level: config.log_level, format: config.log_format), clock: -> { Time.now })
@@ -32,7 +44,7 @@ module WeatherCanadaMcp
       @logger = logger
       @clock = clock
       unknown = self.class.unknown_tools(config)
-      raise Error, "unknown tools in WEATHER_MCP_TOOLS or WEATHER_MCP_EXCLUDE_TOOLS: #{unknown.join(", ")}" if unknown.any?
+      raise Error, self.class.unknown_tools_message(unknown) if unknown.any?
 
       @tools = self.class.tool_classes(config)
       raise Error, "no tools are enabled; check WEATHER_MCP_TOOLS and WEATHER_MCP_EXCLUDE_TOOLS" if tools.empty?
@@ -57,11 +69,16 @@ module WeatherCanadaMcp
 
     def basemap = @basemap ||= Sources::Basemap.new(http:, cache: image_cache)
 
+    def avalanche = (@avalanche ||= Sources::AvalancheCanada.new(http:, cache:) if config.avalanche_canada_enabled)
+
     def places = @places ||= Places::Gazetteer::Provider.new(path: config.gazetteer_path, http:, logger:)
 
     def context
-      @context ||= Tools::Context.new(ogc:, wms:, basemap:, images: image_cache, locator: Places::Locator.new(ogc:), places:, config:, clock: @clock)
+      @context ||= Tools::Context.new(ogc:, wms:, basemap:, images: image_cache, avalanche:, locator: Places::Locator.new(ogc:),
+                                      places:, config:, clock: @clock)
     end
+
+    def instructions = config.avalanche_canada_enabled ? "#{INSTRUCTIONS} #{AVALANCHE_INSTRUCTIONS}" : INSTRUCTIONS
 
     # A fresh MCP server per transport; the SDK binds one transport to one server.
     def mcp_server
@@ -70,7 +87,7 @@ module WeatherCanadaMcp
         name: SERVER_NAME,
         title: "Weather Canada (unofficial)",
         version: VERSION,
-        instructions: INSTRUCTIONS,
+        instructions:,
         tools: tools.map { |tool| runner.mcp_tool(tool) },
         capabilities: { tools: {} },
         configuration: MCP::Configuration.new(exception_reporter: Server::ExceptionReporter.new(logger))

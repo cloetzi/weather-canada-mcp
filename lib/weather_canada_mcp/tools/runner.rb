@@ -31,14 +31,14 @@ module WeatherCanadaMcp
         result = tool.call(arguments.transform_keys(&:to_s))
         log(tool, started)
         image = result[:image]
-        json = render(result.except(:image))
-        json.bytesize <= @max_response_bytes ? content(json, image) : error(too_large(json.bytesize))
+        json = render(result.except(:image), tool.class)
+        json.bytesize <= @max_response_bytes ? content(json, image) : error(too_large(json.bytesize, tool.class))
       rescue Tools::InvalidArguments => e
         log(tool, started, error: "InvalidArguments")
         error(e.message)
       rescue Sources::Error => e
         log(tool, started, error: e.class.name.split("::").last)
-        error("#{e.message} #{ATTRIBUTION}")
+        error("#{e.message} #{tool.class.attribution}")
       rescue MCP::CancelledError
         raise
       rescue StandardError => e
@@ -47,21 +47,19 @@ module WeatherCanadaMcp
 
       private
 
-      def render(result) = JSON.generate(compact(result.merge(attribution: attribution(result))))
+      def render(result, tool_class) = JSON.generate(compact(result.merge(attribution: attribution(result, tool_class))))
 
       # Results over the cap are never cut mid-way, since alert text must stay whole.
-      def too_large(size)
+      def too_large(size, tool_class)
         "The result is #{size} bytes, over this server's #{@max_response_bytes}-byte limit (WEATHER_MCP_MAX_RESPONSE_BYTES). " \
-          "Ask for less (fewer hours, a smaller limit). #{ATTRIBUTION}"
+          "Ask for less (fewer hours, a smaller limit). #{tool_class.attribution}"
       end
 
-      def attribution(result)
-        if result.key?(:candidates) || result.key?(:nearby_places) || result.dig(:location,
-                                                                                 :query_match)
-          "#{ATTRIBUTION} #{Places::Gazetteer::ATTRIBUTION}"
-        else
-          ATTRIBUTION
-        end
+      # The tool's attribution (or the one its result names), plus NRCan's when place names were used.
+      def attribution(result, tool_class)
+        source = result[:attribution] || tool_class.attribution
+        place_names = result.key?(:candidates) || result.key?(:nearby_places) || result.dig(:location, :query_match)
+        place_names ? "#{source} #{Places::Gazetteer::ATTRIBUTION}" : source
       end
 
       def compact(value)
