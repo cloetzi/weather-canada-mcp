@@ -5,22 +5,23 @@ module WeatherCanadaMCP
     module Avalanche
       # Every current avalanche forecast product, with its highest danger and today's ratings.
       class GetDangerOverview < Base
-        NAME = "get_avalanche_danger_overview"
-        TITLE = "Get avalanche danger overview"
-        DESCRIPTION = <<~TEXT.tr("\n", " ").strip
+        tool_name "get_avalanche_danger_overview"
+        title "Get avalanche danger overview"
+        description <<~TEXT
           Every avalanche forecast currently published on avalanche.ca, by Avalanche Canada and its partner agencies: the
           region name, owner, centre point, official url, the highest danger and the current rating in the alpine, at
           treeline and below treeline. Ratings are Avalanche Canada's own values (low, moderate, considerable, high,
           extreme, plus earlyseason, norating and noforecast, which are not danger levels). Use get_avalanche_forecast
           for one region's problems and advice. Pass on safety_note.
         TEXT
-        INPUT_SCHEMA = { type: "object", properties: { **Base::LANG_PROPERTY }, additionalProperties: false }.freeze
+        enabled_when("WEATHER_MCP_AVALANCHE", &:avalanche_enabled)
+        argument :lang, :language
 
-        def call(arguments)
-          lang = lang(arguments)
+        def call(args)
+          lang = args.lang
           products = avalanche.forecasts.metadata(lang).filter_map { |entry| product(entry) if entry.is_a?(Hash) }
-          result = { products:, safety_note: safety_note(lang),
-                     attribution: attribution_for("Avalanche forecasts", products.map { |product| product[:owner] }) }
+          attribute(attribution_for("Avalanche forecasts", products.map { |product| product[:owner] }))
+          result = { products:, safety_note: safety_note(lang) }
           result[:note] = "No avalanche forecast is published right now." if products.empty?
           result
         end

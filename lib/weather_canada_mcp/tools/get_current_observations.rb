@@ -4,17 +4,6 @@ module WeatherCanadaMCP
   module Tools
     # The latest surface observations (SWOB) from the ECCC and NAV CANADA stations nearest a point.
     class GetCurrentObservations < Base
-      NAME = "get_current_observations"
-      TITLE = "Get current weather observations"
-      DESCRIPTION = <<~TEXT.tr("\n", " ").strip
-        The latest measured weather at the Environment Canada and NAV CANADA stations nearest a location (within
-        50 km): temperature, dewpoint, humidity, wind and gusts, pressure, visibility, cloud cover, precipitation over
-        the past 1, 6 and 24 hours, snowfall and snow depth. Stations report different sets of readings, so a reading
-        missing at one station may be present at the next; readings that failed ECCC's automatic quality checks are left
-        out. A reading missing from a station's newest report can come from one up to an hour older; earlier_readings
-        gives the time of each such reading. Each station shows its elevation and distance, because a valley station can
-        differ a lot from a ridge nearby. Times are UTC (ISO 8601). For the forecast use get_forecast.
-      TEXT
       STATIONS_COLLECTION = "swob-stations"
       COLLECTION = "swob-realtime"
       RADIUS_KM = 50
@@ -48,20 +37,25 @@ module WeatherCanadaMCP
       WIND = [%w[avg_wnd_spd_10m_pst2mts avg_wnd_dir_10m_pst2mts], %w[avg_wnd_spd_10m_pst10mts avg_wnd_dir_10m_pst10mts]].freeze
       ELEMENTS = (WIND.flatten + FIELDS.values.flatten).freeze
       PROPERTIES = ["date_tm-value", *ELEMENTS, *ELEMENTS.map { |element| "#{element}-qa" }].join(",").freeze
-      INPUT_SCHEMA = {
-        type: "object",
-        properties: {
-          **Base::LOCATION_PROPERTIES,
-          stations: { type: "integer", minimum: 1, maximum: MAX_STATIONS, default: 3, description: "Nearest stations to include." },
-          **Base::LANG_PROPERTY
-        },
-        additionalProperties: false
-      }.freeze
+      tool_name "get_current_observations"
+      title "Get current weather observations"
+      description <<~TEXT
+        The latest measured weather at the Environment Canada and NAV CANADA stations nearest a location (within
+        50 km): temperature, dewpoint, humidity, wind and gusts, pressure, visibility, cloud cover, precipitation over
+        the past 1, 6 and 24 hours, snowfall and snow depth. Stations report different sets of readings, so a reading
+        missing at one station may be present at the next; readings that failed ECCC's automatic quality checks are left
+        out. A reading missing from a station's newest report can come from one up to an hour older; earlier_readings
+        gives the time of each such reading. Each station shows its elevation and distance, because a valley station can
+        differ a lot from a ridge nearby. Times are UTC (ISO 8601). For the forecast use get_forecast.
+      TEXT
+      location_arguments
+      argument :stations, :integer, in: 1..MAX_STATIONS, default: 3, description: "Nearest stations to include."
+      argument :lang, :language
 
-      def call(arguments)
-        lang = lang(arguments)
-        point = resolve_point(arguments)
-        limit = integer_argument(arguments, "stations", 3, 1..MAX_STATIONS)
+      def call(args)
+        lang = args.lang
+        point = args.point
+        limit = args.stations
         stations = reporting_stations(point, limit, lang)
         result = { location: point.to_h, stations: }
         if stations.empty?

@@ -32,7 +32,7 @@ module WeatherCanadaMCP
       when "http" then serve_http
       when "stdio" then serve_stdio
       when "check-config" then check_config(argv[1] || "http")
-      when "tools" then puts JSON.pretty_generate(Tools.available(Config.from_env(credentials: false)).map(&:manifest))
+      when "tools" then puts JSON.pretty_generate(Tools::Registry.new(Config.from_env(credentials: false)).available.map(&:manifest))
       when "gazetteer" then gazetteer(argv[1])
       when "version", "--version", "-v" then puts VERSION
       when "help", "--help", "-h" then puts USAGE

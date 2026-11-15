@@ -5,16 +5,6 @@ module WeatherCanadaMCP
     # The Air Quality Health Index (AQHI) observed and forecast at the nearest AQHI location, with Health Canada's
     # messages for the risk category.
     class GetAirQuality < Base
-      NAME = "get_air_quality"
-      TITLE = "Get air quality"
-      DESCRIPTION = <<~TEXT.tr("\n", " ").strip
-        The Air Quality Health Index (AQHI, 1 to 10+, higher is worse) at the nearest of about 150 AQHI locations
-        (within 100 km): the latest hourly observation and the forecast for today, tonight, tomorrow and later, each
-        with its risk category (low, moderate, high, very high) and the health messages for the general population and
-        for people at risk (children, people over 65, people with heart or lung conditions). During wildfire smoke the
-        forecast may also give an in-smoke value. health_messages holds the messages once for each risk category that
-        appears. Times are UTC (ISO 8601).
-      TEXT
       OBSERVATIONS_COLLECTION = "aqhi-observations-realtime"
       FORECASTS_COLLECTION = "aqhi-forecasts-realtime"
       RADIUS_KM = 100
@@ -68,15 +58,22 @@ module WeatherCanadaMCP
         }
       }.freeze
       RISK_FR = { "low" => "faible", "moderate" => "modéré", "high" => "élevé", "very high" => "très élevé" }.freeze
-      INPUT_SCHEMA = {
-        type: "object",
-        properties: { **Base::LOCATION_PROPERTIES, **Base::LANG_PROPERTY },
-        additionalProperties: false
-      }.freeze
+      tool_name "get_air_quality"
+      title "Get air quality"
+      description <<~TEXT
+        The Air Quality Health Index (AQHI, 1 to 10+, higher is worse) at the nearest of about 150 AQHI locations
+        (within 100 km): the latest hourly observation and the forecast for today, tonight, tomorrow and later, each
+        with its risk category (low, moderate, high, very high) and the health messages for the general population and
+        for people at risk (children, people over 65, people with heart or lung conditions). During wildfire smoke the
+        forecast may also give an in-smoke value. health_messages holds the messages once for each risk category that
+        appears. Times are UTC (ISO 8601).
+      TEXT
+      location_arguments
+      argument :lang, :language
 
-      def call(arguments)
-        lang = lang(arguments)
-        point = resolve_point(arguments)
+      def call(args)
+        lang = args.lang
+        point = args.point
         distance, observation = nearest_features(OBSERVATIONS_COLLECTION, point, radius_km: RADIUS_KM, count: 1, latest: true,
                                                                                  limit: 100).first
         return { location: point.to_h, note: "No AQHI location within #{RADIUS_KM} km. AQHI covers mostly populated areas." } unless observation

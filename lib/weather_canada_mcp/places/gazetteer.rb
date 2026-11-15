@@ -11,6 +11,9 @@ module WeatherCanadaMCP
     class Gazetteer
       class Unavailable < WeatherCanadaMCP::Error; end
 
+      # The database could not be built from the NRCan data.
+      class BuildError < WeatherCanadaMCP::Error; end
+
       SCHEMA_VERSION = 1
       ATTRIBUTION = "Place names: Canadian Geographical Names, Natural Resources Canada (Open Government Licence - Canada)."
 

@@ -4,39 +4,31 @@ module WeatherCanadaMCP
   module Tools
     # Current conditions, the official text forecast, hourly forecast and sun times from the nearest City Page site.
     class GetForecast < Base
-      NAME = "get_forecast"
-      TITLE = "Get the weather forecast"
-      DESCRIPTION = <<~TEXT.tr("\n", " ").strip
+      MAX_HOURS = 24
+      WIND_CHILL_MAX_C = 0
+      HUMIDEX_MIN_C = 20
+      DISTANT_SITE_KM = 50
+      tool_name "get_forecast"
+      title "Get the weather forecast"
+      description <<~TEXT
         Environment Canada's forecast for the nearest of ~850 forecast sites: current conditions, the official
         human-written forecast by period (today, tonight, then about 6 days, including snow levels in the mountains
         where ECCC issues them), an hourly forecast, sunrise/sunset and active warning headlines. All times are UTC
         (ISO 8601). The result names the site used and its distance from the location; a site tens of km away, or at a
         different elevation, may not match conditions in the backcountry. For full alert text use get_alerts.
       TEXT
-      MAX_HOURS = 24
-      WIND_CHILL_MAX_C = 0
-      HUMIDEX_MIN_C = 20
-      DISTANT_SITE_KM = 50
-      INPUT_SCHEMA = {
-        type: "object",
-        properties: {
-          **Base::LOCATION_PROPERTIES,
-          hours: { type: "integer", minimum: 0, maximum: MAX_HOURS, default: 12,
-                   description: "Hourly forecast entries to include (0 to omit)." },
-          **Base::LANG_PROPERTY
-        },
-        additionalProperties: false
-      }.freeze
+      location_arguments
+      argument :hours, :integer, in: 0..MAX_HOURS, default: 12, description: "Hourly forecast entries to include (0 to omit)."
+      argument :lang, :language
 
-      def call(arguments)
-        lang = lang(arguments)
-        point = resolve_point(arguments)
-        hours = integer_argument(arguments, "hours", 12, 0..MAX_HOURS)
+      def call(args)
+        @lang = args.lang # one tool instance serves one call, so this is not shared between requests
+        point = args.point
+        hours = args.hours
         distance, site = forecast_sites.nearest_sites(point.lat, point.lon, limit: 1).first
         properties = ogc.item(Sources::ECCC::ForecastSites::COLLECTION, site.id).fetch("properties") do
           raise Sources::InvalidResponse, "api.weather.gc.ca returned a forecast without properties."
         end
-        @lang = lang
         shape(properties, site, distance, point, hours)
       end
 

@@ -5,16 +5,6 @@ module WeatherCanadaMCP
     # The ECCC marine forecast (wind, weather and visibility, waves, freezing spray) for the marine area at a point, or
     # the nearest ones when the point is on land, from the marineweather-realtime collection.
     class GetMarineForecast < Base
-      NAME = "get_marine_forecast"
-      TITLE = "Get the marine forecast"
-      DESCRIPTION = <<~TEXT.tr("\n", " ").strip
-        Environment Canada's marine forecast for the marine area at a location: coastal waters, large lakes (Great
-        Lakes, Lake Winnipeg, Great Slave Lake and others) and Arctic waters. Gives wind (in knots), weather and
-        visibility, waves, air temperature and freezing spray for today to tomorrow, the extended wind forecast for the
-        following days, and the marine warnings in effect. A point on land (a harbour town, a beach) gets the nearest
-        areas within 25 km, with their distance. Some areas are seasonal and say so in status. Wind and waves are as
-        ECCC writes them; quote warnings as given. Times are UTC (ISO 8601). For weather alerts on land use get_alerts.
-      TEXT
       COLLECTION = "marineweather-realtime"
       NEARBY_KM = 25
       MAX_NEARBY = 2
@@ -22,15 +12,22 @@ module WeatherCanadaMCP
       ENDED = "ENDED"
       CONDITIONS = { "wind" => :wind, "weatherVisibility" => :weather_visibility, "airTemperature" => :air_temperature,
                      "freezingSpray" => :freezing_spray }.freeze
-      INPUT_SCHEMA = {
-        type: "object",
-        properties: { **Base::LOCATION_PROPERTIES, **Base::LANG_PROPERTY },
-        additionalProperties: false
-      }.freeze
+      tool_name "get_marine_forecast"
+      title "Get the marine forecast"
+      description <<~TEXT
+        Environment Canada's marine forecast for the marine area at a location: coastal waters, large lakes (Great
+        Lakes, Lake Winnipeg, Great Slave Lake and others) and Arctic waters. Gives wind (in knots), weather and
+        visibility, waves, air temperature and freezing spray for today to tomorrow, the extended wind forecast for the
+        following days, and the marine warnings in effect. A point on land (a harbour town, a beach) gets the nearest
+        areas within 25 km, with their distance. Some areas are seasonal and say so in status. Wind and waves are as
+        ECCC writes them; quote warnings as given. Times are UTC (ISO 8601). For weather alerts on land use get_alerts.
+      TEXT
+      location_arguments
+      argument :lang, :language
 
-      def call(arguments)
-        lang = lang(arguments)
-        point = resolve_point(arguments)
+      def call(args)
+        lang = args.lang
+        point = args.point
         data = ogc.items(COLLECTION, bbox: Geo.bbox(point.lat, point.lon, NEARBY_KM).join(","), limit: MAX_FEATURES)
         areas = matching_areas(Array(data["features"]), point)
         result = { location: point.to_h, marine_areas: areas.map { |distance, feature| area(feature, distance, lang) },

@@ -12,9 +12,12 @@ Names. Users run it over stdio or from the Docker image on GHCR. No upstream cre
 
 - `lib/weather_canada_mcp/`
   - `tools/`: one class per MCP tool (`Tools::Base` subclasses; the opt-in Avalanche Canada tools live in
-    `tools/avalanche/`, under `Tools::Avalanche::Base`); `tools.rb` lists them in order;
-    `Tools::Runner` runs a tool call, drops nulls, adds the attribution, enforces the size cap (on the JSON, not
-    on an image a tool returns), turns errors into tool errors
+    `tools/avalanche/`, under `Tools::Avalanche::Base`). A tool declares `tool_name`, `title`, `description`,
+    `location_arguments`, `argument ...` and `enabled_when` at class level and implements `call(args)`; `Argument`
+    builds the schema and checks each value, and `Registry` lists the tools and selects them by configuration.
+    `Tools::Runner` builds a new tool instance per call, drops nulls, joins the attributions the tool declared
+    (`Tools::Result`), enforces the size cap (on the JSON, not on an image a tool returns), turns `Tools::Error`s and
+    upstream errors into tool errors
   - `maps/`: `Compositor`, PNG compositing (chunky_png)
   - `sources/`: everything that fetches upstream data. `HttpClient` (GET only, fixed origins, gzip, size cap,
     retries), `RateLimiter` (GCRA, global), `Cache` (TTL with request coalescing), and a thin client per service

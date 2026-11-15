@@ -95,7 +95,7 @@ module WeatherCanadaMCP
           raise Sources::StatusError.new(response.status, "ftp.maps.canada.ca") unless response.success?
 
           load(response.body)
-        rescue Sources::Error, Error, SystemCallError, SQLite3::Exception => e
+        rescue Sources::Error, BuildError, SystemCallError, SQLite3::Exception => e
           raise Unavailable, "the place-name database could not be built: #{e.message}"
         rescue StandardError => e # malformed CSV, text or ZIP: the class says enough, the message could quote the data
           raise Unavailable, "the place-name database could not be built: the NRCan data could not be read (#{e.class})"
@@ -144,19 +144,19 @@ module WeatherCanadaMCP
           crc = Zlib.crc32
           while (chunk = stream.read(CHUNK_BYTES))
             total += chunk.bytesize
-            raise Error, "the CGN CSV is longer than its archive declares" if total > entry.size
+            raise BuildError, "the CGN CSV is longer than its archive declares" if total > entry.size
 
             crc = Zlib.crc32(chunk, crc)
             return unless write(writer, chunk)
           end
-          raise Error, "the CGN CSV is shorter than its archive declares" if total < entry.size
-          raise Error, "the CGN CSV failed its checksum" unless crc == entry.crc
+          raise BuildError, "the CGN CSV is shorter than its archive declares" if total < entry.size
+          raise BuildError, "the CGN CSV failed its checksum" unless crc == entry.crc
         end
 
         def csv_entry(archive)
           entry = Zip::File.open_buffer(StringIO.new(archive)).entries.find { |e| e.file? && e.name.end_with?(".csv") }
-          raise Error, "the CGN archive has no CSV file" unless entry
-          raise Error, "the CGN CSV is larger than #{MAX_CSV_BYTES} bytes" if entry.size > MAX_CSV_BYTES
+          raise BuildError, "the CGN archive has no CSV file" unless entry
+          raise BuildError, "the CGN CSV is larger than #{MAX_CSV_BYTES} bytes" if entry.size > MAX_CSV_BYTES
 
           entry
         end
