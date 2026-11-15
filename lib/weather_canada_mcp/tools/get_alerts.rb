@@ -2,7 +2,7 @@
 
 require "time"
 
-module WeatherCanadaMcp
+module WeatherCanadaMCP
   module Tools
     # Active ECCC weather alerts whose area covers a point, from the OGC API weather-alerts collection.
     class GetAlerts < Base

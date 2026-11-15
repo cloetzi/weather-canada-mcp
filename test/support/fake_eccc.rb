@@ -10,7 +10,7 @@ require "uri"
 require "stringio"
 require "zip"
 
-# Local stand-in for every upstream (api.weather.gc.ca, dd.weather.gc.ca, geo.weather.gc.ca, ftp.maps.canada.ca and
+# Local stand-in for every upstream (api.weather.gc.ca, geo.weather.gc.ca, ftp.maps.canada.ca and
 # Avalanche Canada's services), answering from the captured fixtures in test/fixtures. Records every request; routes can be overridden per test.
 class FakeEccc
   Request = Data.define(:path, :query, :headers)

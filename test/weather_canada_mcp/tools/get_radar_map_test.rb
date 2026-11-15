@@ -36,9 +36,9 @@ class GetRadarMapTest < Minitest::Test
     map = radar(**WHISTLER).first["map"]
 
     assert_equal ["snow", 100, 512, 512], map.values_at("precipitation", "radius_km", "width", "height")
-    assert_equal WeatherCanadaMcp::Geo.bbox(50.1, -122.95, 100), map["bounds"].values_at("min_lon", "min_lat", "max_lon", "max_lat")
+    assert_equal WeatherCanadaMCP::Geo.bbox(50.1, -122.95, 100), map["bounds"].values_at("min_lon", "min_lat", "max_lon", "max_lat")
     assert_match(%r{\Acm/h: light blue 0.1}, map["legend"])
-    assert_equal WeatherCanadaMcp::Sources::Basemap::ATTRIBUTION, map["base_map"]
+    assert_equal WeatherCanadaMCP::Sources::Basemap::ATTRIBUTION, map["base_map"]
   end
 
   def test_the_image_is_a_png_with_the_point_ringed
@@ -48,13 +48,13 @@ class GetRadarMapTest < Minitest::Test
     assert_equal %w[image image/png], image.values_at(:type, :mimeType)
     png = image[:data].unpack1("m0")
 
-    assert_equal [512, 512], WeatherCanadaMcp::Tools::MapImage.dimensions(png)
+    assert_equal [512, 512], WeatherCanadaMCP::Tools::MapImage.dimensions(png)
     canvas = ChunkyPNG::Image.from_blob(png)
-    bbox = WeatherCanadaMcp::Geo.bbox(50.1, -122.95, 100)
+    bbox = WeatherCanadaMCP::Geo.bbox(50.1, -122.95, 100)
     x = ((-122.96 - bbox[0]) / (bbox[2] - bbox[0]) * 512).floor
     y = ((bbox[3] - 50.12) / (bbox[3] - bbox[1]) * 512).floor
 
-    assert_equal WeatherCanadaMcp::Tools::MapImage::MARKER, canvas[x + 7, y]
+    assert_equal WeatherCanadaMCP::Tools::MapImage::MARKER, canvas[x + 7, y]
   end
 
   def test_asks_for_one_frame_of_each_layer
@@ -82,7 +82,7 @@ class GetRadarMapTest < Minitest::Test
 
   def test_an_unreadable_base_map_is_left_out
     content, = radar_content(**WHISTLER, routes: { "/wms/CBMT" => lambda { |_|
-      [200, { "content-type" => "image/png" }, "#{WeatherCanadaMcp::Sources::PNG_SIGNATURE}junk"]
+      [200, { "content-type" => "image/png" }, "#{WeatherCanadaMCP::Sources::PNG_SIGNATURE}junk"]
     } })
     result = JSON.parse(content.first[:text])
 

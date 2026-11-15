@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module WeatherCanadaMcp
+module WeatherCanadaMCP
   module Tools
     # Current conditions, the official text forecast, hourly forecast and sun times from the nearest City Page site.
     class GetForecast < Base

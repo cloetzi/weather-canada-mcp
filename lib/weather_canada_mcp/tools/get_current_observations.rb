@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module WeatherCanadaMcp
+module WeatherCanadaMCP
   module Tools
     # The latest surface observations (SWOB) from the ECCC and NAV CANADA stations nearest a point.
     class GetCurrentObservations < Base

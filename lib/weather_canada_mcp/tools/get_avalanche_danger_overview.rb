@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module WeatherCanadaMcp
+module WeatherCanadaMCP
   module Tools
     # Every current avalanche forecast product, with its highest danger and today's ratings.
     class GetAvalancheDangerOverview < AvalancheBase

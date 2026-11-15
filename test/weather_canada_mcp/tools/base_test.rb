@@ -3,7 +3,7 @@
 require_relative "../../test_helper"
 
 class BaseTest < Minitest::Test
-  class Count < WeatherCanadaMcp::Tools::Base
+  class Count < WeatherCanadaMCP::Tools::Base
     def call(arguments) = integer_argument(arguments, "stations", 3, 1..5)
   end
 
@@ -20,7 +20,7 @@ class BaseTest < Minitest::Test
 
   def test_integer_arguments_of_another_type_or_out_of_range_are_tool_errors
     ["2", 2.5, 0, 6.0, Float::NAN, Float::INFINITY, true].each do |value|
-      error = assert_raises(WeatherCanadaMcp::Tools::InvalidArguments) { count({ "stations" => value }) }
+      error = assert_raises(WeatherCanadaMCP::Tools::InvalidArguments) { count({ "stations" => value }) }
 
       assert_equal "stations must be a whole number from 1 to 5.", error.message
     end

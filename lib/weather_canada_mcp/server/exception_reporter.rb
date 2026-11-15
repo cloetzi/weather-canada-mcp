@@ -2,7 +2,7 @@
 
 require "json"
 
-module WeatherCanadaMcp
+module WeatherCanadaMCP
   module Server
     # The MCP SDK's exception_reporter, called for exceptions the server caught outside a tool's own handling
     # (Tools::Runner rescues those): invalid requests, failing protocol handlers, notifications that could not be sent.

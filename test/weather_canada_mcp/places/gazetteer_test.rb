@@ -4,7 +4,7 @@ require_relative "../../test_helper"
 
 # Runs against the database built from test/fixtures/cgn/cgn_sample.csv (real CGN rows).
 class GazetteerTest < Minitest::Test
-  Gazetteer = WeatherCanadaMcp::Places::Gazetteer
+  Gazetteer = WeatherCanadaMCP::Places::Gazetteer
 
   def setup = @gazetteer = Gazetteer.new(gazetteer_path)
 

@@ -5,9 +5,9 @@ require "json"
 require "time"
 require "uri"
 
-module WeatherCanadaMcp
+module WeatherCanadaMCP
   module Sources
-    # Avalanche Canada's public services, used only when AVALANCHE_CANADA_ENABLED is true: avalanche forecast products
+    # Avalanche Canada's public services, used only when WEATHER_MCP_AVALANCHE is true: avalanche forecast products
     # and their metadata, its mountain weather stations, and Mountain Information Network (MIN) field reports. Returns
     # parsed JSON, cached per URL.
     class AvalancheCanada

@@ -3,7 +3,7 @@
 require_relative "../test_helper"
 
 class ConfigTest < Minitest::Test
-  Config = WeatherCanadaMcp::Config
+  Config = WeatherCanadaMCP::Config
 
   def config(transport: :http, **values) = Config.from_env(env(**values), transport:)
 
@@ -16,12 +16,12 @@ class ConfigTest < Minitest::Test
     config = Config.from_env({ "WEATHER_MCP_AUTH_TOKEN" => TestHelpers::AUTH_TOKEN })
 
     assert_equal Config::UPSTREAMS, config.upstreams
-    assert_equal WeatherCanadaMcp::Server::ListenAddress.new(host: "127.0.0.1", port: 8080), config.listen_address
+    assert_equal WeatherCanadaMCP::Server::ListenAddress.new(host: "127.0.0.1", port: 8080), config.listen_address
     assert_equal "/mcp", config.path
     assert_equal "en", config.lang
     assert_in_delta 1.0, config.requests_per_second
     assert_nil config.tools
-    assert_equal "weather-canada-mcp/#{WeatherCanadaMcp::VERSION} (+https://github.com/cloetzi/weather-canada-mcp)", config.user_agent
+    assert_equal "weather-canada-mcp/#{WeatherCanadaMCP::VERSION} (+https://github.com/cloetzi/weather-canada-mcp)", config.user_agent
   end
 
   def test_auth_token_is_required_for_http
@@ -54,23 +54,23 @@ class ConfigTest < Minitest::Test
   end
 
   def test_upstreams_can_point_at_any_http_origin
-    config = config(WEATHER_MCP_API_URL: "http://127.0.0.1:9/", WEATHER_MCP_CGN_URL: "https://mirror.example/cgn")
+    config = config(WEATHER_MCP_ECCC_API_URL: "http://127.0.0.1:9/", WEATHER_MCP_CGN_URL: "https://mirror.example/cgn")
 
-    assert_equal "http://127.0.0.1:9", config.upstreams[:api]
+    assert_equal "http://127.0.0.1:9", config.upstreams[:eccc_api]
     assert_equal "https://mirror.example/cgn", config.upstreams[:cgn]
   end
 
   def test_upstreams_reject_credentials_queries_and_other_schemes
     ["ftp://example.com", "https://user:pw@example.com", "https://example.com/?a=1", "https://example.com/#x", "not a url"].each do |value|
-      error = assert_raises(Config::Error, value) { config(WEATHER_MCP_API_URL: value) }
+      error = assert_raises(Config::Error, value) { config(WEATHER_MCP_ECCC_API_URL: value) }
 
-      assert_match(/WEATHER_MCP_API_URL/, error.message)
+      assert_match(/WEATHER_MCP_ECCC_API_URL/, error.message)
       refute_includes error.message, "pw@", value
     end
   end
 
   def test_user_agent_contact
-    assert_equal "weather-canada-mcp/#{WeatherCanadaMcp::VERSION} (+ops@example.com)",
+    assert_equal "weather-canada-mcp/#{WeatherCanadaMCP::VERSION} (+ops@example.com)",
                  config(WEATHER_MCP_USER_AGENT_CONTACT: "ops@example.com").user_agent
     assert_config_error(/USER_AGENT_CONTACT/, WEATHER_MCP_USER_AGENT_CONTACT: "a b\r\nX-Evil: 1")
   end
@@ -91,7 +91,7 @@ class ConfigTest < Minitest::Test
   end
 
   def test_unknown_tools_fail_at_startup
-    error = assert_raises(WeatherCanadaMcp::Error) { application(nil, WEATHER_MCP_TOOLS: "get_weather") }
+    error = assert_raises(WeatherCanadaMCP::Error) { application(nil, WEATHER_MCP_TOOLS: "get_weather") }
 
     assert_match(/unknown tools .*get_weather/, error.message)
   end

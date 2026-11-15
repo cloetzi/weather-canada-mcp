@@ -4,11 +4,11 @@ require_relative "lib/weather_canada_mcp/version"
 
 Gem::Specification.new do |spec|
   spec.name = "weather-canada-mcp"
-  spec.version = WeatherCanadaMcp::VERSION
+  spec.version = WeatherCanadaMCP::VERSION
   spec.authors = ["cloetzi"]
   spec.summary = "Unofficial MCP server for Environment and Climate Change Canada weather open data"
   spec.description = "Read-only MCP server with outdoor-focused tools (forecasts, alerts, observations, rivers, " \
-                     "air quality, snow, radar, marine) built on ECCC's MSC GeoMet and Datamart open data."
+                     "air quality, snow, radar, marine) built on ECCC's MSC GeoMet open data."
   spec.homepage = "https://github.com/cloetzi/weather-canada-mcp"
   spec.license = "Apache-2.0"
   spec.required_ruby_version = ">= 4.0"

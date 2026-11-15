@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module WeatherCanadaMcp
+module WeatherCanadaMCP
   module Places
     # Finds the City Page forecast sites nearest a point. The site list (about 850 sites) comes from the OGC API and is
     # cached for a day.

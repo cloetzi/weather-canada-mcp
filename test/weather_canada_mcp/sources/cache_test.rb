@@ -5,7 +5,7 @@ require_relative "../../test_helper"
 class CacheTest < Minitest::Test
   def cache(**)
     @now = 0.0
-    WeatherCanadaMcp::Sources::Cache.new(clock: -> { @now }, **)
+    WeatherCanadaMCP::Sources::Cache.new(clock: -> { @now }, **)
   end
 
   def test_caches_until_the_ttl_expires
@@ -57,9 +57,9 @@ class CacheTest < Minitest::Test
         task.async do
           cache.fetch("k", ttl: 10) do
             sleep 0.01
-            raise WeatherCanadaMcp::Sources::Error, "down"
+            raise WeatherCanadaMCP::Sources::Error, "down"
           end
-        rescue WeatherCanadaMcp::Sources::Error => e
+        rescue WeatherCanadaMCP::Sources::Error => e
           e.message
         end
       end.map(&:wait)
@@ -75,7 +75,7 @@ class CacheTest < Minitest::Test
       loader = task.async { cache.fetch("k", ttl: 10) { sleep 10 } }
       waiter = task.async do
         cache.fetch("k", ttl: 10) { flunk "coalesced callers do not load" }
-      rescue WeatherCanadaMcp::Sources::Error => e
+      rescue WeatherCanadaMCP::Sources::Error => e
         e.message
       end
       sleep 0.01

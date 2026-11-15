@@ -6,7 +6,7 @@ class RateLimiterTest < Minitest::Test
   def limiter(rate:, burst: 1)
     @now = 0.0
     @slept = []
-    WeatherCanadaMcp::Sources::RateLimiter.new(rate:, burst:, clock: -> { @now }, sleeper: ->(seconds) { @slept << seconds })
+    WeatherCanadaMCP::Sources::RateLimiter.new(rate:, burst:, clock: -> { @now }, sleeper: ->(seconds) { @slept << seconds })
   end
 
   def test_spaces_requests_at_the_rate
@@ -33,6 +33,6 @@ class RateLimiterTest < Minitest::Test
   end
 
   def test_rejects_a_non_positive_rate
-    assert_raises(ArgumentError) { WeatherCanadaMcp::Sources::RateLimiter.new(rate: 0) }
+    assert_raises(ArgumentError) { WeatherCanadaMCP::Sources::RateLimiter.new(rate: 0) }
   end
 end

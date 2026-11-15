@@ -3,7 +3,7 @@
 require_relative "../../test_helper"
 
 class HostOriginGuardTest < Minitest::Test
-  def guard(hosts: [], origins: []) = WeatherCanadaMcp::Server::HostOriginGuard.new(allowed_hosts: hosts, allowed_origins: origins)
+  def guard(hosts: [], origins: []) = WeatherCanadaMCP::Server::HostOriginGuard.new(allowed_hosts: hosts, allowed_origins: origins)
 
   def test_loopback_hosts_are_allowed_by_default
     %w[localhost localhost:8080 127.0.0.1 127.0.0.1:8080 [::1] [::1]:8080 LOCALHOST:8080].each do |host|

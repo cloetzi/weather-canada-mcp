@@ -63,7 +63,7 @@ class GetAirQualityTest < Minitest::Test
   end
 
   def test_risk_categories_follow_the_rounded_index
-    tool = WeatherCanadaMcp::Tools::GetAirQuality.new(nil)
+    tool = WeatherCanadaMCP::Tools::GetAirQuality.new(nil)
     risks = [1.4, 3.4, 3.5, 6.4, 6.5, 10.4, 10.5, 12].map { |value| tool.send(:index, value, "en").values_at(:risk, :aqhi_display) }
 
     assert_equal [%w[low 1], %w[low 3], %w[moderate 4], %w[moderate 6], %w[high 7], %w[high 10], ["very high", "10+"],

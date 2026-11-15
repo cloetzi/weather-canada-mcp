@@ -47,7 +47,7 @@ class GetAvalancheForecastTest < Minitest::Test
     summary = report["summaries"].find { |s| s.dig("type", "value") == "snowpack-summary" }["content"]
 
     assert_equal summary.strip.delete_prefix("<p>").delete_suffix("</p>"), result["snowpack_summary"]
-    assert_equal WeatherCanadaMcp::HtmlText.call(report["highlights"]), result["highlights"]
+    assert_equal WeatherCanadaMCP::HtmlText.call(report["highlights"]), result["highlights"]
     assert_equal report["terrainAndTravelAdvice"], result["terrain_and_travel_advice"]
     assert_equal report.dig("confidence", "statements"), result.dig("confidence", "statements")
     refute_match(/<[a-z]/i, JSON.generate(result))

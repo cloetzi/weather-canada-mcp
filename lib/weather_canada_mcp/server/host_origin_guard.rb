@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module WeatherCanadaMcp
+module WeatherCanadaMCP
   module Server
     # Validates the Host and Origin headers of MCP requests against DNS rebinding and cross-site browser requests.
     # It replaces the SDK's check, which is all-or-nothing: `*` in the allowed hosts must relax only the Host check

@@ -2,7 +2,7 @@
 
 require "uri"
 
-module WeatherCanadaMcp
+module WeatherCanadaMCP
   module Sources
     # NRCan's Canada Base Map, transportation (CBMT) WMS at maps.geogratis.gc.ca: an opaque PNG of roads, places, water
     # and terrain shading over an area, under the Open Government Licence - Canada. It changes rarely, so images are

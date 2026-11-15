@@ -3,7 +3,7 @@
 require "json"
 require "uri"
 
-module WeatherCanadaMcp
+module WeatherCanadaMCP
   module Sources
     # MSC GeoMet WMS (geo.weather.gc.ca/geomet): the value of one layer at one point and one time, from GetFeatureInfo
     # on a 3x3 pixel map centred on the point, and a transparent PNG of one layer over an area (GetMap). GeoMet answers

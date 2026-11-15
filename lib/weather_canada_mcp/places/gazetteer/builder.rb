@@ -5,7 +5,7 @@ require "fileutils"
 require "sqlite3"
 require "time"
 
-module WeatherCanadaMcp
+module WeatherCanadaMCP
   module Places
     class Gazetteer
       # Loads the CGN CSV (one row per name) into a new SQLite database, written to a temporary file and renamed into

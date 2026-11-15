@@ -79,7 +79,7 @@ class GetFieldReportsTest < Minitest::Test
   end
 
   def test_sizes_and_dates_are_not_mistaken_for_contact_details
-    tool = WeatherCanadaMcp::Tools::GetFieldReports.new(nil)
+    tool = WeatherCanadaMCP::Tools::GetFieldReports.new(nil)
     text = "Size 1.5 at 2500 m on 2026-11-12; CTM13 30cm down, 35 degrees."
 
     assert_equal text, tool.send(:redact, text)

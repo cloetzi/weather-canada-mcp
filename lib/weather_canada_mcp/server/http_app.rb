@@ -3,7 +3,7 @@
 require "json"
 require "mcp"
 
-module WeatherCanadaMcp
+module WeatherCanadaMCP
   module Server
     # Rack application: an unauthenticated liveness probe at HealthCheck::PATH and the MCP endpoint, which runs the
     # SDK's Streamable HTTP transport in stateless JSON mode (no sessions, no server-held streams).

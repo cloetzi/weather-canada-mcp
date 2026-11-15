@@ -3,7 +3,7 @@
 require_relative "../../test_helper"
 
 class AvalancheCanadaTest < Minitest::Test
-  def source = WeatherCanadaMcp::Sources::AvalancheCanada.new(http: nil, cache: nil)
+  def source = WeatherCanadaMCP::Sources::AvalancheCanada.new(http: nil, cache: nil)
 
   def test_rejects_arguments_that_would_reach_a_path_or_query_unchecked
     assert_raises(ArgumentError) { source.product_at(51.42, -116.18, "../en") }
@@ -26,7 +26,7 @@ class AvalancheCanadaTest < Minitest::Test
       fake.route("/forecasts/en/metadata") { [200, { "content-type" => "application/json" }, '{"not":"a list"}'] }
       app = application(fake, **AVALANCHE_ENABLED)
 
-      assert_raises(WeatherCanadaMcp::Sources::InvalidResponse) { app.avalanche.metadata("en") }
+      assert_raises(WeatherCanadaMCP::Sources::InvalidResponse) { app.avalanche.metadata("en") }
     ensure
       app&.close
     end

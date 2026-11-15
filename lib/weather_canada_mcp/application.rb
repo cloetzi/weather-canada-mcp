@@ -2,7 +2,7 @@
 
 require "mcp"
 
-module WeatherCanadaMcp
+module WeatherCanadaMCP
   # Wires configuration, upstream client, cache, sources, gazetteer and tools into an MCP server.
   class Application
     SERVER_NAME = "weather-canada"
@@ -36,7 +36,7 @@ module WeatherCanadaMcp
     def self.unknown_tools_message(unknown)
       message = "unknown tools in WEATHER_MCP_TOOLS or WEATHER_MCP_EXCLUDE_TOOLS: #{unknown.join(", ")}"
       opt_in = (Tools.avalanche + Tools.field_reports).map(&:tool_name) & unknown
-      opt_in.any? ? "#{message} (#{opt_in.join(", ")} need AVALANCHE_CANADA_ENABLED; see docs/configuration.md)" : message
+      opt_in.any? ? "#{message} (#{opt_in.join(", ")} need WEATHER_MCP_AVALANCHE; see docs/configuration.md)" : message
     end
 
     def initialize(config, logger: Logger.new(level: config.log_level, format: config.log_format), clock: -> { Time.now })
@@ -69,7 +69,7 @@ module WeatherCanadaMcp
 
     def basemap = @basemap ||= Sources::Basemap.new(http:, cache: image_cache)
 
-    def avalanche = (@avalanche ||= Sources::AvalancheCanada.new(http:, cache:) if config.avalanche_canada_enabled)
+    def avalanche = (@avalanche ||= Sources::AvalancheCanada.new(http:, cache:) if config.avalanche_enabled)
 
     def places = @places ||= Places::Gazetteer::Provider.new(path: config.gazetteer_path, http:, logger:)
 
@@ -78,7 +78,7 @@ module WeatherCanadaMcp
                                       places:, config:, clock: @clock)
     end
 
-    def instructions = config.avalanche_canada_enabled ? "#{INSTRUCTIONS} #{AVALANCHE_INSTRUCTIONS}" : INSTRUCTIONS
+    def instructions = config.avalanche_enabled ? "#{INSTRUCTIONS} #{AVALANCHE_INSTRUCTIONS}" : INSTRUCTIONS
 
     # A fresh MCP server per transport; the SDK binds one transport to one server.
     def mcp_server

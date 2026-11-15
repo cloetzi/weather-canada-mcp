@@ -3,7 +3,7 @@
 require "json"
 require "time"
 
-module WeatherCanadaMcp
+module WeatherCanadaMCP
   # Minimal structured logger writing to stderr (stdout belongs to the stdio transport).
   # Callers pass fields, never secrets or tool arguments: MCP tokens and the locations people ask about are never logged.
   class Logger

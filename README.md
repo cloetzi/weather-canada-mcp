@@ -31,7 +31,7 @@ the required attribution. `bin/weather-canada-mcp tools` prints the full schemas
 
 ### Avalanche Canada (opt-in)
 
-Off unless `AVALANCHE_CANADA_ENABLED=true` (and `AVALANCHE_CANADA_FIELD_REPORTS_ENABLED=true` for field reports): see
+Off unless `WEATHER_MCP_AVALANCHE=true` (and `WEATHER_MCP_AVALANCHE_REPORTS=true` for field reports): see
 [Avalanche Canada data](#avalanche-canada-data) and [docs/configuration.md](docs/configuration.md).
 
 | Tool | What it answers | Source |

@@ -2,7 +2,7 @@
 
 require "date"
 
-module WeatherCanadaMcp
+module WeatherCanadaMCP
   # Local calendar dates in Canadian time zones, without a time zone database: each zone's standard offset and whether
   # it keeps daylight time (second Sunday in March to first Sunday in November, at 02:00 local). Unknown or missing
   # zones use UTC-8, Canada's westernmost offset, so a day still counts as today while it is today anywhere in Canada.

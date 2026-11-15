@@ -4,7 +4,7 @@ require_relative "../../test_helper"
 require "net/http"
 
 class HealthCheckTest < Minitest::Test
-  HealthCheck = WeatherCanadaMcp::Server::HealthCheck
+  HealthCheck = WeatherCanadaMCP::Server::HealthCheck
 
   def test_wildcard_binds_are_probed_over_loopback_of_the_same_family
     assert_equal "127.0.0.1", HealthCheck.probe_host("0.0.0.0")
@@ -26,7 +26,7 @@ class HealthCheckTest < Minitest::Test
   end
 
   def test_needs_no_secrets_but_validates_the_listen_address
-    error = assert_raises(WeatherCanadaMcp::Config::Error) { HealthCheck.url({ "WEATHER_MCP_PORT" => "0" }) }
+    error = assert_raises(WeatherCanadaMCP::Config::Error) { HealthCheck.url({ "WEATHER_MCP_PORT" => "0" }) }
 
     assert_match(/WEATHER_MCP_PORT must be between 1 and 65535/, error.message)
   end

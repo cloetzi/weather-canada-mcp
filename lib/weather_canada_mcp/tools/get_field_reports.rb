@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module WeatherCanadaMcp
+module WeatherCanadaMCP
   module Tools
     # Recent Mountain Information Network (MIN) reports near a point. Only listed fields are copied, so the submitter's
     # username, user id and anything else about them never reach the result; contact details in the text are removed.

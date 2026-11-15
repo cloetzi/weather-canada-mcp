@@ -3,7 +3,7 @@
 require "async"
 require "json"
 
-module WeatherCanadaMcp
+module WeatherCanadaMCP
   # Entry point for bin/weather-canada-mcp.
   class CLI
     USAGE = <<~TEXT
@@ -38,7 +38,7 @@ module WeatherCanadaMcp
       when "help", "--help", "-h" then puts USAGE
       else usage_error("unknown command: #{command}")
       end
-    rescue WeatherCanadaMcp::Error => e
+    rescue WeatherCanadaMCP::Error => e
       warn "weather-canada-mcp: #{e.message}"
       exit 78
     end
@@ -111,7 +111,7 @@ module WeatherCanadaMcp
 
     # Load all code up front so nothing autoloads inside request fibers and load errors surface at startup.
     def boot(transport)
-      Zeitwerk::Loader.eager_load_namespace(WeatherCanadaMcp)
+      Zeitwerk::Loader.eager_load_namespace(WeatherCanadaMCP)
       Application.new(Config.from_env(transport:)).tap { |app| warn_upstreams(app) }
     end
 

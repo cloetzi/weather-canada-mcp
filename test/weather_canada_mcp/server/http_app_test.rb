@@ -77,7 +77,7 @@ class HttpAppTest < Minitest::Test
   def test_rejections_are_logged_with_a_hint
     with_fake_eccc do |fake|
       io = StringIO.new
-      app = app(fake, logger: WeatherCanadaMcp::Logger.new(io:, level: "warn"))
+      app = app(fake, logger: WeatherCanadaMCP::Logger.new(io:, level: "warn"))
 
       assert_equal "host not allowed", JSON.parse(rpc(app, "tools/list", host: "evil.example").body)["error"]
       assert_equal "origin not allowed", JSON.parse(rpc(app, "tools/list", HTTP_ORIGIN: "https://evil.example").body)["error"]
@@ -90,7 +90,7 @@ class HttpAppTest < Minitest::Test
   def test_health_checks_are_logged_only_at_debug
     with_fake_eccc do |fake|
       io = StringIO.new
-      app = app(fake, logger: WeatherCanadaMcp::Logger.new(io:, level: "info"))
+      app = app(fake, logger: WeatherCanadaMCP::Logger.new(io:, level: "info"))
       app.get("/healthz")
       app.get("/missing")
 
@@ -112,7 +112,7 @@ class HttpAppTest < Minitest::Test
     with_fake_eccc do |fake|
       tools = result(rpc(app(fake, WEATHER_MCP_EXCLUDE_TOOLS: "find_location"), "tools/list"))["tools"]
 
-      assert_equal WeatherCanadaMcp::Tools.all.map(&:tool_name).sort - ["find_location"], tools.map { |tool| tool["name"] }.sort
+      assert_equal WeatherCanadaMCP::Tools.all.map(&:tool_name).sort - ["find_location"], tools.map { |tool| tool["name"] }.sort
       assert(tools.all? { |tool| tool.dig("annotations", "readOnlyHint") })
     end
   end

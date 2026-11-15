@@ -3,10 +3,11 @@
 require "zeitwerk"
 
 loader = Zeitwerk::Loader.for_gem
-loader.inflector.inflect("cli" => "CLI", "ogc_api" => "OgcApi", "http" => "HTTP")
+loader.inflector.inflect("cli" => "CLI", "ogc_api" => "OgcApi", "http" => "HTTP",
+                         "weather_canada_mcp" => "WeatherCanadaMCP")
 loader.setup
 
-module WeatherCanadaMcp
+module WeatherCanadaMCP
   # Base of every error this gem raises. The CLI reports one that reaches it as a message, without a backtrace.
   class Error < StandardError; end
 

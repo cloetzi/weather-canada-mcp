@@ -2,7 +2,7 @@
 
 require "ipaddr"
 
-module WeatherCanadaMcp
+module WeatherCanadaMCP
   module Server
     ListenAddress = Data.define(:host, :port)
 

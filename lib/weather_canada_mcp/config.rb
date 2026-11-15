@@ -2,11 +2,11 @@
 
 require "uri"
 
-module WeatherCanadaMcp
+module WeatherCanadaMCP
   # Server configuration from environment variables. Secrets can also be read from files
   # (`*_FILE`, e.g. Docker secrets). Invalid configuration fails at startup with every problem listed.
   class Config
-    class Error < WeatherCanadaMcp::Error; end
+    class Error < WeatherCanadaMCP::Error; end
 
     MIN_AUTH_TOKEN_LENGTH = 32
     LOG_LEVELS = %w[debug info warn error].freeze
@@ -16,24 +16,23 @@ module WeatherCanadaMcp
 
     # ECCC and NRCan hosts. Each can be pointed at a local fake for tests (WEATHER_MCP_<NAME>_URL).
     UPSTREAMS = {
-      api: "https://api.weather.gc.ca",
-      datamart: "https://dd.weather.gc.ca",
+      eccc_api: "https://api.weather.gc.ca",
       geomet: "https://geo.weather.gc.ca",
       cgn: "https://ftp.maps.canada.ca", # NRCan Canadian Geographical Names, for the gazetteer
       basemap: "https://maps.geogratis.gc.ca" # NRCan Canada Base Map (CBMT), under radar images
     }.freeze
-    # Avalanche Canada's forecast and mountain weather services: origins only when AVALANCHE_CANADA_ENABLED is true.
+    # Avalanche Canada's forecast and mountain weather services: origins only when WEATHER_MCP_AVALANCHE is true.
     AVALANCHE_UPSTREAMS = {
       avalanche: "https://avcan-services-api.prod.avalanche.ca",
       avalanche_weather: "https://weather.prod.avalanche.ca"
     }.freeze
-    AVALANCHE_URL_VARIABLES = { avalanche: "AVALANCHE_CANADA_URL", avalanche_weather: "AVALANCHE_CANADA_WEATHER_URL" }.freeze
+    AVALANCHE_URL_VARIABLES = { avalanche: "WEATHER_MCP_AVALANCHE_URL", avalanche_weather: "WEATHER_MCP_AVALANCHE_STATIONS_URL" }.freeze
     DEFAULT_UPSTREAMS = UPSTREAMS.merge(AVALANCHE_UPSTREAMS).freeze
 
     ATTRIBUTES = %i[
       auth_tokens auth_disabled listen_address path allowed_hosts allowed_origins tools exclude_tools lang
       user_agent_contact cache_scale upstreams timeout max_concurrency requests_per_second max_response_bytes
-      max_download_bytes gazetteer_path log_level log_format avalanche_canada_enabled avalanche_canada_field_reports_enabled
+      max_download_bytes gazetteer_path log_level log_format avalanche_enabled avalanche_reports_enabled
     ].freeze
 
     attr_reader(*ATTRIBUTES)
@@ -56,8 +55,8 @@ module WeatherCanadaMcp
       @lang = choice("WEATHER_MCP_LANG", "en", LANGS)
       @user_agent_contact = contact_value
       @cache_scale = float("WEATHER_MCP_CACHE_SCALE", 1.0, 0.0..100.0)
-      @avalanche_canada_enabled = boolean("AVALANCHE_CANADA_ENABLED", false)
-      @avalanche_canada_field_reports_enabled = field_reports_value
+      @avalanche_enabled = boolean("WEATHER_MCP_AVALANCHE", false)
+      @avalanche_reports_enabled = field_reports_value
       @upstreams = upstreams_value
       @timeout = integer("WEATHER_MCP_TIMEOUT", 20, 1..300)
       @max_concurrency = integer("WEATHER_MCP_MAX_CONCURRENCY", 4, 1..16)
@@ -125,16 +124,16 @@ module WeatherCanadaMcp
 
     # Avalanche Canada publishes no open licence, so its services are off unless enabled; field reports need both flags.
     def field_reports_value
-      enabled = boolean("AVALANCHE_CANADA_FIELD_REPORTS_ENABLED", false)
-      @errors << "AVALANCHE_CANADA_FIELD_REPORTS_ENABLED=true needs AVALANCHE_CANADA_ENABLED=true as well" if enabled && !@avalanche_canada_enabled
-      enabled && @avalanche_canada_enabled
+      enabled = boolean("WEATHER_MCP_AVALANCHE_REPORTS", false)
+      @errors << "WEATHER_MCP_AVALANCHE_REPORTS=true needs WEATHER_MCP_AVALANCHE=true as well" if enabled && !@avalanche_enabled
+      enabled && @avalanche_enabled
     end
 
     # The Avalanche Canada URLs are validated even when disabled, but only become origins once enabled.
     def upstreams_value
       eccc = UPSTREAMS.to_h { |name, default| [name, upstream_value("WEATHER_MCP_#{name.upcase}_URL", default)] }
       avalanche = AVALANCHE_UPSTREAMS.to_h { |name, default| [name, upstream_value(AVALANCHE_URL_VARIABLES.fetch(name), default)] }
-      (@avalanche_canada_enabled ? eccc.merge(avalanche) : eccc).freeze
+      (@avalanche_enabled ? eccc.merge(avalanche) : eccc).freeze
     end
 
     # Requests carry no credentials, so any http(s) origin is allowed (a local fake, a caching proxy, a mirror).

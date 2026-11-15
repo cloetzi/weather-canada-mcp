@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module WeatherCanadaMcp
+module WeatherCanadaMCP
   module Tools
     # Place name (or coordinates) to candidate places and the nearest City Page forecast sites.
     class FindLocation < Base

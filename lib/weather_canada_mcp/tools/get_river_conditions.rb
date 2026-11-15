@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module WeatherCanadaMcp
+module WeatherCanadaMCP
   module Tools
     # Real-time water level and flow at the nearest hydrometric gauges, with the recent trend and how the flow compares
     # with the historical mean for the month (HYDAT monthly means).

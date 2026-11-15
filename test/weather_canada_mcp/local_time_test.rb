@@ -3,7 +3,7 @@
 require_relative "../test_helper"
 
 class LocalTimeTest < Minitest::Test
-  LocalTime = WeatherCanadaMcp::LocalTime
+  LocalTime = WeatherCanadaMCP::LocalTime
 
   def test_dates_in_mountain_time_across_daylight_saving
     # MST (UTC-7) in winter, MDT (UTC-6) in summer.
