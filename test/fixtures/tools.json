@@ -78,7 +78,7 @@
   {
     "name": "get_forecast",
     "title": "Get the weather forecast",
-    "description": "Environment Canada's forecast for the nearest forecast site: current conditions, the official forecast by period (today, tonight, then about 6 days, with snow levels in the mountains where ECCC issues them), an hourly forecast, sunrise and sunset, and active warning headlines. The result names the site and its distance. For full alert text use get_alerts.",
+    "description": "Environment Canada's forecast for the nearest forecast site: current conditions, the official forecast by period (today, tonight, then about 6 days, with snow levels in the mountains where ECCC issues them), an hourly forecast, sunrise and sunset, and active warning headlines. The result names the site and its distance; a distant site, or one at a different elevation, may not match backcountry conditions. For full alert text use get_alerts.",
     "input_schema": {
       "type": "object",
       "properties": {
@@ -173,7 +173,7 @@
   {
     "name": "get_alerts",
     "title": "Get weather alerts",
-    "description": "Active Environment Canada weather alerts (warnings, watches, advisories, statements) for a location, with the official text as issued. \"alerts\" are those whose area contains the point; \"nearby_alerts\" are brief entries for areas within a few km. An empty \"alerts\" list means none in effect. Quote alert text as given.",
+    "description": "Active Environment Canada weather alerts (warnings, watches, advisories, statements) for a location, with the official text as issued. \"alerts\" are those whose area contains the point; \"nearby_alerts\" are brief entries for areas within a few km. An empty \"alerts\" list means none in effect. Quote alert text as given; do not reword or shorten safety instructions.",
     "input_schema": {
       "type": "object",
       "properties": {
@@ -550,7 +550,7 @@
   {
     "name": "get_marine_forecast",
     "title": "Get the marine forecast",
-    "description": "Environment Canada's marine forecast for the marine area at a location (coastal waters, large lakes, Arctic waters): wind in knots, weather and visibility, waves, air temperature and freezing spray for today and tomorrow, the extended wind forecast, and marine warnings in effect. A point on land gets the nearest areas within 25 km. Quote warnings as given. For alerts on land use get_alerts.",
+    "description": "Environment Canada's marine forecast for the marine area at a location (coastal waters, large lakes, Arctic waters): wind in knots, weather and visibility, waves, air temperature and freezing spray for today and tomorrow, the extended wind forecast, and marine warnings in effect. A point on land gets the nearest areas within 25 km. Quote warnings as given, without rewording or shortening. For alerts on land use get_alerts.",
     "input_schema": {
       "type": "object",
       "properties": {
@@ -614,7 +614,7 @@
   {
     "name": "get_climate_context",
     "title": "Get climate normals and records",
-    "description": "Climate context for a location and date, to judge whether a forecast is unusual: the daily records for that calendar day (highest and lowest temperatures, most precipitation and snowfall, with the year of each) from the nearest long-term climate station (within 100 km), and the monthly 1981-2010 climate normals at the nearest normals station (within 50 km). The stations are usually in valleys and towns, so mountain conditions differ. date defaults to today.",
+    "description": "Climate context for a location and date, to judge whether a forecast is unusual: the daily records for that calendar day (highest and lowest temperatures, most precipitation and snowfall, with the year of each) from the nearest long-term climate place (within 100 km; it joins nearby stations, and a span's \"to\" is given only when its series has ended), and the monthly 1981-2010 climate normals at the nearest normals station (within 50 km). The stations are usually in valleys and towns, so mountain conditions differ. date defaults to today.",
     "input_schema": {
       "type": "object",
       "properties": {

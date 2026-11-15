@@ -66,7 +66,7 @@ module WeatherCanadaMCP
         def outputs = @outputs ||= {}
 
         def output_schema
-          common = { **(location_arguments? ? { location: { type: "object", description: "The point the result is for." } } : {}) }
+          common = location_arguments? ? { location: { type: "object", description: "The point the result is for." } } : {}
           tail = { note: { type: "string", description: "Anything the caller should know about this result." },
                    attribution: { type: "string", description: "The data credit to pass on." } }
           { type: "object", properties: { **common, **outputs, **tail }, required: %w[attribution] }

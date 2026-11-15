@@ -59,7 +59,7 @@ module WeatherCanadaMCP
            -> { wms_value(BLOWING_SNOW, point, time: to) }], &:call
         )
         { valid_from: from, valid_until: to, **level, new_snow_water_mm: snow&.value&.round(1),
-          new_snow_cm_estimate: snow&.value&.then { |water| (water * SNOW_TO_LIQUID / 10.0).round(1) },
+          new_snow_cm_estimate: snow&.value&.then { |water| snow_cm(water) },
           blowing_snow_probability_pct: blowing&.value&.round, reference_times: [level[:run], time(snow&.reference_time)].compact }
       end
 
@@ -77,13 +77,16 @@ module WeatherCanadaMCP
         {}
       end
 
+      # Centimetres of snow for millimetres of water at SNOW_TO_LIQUID.
+      def snow_cm(water_mm) = (water_mm * SNOW_TO_LIQUID / 10.0).round(1)
+
       def shape(point, steps, step)
         runs = steps.flat_map { |entry| entry.delete(:reference_times) }.uniq.sort
         steps.each { |entry| entry.delete(:run) }
         amounts = steps.filter_map { |entry| entry[:new_snow_water_mm] }
         result = { location: point.to_h, step_hours: step, steps:, total_new_snow_water_mm: (amounts.sum.round(1) if amounts.any?),
-                   total_new_snow_cm_estimate: (amounts.sum * SNOW_TO_LIQUID / 10.0).round(1).then { |cm| cm if amounts.any? },
-                   snow_to_liquid_ratio: SNOW_TO_LIQUID, model_runs: runs }
+                   total_new_snow_cm_estimate: (snow_cm(amounts.sum) if amounts.any?),
+                   snow_to_liquid_ratio: (SNOW_TO_LIQUID if amounts.any?), model_runs: runs }
         missing = steps.count { |entry| entry.except(:valid_from, :valid_until).values.all?(&:nil?) }
         if missing.positive?
           result[:note] = "The models have no values for #{missing} of the steps (beyond the latest run, or outside the model area)."

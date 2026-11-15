@@ -18,7 +18,7 @@ module WeatherCanadaMCP
         Environment Canada's marine forecast for the marine area at a location (coastal waters, large lakes, Arctic
         waters): wind in knots, weather and visibility, waves, air temperature and freezing spray for today and tomorrow,
         the extended wind forecast, and marine warnings in effect. A point on land gets the nearest areas within 25 km.
-        Quote warnings as given. For alerts on land use get_alerts.
+        Quote warnings as given, without rewording or shortening. For alerts on land use get_alerts.
       TEXT
       location_arguments
       argument :lang, :language

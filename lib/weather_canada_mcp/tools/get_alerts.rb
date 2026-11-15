@@ -14,7 +14,7 @@ module WeatherCanadaMCP
       description <<~TEXT
         Active Environment Canada weather alerts (warnings, watches, advisories, statements) for a location, with the
         official text as issued. "alerts" are those whose area contains the point; "nearby_alerts" are brief entries for
-        areas within a few km. An empty "alerts" list means none in effect. Quote alert text as given.
+        areas within a few km. An empty "alerts" list means none in effect. Quote alert text as given; do not reword or shorten safety instructions.
       TEXT
       location_arguments
       argument :lang, :language

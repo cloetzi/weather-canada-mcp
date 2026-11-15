@@ -26,7 +26,7 @@ module WeatherCanadaMCP
       description <<~TEXT
         Climate context for a location and date, to judge whether a forecast is unusual: the daily records for that
         calendar day (highest and lowest temperatures, most precipitation and snowfall, with the year of each) from the
-        nearest long-term climate station (within 100 km), and the monthly 1981-2010 climate normals at the nearest normals
+        nearest long-term climate place (within 100 km; it joins nearby stations, and a span's "to" is given only when its series has ended), and the monthly 1981-2010 climate normals at the nearest normals
         station (within 50 km). The stations are usually in valleys and towns, so mountain conditions differ. date defaults
         to today.
       TEXT

@@ -11,7 +11,7 @@ module WeatherCanadaMCP
       description <<~TEXT
         Environment Canada's forecast for the nearest forecast site: current conditions, the official forecast by period
         (today, tonight, then about 6 days, with snow levels in the mountains where ECCC issues them), an hourly forecast,
-        sunrise and sunset, and active warning headlines. The result names the site and its distance. For full alert text
+        sunrise and sunset, and active warning headlines. The result names the site and its distance; a distant site, or one at a different elevation, may not match backcountry conditions. For full alert text
         use get_alerts.
       TEXT
       location_arguments
