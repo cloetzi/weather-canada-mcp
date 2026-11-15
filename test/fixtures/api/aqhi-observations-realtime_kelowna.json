@@ -3,25 +3,25 @@
   "features": [
     {
       "type": "Feature",
-      "id": "AQ_OBS-JAFUV-20261115170000",
+      "id": "AQ_OBS-IAEFD-20261115210000",
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -119.483333333333,
-          49.8833333333333
+          -110.166667,
+          54.45
         ]
       },
       "properties": {
-        "id": "AQ_OBS-JAFUV-20261115170000",
+        "id": "AQ_OBS-IAEFD-20261115210000",
         "aqhi_type": "AQHI-Observation",
-        "observation_type": "amendment",
-        "location_name_en": "Central Okanagan",
-        "location_name_fr": "Okanagan - centre",
-        "location_id": "JAFUV",
-        "observation_datetime": "2026-11-15T17:00:00Z",
-        "observation_datetime_text_en": "10:00 AM PCT Sunday 15 November 2026",
-        "observation_datetime_text_fr": "10h00 AM HP dimanche 15 novembre 2026",
-        "aqhi": 1.47,
+        "observation_type": "original",
+        "location_name_en": "Cold Lake",
+        "location_name_fr": "Cold Lake",
+        "location_id": "IAEFD",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "3:00 PM ABT Sunday 15 November 2026",
+        "observation_datetime_text_fr": "3h00 PM HAB dimanche 15 novembre 2026",
+        "aqhi": 1.0,
         "special_notes_en": "",
         "special_notes_fr": "",
         "latest": true
@@ -29,7 +29,241 @@
     },
     {
       "type": "Feature",
-      "id": "AQ_OBS-JAFNW-20261115180000",
+      "id": "AQ_OBS-JBRIK-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.113889,
+          49.261111
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-JBRIK-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Metro Vancouver - NW",
+        "location_name_fr": "Metro Vancouver - nord-ouest",
+        "location_id": "JBRIK",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "2:00 PM PCT Sunday 15 November 2026",
+        "observation_datetime_text_fr": "2h00 PM HP dimanche 15 novembre 2026",
+        "aqhi": 2.16,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-JBXHZ-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.683333333333,
+          49.2333333333333
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-JBXHZ-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Metro Vancouver - NE",
+        "location_name_fr": "Metro Vancouver - nord-est",
+        "location_id": "JBXHZ",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "2:00 PM PCT Sunday 15 November 2026",
+        "observation_datetime_text_fr": "2h00 PM HP dimanche 15 novembre 2026",
+        "aqhi": 1.94,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-JBJFI-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.163333,
+          49.163333
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-JBJFI-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Metro Vancouver - SW",
+        "location_name_fr": "Metro Vancouver - sud-ouest",
+        "location_id": "JBJFI",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "2:00 PM PCT Sunday 15 November 2026",
+        "observation_datetime_text_fr": "2h00 PM HP dimanche 15 novembre 2026",
+        "aqhi": 2.13,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-JAZBU-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.75,
+          49.1166666666667
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-JAZBU-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Metro Vancouver - SE",
+        "location_name_fr": "Metro Vancouver - sud-est",
+        "location_id": "JAZBU",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "2:00 PM PCT Sunday 15 November 2026",
+        "observation_datetime_text_fr": "2h00 PM HP dimanche 15 novembre 2026",
+        "aqhi": 1.92,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-JABNO-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.25,
+          49.0583333333333
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-JABNO-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Central Fraser Valley",
+        "location_name_fr": "Bas-Fraser - centre",
+        "location_id": "JABNO",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "2:00 PM PCT Sunday 15 November 2026",
+        "observation_datetime_text_fr": "2h00 PM HP dimanche 15 novembre 2026",
+        "aqhi": 2.09,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-JCVCC-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.941666666667,
+          49.175
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-JCVCC-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Eastern Fraser Valley",
+        "location_name_fr": "Bas-Fraser - est",
+        "location_id": "JCVCC",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "2:00 PM PCT Sunday 15 November 2026",
+        "observation_datetime_text_fr": "2h00 PM HP dimanche 15 novembre 2026",
+        "aqhi": 1.26,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-JCVCJ-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.133333,
+          49.75
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-JCVCJ-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Squamish",
+        "location_name_fr": "Squamish",
+        "location_id": "JCVCJ",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "2:00 PM PCT Sunday 15 November 2026",
+        "observation_datetime_text_fr": "2h00 PM HP dimanche 15 novembre 2026",
+        "aqhi": 2.07,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-JBTMB-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.141666666667,
+          52.1416666666667
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-JBTMB-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Williams Lake",
+        "location_name_fr": "Williams Lake",
+        "location_id": "JBTMB",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "2:00 PM PCT Sunday 15 November 2026",
+        "observation_datetime_text_fr": "2h00 PM HP dimanche 15 novembre 2026",
+        "aqhi": 1.85,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-IAJWU-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.5627778,
+          53.4111111
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-IAJWU-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Hinton",
+        "location_name_fr": "Hinton",
+        "location_id": "IAJWU",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "3:00 PM ABT Sunday 15 November 2026",
+        "observation_datetime_text_fr": "3h00 PM HAB dimanche 15 novembre 2026",
+        "aqhi": 2.24,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-JAFNW-20261115210000",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -38,16 +272,16 @@
         ]
       },
       "properties": {
-        "id": "AQ_OBS-JAFNW-20261115180000",
+        "id": "AQ_OBS-JAFNW-20261115210000",
         "aqhi_type": "AQHI-Observation",
         "observation_type": "original",
         "location_name_en": "Kamloops",
         "location_name_fr": "Kamloops",
         "location_id": "JAFNW",
-        "observation_datetime": "2026-11-15T18:00:00Z",
-        "observation_datetime_text_en": "11:00 AM PCT Sunday 15 November 2026",
-        "observation_datetime_text_fr": "11h00 AM HP dimanche 15 novembre 2026",
-        "aqhi": 1.82,
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "2:00 PM PCT Sunday 15 November 2026",
+        "observation_datetime_text_fr": "2h00 PM HP dimanche 15 novembre 2026",
+        "aqhi": 1.74,
         "special_notes_en": "",
         "special_notes_fr": "",
         "latest": true
@@ -55,7 +289,137 @@
     },
     {
       "type": "Feature",
-      "id": "AQ_OBS-JBOAP-20261115180000",
+      "id": "AQ_OBS-IADGP-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -112.841944444444,
+          49.6936111111111
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-IADGP-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Lethbridge",
+        "location_name_fr": "Lethbridge",
+        "location_id": "IADGP",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "3:00 PM ABT Sunday 15 November 2026",
+        "observation_datetime_text_fr": "3h00 PM HAB dimanche 15 novembre 2026",
+        "aqhi": 2.04,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-JCJHI-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.966666666667,
+          50.1166666666667
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-JCJHI-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Whistler",
+        "location_name_fr": "Whistler",
+        "location_id": "JCJHI",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "2:00 PM PCT Sunday 15 November 2026",
+        "observation_datetime_text_fr": "2h00 PM HP dimanche 15 novembre 2026",
+        "aqhi": 2.08,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-IAGHN-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -113.6202778,
+          53.6369444
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-IAGHN-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "St. Albert",
+        "location_name_fr": "St. Albert",
+        "location_id": "IAGHN",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "3:00 PM ABT Sunday 15 November 2026",
+        "observation_datetime_text_fr": "3h00 PM HAB dimanche 15 novembre 2026",
+        "aqhi": 2.02,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-JAFUV-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -119.483333333333,
+          49.8833333333333
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-JAFUV-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Central Okanagan",
+        "location_name_fr": "Okanagan - centre",
+        "location_id": "JAFUV",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "2:00 PM PCT Sunday 15 November 2026",
+        "observation_datetime_text_fr": "2h00 PM HP dimanche 15 novembre 2026",
+        "aqhi": 1.48,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-IAFYX-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.37,
+          53.3458334
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-IAFYX-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Genesee",
+        "location_name_fr": "Genesee",
+        "location_id": "IAFYX",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "3:00 PM ABT Sunday 15 November 2026",
+        "observation_datetime_text_fr": "3h00 PM HAB dimanche 15 novembre 2026",
+        "aqhi": 1.0,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-JBOAP-20261115210000",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -64,16 +428,16 @@
         ]
       },
       "properties": {
-        "id": "AQ_OBS-JBOAP-20261115180000",
+        "id": "AQ_OBS-JBOAP-20261115210000",
         "aqhi_type": "AQHI-Observation",
         "observation_type": "original",
         "location_name_en": "North Okanagan",
         "location_name_fr": "Okanagan - nord",
         "location_id": "JBOAP",
-        "observation_datetime": "2026-11-15T18:00:00Z",
-        "observation_datetime_text_en": "11:00 AM PCT Sunday 15 November 2026",
-        "observation_datetime_text_fr": "11h00 AM HP dimanche 15 novembre 2026",
-        "aqhi": 1.6,
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "2:00 PM PCT Sunday 15 November 2026",
+        "observation_datetime_text_fr": "2h00 PM HP dimanche 15 novembre 2026",
+        "aqhi": 1.7,
         "special_notes_en": "",
         "special_notes_fr": "",
         "latest": true
@@ -81,7 +445,33 @@
     },
     {
       "type": "Feature",
-      "id": "AQ_OBS-JBHJG-20261115180000",
+      "id": "AQ_OBS-JBLVS-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.75,
+          53.9166666666667
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-JBLVS-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Prince George",
+        "location_name_fr": "Prince George",
+        "location_id": "JBLVS",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "2:00 PM PCT Sunday 15 November 2026",
+        "observation_datetime_text_fr": "2h00 PM HP dimanche 15 novembre 2026",
+        "aqhi": 1.85,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-JBHJG-20261115210000",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -90,42 +480,2772 @@
         ]
       },
       "properties": {
-        "id": "AQ_OBS-JBHJG-20261115180000",
+        "id": "AQ_OBS-JBHJG-20261115210000",
         "aqhi_type": "AQHI-Observation",
         "observation_type": "original",
         "location_name_en": "South Okanagan",
         "location_name_fr": "Okanagan - sud",
         "location_id": "JBHJG",
-        "observation_datetime": "2026-11-15T18:00:00Z",
-        "observation_datetime_text_en": "11:00 AM PCT Sunday 15 November 2026",
-        "observation_datetime_text_fr": "11h00 AM HP dimanche 15 novembre 2026",
-        "aqhi": 1.55,
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "2:00 PM PCT Sunday 15 November 2026",
+        "observation_datetime_text_fr": "2h00 PM HP dimanche 15 novembre 2026",
+        "aqhi": 1.49,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-JAGPB-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -120.846667,
+          56.2525
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-JAGPB-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Fort St. John",
+        "location_name_fr": "Fort St. John",
+        "location_id": "JAGPB",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "2:00 PM PCT Sunday 15 November 2026",
+        "observation_datetime_text_fr": "2h00 PM HP dimanche 15 novembre 2026",
+        "aqhi": 2.0,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-JAIQY-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -115.7667,
+          49.5
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-JAIQY-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Cranbrook",
+        "location_name_fr": "Cranbrook",
+        "location_id": "JAIQY",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "3:00 PM MDT Sunday 15 November 2026",
+        "observation_datetime_text_fr": "3h00 PM HAR dimanche 15 novembre 2026",
+        "aqhi": 1.66,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-JBBWA-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.7,
+          48.783333
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-JBBWA-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Duncan",
+        "location_name_fr": "Duncan",
+        "location_id": "JBBWA",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "2:00 PM PCT Sunday 15 November 2026",
+        "observation_datetime_text_fr": "2h00 PM HP dimanche 15 novembre 2026",
+        "aqhi": 2.21,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-JBMPJ-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.885833,
+          49.733333
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-JBMPJ-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Sparwood",
+        "location_name_fr": "Sparwood",
+        "location_id": "JBMPJ",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "3:00 PM MDT Sunday 15 November 2026",
+        "observation_datetime_text_fr": "3h00 PM HAR dimanche 15 novembre 2026",
+        "aqhi": 1.84,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-JBMQO-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -127.176111,
+          54.779167
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-JBMQO-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Smithers",
+        "location_name_fr": "Smithers",
+        "location_id": "JBMQO",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "2:00 PM PCT Sunday 15 November 2026",
+        "observation_datetime_text_fr": "2h00 PM HP dimanche 15 novembre 2026",
+        "aqhi": 1.0,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-JBNTS-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.5,
+          53.0
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-JBNTS-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Quesnel",
+        "location_name_fr": "Quesnel",
+        "location_id": "JBNTS",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "2:00 PM PCT Sunday 15 November 2026",
+        "observation_datetime_text_fr": "2h00 PM HP dimanche 15 novembre 2026",
+        "aqhi": 1.81,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-JBOBQ-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.366666666667,
+          48.4333333333333
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-JBOBQ-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Victoria / Saanich",
+        "location_name_fr": "Victoria / Saanich",
+        "location_id": "JBOBQ",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "2:00 PM PCT Sunday 15 November 2026",
+        "observation_datetime_text_fr": "2h00 PM HP dimanche 15 novembre 2026",
+        "aqhi": 2.33,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-JCLMX-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.493333,
+          48.423611
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-JCLMX-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "WestShore",
+        "location_name_fr": "WestShore",
+        "location_id": "JCLMX",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "2:00 PM PCT Sunday 15 November 2026",
+        "observation_datetime_text_fr": "2h00 PM HP dimanche 15 novembre 2026",
+        "aqhi": 2.14,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-HAPNV-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.714722,
+          53.216111
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-HAPNV-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Prince Albert",
+        "location_name_fr": "Prince Albert",
+        "location_id": "HAPNV",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "3:00 PM CST Sunday 15 November 2026",
+        "observation_datetime_text_fr": "3h00 PM HNC dimanche 15 novembre 2026",
+        "aqhi": 1.69,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-JBXCK-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -128.599722,
+          54.516389
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-JBXCK-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Terrace",
+        "location_name_fr": "Terrace",
+        "location_id": "JBXCK",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "2:00 PM PCT Sunday 15 November 2026",
+        "observation_datetime_text_fr": "2h00 PM HP dimanche 15 novembre 2026",
+        "aqhi": 1.38,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-LBAMG-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.37,
+          62.4536
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-LBAMG-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Yellowknife",
+        "location_name_fr": "Yellowknife",
+        "location_id": "LBAMG",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "3:00 PM MDT Sunday 15 November 2026",
+        "observation_datetime_text_fr": "3h00 PM HAR dimanche 15 novembre 2026",
+        "aqhi": 1.0,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-HASIZ-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -108.5243083,
+          55.8769833
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-HASIZ-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Buffalo Narrows",
+        "location_name_fr": "Buffalo Narrows",
+        "location_id": "HASIZ",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "3:00 PM CST Sunday 15 November 2026",
+        "observation_datetime_text_fr": "3h00 PM HNC dimanche 15 novembre 2026",
+        "aqhi": 1.0,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-JCAAC-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.666667,
+          49.324722
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-JCAAC-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Castlegar",
+        "location_name_fr": "Castlegar",
+        "location_id": "JCAAC",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "2:00 PM PCT Sunday 15 November 2026",
+        "observation_datetime_text_fr": "2h00 PM HP dimanche 15 novembre 2026",
+        "aqhi": 1.07,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-JCMDB-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -128.652222,
+          54.053333
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-JCMDB-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Kitimat",
+        "location_name_fr": "Kitimat",
+        "location_id": "JCMDB",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "2:00 PM PCT Sunday 15 November 2026",
+        "observation_datetime_text_fr": "2h00 PM HP dimanche 15 novembre 2026",
+        "aqhi": 1.72,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-IACIQ-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -113.1438889,
+          53.5522222
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-IACIQ-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Strathcona County",
+        "location_name_fr": "comté de Stratchona",
+        "location_id": "IACIQ",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "3:00 PM ABT Sunday 15 November 2026",
+        "observation_datetime_text_fr": "3h00 PM HAB dimanche 15 novembre 2026",
+        "aqhi": 1.56,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-BAARG-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -63.1347222222222,
+          46.2402777777778
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-BAARG-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Charlottetown",
+        "location_name_fr": "Charlottetown",
+        "location_id": "BAARG",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "5:00 PM AST Sunday 15 November 2026",
+        "observation_datetime_text_fr": "5h00 PM HNA dimanche 15 novembre 2026",
+        "aqhi": 1.58,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-HAUQM-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -102.9859847,
+          49.1392833
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-HAUQM-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Estevan",
+        "location_name_fr": "Estevan",
+        "location_id": "HAUQM",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "3:00 PM CST Sunday 15 November 2026",
+        "observation_datetime_text_fr": "3h00 PM HNC dimanche 15 novembre 2026",
+        "aqhi": 1.47,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-IACMW-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -116.4327778,
+          53.5836111
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-IACMW-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Edson",
+        "location_name_fr": "Edson",
+        "location_id": "IACMW",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "3:00 PM ABT Sunday 15 November 2026",
+        "observation_datetime_text_fr": "3h00 PM HAB dimanche 15 novembre 2026",
+        "aqhi": 4.0,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-LAILN-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -111.8829,
+          60.0053
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-LAILN-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Fort Smith",
+        "location_name_fr": "Fort Smith",
+        "location_id": "LAILN",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "3:00 PM MDT Sunday 15 November 2026",
+        "observation_datetime_text_fr": "3h00 PM HAR dimanche 15 novembre 2026",
+        "aqhi": 1.0,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-IACMP-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -113.490277777778,
+          53.5344444444444
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-IACMP-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Edmonton",
+        "location_name_fr": "Edmonton",
+        "location_id": "IACMP",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "3:00 PM ABT Sunday 15 November 2026",
+        "observation_datetime_text_fr": "3h00 PM HAB dimanche 15 novembre 2026",
+        "aqhi": 2.0,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-IABOA-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.9808333,
+          53.2241666
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-IABOA-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Drayton Valley",
+        "location_name_fr": "Drayton Valley",
+        "location_id": "IABOA",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "3:00 PM ABT Sunday 15 November 2026",
+        "observation_datetime_text_fr": "3h00 PM HAB dimanche 15 novembre 2026",
+        "aqhi": 1.62,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-CAPHL-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -63.590651,
+          44.647401
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-CAPHL-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Halifax Downtown",
+        "location_name_fr": "centre-ville d'Halifax",
+        "location_id": "CAPHL",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "5:00 PM AST Sunday 15 November 2026",
+        "observation_datetime_text_fr": "5h00 PM HNA dimanche 15 novembre 2026",
+        "aqhi": 1.52,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-CBELL-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -61.356111,
+          45.6161111
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-CBELL-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Port Hawkesbury",
+        "location_name_fr": "Port Hawkesbury",
+        "location_id": "CBELL",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "5:00 PM AST Sunday 15 November 2026",
+        "observation_datetime_text_fr": "5h00 PM HNA dimanche 15 novembre 2026",
+        "aqhi": 1.48,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-BADSZ-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -64.0,
+          46.45
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-BADSZ-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Summerside (Wellington)",
+        "location_name_fr": "Summerside (Wellington)",
+        "location_id": "BADSZ",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "5:00 PM AST Sunday 15 November 2026",
+        "observation_datetime_text_fr": "5h00 PM HNA dimanche 15 novembre 2026",
+        "aqhi": 1.28,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-CASWE-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -64.4952777777778,
+          45.0775
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-CASWE-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Kentville",
+        "location_name_fr": "Kentville",
+        "location_id": "CASWE",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "5:00 PM AST Sunday 15 November 2026",
+        "observation_datetime_text_fr": "5h00 PM HNA dimanche 15 novembre 2026",
+        "aqhi": 1.21,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-CBLGX-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -60.1952777777778,
+          46.1380555555556
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-CBLGX-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Sydney",
+        "location_name_fr": "Sydney",
+        "location_id": "CBLGX",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "5:00 PM AST Sunday 15 November 2026",
+        "observation_datetime_text_fr": "5h00 PM HNA dimanche 15 novembre 2026",
+        "aqhi": 1.16,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-CBDPK-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -62.7091666666667,
+          45.6758333333333
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-CBDPK-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Pictou",
+        "location_name_fr": "Pictou",
+        "location_id": "CBDPK",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "5:00 PM AST Sunday 15 November 2026",
+        "observation_datetime_text_fr": "5h00 PM HNA dimanche 15 novembre 2026",
+        "aqhi": 1.24,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-CBUCG-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -63.57392,
+          44.64625
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-CBUCG-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Halifax",
+        "location_name_fr": "Halifax",
+        "location_id": "CBUCG",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "5:00 PM AST Sunday 15 November 2026",
+        "observation_datetime_text_fr": "5h00 PM HNA dimanche 15 novembre 2026",
+        "aqhi": 1.37,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-CATHI-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -63.467261,
+          44.71338
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-CATHI-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Lake Major",
+        "location_name_fr": "Lake Major",
+        "location_id": "CATHI",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "5:00 PM AST Sunday 15 November 2026",
+        "observation_datetime_text_fr": "5h00 PM HNA dimanche 15 novembre 2026",
+        "aqhi": 1.22,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-HAIMP-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.606666666667,
+          50.4547222222222
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-HAIMP-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Regina",
+        "location_name_fr": "Regina",
+        "location_id": "HAIMP",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "3:00 PM CST Sunday 15 November 2026",
+        "observation_datetime_text_fr": "3h00 PM HNC dimanche 15 novembre 2026",
+        "aqhi": 1.61,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-HAPKT-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -107.81689,
+          50.285833
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-HAPKT-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Swift Current",
+        "location_name_fr": "Swift Current",
+        "location_id": "HAPKT",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "3:00 PM CST Sunday 15 November 2026",
+        "observation_datetime_text_fr": "3h00 PM HNC dimanche 15 novembre 2026",
+        "aqhi": 1.76,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-IAFFI-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -111.380277777778,
+          56.7263888888889
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-IAFFI-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Fort McMurray",
+        "location_name_fr": "Fort McMurray",
+        "location_id": "IAFFI",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "3:00 PM ABT Sunday 15 November 2026",
+        "observation_datetime_text_fr": "3h00 PM HAB dimanche 15 novembre 2026",
+        "aqhi": 1.0,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-GBEIN-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.1463888888889,
+          49.8844444444444
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-GBEIN-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Winnipeg",
+        "location_name_fr": "Winnipeg",
+        "location_id": "GBEIN",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "4:00 PM MBT Sunday 15 November 2026",
+        "observation_datetime_text_fr": "4h00 PM HNM dimanche 15 novembre 2026",
+        "aqhi": 1.35,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-IAFFF-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -111.599722222222,
+          57.1811111111111
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-IAFFF-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Fort McKay",
+        "location_name_fr": "Fort McKay",
+        "location_id": "IAFFF",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "3:00 PM ABT Sunday 15 November 2026",
+        "observation_datetime_text_fr": "3h00 PM HAB dimanche 15 novembre 2026",
+        "aqhi": 1.0,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-GAILW-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -101.8641699,
+          54.768056
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-GAILW-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Flin Flon",
+        "location_name_fr": "Flin Flon",
+        "location_id": "GAILW",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "4:00 PM MBT Sunday 15 November 2026",
+        "observation_datetime_text_fr": "4h00 PM HNM dimanche 15 novembre 2026",
+        "aqhi": 2.0,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-GADMZ-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -99.9522222222222,
+          49.8469444444444
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-GADMZ-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Brandon",
+        "location_name_fr": "Brandon",
+        "location_id": "GADMZ",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "4:00 PM MBT Sunday 15 November 2026",
+        "observation_datetime_text_fr": "4h00 PM HNM dimanche 15 novembre 2026",
+        "aqhi": 1.0,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-HAHJJ-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -106.686111111111,
+          52.1397222222222
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-HAHJJ-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Saskatoon",
+        "location_name_fr": "Saskatoon",
+        "location_id": "HAHJJ",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "3:00 PM CST Sunday 15 November 2026",
+        "observation_datetime_text_fr": "3h00 PM HNC dimanche 15 novembre 2026",
+        "aqhi": 1.0,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-IAFEW-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -111.158333333333,
+          58.7144444444444
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-IAFEW-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Fort Chipewyan",
+        "location_name_fr": "Fort Chipewyan",
+        "location_id": "IAFEW",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "3:00 PM ABT Sunday 15 November 2026",
+        "observation_datetime_text_fr": "3h00 PM HAB dimanche 15 novembre 2026",
+        "aqhi": 1.0,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-FCWYG-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.3969444,
+          43.6758333
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-FCWYG-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Toronto Downtown",
+        "location_name_fr": "centre-ville de Toronto",
+        "location_id": "FCWYG",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "4:00 PM EST Sunday 15 November 2026",
+        "observation_datetime_text_fr": "4h00 PM HNE dimanche 15 novembre 2026",
+        "aqhi": 2.19,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-IAIUC-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -110.676666666667,
+          50.0408333333333
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-IAIUC-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Medicine Hat",
+        "location_name_fr": "Medicine Hat",
+        "location_id": "IAIUC",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "3:00 PM ABT Sunday 15 November 2026",
+        "observation_datetime_text_fr": "3h00 PM HAB dimanche 15 novembre 2026",
+        "aqhi": 2.06,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-FCWFX-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.2677778,
+          48.4013889
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-FCWFX-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Thunder Bay",
+        "location_name_fr": "Thunder Bay",
+        "location_id": "FCWFX",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "4:00 PM EST Sunday 15 November 2026",
+        "observation_datetime_text_fr": "4h00 PM HNE dimanche 15 novembre 2026",
+        "aqhi": 1.92,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-IAKID-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.0575,
+          51.0458333333333
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-IAKID-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Calgary",
+        "location_name_fr": "Calgary",
+        "location_id": "IAKID",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "3:00 PM ABT Sunday 15 November 2026",
+        "observation_datetime_text_fr": "3h00 PM HAB dimanche 15 novembre 2026",
+        "aqhi": 2.92,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-IAIDN-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -111.895,
+          50.567222
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-IAIDN-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Brooks",
+        "location_name_fr": "Brooks",
+        "location_id": "IAIDN",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "3:00 PM ABT Sunday 15 November 2026",
+        "observation_datetime_text_fr": "3h00 PM HAB dimanche 15 novembre 2026",
+        "aqhi": 1.87,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-IANHQ-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -111.0788889,
+          55.6311111
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-IANHQ-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Wood Buffalo - south",
+        "location_name_fr": "Wood Buffalo - sud",
+        "location_id": "IANHQ",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "3:00 PM ABT Sunday 15 November 2026",
+        "observation_datetime_text_fr": "3h00 PM HAB dimanche 15 novembre 2026",
+        "aqhi": 1.0,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-IAHMM-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.796111111111,
+          55.1708333333333
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-IAHMM-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Grande Prairie",
+        "location_name_fr": "Grande Prairie",
+        "location_id": "IAHMM",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "3:00 PM ABT Sunday 15 November 2026",
+        "observation_datetime_text_fr": "3h00 PM HAB dimanche 15 novembre 2026",
+        "aqhi": 1.0,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-FCWOV-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -81.5444444,
+          44.2669444
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-FCWOV-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Tiverton",
+        "location_name_fr": "Tiverton",
+        "location_id": "FCWOV",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "4:00 PM EST Sunday 15 November 2026",
+        "observation_datetime_text_fr": "4h00 PM HNE dimanche 15 novembre 2026",
+        "aqhi": 1.89,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-FDATE-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.99182,
+          42.3081
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-FDATE-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Windsor Downtown",
+        "location_name_fr": "centre-ville de Windsor",
+        "location_id": "FDATE",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "4:00 PM EST Sunday 15 November 2026",
+        "observation_datetime_text_fr": "4h00 PM HNE dimanche 15 novembre 2026",
+        "aqhi": 2.12,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-FDCHU-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.9027778,
+          43.2644444
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-FDCHU-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Hamilton West",
+        "location_name_fr": "Hamilton Ouest",
+        "location_id": "FDCHU",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "4:00 PM EST Sunday 15 November 2026",
+        "observation_datetime_text_fr": "4h00 PM HNE dimanche 15 novembre 2026",
+        "aqhi": 1.88,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-FDQBU-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.2308334,
+          43.7558333
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-FDQBU-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Toronto East",
+        "location_name_fr": "Toronto Est",
+        "location_id": "FDQBU",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "4:00 PM EST Sunday 15 November 2026",
+        "observation_datetime_text_fr": "4h00 PM HNE dimanche 15 novembre 2026",
+        "aqhi": 1.89,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-FDJFN-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.2533,
+          43.16544
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-FDJFN-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "St. Catharines",
+        "location_name_fr": "St. Catharines",
+        "location_id": "FDJFN",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "4:00 PM EST Sunday 15 November 2026",
+        "observation_datetime_text_fr": "4h00 PM HNE dimanche 15 novembre 2026",
+        "aqhi": 1.95,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-FDGED-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.4583333333333,
+          44.0580555555556
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-FDGED-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Newmarket",
+        "location_name_fr": "Newmarket",
+        "location_id": "FDGED",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "4:00 PM EST Sunday 15 November 2026",
+        "observation_datetime_text_fr": "4h00 PM HNE dimanche 15 novembre 2026",
+        "aqhi": 1.77,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-FDEGT-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.9936111111111,
+          42.3022222222222
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-FDEGT-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Windsor",
+        "location_name_fr": "Windsor",
+        "location_id": "FDEGT",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "4:00 PM EST Sunday 15 November 2026",
+        "observation_datetime_text_fr": "4h00 PM HNE dimanche 15 novembre 2026",
+        "aqhi": 2.0,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-FDMOP-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.8572222222222,
+          43.9005555555556
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-FDMOP-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Oshawa",
+        "location_name_fr": "Oshawa",
+        "location_id": "FDMOP",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "4:00 PM EST Sunday 15 November 2026",
+        "observation_datetime_text_fr": "4h00 PM HNE dimanche 15 novembre 2026",
+        "aqhi": 1.69,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-FDGEJ-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.3333333,
+          44.3011111
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-FDGEJ-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Peterborough",
+        "location_name_fr": "Peterborough",
+        "location_id": "FDGEJ",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "4:00 PM EST Sunday 15 November 2026",
+        "observation_datetime_text_fr": "4h00 PM HNE dimanche 15 novembre 2026",
+        "aqhi": 1.59,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-FDGEM-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.9177778,
+          43.5055556
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-FDGEM-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Milton",
+        "location_name_fr": "Milton",
+        "location_id": "FDGEM",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "4:00 PM EST Sunday 15 November 2026",
+        "observation_datetime_text_fr": "4h00 PM HNE dimanche 15 novembre 2026",
+        "aqhi": 1.95,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-IAQFR-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.0141667,
+          51.2922222
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-IAQFR-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Airdrie",
+        "location_name_fr": "Airdrie",
+        "location_id": "IAQFR",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "3:00 PM ABT Sunday 15 November 2026",
+        "observation_datetime_text_fr": "3h00 PM HAB dimanche 15 novembre 2026",
+        "aqhi": 2.47,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-FDZCP-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.3469444,
+          46.5588888
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-FDZCP-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Sault Ste. Marie",
+        "location_name_fr": "Sault Ste. Marie",
+        "location_id": "FDZCP",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "4:00 PM EST Sunday 15 November 2026",
+        "observation_datetime_text_fr": "4h00 PM HNE dimanche 15 novembre 2026",
+        "aqhi": 1.72,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-FEUZB-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.3733333333333,
+          43.7416666666667
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-FEUZB-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Toronto",
+        "location_name_fr": "Toronto",
+        "location_id": "FEUZB",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "4:00 PM EST Sunday 15 November 2026",
+        "observation_datetime_text_fr": "4h00 PM HNE dimanche 15 novembre 2026",
+        "aqhi": 2.02,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-FEAKO-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.6572222222222,
+          43.5855555555556
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-FEAKO-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Mississauga",
+        "location_name_fr": "Mississauga",
+        "location_id": "FEAKO",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "4:00 PM EST Sunday 15 November 2026",
+        "observation_datetime_text_fr": "4h00 PM HNE dimanche 15 novembre 2026",
+        "aqhi": 1.92,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-FDQBX-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.41026,
+          43.76205
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-FDQBX-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Toronto North",
+        "location_name_fr": "Toronto Nord",
+        "location_id": "FDQBX",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "4:00 PM EST Sunday 15 November 2026",
+        "observation_datetime_text_fr": "4h00 PM HNE dimanche 15 novembre 2026",
+        "aqhi": 1.9,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-FDSUS-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.0361111,
+          45.3538889
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-FDSUS-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Parry Sound",
+        "location_name_fr": "Parry Sound",
+        "location_id": "FDSUS",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "4:00 PM EST Sunday 15 November 2026",
+        "observation_datetime_text_fr": "4h00 PM HNE dimanche 15 novembre 2026",
+        "aqhi": 1.21,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-FEBWC-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.4727778,
+          43.4186111
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-FEBWC-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Kitchener",
+        "location_name_fr": "Kitchener",
+        "location_id": "FEBWC",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "4:00 PM EST Sunday 15 November 2026",
+        "observation_datetime_text_fr": "4h00 PM HNE dimanche 15 novembre 2026",
+        "aqhi": 1.74,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-FEARV-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.3177777,
+          42.9813889
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-FEARV-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Sarnia",
+        "location_name_fr": "Sarnia",
+        "location_id": "FEARV",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "4:00 PM EST Sunday 15 November 2026",
+        "observation_datetime_text_fr": "4h00 PM HNE dimanche 15 novembre 2026",
+        "aqhi": 1.8,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-FEUTC-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.12876,
+          42.43396
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-FEUTC-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Chatham",
+        "location_name_fr": "Chatham",
+        "location_id": "FEUTC",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "4:00 PM EST Sunday 15 November 2026",
+        "observation_datetime_text_fr": "4h00 PM HNE dimanche 15 novembre 2026",
+        "aqhi": 1.61,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-DAEGW-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -66.0388888888889,
+          45.2591666666667
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-DAEGW-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Saint John",
+        "location_name_fr": "Saint John",
+        "location_id": "DAEGW",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "5:00 PM AST Sunday 15 November 2026",
+        "observation_datetime_text_fr": "5h00 PM HNA dimanche 15 novembre 2026",
+        "aqhi": 1.35,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-IAEJS-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -113.810277777778,
+          52.2686111111111
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-IAEJS-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Red Deer",
+        "location_name_fr": "Red Deer",
+        "location_id": "IAEJS",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "3:00 PM ABT Sunday 15 November 2026",
+        "observation_datetime_text_fr": "3h00 PM HAB dimanche 15 novembre 2026",
+        "aqhi": 2.17,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-DAEBC-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -67.058373,
+          45.079907
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-DAEBC-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "St. Andrews",
+        "location_name_fr": "St. Andrews",
+        "location_id": "DAEBC",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "5:00 PM AST Sunday 15 November 2026",
+        "observation_datetime_text_fr": "5h00 PM HNA dimanche 15 novembre 2026",
+        "aqhi": 1.34,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-FEVNS-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.935,
+          43.242778
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-FEVNS-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Hamilton",
+        "location_name_fr": "Hamilton",
+        "location_id": "FEVNS",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "4:00 PM EST Sunday 15 November 2026",
+        "observation_datetime_text_fr": "4h00 PM HNE dimanche 15 novembre 2026",
+        "aqhi": 1.85,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-FEVJS-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.3697222,
+          44.2566666
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-FEVJS-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Belleville",
+        "location_name_fr": "Belleville",
+        "location_id": "FEVJS",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "4:00 PM EST Sunday 15 November 2026",
+        "observation_datetime_text_fr": "4h00 PM HNE dimanche 15 novembre 2026",
+        "aqhi": 1.41,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-DAFMJ-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -66.666667,
+          45.945278
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-DAFMJ-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Fredericton",
+        "location_name_fr": "Fredericton",
+        "location_id": "DAFMJ",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "5:00 PM AST Sunday 15 November 2026",
+        "observation_datetime_text_fr": "5h00 PM HNA dimanche 15 novembre 2026",
+        "aqhi": 1.51,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-DADHJ-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -64.803056,
+          46.115833
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-DADHJ-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Moncton",
+        "location_name_fr": "Moncton",
+        "location_id": "DADHJ",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "5:00 PM AST Sunday 15 November 2026",
+        "observation_datetime_text_fr": "5h00 PM HNA dimanche 15 novembre 2026",
+        "aqhi": 1.22,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-FEVJR-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.41638879999999,
+          44.3066666
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-FEVJR-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Kingston",
+        "location_name_fr": "Kingston",
+        "location_id": "FEVJR",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "4:00 PM EST Sunday 15 November 2026",
+        "observation_datetime_text_fr": "4h00 PM HNE dimanche 15 novembre 2026",
+        "aqhi": 1.44,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-FEVNT-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.6769444444444,
+          45.4344444444445
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-FEVNT-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Ottawa",
+        "location_name_fr": "Ottawa",
+        "location_id": "FEVNT",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "4:00 PM EST Sunday 15 November 2026",
+        "observation_datetime_text_fr": "4h00 PM HNE dimanche 15 novembre 2026",
+        "aqhi": 1.54,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-DAHEI-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -66.683511,
+          47.999336
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-DAHEI-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Campbellton",
+        "location_name_fr": "Campbellton",
+        "location_id": "DAHEI",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "5:00 PM AST Sunday 15 November 2026",
+        "observation_datetime_text_fr": "5h00 PM HNA dimanche 15 novembre 2026",
+        "aqhi": 1.57,
+        "special_notes_en": "The current conditions for this location are estimated using AQHI values from other communities.",
+        "special_notes_fr": "Les conditions actuelles pour ce lieu sont estimées à partir des valeurs de la CAS mesurée dans d'autres communautés.",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-FAMXK-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.8141666666667,
+          43.37
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-FAMXK-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Burlington",
+        "location_name_fr": "Burlington",
+        "location_id": "FAMXK",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "4:00 PM EST Sunday 15 November 2026",
+        "observation_datetime_text_fr": "4h00 PM HNE dimanche 15 novembre 2026",
+        "aqhi": 1.92,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-FALIF-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.7608333333333,
+          43.6883333333333
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-FALIF-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Brampton",
+        "location_name_fr": "Brampton",
+        "location_id": "FALIF",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "4:00 PM EST Sunday 15 November 2026",
+        "observation_datetime_text_fr": "4h00 PM HNE dimanche 15 novembre 2026",
+        "aqhi": 1.85,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-FAYJG-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -81.7563889,
+          43.3025
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-FAYJG-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Grand Bend",
+        "location_name_fr": "Grand Bend",
+        "location_id": "FAYJG",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "4:00 PM EST Sunday 15 November 2026",
+        "observation_datetime_text_fr": "4h00 PM HNE dimanche 15 novembre 2026",
+        "aqhi": 1.85,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-FALJI-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.25749,
+          43.1569444
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-FALJI-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Brantford",
+        "location_name_fr": "Brantford",
+        "location_id": "FALJI",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "4:00 PM EST Sunday 15 November 2026",
+        "observation_datetime_text_fr": "4h00 PM HNE dimanche 15 novembre 2026",
+        "aqhi": 2.11,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-DALZZ-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -68.294444,
+          47.377222
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-DALZZ-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Edmundston",
+        "location_name_fr": "Edmundston",
+        "location_id": "DALZZ",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "5:00 PM AST Sunday 15 November 2026",
+        "observation_datetime_text_fr": "5h00 PM HNA dimanche 15 novembre 2026",
+        "aqhi": 1.57,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-DBEDJ-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -65.4666999,
+          47.0041999
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-DBEDJ-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Miramichi",
+        "location_name_fr": "Miramichi",
+        "location_id": "DBEDJ",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "5:00 PM AST Sunday 15 November 2026",
+        "observation_datetime_text_fr": "5h00 PM HNA dimanche 15 novembre 2026",
+        "aqhi": 1.62,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-FAFFD-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.6769699,
+          44.37124
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-FAFFD-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Barrie",
+        "location_name_fr": "Barrie",
+        "location_id": "FAFFD",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "4:00 PM EST Sunday 15 November 2026",
+        "observation_datetime_text_fr": "4h00 PM HNE dimanche 15 novembre 2026",
+        "aqhi": 1.64,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-FBLJL-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.8418,
+          43.24504
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-FBLJL-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Hamilton Downtown",
+        "location_name_fr": "centre-ville de Hamilton",
+        "location_id": "FBLJL",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "4:00 PM EST Sunday 15 November 2026",
+        "observation_datetime_text_fr": "4h00 PM HNE dimanche 15 novembre 2026",
+        "aqhi": 1.0,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-FBLKS-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.82235,
+          43.23039
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-FBLKS-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Hamilton Mountain",
+        "location_name_fr": "Hamilton Mountain",
+        "location_id": "FBLKS",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "4:00 PM EST Sunday 15 November 2026",
+        "observation_datetime_text_fr": "4h00 PM HNE dimanche 15 novembre 2026",
+        "aqhi": 1.87,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-FCIBD-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -81.2108334,
+          42.6663888
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-FCIBD-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Port Stanley",
+        "location_name_fr": "Port Stanley",
+        "location_id": "FCIBD",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "4:00 PM EST Sunday 15 November 2026",
+        "observation_datetime_text_fr": "4h00 PM HNE dimanche 15 novembre 2026",
+        "aqhi": 1.86,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-FCFUU-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.459167,
+          46.314444
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-FCFUU-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "North Bay",
+        "location_name_fr": "North Bay",
+        "location_id": "FCFUU",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "4:00 PM EST Sunday 15 November 2026",
+        "observation_datetime_text_fr": "4h00 PM HNE dimanche 15 novembre 2026",
+        "aqhi": 1.48,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-FCGKZ-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.7138888888889,
+          43.4563888888889
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-FCGKZ-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Oakville",
+        "location_name_fr": "Oakville",
+        "location_id": "FCGKZ",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "4:00 PM EST Sunday 15 November 2026",
+        "observation_datetime_text_fr": "4h00 PM HNE dimanche 15 novembre 2026",
+        "aqhi": 1.89,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-DAFQX-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -65.6283,
+          47.6261
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-DAFQX-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Bathurst",
+        "location_name_fr": "Bathurst",
+        "location_id": "DAFQX",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "5:00 PM AST Sunday 15 November 2026",
+        "observation_datetime_text_fr": "5h00 PM HNA dimanche 15 novembre 2026",
+        "aqhi": 1.57,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-FBKKK-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.22899,
+          43.53571
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-FBKKK-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Guelph",
+        "location_name_fr": "Guelph",
+        "location_id": "FBKKK",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "4:00 PM EST Sunday 15 November 2026",
+        "observation_datetime_text_fr": "4h00 PM HNE dimanche 15 novembre 2026",
+        "aqhi": 1.73,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-FCCOT-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.7263889,
+          45.0263889
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-FCCOT-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Cornwall",
+        "location_name_fr": "Cornwall",
+        "location_id": "FCCOT",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "4:00 PM EST Sunday 15 November 2026",
+        "observation_datetime_text_fr": "4h00 PM HNE dimanche 15 novembre 2026",
+        "aqhi": 1.28,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-FCAEN-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -81.2325,
+          42.9674999
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-FCAEN-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "London",
+        "location_name_fr": "London",
+        "location_id": "FCAEN",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "4:00 PM EST Sunday 15 November 2026",
+        "observation_datetime_text_fr": "4h00 PM HNE dimanche 15 novembre 2026",
+        "aqhi": 1.99,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-FAZKI-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.8927778,
+          45.2447222
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-FAZKI-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Dorset",
+        "location_name_fr": "Dorset",
+        "location_id": "FAZKI",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "4:00 PM EST Sunday 15 November 2026",
+        "observation_datetime_text_fr": "4h00 PM HNE dimanche 15 novembre 2026",
+        "aqhi": 1.73,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-IACGW-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -112.7844444,
+          53.7591666
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-IACGW-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "amendment",
+        "location_name_en": "Lamont County",
+        "location_name_fr": "comté de Lamont",
+        "location_id": "IACGW",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "3:00 PM ABT Sunday 15 November 2026",
+        "observation_datetime_text_fr": "3h00 PM HAB dimanche 15 novembre 2026",
+        "aqhi": 1.0,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-FCKTB-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.56589,
+          43.71823
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-FCKTB-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Toronto West",
+        "location_name_fr": "Toronto Ouest",
+        "location_id": "FCKTB",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "4:00 PM EST Sunday 15 November 2026",
+        "observation_datetime_text_fr": "4h00 PM HNE dimanche 15 novembre 2026",
+        "aqhi": 2.1,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-IAASX-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -113.3283333,
+          53.8297222
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-IAASX-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "amendment",
+        "location_name_en": "Sturgeon County",
+        "location_name_fr": "comté de Sturgeon",
+        "location_id": "IAASX",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "3:00 PM ABT Sunday 15 November 2026",
+        "observation_datetime_text_fr": "3h00 PM HAB dimanche 15 novembre 2026",
+        "aqhi": 1.01,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-FCNJT-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.0594444,
+          42.2830556
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-FCNJT-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Windsor West",
+        "location_name_fr": "Windsor Ouest",
+        "location_id": "FCNJT",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "4:00 PM EST Sunday 15 November 2026",
+        "observation_datetime_text_fr": "4h00 PM HNE dimanche 15 novembre 2026",
+        "aqhi": 1.87,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-FCTOV-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.9775,
+          46.5011111
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-FCTOV-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Sudbury",
+        "location_name_fr": "Sudbury",
+        "location_id": "FCTOV",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "4:00 PM EST Sunday 15 November 2026",
+        "observation_datetime_text_fr": "4h00 PM HNE dimanche 15 novembre 2026",
+        "aqhi": 1.61,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-IAFFM-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -113.217777777778,
+          53.7111111111111
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-IAFFM-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Fort Saskatchewan",
+        "location_name_fr": "Fort Saskatchewan",
+        "location_id": "IAFFM",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "3:00 PM ABT Sunday 15 November 2026",
+        "observation_datetime_text_fr": "3h00 PM HAB dimanche 15 novembre 2026",
+        "aqhi": 1.34,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-JAHJY-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -124.9833,
+          49.6833
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-JAHJY-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Comox Valley",
+        "location_name_fr": "Vallée de Comox",
+        "location_id": "JAHJY",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "2:00 PM PCT Sunday 15 November 2026",
+        "observation_datetime_text_fr": "2h00 PM HP dimanche 15 novembre 2026",
+        "aqhi": 2.4,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-ABFQA-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -66.9365972,
+          52.9605694
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-ABFQA-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Labrador City",
+        "location_name_fr": "Labrador City",
+        "location_id": "ABFQA",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "5:00 PM AST Sunday 15 November 2026",
+        "observation_datetime_text_fr": "5h00 PM HNA dimanche 15 novembre 2026",
+        "aqhi": 2.0,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-JAQAL-20261115210000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.933333333333,
+          49.1666666666667
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-JAQAL-20261115210000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Nanaimo / Parksville",
+        "location_name_fr": "Nanaimo / Parksville",
+        "location_id": "JAQAL",
+        "observation_datetime": "2026-11-15T21:00:00Z",
+        "observation_datetime_text_en": "2:00 PM PCT Sunday 15 November 2026",
+        "observation_datetime_text_fr": "2h00 PM HP dimanche 15 novembre 2026",
+        "aqhi": 2.46,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-AADCE-20261115220000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -55.175272,
+          47.082841
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-AADCE-20261115220000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Burin",
+        "location_name_fr": "Burin",
+        "location_id": "AADCE",
+        "observation_datetime": "2026-11-15T22:00:00Z",
+        "observation_datetime_text_en": "6:30 PM NST Sunday 15 November 2026",
+        "observation_datetime_text_fr": "6h30 PM HNT dimanche 15 novembre 2026",
+        "aqhi": 1.26,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-ABEFS-20261115220000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -52.7252777777778,
+          47.5658333333333
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-ABEFS-20261115220000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "St. John's",
+        "location_name_fr": "St. John's",
+        "location_id": "ABEFS",
+        "observation_datetime": "2026-11-15T22:00:00Z",
+        "observation_datetime_text_en": "6:30 PM NST Sunday 15 November 2026",
+        "observation_datetime_text_fr": "6h30 PM HNT dimanche 15 novembre 2026",
+        "aqhi": 1.53,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-AAEOU-20261115220000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -57.922167,
+          48.9521
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-AAEOU-20261115220000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Corner Brook",
+        "location_name_fr": "Corner Brook",
+        "location_id": "AAEOU",
+        "observation_datetime": "2026-11-15T22:00:00Z",
+        "observation_datetime_text_en": "6:30 PM NST Sunday 15 November 2026",
+        "observation_datetime_text_fr": "6h30 PM HNT dimanche 15 novembre 2026",
+        "aqhi": 1.31,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-ABYRK-20261115220000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -55.66,
+          48.93
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-ABYRK-20261115220000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Grand Falls - Windsor",
+        "location_name_fr": "Grand Falls - Windsor",
+        "location_id": "ABYRK",
+        "observation_datetime": "2026-11-15T22:00:00Z",
+        "observation_datetime_text_en": "6:30 PM NST Sunday 15 November 2026",
+        "observation_datetime_text_fr": "6h30 PM HNT dimanche 15 novembre 2026",
+        "aqhi": 1.59,
+        "special_notes_en": "",
+        "special_notes_fr": "",
+        "latest": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AQ_OBS-LARCU-20261115220000",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -126.8316,
+          65.2811
+        ]
+      },
+      "properties": {
+        "id": "AQ_OBS-LARCU-20261115220000",
+        "aqhi_type": "AQHI-Observation",
+        "observation_type": "original",
+        "location_name_en": "Norman Wells",
+        "location_name_fr": "Norman Wells",
+        "location_id": "LARCU",
+        "observation_datetime": "2026-11-15T22:00:00Z",
+        "observation_datetime_text_en": "4:00 PM MDT Sunday 15 November 2026",
+        "observation_datetime_text_fr": "4h00 PM HAR dimanche 15 novembre 2026",
+        "aqhi": 1.0,
         "special_notes_en": "",
         "special_notes_fr": "",
         "latest": true
       }
     }
   ],
-  "numberMatched": 4,
-  "numberReturned": 4,
+  "numberMatched": 124,
+  "numberReturned": 124,
   "links": [
     {
       "type": "application/geo+json",
       "rel": "self",
       "title": "This document as GeoJSON",
-      "href": "https://api.weather.gc.ca/collections/aqhi-observations-realtime/items?f=json&bbox=-120.89434,48.99169,-118.10566,50.78831&latest=true&limit=100"
+      "href": "https://api.weather.gc.ca/collections/aqhi-observations-realtime/items?f=json&latest=true&limit=1000"
     },
     {
       "rel": "alternate",
       "type": "application/ld+json",
       "title": "This document as RDF (JSON-LD)",
-      "href": "https://api.weather.gc.ca/collections/aqhi-observations-realtime/items?f=jsonld&bbox=-120.89434,48.99169,-118.10566,50.78831&latest=true&limit=100"
+      "href": "https://api.weather.gc.ca/collections/aqhi-observations-realtime/items?f=jsonld&latest=true&limit=1000"
     },
     {
       "type": "text/html",
       "rel": "alternate",
       "title": "This document as HTML",
-      "href": "https://api.weather.gc.ca/collections/aqhi-observations-realtime/items?f=html&bbox=-120.89434,48.99169,-118.10566,50.78831&latest=true&limit=100"
+      "href": "https://api.weather.gc.ca/collections/aqhi-observations-realtime/items?f=html&latest=true&limit=1000"
     },
     {
       "type": "application/json",
@@ -134,5 +3254,5 @@
       "href": "https://api.weather.gc.ca/collections/aqhi-observations-realtime"
     }
   ],
-  "timeStamp": "2026-11-15T18:44:44.703031Z"
+  "timeStamp": "2026-11-15T22:09:03.434559Z"
 }

@@ -77,7 +77,7 @@ class GetRadarMapTest < Minitest::Test
     content, = radar_content(**WHISTLER, routes: { "/wms/CBMT" => ->(_) { [503, {}, "busy"] } })
     result = JSON.parse(content.first[:text])
 
-    assert_match(/base map could not be used \(maps.geogratis.gc.ca failed/, result.dig("map", "note"))
+    assert_match(/base map could not be used \(127.0.0.1 failed/, result.dig("map", "note"))
     refute result["map"].key?("base_map")
     assert_equal "image", content.last[:type]
   end

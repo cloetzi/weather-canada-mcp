@@ -2,117 +2,6 @@
   "type": "FeatureCollection",
   "features": [
     {
-      "id": "VSBC16V-11-15",
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -122.8,
-          50.32
-        ]
-      },
-      "properties": {
-        "WXO_CITY_CODE": "BC-16",
-        "VIRTUAL_STATION_NAME_E": "PEMBERTON AREA",
-        "VIRTUAL_STATION_NAME_F": "PEMBERTON",
-        "VIRTUAL_CLIMATE_ID": "VSBC16V",
-        "LOCAL_MONTH": 11,
-        "LOCAL_DAY": 15,
-        "RECORD_SNOWFALL": 10.2,
-        "RECORD_SNOWFALL_YR": 1930,
-        "PREV_RECORD_SNOWFALL": 7.6,
-        "PREV_RECORD_SNOWFALL_YR": 1920,
-        "FIRST_SNOWFALL": 10.2,
-        "FIRST_SNOWFALL_YEAR": 1930,
-        "SECOND_SNOWFALL": 7.6,
-        "SECOND_SNOWFALL_YEAR": 1920,
-        "THIRD_SNOWFALL": 7,
-        "THIRD_SNOWFALL_YEAR": 1982,
-        "FOURTH_SNOWFALL": 5,
-        "FOURTH_SNOWFALL_YEAR": 1978,
-        "FIFTH_SNOWFALL": 3,
-        "FIFTH_SNOWFALL_YEAR": 1973,
-        "PROVINCE_CODE": "BC",
-        "RECORD_BEGIN": "1908-04-01T00:00:00Z",
-        "RECORD_END": "1984-03-31T00:00:00Z",
-        "IDENTIFIER": "VSBC16V-11-15"
-      }
-    },
-    {
-      "id": "VSBC86V-11-15",
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -122.97,
-          50.12
-        ]
-      },
-      "properties": {
-        "WXO_CITY_CODE": "BC-86",
-        "VIRTUAL_STATION_NAME_E": "WHISTLER AREA",
-        "VIRTUAL_STATION_NAME_F": "WHISTLER",
-        "VIRTUAL_CLIMATE_ID": "VSBC86V",
-        "LOCAL_MONTH": 11,
-        "LOCAL_DAY": 15,
-        "RECORD_SNOWFALL": 19.3,
-        "RECORD_SNOWFALL_YR": 1950,
-        "PREV_RECORD_SNOWFALL": 11.4,
-        "PREV_RECORD_SNOWFALL_YR": 1948,
-        "FIRST_SNOWFALL": 19.3,
-        "FIRST_SNOWFALL_YEAR": 1950,
-        "SECOND_SNOWFALL": 17.8,
-        "SECOND_SNOWFALL_YEAR": 1973,
-        "THIRD_SNOWFALL": 17.6,
-        "THIRD_SNOWFALL_YEAR": 1982,
-        "FOURTH_SNOWFALL": 13.4,
-        "FOURTH_SNOWFALL_YEAR": 2017,
-        "FIFTH_SNOWFALL": 11.4,
-        "FIFTH_SNOWFALL_YEAR": 1948,
-        "PROVINCE_CODE": "BC",
-        "RECORD_BEGIN": "1931-11-01T00:00:00Z",
-        "RECORD_END": "2024-10-05T00:00:00Z",
-        "IDENTIFIER": "VSBC86V-11-15"
-      }
-    },
-    {
-      "id": "VSBC28V-11-15",
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -121.93,
-          50.68
-        ]
-      },
-      "properties": {
-        "WXO_CITY_CODE": "BC-28",
-        "VIRTUAL_STATION_NAME_E": "LILLOOET AREA",
-        "VIRTUAL_STATION_NAME_F": "LILLOOET",
-        "VIRTUAL_CLIMATE_ID": "VSBC28V",
-        "LOCAL_MONTH": 11,
-        "LOCAL_DAY": 15,
-        "RECORD_SNOWFALL": 3.0,
-        "RECORD_SNOWFALL_YR": 1982,
-        "PREV_RECORD_SNOWFALL": 2.0,
-        "PREV_RECORD_SNOWFALL_YR": 1927,
-        "FIRST_SNOWFALL": 3,
-        "FIRST_SNOWFALL_YEAR": 1982,
-        "SECOND_SNOWFALL": 2,
-        "SECOND_SNOWFALL_YEAR": 1927,
-        "THIRD_SNOWFALL": 1.5,
-        "THIRD_SNOWFALL_YEAR": 1969,
-        "FOURTH_SNOWFALL": 0,
-        "FOURTH_SNOWFALL_YEAR": 1917,
-        "FIFTH_SNOWFALL": 0,
-        "FIFTH_SNOWFALL_YEAR": 1918,
-        "PROVINCE_CODE": "BC",
-        "RECORD_BEGIN": "1917-01-01T00:00:00Z",
-        "RECORD_END": "2001-04-30T00:00:00Z",
-        "IDENTIFIER": "VSBC28V-11-15"
-      }
-    },
-    {
       "id": "VSBC74V-11-15",
       "type": "Feature",
       "geometry": {
@@ -147,6 +36,117 @@
         "RECORD_BEGIN": "1896-02-01T00:00:00Z",
         "RECORD_END": null,
         "IDENTIFIER": "VSBC74V-11-15"
+      }
+    },
+    {
+      "id": "VSBC98V-11-15",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -124.44,
+          49.35
+        ]
+      },
+      "properties": {
+        "WXO_CITY_CODE": "BC-98",
+        "VIRTUAL_STATION_NAME_E": "QUALICUM BEACH AREA",
+        "VIRTUAL_STATION_NAME_F": "QUALICUM BEACH",
+        "VIRTUAL_CLIMATE_ID": "VSBC98V",
+        "LOCAL_MONTH": 11,
+        "LOCAL_DAY": 15,
+        "RECORD_SNOWFALL": 8.0,
+        "RECORD_SNOWFALL_YR": 1996,
+        "PREV_RECORD_SNOWFALL": 0.0,
+        "PREV_RECORD_SNOWFALL_YR": 1995,
+        "FIRST_SNOWFALL": 8,
+        "FIRST_SNOWFALL_YEAR": 1996,
+        "SECOND_SNOWFALL": 0,
+        "SECOND_SNOWFALL_YEAR": 1961,
+        "THIRD_SNOWFALL": 0,
+        "THIRD_SNOWFALL_YEAR": 1962,
+        "FOURTH_SNOWFALL": 0,
+        "FOURTH_SNOWFALL_YEAR": 1963,
+        "FIFTH_SNOWFALL": 0,
+        "FIFTH_SNOWFALL_YEAR": 1964,
+        "PROVINCE_CODE": "BC",
+        "RECORD_BEGIN": "1961-07-01T00:00:00Z",
+        "RECORD_END": "2023-07-31T00:00:00Z",
+        "IDENTIFIER": "VSBC98V-11-15"
+      }
+    },
+    {
+      "id": "VSBC81V-11-15",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.25,
+          49.06
+        ]
+      },
+      "properties": {
+        "WXO_CITY_CODE": "BC-81",
+        "VIRTUAL_STATION_NAME_E": "ABBOTSFORD AREA",
+        "VIRTUAL_STATION_NAME_F": "ABBOTSFORD",
+        "VIRTUAL_CLIMATE_ID": "VSBC81V",
+        "LOCAL_MONTH": 11,
+        "LOCAL_DAY": 15,
+        "RECORD_SNOWFALL": 0.3,
+        "RECORD_SNOWFALL_YR": 1950,
+        "PREV_RECORD_SNOWFALL": 0.0,
+        "PREV_RECORD_SNOWFALL_YR": 1949,
+        "FIRST_SNOWFALL": 0.3,
+        "FIRST_SNOWFALL_YEAR": 1950,
+        "SECOND_SNOWFALL": 0,
+        "SECOND_SNOWFALL_YEAR": 1945,
+        "THIRD_SNOWFALL": 0,
+        "THIRD_SNOWFALL_YEAR": 1946,
+        "FOURTH_SNOWFALL": 0,
+        "FOURTH_SNOWFALL_YEAR": 1947,
+        "FIFTH_SNOWFALL": 0,
+        "FIFTH_SNOWFALL_YEAR": 1948,
+        "PROVINCE_CODE": "BC",
+        "RECORD_BEGIN": "1944-10-01T00:00:00Z",
+        "RECORD_END": null,
+        "IDENTIFIER": "VSBC81V-11-15"
+      }
+    },
+    {
+      "id": "VSBC16V-11-15",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.8,
+          50.32
+        ]
+      },
+      "properties": {
+        "WXO_CITY_CODE": "BC-16",
+        "VIRTUAL_STATION_NAME_E": "PEMBERTON AREA",
+        "VIRTUAL_STATION_NAME_F": "PEMBERTON",
+        "VIRTUAL_CLIMATE_ID": "VSBC16V",
+        "LOCAL_MONTH": 11,
+        "LOCAL_DAY": 15,
+        "RECORD_SNOWFALL": 10.2,
+        "RECORD_SNOWFALL_YR": 1930,
+        "PREV_RECORD_SNOWFALL": 7.6,
+        "PREV_RECORD_SNOWFALL_YR": 1920,
+        "FIRST_SNOWFALL": 10.2,
+        "FIRST_SNOWFALL_YEAR": 1930,
+        "SECOND_SNOWFALL": 7.6,
+        "SECOND_SNOWFALL_YEAR": 1920,
+        "THIRD_SNOWFALL": 7,
+        "THIRD_SNOWFALL_YEAR": 1982,
+        "FOURTH_SNOWFALL": 5,
+        "FOURTH_SNOWFALL_YEAR": 1978,
+        "FIFTH_SNOWFALL": 3,
+        "FIFTH_SNOWFALL_YEAR": 1973,
+        "PROVINCE_CODE": "BC",
+        "RECORD_BEGIN": "1908-04-01T00:00:00Z",
+        "RECORD_END": "1984-03-31T00:00:00Z",
+        "IDENTIFIER": "VSBC16V-11-15"
       }
     },
     {
@@ -187,6 +187,117 @@
       }
     },
     {
+      "id": "VSBC86V-11-15",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.97,
+          50.12
+        ]
+      },
+      "properties": {
+        "WXO_CITY_CODE": "BC-86",
+        "VIRTUAL_STATION_NAME_E": "WHISTLER AREA",
+        "VIRTUAL_STATION_NAME_F": "WHISTLER",
+        "VIRTUAL_CLIMATE_ID": "VSBC86V",
+        "LOCAL_MONTH": 11,
+        "LOCAL_DAY": 15,
+        "RECORD_SNOWFALL": 19.3,
+        "RECORD_SNOWFALL_YR": 1950,
+        "PREV_RECORD_SNOWFALL": 11.4,
+        "PREV_RECORD_SNOWFALL_YR": 1948,
+        "FIRST_SNOWFALL": 19.3,
+        "FIRST_SNOWFALL_YEAR": 1950,
+        "SECOND_SNOWFALL": 17.8,
+        "SECOND_SNOWFALL_YEAR": 1973,
+        "THIRD_SNOWFALL": 17.6,
+        "THIRD_SNOWFALL_YEAR": 1982,
+        "FOURTH_SNOWFALL": 13.4,
+        "FOURTH_SNOWFALL_YEAR": 2017,
+        "FIFTH_SNOWFALL": 11.4,
+        "FIFTH_SNOWFALL_YEAR": 1948,
+        "PROVINCE_CODE": "BC",
+        "RECORD_BEGIN": "1931-11-01T00:00:00Z",
+        "RECORD_END": "2024-10-05T00:00:00Z",
+        "IDENTIFIER": "VSBC86V-11-15"
+      }
+    },
+    {
+      "id": "VSBC100-11-15",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.66,
+          49.1
+        ]
+      },
+      "properties": {
+        "WXO_CITY_CODE": "BC-100",
+        "VIRTUAL_STATION_NAME_E": "LANGLEY AREA",
+        "VIRTUAL_STATION_NAME_F": "LANGLEY",
+        "VIRTUAL_CLIMATE_ID": "VSBC100",
+        "LOCAL_MONTH": 11,
+        "LOCAL_DAY": 15,
+        "RECORD_SNOWFALL": 2.0,
+        "RECORD_SNOWFALL_YR": 1996,
+        "PREV_RECORD_SNOWFALL": 0.0,
+        "PREV_RECORD_SNOWFALL_YR": 1995,
+        "FIRST_SNOWFALL": 2,
+        "FIRST_SNOWFALL_YEAR": 1996,
+        "SECOND_SNOWFALL": 0,
+        "SECOND_SNOWFALL_YEAR": 1953,
+        "THIRD_SNOWFALL": 0,
+        "THIRD_SNOWFALL_YEAR": 1954,
+        "FOURTH_SNOWFALL": 0,
+        "FOURTH_SNOWFALL_YEAR": 1955,
+        "FIFTH_SNOWFALL": 0,
+        "FIFTH_SNOWFALL_YEAR": 1956,
+        "PROVINCE_CODE": "BC",
+        "RECORD_BEGIN": "1953-04-01T00:00:00Z",
+        "RECORD_END": null,
+        "IDENTIFIER": "VSBC100-11-15"
+      }
+    },
+    {
+      "id": "VSBC35V-11-15",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.69,
+          49.22
+        ]
+      },
+      "properties": {
+        "WXO_CITY_CODE": "BC-35",
+        "VIRTUAL_STATION_NAME_E": "PITT MEADOWS AREA",
+        "VIRTUAL_STATION_NAME_F": "PITT MEADOWS",
+        "VIRTUAL_CLIMATE_ID": "VSBC35V",
+        "LOCAL_MONTH": 11,
+        "LOCAL_DAY": 15,
+        "RECORD_SNOWFALL": 8.9,
+        "RECORD_SNOWFALL_YR": 1930,
+        "PREV_RECORD_SNOWFALL": 3.6,
+        "PREV_RECORD_SNOWFALL_YR": 1897,
+        "FIRST_SNOWFALL": 8.9,
+        "FIRST_SNOWFALL_YEAR": 1930,
+        "SECOND_SNOWFALL": 3.6,
+        "SECOND_SNOWFALL_YEAR": 1897,
+        "THIRD_SNOWFALL": 2.5,
+        "THIRD_SNOWFALL_YEAR": 1903,
+        "FOURTH_SNOWFALL": 1,
+        "FOURTH_SNOWFALL_YEAR": 1996,
+        "FIFTH_SNOWFALL": 0,
+        "FIFTH_SNOWFALL_YEAR": 1875,
+        "PROVINCE_CODE": "BC",
+        "RECORD_BEGIN": "1874-09-01T00:00:00Z",
+        "RECORD_END": null,
+        "IDENTIFIER": "VSBC35V-11-15"
+      }
+    },
+    {
       "id": "VSBC99V-11-15",
       "type": "Feature",
       "geometry": {
@@ -221,6 +332,43 @@
         "RECORD_BEGIN": "1961-09-01T00:00:00Z",
         "RECORD_END": "2011-02-22T00:00:00Z",
         "IDENTIFIER": "VSBC99V-11-15"
+      }
+    },
+    {
+      "id": "VSBC20V-11-15",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.93,
+          49.17
+        ]
+      },
+      "properties": {
+        "WXO_CITY_CODE": "BC-20",
+        "VIRTUAL_STATION_NAME_E": "NANAIMO AREA",
+        "VIRTUAL_STATION_NAME_F": "NANAIMO",
+        "VIRTUAL_CLIMATE_ID": "VSBC20V",
+        "LOCAL_MONTH": 11,
+        "LOCAL_DAY": 15,
+        "RECORD_SNOWFALL": 5.1,
+        "RECORD_SNOWFALL_YR": 1930,
+        "PREV_RECORD_SNOWFALL": 5.1,
+        "PREV_RECORD_SNOWFALL_YR": 1927,
+        "FIRST_SNOWFALL": 5.1,
+        "FIRST_SNOWFALL_YEAR": 1927,
+        "SECOND_SNOWFALL": 5.1,
+        "SECOND_SNOWFALL_YEAR": 1930,
+        "THIRD_SNOWFALL": 0.8,
+        "THIRD_SNOWFALL_YEAR": 1903,
+        "FOURTH_SNOWFALL": 0.8,
+        "FOURTH_SNOWFALL_YEAR": 1959,
+        "FIFTH_SNOWFALL": 0,
+        "FIFTH_SNOWFALL_YEAR": 1892,
+        "PROVINCE_CODE": "BC",
+        "RECORD_BEGIN": "1892-01-01T00:00:00Z",
+        "RECORD_END": null,
+        "IDENTIFIER": "VSBC20V-11-15"
       }
     },
     {
@@ -261,6 +409,43 @@
       }
     },
     {
+      "id": "VSBC24V-11-15",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.94,
+          49.18
+        ]
+      },
+      "properties": {
+        "WXO_CITY_CODE": "BC-24",
+        "VIRTUAL_STATION_NAME_E": "CHILLIWACK AREA",
+        "VIRTUAL_STATION_NAME_F": "CHILLIWACK",
+        "VIRTUAL_CLIMATE_ID": "VSBC24V",
+        "LOCAL_MONTH": 11,
+        "LOCAL_DAY": 15,
+        "RECORD_SNOWFALL": 30.5,
+        "RECORD_SNOWFALL_YR": 1903,
+        "PREV_RECORD_SNOWFALL": 2.5,
+        "PREV_RECORD_SNOWFALL_YR": 1893,
+        "FIRST_SNOWFALL": 30.5,
+        "FIRST_SNOWFALL_YEAR": 1903,
+        "SECOND_SNOWFALL": 12.7,
+        "SECOND_SNOWFALL_YEAR": 1930,
+        "THIRD_SNOWFALL": 7.6,
+        "THIRD_SNOWFALL_YEAR": 1931,
+        "FOURTH_SNOWFALL": 5.1,
+        "FOURTH_SNOWFALL_YEAR": 1927,
+        "FIFTH_SNOWFALL": 3.4,
+        "FIFTH_SNOWFALL_YEAR": 1982,
+        "PROVINCE_CODE": "BC",
+        "RECORD_BEGIN": "1891-08-01T00:00:00Z",
+        "RECORD_END": "2019-04-29T00:00:00Z",
+        "IDENTIFIER": "VSBC24V-11-15"
+      }
+    },
+    {
       "id": "VSBC50V-11-15",
       "type": "Feature",
       "geometry": {
@@ -295,6 +480,80 @@
         "RECORD_BEGIN": "1959-10-01T00:00:00Z",
         "RECORD_END": "2010-04-01T00:00:00Z",
         "IDENTIFIER": "VSBC50V-11-15"
+      }
+    },
+    {
+      "id": "VSBC58V-11-15",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -124.53,
+          49.85
+        ]
+      },
+      "properties": {
+        "WXO_CITY_CODE": "BC-58",
+        "VIRTUAL_STATION_NAME_E": "POWELL RIVER AREA",
+        "VIRTUAL_STATION_NAME_F": "POWELL RIVER",
+        "VIRTUAL_CLIMATE_ID": "VSBC58V",
+        "LOCAL_MONTH": 11,
+        "LOCAL_DAY": 15,
+        "RECORD_SNOWFALL": 6.4,
+        "RECORD_SNOWFALL_YR": 1927,
+        "PREV_RECORD_SNOWFALL": 0.0,
+        "PREV_RECORD_SNOWFALL_YR": 1926,
+        "FIRST_SNOWFALL": 6.4,
+        "FIRST_SNOWFALL_YEAR": 1927,
+        "SECOND_SNOWFALL": 4,
+        "SECOND_SNOWFALL_YEAR": 1996,
+        "THIRD_SNOWFALL": 0,
+        "THIRD_SNOWFALL_YEAR": 1924,
+        "FOURTH_SNOWFALL": 0,
+        "FOURTH_SNOWFALL_YEAR": 1925,
+        "FIFTH_SNOWFALL": 0,
+        "FIFTH_SNOWFALL_YEAR": 1926,
+        "PROVINCE_CODE": "BC",
+        "RECORD_BEGIN": "1924-01-01T00:00:00Z",
+        "RECORD_END": null,
+        "IDENTIFIER": "VSBC58V-11-15"
+      }
+    },
+    {
+      "id": "VSBC31V-11-15",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.27,
+          49.3
+        ]
+      },
+      "properties": {
+        "WXO_CITY_CODE": "BC-31",
+        "VIRTUAL_STATION_NAME_E": "HOPE SLIDE AREA",
+        "VIRTUAL_STATION_NAME_F": "HOPE SLIDE",
+        "VIRTUAL_CLIMATE_ID": "VSBC31V",
+        "LOCAL_MONTH": 11,
+        "LOCAL_DAY": 15,
+        "RECORD_SNOWFALL": 21.0,
+        "RECORD_SNOWFALL_YR": 2013,
+        "PREV_RECORD_SNOWFALL": 18.0,
+        "PREV_RECORD_SNOWFALL_YR": 1977,
+        "FIRST_SNOWFALL": 21,
+        "FIRST_SNOWFALL_YEAR": 2013,
+        "SECOND_SNOWFALL": 18,
+        "SECOND_SNOWFALL_YEAR": 1977,
+        "THIRD_SNOWFALL": 17.8,
+        "THIRD_SNOWFALL_YEAR": 1975,
+        "FOURTH_SNOWFALL": 15,
+        "FOURTH_SNOWFALL_YEAR": 1968,
+        "FIFTH_SNOWFALL": 15,
+        "FIFTH_SNOWFALL_YEAR": 1987,
+        "PROVINCE_CODE": "BC",
+        "RECORD_BEGIN": "1967-05-01T00:00:00Z",
+        "RECORD_END": null,
+        "IDENTIFIER": "VSBC31V-11-15"
       }
     },
     {
@@ -370,28 +629,176 @@
         "RECORD_END": "2011-03-26T00:00:00Z",
         "IDENTIFIER": "VSBC33V-11-15"
       }
+    },
+    {
+      "id": "VSBC55V-11-15",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.32,
+          50.81
+        ]
+      },
+      "properties": {
+        "WXO_CITY_CODE": "BC-55",
+        "VIRTUAL_STATION_NAME_E": "CACHE CREEK AREA",
+        "VIRTUAL_STATION_NAME_F": "CACHE CREEK",
+        "VIRTUAL_CLIMATE_ID": "VSBC55V",
+        "LOCAL_MONTH": 11,
+        "LOCAL_DAY": 15,
+        "RECORD_SNOWFALL": 7.9,
+        "RECORD_SNOWFALL_YR": 1950,
+        "PREV_RECORD_SNOWFALL": 4.6,
+        "PREV_RECORD_SNOWFALL_YR": 1927,
+        "FIRST_SNOWFALL": 7.9,
+        "FIRST_SNOWFALL_YEAR": 1950,
+        "SECOND_SNOWFALL": 4.6,
+        "SECOND_SNOWFALL_YEAR": 1927,
+        "THIRD_SNOWFALL": 4.3,
+        "THIRD_SNOWFALL_YEAR": 1931,
+        "FOURTH_SNOWFALL": 3.3,
+        "FOURTH_SNOWFALL_YEAR": 1932,
+        "FIFTH_SNOWFALL": 3,
+        "FIFTH_SNOWFALL_YEAR": 1960,
+        "PROVINCE_CODE": "BC",
+        "RECORD_BEGIN": "1912-09-01T00:00:00Z",
+        "RECORD_END": "1986-03-31T00:00:00Z",
+        "IDENTIFIER": "VSBC55V-11-15"
+      }
+    },
+    {
+      "id": "VSBC96V-11-15",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.16,
+          49.16
+        ]
+      },
+      "properties": {
+        "WXO_CITY_CODE": "BC-96",
+        "VIRTUAL_STATION_NAME_E": "RICHMOND AREA",
+        "VIRTUAL_STATION_NAME_F": "RICHMOND",
+        "VIRTUAL_CLIMATE_ID": "VSBC96V",
+        "LOCAL_MONTH": 11,
+        "LOCAL_DAY": 15,
+        "RECORD_SNOWFALL": 7.6,
+        "RECORD_SNOWFALL_YR": 1930,
+        "PREV_RECORD_SNOWFALL": 0.0,
+        "PREV_RECORD_SNOWFALL_YR": 1929,
+        "FIRST_SNOWFALL": 7.6,
+        "FIRST_SNOWFALL_YEAR": 1930,
+        "SECOND_SNOWFALL": 0,
+        "SECOND_SNOWFALL_YEAR": 1896,
+        "THIRD_SNOWFALL": 0,
+        "THIRD_SNOWFALL_YEAR": 1897,
+        "FOURTH_SNOWFALL": 0,
+        "FOURTH_SNOWFALL_YEAR": 1898,
+        "FIFTH_SNOWFALL": 0,
+        "FIFTH_SNOWFALL_YEAR": 1899,
+        "PROVINCE_CODE": "BC",
+        "RECORD_BEGIN": "1896-02-01T00:00:00Z",
+        "RECORD_END": null,
+        "IDENTIFIER": "VSBC96V-11-15"
+      }
+    },
+    {
+      "id": "VSBC36V-11-15",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.44,
+          49.38
+        ]
+      },
+      "properties": {
+        "WXO_CITY_CODE": "BC-36",
+        "VIRTUAL_STATION_NAME_E": "HOPE AREA",
+        "VIRTUAL_STATION_NAME_F": "HOPE",
+        "VIRTUAL_CLIMATE_ID": "VSBC36V",
+        "LOCAL_MONTH": 11,
+        "LOCAL_DAY": 15,
+        "RECORD_SNOWFALL": 4.8,
+        "RECORD_SNOWFALL_YR": 1968,
+        "PREV_RECORD_SNOWFALL": 0.0,
+        "PREV_RECORD_SNOWFALL_YR": 1967,
+        "FIRST_SNOWFALL": 4.8,
+        "FIRST_SNOWFALL_YEAR": 1968,
+        "SECOND_SNOWFALL": 1.2,
+        "SECOND_SNOWFALL_YEAR": 1982,
+        "THIRD_SNOWFALL": 1,
+        "THIRD_SNOWFALL_YEAR": 2013,
+        "FOURTH_SNOWFALL": 0,
+        "FOURTH_SNOWFALL_YEAR": 1934,
+        "FIFTH_SNOWFALL": 0,
+        "FIFTH_SNOWFALL_YEAR": 1935,
+        "PROVINCE_CODE": "BC",
+        "RECORD_BEGIN": "1934-06-01T00:00:00Z",
+        "RECORD_END": "2017-02-28T00:00:00Z",
+        "IDENTIFIER": "VSBC36V-11-15"
+      }
+    },
+    {
+      "id": "VSBC28V-11-15",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.93,
+          50.68
+        ]
+      },
+      "properties": {
+        "WXO_CITY_CODE": "BC-28",
+        "VIRTUAL_STATION_NAME_E": "LILLOOET AREA",
+        "VIRTUAL_STATION_NAME_F": "LILLOOET",
+        "VIRTUAL_CLIMATE_ID": "VSBC28V",
+        "LOCAL_MONTH": 11,
+        "LOCAL_DAY": 15,
+        "RECORD_SNOWFALL": 3.0,
+        "RECORD_SNOWFALL_YR": 1982,
+        "PREV_RECORD_SNOWFALL": 2.0,
+        "PREV_RECORD_SNOWFALL_YR": 1927,
+        "FIRST_SNOWFALL": 3,
+        "FIRST_SNOWFALL_YEAR": 1982,
+        "SECOND_SNOWFALL": 2,
+        "SECOND_SNOWFALL_YEAR": 1927,
+        "THIRD_SNOWFALL": 1.5,
+        "THIRD_SNOWFALL_YEAR": 1969,
+        "FOURTH_SNOWFALL": 0,
+        "FOURTH_SNOWFALL_YEAR": 1917,
+        "FIFTH_SNOWFALL": 0,
+        "FIFTH_SNOWFALL_YEAR": 1918,
+        "PROVINCE_CODE": "BC",
+        "RECORD_BEGIN": "1917-01-01T00:00:00Z",
+        "RECORD_END": "2001-04-30T00:00:00Z",
+        "IDENTIFIER": "VSBC28V-11-15"
+      }
     }
   ],
-  "numberMatched": 10,
-  "numberReturned": 10,
+  "numberMatched": 21,
+  "numberReturned": 21,
   "links": [
     {
       "type": "application/geo+json",
       "rel": "self",
       "title": "This document as GeoJSON",
-      "href": "https://api.weather.gc.ca/collections/ltce-snowfall/items?f=json&bbox=-124.36102,49.22169,-121.55898,51.01831&LOCAL_MONTH=11&LOCAL_DAY=15&limit=50"
+      "href": "https://api.weather.gc.ca/collections/ltce-snowfall/items?f=json&bbox=-124.64654,49.03728,-120.85346,51.46272&LOCAL_MONTH=11&LOCAL_DAY=15&limit=200"
     },
     {
       "rel": "alternate",
       "type": "application/ld+json",
       "title": "This document as RDF (JSON-LD)",
-      "href": "https://api.weather.gc.ca/collections/ltce-snowfall/items?f=jsonld&bbox=-124.36102,49.22169,-121.55898,51.01831&LOCAL_MONTH=11&LOCAL_DAY=15&limit=50"
+      "href": "https://api.weather.gc.ca/collections/ltce-snowfall/items?f=jsonld&bbox=-124.64654,49.03728,-120.85346,51.46272&LOCAL_MONTH=11&LOCAL_DAY=15&limit=200"
     },
     {
       "type": "text/html",
       "rel": "alternate",
       "title": "This document as HTML",
-      "href": "https://api.weather.gc.ca/collections/ltce-snowfall/items?f=html&bbox=-124.36102,49.22169,-121.55898,51.01831&LOCAL_MONTH=11&LOCAL_DAY=15&limit=50"
+      "href": "https://api.weather.gc.ca/collections/ltce-snowfall/items?f=html&bbox=-124.64654,49.03728,-120.85346,51.46272&LOCAL_MONTH=11&LOCAL_DAY=15&limit=200"
     },
     {
       "type": "application/json",
@@ -400,5 +807,5 @@
       "href": "https://api.weather.gc.ca/collections/ltce-snowfall"
     }
   ],
-  "timeStamp": "2026-11-15T19:25:38.867738Z"
+  "timeStamp": "2026-11-15T22:09:07.036222Z"
 }

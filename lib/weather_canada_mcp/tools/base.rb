@@ -153,6 +153,7 @@ module WeatherCanadaMCP
       def basemap = @context.basemap
       def images = @context.image_cache
       def forecast_sites = @context.forecast_sites
+      def stations = @context.stations
       def config = @context.config
 
       # A bilingual ECCC field ({"en" => ..., "fr" => ...}) in the requested language.
@@ -164,21 +165,9 @@ module WeatherCanadaMCP
 
       def round_km(distance) = distance.round(distance < 10 ? 1 : 0)
 
-      # [[distance_km, feature], ...] for the point features of a collection within radius_km, closest first.
-      def nearest_features(collection, point, radius_km:, count:, **params)
-        data = ogc.items(collection, bbox: Geo.bbox(point.lat, point.lon, radius_km).join(","), **params)
-        Array(data["features"]).filter_map do |feature|
-          lon, lat = feature.dig("geometry", "coordinates")
-          next unless lat.is_a?(Numeric) && lon.is_a?(Numeric) && feature["properties"].is_a?(Hash)
-
-          distance = Geo.distance_km(point.lat, point.lon, lat, lon)
-          [distance, feature] if distance <= radius_km
-        end.min_by(count, &:first)
-      end
-
       # A GeoMet WMS value at the point, or nil when the layer has none there or then (outside the model or radar
       # domain, or a time it does not hold).
-      def wms_value(layer, point, time: nil, ttl: Sources::ECCC::Wms::TTL)
+      def wms_value(layer, point, time: nil, ttl: Sources::Wms::TTL)
         wms.feature_info(layer, point.lat, point.lon, time:, ttl:)
       rescue Sources::InvalidResponse
         nil

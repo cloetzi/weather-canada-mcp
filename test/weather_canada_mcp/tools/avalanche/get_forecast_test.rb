@@ -161,7 +161,7 @@ class AvalancheGetForecastTest < Minitest::Test
     message, error = forecast(**LAKE_LOUISE, routes: { "/forecasts/en/products/point" => ->(_) { [503, {}, "down"] } })
 
     assert error
-    assert_includes message, "Avalanche Canada failed to answer (HTTP 503)"
+    assert_includes message, "127.0.0.1 failed to answer (HTTP 503)"
     assert_includes message, SAFETY_NOTE
     refute_includes message, "Environment and Climate Change Canada"
   end

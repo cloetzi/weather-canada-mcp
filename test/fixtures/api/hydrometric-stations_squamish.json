@@ -2,68 +2,8 @@
   "type": "FeatureCollection",
   "features": [
     {
+      "id": "08GA022",
       "type": "Feature",
-      "properties": {
-        "STATION_NAME": "SQUAMISH RIVER NEAR BRACKENDALE",
-        "IDENTIFIER": "08GA022",
-        "STATION_NUMBER": "08GA022",
-        "PROV_TERR_STATE_LOC": "BC",
-        "STATUS_EN": "Active",
-        "STATUS_FR": "En service",
-        "CONTRIBUTOR_EN": "BRITISH COLUMBIA HYDRO AND POWER AUTHORITY",
-        "CONTRIBUTOR_FR": "BRITISH COLUMBIA HYDRO AND POWER AUTHORITY",
-        "VERTICAL_DATUM": "ASSUMED DATUM",
-        "REAL_TIME": 1,
-        "RHBN": 0,
-        "DRAINAGE_AREA_GROSS": 2353.0,
-        "DRAINAGE_AREA_EFFECT": null
-      },
-      "links": [
-        {
-          "type": "text/html",
-          "rel": "related",
-          "title": "Station Information for SQUAMISH RIVER NEAR BRACKENDALE (08GA022)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-stations/items?STATION_NUMBER=08GA022&f=html"
-        },
-        {
-          "type": "application/json",
-          "rel": "related",
-          "title": "Daily Mean of Water Level or Discharge for SQUAMISH RIVER NEAR BRACKENDALE (08GA022)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-daily-mean/items?STATION_NUMBER=08GA022"
-        },
-        {
-          "type": "application/json",
-          "rel": "related",
-          "title": "Monthly Mean of Water Level or Discharge for SQUAMISH RIVER NEAR BRACKENDALE (08GA022)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-monthly-mean/items?STATION_NUMBER=08GA022"
-        },
-        {
-          "type": "text/html",
-          "rel": "alternate",
-          "title": "Station Information for SQUAMISH RIVER NEAR BRACKENDALE (08GA022)",
-          "href": "https://wateroffice.ec.gc.ca/report/historical_e.html?stn=08GA022",
-          "hreflang": "en-CA"
-        },
-        {
-          "type": "text/html",
-          "rel": "alternate",
-          "title": "Informations pour la station SQUAMISH RIVER NEAR BRACKENDALE (08GA022)",
-          "href": "https://wateroffice.ec.gc.ca/report/historical_f.html?stn=08GA022",
-          "hreflang": "fr-CA"
-        },
-        {
-          "type": "application/json",
-          "rel": "related",
-          "title": "Annual Maximum and Minimum Instantaneous Water Level or Discharge for SQUAMISH RIVER NEAR BRACKENDALE (08GA022)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-annual-peaks/items?STATION_NUMBER=08GA022"
-        },
-        {
-          "type": "application/json",
-          "rel": "related",
-          "title": "Annual Maximum and Minimum Daily Water Level or Discharge for SQUAMISH RIVER NEAR BRACKENDALE (08GA022)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-annual-statistics/items?STATION_NUMBER=08GA022"
-        }
-      ],
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -71,71 +11,18 @@
           49.795021057128906
         ]
       },
-      "id": "08GA022"
+      "properties": {
+        "STATION_NAME": "SQUAMISH RIVER NEAR BRACKENDALE",
+        "STATION_NUMBER": "08GA022",
+        "PROV_TERR_STATE_LOC": "BC",
+        "CONTRIBUTOR_EN": "BRITISH COLUMBIA HYDRO AND POWER AUTHORITY",
+        "CONTRIBUTOR_FR": "BRITISH COLUMBIA HYDRO AND POWER AUTHORITY",
+        "DRAINAGE_AREA_GROSS": 2353.0
+      }
     },
     {
+      "id": "08GA026",
       "type": "Feature",
-      "properties": {
-        "STATION_NAME": "CAPILANO RIVER ABOVE EASTCAP CREEK",
-        "IDENTIFIER": "08GA026",
-        "STATION_NUMBER": "08GA026",
-        "PROV_TERR_STATE_LOC": "BC",
-        "STATUS_EN": "Active",
-        "STATUS_FR": "En service",
-        "CONTRIBUTOR_EN": "PRIVATE",
-        "CONTRIBUTOR_FR": "SECTEUR PRIVE",
-        "VERTICAL_DATUM": "ASSUMED DATUM",
-        "REAL_TIME": 1,
-        "RHBN": 0,
-        "DRAINAGE_AREA_GROSS": 82.01000213623047,
-        "DRAINAGE_AREA_EFFECT": null
-      },
-      "links": [
-        {
-          "type": "text/html",
-          "rel": "related",
-          "title": "Station Information for CAPILANO RIVER ABOVE EASTCAP CREEK (08GA026)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-stations/items?STATION_NUMBER=08GA026&f=html"
-        },
-        {
-          "type": "application/json",
-          "rel": "related",
-          "title": "Daily Mean of Water Level or Discharge for CAPILANO RIVER ABOVE EASTCAP CREEK (08GA026)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-daily-mean/items?STATION_NUMBER=08GA026"
-        },
-        {
-          "type": "application/json",
-          "rel": "related",
-          "title": "Monthly Mean of Water Level or Discharge for CAPILANO RIVER ABOVE EASTCAP CREEK (08GA026)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-monthly-mean/items?STATION_NUMBER=08GA026"
-        },
-        {
-          "type": "text/html",
-          "rel": "alternate",
-          "title": "Station Information for CAPILANO RIVER ABOVE EASTCAP CREEK (08GA026)",
-          "href": "https://wateroffice.ec.gc.ca/report/historical_e.html?stn=08GA026",
-          "hreflang": "en-CA"
-        },
-        {
-          "type": "text/html",
-          "rel": "alternate",
-          "title": "Informations pour la station CAPILANO RIVER ABOVE EASTCAP CREEK (08GA026)",
-          "href": "https://wateroffice.ec.gc.ca/report/historical_f.html?stn=08GA026",
-          "hreflang": "fr-CA"
-        },
-        {
-          "type": "application/json",
-          "rel": "related",
-          "title": "Annual Maximum and Minimum Instantaneous Water Level or Discharge for CAPILANO RIVER ABOVE EASTCAP CREEK (08GA026)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-annual-peaks/items?STATION_NUMBER=08GA026"
-        },
-        {
-          "type": "application/json",
-          "rel": "related",
-          "title": "Annual Maximum and Minimum Daily Water Level or Discharge for CAPILANO RIVER ABOVE EASTCAP CREEK (08GA026)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-annual-statistics/items?STATION_NUMBER=08GA026"
-        }
-      ],
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -143,71 +30,18 @@
           49.45458984375
         ]
       },
-      "id": "08GA026"
+      "properties": {
+        "STATION_NAME": "CAPILANO RIVER ABOVE EASTCAP CREEK",
+        "STATION_NUMBER": "08GA026",
+        "PROV_TERR_STATE_LOC": "BC",
+        "CONTRIBUTOR_EN": "PRIVATE",
+        "CONTRIBUTOR_FR": "SECTEUR PRIVE",
+        "DRAINAGE_AREA_GROSS": 82.01000213623047
+      }
     },
     {
+      "id": "08GA030",
       "type": "Feature",
-      "properties": {
-        "STATION_NAME": "SEYMOUR RIVER NEAR NORTH VANCOUVER",
-        "IDENTIFIER": "08GA030",
-        "STATION_NUMBER": "08GA030",
-        "PROV_TERR_STATE_LOC": "BC",
-        "STATUS_EN": "Active",
-        "STATUS_FR": "En service",
-        "CONTRIBUTOR_EN": "WATER SURVEY OF CANADA (DOE) (CANADA)",
-        "CONTRIBUTOR_FR": "RELEVES HYDROLOGIQUES DU CANADA (MDE) (CANADA)",
-        "VERTICAL_DATUM": "ASSUMED DATUM",
-        "REAL_TIME": 1,
-        "RHBN": 0,
-        "DRAINAGE_AREA_GROSS": 174.89999389648438,
-        "DRAINAGE_AREA_EFFECT": null
-      },
-      "links": [
-        {
-          "type": "text/html",
-          "rel": "related",
-          "title": "Station Information for SEYMOUR RIVER NEAR NORTH VANCOUVER (08GA030)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-stations/items?STATION_NUMBER=08GA030&f=html"
-        },
-        {
-          "type": "application/json",
-          "rel": "related",
-          "title": "Daily Mean of Water Level or Discharge for SEYMOUR RIVER NEAR NORTH VANCOUVER (08GA030)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-daily-mean/items?STATION_NUMBER=08GA030"
-        },
-        {
-          "type": "application/json",
-          "rel": "related",
-          "title": "Monthly Mean of Water Level or Discharge for SEYMOUR RIVER NEAR NORTH VANCOUVER (08GA030)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-monthly-mean/items?STATION_NUMBER=08GA030"
-        },
-        {
-          "type": "text/html",
-          "rel": "alternate",
-          "title": "Station Information for SEYMOUR RIVER NEAR NORTH VANCOUVER (08GA030)",
-          "href": "https://wateroffice.ec.gc.ca/report/historical_e.html?stn=08GA030",
-          "hreflang": "en-CA"
-        },
-        {
-          "type": "text/html",
-          "rel": "alternate",
-          "title": "Informations pour la station SEYMOUR RIVER NEAR NORTH VANCOUVER (08GA030)",
-          "href": "https://wateroffice.ec.gc.ca/report/historical_f.html?stn=08GA030",
-          "hreflang": "fr-CA"
-        },
-        {
-          "type": "application/json",
-          "rel": "related",
-          "title": "Annual Maximum and Minimum Instantaneous Water Level or Discharge for SEYMOUR RIVER NEAR NORTH VANCOUVER (08GA030)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-annual-peaks/items?STATION_NUMBER=08GA030"
-        },
-        {
-          "type": "application/json",
-          "rel": "related",
-          "title": "Annual Maximum and Minimum Daily Water Level or Discharge for SEYMOUR RIVER NEAR NORTH VANCOUVER (08GA030)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-annual-statistics/items?STATION_NUMBER=08GA030"
-        }
-      ],
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -215,71 +49,18 @@
           49.34197998046875
         ]
       },
-      "id": "08GA030"
+      "properties": {
+        "STATION_NAME": "SEYMOUR RIVER NEAR NORTH VANCOUVER",
+        "STATION_NUMBER": "08GA030",
+        "PROV_TERR_STATE_LOC": "BC",
+        "CONTRIBUTOR_EN": "WATER SURVEY OF CANADA (DOE) (CANADA)",
+        "CONTRIBUTOR_FR": "RELEVES HYDROLOGIQUES DU CANADA (MDE) (CANADA)",
+        "DRAINAGE_AREA_GROSS": 174.89999389648438
+      }
     },
     {
+      "id": "08GA031",
       "type": "Feature",
-      "properties": {
-        "STATION_NAME": "CAPILANO RIVER AT CANYON",
-        "IDENTIFIER": "08GA031",
-        "STATION_NUMBER": "08GA031",
-        "PROV_TERR_STATE_LOC": "BC",
-        "STATUS_EN": "Active",
-        "STATUS_FR": "En service",
-        "CONTRIBUTOR_EN": "PRIVATE",
-        "CONTRIBUTOR_FR": "SECTEUR PRIVE",
-        "VERTICAL_DATUM": "ASSUMED DATUM",
-        "REAL_TIME": 1,
-        "RHBN": 0,
-        "DRAINAGE_AREA_GROSS": 197.5,
-        "DRAINAGE_AREA_EFFECT": null
-      },
-      "links": [
-        {
-          "type": "text/html",
-          "rel": "related",
-          "title": "Station Information for CAPILANO RIVER AT CANYON (08GA031)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-stations/items?STATION_NUMBER=08GA031&f=html"
-        },
-        {
-          "type": "application/json",
-          "rel": "related",
-          "title": "Daily Mean of Water Level or Discharge for CAPILANO RIVER AT CANYON (08GA031)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-daily-mean/items?STATION_NUMBER=08GA031"
-        },
-        {
-          "type": "application/json",
-          "rel": "related",
-          "title": "Monthly Mean of Water Level or Discharge for CAPILANO RIVER AT CANYON (08GA031)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-monthly-mean/items?STATION_NUMBER=08GA031"
-        },
-        {
-          "type": "text/html",
-          "rel": "alternate",
-          "title": "Station Information for CAPILANO RIVER AT CANYON (08GA031)",
-          "href": "https://wateroffice.ec.gc.ca/report/historical_e.html?stn=08GA031",
-          "hreflang": "en-CA"
-        },
-        {
-          "type": "text/html",
-          "rel": "alternate",
-          "title": "Informations pour la station CAPILANO RIVER AT CANYON (08GA031)",
-          "href": "https://wateroffice.ec.gc.ca/report/historical_f.html?stn=08GA031",
-          "hreflang": "fr-CA"
-        },
-        {
-          "type": "application/json",
-          "rel": "related",
-          "title": "Annual Maximum and Minimum Instantaneous Water Level or Discharge for CAPILANO RIVER AT CANYON (08GA031)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-annual-peaks/items?STATION_NUMBER=08GA031"
-        },
-        {
-          "type": "application/json",
-          "rel": "related",
-          "title": "Annual Maximum and Minimum Daily Water Level or Discharge for CAPILANO RIVER AT CANYON (08GA031)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-annual-statistics/items?STATION_NUMBER=08GA031"
-        }
-      ],
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -287,71 +68,18 @@
           49.357948303222656
         ]
       },
-      "id": "08GA031"
+      "properties": {
+        "STATION_NAME": "CAPILANO RIVER AT CANYON",
+        "STATION_NUMBER": "08GA031",
+        "PROV_TERR_STATE_LOC": "BC",
+        "CONTRIBUTOR_EN": "PRIVATE",
+        "CONTRIBUTOR_FR": "SECTEUR PRIVE",
+        "DRAINAGE_AREA_GROSS": 197.5
+      }
     },
     {
+      "id": "08GA043",
       "type": "Feature",
-      "properties": {
-        "STATION_NAME": "CHEAKAMUS RIVER NEAR BRACKENDALE",
-        "IDENTIFIER": "08GA043",
-        "STATION_NUMBER": "08GA043",
-        "PROV_TERR_STATE_LOC": "BC",
-        "STATUS_EN": "Active",
-        "STATUS_FR": "En service",
-        "CONTRIBUTOR_EN": "BRITISH COLUMBIA HYDRO AND POWER AUTHORITY",
-        "CONTRIBUTOR_FR": "BRITISH COLUMBIA HYDRO AND POWER AUTHORITY",
-        "VERTICAL_DATUM": "ASSUMED DATUM",
-        "REAL_TIME": 1,
-        "RHBN": 0,
-        "DRAINAGE_AREA_GROSS": 963.0,
-        "DRAINAGE_AREA_EFFECT": null
-      },
-      "links": [
-        {
-          "type": "text/html",
-          "rel": "related",
-          "title": "Station Information for CHEAKAMUS RIVER NEAR BRACKENDALE (08GA043)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-stations/items?STATION_NUMBER=08GA043&f=html"
-        },
-        {
-          "type": "application/json",
-          "rel": "related",
-          "title": "Daily Mean of Water Level or Discharge for CHEAKAMUS RIVER NEAR BRACKENDALE (08GA043)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-daily-mean/items?STATION_NUMBER=08GA043"
-        },
-        {
-          "type": "application/json",
-          "rel": "related",
-          "title": "Monthly Mean of Water Level or Discharge for CHEAKAMUS RIVER NEAR BRACKENDALE (08GA043)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-monthly-mean/items?STATION_NUMBER=08GA043"
-        },
-        {
-          "type": "text/html",
-          "rel": "alternate",
-          "title": "Station Information for CHEAKAMUS RIVER NEAR BRACKENDALE (08GA043)",
-          "href": "https://wateroffice.ec.gc.ca/report/historical_e.html?stn=08GA043",
-          "hreflang": "en-CA"
-        },
-        {
-          "type": "text/html",
-          "rel": "alternate",
-          "title": "Informations pour la station CHEAKAMUS RIVER NEAR BRACKENDALE (08GA043)",
-          "href": "https://wateroffice.ec.gc.ca/report/historical_f.html?stn=08GA043",
-          "hreflang": "fr-CA"
-        },
-        {
-          "type": "application/json",
-          "rel": "related",
-          "title": "Annual Maximum and Minimum Instantaneous Water Level or Discharge for CHEAKAMUS RIVER NEAR BRACKENDALE (08GA043)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-annual-peaks/items?STATION_NUMBER=08GA043"
-        },
-        {
-          "type": "application/json",
-          "rel": "related",
-          "title": "Annual Maximum and Minimum Daily Water Level or Discharge for CHEAKAMUS RIVER NEAR BRACKENDALE (08GA043)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-annual-statistics/items?STATION_NUMBER=08GA043"
-        }
-      ],
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -359,71 +87,18 @@
           49.8160285949707
         ]
       },
-      "id": "08GA043"
+      "properties": {
+        "STATION_NAME": "CHEAKAMUS RIVER NEAR BRACKENDALE",
+        "STATION_NUMBER": "08GA043",
+        "PROV_TERR_STATE_LOC": "BC",
+        "CONTRIBUTOR_EN": "BRITISH COLUMBIA HYDRO AND POWER AUTHORITY",
+        "CONTRIBUTOR_FR": "BRITISH COLUMBIA HYDRO AND POWER AUTHORITY",
+        "DRAINAGE_AREA_GROSS": 963.0
+      }
     },
     {
+      "id": "08GA047",
       "type": "Feature",
-      "properties": {
-        "STATION_NAME": "ROBERTS CREEK AT ROBERTS CREEK",
-        "IDENTIFIER": "08GA047",
-        "STATION_NUMBER": "08GA047",
-        "PROV_TERR_STATE_LOC": "BC",
-        "STATUS_EN": "Active",
-        "STATUS_FR": "En service",
-        "CONTRIBUTOR_EN": "WATER SURVEY OF CANADA (DOE) (CANADA)",
-        "CONTRIBUTOR_FR": "RELEVES HYDROLOGIQUES DU CANADA (MDE) (CANADA)",
-        "VERTICAL_DATUM": "ASSUMED DATUM",
-        "REAL_TIME": 1,
-        "RHBN": 0,
-        "DRAINAGE_AREA_GROSS": 31.01000022888184,
-        "DRAINAGE_AREA_EFFECT": null
-      },
-      "links": [
-        {
-          "type": "text/html",
-          "rel": "related",
-          "title": "Station Information for ROBERTS CREEK AT ROBERTS CREEK (08GA047)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-stations/items?STATION_NUMBER=08GA047&f=html"
-        },
-        {
-          "type": "application/json",
-          "rel": "related",
-          "title": "Daily Mean of Water Level or Discharge for ROBERTS CREEK AT ROBERTS CREEK (08GA047)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-daily-mean/items?STATION_NUMBER=08GA047"
-        },
-        {
-          "type": "application/json",
-          "rel": "related",
-          "title": "Monthly Mean of Water Level or Discharge for ROBERTS CREEK AT ROBERTS CREEK (08GA047)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-monthly-mean/items?STATION_NUMBER=08GA047"
-        },
-        {
-          "type": "text/html",
-          "rel": "alternate",
-          "title": "Station Information for ROBERTS CREEK AT ROBERTS CREEK (08GA047)",
-          "href": "https://wateroffice.ec.gc.ca/report/historical_e.html?stn=08GA047",
-          "hreflang": "en-CA"
-        },
-        {
-          "type": "text/html",
-          "rel": "alternate",
-          "title": "Informations pour la station ROBERTS CREEK AT ROBERTS CREEK (08GA047)",
-          "href": "https://wateroffice.ec.gc.ca/report/historical_f.html?stn=08GA047",
-          "hreflang": "fr-CA"
-        },
-        {
-          "type": "application/json",
-          "rel": "related",
-          "title": "Annual Maximum and Minimum Instantaneous Water Level or Discharge for ROBERTS CREEK AT ROBERTS CREEK (08GA047)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-annual-peaks/items?STATION_NUMBER=08GA047"
-        },
-        {
-          "type": "application/json",
-          "rel": "related",
-          "title": "Annual Maximum and Minimum Daily Water Level or Discharge for ROBERTS CREEK AT ROBERTS CREEK (08GA047)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-annual-statistics/items?STATION_NUMBER=08GA047"
-        }
-      ],
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -431,71 +106,18 @@
           49.42082977294922
         ]
       },
-      "id": "08GA047"
-    },
-    {
-      "type": "Feature",
       "properties": {
-        "STATION_NAME": "MACKAY CREEK AT MONTROYAL BOULEVARD",
-        "IDENTIFIER": "08GA061",
-        "STATION_NUMBER": "08GA061",
+        "STATION_NAME": "ROBERTS CREEK AT ROBERTS CREEK",
+        "STATION_NUMBER": "08GA047",
         "PROV_TERR_STATE_LOC": "BC",
-        "STATUS_EN": "Active",
-        "STATUS_FR": "En service",
         "CONTRIBUTOR_EN": "WATER SURVEY OF CANADA (DOE) (CANADA)",
         "CONTRIBUTOR_FR": "RELEVES HYDROLOGIQUES DU CANADA (MDE) (CANADA)",
-        "VERTICAL_DATUM": "ASSUMED DATUM",
-        "REAL_TIME": 1,
-        "RHBN": 0,
-        "DRAINAGE_AREA_GROSS": 2.900000095367432,
-        "DRAINAGE_AREA_EFFECT": null
-      },
-      "links": [
-        {
-          "type": "text/html",
-          "rel": "related",
-          "title": "Station Information for MACKAY CREEK AT MONTROYAL BOULEVARD (08GA061)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-stations/items?STATION_NUMBER=08GA061&f=html"
-        },
-        {
-          "type": "application/json",
-          "rel": "related",
-          "title": "Daily Mean of Water Level or Discharge for MACKAY CREEK AT MONTROYAL BOULEVARD (08GA061)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-daily-mean/items?STATION_NUMBER=08GA061"
-        },
-        {
-          "type": "application/json",
-          "rel": "related",
-          "title": "Monthly Mean of Water Level or Discharge for MACKAY CREEK AT MONTROYAL BOULEVARD (08GA061)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-monthly-mean/items?STATION_NUMBER=08GA061"
-        },
-        {
-          "type": "text/html",
-          "rel": "alternate",
-          "title": "Station Information for MACKAY CREEK AT MONTROYAL BOULEVARD (08GA061)",
-          "href": "https://wateroffice.ec.gc.ca/report/historical_e.html?stn=08GA061",
-          "hreflang": "en-CA"
-        },
-        {
-          "type": "text/html",
-          "rel": "alternate",
-          "title": "Informations pour la station MACKAY CREEK AT MONTROYAL BOULEVARD (08GA061)",
-          "href": "https://wateroffice.ec.gc.ca/report/historical_f.html?stn=08GA061",
-          "hreflang": "fr-CA"
-        },
-        {
-          "type": "application/json",
-          "rel": "related",
-          "title": "Annual Maximum and Minimum Instantaneous Water Level or Discharge for MACKAY CREEK AT MONTROYAL BOULEVARD (08GA061)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-annual-peaks/items?STATION_NUMBER=08GA061"
-        },
-        {
-          "type": "application/json",
-          "rel": "related",
-          "title": "Annual Maximum and Minimum Daily Water Level or Discharge for MACKAY CREEK AT MONTROYAL BOULEVARD (08GA061)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-annual-statistics/items?STATION_NUMBER=08GA061"
-        }
-      ],
+        "DRAINAGE_AREA_GROSS": 31.01000022888184
+      }
+    },
+    {
+      "id": "08GA061",
+      "type": "Feature",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -503,71 +125,18 @@
           49.35615921020508
         ]
       },
-      "id": "08GA061"
+      "properties": {
+        "STATION_NAME": "MACKAY CREEK AT MONTROYAL BOULEVARD",
+        "STATION_NUMBER": "08GA061",
+        "PROV_TERR_STATE_LOC": "BC",
+        "CONTRIBUTOR_EN": "WATER SURVEY OF CANADA (DOE) (CANADA)",
+        "CONTRIBUTOR_FR": "RELEVES HYDROLOGIQUES DU CANADA (MDE) (CANADA)",
+        "DRAINAGE_AREA_GROSS": 2.900000095367432
+      }
     },
     {
+      "id": "08GA071",
       "type": "Feature",
-      "properties": {
-        "STATION_NAME": "ELAHO RIVER NEAR THE MOUTH",
-        "IDENTIFIER": "08GA071",
-        "STATION_NUMBER": "08GA071",
-        "PROV_TERR_STATE_LOC": "BC",
-        "STATUS_EN": "Active",
-        "STATUS_FR": "En service",
-        "CONTRIBUTOR_EN": "B.C. MINISTRY OF ENVIRONMENT",
-        "CONTRIBUTOR_FR": "MINISTERE DE L'ENVIRONNEMENT DE LA COLOMBIE-BRITAN",
-        "VERTICAL_DATUM": "ASSUMED DATUM",
-        "REAL_TIME": 1,
-        "RHBN": 0,
-        "DRAINAGE_AREA_GROSS": 1215.0,
-        "DRAINAGE_AREA_EFFECT": null
-      },
-      "links": [
-        {
-          "type": "text/html",
-          "rel": "related",
-          "title": "Station Information for ELAHO RIVER NEAR THE MOUTH (08GA071)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-stations/items?STATION_NUMBER=08GA071&f=html"
-        },
-        {
-          "type": "application/json",
-          "rel": "related",
-          "title": "Daily Mean of Water Level or Discharge for ELAHO RIVER NEAR THE MOUTH (08GA071)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-daily-mean/items?STATION_NUMBER=08GA071"
-        },
-        {
-          "type": "application/json",
-          "rel": "related",
-          "title": "Monthly Mean of Water Level or Discharge for ELAHO RIVER NEAR THE MOUTH (08GA071)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-monthly-mean/items?STATION_NUMBER=08GA071"
-        },
-        {
-          "type": "text/html",
-          "rel": "alternate",
-          "title": "Station Information for ELAHO RIVER NEAR THE MOUTH (08GA071)",
-          "href": "https://wateroffice.ec.gc.ca/report/historical_e.html?stn=08GA071",
-          "hreflang": "en-CA"
-        },
-        {
-          "type": "text/html",
-          "rel": "alternate",
-          "title": "Informations pour la station ELAHO RIVER NEAR THE MOUTH (08GA071)",
-          "href": "https://wateroffice.ec.gc.ca/report/historical_f.html?stn=08GA071",
-          "hreflang": "fr-CA"
-        },
-        {
-          "type": "application/json",
-          "rel": "related",
-          "title": "Annual Maximum and Minimum Instantaneous Water Level or Discharge for ELAHO RIVER NEAR THE MOUTH (08GA071)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-annual-peaks/items?STATION_NUMBER=08GA071"
-        },
-        {
-          "type": "application/json",
-          "rel": "related",
-          "title": "Annual Maximum and Minimum Daily Water Level or Discharge for ELAHO RIVER NEAR THE MOUTH (08GA071)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-annual-statistics/items?STATION_NUMBER=08GA071"
-        }
-      ],
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -575,71 +144,18 @@
           50.11402893066406
         ]
       },
-      "id": "08GA071"
+      "properties": {
+        "STATION_NAME": "ELAHO RIVER NEAR THE MOUTH",
+        "STATION_NUMBER": "08GA071",
+        "PROV_TERR_STATE_LOC": "BC",
+        "CONTRIBUTOR_EN": "B.C. MINISTRY OF ENVIRONMENT",
+        "CONTRIBUTOR_FR": "MINISTERE DE L'ENVIRONNEMENT DE LA COLOMBIE-BRITAN",
+        "DRAINAGE_AREA_GROSS": 1215.0
+      }
     },
     {
+      "id": "08GA072",
       "type": "Feature",
-      "properties": {
-        "STATION_NAME": "CHEAKAMUS RIVER ABOVE MILLAR CREEK",
-        "IDENTIFIER": "08GA072",
-        "STATION_NUMBER": "08GA072",
-        "PROV_TERR_STATE_LOC": "BC",
-        "STATUS_EN": "Active",
-        "STATUS_FR": "En service",
-        "CONTRIBUTOR_EN": "BRITISH COLUMBIA HYDRO AND POWER AUTHORITY",
-        "CONTRIBUTOR_FR": "BRITISH COLUMBIA HYDRO AND POWER AUTHORITY",
-        "VERTICAL_DATUM": "ASSUMED DATUM",
-        "REAL_TIME": 1,
-        "RHBN": 0,
-        "DRAINAGE_AREA_GROSS": 296.8999938964844,
-        "DRAINAGE_AREA_EFFECT": null
-      },
-      "links": [
-        {
-          "type": "text/html",
-          "rel": "related",
-          "title": "Station Information for CHEAKAMUS RIVER ABOVE MILLAR CREEK (08GA072)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-stations/items?STATION_NUMBER=08GA072&f=html"
-        },
-        {
-          "type": "application/json",
-          "rel": "related",
-          "title": "Daily Mean of Water Level or Discharge for CHEAKAMUS RIVER ABOVE MILLAR CREEK (08GA072)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-daily-mean/items?STATION_NUMBER=08GA072"
-        },
-        {
-          "type": "application/json",
-          "rel": "related",
-          "title": "Monthly Mean of Water Level or Discharge for CHEAKAMUS RIVER ABOVE MILLAR CREEK (08GA072)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-monthly-mean/items?STATION_NUMBER=08GA072"
-        },
-        {
-          "type": "text/html",
-          "rel": "alternate",
-          "title": "Station Information for CHEAKAMUS RIVER ABOVE MILLAR CREEK (08GA072)",
-          "href": "https://wateroffice.ec.gc.ca/report/historical_e.html?stn=08GA072",
-          "hreflang": "en-CA"
-        },
-        {
-          "type": "text/html",
-          "rel": "alternate",
-          "title": "Informations pour la station CHEAKAMUS RIVER ABOVE MILLAR CREEK (08GA072)",
-          "href": "https://wateroffice.ec.gc.ca/report/historical_f.html?stn=08GA072",
-          "hreflang": "fr-CA"
-        },
-        {
-          "type": "application/json",
-          "rel": "related",
-          "title": "Annual Maximum and Minimum Instantaneous Water Level or Discharge for CHEAKAMUS RIVER ABOVE MILLAR CREEK (08GA072)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-annual-peaks/items?STATION_NUMBER=08GA072"
-        },
-        {
-          "type": "application/json",
-          "rel": "related",
-          "title": "Annual Maximum and Minimum Daily Water Level or Discharge for CHEAKAMUS RIVER ABOVE MILLAR CREEK (08GA072)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-annual-statistics/items?STATION_NUMBER=08GA072"
-        }
-      ],
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -647,71 +163,18 @@
           50.07991027832031
         ]
       },
-      "id": "08GA072"
+      "properties": {
+        "STATION_NAME": "CHEAKAMUS RIVER ABOVE MILLAR CREEK",
+        "STATION_NUMBER": "08GA072",
+        "PROV_TERR_STATE_LOC": "BC",
+        "CONTRIBUTOR_EN": "BRITISH COLUMBIA HYDRO AND POWER AUTHORITY",
+        "CONTRIBUTOR_FR": "BRITISH COLUMBIA HYDRO AND POWER AUTHORITY",
+        "DRAINAGE_AREA_GROSS": 296.8999938964844
+      }
     },
     {
+      "id": "08GA075",
       "type": "Feature",
-      "properties": {
-        "STATION_NAME": "MAMQUAM RIVER ABOVE RING CREEK",
-        "IDENTIFIER": "08GA075",
-        "STATION_NUMBER": "08GA075",
-        "PROV_TERR_STATE_LOC": "BC",
-        "STATUS_EN": "Active",
-        "STATUS_FR": "En service",
-        "CONTRIBUTOR_EN": "WATER SURVEY OF CANADA (DOE) (CANADA)",
-        "CONTRIBUTOR_FR": "RELEVES HYDROLOGIQUES DU CANADA (MDE) (CANADA)",
-        "VERTICAL_DATUM": "ASSUMED DATUM",
-        "REAL_TIME": 1,
-        "RHBN": 0,
-        "DRAINAGE_AREA_GROSS": 274.79998779296875,
-        "DRAINAGE_AREA_EFFECT": null
-      },
-      "links": [
-        {
-          "type": "text/html",
-          "rel": "related",
-          "title": "Station Information for MAMQUAM RIVER ABOVE RING CREEK (08GA075)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-stations/items?STATION_NUMBER=08GA075&f=html"
-        },
-        {
-          "type": "application/json",
-          "rel": "related",
-          "title": "Daily Mean of Water Level or Discharge for MAMQUAM RIVER ABOVE RING CREEK (08GA075)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-daily-mean/items?STATION_NUMBER=08GA075"
-        },
-        {
-          "type": "application/json",
-          "rel": "related",
-          "title": "Monthly Mean of Water Level or Discharge for MAMQUAM RIVER ABOVE RING CREEK (08GA075)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-monthly-mean/items?STATION_NUMBER=08GA075"
-        },
-        {
-          "type": "text/html",
-          "rel": "alternate",
-          "title": "Station Information for MAMQUAM RIVER ABOVE RING CREEK (08GA075)",
-          "href": "https://wateroffice.ec.gc.ca/report/historical_e.html?stn=08GA075",
-          "hreflang": "en-CA"
-        },
-        {
-          "type": "text/html",
-          "rel": "alternate",
-          "title": "Informations pour la station MAMQUAM RIVER ABOVE RING CREEK (08GA075)",
-          "href": "https://wateroffice.ec.gc.ca/report/historical_f.html?stn=08GA075",
-          "hreflang": "fr-CA"
-        },
-        {
-          "type": "application/json",
-          "rel": "related",
-          "title": "Annual Maximum and Minimum Instantaneous Water Level or Discharge for MAMQUAM RIVER ABOVE RING CREEK (08GA075)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-annual-peaks/items?STATION_NUMBER=08GA075"
-        },
-        {
-          "type": "application/json",
-          "rel": "related",
-          "title": "Annual Maximum and Minimum Daily Water Level or Discharge for MAMQUAM RIVER ABOVE RING CREEK (08GA075)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-annual-statistics/items?STATION_NUMBER=08GA075"
-        }
-      ],
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -719,71 +182,18 @@
           49.72594833374024
         ]
       },
-      "id": "08GA075"
-    },
-    {
-      "type": "Feature",
       "properties": {
-        "STATION_NAME": "STAWAMUS RIVER AT HIGHWAY NO. 99",
-        "IDENTIFIER": "08GA076",
-        "STATION_NUMBER": "08GA076",
+        "STATION_NAME": "MAMQUAM RIVER ABOVE RING CREEK",
+        "STATION_NUMBER": "08GA075",
         "PROV_TERR_STATE_LOC": "BC",
-        "STATUS_EN": "Active",
-        "STATUS_FR": "En service",
         "CONTRIBUTOR_EN": "WATER SURVEY OF CANADA (DOE) (CANADA)",
         "CONTRIBUTOR_FR": "RELEVES HYDROLOGIQUES DU CANADA (MDE) (CANADA)",
-        "VERTICAL_DATUM": "ASSUMED DATUM",
-        "REAL_TIME": 1,
-        "RHBN": 0,
-        "DRAINAGE_AREA_GROSS": 52.16999816894531,
-        "DRAINAGE_AREA_EFFECT": null
-      },
-      "links": [
-        {
-          "type": "text/html",
-          "rel": "related",
-          "title": "Station Information for STAWAMUS RIVER AT HIGHWAY NO. 99 (08GA076)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-stations/items?STATION_NUMBER=08GA076&f=html"
-        },
-        {
-          "type": "application/json",
-          "rel": "related",
-          "title": "Daily Mean of Water Level or Discharge for STAWAMUS RIVER AT HIGHWAY NO. 99 (08GA076)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-daily-mean/items?STATION_NUMBER=08GA076"
-        },
-        {
-          "type": "application/json",
-          "rel": "related",
-          "title": "Monthly Mean of Water Level or Discharge for STAWAMUS RIVER AT HIGHWAY NO. 99 (08GA076)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-monthly-mean/items?STATION_NUMBER=08GA076"
-        },
-        {
-          "type": "text/html",
-          "rel": "alternate",
-          "title": "Station Information for STAWAMUS RIVER AT HIGHWAY NO. 99 (08GA076)",
-          "href": "https://wateroffice.ec.gc.ca/report/historical_e.html?stn=08GA076",
-          "hreflang": "en-CA"
-        },
-        {
-          "type": "text/html",
-          "rel": "alternate",
-          "title": "Informations pour la station STAWAMUS RIVER AT HIGHWAY NO. 99 (08GA076)",
-          "href": "https://wateroffice.ec.gc.ca/report/historical_f.html?stn=08GA076",
-          "hreflang": "fr-CA"
-        },
-        {
-          "type": "application/json",
-          "rel": "related",
-          "title": "Annual Maximum and Minimum Instantaneous Water Level or Discharge for STAWAMUS RIVER AT HIGHWAY NO. 99 (08GA076)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-annual-peaks/items?STATION_NUMBER=08GA076"
-        },
-        {
-          "type": "application/json",
-          "rel": "related",
-          "title": "Annual Maximum and Minimum Daily Water Level or Discharge for STAWAMUS RIVER AT HIGHWAY NO. 99 (08GA076)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-annual-statistics/items?STATION_NUMBER=08GA076"
-        }
-      ],
+        "DRAINAGE_AREA_GROSS": 274.79998779296875
+      }
+    },
+    {
+      "id": "08GA076",
+      "type": "Feature",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -791,71 +201,18 @@
           49.6898193359375
         ]
       },
-      "id": "08GA076"
+      "properties": {
+        "STATION_NAME": "STAWAMUS RIVER AT HIGHWAY NO. 99",
+        "STATION_NUMBER": "08GA076",
+        "PROV_TERR_STATE_LOC": "BC",
+        "CONTRIBUTOR_EN": "WATER SURVEY OF CANADA (DOE) (CANADA)",
+        "CONTRIBUTOR_FR": "RELEVES HYDROLOGIQUES DU CANADA (MDE) (CANADA)",
+        "DRAINAGE_AREA_GROSS": 52.16999816894531
+      }
     },
     {
+      "id": "08GA077",
       "type": "Feature",
-      "properties": {
-        "STATION_NAME": "SEYMOUR RIVER BELOW ORCHID CREEK",
-        "IDENTIFIER": "08GA077",
-        "STATION_NUMBER": "08GA077",
-        "PROV_TERR_STATE_LOC": "BC",
-        "STATUS_EN": "Active",
-        "STATUS_FR": "En service",
-        "CONTRIBUTOR_EN": "PRIVATE",
-        "CONTRIBUTOR_FR": "SECTEUR PRIVE",
-        "VERTICAL_DATUM": "ASSUMED DATUM",
-        "REAL_TIME": 1,
-        "RHBN": 0,
-        "DRAINAGE_AREA_GROSS": 59.93999862670898,
-        "DRAINAGE_AREA_EFFECT": null
-      },
-      "links": [
-        {
-          "type": "text/html",
-          "rel": "related",
-          "title": "Station Information for SEYMOUR RIVER BELOW ORCHID CREEK (08GA077)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-stations/items?STATION_NUMBER=08GA077&f=html"
-        },
-        {
-          "type": "application/json",
-          "rel": "related",
-          "title": "Daily Mean of Water Level or Discharge for SEYMOUR RIVER BELOW ORCHID CREEK (08GA077)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-daily-mean/items?STATION_NUMBER=08GA077"
-        },
-        {
-          "type": "application/json",
-          "rel": "related",
-          "title": "Monthly Mean of Water Level or Discharge for SEYMOUR RIVER BELOW ORCHID CREEK (08GA077)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-monthly-mean/items?STATION_NUMBER=08GA077"
-        },
-        {
-          "type": "text/html",
-          "rel": "alternate",
-          "title": "Station Information for SEYMOUR RIVER BELOW ORCHID CREEK (08GA077)",
-          "href": "https://wateroffice.ec.gc.ca/report/historical_e.html?stn=08GA077",
-          "hreflang": "en-CA"
-        },
-        {
-          "type": "text/html",
-          "rel": "alternate",
-          "title": "Informations pour la station SEYMOUR RIVER BELOW ORCHID CREEK (08GA077)",
-          "href": "https://wateroffice.ec.gc.ca/report/historical_f.html?stn=08GA077",
-          "hreflang": "fr-CA"
-        },
-        {
-          "type": "application/json",
-          "rel": "related",
-          "title": "Annual Maximum and Minimum Instantaneous Water Level or Discharge for SEYMOUR RIVER BELOW ORCHID CREEK (08GA077)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-annual-peaks/items?STATION_NUMBER=08GA077"
-        },
-        {
-          "type": "application/json",
-          "rel": "related",
-          "title": "Annual Maximum and Minimum Daily Water Level or Discharge for SEYMOUR RIVER BELOW ORCHID CREEK (08GA077)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-annual-statistics/items?STATION_NUMBER=08GA077"
-        }
-      ],
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -863,71 +220,18 @@
           49.520301818847656
         ]
       },
-      "id": "08GA077"
-    },
-    {
-      "type": "Feature",
       "properties": {
-        "STATION_NAME": "SEYMOUR RIVER ABOVE LAKEHEAD",
-        "IDENTIFIER": "08GA079",
-        "STATION_NUMBER": "08GA079",
+        "STATION_NAME": "SEYMOUR RIVER BELOW ORCHID CREEK",
+        "STATION_NUMBER": "08GA077",
         "PROV_TERR_STATE_LOC": "BC",
-        "STATUS_EN": "Active",
-        "STATUS_FR": "En service",
         "CONTRIBUTOR_EN": "PRIVATE",
         "CONTRIBUTOR_FR": "SECTEUR PRIVE",
-        "VERTICAL_DATUM": "ASSUMED DATUM",
-        "REAL_TIME": 1,
-        "RHBN": 0,
-        "DRAINAGE_AREA_GROSS": 82.0,
-        "DRAINAGE_AREA_EFFECT": null
-      },
-      "links": [
-        {
-          "type": "text/html",
-          "rel": "related",
-          "title": "Station Information for SEYMOUR RIVER ABOVE LAKEHEAD (08GA079)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-stations/items?STATION_NUMBER=08GA079&f=html"
-        },
-        {
-          "type": "application/json",
-          "rel": "related",
-          "title": "Daily Mean of Water Level or Discharge for SEYMOUR RIVER ABOVE LAKEHEAD (08GA079)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-daily-mean/items?STATION_NUMBER=08GA079"
-        },
-        {
-          "type": "application/json",
-          "rel": "related",
-          "title": "Monthly Mean of Water Level or Discharge for SEYMOUR RIVER ABOVE LAKEHEAD (08GA079)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-monthly-mean/items?STATION_NUMBER=08GA079"
-        },
-        {
-          "type": "text/html",
-          "rel": "alternate",
-          "title": "Station Information for SEYMOUR RIVER ABOVE LAKEHEAD (08GA079)",
-          "href": "https://wateroffice.ec.gc.ca/report/historical_e.html?stn=08GA079",
-          "hreflang": "en-CA"
-        },
-        {
-          "type": "text/html",
-          "rel": "alternate",
-          "title": "Informations pour la station SEYMOUR RIVER ABOVE LAKEHEAD (08GA079)",
-          "href": "https://wateroffice.ec.gc.ca/report/historical_f.html?stn=08GA079",
-          "hreflang": "fr-CA"
-        },
-        {
-          "type": "application/json",
-          "rel": "related",
-          "title": "Annual Maximum and Minimum Instantaneous Water Level or Discharge for SEYMOUR RIVER ABOVE LAKEHEAD (08GA079)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-annual-peaks/items?STATION_NUMBER=08GA079"
-        },
-        {
-          "type": "application/json",
-          "rel": "related",
-          "title": "Annual Maximum and Minimum Daily Water Level or Discharge for SEYMOUR RIVER ABOVE LAKEHEAD (08GA079)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-annual-statistics/items?STATION_NUMBER=08GA079"
-        }
-      ],
+        "DRAINAGE_AREA_GROSS": 59.93999862670898
+      }
+    },
+    {
+      "id": "08GA079",
+      "type": "Feature",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -935,71 +239,18 @@
           49.497169494628906
         ]
       },
-      "id": "08GA079"
+      "properties": {
+        "STATION_NAME": "SEYMOUR RIVER ABOVE LAKEHEAD",
+        "STATION_NUMBER": "08GA079",
+        "PROV_TERR_STATE_LOC": "BC",
+        "CONTRIBUTOR_EN": "PRIVATE",
+        "CONTRIBUTOR_FR": "SECTEUR PRIVE",
+        "DRAINAGE_AREA_GROSS": 82.0
+      }
     },
     {
+      "id": "08GB013",
       "type": "Feature",
-      "properties": {
-        "STATION_NAME": "CLOWHOM RIVER NEAR CLOWHOM LAKE",
-        "IDENTIFIER": "08GB013",
-        "STATION_NUMBER": "08GB013",
-        "PROV_TERR_STATE_LOC": "BC",
-        "STATUS_EN": "Active",
-        "STATUS_FR": "En service",
-        "CONTRIBUTOR_EN": "BRITISH COLUMBIA HYDRO AND POWER AUTHORITY",
-        "CONTRIBUTOR_FR": "BRITISH COLUMBIA HYDRO AND POWER AUTHORITY",
-        "VERTICAL_DATUM": "ASSUMED DATUM",
-        "REAL_TIME": 1,
-        "RHBN": 0,
-        "DRAINAGE_AREA_GROSS": 146.1999969482422,
-        "DRAINAGE_AREA_EFFECT": null
-      },
-      "links": [
-        {
-          "type": "text/html",
-          "rel": "related",
-          "title": "Station Information for CLOWHOM RIVER NEAR CLOWHOM LAKE (08GB013)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-stations/items?STATION_NUMBER=08GB013&f=html"
-        },
-        {
-          "type": "application/json",
-          "rel": "related",
-          "title": "Daily Mean of Water Level or Discharge for CLOWHOM RIVER NEAR CLOWHOM LAKE (08GB013)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-daily-mean/items?STATION_NUMBER=08GB013"
-        },
-        {
-          "type": "application/json",
-          "rel": "related",
-          "title": "Monthly Mean of Water Level or Discharge for CLOWHOM RIVER NEAR CLOWHOM LAKE (08GB013)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-monthly-mean/items?STATION_NUMBER=08GB013"
-        },
-        {
-          "type": "text/html",
-          "rel": "alternate",
-          "title": "Station Information for CLOWHOM RIVER NEAR CLOWHOM LAKE (08GB013)",
-          "href": "https://wateroffice.ec.gc.ca/report/historical_e.html?stn=08GB013",
-          "hreflang": "en-CA"
-        },
-        {
-          "type": "text/html",
-          "rel": "alternate",
-          "title": "Informations pour la station CLOWHOM RIVER NEAR CLOWHOM LAKE (08GB013)",
-          "href": "https://wateroffice.ec.gc.ca/report/historical_f.html?stn=08GB013",
-          "hreflang": "fr-CA"
-        },
-        {
-          "type": "application/json",
-          "rel": "related",
-          "title": "Annual Maximum and Minimum Instantaneous Water Level or Discharge for CLOWHOM RIVER NEAR CLOWHOM LAKE (08GB013)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-annual-peaks/items?STATION_NUMBER=08GB013"
-        },
-        {
-          "type": "application/json",
-          "rel": "related",
-          "title": "Annual Maximum and Minimum Daily Water Level or Discharge for CLOWHOM RIVER NEAR CLOWHOM LAKE (08GB013)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-annual-statistics/items?STATION_NUMBER=08GB013"
-        }
-      ],
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -1007,71 +258,208 @@
           49.78718948364258
         ]
       },
-      "id": "08GB013"
+      "properties": {
+        "STATION_NAME": "CLOWHOM RIVER NEAR CLOWHOM LAKE",
+        "STATION_NUMBER": "08GB013",
+        "PROV_TERR_STATE_LOC": "BC",
+        "CONTRIBUTOR_EN": "BRITISH COLUMBIA HYDRO AND POWER AUTHORITY",
+        "CONTRIBUTOR_FR": "BRITISH COLUMBIA HYDRO AND POWER AUTHORITY",
+        "DRAINAGE_AREA_GROSS": 146.1999969482422
+      }
     },
     {
+      "id": "08GB014",
       "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -124.27835845947266,
+          49.878028869628906
+        ]
+      },
       "properties": {
-        "STATION_NAME": "FITZSIMMONS CREEK BELOW BLACKCOMB CREEK",
-        "IDENTIFIER": "08MG026",
-        "STATION_NUMBER": "08MG026",
+        "STATION_NAME": "HORSESHOE RIVER ABOVE LOIS LAKE",
+        "STATION_NUMBER": "08GB014",
         "PROV_TERR_STATE_LOC": "BC",
-        "STATUS_EN": "Active",
-        "STATUS_FR": "En service",
         "CONTRIBUTOR_EN": "PRIVATE",
         "CONTRIBUTOR_FR": "SECTEUR PRIVE",
-        "VERTICAL_DATUM": "ASSUMED DATUM",
-        "REAL_TIME": 1,
-        "RHBN": 0,
-        "DRAINAGE_AREA_GROSS": 90.3499984741211,
-        "DRAINAGE_AREA_EFFECT": null
+        "DRAINAGE_AREA_GROSS": 133.3000030517578
+      }
+    },
+    {
+      "id": "08HB002",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -124.28527069091795,
+          49.31610870361328
+        ]
       },
-      "links": [
-        {
-          "type": "text/html",
-          "rel": "related",
-          "title": "Station Information for FITZSIMMONS CREEK BELOW BLACKCOMB CREEK (08MG026)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-stations/items?STATION_NUMBER=08MG026&f=html"
-        },
-        {
-          "type": "application/json",
-          "rel": "related",
-          "title": "Daily Mean of Water Level or Discharge for FITZSIMMONS CREEK BELOW BLACKCOMB CREEK (08MG026)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-daily-mean/items?STATION_NUMBER=08MG026"
-        },
-        {
-          "type": "application/json",
-          "rel": "related",
-          "title": "Monthly Mean of Water Level or Discharge for FITZSIMMONS CREEK BELOW BLACKCOMB CREEK (08MG026)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-monthly-mean/items?STATION_NUMBER=08MG026"
-        },
-        {
-          "type": "text/html",
-          "rel": "alternate",
-          "title": "Station Information for FITZSIMMONS CREEK BELOW BLACKCOMB CREEK (08MG026)",
-          "href": "https://wateroffice.ec.gc.ca/report/historical_e.html?stn=08MG026",
-          "hreflang": "en-CA"
-        },
-        {
-          "type": "text/html",
-          "rel": "alternate",
-          "title": "Informations pour la station FITZSIMMONS CREEK BELOW BLACKCOMB CREEK (08MG026)",
-          "href": "https://wateroffice.ec.gc.ca/report/historical_f.html?stn=08MG026",
-          "hreflang": "fr-CA"
-        },
-        {
-          "type": "application/json",
-          "rel": "related",
-          "title": "Annual Maximum and Minimum Instantaneous Water Level or Discharge for FITZSIMMONS CREEK BELOW BLACKCOMB CREEK (08MG026)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-annual-peaks/items?STATION_NUMBER=08MG026"
-        },
-        {
-          "type": "application/json",
-          "rel": "related",
-          "title": "Annual Maximum and Minimum Daily Water Level or Discharge for FITZSIMMONS CREEK BELOW BLACKCOMB CREEK (08MG026)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-annual-statistics/items?STATION_NUMBER=08MG026"
-        }
-      ],
+      "properties": {
+        "STATION_NAME": "ENGLISHMAN RIVER NEAR PARKSVILLE",
+        "STATION_NUMBER": "08HB002",
+        "PROV_TERR_STATE_LOC": "BC",
+        "CONTRIBUTOR_EN": "PRIVATE",
+        "CONTRIBUTOR_FR": "SECTEUR PRIVE",
+        "DRAINAGE_AREA_GROSS": 317.70001220703125
+      }
+    },
+    {
+      "id": "08HB032",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.96903228759766,
+          49.177391052246094
+        ]
+      },
+      "properties": {
+        "STATION_NAME": "MILLSTONE RIVER AT NANAIMO",
+        "STATION_NUMBER": "08HB032",
+        "PROV_TERR_STATE_LOC": "BC",
+        "CONTRIBUTOR_EN": "PRIVATE",
+        "CONTRIBUTOR_FR": "SECTEUR PRIVE",
+        "DRAINAGE_AREA_GROSS": 97.6999969482422
+      }
+    },
+    {
+      "id": "08HB034",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.8869400024414,
+          49.06861114501953
+        ]
+      },
+      "properties": {
+        "STATION_NAME": "NANAIMO RIVER NEAR CASSIDY",
+        "STATION_NUMBER": "08HB034",
+        "PROV_TERR_STATE_LOC": "BC",
+        "CONTRIBUTOR_EN": "PRIVATE",
+        "CONTRIBUTOR_FR": "SECTEUR PRIVE",
+        "DRAINAGE_AREA_GROSS": 675.2999877929688
+      }
+    },
+    {
+      "id": "08HB041",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -124.1868133544922,
+          49.02497100830078
+        ]
+      },
+      "properties": {
+        "STATION_NAME": "JUMP CREEK AT THE MOUTH",
+        "STATION_NUMBER": "08HB041",
+        "PROV_TERR_STATE_LOC": "BC",
+        "CONTRIBUTOR_EN": "PRIVATE",
+        "CONTRIBUTOR_FR": "SECTEUR PRIVE",
+        "DRAINAGE_AREA_GROSS": 59.5
+      }
+    },
+    {
+      "id": "08HB092",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -124.12628936767578,
+          49.06016159057617
+        ]
+      },
+      "properties": {
+        "STATION_NAME": "SOUTH NANAIMO RIVER NEAR JUNCTION",
+        "STATION_NUMBER": "08HB092",
+        "PROV_TERR_STATE_LOC": "BC",
+        "CONTRIBUTOR_EN": "PRIVATE",
+        "CONTRIBUTOR_FR": "SECTEUR PRIVE",
+        "DRAINAGE_AREA_GROSS": 206.3000030517578
+      }
+    },
+    {
+      "id": "08MF038",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.0708465576172,
+          49.14397811889648
+        ]
+      },
+      "properties": {
+        "STATION_NAME": "FRASER RIVER AT CANNOR",
+        "STATION_NUMBER": "08MF038",
+        "PROV_TERR_STATE_LOC": "BC",
+        "CONTRIBUTOR_EN": "B.C. MINISTRY OF ENVIRONMENT",
+        "CONTRIBUTOR_FR": "MINISTERE DE L'ENVIRONNEMENT DE LA COLOMBIE-BRITAN",
+        "DRAINAGE_AREA_GROSS": 226200.0
+      }
+    },
+    {
+      "id": "08MG005",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.8002471923828,
+          50.33602142333984
+        ]
+      },
+      "properties": {
+        "STATION_NAME": "LILLOOET RIVER NEAR PEMBERTON",
+        "STATION_NUMBER": "08MG005",
+        "PROV_TERR_STATE_LOC": "BC",
+        "CONTRIBUTOR_EN": "WATER SURVEY OF CANADA (DOE) (CANADA)",
+        "CONTRIBUTOR_FR": "RELEVES HYDROLOGIQUES DU CANADA (MDE) (CANADA)",
+        "DRAINAGE_AREA_GROSS": 2076.0
+      }
+    },
+    {
+      "id": "08MG020",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.48113250732422,
+          50.240360260009766
+        ]
+      },
+      "properties": {
+        "STATION_NAME": "LILLOOET LAKE NEAR PEMBERTON",
+        "STATION_NUMBER": "08MG020",
+        "PROV_TERR_STATE_LOC": "BC",
+        "CONTRIBUTOR_EN": "B.C. MINISTRY OF ENVIRONMENT",
+        "CONTRIBUTOR_FR": "MINISTERE DE L'ENVIRONNEMENT DE LA COLOMBIE-BRITAN",
+        "DRAINAGE_AREA_GROSS": 4441.0
+      }
+    },
+    {
+      "id": "08MG025",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.80464935302734,
+          50.3155403137207
+        ]
+      },
+      "properties": {
+        "STATION_NAME": "PEMBERTON CREEK NEAR PEMBERTON",
+        "STATION_NUMBER": "08MG025",
+        "PROV_TERR_STATE_LOC": "BC",
+        "CONTRIBUTOR_EN": "WATER SURVEY OF CANADA (DOE) (CANADA)",
+        "CONTRIBUTOR_FR": "RELEVES HYDROLOGIQUES DU CANADA (MDE) (CANADA)",
+        "DRAINAGE_AREA_GROSS": 30.540000915527344
+      }
+    },
+    {
+      "id": "08MG026",
+      "type": "Feature",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -1079,71 +467,18 @@
           50.1202507019043
         ]
       },
-      "id": "08MG026"
+      "properties": {
+        "STATION_NAME": "FITZSIMMONS CREEK BELOW BLACKCOMB CREEK",
+        "STATION_NUMBER": "08MG026",
+        "PROV_TERR_STATE_LOC": "BC",
+        "CONTRIBUTOR_EN": "PRIVATE",
+        "CONTRIBUTOR_FR": "SECTEUR PRIVE",
+        "DRAINAGE_AREA_GROSS": 90.3499984741211
+      }
     },
     {
+      "id": "08MG027",
       "type": "Feature",
-      "properties": {
-        "STATION_NAME": "LILLOOET RIVER AT TENAS NARROWS",
-        "IDENTIFIER": "08MG027",
-        "STATION_NUMBER": "08MG027",
-        "PROV_TERR_STATE_LOC": "BC",
-        "STATUS_EN": "Active",
-        "STATUS_FR": "En service",
-        "CONTRIBUTOR_EN": "B.C. MINISTRY OF ENVIRONMENT",
-        "CONTRIBUTOR_FR": "MINISTERE DE L'ENVIRONNEMENT DE LA COLOMBIE-BRITAN",
-        "VERTICAL_DATUM": "ASSUMED DATUM",
-        "REAL_TIME": 1,
-        "RHBN": 0,
-        "DRAINAGE_AREA_GROSS": 4484.0,
-        "DRAINAGE_AREA_EFFECT": null
-      },
-      "links": [
-        {
-          "type": "text/html",
-          "rel": "related",
-          "title": "Station Information for LILLOOET RIVER AT TENAS NARROWS (08MG027)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-stations/items?STATION_NUMBER=08MG027&f=html"
-        },
-        {
-          "type": "application/json",
-          "rel": "related",
-          "title": "Daily Mean of Water Level or Discharge for LILLOOET RIVER AT TENAS NARROWS (08MG027)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-daily-mean/items?STATION_NUMBER=08MG027"
-        },
-        {
-          "type": "application/json",
-          "rel": "related",
-          "title": "Monthly Mean of Water Level or Discharge for LILLOOET RIVER AT TENAS NARROWS (08MG027)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-monthly-mean/items?STATION_NUMBER=08MG027"
-        },
-        {
-          "type": "text/html",
-          "rel": "alternate",
-          "title": "Station Information for LILLOOET RIVER AT TENAS NARROWS (08MG027)",
-          "href": "https://wateroffice.ec.gc.ca/report/historical_e.html?stn=08MG027",
-          "hreflang": "en-CA"
-        },
-        {
-          "type": "text/html",
-          "rel": "alternate",
-          "title": "Informations pour la station LILLOOET RIVER AT TENAS NARROWS (08MG027)",
-          "href": "https://wateroffice.ec.gc.ca/report/historical_f.html?stn=08MG027",
-          "hreflang": "fr-CA"
-        },
-        {
-          "type": "application/json",
-          "rel": "related",
-          "title": "Annual Maximum and Minimum Instantaneous Water Level or Discharge for LILLOOET RIVER AT TENAS NARROWS (08MG027)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-annual-peaks/items?STATION_NUMBER=08MG027"
-        },
-        {
-          "type": "application/json",
-          "rel": "related",
-          "title": "Annual Maximum and Minimum Daily Water Level or Discharge for LILLOOET RIVER AT TENAS NARROWS (08MG027)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-annual-statistics/items?STATION_NUMBER=08MG027"
-        }
-      ],
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -1151,71 +486,37 @@
           50.09159851074219
         ]
       },
-      "id": "08MG027"
+      "properties": {
+        "STATION_NAME": "LILLOOET RIVER AT TENAS NARROWS",
+        "STATION_NUMBER": "08MG027",
+        "PROV_TERR_STATE_LOC": "BC",
+        "CONTRIBUTOR_EN": "B.C. MINISTRY OF ENVIRONMENT",
+        "CONTRIBUTOR_FR": "MINISTERE DE L'ENVIRONNEMENT DE LA COLOMBIE-BRITAN",
+        "DRAINAGE_AREA_GROSS": 4484.0
+      }
     },
     {
+      "id": "08MG028",
       "type": "Feature",
-      "properties": {
-        "STATION_NAME": "COQUITLAM RIVER AT PORT COQUITLAM",
-        "IDENTIFIER": "08MH002",
-        "STATION_NUMBER": "08MH002",
-        "PROV_TERR_STATE_LOC": "BC",
-        "STATUS_EN": "Active",
-        "STATUS_FR": "En service",
-        "CONTRIBUTOR_EN": "BRITISH COLUMBIA HYDRO AND POWER AUTHORITY",
-        "CONTRIBUTOR_FR": "BRITISH COLUMBIA HYDRO AND POWER AUTHORITY",
-        "VERTICAL_DATUM": "ASSUMED DATUM",
-        "REAL_TIME": 1,
-        "RHBN": 0,
-        "DRAINAGE_AREA_GROSS": 233.6999969482422,
-        "DRAINAGE_AREA_EFFECT": null
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.89582824707033,
+          50.39933013916016
+        ]
       },
-      "links": [
-        {
-          "type": "text/html",
-          "rel": "related",
-          "title": "Station Information for COQUITLAM RIVER AT PORT COQUITLAM (08MH002)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-stations/items?STATION_NUMBER=08MH002&f=html"
-        },
-        {
-          "type": "application/json",
-          "rel": "related",
-          "title": "Daily Mean of Water Level or Discharge for COQUITLAM RIVER AT PORT COQUITLAM (08MH002)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-daily-mean/items?STATION_NUMBER=08MH002"
-        },
-        {
-          "type": "application/json",
-          "rel": "related",
-          "title": "Monthly Mean of Water Level or Discharge for COQUITLAM RIVER AT PORT COQUITLAM (08MH002)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-monthly-mean/items?STATION_NUMBER=08MH002"
-        },
-        {
-          "type": "text/html",
-          "rel": "alternate",
-          "title": "Station Information for COQUITLAM RIVER AT PORT COQUITLAM (08MH002)",
-          "href": "https://wateroffice.ec.gc.ca/report/historical_e.html?stn=08MH002",
-          "hreflang": "en-CA"
-        },
-        {
-          "type": "text/html",
-          "rel": "alternate",
-          "title": "Informations pour la station COQUITLAM RIVER AT PORT COQUITLAM (08MH002)",
-          "href": "https://wateroffice.ec.gc.ca/report/historical_f.html?stn=08MH002",
-          "hreflang": "fr-CA"
-        },
-        {
-          "type": "application/json",
-          "rel": "related",
-          "title": "Annual Maximum and Minimum Instantaneous Water Level or Discharge for COQUITLAM RIVER AT PORT COQUITLAM (08MH002)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-annual-peaks/items?STATION_NUMBER=08MH002"
-        },
-        {
-          "type": "application/json",
-          "rel": "related",
-          "title": "Annual Maximum and Minimum Daily Water Level or Discharge for COQUITLAM RIVER AT PORT COQUITLAM (08MH002)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-annual-statistics/items?STATION_NUMBER=08MH002"
-        }
-      ],
+      "properties": {
+        "STATION_NAME": "RYAN RIVER NEAR PEMBERTON MEADOWS",
+        "STATION_NUMBER": "08MG028",
+        "PROV_TERR_STATE_LOC": "BC",
+        "CONTRIBUTOR_EN": "PRIVATE",
+        "CONTRIBUTOR_FR": "SECTEUR PRIVE",
+        "DRAINAGE_AREA_GROSS": 397.5
+      }
+    },
+    {
+      "id": "08MH002",
+      "type": "Feature",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -1223,143 +524,303 @@
           49.26523971557617
         ]
       },
-      "id": "08MH002"
-    },
-    {
-      "type": "Feature",
       "properties": {
-        "STATION_NAME": "COQUITLAM RIVER ABOVE COQUITLAM LAKE",
-        "IDENTIFIER": "08MH141",
-        "STATION_NUMBER": "08MH141",
+        "STATION_NAME": "COQUITLAM RIVER AT PORT COQUITLAM",
+        "STATION_NUMBER": "08MH002",
         "PROV_TERR_STATE_LOC": "BC",
-        "STATUS_EN": "Active",
-        "STATUS_FR": "En service",
         "CONTRIBUTOR_EN": "BRITISH COLUMBIA HYDRO AND POWER AUTHORITY",
         "CONTRIBUTOR_FR": "BRITISH COLUMBIA HYDRO AND POWER AUTHORITY",
-        "VERTICAL_DATUM": "ASSUMED DATUM",
-        "REAL_TIME": 1,
-        "RHBN": 0,
-        "DRAINAGE_AREA_GROSS": 49.09000015258789,
-        "DRAINAGE_AREA_EFFECT": null
-      },
-      "links": [
-        {
-          "type": "text/html",
-          "rel": "related",
-          "title": "Station Information for COQUITLAM RIVER ABOVE COQUITLAM LAKE (08MH141)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-stations/items?STATION_NUMBER=08MH141&f=html"
-        },
-        {
-          "type": "application/json",
-          "rel": "related",
-          "title": "Daily Mean of Water Level or Discharge for COQUITLAM RIVER ABOVE COQUITLAM LAKE (08MH141)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-daily-mean/items?STATION_NUMBER=08MH141"
-        },
-        {
-          "type": "application/json",
-          "rel": "related",
-          "title": "Monthly Mean of Water Level or Discharge for COQUITLAM RIVER ABOVE COQUITLAM LAKE (08MH141)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-monthly-mean/items?STATION_NUMBER=08MH141"
-        },
-        {
-          "type": "text/html",
-          "rel": "alternate",
-          "title": "Station Information for COQUITLAM RIVER ABOVE COQUITLAM LAKE (08MH141)",
-          "href": "https://wateroffice.ec.gc.ca/report/historical_e.html?stn=08MH141",
-          "hreflang": "en-CA"
-        },
-        {
-          "type": "text/html",
-          "rel": "alternate",
-          "title": "Informations pour la station COQUITLAM RIVER ABOVE COQUITLAM LAKE (08MH141)",
-          "href": "https://wateroffice.ec.gc.ca/report/historical_f.html?stn=08MH141",
-          "hreflang": "fr-CA"
-        },
-        {
-          "type": "application/json",
-          "rel": "related",
-          "title": "Annual Maximum and Minimum Instantaneous Water Level or Discharge for COQUITLAM RIVER ABOVE COQUITLAM LAKE (08MH141)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-annual-peaks/items?STATION_NUMBER=08MH141"
-        },
-        {
-          "type": "application/json",
-          "rel": "related",
-          "title": "Annual Maximum and Minimum Daily Water Level or Discharge for COQUITLAM RIVER ABOVE COQUITLAM LAKE (08MH141)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-annual-statistics/items?STATION_NUMBER=08MH141"
-        }
-      ],
+        "DRAINAGE_AREA_GROSS": 233.6999969482422
+      }
+    },
+    {
+      "id": "08MH005",
+      "type": "Feature",
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -122.79251098632812,
+          -122.57975006103516,
+          49.23899841308594
+        ]
+      },
+      "properties": {
+        "STATION_NAME": "ALOUETTE RIVER NEAR HANEY",
+        "STATION_NUMBER": "08MH005",
+        "PROV_TERR_STATE_LOC": "BC",
+        "CONTRIBUTOR_EN": "BRITISH COLUMBIA HYDRO AND POWER AUTHORITY",
+        "CONTRIBUTOR_FR": "BRITISH COLUMBIA HYDRO AND POWER AUTHORITY",
+        "DRAINAGE_AREA_GROSS": 237.1000061035156
+      }
+    },
+    {
+      "id": "08MH006",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.5801773071289,
+          49.24264907836914
+        ]
+      },
+      "properties": {
+        "STATION_NAME": "NORTH ALOUETTE RIVER AT 232ND STREET, MAPLE RIDGE",
+        "STATION_NUMBER": "08MH006",
+        "PROV_TERR_STATE_LOC": "BC",
+        "CONTRIBUTOR_EN": "WATER SURVEY OF CANADA (DOE) (CANADA)",
+        "CONTRIBUTOR_FR": "RELEVES HYDROLOGIQUES DU CANADA (MDE) (CANADA)",
+        "DRAINAGE_AREA_GROSS": 32.869998931884766
+      }
+    },
+    {
+      "id": "08MH024",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.30294036865234,
+          49.12773895263672
+        ]
+      },
+      "properties": {
+        "STATION_NAME": "FRASER RIVER AT MISSION",
+        "STATION_NUMBER": "08MH024",
+        "PROV_TERR_STATE_LOC": "BC",
+        "CONTRIBUTOR_EN": "WATER SURVEY OF CANADA (DOE) (CANADA)",
+        "CONTRIBUTOR_FR": "RELEVES HYDROLOGIQUES DU CANADA (MDE) (CANADA)",
+        "DRAINAGE_AREA_GROSS": 228100.0
+      }
+    },
+    {
+      "id": "08MH028",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.19219970703124,
+          49.12451934814453
+        ]
+      },
+      "properties": {
+        "STATION_NAME": "FRASER RIVER AT STEVESTON",
+        "STATION_NUMBER": "08MH028",
+        "PROV_TERR_STATE_LOC": "BC",
+        "CONTRIBUTOR_EN": "WATER SURVEY OF CANADA (DOE) (CANADA)",
+        "CONTRIBUTOR_FR": "RELEVES HYDROLOGIQUES DU CANADA (MDE) (CANADA)",
+        "DRAINAGE_AREA_GROSS": 232000.0
+      }
+    },
+    {
+      "id": "08MH029",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.2322998046875,
+          49.00249099731445
+        ]
+      },
+      "properties": {
+        "STATION_NAME": "SUMAS RIVER NEAR HUNTINGDON",
+        "STATION_NUMBER": "08MH029",
+        "PROV_TERR_STATE_LOC": "BC",
+        "CONTRIBUTOR_EN": "WATER SURVEY OF CANADA (DOE) (CANADA)",
+        "CONTRIBUTOR_FR": "RELEVES HYDROLOGIQUES DU CANADA (MDE) (CANADA)",
+        "DRAINAGE_AREA_GROSS": 144.8000030517578
+      }
+    },
+    {
+      "id": "08MH032",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.08863830566406,
+          49.205360412597656
+        ]
+      },
+      "properties": {
+        "STATION_NAME": "NORTH ARM FRASER RIVER AT VANCOUVER",
+        "STATION_NUMBER": "08MH032",
+        "PROV_TERR_STATE_LOC": "BC",
+        "CONTRIBUTOR_EN": "WATER SURVEY OF CANADA (DOE) (CANADA)",
+        "CONTRIBUTOR_FR": "RELEVES HYDROLOGIQUES DU CANADA (MDE) (CANADA)",
+        "DRAINAGE_AREA_GROSS": null
+      }
+    },
+    {
+      "id": "08MH035",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.73406982421876,
+          49.24480819702149
+        ]
+      },
+      "properties": {
+        "STATION_NAME": "PITT RIVER NEAR PORT COQUITLAM",
+        "STATION_NUMBER": "08MH035",
+        "PROV_TERR_STATE_LOC": "BC",
+        "CONTRIBUTOR_EN": "WATER SURVEY OF CANADA (DOE) (CANADA)",
+        "CONTRIBUTOR_FR": "RELEVES HYDROLOGIQUES DU CANADA (MDE) (CANADA)",
+        "DRAINAGE_AREA_GROSS": 1631.0
+      }
+    },
+    {
+      "id": "08MH044",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4754409790039,
+          49.17229843139648
+        ]
+      },
+      "properties": {
+        "STATION_NAME": "FRASER RIVER AT WHONOCK",
+        "STATION_NUMBER": "08MH044",
+        "PROV_TERR_STATE_LOC": "BC",
+        "CONTRIBUTOR_EN": "WATER SURVEY OF CANADA (DOE) (CANADA)",
+        "CONTRIBUTOR_FR": "RELEVES HYDROLOGIQUES DU CANADA (MDE) (CANADA)",
+        "DRAINAGE_AREA_GROSS": 229400.0
+      }
+    },
+    {
+      "id": "08MH053",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.07695770263672,
+          49.124210357666016
+        ]
+      },
+      "properties": {
+        "STATION_NAME": "FRASER RIVER AT DEAS ISLAND TUNNEL",
+        "STATION_NUMBER": "08MH053",
+        "PROV_TERR_STATE_LOC": "BC",
+        "CONTRIBUTOR_EN": "WATER SURVEY OF CANADA (DOE) (CANADA)",
+        "CONTRIBUTOR_FR": "RELEVES HYDROLOGIQUES DU CANADA (MDE) (CANADA)",
+        "DRAINAGE_AREA_GROSS": 231800.0
+      }
+    },
+    {
+      "id": "08MH076",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.53661346435548,
+          49.20708847045898
+        ]
+      },
+      "properties": {
+        "STATION_NAME": "KANAKA CREEK NEAR WEBSTER CORNERS",
+        "STATION_NUMBER": "08MH076",
+        "PROV_TERR_STATE_LOC": "BC",
+        "CONTRIBUTOR_EN": "WATER SURVEY OF CANADA (DOE) (CANADA)",
+        "CONTRIBUTOR_FR": "RELEVES HYDROLOGIQUES DU CANADA (MDE) (CANADA)",
+        "DRAINAGE_AREA_GROSS": 46.84000015258789
+      }
+    },
+    {
+      "id": "08MH090",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.59642791748048,
+          49.13354110717773
+        ]
+      },
+      "properties": {
+        "STATION_NAME": "SALMON RIVER AT 72 AVENUE, LANGLEY",
+        "STATION_NUMBER": "08MH090",
+        "PROV_TERR_STATE_LOC": "BC",
+        "CONTRIBUTOR_EN": "WATER SURVEY OF CANADA (DOE) (CANADA)",
+        "CONTRIBUTOR_FR": "RELEVES HYDROLOGIQUES DU CANADA (MDE) (CANADA)",
+        "DRAINAGE_AREA_GROSS": 46.41999816894531
+      }
+    },
+    {
+      "id": "08MH098",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.53186798095705,
+          49.14767074584961
+        ]
+      },
+      "properties": {
+        "STATION_NAME": "WEST CREEK NEAR FORT LANGLEY",
+        "STATION_NUMBER": "08MH098",
+        "PROV_TERR_STATE_LOC": "BC",
+        "CONTRIBUTOR_EN": "WATER SURVEY OF CANADA (DOE) (CANADA)",
+        "CONTRIBUTOR_FR": "RELEVES HYDROLOGIQUES DU CANADA (MDE) (CANADA)",
+        "DRAINAGE_AREA_GROSS": 11.420000076293944
+      }
+    },
+    {
+      "id": "08MH126",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.8246612548828,
+          49.21780014038086
+        ]
+      },
+      "properties": {
+        "STATION_NAME": "FRASER RIVER AT PORT MANN PUMPING STATION",
+        "STATION_NUMBER": "08MH126",
+        "PROV_TERR_STATE_LOC": "BC",
+        "CONTRIBUTOR_EN": "WATER SURVEY OF CANADA (DOE) (CANADA)",
+        "CONTRIBUTOR_FR": "RELEVES HYDROLOGIQUES DU CANADA (MDE) (CANADA)",
+        "DRAINAGE_AREA_GROSS": 231600.0
+      }
+    },
+    {
+      "id": "08MH141",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.79251098632813,
           49.48794174194336
         ]
       },
-      "id": "08MH141"
+      "properties": {
+        "STATION_NAME": "COQUITLAM RIVER ABOVE COQUITLAM LAKE",
+        "STATION_NUMBER": "08MH141",
+        "PROV_TERR_STATE_LOC": "BC",
+        "CONTRIBUTOR_EN": "BRITISH COLUMBIA HYDRO AND POWER AUTHORITY",
+        "CONTRIBUTOR_FR": "BRITISH COLUMBIA HYDRO AND POWER AUTHORITY",
+        "DRAINAGE_AREA_GROSS": 49.09000015258789
+      }
     },
     {
+      "id": "08MH147",
       "type": "Feature",
-      "properties": {
-        "STATION_NAME": "COQUITLAM LAKE FOREBAY",
-        "IDENTIFIER": "08MH149",
-        "STATION_NUMBER": "08MH149",
-        "PROV_TERR_STATE_LOC": "BC",
-        "STATUS_EN": "Active",
-        "STATUS_FR": "En service",
-        "CONTRIBUTOR_EN": "PRIVATE",
-        "CONTRIBUTOR_FR": "SECTEUR PRIVE",
-        "VERTICAL_DATUM": "ASSUMED DATUM",
-        "REAL_TIME": 1,
-        "RHBN": 0,
-        "DRAINAGE_AREA_GROSS": 186.6999969482422,
-        "DRAINAGE_AREA_EFFECT": null
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.32306671142578,
+          49.556190490722656
+        ]
       },
-      "links": [
-        {
-          "type": "text/html",
-          "rel": "related",
-          "title": "Station Information for COQUITLAM LAKE FOREBAY (08MH149)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-stations/items?STATION_NUMBER=08MH149&f=html"
-        },
-        {
-          "type": "application/json",
-          "rel": "related",
-          "title": "Daily Mean of Water Level or Discharge for COQUITLAM LAKE FOREBAY (08MH149)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-daily-mean/items?STATION_NUMBER=08MH149"
-        },
-        {
-          "type": "application/json",
-          "rel": "related",
-          "title": "Monthly Mean of Water Level or Discharge for COQUITLAM LAKE FOREBAY (08MH149)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-monthly-mean/items?STATION_NUMBER=08MH149"
-        },
-        {
-          "type": "text/html",
-          "rel": "alternate",
-          "title": "Station Information for COQUITLAM LAKE FOREBAY (08MH149)",
-          "href": "https://wateroffice.ec.gc.ca/report/historical_e.html?stn=08MH149",
-          "hreflang": "en-CA"
-        },
-        {
-          "type": "text/html",
-          "rel": "alternate",
-          "title": "Informations pour la station COQUITLAM LAKE FOREBAY (08MH149)",
-          "href": "https://wateroffice.ec.gc.ca/report/historical_f.html?stn=08MH149",
-          "hreflang": "fr-CA"
-        },
-        {
-          "type": "application/json",
-          "rel": "related",
-          "title": "Annual Maximum and Minimum Instantaneous Water Level or Discharge for COQUITLAM LAKE FOREBAY (08MH149)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-annual-peaks/items?STATION_NUMBER=08MH149"
-        },
-        {
-          "type": "application/json",
-          "rel": "related",
-          "title": "Annual Maximum and Minimum Daily Water Level or Discharge for COQUITLAM LAKE FOREBAY (08MH149)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-annual-statistics/items?STATION_NUMBER=08MH149"
-        }
-      ],
+      "properties": {
+        "STATION_NAME": "STAVE RIVER ABOVE STAVE LAKE",
+        "STATION_NUMBER": "08MH147",
+        "PROV_TERR_STATE_LOC": "BC",
+        "CONTRIBUTOR_EN": "WATER SURVEY OF CANADA (DOE) (CANADA)",
+        "CONTRIBUTOR_FR": "RELEVES HYDROLOGIQUES DU CANADA (MDE) (CANADA)",
+        "DRAINAGE_AREA_GROSS": 292.70001220703125
+      }
+    },
+    {
+      "id": "08MH149",
+      "type": "Feature",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -1367,71 +828,75 @@
           49.35573959350586
         ]
       },
-      "id": "08MH149"
-    },
-    {
-      "type": "Feature",
       "properties": {
-        "STATION_NAME": "CEDAR CREEK ABOVE THE MOUTH",
-        "IDENTIFIER": "08MH166",
-        "STATION_NUMBER": "08MH166",
+        "STATION_NAME": "COQUITLAM LAKE FOREBAY",
+        "STATION_NUMBER": "08MH149",
         "PROV_TERR_STATE_LOC": "BC",
-        "STATUS_EN": "Active",
-        "STATUS_FR": "En service",
         "CONTRIBUTOR_EN": "PRIVATE",
         "CONTRIBUTOR_FR": "SECTEUR PRIVE",
-        "VERTICAL_DATUM": "ASSUMED DATUM NO. 1",
-        "REAL_TIME": 1,
-        "RHBN": 0,
-        "DRAINAGE_AREA_GROSS": 26.450000762939453,
-        "DRAINAGE_AREA_EFFECT": null
+        "DRAINAGE_AREA_GROSS": 186.6999969482422
+      }
+    },
+    {
+      "id": "08MH153",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4069595336914,
+          49.0023307800293
+        ]
       },
-      "links": [
-        {
-          "type": "text/html",
-          "rel": "related",
-          "title": "Station Information for CEDAR CREEK ABOVE THE MOUTH (08MH166)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-stations/items?STATION_NUMBER=08MH166&f=html"
-        },
-        {
-          "type": "application/json",
-          "rel": "related",
-          "title": "Daily Mean of Water Level or Discharge for CEDAR CREEK ABOVE THE MOUTH (08MH166)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-daily-mean/items?STATION_NUMBER=08MH166"
-        },
-        {
-          "type": "application/json",
-          "rel": "related",
-          "title": "Monthly Mean of Water Level or Discharge for CEDAR CREEK ABOVE THE MOUTH (08MH166)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-monthly-mean/items?STATION_NUMBER=08MH166"
-        },
-        {
-          "type": "text/html",
-          "rel": "alternate",
-          "title": "Station Information for CEDAR CREEK ABOVE THE MOUTH (08MH166)",
-          "href": "https://wateroffice.ec.gc.ca/report/historical_e.html?stn=08MH166",
-          "hreflang": "en-CA"
-        },
-        {
-          "type": "text/html",
-          "rel": "alternate",
-          "title": "Informations pour la station CEDAR CREEK ABOVE THE MOUTH (08MH166)",
-          "href": "https://wateroffice.ec.gc.ca/report/historical_f.html?stn=08MH166",
-          "hreflang": "fr-CA"
-        },
-        {
-          "type": "application/json",
-          "rel": "related",
-          "title": "Annual Maximum and Minimum Instantaneous Water Level or Discharge for CEDAR CREEK ABOVE THE MOUTH (08MH166)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-annual-peaks/items?STATION_NUMBER=08MH166"
-        },
-        {
-          "type": "application/json",
-          "rel": "related",
-          "title": "Annual Maximum and Minimum Daily Water Level or Discharge for CEDAR CREEK ABOVE THE MOUTH (08MH166)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-annual-statistics/items?STATION_NUMBER=08MH166"
-        }
-      ],
+      "properties": {
+        "STATION_NAME": "FISHTRAP CREEK AT INTERNATIONAL BOUNDARY",
+        "STATION_NUMBER": "08MH153",
+        "PROV_TERR_STATE_LOC": "BC",
+        "CONTRIBUTOR_EN": "PRIVATE",
+        "CONTRIBUTOR_FR": "SECTEUR PRIVE",
+        "DRAINAGE_AREA_GROSS": 20.1299991607666
+      }
+    },
+    {
+      "id": "08MH155",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.66008758544922,
+          49.095699310302734
+        ]
+      },
+      "properties": {
+        "STATION_NAME": "NICOMEKL RIVER AT 203 STREET, LANGLEY",
+        "STATION_NUMBER": "08MH155",
+        "PROV_TERR_STATE_LOC": "BC",
+        "CONTRIBUTOR_EN": "B.C. MINISTRY OF ENVIRONMENT",
+        "CONTRIBUTOR_FR": "MINISTERE DE L'ENVIRONNEMENT DE LA COLOMBIE-BRITAN",
+        "DRAINAGE_AREA_GROSS": 70.55000305175781
+      }
+    },
+    {
+      "id": "08MH156",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.47187042236328,
+          49.00368118286133
+        ]
+      },
+      "properties": {
+        "STATION_NAME": "PEPIN CREEK AT INTERNATIONAL BOUNDARY",
+        "STATION_NUMBER": "08MH156",
+        "PROV_TERR_STATE_LOC": "BC",
+        "CONTRIBUTOR_EN": "WATER SURVEY OF CANADA (DOE) (CANADA)",
+        "CONTRIBUTOR_FR": "RELEVES HYDROLOGIQUES DU CANADA (MDE) (CANADA)",
+        "DRAINAGE_AREA_GROSS": 9.4399995803833
+      }
+    },
+    {
+      "id": "08MH166",
+      "type": "Feature",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -1439,71 +904,18 @@
           49.38098907470703
         ]
       },
-      "id": "08MH166"
+      "properties": {
+        "STATION_NAME": "CEDAR CREEK ABOVE THE MOUTH",
+        "STATION_NUMBER": "08MH166",
+        "PROV_TERR_STATE_LOC": "BC",
+        "CONTRIBUTOR_EN": "PRIVATE",
+        "CONTRIBUTOR_FR": "SECTEUR PRIVE",
+        "DRAINAGE_AREA_GROSS": 26.450000762939453
+      }
     },
     {
+      "id": "08MH168",
       "type": "Feature",
-      "properties": {
-        "STATION_NAME": "OR CREEK NEAR COQUITLAM",
-        "IDENTIFIER": "08MH168",
-        "STATION_NUMBER": "08MH168",
-        "PROV_TERR_STATE_LOC": "BC",
-        "STATUS_EN": "Active",
-        "STATUS_FR": "En service",
-        "CONTRIBUTOR_EN": "BRITISH COLUMBIA HYDRO AND POWER AUTHORITY",
-        "CONTRIBUTOR_FR": "BRITISH COLUMBIA HYDRO AND POWER AUTHORITY",
-        "VERTICAL_DATUM": "ASSUMED DATUM",
-        "REAL_TIME": 1,
-        "RHBN": 0,
-        "DRAINAGE_AREA_GROSS": 12.989999771118164,
-        "DRAINAGE_AREA_EFFECT": null
-      },
-      "links": [
-        {
-          "type": "text/html",
-          "rel": "related",
-          "title": "Station Information for OR CREEK NEAR COQUITLAM (08MH168)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-stations/items?STATION_NUMBER=08MH168&f=html"
-        },
-        {
-          "type": "application/json",
-          "rel": "related",
-          "title": "Daily Mean of Water Level or Discharge for OR CREEK NEAR COQUITLAM (08MH168)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-daily-mean/items?STATION_NUMBER=08MH168"
-        },
-        {
-          "type": "application/json",
-          "rel": "related",
-          "title": "Monthly Mean of Water Level or Discharge for OR CREEK NEAR COQUITLAM (08MH168)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-monthly-mean/items?STATION_NUMBER=08MH168"
-        },
-        {
-          "type": "text/html",
-          "rel": "alternate",
-          "title": "Station Information for OR CREEK NEAR COQUITLAM (08MH168)",
-          "href": "https://wateroffice.ec.gc.ca/report/historical_e.html?stn=08MH168",
-          "hreflang": "en-CA"
-        },
-        {
-          "type": "text/html",
-          "rel": "alternate",
-          "title": "Informations pour la station OR CREEK NEAR COQUITLAM (08MH168)",
-          "href": "https://wateroffice.ec.gc.ca/report/historical_f.html?stn=08MH168",
-          "hreflang": "fr-CA"
-        },
-        {
-          "type": "application/json",
-          "rel": "related",
-          "title": "Annual Maximum and Minimum Instantaneous Water Level or Discharge for OR CREEK NEAR COQUITLAM (08MH168)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-annual-peaks/items?STATION_NUMBER=08MH168"
-        },
-        {
-          "type": "application/json",
-          "rel": "related",
-          "title": "Annual Maximum and Minimum Daily Water Level or Discharge for OR CREEK NEAR COQUITLAM (08MH168)",
-          "href": "https://api.weather.gc.ca/collections/hydrometric-annual-statistics/items?STATION_NUMBER=08MH168"
-        }
-      ],
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -1511,29 +923,36 @@
           49.363868713378906
         ]
       },
-      "id": "08MH168"
+      "properties": {
+        "STATION_NAME": "OR CREEK NEAR COQUITLAM",
+        "STATION_NUMBER": "08MH168",
+        "PROV_TERR_STATE_LOC": "BC",
+        "CONTRIBUTOR_EN": "BRITISH COLUMBIA HYDRO AND POWER AUTHORITY",
+        "CONTRIBUTOR_FR": "BRITISH COLUMBIA HYDRO AND POWER AUTHORITY",
+        "DRAINAGE_AREA_GROSS": 12.989999771118164
+      }
     }
   ],
-  "numberMatched": 21,
-  "numberReturned": 21,
+  "numberMatched": 49,
+  "numberReturned": 49,
   "links": [
     {
       "type": "application/geo+json",
       "rel": "self",
       "title": "This document as GeoJSON",
-      "href": "https://api.weather.gc.ca/collections/hydrometric-stations/items?f=json&bbox=-123.84444,49.25084,-122.45556,50.14916&REAL_TIME=1&limit=500"
+      "href": "https://api.weather.gc.ca/collections/hydrometric-stations/items?f=json&bbox=-124.43176,48.98644,-122.06824,50.51356&REAL_TIME=1&properties=STATION_NAME,STATION_NUMBER,PROV_TERR_STATE_LOC,CONTRIBUTOR_EN,CONTRIBUTOR_FR,DRAINAGE_AREA_GROSS&limit=500"
     },
     {
       "rel": "alternate",
       "type": "application/ld+json",
       "title": "This document as RDF (JSON-LD)",
-      "href": "https://api.weather.gc.ca/collections/hydrometric-stations/items?f=jsonld&bbox=-123.84444,49.25084,-122.45556,50.14916&REAL_TIME=1&limit=500"
+      "href": "https://api.weather.gc.ca/collections/hydrometric-stations/items?f=jsonld&bbox=-124.43176,48.98644,-122.06824,50.51356&REAL_TIME=1&properties=STATION_NAME,STATION_NUMBER,PROV_TERR_STATE_LOC,CONTRIBUTOR_EN,CONTRIBUTOR_FR,DRAINAGE_AREA_GROSS&limit=500"
     },
     {
       "type": "text/html",
       "rel": "alternate",
       "title": "This document as HTML",
-      "href": "https://api.weather.gc.ca/collections/hydrometric-stations/items?f=html&bbox=-123.84444,49.25084,-122.45556,50.14916&REAL_TIME=1&limit=500"
+      "href": "https://api.weather.gc.ca/collections/hydrometric-stations/items?f=html&bbox=-124.43176,48.98644,-122.06824,50.51356&REAL_TIME=1&properties=STATION_NAME,STATION_NUMBER,PROV_TERR_STATE_LOC,CONTRIBUTOR_EN,CONTRIBUTOR_FR,DRAINAGE_AREA_GROSS&limit=500"
     },
     {
       "type": "application/json",
@@ -1542,5 +961,5 @@
       "href": "https://api.weather.gc.ca/collections/hydrometric-stations"
     }
   ],
-  "timeStamp": "2026-11-15T18:44:35.242235Z"
+  "timeStamp": "2026-11-15T22:09:02.077464Z"
 }

@@ -2,77 +2,40 @@
   "type": "FeatureCollection",
   "features": [
     {
-      "id": "VSBC74V-11-15",
+      "id": "VSBC81V-11-15",
       "type": "Feature",
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -123.12,
-          49.25
+          -122.25,
+          49.06
         ]
       },
       "properties": {
-        "WXO_CITY_CODE": "BC-74",
-        "VIRTUAL_STATION_NAME_E": "VANCOUVER AREA",
-        "VIRTUAL_STATION_NAME_F": "VANCOUVER",
-        "VIRTUAL_CLIMATE_ID": "VSBC74V",
+        "WXO_CITY_CODE": "BC-81",
+        "VIRTUAL_STATION_NAME_E": "ABBOTSFORD AREA",
+        "VIRTUAL_STATION_NAME_F": "ABBOTSFORD",
+        "VIRTUAL_CLIMATE_ID": "VSBC81V",
         "LOCAL_MONTH": 11,
         "LOCAL_DAY": 15,
-        "RECORD_PRECIPITATION": 47.8,
+        "RECORD_PRECIPITATION": 52.4,
         "RECORD_PRECIPITATION_YR": 2021,
-        "PREV_RECORD_PRECIPITATION": 38.8,
-        "PREV_RECORD_PRECIPITATION_YR": 2006,
-        "FIRST_PRECIPITATION": 47.8,
+        "PREV_RECORD_PRECIPITATION": 28.0,
+        "PREV_RECORD_PRECIPITATION_YR": 1985,
+        "FIRST_PRECIPITATION": 52.4,
         "FIRST_PRECIPITATION_YEAR": 2021,
-        "SECOND_PRECIPITATION": 38.8,
-        "SECOND_PRECIPITATION_YEAR": 2006,
-        "THIRD_PRECIPITATION": 29.9,
-        "THIRD_PRECIPITATION_YEAR": 1983,
-        "FOURTH_PRECIPITATION": 25.6,
-        "FOURTH_PRECIPITATION_YEAR": 1998,
-        "FIFTH_PRECIPITATION": 25.4,
-        "FIFTH_PRECIPITATION_YEAR": 1906,
+        "SECOND_PRECIPITATION": 28,
+        "SECOND_PRECIPITATION_YEAR": 1985,
+        "THIRD_PRECIPITATION": 23.4,
+        "THIRD_PRECIPITATION_YEAR": 1987,
+        "FOURTH_PRECIPITATION": 21.4,
+        "FOURTH_PRECIPITATION_YEAR": 1982,
+        "FIFTH_PRECIPITATION": 21,
+        "FIFTH_PRECIPITATION_YEAR": 2009,
         "PROVINCE_CODE": "BC",
-        "RECORD_BEGIN": "1896-02-01T00:00:00Z",
+        "RECORD_BEGIN": "1944-10-01T00:00:00Z",
         "RECORD_END": null,
-        "IDENTIFIER": "VSBC74V-11-15"
-      }
-    },
-    {
-      "id": "VSBC28V-11-15",
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -121.93,
-          50.68
-        ]
-      },
-      "properties": {
-        "WXO_CITY_CODE": "BC-28",
-        "VIRTUAL_STATION_NAME_E": "LILLOOET AREA",
-        "VIRTUAL_STATION_NAME_F": "LILLOOET",
-        "VIRTUAL_CLIMATE_ID": "VSBC28V",
-        "LOCAL_MONTH": 11,
-        "LOCAL_DAY": 15,
-        "RECORD_PRECIPITATION": 33.8,
-        "RECORD_PRECIPITATION_YR": 2021,
-        "PREV_RECORD_PRECIPITATION": 12.2,
-        "PREV_RECORD_PRECIPITATION_YR": 1993,
-        "FIRST_PRECIPITATION": 33.8,
-        "FIRST_PRECIPITATION_YEAR": 2021,
-        "SECOND_PRECIPITATION": 12.2,
-        "SECOND_PRECIPITATION_YEAR": 1993,
-        "THIRD_PRECIPITATION": 9.4,
-        "THIRD_PRECIPITATION_YEAR": 2001,
-        "FOURTH_PRECIPITATION": 7.1,
-        "FOURTH_PRECIPITATION_YEAR": 1919,
-        "FIFTH_PRECIPITATION": 5.3,
-        "FIFTH_PRECIPITATION_YEAR": 1935,
-        "PROVINCE_CODE": "BC",
-        "RECORD_BEGIN": "1917-01-01T00:00:00Z",
-        "RECORD_END": null,
-        "IDENTIFIER": "VSBC28V-11-15"
+        "IDENTIFIER": "VSBC81V-11-15"
       }
     },
     {
@@ -113,6 +76,43 @@
       }
     },
     {
+      "id": "VSBC70V-11-15",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.77,
+          49.23
+        ]
+      },
+      "properties": {
+        "WXO_CITY_CODE": "BC-70",
+        "VIRTUAL_STATION_NAME_E": "AGASSIZ AREA",
+        "VIRTUAL_STATION_NAME_F": "AGASSIZ",
+        "VIRTUAL_CLIMATE_ID": "VSBC70V",
+        "LOCAL_MONTH": 11,
+        "LOCAL_DAY": 15,
+        "RECORD_PRECIPITATION": 87.9,
+        "RECORD_PRECIPITATION_YR": 1919,
+        "PREV_RECORD_PRECIPITATION": 35.6,
+        "PREV_RECORD_PRECIPITATION_YR": 1913,
+        "FIRST_PRECIPITATION": 87.9,
+        "FIRST_PRECIPITATION_YEAR": 1919,
+        "SECOND_PRECIPITATION": 74.3,
+        "SECOND_PRECIPITATION_YEAR": 2021,
+        "THIRD_PRECIPITATION": 47.6,
+        "THIRD_PRECIPITATION_YEAR": 1983,
+        "FOURTH_PRECIPITATION": 35.8,
+        "FOURTH_PRECIPITATION_YEAR": 1970,
+        "FIFTH_PRECIPITATION": 35.6,
+        "FIFTH_PRECIPITATION_YEAR": 1913,
+        "PROVINCE_CODE": "BC",
+        "RECORD_BEGIN": "1889-10-01T00:00:00Z",
+        "RECORD_END": null,
+        "IDENTIFIER": "VSBC70V-11-15"
+      }
+    },
+    {
       "id": "VSBC86V-11-15",
       "type": "Feature",
       "geometry": {
@@ -150,40 +150,188 @@
       }
     },
     {
-      "id": "VSBC70V-11-15",
+      "id": "VSBC98V-11-15",
       "type": "Feature",
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -121.77,
-          49.23
+          -124.44,
+          49.35
         ]
       },
       "properties": {
-        "WXO_CITY_CODE": "BC-70",
-        "VIRTUAL_STATION_NAME_E": "AGASSIZ AREA",
-        "VIRTUAL_STATION_NAME_F": "AGASSIZ",
-        "VIRTUAL_CLIMATE_ID": "VSBC70V",
+        "WXO_CITY_CODE": "BC-98",
+        "VIRTUAL_STATION_NAME_E": "QUALICUM BEACH AREA",
+        "VIRTUAL_STATION_NAME_F": "QUALICUM BEACH",
+        "VIRTUAL_CLIMATE_ID": "VSBC98V",
         "LOCAL_MONTH": 11,
         "LOCAL_DAY": 15,
-        "RECORD_PRECIPITATION": 87.9,
-        "RECORD_PRECIPITATION_YR": 1919,
-        "PREV_RECORD_PRECIPITATION": 35.6,
-        "PREV_RECORD_PRECIPITATION_YR": 1913,
-        "FIRST_PRECIPITATION": 87.9,
-        "FIRST_PRECIPITATION_YEAR": 1919,
-        "SECOND_PRECIPITATION": 74.3,
-        "SECOND_PRECIPITATION_YEAR": 2021,
-        "THIRD_PRECIPITATION": 47.6,
-        "THIRD_PRECIPITATION_YEAR": 1983,
-        "FOURTH_PRECIPITATION": 35.8,
-        "FOURTH_PRECIPITATION_YEAR": 1970,
-        "FIFTH_PRECIPITATION": 35.6,
-        "FIFTH_PRECIPITATION_YEAR": 1913,
+        "RECORD_PRECIPITATION": 57.4,
+        "RECORD_PRECIPITATION_YR": 1983,
+        "PREV_RECORD_PRECIPITATION": 19.1,
+        "PREV_RECORD_PRECIPITATION_YR": 1973,
+        "FIRST_PRECIPITATION": 57.4,
+        "FIRST_PRECIPITATION_YEAR": 1983,
+        "SECOND_PRECIPITATION": 32.2,
+        "SECOND_PRECIPITATION_YEAR": 2006,
+        "THIRD_PRECIPITATION": 23.4,
+        "THIRD_PRECIPITATION_YEAR": 2002,
+        "FOURTH_PRECIPITATION": 19.1,
+        "FOURTH_PRECIPITATION_YEAR": 1973,
+        "FIFTH_PRECIPITATION": 18.3,
+        "FIFTH_PRECIPITATION_YEAR": 1975,
         "PROVINCE_CODE": "BC",
-        "RECORD_BEGIN": "1889-10-01T00:00:00Z",
+        "RECORD_BEGIN": "1961-07-01T00:00:00Z",
         "RECORD_END": null,
-        "IDENTIFIER": "VSBC70V-11-15"
+        "IDENTIFIER": "VSBC98V-11-15"
+      }
+    },
+    {
+      "id": "VSBC74V-11-15",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.12,
+          49.25
+        ]
+      },
+      "properties": {
+        "WXO_CITY_CODE": "BC-74",
+        "VIRTUAL_STATION_NAME_E": "VANCOUVER AREA",
+        "VIRTUAL_STATION_NAME_F": "VANCOUVER",
+        "VIRTUAL_CLIMATE_ID": "VSBC74V",
+        "LOCAL_MONTH": 11,
+        "LOCAL_DAY": 15,
+        "RECORD_PRECIPITATION": 47.8,
+        "RECORD_PRECIPITATION_YR": 2021,
+        "PREV_RECORD_PRECIPITATION": 38.8,
+        "PREV_RECORD_PRECIPITATION_YR": 2006,
+        "FIRST_PRECIPITATION": 47.8,
+        "FIRST_PRECIPITATION_YEAR": 2021,
+        "SECOND_PRECIPITATION": 38.8,
+        "SECOND_PRECIPITATION_YEAR": 2006,
+        "THIRD_PRECIPITATION": 29.9,
+        "THIRD_PRECIPITATION_YEAR": 1983,
+        "FOURTH_PRECIPITATION": 25.6,
+        "FOURTH_PRECIPITATION_YEAR": 1998,
+        "FIFTH_PRECIPITATION": 25.4,
+        "FIFTH_PRECIPITATION_YEAR": 1906,
+        "PROVINCE_CODE": "BC",
+        "RECORD_BEGIN": "1896-02-01T00:00:00Z",
+        "RECORD_END": null,
+        "IDENTIFIER": "VSBC74V-11-15"
+      }
+    },
+    {
+      "id": "VSBC100-11-15",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.66,
+          49.1
+        ]
+      },
+      "properties": {
+        "WXO_CITY_CODE": "BC-100",
+        "VIRTUAL_STATION_NAME_E": "LANGLEY AREA",
+        "VIRTUAL_STATION_NAME_F": "LANGLEY",
+        "VIRTUAL_CLIMATE_ID": "VSBC100",
+        "LOCAL_MONTH": 11,
+        "LOCAL_DAY": 15,
+        "RECORD_PRECIPITATION": 72.1,
+        "RECORD_PRECIPITATION_YR": 2021,
+        "PREV_RECORD_PRECIPITATION": 54.8,
+        "PREV_RECORD_PRECIPITATION_YR": 2013,
+        "FIRST_PRECIPITATION": 72.1,
+        "FIRST_PRECIPITATION_YEAR": 2021,
+        "SECOND_PRECIPITATION": 54.8,
+        "SECOND_PRECIPITATION_YEAR": 2013,
+        "THIRD_PRECIPITATION": 43.2,
+        "THIRD_PRECIPITATION_YEAR": 2006,
+        "FOURTH_PRECIPITATION": 39.1,
+        "FOURTH_PRECIPITATION_YEAR": 1982,
+        "FIFTH_PRECIPITATION": 36.9,
+        "FIFTH_PRECIPITATION_YEAR": 1983,
+        "PROVINCE_CODE": "BC",
+        "RECORD_BEGIN": "1953-04-01T00:00:00Z",
+        "RECORD_END": null,
+        "IDENTIFIER": "VSBC100-11-15"
+      }
+    },
+    {
+      "id": "VSBC35V-11-15",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.69,
+          49.22
+        ]
+      },
+      "properties": {
+        "WXO_CITY_CODE": "BC-35",
+        "VIRTUAL_STATION_NAME_E": "PITT MEADOWS AREA",
+        "VIRTUAL_STATION_NAME_F": "PITT MEADOWS",
+        "VIRTUAL_CLIMATE_ID": "VSBC35V",
+        "LOCAL_MONTH": 11,
+        "LOCAL_DAY": 15,
+        "RECORD_PRECIPITATION": 72.1,
+        "RECORD_PRECIPITATION_YR": 2021,
+        "PREV_RECORD_PRECIPITATION": 66.0,
+        "PREV_RECORD_PRECIPITATION_YR": 1919,
+        "FIRST_PRECIPITATION": 72.1,
+        "FIRST_PRECIPITATION_YEAR": 2021,
+        "SECOND_PRECIPITATION": 66,
+        "SECOND_PRECIPITATION_YEAR": 1919,
+        "THIRD_PRECIPITATION": 54.8,
+        "THIRD_PRECIPITATION_YEAR": 2013,
+        "FOURTH_PRECIPITATION": 43.2,
+        "FOURTH_PRECIPITATION_YEAR": 2006,
+        "FIFTH_PRECIPITATION": 39.1,
+        "FIFTH_PRECIPITATION_YEAR": 1982,
+        "PROVINCE_CODE": "BC",
+        "RECORD_BEGIN": "1874-09-01T00:00:00Z",
+        "RECORD_END": null,
+        "IDENTIFIER": "VSBC35V-11-15"
+      }
+    },
+    {
+      "id": "VSBC91V-11-15",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.58,
+          51.08
+        ]
+      },
+      "properties": {
+        "WXO_CITY_CODE": "BC-91",
+        "VIRTUAL_STATION_NAME_E": "CLINTON AREA",
+        "VIRTUAL_STATION_NAME_F": "CLINTON",
+        "VIRTUAL_CLIMATE_ID": "VSBC91V",
+        "LOCAL_MONTH": 11,
+        "LOCAL_DAY": 15,
+        "RECORD_PRECIPITATION": 12.0,
+        "RECORD_PRECIPITATION_YR": 1985,
+        "PREV_RECORD_PRECIPITATION": 4.1,
+        "PREV_RECORD_PRECIPITATION_YR": 1976,
+        "FIRST_PRECIPITATION": 12,
+        "FIRST_PRECIPITATION_YEAR": 1985,
+        "SECOND_PRECIPITATION": 8.4,
+        "SECOND_PRECIPITATION_YEAR": 2015,
+        "THIRD_PRECIPITATION": 6.6,
+        "THIRD_PRECIPITATION_YEAR": 1994,
+        "FOURTH_PRECIPITATION": 6.4,
+        "FOURTH_PRECIPITATION_YEAR": 1993,
+        "FIFTH_PRECIPITATION": 6.4,
+        "FIFTH_PRECIPITATION_YEAR": 2021,
+        "PROVINCE_CODE": "BC",
+        "RECORD_BEGIN": "1974-08-14T00:00:00Z",
+        "RECORD_END": null,
+        "IDENTIFIER": "VSBC91V-11-15"
       }
     },
     {
@@ -224,6 +372,43 @@
       }
     },
     {
+      "id": "VSBC20V-11-15",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.93,
+          49.17
+        ]
+      },
+      "properties": {
+        "WXO_CITY_CODE": "BC-20",
+        "VIRTUAL_STATION_NAME_E": "NANAIMO AREA",
+        "VIRTUAL_STATION_NAME_F": "NANAIMO",
+        "VIRTUAL_CLIMATE_ID": "VSBC20V",
+        "LOCAL_MONTH": 11,
+        "LOCAL_DAY": 15,
+        "RECORD_PRECIPITATION": 37.0,
+        "RECORD_PRECIPITATION_YR": 2009,
+        "PREV_RECORD_PRECIPITATION": 35.4,
+        "PREV_RECORD_PRECIPITATION_YR": 1983,
+        "FIRST_PRECIPITATION": 37,
+        "FIRST_PRECIPITATION_YEAR": 2009,
+        "SECOND_PRECIPITATION": 35.4,
+        "SECOND_PRECIPITATION_YEAR": 1983,
+        "THIRD_PRECIPITATION": 32.8,
+        "THIRD_PRECIPITATION_YEAR": 1975,
+        "FOURTH_PRECIPITATION": 28.2,
+        "FOURTH_PRECIPITATION_YEAR": 1919,
+        "FIFTH_PRECIPITATION": 25.9,
+        "FIFTH_PRECIPITATION_YEAR": 1913,
+        "PROVINCE_CODE": "BC",
+        "RECORD_BEGIN": "1892-01-01T00:00:00Z",
+        "RECORD_END": null,
+        "IDENTIFIER": "VSBC20V-11-15"
+      }
+    },
+    {
       "id": "VSBC3VV-11-15",
       "type": "Feature",
       "geometry": {
@@ -261,6 +446,43 @@
       }
     },
     {
+      "id": "VSBC24V-11-15",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.94,
+          49.18
+        ]
+      },
+      "properties": {
+        "WXO_CITY_CODE": "BC-24",
+        "VIRTUAL_STATION_NAME_E": "CHILLIWACK AREA",
+        "VIRTUAL_STATION_NAME_F": "CHILLIWACK",
+        "VIRTUAL_CLIMATE_ID": "VSBC24V",
+        "LOCAL_MONTH": 11,
+        "LOCAL_DAY": 15,
+        "RECORD_PRECIPITATION": 74.3,
+        "RECORD_PRECIPITATION_YR": 2021,
+        "PREV_RECORD_PRECIPITATION": 66.3,
+        "PREV_RECORD_PRECIPITATION_YR": 1919,
+        "FIRST_PRECIPITATION": 74.3,
+        "FIRST_PRECIPITATION_YEAR": 2021,
+        "SECOND_PRECIPITATION": 66.3,
+        "SECOND_PRECIPITATION_YEAR": 1919,
+        "THIRD_PRECIPITATION": 54.6,
+        "THIRD_PRECIPITATION_YEAR": 1983,
+        "FOURTH_PRECIPITATION": 39.1,
+        "FOURTH_PRECIPITATION_YEAR": 1970,
+        "FIFTH_PRECIPITATION": 32.6,
+        "FIFTH_PRECIPITATION_YEAR": 1982,
+        "PROVINCE_CODE": "BC",
+        "RECORD_BEGIN": "1895-03-01T00:00:00Z",
+        "RECORD_END": null,
+        "IDENTIFIER": "VSBC24V-11-15"
+      }
+    },
+    {
       "id": "VSBC50V-11-15",
       "type": "Feature",
       "geometry": {
@@ -295,6 +517,80 @@
         "RECORD_BEGIN": "1959-10-01T00:00:00Z",
         "RECORD_END": null,
         "IDENTIFIER": "VSBC50V-11-15"
+      }
+    },
+    {
+      "id": "VSBC58V-11-15",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -124.53,
+          49.85
+        ]
+      },
+      "properties": {
+        "WXO_CITY_CODE": "BC-58",
+        "VIRTUAL_STATION_NAME_E": "POWELL RIVER AREA",
+        "VIRTUAL_STATION_NAME_F": "POWELL RIVER",
+        "VIRTUAL_CLIMATE_ID": "VSBC58V",
+        "LOCAL_MONTH": 11,
+        "LOCAL_DAY": 15,
+        "RECORD_PRECIPITATION": 43.8,
+        "RECORD_PRECIPITATION_YR": 1996,
+        "PREV_RECORD_PRECIPITATION": 40.4,
+        "PREV_RECORD_PRECIPITATION_YR": 1983,
+        "FIRST_PRECIPITATION": 43.8,
+        "FIRST_PRECIPITATION_YEAR": 1996,
+        "SECOND_PRECIPITATION": 40.4,
+        "SECOND_PRECIPITATION_YEAR": 1983,
+        "THIRD_PRECIPITATION": 34.9,
+        "THIRD_PRECIPITATION_YEAR": 2021,
+        "FOURTH_PRECIPITATION": 29.6,
+        "FOURTH_PRECIPITATION_YEAR": 2009,
+        "FIFTH_PRECIPITATION": 24.8,
+        "FIFTH_PRECIPITATION_YEAR": 2006,
+        "PROVINCE_CODE": "BC",
+        "RECORD_BEGIN": "1924-01-01T00:00:00Z",
+        "RECORD_END": null,
+        "IDENTIFIER": "VSBC58V-11-15"
+      }
+    },
+    {
+      "id": "VSBC31V-11-15",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.27,
+          49.3
+        ]
+      },
+      "properties": {
+        "WXO_CITY_CODE": "BC-31",
+        "VIRTUAL_STATION_NAME_E": "HOPE SLIDE AREA",
+        "VIRTUAL_STATION_NAME_F": "HOPE SLIDE",
+        "VIRTUAL_CLIMATE_ID": "VSBC31V",
+        "LOCAL_MONTH": 11,
+        "LOCAL_DAY": 15,
+        "RECORD_PRECIPITATION": 48.8,
+        "RECORD_PRECIPITATION_YR": 1998,
+        "PREV_RECORD_PRECIPITATION": 22.2,
+        "PREV_RECORD_PRECIPITATION_YR": 1977,
+        "FIRST_PRECIPITATION": 48.8,
+        "FIRST_PRECIPITATION_YEAR": 1998,
+        "SECOND_PRECIPITATION": 25.8,
+        "SECOND_PRECIPITATION_YEAR": 2006,
+        "THIRD_PRECIPITATION": 24.6,
+        "THIRD_PRECIPITATION_YEAR": 2013,
+        "FOURTH_PRECIPITATION": 23.8,
+        "FOURTH_PRECIPITATION_YEAR": 2021,
+        "FIFTH_PRECIPITATION": 22.2,
+        "FIFTH_PRECIPITATION_YEAR": 1977,
+        "PROVINCE_CODE": "BC",
+        "RECORD_BEGIN": "1967-05-01T00:00:00Z",
+        "RECORD_END": null,
+        "IDENTIFIER": "VSBC31V-11-15"
       }
     },
     {
@@ -370,28 +666,176 @@
         "RECORD_END": null,
         "IDENTIFIER": "VSBC33V-11-15"
       }
+    },
+    {
+      "id": "VSBC55V-11-15",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.32,
+          50.81
+        ]
+      },
+      "properties": {
+        "WXO_CITY_CODE": "BC-55",
+        "VIRTUAL_STATION_NAME_E": "CACHE CREEK AREA",
+        "VIRTUAL_STATION_NAME_F": "CACHE CREEK",
+        "VIRTUAL_CLIMATE_ID": "VSBC55V",
+        "LOCAL_MONTH": 11,
+        "LOCAL_DAY": 15,
+        "RECORD_PRECIPITATION": 10.0,
+        "RECORD_PRECIPITATION_YR": 2021,
+        "PREV_RECORD_PRECIPITATION": 7.9,
+        "PREV_RECORD_PRECIPITATION_YR": 1950,
+        "FIRST_PRECIPITATION": 10,
+        "FIRST_PRECIPITATION_YEAR": 2021,
+        "SECOND_PRECIPITATION": 7.9,
+        "SECOND_PRECIPITATION_YEAR": 1950,
+        "THIRD_PRECIPITATION": 7.4,
+        "THIRD_PRECIPITATION_YEAR": 2015,
+        "FOURTH_PRECIPITATION": 4.6,
+        "FOURTH_PRECIPITATION_YEAR": 1927,
+        "FIFTH_PRECIPITATION": 4.3,
+        "FIFTH_PRECIPITATION_YEAR": 1931,
+        "PROVINCE_CODE": "BC",
+        "RECORD_BEGIN": "1912-09-01T00:00:00Z",
+        "RECORD_END": null,
+        "IDENTIFIER": "VSBC55V-11-15"
+      }
+    },
+    {
+      "id": "VSBC96V-11-15",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.16,
+          49.16
+        ]
+      },
+      "properties": {
+        "WXO_CITY_CODE": "BC-96",
+        "VIRTUAL_STATION_NAME_E": "RICHMOND AREA",
+        "VIRTUAL_STATION_NAME_F": "RICHMOND",
+        "VIRTUAL_CLIMATE_ID": "VSBC96V",
+        "LOCAL_MONTH": 11,
+        "LOCAL_DAY": 15,
+        "RECORD_PRECIPITATION": 38.8,
+        "RECORD_PRECIPITATION_YR": 2006,
+        "PREV_RECORD_PRECIPITATION": 29.9,
+        "PREV_RECORD_PRECIPITATION_YR": 1983,
+        "FIRST_PRECIPITATION": 38.8,
+        "FIRST_PRECIPITATION_YEAR": 2006,
+        "SECOND_PRECIPITATION": 29.9,
+        "SECOND_PRECIPITATION_YEAR": 1983,
+        "THIRD_PRECIPITATION": 25.6,
+        "THIRD_PRECIPITATION_YEAR": 1998,
+        "FOURTH_PRECIPITATION": 25.4,
+        "FOURTH_PRECIPITATION_YEAR": 1906,
+        "FIFTH_PRECIPITATION": 24.6,
+        "FIFTH_PRECIPITATION_YEAR": 1987,
+        "PROVINCE_CODE": "BC",
+        "RECORD_BEGIN": "1896-02-01T00:00:00Z",
+        "RECORD_END": null,
+        "IDENTIFIER": "VSBC96V-11-15"
+      }
+    },
+    {
+      "id": "VSBC36V-11-15",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.44,
+          49.38
+        ]
+      },
+      "properties": {
+        "WXO_CITY_CODE": "BC-36",
+        "VIRTUAL_STATION_NAME_E": "HOPE AREA",
+        "VIRTUAL_STATION_NAME_F": "HOPE",
+        "VIRTUAL_CLIMATE_ID": "VSBC36V",
+        "LOCAL_MONTH": 11,
+        "LOCAL_DAY": 15,
+        "RECORD_PRECIPITATION": 103.5,
+        "RECORD_PRECIPITATION_YR": 2021,
+        "PREV_RECORD_PRECIPITATION": 65.0,
+        "PREV_RECORD_PRECIPITATION_YR": 1938,
+        "FIRST_PRECIPITATION": 103.5,
+        "FIRST_PRECIPITATION_YEAR": 2021,
+        "SECOND_PRECIPITATION": 65,
+        "SECOND_PRECIPITATION_YEAR": 1938,
+        "THIRD_PRECIPITATION": 42.4,
+        "THIRD_PRECIPITATION_YEAR": 1975,
+        "FOURTH_PRECIPITATION": 38.2,
+        "FOURTH_PRECIPITATION_YEAR": 1983,
+        "FIFTH_PRECIPITATION": 33.5,
+        "FIFTH_PRECIPITATION_YEAR": 2004,
+        "PROVINCE_CODE": "BC",
+        "RECORD_BEGIN": "1934-06-01T00:00:00Z",
+        "RECORD_END": null,
+        "IDENTIFIER": "VSBC36V-11-15"
+      }
+    },
+    {
+      "id": "VSBC28V-11-15",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.93,
+          50.68
+        ]
+      },
+      "properties": {
+        "WXO_CITY_CODE": "BC-28",
+        "VIRTUAL_STATION_NAME_E": "LILLOOET AREA",
+        "VIRTUAL_STATION_NAME_F": "LILLOOET",
+        "VIRTUAL_CLIMATE_ID": "VSBC28V",
+        "LOCAL_MONTH": 11,
+        "LOCAL_DAY": 15,
+        "RECORD_PRECIPITATION": 33.8,
+        "RECORD_PRECIPITATION_YR": 2021,
+        "PREV_RECORD_PRECIPITATION": 12.2,
+        "PREV_RECORD_PRECIPITATION_YR": 1993,
+        "FIRST_PRECIPITATION": 33.8,
+        "FIRST_PRECIPITATION_YEAR": 2021,
+        "SECOND_PRECIPITATION": 12.2,
+        "SECOND_PRECIPITATION_YEAR": 1993,
+        "THIRD_PRECIPITATION": 9.4,
+        "THIRD_PRECIPITATION_YEAR": 2001,
+        "FOURTH_PRECIPITATION": 7.1,
+        "FOURTH_PRECIPITATION_YEAR": 1919,
+        "FIFTH_PRECIPITATION": 5.3,
+        "FIFTH_PRECIPITATION_YEAR": 1935,
+        "PROVINCE_CODE": "BC",
+        "RECORD_BEGIN": "1917-01-01T00:00:00Z",
+        "RECORD_END": null,
+        "IDENTIFIER": "VSBC28V-11-15"
+      }
     }
   ],
-  "numberMatched": 10,
-  "numberReturned": 10,
+  "numberMatched": 22,
+  "numberReturned": 22,
   "links": [
     {
       "type": "application/geo+json",
       "rel": "self",
       "title": "This document as GeoJSON",
-      "href": "https://api.weather.gc.ca/collections/ltce-precipitation/items?f=json&bbox=-124.36102,49.22169,-121.55898,51.01831&LOCAL_MONTH=11&LOCAL_DAY=15&limit=50"
+      "href": "https://api.weather.gc.ca/collections/ltce-precipitation/items?f=json&bbox=-124.64654,49.03728,-120.85346,51.46272&LOCAL_MONTH=11&LOCAL_DAY=15&limit=200"
     },
     {
       "rel": "alternate",
       "type": "application/ld+json",
       "title": "This document as RDF (JSON-LD)",
-      "href": "https://api.weather.gc.ca/collections/ltce-precipitation/items?f=jsonld&bbox=-124.36102,49.22169,-121.55898,51.01831&LOCAL_MONTH=11&LOCAL_DAY=15&limit=50"
+      "href": "https://api.weather.gc.ca/collections/ltce-precipitation/items?f=jsonld&bbox=-124.64654,49.03728,-120.85346,51.46272&LOCAL_MONTH=11&LOCAL_DAY=15&limit=200"
     },
     {
       "type": "text/html",
       "rel": "alternate",
       "title": "This document as HTML",
-      "href": "https://api.weather.gc.ca/collections/ltce-precipitation/items?f=html&bbox=-124.36102,49.22169,-121.55898,51.01831&LOCAL_MONTH=11&LOCAL_DAY=15&limit=50"
+      "href": "https://api.weather.gc.ca/collections/ltce-precipitation/items?f=html&bbox=-124.64654,49.03728,-120.85346,51.46272&LOCAL_MONTH=11&LOCAL_DAY=15&limit=200"
     },
     {
       "type": "application/json",
@@ -400,5 +844,5 @@
       "href": "https://api.weather.gc.ca/collections/ltce-precipitation"
     }
   ],
-  "timeStamp": "2026-11-15T19:25:37.732149Z"
+  "timeStamp": "2026-11-15T22:09:05.900932Z"
 }

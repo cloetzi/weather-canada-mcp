@@ -4,7 +4,6 @@ module WeatherCanadaMCP
   module Tools
     # The latest surface observations (SWOB) from the ECCC and NAV CANADA stations nearest a point.
     class GetCurrentObservations < Base
-      STATIONS_COLLECTION = "swob-stations"
       COLLECTION = "swob-realtime"
       RADIUS_KM = 50
       MAX_STATIONS = 5
@@ -71,7 +70,7 @@ module WeatherCanadaMCP
 
       # The nearest stations that have reported, skipping silent ones (closed or seasonal) for the next nearest.
       def reporting_stations(point, limit, lang)
-        candidates = nearest_features(STATIONS_COLLECTION, point, radius_km: RADIUS_KM, count: limit + SPARE_STATIONS, limit: 500)
+        candidates = stations.swob.nearest(point.lat, point.lon, count: limit + SPARE_STATIONS, radius_km: RADIUS_KM)
         first_found(candidates, limit) { |distance, feature| station(feature, distance, lang) }
       end
 

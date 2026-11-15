@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require "json"
 require "uri"
 
 module WeatherCanadaMCP
@@ -31,15 +30,17 @@ module WeatherCanadaMCP
         COLLECTION = /\A[a-z0-9:-]{1,80}\z/
         ITEM_ID = /\A[\w.:-]{1,120}\z/
 
-        def initialize(http:, cache:)
-          @http = http
-          @cache = cache
+        def initialize(http:, cache:, logger: nil)
+          @json = JsonClient.new(http:, cache:, origin: :eccc_api)
+          @logger = logger
         end
 
         # params are OGC API query parameters (bbox, limit, properties, sortby, datetime, lang, or property filters).
         def items(collection, ttl: nil, **params)
           check(collection, COLLECTION, "collection")
-          get("/collections/#{collection}/items?#{URI.encode_www_form({ f: "json" }.merge(params))}", ttl || ttl_for(collection))
+          get("/collections/#{collection}/items?#{URI.encode_www_form({ f: "json" }.merge(params))}", ttl || ttl_for(collection)) do |data|
+            warn_if_truncated(collection, data) unless params.key?(:sortby)
+          end
         end
 
         def item(collection, id, ttl: nil)
@@ -56,23 +57,17 @@ module WeatherCanadaMCP
           raise ArgumentError, "invalid #{label}" unless value.is_a?(String) && value.match?(pattern)
         end
 
-        def get(path, ttl)
-          @cache.fetch("api:#{path}", ttl:) do
-            response = @http.get(:eccc_api, path, accept: "application/geo+json, application/json")
-            raise Sources::StatusError.new(response.status, "api.weather.gc.ca") unless response.success?
+        # A list cut short by its limit hides stations or records the caller needed. A sorted query asks for the first few
+        # on purpose, so it is not reported. The log names the collection only, never the query.
+        def warn_if_truncated(collection, data)
+          matched = data["numberMatched"]
+          returned = data["numberReturned"]
+          return unless @logger && matched.is_a?(Integer) && returned.is_a?(Integer) && matched > returned
 
-            Cache::Weighed.parsed(parse(response.body), response.body)
-          end
+          @logger.warn("ogc_truncated", collection:, matched:, returned:)
         end
 
-        def parse(body)
-          data = JSON.parse(body.dup.force_encoding(Encoding::UTF_8), max_nesting: 64)
-          raise Sources::InvalidResponse, "api.weather.gc.ca returned JSON that is not an object." unless data.is_a?(Hash)
-
-          data
-        rescue JSON::ParserError
-          raise Sources::InvalidResponse, "api.weather.gc.ca returned a response that is not valid JSON."
-        end
+        def get(path, ttl, &) = @json.get(path, ttl, accept: "application/geo+json, application/json", &)
       end
     end
   end

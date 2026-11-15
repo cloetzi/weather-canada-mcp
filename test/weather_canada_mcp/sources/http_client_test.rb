@@ -97,4 +97,13 @@ class HttpClientTest < Minitest::Test
       client&.close
     end
   end
+
+  def test_an_origin_names_its_key_url_and_host
+    with_fake_eccc do |fake|
+      origin = client(fake).origin(:prefixed)
+
+      assert_equal [:prefixed, "#{fake.url}/base", "127.0.0.1"], [origin.key, origin.url, origin.label]
+      assert_raises(ArgumentError) { client(fake).origin(:elsewhere) }
+    end
+  end
 end

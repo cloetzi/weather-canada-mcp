@@ -42,7 +42,7 @@ module WeatherCanadaMCP
         lang = args.lang
         point = args.point
         month, day = month_day(args.date, point)
-        bbox = Geo.bbox(point.lat, point.lon, RECORDS_KM).join(",")
+        bbox = Geo.snapped_bbox(point.lat, point.lon, RECORDS_KM).join(",")
         temperature, precipitation, snowfall, normals = concurrently(
           [-> { daily(TEMPERATURE, bbox, month, day) }, -> { daily(PRECIPITATION, bbox, month, day) },
            -> { daily(SNOWFALL, bbox, month, day) }, -> { normals(point, month) }], &:call
@@ -69,7 +69,7 @@ module WeatherCanadaMCP
       end
 
       def daily(collection, bbox, month, day)
-        Array(ogc.items(collection, bbox:, LOCAL_MONTH: month, LOCAL_DAY: day, limit: 50)["features"])
+        Array(ogc.items(collection, bbox:, LOCAL_MONTH: month, LOCAL_DAY: day, limit: 200)["features"])
       end
 
       # The records of the nearest virtual station that has temperature records (or else of the nearest with any).
@@ -126,9 +126,9 @@ module WeatherCanadaMCP
       def year(value) = time(value)&.year
 
       def normals(point, month)
-        stations = nearest_features(NORMALS, point, radius_km: NORMALS_KM, count: 1, MONTH: month, NORMAL_ID: 1,
-                                                    properties: "STATION_NAME,CLIMATE_IDENTIFIER", limit: 200)
-        distance, station = stations.first
+        directory = Sources::ECCC::StationDirectory.new(ogc:, collection: NORMALS, grid: true, MONTH: month, NORMAL_ID: 1,
+                                                        properties: "STATION_NAME,CLIMATE_IDENTIFIER")
+        distance, station = directory.nearest(point.lat, point.lon, count: 1, radius_km: NORMALS_KM).first
         return { note: "No climate normals station within #{NORMALS_KM} km." } unless station
 
         station_normals(station, distance, month)

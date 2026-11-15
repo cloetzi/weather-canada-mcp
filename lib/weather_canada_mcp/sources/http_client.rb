@@ -23,7 +23,7 @@ module WeatherCanadaMCP
 
       def initialize(origins:, user_agent:, timeout:, max_concurrency:, max_body_bytes:, rate_limiters:, logger:,
                      max_retries: 2, base_delay: 0.5)
-        @origins = origins.to_h { |name, url| [name, URI(url)] }
+        @origins = origins.to_h { |name, url| [name, Origin.build(name, url)] }
         @user_agent = user_agent
         @timeout = timeout
         @max_body_bytes = max_body_bytes
@@ -39,7 +39,7 @@ module WeatherCanadaMCP
       # max_body_bytes and timeout override the defaults for this request (the gazetteer download is larger and slower
       # than any API reply).
       def get(origin, path, accept: "application/json", max_body_bytes: nil, timeout: nil)
-        uri = @origins.fetch(origin) { raise ArgumentError, "unknown upstream #{origin.inspect}" }
+        uri = URI(self.origin(origin).url)
         raise ArgumentError, "path must start with /" unless path.start_with?("/")
 
         request_path = "#{uri.path}#{path}"
@@ -48,6 +48,9 @@ module WeatherCanadaMCP
           perform(origin, uri, request_path, headers, max_body_bytes || @max_body_bytes, timeout || @timeout)
         end
       end
+
+      # The configured upstream (Sources::Origin) named by key.
+      def origin(key) = @origins.fetch(key) { raise ArgumentError, "unknown upstream #{key.inspect}" }
 
       def close
         @clients.each_value(&:close)
