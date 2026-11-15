@@ -27,6 +27,21 @@ jobs:
       - run: bundle exec rubocop
       - run: bundle exec rake test
 
+  dependency-review:
+    name: Dependency review
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      # Fails a PR that adds or updates a dependency (Gemfile.lock, workflow actions) with a known advisory.
+      - uses: actions/dependency-review-action@a1d282b36b6f3519aa1f3fc636f609c47dddb294 # v5.0.0
+        with:
+          fail-on-severity: moderate
+
   gem:
     name: Build and install gem
     runs-on: ubuntu-24.04
@@ -71,9 +86,27 @@ jobs:
     permissions:
       contents: read
       packages: write
+      id-token: write
+      attestations: write
     uses: ./.github/workflows/publish-image.yml
     with:
       version: edge-${{ github.sha }}
       tags: |
         type=edge,branch=main
         type=sha,format=short
+
+  # TEMPORARY: exercises the image pipeline from the PR; removed before merge.
+  tmp-image-test:
+    name: TMP image pipeline test
+    if: github.event_name == 'pull_request'
+    needs: [test]
+    permissions:
+      contents: read
+      packages: write
+      id-token: write
+      attestations: write
+    uses: ./.github/workflows/publish-image.yml
+    with:
+      version: wp9-test
+      tags: |
+        type=raw,value=wp9-test

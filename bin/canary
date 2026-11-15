@@ -1,0 +1,90 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+# Live canary: starts the server over stdio and calls every ECCC tool once against the real services for one fixed
+# location. It fails on a tool error, on a missing top-level key or on a tool nobody listed here, so an upstream
+# change is noticed before a user hits it. Not part of the test suite; the weekly Canary workflow runs it.
+# Stdlib only and independent of the server's classes, so it exercises the server as a client sees it.
+require "json"
+require "open3"
+require "timeout"
+
+# Squamish, BC: forecast site, weather stations, river gauges, AQHI, marine area and climate stations are all near.
+LOCATION = { lat: 49.70, lon: -123.15 }.freeze
+
+# tool => [arguments, top-level keys of which at least one must be present]. Only keys that are always in a
+# successful result: the server drops empty values, so "alerts" can be absent when none are active.
+CHECKS = {
+  "find_location" => [{ query: "Squamish", province: "BC" }, %w[candidates]],
+  "get_forecast" => [LOCATION, %w[location forecast]],
+  "get_alerts" => [LOCATION, %w[location]],
+  "get_current_observations" => [LOCATION, %w[stations]],
+  "get_river_conditions" => [LOCATION, %w[gauges]],
+  "get_air_quality" => [LOCATION, %w[aqhi_location]],
+  "get_snow_outlook" => [LOCATION, %w[steps]],
+  "get_marine_forecast" => [LOCATION, %w[marine_areas]],
+  "get_climate_context" => [LOCATION, %w[daily_records monthly_normals]],
+  "get_radar_map" => [LOCATION, %w[map]]
+}.freeze
+TIMEOUT = 120
+
+root = File.expand_path("..", __dir__)
+env = { "WEATHER_MCP_LOG_LEVEL" => "warn" }
+stdin, stdout, stderr, wait = Open3.popen3(env, File.join(root, "bin/weather-canada-mcp"), "stdio")
+errors = []
+next_id = 0
+
+request = lambda do |method, params = nil|
+  next_id += 1
+  stdin.puts(JSON.generate({ jsonrpc: "2.0", id: next_id, method:, params: }.compact))
+  Timeout.timeout(TIMEOUT) do
+    loop do
+      message = JSON.parse(stdout.gets || raise("server closed stdout"))
+      return message if message["id"] == next_id
+    end
+  end
+end
+
+begin
+  request.call("initialize", { protocolVersion: "2025-06-18", capabilities: {},
+                               clientInfo: { name: "weather-canada-mcp-canary", version: "1" } })
+  stdin.puts(JSON.generate({ jsonrpc: "2.0", method: "notifications/initialized" }))
+
+  listed = request.call("tools/list").dig("result", "tools").map { |tool| tool["name"] }
+  (listed - CHECKS.keys).each { |name| errors << "#{name}: listed by the server but not covered by the canary" }
+  (CHECKS.keys - listed).each { |name| errors << "#{name}: covered by the canary but not listed by the server" }
+
+  CHECKS.slice(*listed).each do |name, (arguments, keys)|
+    started = Process.clock_gettime(Process::CLOCK_MONOTONIC)
+    reply = request.call("tools/call", { name:, arguments: })
+    seconds = (Process.clock_gettime(Process::CLOCK_MONOTONIC) - started).round(1)
+    result = reply["result"]
+    if reply["error"] || result.nil? || result["isError"]
+      errors << "#{name}: #{(reply["error"] || result).to_json[0, 300]}"
+      puts "FAIL #{name} (#{seconds}s)"
+      next
+    end
+
+    text = result["content"].find { |part| part["type"] == "text" }&.fetch("text")
+    data = text && JSON.parse(text)
+    missing = data.is_a?(Hash) && keys.intersect?(data.keys) ? [] : keys.dup
+    missing << "attribution" unless data.is_a?(Hash) && data["attribution"]
+    missing << "image" if name == "get_radar_map" && result["content"].none? { |part| part["type"] == "image" }
+    errors << "#{name}: missing #{missing.join(" or ")}" if missing.any?
+    puts "#{missing.any? ? "FAIL" : "ok  "} #{name} (#{seconds}s)"
+  end
+rescue StandardError => e
+  errors << "#{e.class}: #{e.message}"
+ensure
+  stdin.close
+  Process.kill("TERM", wait.pid) if wait.alive?
+  wait.join
+  warn stderr.read.lines.last(20).join unless errors.empty?
+end
+
+unless errors.empty?
+  warn "\nCanary failed:"
+  errors.each { |error| warn "  #{error}" }
+  exit 1
+end
+puts "\nAll #{CHECKS.size} tools answered."
