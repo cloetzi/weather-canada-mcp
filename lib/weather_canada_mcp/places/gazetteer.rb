@@ -11,6 +11,9 @@ module WeatherCanadaMCP
     class Gazetteer
       class Unavailable < WeatherCanadaMCP::Error; end
 
+      # The database is being built in the background (stdio warm-up); a lookup is refused at once rather than made to wait.
+      class Preparing < Unavailable; end
+
       # The database could not be built from the NRCan data.
       class BuildError < WeatherCanadaMCP::Error; end
 

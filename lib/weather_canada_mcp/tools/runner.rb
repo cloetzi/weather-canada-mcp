@@ -36,32 +36,37 @@ module WeatherCanadaMCP
         ) { |**arguments| runner.call(tool_class, arguments.except(:server_context)) }
       end
 
-      # A new tool instance serves each call, so a tool may keep state in instance variables.
+      # A new tool instance serves each call, so a tool may keep state in instance variables. The call's trace counts its
+      # upstream requests and cache hits for the log.
       def call(tool_class, arguments)
-        started = Process.clock_gettime(Process::CLOCK_MONOTONIC)
-        return busy(tool_class, started) if @active >= @max_calls
-
-        run(tool_class, arguments, started)
-      rescue MCP::CancelledError
-        raise
-      rescue DeadlineExceeded, Tools::Error, Sources::Error => e
-        failed(tool_class, started, e)
-      rescue StandardError => e
-        unexpected(tool_class, started, e)
+        Sources::Trace.around { |trace| call_traced(tool_class, arguments, trace) }
       end
 
       private
 
-      def run(tool_class, arguments, started)
+      def call_traced(tool_class, arguments, trace)
+        started = Process.clock_gettime(Process::CLOCK_MONOTONIC)
+        return busy(tool_class, started) if @active >= @max_calls
+
+        run(tool_class, arguments, started, trace)
+      rescue MCP::CancelledError
+        raise
+      rescue DeadlineExceeded, Tools::Error, Sources::Error => e
+        failed(tool_class, started, e, trace)
+      rescue StandardError => e
+        unexpected(tool_class, started, e, trace)
+      end
+
+      def run(tool_class, arguments, started, trace)
         result = counted { within_deadline { tool_class.new(@context).run(arguments.transform_keys(&:to_s)) } }
-        log(tool_class, started)
+        log(tool_class, started, trace)
         json = render(result)
         json.bytesize <= @max_response_bytes ? content(json, result.image) : error(too_large(json.bytesize, tool_class))
       end
 
       # A tool error carries its own message; an upstream failure and a deadline also credit the source.
-      def failed(tool_class, started, exception)
-        log(tool_class, started, error: exception.class.name.split("::").last)
+      def failed(tool_class, started, exception, trace)
+        log(tool_class, started, trace, error: exception.class.name.split("::").last)
         case exception
         when Tools::Error then error(exception.message)
         when DeadlineExceeded
@@ -85,7 +90,7 @@ module WeatherCanadaMCP
       end
 
       def busy(tool_class, started)
-        log(tool_class, started, error: "TooManyCalls")
+        log(tool_class, started, nil, error: "TooManyCalls")
         error("This server is already running #{@max_calls} tool calls; try again in a few seconds.")
       end
 
@@ -110,8 +115,8 @@ module WeatherCanadaMCP
       end
 
       # A bug, not an upstream failure. Only the class is logged: the message could quote a response.
-      def unexpected(tool_class, started, exception)
-        log(tool_class, started, error: exception.class.name)
+      def unexpected(tool_class, started, exception, trace)
+        log(tool_class, started, trace, error: exception.class.name)
         @logger.error("tool_exception", tool: tool_class.tool_name, error: exception.class.name,
                                         location: exception.backtrace_locations&.first&.then { |l| "#{File.basename(l.path)}:#{l.lineno}" })
         error("The server failed unexpectedly while handling this request (#{exception.class.name}). " \
@@ -127,9 +132,10 @@ module WeatherCanadaMCP
 
       def error(message) = MCP::Tool::Response.new([{ type: "text", text: message }], error: true)
 
-      def log(tool_class, started, **fields)
+      def log(tool_class, started, trace, **fields)
         duration_ms = ((Process.clock_gettime(Process::CLOCK_MONOTONIC) - started) * 1000).round
-        @logger.info("tool_call", tool: tool_class.tool_name, duration_ms:, **fields)
+        counts = trace ? { upstream_requests: trace.requests, cache_hits: trace.cache_hits } : {}
+        @logger.info("tool_call", tool: tool_class.tool_name, duration_ms:, **counts, **fields)
       end
     end
   end

@@ -43,10 +43,13 @@ module WeatherCanadaMCP
       )
     end
 
-    def cache = @cache ||= Sources::Cache.new(max_bytes: CACHE_BYTES, scale: config.cache_scale)
+    def cache = @cache ||= Sources::Cache.new(max_bytes: CACHE_BYTES, scale: config.cache_scale, wall_clock: @clock)
 
     # Map images (100 KB or more each) are kept apart, so they never crowd out the small entries.
-    def image_cache = @image_cache ||= Sources::Cache.new(max_entries: IMAGE_CACHE_ENTRIES, max_bytes: IMAGE_CACHE_BYTES, scale: config.cache_scale)
+    def image_cache
+      @image_cache ||= Sources::Cache.new(max_entries: IMAGE_CACHE_ENTRIES, max_bytes: IMAGE_CACHE_BYTES, scale: config.cache_scale,
+                                          wall_clock: @clock)
+    end
 
     def ogc = @ogc ||= Sources::ECCC::OgcApi.new(http:, cache:, logger:)
 

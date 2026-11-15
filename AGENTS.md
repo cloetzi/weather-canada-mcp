@@ -21,7 +21,8 @@ Names. Users run it over stdio or from the Docker image on GHCR. No upstream cre
   - `maps/`: `Compositor`, PNG compositing (chunky_png)
   - `sources/`: everything that fetches upstream data. `HttpClient` (GET only, fixed `Origin`s, gzip, size cap,
     retries), `RateLimiters` (one GCRA `RateLimiter` per provider: ECCC, NRCan, Avalanche Canada), `Cache` (TTL, LRU
-    and byte budget, request coalescing), `JsonClient` (cached JSON GET with status and shape checks, shared by the
+    and byte budget, request coalescing, stale-if-error), `Trace` (per-call request, cache-hit and stale counts in fiber
+    storage), `RequestLog` (what debug logs may say of a path), `JsonClient` (cached JSON GET with status and shape checks, shared by the
     ECCC and Avalanche Canada clients), `Wms` (one generic WMS client, for GeoMet and for NRCan's base map), and a thin
     client per service returning parsed data: `ECCC::OgcApi`; `ECCC::StationDirectory` (the stations of a collection,
     nearest search in memory, read whole or by 0.5 degree grid cell) with `ECCC::Stations` and `ECCC::ForecastSites`

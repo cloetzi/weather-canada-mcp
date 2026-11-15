@@ -105,6 +105,44 @@ class GazetteerStoreTest < Minitest::Test
     end
   end
 
+  def test_warming_up_builds_in_the_background_and_lookups_refuse_until_it_is_done
+    with_fake_eccc do |fake|
+      fake.route(FakeEccc::CGN_PATH) do
+        sleep 0.2
+        [200, {}, FakeEccc.cgn_zip]
+      end
+      store = store(fake)
+      store.warm_up!
+      error = assert_raises(WeatherCanadaMCP::Places::Gazetteer::Preparing) { store.open }
+
+      assert_kind_of WeatherCanadaMCP::Places::Gazetteer::Unavailable, error
+      sleep 0.5
+
+      assert_operator store.open.size, :>, 0
+      assert_equal 1, fake.requests_to(FakeEccc::CGN_PATH).size
+    end
+  end
+
+  def test_without_warming_up_a_lookup_waits_for_the_build
+    with_fake_eccc do |fake|
+      fake.route(FakeEccc::CGN_PATH) do
+        sleep 0.1
+        [200, {}, FakeEccc.cgn_zip]
+      end
+
+      assert_operator store(fake).open.size, :>, 0
+    end
+  end
+
+  def test_warming_up_does_nothing_when_the_database_exists_or_auto_build_is_off
+    with_fake_eccc do |fake|
+      store(fake, auto_build: false).warm_up!
+      store(fake, path: gazetteer_path).warm_up!
+
+      assert_empty fake.requests
+    end
+  end
+
   private
 
   def assert_rejected(archive, message)

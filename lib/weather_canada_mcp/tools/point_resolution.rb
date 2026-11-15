@@ -60,6 +60,8 @@ module WeatherCanadaMCP
 
       def gazetteer
         @context.gazetteer.open
+      rescue Places::Gazetteer::Preparing
+        raise Unavailable, "Place names are being set up, which takes about 30 seconds and happens once. Retry shortly, or pass lat and lon."
       rescue Places::Gazetteer::Unavailable => e
         raise Unavailable, "Place names cannot be looked up right now (#{e.message}). Pass lat and lon instead."
       end

@@ -13,6 +13,9 @@ module WeatherCanadaMCP
       # CGN archive (~16 MB) through the upstream client, then inflates and loads it in background threads (streamed
       # through a pipe), so the reactor keeps serving other requests. Concurrent callers share one build. A failed
       # build is not retried for RETRY_AFTER seconds, so a broken setup does not re-download the archive on every call.
+      #
+      # warm_up! (the stdio server, at startup) starts the build at once and makes lookups refuse with Preparing while it
+      # runs, because a person waiting in a chat should not sit through the download inside one tool call.
       class Store
         CGN_PATH = "/pub/nrcan_rncan/vector/geobase_cgn_toponyme/prov_csv_eng/cgn_canada_csv_eng.zip"
         MAX_ARCHIVE_BYTES = 64 * 1024 * 1024
@@ -30,6 +33,7 @@ module WeatherCanadaMCP
           @gazetteer = nil
           @building = nil
           @failure = nil
+          @warming = false
         end
 
         attr_reader :path
@@ -47,6 +51,16 @@ module WeatherCanadaMCP
           @gazetteer
         end
 
+        # Starts building the database in the background when it is missing and auto_build is on. Needs the reactor.
+        def warm_up!
+          return if @gazetteer || @building || !@auto_build || File.file?(@path)
+
+          @warming = true
+          start_build
+        rescue Unavailable
+          nil # a recent failure is reported by the lookups
+        end
+
         # Downloads and rebuilds unconditionally (the `gazetteer update` command), then reopens.
         def rebuild!
           build
@@ -61,6 +75,11 @@ module WeatherCanadaMCP
         def open_or_build
           return Gazetteer.new(@path) if File.file?(@path)
           raise Unavailable, "the place-name database is not installed (run `weather-canada-mcp gazetteer update`)" unless @auto_build
+
+          if @warming
+            start_build unless @building
+            raise Preparing, "the place-name database is being built"
+          end
 
           (@building || start_build).wait
           Gazetteer.new(@path)
