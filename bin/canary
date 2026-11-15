@@ -8,6 +8,7 @@
 require "json"
 require "open3"
 require "timeout"
+require "tempfile"
 
 # Squamish, BC: forecast site, weather stations, river gauges, AQHI, marine area and climate stations are all near.
 LOCATION = { lat: 49.70, lon: -123.15 }.freeze
@@ -16,7 +17,7 @@ LOCATION = { lat: 49.70, lon: -123.15 }.freeze
 # successful result: the server drops empty values, so "alerts" can be absent when none are active.
 CHECKS = {
   "find_location" => [{ query: "Squamish", province: "BC" }, %w[candidates]],
-  "get_forecast" => [LOCATION, %w[location forecast]],
+  "get_forecast" => [LOCATION, %w[forecast]],
   "get_alerts" => [LOCATION, %w[location]],
   "get_current_observations" => [LOCATION, %w[stations]],
   "get_river_conditions" => [LOCATION, %w[gauges]],
@@ -30,7 +31,9 @@ TIMEOUT = 120
 
 root = File.expand_path("..", __dir__)
 env = { "WEATHER_MCP_LOG_LEVEL" => "warn" }
-stdin, stdout, stderr, wait = Open3.popen3(env, File.join(root, "bin/weather-canada-mcp"), "stdio")
+# The server's stderr goes to a file so a chatty run can never fill the pipe and stall it.
+stderr = Tempfile.new("canary-stderr")
+stdin, stdout, wait = Open3.popen2(env, File.join(root, "bin/weather-canada-mcp"), "stdio", err: stderr.path)
 errors = []
 next_id = 0
 
@@ -45,6 +48,20 @@ request = lambda do |method, params = nil|
   end
 end
 
+# Returns a description of what is wrong with one tool's answer, or nil.
+check = lambda do |name, arguments, keys|
+  reply = request.call("tools/call", { name:, arguments: })
+  result = reply["result"]
+  return (reply["error"] || result).to_json[0, 300] if reply["error"] || result.nil? || result["isError"]
+
+  text = result["content"].find { |part| part["type"] == "text" }&.fetch("text")
+  data = text && JSON.parse(text)
+  missing = data.is_a?(Hash) && keys.intersect?(data.keys) ? [] : keys.dup
+  missing << "attribution" unless data.is_a?(Hash) && data["attribution"]
+  missing << "image" if name == "get_radar_map" && result["content"].none? { |part| part["type"] == "image" }
+  "missing #{missing.join(" or ")}" if missing.any?
+end
+
 begin
   request.call("initialize", { protocolVersion: "2025-06-18", capabilities: {},
                                clientInfo: { name: "weather-canada-mcp-canary", version: "1" } })
@@ -56,22 +73,14 @@ begin
 
   CHECKS.slice(*listed).each do |name, (arguments, keys)|
     started = Process.clock_gettime(Process::CLOCK_MONOTONIC)
-    reply = request.call("tools/call", { name:, arguments: })
-    seconds = (Process.clock_gettime(Process::CLOCK_MONOTONIC) - started).round(1)
-    result = reply["result"]
-    if reply["error"] || result.nil? || result["isError"]
-      errors << "#{name}: #{(reply["error"] || result).to_json[0, 300]}"
-      puts "FAIL #{name} (#{seconds}s)"
-      next
+    problem = begin
+      check.call(name, arguments, keys)
+    rescue StandardError => e
+      "#{e.class}: #{e.message[0, 200]}"
     end
-
-    text = result["content"].find { |part| part["type"] == "text" }&.fetch("text")
-    data = text && JSON.parse(text)
-    missing = data.is_a?(Hash) && keys.intersect?(data.keys) ? [] : keys.dup
-    missing << "attribution" unless data.is_a?(Hash) && data["attribution"]
-    missing << "image" if name == "get_radar_map" && result["content"].none? { |part| part["type"] == "image" }
-    errors << "#{name}: missing #{missing.join(" or ")}" if missing.any?
-    puts "#{missing.any? ? "FAIL" : "ok  "} #{name} (#{seconds}s)"
+    seconds = (Process.clock_gettime(Process::CLOCK_MONOTONIC) - started).round(1)
+    errors << "#{name}: #{problem}" if problem
+    puts "#{problem ? "FAIL" : "ok  "} #{name} (#{seconds}s)"
   end
 rescue StandardError => e
   errors << "#{e.class}: #{e.message}"
@@ -79,7 +88,7 @@ ensure
   stdin.close
   Process.kill("TERM", wait.pid) if wait.alive?
   wait.join
-  warn stderr.read.lines.last(20).join unless errors.empty?
+  warn File.read(stderr.path).lines.last(20).join unless errors.empty?
 end
 
 unless errors.empty?

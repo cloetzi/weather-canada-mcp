@@ -124,11 +124,19 @@ jobs:
           sources=()
           for digest in "${digests[@]}"; do sources+=("$IMAGE@sha256:$digest"); done
           docker buildx imagetools create "${tag_args[@]}" "${sources[@]}"
-      - name: Inspect
+      - name: Inspect and check attestations
         id: inspect
         run: |
-          docker buildx imagetools inspect "$IMAGE:${{ steps.meta.outputs.version }}"
-          echo "digest=$(docker buildx imagetools inspect "$IMAGE:${{ steps.meta.outputs.version }}" --format '{{json .Manifest}}' | jq -r .digest)" >> "$GITHUB_OUTPUT"
+          set -euo pipefail
+          docker buildx imagetools inspect "$IMAGE:$VERSION"
+          manifest=$(docker buildx imagetools inspect "$IMAGE:$VERSION" --format '{{json .Manifest}}')
+          digest=$(jq -r .digest <<< "$manifest")
+          images=$(jq '[.manifests[] | select(.platform.os == "linux")] | length' <<< "$manifest")
+          sboms=$(jq '[.manifests[] | select(.annotations["vnd.docker.reference.type"] == "attestation-manifest")] | length' <<< "$manifest")
+          [ -n "$digest" ] && [ "$images" -eq 2 ] && [ "$sboms" -eq 2 ] || { echo "Expected 2 images and 2 SBOM attestations, found $images and $sboms" >&2; exit 1; }
+          echo "digest=$digest" >> "$GITHUB_OUTPUT"
+        env:
+          VERSION: ${{ steps.meta.outputs.version }}
       # Verify with: gh attestation verify oci://ghcr.io/<owner>/weather-canada-mcp:<tag> --repo <owner>/weather-canada-mcp
       - uses: actions/attest-build-provenance@4d101475d8b20a2381f78447822ac1eab6504dd8 # v4.2.2
         with:
