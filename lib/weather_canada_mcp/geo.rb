@@ -32,6 +32,19 @@ module WeatherCanadaMCP
       [lon - d_lon, lat - d_lat, lon + d_lon, lat + d_lat].map { |value| value.round(5) }
     end
 
+    # Cells of this many degrees (about 55 km) are what snapped_bbox rounds a point to.
+    GRID_DEGREES = 0.5
+    # The most a point moves when it is snapped to a cell centre, in km, with room for longitude's shrinking at 60 N.
+    SNAP_MARGIN_KM = 35
+
+    # bbox around the centre of the grid cell holding the point, grown by SNAP_MARGIN_KM so it still holds everything within
+    # radius_km of the point. Points in the same cell ask for the same box, so their queries share cache entries.
+    def snapped_bbox(lat, lon, radius_km)
+      bbox(snap(lat), snap(lon), radius_km + SNAP_MARGIN_KM)
+    end
+
+    def snap(degrees) = ((degrees / GRID_DEGREES).floor + 0.5) * GRID_DEGREES
+
     # Whether a GeoJSON Polygon or MultiPolygon contains the point. Holes are honoured; other geometry types never
     # contain a point.
     def contains?(geometry, lat, lon)

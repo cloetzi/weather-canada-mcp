@@ -3,9 +3,9 @@
 module WeatherCanadaMCP
   # The MCP tools, one class per file; Tools::Registry lists them in the order tools/list shows them.
   module Tools
-    # What tools share: the upstream sources (avalanche is nil unless enabled), a cache for images, the forecast sites,
+    # What tools share: the upstream sources (avalanche is nil unless enabled), a cache for images, the forecast sites and station directories,
     # the gazetteer, the configuration, a clock (Time.now) and the slots that limit concurrent map compositions.
-    Context = Data.define(:ogc, :wms, :basemap, :image_cache, :avalanche, :forecast_sites, :gazetteer, :config, :clock,
+    Context = Data.define(:ogc, :wms, :basemap, :image_cache, :avalanche, :forecast_sites, :stations, :gazetteer, :config, :clock,
                           :compose_slots)
 
     # An image a tool returns beside its JSON (Tools::Runner sends it as MCP image content).

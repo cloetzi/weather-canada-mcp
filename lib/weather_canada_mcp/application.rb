@@ -48,11 +48,11 @@ module WeatherCanadaMCP
     # Map images (100 KB or more each) are kept apart, so they never crowd out the small entries.
     def image_cache = @image_cache ||= Sources::Cache.new(max_entries: IMAGE_CACHE_ENTRIES, max_bytes: IMAGE_CACHE_BYTES, scale: config.cache_scale)
 
-    def ogc = @ogc ||= Sources::ECCC::OgcApi.new(http:, cache:)
+    def ogc = @ogc ||= Sources::ECCC::OgcApi.new(http:, cache:, logger:)
 
-    def wms = @wms ||= Sources::ECCC::Wms.new(http:, cache:, image_cache:)
+    def wms = @wms ||= Sources::Wms.new(http:, origin: :geomet, path: "/geomet", cache:, image_cache:)
 
-    def basemap = @basemap ||= Sources::NRCan::Basemap.new(http:, cache: image_cache)
+    def basemap = @basemap ||= Sources::NRCan::Basemap.build(http:, cache: image_cache)
 
     def avalanche = (@avalanche ||= Sources::AvalancheCanada::Services.build(http:, cache:) if config.avalanche_enabled)
 
@@ -60,7 +60,8 @@ module WeatherCanadaMCP
 
     def context
       @context ||= Tools::Context.new(ogc:, wms:, basemap:, image_cache:, avalanche:,
-                                      forecast_sites: Sources::ECCC::ForecastSites.new(ogc:), gazetteer:, config:, clock: @clock,
+                                      forecast_sites: Sources::ECCC::ForecastSites.new(ogc:),
+                                      stations: Sources::ECCC::Stations.build(ogc:), gazetteer:, config:, clock: @clock,
                                       compose_slots: Async::Semaphore.new(COMPOSE_SLOTS))
     end
 

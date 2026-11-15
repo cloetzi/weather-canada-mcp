@@ -1,38 +1,19 @@
 # frozen_string_literal: true
 
-require "json"
-
 module WeatherCanadaMCP
   module Sources
     module AvalancheCanada
-      # What the Avalanche Canada clients share: a cached GET of one origin that parses JSON and checks its shape.
+      # What the Avalanche Canada clients share: a cached JSON GET of either of its two origins.
       class Client
-        NAMES = { avalanche: "Avalanche Canada", avalanche_weather: "Avalanche Canada's weather station service" }.freeze
+        ORIGINS = %i[avalanche avalanche_weather].freeze
 
         def initialize(http:, cache:)
-          @http = http
-          @cache = cache
+          @json = ORIGINS.to_h { |origin| [origin, JsonClient.new(http:, cache:, origin:)] }
         end
 
         private
 
-        def get(origin, path, ttl, shape)
-          @cache.fetch("#{origin}:#{path}", ttl:) do
-            response = @http.get(origin, path)
-            raise StatusError.new(response.status, NAMES.fetch(origin)) unless response.success?
-
-            Cache::Weighed.parsed(parse(response.body, NAMES.fetch(origin), shape), response.body)
-          end
-        end
-
-        def parse(body, name, shape)
-          data = JSON.parse(body.dup.force_encoding(Encoding::UTF_8), max_nesting: 64)
-          raise InvalidResponse, "#{name} returned JSON in an unexpected shape." unless data.is_a?(shape)
-
-          data
-        rescue JSON::ParserError
-          raise InvalidResponse, "#{name} returned a response that is not valid JSON."
-        end
+        def get(origin, path, ttl, shape) = @json.fetch(origin).get(path, ttl, shape:)
       end
     end
   end

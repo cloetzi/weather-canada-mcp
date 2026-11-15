@@ -19,12 +19,15 @@ Names. Users run it over stdio or from the Docker image on GHCR. No upstream cre
     (`Tools::Result`), enforces the size cap (on the JSON, not on an image a tool returns), turns `Tools::Error`s and
     upstream errors into tool errors
   - `maps/`: `Compositor`, PNG compositing (chunky_png)
-  - `sources/`: everything that fetches upstream data. `HttpClient` (GET only, fixed origins, gzip, size cap,
-    retries), `RateLimiters` (one GCRA `RateLimiter` per provider: ECCC, NRCan, Avalanche Canada), `Cache` (TTL, LRU and byte budget, request coalescing), and a thin client per service
-    returning parsed data: `ECCC::OgcApi`; `ECCC::Wms`, GeoMet point values and map images; `ECCC::ForecastSites`,
-    nearest City Page forecast sites; `NRCan::Basemap`, NRCan's base map; and, when enabled,
-    `AvalancheCanada::Forecasts`, `::WeatherStations` and `::FieldReports` (bundled as `AvalancheCanada::Services`);
-    `sources.rb` holds the error classes
+  - `sources/`: everything that fetches upstream data. `HttpClient` (GET only, fixed `Origin`s, gzip, size cap,
+    retries), `RateLimiters` (one GCRA `RateLimiter` per provider: ECCC, NRCan, Avalanche Canada), `Cache` (TTL, LRU
+    and byte budget, request coalescing), `JsonClient` (cached JSON GET with status and shape checks, shared by the
+    ECCC and Avalanche Canada clients), `Wms` (one generic WMS client, for GeoMet and for NRCan's base map), and a thin
+    client per service returning parsed data: `ECCC::OgcApi`; `ECCC::StationDirectory` (the stations of a collection,
+    nearest search in memory, read whole or by 0.5 degree grid cell) with `ECCC::Stations` and `ECCC::ForecastSites`
+    on it; `ECCC::CityPage` (the only class that knows City Page's property names); `NRCan::Basemap`; and, when
+    enabled, `AvalancheCanada::Forecasts`, `::WeatherStations` and `::FieldReports` (bundled as
+    `AvalancheCanada::Services`); `sources.rb` holds the error classes
   - `places/`: `Gazetteer`, offline place names in SQLite (FTS5; plain lat/lon index, since the bundled SQLite has
     no R*Tree), built from NRCan's CSV by `Builder`, downloaded (rubyzip) and built on demand by `Store`
   - `server/`: the HTTP transport. `HttpApp`, `HostOriginGuard`, `StaticTokenVerifier`, `HealthCheck`,

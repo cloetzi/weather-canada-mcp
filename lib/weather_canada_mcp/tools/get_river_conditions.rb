@@ -5,7 +5,6 @@ module WeatherCanadaMCP
     # Real-time water level and flow at the nearest hydrometric gauges, with the recent trend and how the flow compares
     # with the historical mean for the month (HYDAT monthly means).
     class GetRiverConditions < Base
-      STATIONS_COLLECTION = "hydrometric-stations"
       REALTIME_COLLECTION = "hydrometric-realtime"
       MONTHLY_COLLECTION = "hydrometric-monthly-mean"
       RADIUS_KM = 50
@@ -52,9 +51,9 @@ module WeatherCanadaMCP
       end
 
       def gauges(point, filter, limit)
-        nearest = nearest_features(STATIONS_COLLECTION, point, radius_km: RADIUS_KM, count: 500, REAL_TIME: 1, limit: 500)
-        nearest = nearest.select { |_, feature| normalize(feature.dig("properties", "STATION_NAME").to_s).include?(filter) } if filter
-        nearest.first(limit)
+        stations.hydrometric.nearest(point.lat, point.lon, count: limit, radius_km: RADIUS_KM) do |feature|
+          filter.nil? || normalize(feature.dig("properties", "STATION_NAME").to_s).include?(filter)
+        end
       end
 
       # Upper case without accents, so "riviere" matches "RIVIÈRE".

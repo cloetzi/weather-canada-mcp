@@ -70,7 +70,7 @@ class GetForecastTest < Minitest::Test
       message, error = call_tool(app, "get_forecast", lat: 49.7, lon: -123.15)
 
       assert error
-      assert_match(/api\.weather\.gc\.ca failed to answer \(HTTP 500\)/, message)
+      assert_match(/127\.0\.0\.1 failed to answer \(HTTP 500\)/, message)
       refute_includes message, "boom"
     ensure
       app&.close

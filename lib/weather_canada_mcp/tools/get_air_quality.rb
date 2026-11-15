@@ -5,7 +5,6 @@ module WeatherCanadaMCP
     # The Air Quality Health Index (AQHI) observed and forecast at the nearest AQHI location, with Health Canada's
     # messages for the risk category.
     class GetAirQuality < Base
-      OBSERVATIONS_COLLECTION = "aqhi-observations-realtime"
       FORECASTS_COLLECTION = "aqhi-forecasts-realtime"
       RADIUS_KM = 100
       STALE_AFTER = 3 * 3600
@@ -74,8 +73,7 @@ module WeatherCanadaMCP
       def call(args)
         lang = args.lang
         point = args.point
-        distance, observation = nearest_features(OBSERVATIONS_COLLECTION, point, radius_km: RADIUS_KM, count: 1, latest: true,
-                                                                                 limit: 100).first
+        distance, observation = stations.aqhi.nearest(point.lat, point.lon, count: 1, radius_km: RADIUS_KM).first
         return { location: point.to_h, note: "No AQHI location within #{RADIUS_KM} km. AQHI covers mostly populated areas." } unless observation
 
         properties = observation["properties"]

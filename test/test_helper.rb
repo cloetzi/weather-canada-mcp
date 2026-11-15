@@ -94,3 +94,8 @@ module TestHelpers
 end
 
 Minitest::Test.include(TestHelpers)
+
+# The one element of a list that must have exactly one.
+class Array
+  def sole = size == 1 ? first : raise(Minitest::Assertion, "expected one element, got #{size}")
+end

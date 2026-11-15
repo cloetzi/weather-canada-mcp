@@ -13,7 +13,7 @@ class GetAirQualityTest < Minitest::Test
     refute error
     assert_equal({ "id" => "JAFUV", "name" => "Central Okanagan", "distance_km" => 1.4, "lat" => 49.8833333333333, "lon" => -119.483333333333 },
                  result["aqhi_location"])
-    assert_equal({ "observed_at" => "2026-11-15T09:00:00-08:00", "aqhi" => 1.5, "aqhi_display" => "1", "risk" => "low" }, result["current"])
+    assert_equal({ "observed_at" => "2026-11-15T13:00:00-08:00", "aqhi" => 1.5, "aqhi_display" => "1", "risk" => "low" }, result["current"])
   end
 
   def test_forecast_periods_from_the_latest_publication

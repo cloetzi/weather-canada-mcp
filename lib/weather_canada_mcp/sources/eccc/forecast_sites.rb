@@ -21,42 +21,42 @@ module WeatherCanadaMCP
         end
 
         def initialize(ogc:)
-          @ogc = ogc
-          @parsed = {}.compare_by_identity
+          @directory = StationDirectory.new(ogc:, collection: COLLECTION, properties: SITE_PROPERTIES, ttl: OgcApi::SITE_LIST_TTL)
+          @sites = {}.compare_by_identity
         end
 
         # [[distance_km, Site], ...] closest first.
         def nearest_sites(lat, lon, limit: 3)
-          sites.map { |site| [Geo.distance_km(lat, lon, site.lat, site.lon), site] }.min_by(limit, &:first)
+          nearest = @directory.nearest(lat, lon, count: limit) { |feature| identified?(feature) }
+          raise InvalidResponse, "#{COLLECTION} returned an empty City Page site list." if nearest.empty?
+
+          nearest.map { |distance, feature| [distance, site(feature)] }
         end
 
         # The IANA time zone at a point: the zone of the nearest forecast site that has one.
         def zone_at(lat, lon)
-          candidates = sites.select { |site| ZONES.key?(site.id) }
-          nearest = candidates.min_by { |site| Geo.distance_km(lat, lon, site.lat, site.lon) }
-          nearest ? ZONES.fetch(nearest.id) : FALLBACK_ZONE
+          _, feature = @directory.nearest(lat, lon, count: 1) { |candidate| ZONES.key?(candidate.dig("properties", "identifier")) }.first
+          feature ? ZONES.fetch(feature.dig("properties", "identifier")) : FALLBACK_ZONE
         end
 
+        # Every site; raises when the list is empty.
         def sites
-          data = @ogc.items(COLLECTION, ttl: OgcApi::SITE_LIST_TTL, limit: 1000, properties: SITE_PROPERTIES)
-          # The cache hands back the same object until it expires, so parse each list once.
-          @parsed = { data => parse(data) }.compare_by_identity unless @parsed.key?(data)
-          @parsed[data]
+          found = @directory.features.select { |feature| identified?(feature) }.map { |feature| site(feature) }
+          raise InvalidResponse, "#{COLLECTION} returned an empty City Page site list." if found.empty?
+
+          found
         end
 
         private
 
-        def parse(data)
-          sites = Array(data["features"]).filter_map do |feature|
-            lon, lat = feature.dig("geometry", "coordinates")
-            properties = feature["properties"] || {}
-            next unless lat.is_a?(Numeric) && lon.is_a?(Numeric) && properties["identifier"].is_a?(String)
+        def identified?(feature) = feature.dig("properties", "identifier").is_a?(String)
 
+        def site(feature)
+          @sites[feature] ||= begin
+            properties = feature["properties"]
+            lon, lat = feature.dig("geometry", "coordinates")
             Site.new(id: properties["identifier"], name: properties["name"] || {}, region: properties["region"] || {}, lat:, lon:)
           end
-          raise InvalidResponse, "api.weather.gc.ca returned an empty City Page site list." if sites.empty?
-
-          sites.freeze
         end
       end
     end
