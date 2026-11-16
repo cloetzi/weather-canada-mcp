@@ -15,6 +15,8 @@ module WeatherCanadaMCP
       OROGRAPHY = %w[HRDPS-WEonG_2.5km_Orography RDPS-WEonG_10km_Orography].freeze
       # Within this many metres of the snow level the precipitation type is a toss-up.
       TRANSITION_M = 100
+      # The model terrain does not change from run to run.
+      GROUND_TTL = 6 * 3600
       # GeoMet's snow level codes for "no snow level to report" (the number is not a height).
       SNOW_LEVEL_CODES = {
         -1 => { "en" => "partly melted: the snow level is close to the surface",
@@ -86,7 +88,7 @@ module WeatherCanadaMCP
           return { snow_level_m: (found.value / 10.0).round * 10, run: time(found.reference_time) } unless found.value.negative?
 
           code = SNOW_LEVEL_CODES[found.value.round]
-          return { snow_level: code&.dig(lang), run: time(found.reference_time) }
+          return { snow_level: code&.dig(lang), code: found.value.round, run: time(found.reference_time) }
         end
         {}
       end
@@ -94,21 +96,21 @@ module WeatherCanadaMCP
       # The model's ground height at the point, to the nearest 10 m like the snow level, from the first model that covers it.
       def ground_elevation(point)
         OROGRAPHY.each do |layer|
-          found = wms_value(layer, point)
+          found = wms_value(layer, point, ttl: GROUND_TTL)
           return (found.value / 10.0).round * 10 if found
         end
         nil
       end
 
-      # Snow above the snow level and rain below it; a toss-up close to it. The codes -2 (snow to the surface) and -1
-      # (partly melted, snow near the ground) have no height.
+      # Snow above the snow level and rain below it; a toss-up within TRANSITION_M of it. The codes -2 (snow to the surface)
+      # and -1 (partly melted) have no height.
       def precipitation_at(entry, elevation)
         level = entry[:snow_level_m]
         return "snow" if level && elevation >= level + TRANSITION_M
         return "rain" if level && elevation <= level - TRANSITION_M
         return "rain or snow: close to the snow level" if level
 
-        entry[:snow_level] ? "snow or a mix: the snow is partly melted near the ground" : nil
+        { -2 => "snow", -1 => "snow or a mix: the snow is partly melted near the ground" }[entry[:code]]
       end
 
       # Centimetres of snow for millimetres of water at SNOW_TO_LIQUID.
@@ -116,7 +118,10 @@ module WeatherCanadaMCP
 
       def shape(point, steps, step)
         runs = steps.flat_map { |entry| entry.delete(:reference_times) }.uniq.sort
-        steps.each { |entry| entry.delete(:run) }
+        steps.each do |entry|
+          entry.delete(:run)
+          entry.delete(:code)
+        end
         amounts = steps.filter_map { |entry| entry[:new_snow_water_mm] }
         result = { location: point.to_h, step_hours: step, steps:, total_new_snow_water_mm: (amounts.sum.round(1) if amounts.any?),
                    total_new_snow_cm_estimate: (snow_cm(amounts.sum) if amounts.any?),

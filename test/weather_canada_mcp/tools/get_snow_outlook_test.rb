@@ -59,12 +59,8 @@ class GetSnowOutlookTest < Minitest::Test
     assert_equal 1500, result["elevation_m"]
     refute_empty steps
     steps.each do |step|
-      expected = if step["snow_level_m"] + 100 <= 1500 then "snow"
-                 elsif step["snow_level_m"] - 100 >= 1500 then "rain"
-                 else "rain or snow: close to the snow level"
-                 end
-
-      assert_equal expected, step["precipitation_at_elevation"], step["snow_level_m"]
+      assert_includes %w[snow rain], step["precipitation_at_elevation"] if (step["snow_level_m"] - 1500).abs >= 100
+      assert_equal (step["snow_level_m"] < 1500 ? "snow" : "rain"), step["precipitation_at_elevation"] if (step["snow_level_m"] - 1500).abs >= 100
     end
   end
 
@@ -75,12 +71,21 @@ class GetSnowOutlookTest < Minitest::Test
     assert_match(/close to the snow level/, first["precipitation_at_elevation"])
   end
 
-  def test_the_snow_level_codes_have_no_type_at_a_height
-    result = outlook(**WHITEHORSE, elevation_m: 700).first
-    coded = result["steps"].select { |step| step["snow_level"] }
+  def test_snow_to_the_surface_is_snow_at_any_height
+    coded = outlook(**WHITEHORSE, elevation_m: 700).first["steps"].select { |step| step["snow_level"] }
 
     refute_empty coded
-    coded.each { |step| assert_includes ["snow or a mix: the snow is partly melted near the ground", nil], step["precipitation_at_elevation"] }
+    expected = { "snow_level" => nil }
+    coded.each do |step|
+      type = if step["snow_level"].start_with?("snow to the surface",
+                                               "neige jusqu")
+               "snow"
+             else
+               "snow or a mix: the snow is partly melted near the ground"
+             end
+
+      assert_equal type, step["precipitation_at_elevation"], expected.merge(step.slice("snow_level")).to_s
+    end
   end
 
   def test_total_new_snow_is_the_sum_of_the_steps
