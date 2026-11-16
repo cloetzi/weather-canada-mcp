@@ -31,6 +31,7 @@ class GazetteerTest < Minitest::Test
     assert_equal(%w[Québec Town], @gazetteer.search("Quebec City").first.then { [it.name, it.type] })
     assert_equal "Québec", @gazetteer.search("Ville de Québec", province: "QC").first.name
     assert_equal "Montréal", @gazetteer.search("Montreal").first.name
+    assert_empty @gazetteer.search("Quebec City", province: "ON")
   end
 
   def test_province_filter_and_suffix

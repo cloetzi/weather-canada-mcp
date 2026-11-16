@@ -52,7 +52,8 @@ module WeatherCanadaMCP
       def alternatives(place, rest)
         key = Places::Gazetteer.normalize(place.name)
         rest.select do |other|
-          Places::Gazetteer.normalize(other.name) == key && other.score >= place.score * AMBIGUITY_SHARE &&
+          Places::Gazetteer.normalize(other.name) == key && !(other.province_or_territory? && !place.province_or_territory?) &&
+            other.score >= place.score * AMBIGUITY_SHARE &&
             (other.province != place.province || other.type != place.type) &&
             Geo.distance_km(place.lat, place.lon, other.lat, other.lon) > SAME_SPOT_KM
         end.first(AMBIGUITY_MAX)
