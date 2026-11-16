@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.1](https://github.com/cloetzi/weather-canada-mcp/compare/v0.3.0...v0.3.1) (2026-11-16)
+
+
+### Bug Fixes
+
+* **deps:** lock file maintenance ([#31](https://github.com/cloetzi/weather-canada-mcp/issues/31)) ([8f563c1](https://github.com/cloetzi/weather-canada-mcp/commit/8f563c110cc4fbafb08767cd38a33764a814baba))
+
 ## [0.3.0](https://github.com/cloetzi/weather-canada-mcp/compare/v0.2.1...v0.3.0) (2026-11-16)
 
 
