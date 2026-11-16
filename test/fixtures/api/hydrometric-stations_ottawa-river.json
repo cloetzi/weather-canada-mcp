@@ -1,0 +1,1155 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "id": "02LB005",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.97821807861328,
+          45.51705932617188
+        ]
+      },
+      "properties": {
+        "STATION_NAME": "SOUTH NATION RIVER NEAR PLANTAGENET SPRINGS",
+        "STATION_NUMBER": "02LB005",
+        "PROV_TERR_STATE_LOC": "ON",
+        "CONTRIBUTOR_EN": "WATER SURVEY OF CANADA (DOE) (CANADA)",
+        "CONTRIBUTOR_FR": "RELEVES HYDROLOGIQUES DU CANADA (MDE) (CANADA)",
+        "DRAINAGE_AREA_GROSS": 3796.0
+      }
+    },
+    {
+      "id": "02LB018",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.94783020019531,
+          45.37527847290039
+        ]
+      },
+      "properties": {
+        "STATION_NAME": "WEST BRANCH SCOTCH RIVER NEAR ST. ISIDORE DE PRESCOTT",
+        "STATION_NUMBER": "02LB018",
+        "PROV_TERR_STATE_LOC": "ON",
+        "CONTRIBUTOR_EN": "ONTARIO MINISTRY OF NATURAL RESOURCES",
+        "CONTRIBUTOR_FR": "MINISTERE DES RICHESSES NATURELLES DE L'ONTARIO",
+        "DRAINAGE_AREA_GROSS": 107.6999969482422
+      }
+    },
+    {
+      "id": "02LB032",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.44181060791016,
+          45.49142074584961
+        ]
+      },
+      "properties": {
+        "STATION_NAME": "RIGAUD RIVER NEAR ST. EUGENE",
+        "STATION_NUMBER": "02LB032",
+        "PROV_TERR_STATE_LOC": "ON",
+        "CONTRIBUTOR_EN": "ONTARIO MINISTRY OF NATURAL RESOURCES",
+        "CONTRIBUTOR_FR": "MINISTERE DES RICHESSES NATURELLES DE L'ONTARIO",
+        "DRAINAGE_AREA_GROSS": 305.6000061035156
+      }
+    },
+    {
+      "id": "02LC008",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.01277923583984,
+          45.793060302734375
+        ]
+      },
+      "properties": {
+        "STATION_NAME": "NORD (RIVIERE DU) A 4,8 KM EN AMONT DU PONT DU C.N. A SAINT-JEROME",
+        "STATION_NUMBER": "02LC008",
+        "PROV_TERR_STATE_LOC": "QC",
+        "CONTRIBUTOR_EN": "WATER SURVEY OF CANADA (DOE) (CANADA)",
+        "CONTRIBUTOR_FR": "RELEVES HYDROLOGIQUES DU CANADA (MDE) (CANADA)",
+        "DRAINAGE_AREA_GROSS": 1163.0
+      }
+    },
+    {
+      "id": "02LC009",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.05638885498047,
+          46.03055953979492
+        ]
+      },
+      "properties": {
+        "STATION_NAME": "MASSON (LAC) AU BARRAGE MASSON",
+        "STATION_NUMBER": "02LC009",
+        "PROV_TERR_STATE_LOC": "QC",
+        "CONTRIBUTOR_EN": "MINISTERE DE L'ENVIRONNEMENT DU QUEBEC",
+        "CONTRIBUTOR_FR": "MINISTERE DE L'ENVIRONNEMENT DU QUEBEC",
+        "DRAINAGE_AREA_GROSS": 35.04999923706055
+      }
+    },
+    {
+      "id": "02LC010",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.2763900756836,
+          46.11861038208008
+        ]
+      },
+      "properties": {
+        "STATION_NAME": "LUDGER (LAC) AU BARRAGE LUDGER",
+        "STATION_NUMBER": "02LC010",
+        "PROV_TERR_STATE_LOC": "QC",
+        "CONTRIBUTOR_EN": "MINISTERE DE L'ENVIRONNEMENT DU QUEBEC",
+        "CONTRIBUTOR_FR": "MINISTERE DE L'ENVIRONNEMENT DU QUEBEC",
+        "DRAINAGE_AREA_GROSS": 40.380001068115234
+      }
+    },
+    {
+      "id": "02LC011",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.2772216796875,
+          46.18193817138672
+        ]
+      },
+      "properties": {
+        "STATION_NAME": "NORD (RIVIERE DU) AU BARRAGE DE LA MONTAGNE NOIRE  A LANTIER",
+        "STATION_NUMBER": "02LC011",
+        "PROV_TERR_STATE_LOC": "QC",
+        "CONTRIBUTOR_EN": "MINISTERE DE L'ENVIRONNEMENT DU QUEBEC",
+        "CONTRIBUTOR_FR": "MINISTERE DE L'ENVIRONNEMENT DU QUEBEC",
+        "DRAINAGE_AREA_GROSS": 13.8100004196167
+      }
+    },
+    {
+      "id": "02LC012",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.4263916015625,
+          46.09027862548828
+        ]
+      },
+      "properties": {
+        "STATION_NAME": "CORNU (LAC) AU BARRAGE-CORNU",
+        "STATION_NUMBER": "02LC012",
+        "PROV_TERR_STATE_LOC": "QC",
+        "CONTRIBUTOR_EN": "MINISTERE DE L'ENVIRONNEMENT DU QUEBEC",
+        "CONTRIBUTOR_FR": "MINISTERE DE L'ENVIRONNEMENT DU QUEBEC",
+        "DRAINAGE_AREA_GROSS": 8.770000457763672
+      }
+    },
+    {
+      "id": "02LC014",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.2941665649414,
+          46.122501373291016
+        ]
+      },
+      "properties": {
+        "STATION_NAME": "PAPINEAU (LAC) AU BARRAGE PAPINEAU A SAINTE-AGATHE-DES-MONTS",
+        "STATION_NUMBER": "02LC014",
+        "PROV_TERR_STATE_LOC": "QC",
+        "CONTRIBUTOR_EN": "MINISTERE DE L'ENVIRONNEMENT DU QUEBEC",
+        "CONTRIBUTOR_FR": "MINISTERE DE L'ENVIRONNEMENT DU QUEBEC",
+        "DRAINAGE_AREA_GROSS": 28.38999938964844
+      }
+    },
+    {
+      "id": "02LC015",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.28193664550781,
+          46.077781677246094
+        ]
+      },
+      "properties": {
+        "STATION_NAME": "NORD (RIVIER DU) AU BARRAGE BRULE",
+        "STATION_NUMBER": "02LC015",
+        "PROV_TERR_STATE_LOC": "QC",
+        "CONTRIBUTOR_EN": "MINISTERE DE L'ENVIRONNEMENT DU QUEBEC",
+        "CONTRIBUTOR_FR": "MINISTERE DE L'ENVIRONNEMENT DU QUEBEC",
+        "DRAINAGE_AREA_GROSS": 155.1999969482422
+      }
+    },
+    {
+      "id": "02LC016",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.30917358398438,
+          46.0525016784668
+        ]
+      },
+      "properties": {
+        "STATION_NAME": "SABLES (LAC DES) AU BARRAGE DES SABLES",
+        "STATION_NUMBER": "02LC016",
+        "PROV_TERR_STATE_LOC": "QC",
+        "CONTRIBUTOR_EN": "MINISTERE DE L'ENVIRONNEMENT DU QUEBEC",
+        "CONTRIBUTOR_FR": "MINISTERE DE L'ENVIRONNEMENT DU QUEBEC",
+        "DRAINAGE_AREA_GROSS": 38.20000076293945
+      }
+    },
+    {
+      "id": "02LC017",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.24722290039063,
+          45.962501525878906
+        ]
+      },
+      "properties": {
+        "STATION_NAME": "MULETS (RIVIERE AUX) AU BARRAGE THEODORE",
+        "STATION_NUMBER": "02LC017",
+        "PROV_TERR_STATE_LOC": "QC",
+        "CONTRIBUTOR_EN": "MINISTERE DE L'ENVIRONNEMENT DU QUEBEC",
+        "CONTRIBUTOR_FR": "MINISTERE DE L'ENVIRONNEMENT DU QUEBEC",
+        "DRAINAGE_AREA_GROSS": 100.1999969482422
+      }
+    },
+    {
+      "id": "02LC021",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.25277709960938,
+          46.04582977294922
+        ]
+      },
+      "properties": {
+        "STATION_NAME": "NORD (RIVIERE DU) PRES DE SAINT-AGATHE",
+        "STATION_NUMBER": "02LC021",
+        "PROV_TERR_STATE_LOC": "QC",
+        "CONTRIBUTOR_EN": "MINISTERE DE L'ENVIRONNEMENT DU QUEBEC",
+        "CONTRIBUTOR_FR": "MINISTERE DE L'ENVIRONNEMENT DU QUEBEC",
+        "DRAINAGE_AREA_GROSS": 309.6000061035156
+      }
+    },
+    {
+      "id": "02LC027",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.12194061279297,
+          46.095829010009766
+        ]
+      },
+      "properties": {
+        "STATION_NAME": "DONCASTER (RIVIERE) AU LAC ELEVE",
+        "STATION_NUMBER": "02LC027",
+        "PROV_TERR_STATE_LOC": "QC",
+        "CONTRIBUTOR_EN": "MINISTERE DE L'ENVIRONNEMENT DU QUEBEC",
+        "CONTRIBUTOR_FR": "MINISTERE DE L'ENVIRONNEMENT DU QUEBEC",
+        "DRAINAGE_AREA_GROSS": 106.0
+      }
+    },
+    {
+      "id": "02LC029",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.6897201538086,
+          45.73638916015625
+        ]
+      },
+      "properties": {
+        "STATION_NAME": "ROUGE (RIVIERE) EN AMONT DE LA CHUTE MCNEIL",
+        "STATION_NUMBER": "02LC029",
+        "PROV_TERR_STATE_LOC": "QC",
+        "CONTRIBUTOR_EN": "WATER SURVEY OF CANADA (DOE) (CANADA)",
+        "CONTRIBUTOR_FR": "RELEVES HYDROLOGIQUES DU CANADA (MDE) (CANADA)",
+        "DRAINAGE_AREA_GROSS": 5478.0
+      }
+    },
+    {
+      "id": "02LC070",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.2763900756836,
+          46.11806106567383
+        ]
+      },
+      "properties": {
+        "STATION_NAME": "DECHARGE DU LAC LUDGER (RUISSEAU) EN AVAL DU BARRAGE LUDGER",
+        "STATION_NUMBER": "02LC070",
+        "PROV_TERR_STATE_LOC": "QC",
+        "CONTRIBUTOR_EN": "MINISTERE DE L'ENVIRONNEMENT DU QUEBEC",
+        "CONTRIBUTOR_FR": "MINISTERE DE L'ENVIRONNEMENT DU QUEBEC",
+        "DRAINAGE_AREA_GROSS": 40.400001525878906
+      }
+    },
+    {
+      "id": "02LC073",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.60140228271484,
+          46.11410140991211
+        ]
+      },
+      "properties": {
+        "STATION_NAME": "DU DIABLE (RIVIERE) A 0.1KM EN AMONT DE LA ROUTE 117",
+        "STATION_NUMBER": "02LC073",
+        "PROV_TERR_STATE_LOC": "QC",
+        "CONTRIBUTOR_EN": "MINISTERE DE L'ENVIRONNEMENT DU QUEBEC",
+        "CONTRIBUTOR_FR": "MINISTERE DE L'ENVIRONNEMENT DU QUEBEC",
+        "DRAINAGE_AREA_GROSS": 1160.0
+      }
+    },
+    {
+      "id": "02MC001",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.63813781738281,
+          45.15547180175781
+        ]
+      },
+      "properties": {
+        "STATION_NAME": "RAISIN RIVER NEAR WILLIAMSTOWN",
+        "STATION_NUMBER": "02MC001",
+        "PROV_TERR_STATE_LOC": "ON",
+        "CONTRIBUTOR_EN": "WATER SURVEY OF CANADA (DOE) (CANADA)",
+        "CONTRIBUTOR_FR": "RELEVES HYDROLOGIQUES DU CANADA (MDE) (CANADA)",
+        "DRAINAGE_AREA_GROSS": 364.7999877929688
+      }
+    },
+    {
+      "id": "02MC005",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.96211242675781,
+          45.33443832397461
+        ]
+      },
+      "properties": {
+        "STATION_NAME": "SAINT-LAURENT (FLEUVE) A POINTE-DES-CASCADES",
+        "STATION_NUMBER": "02MC005",
+        "PROV_TERR_STATE_LOC": "QC",
+        "CONTRIBUTOR_EN": "WATER SURVEY OF CANADA (DOE) (CANADA)",
+        "CONTRIBUTOR_FR": "RELEVES HYDROLOGIQUES DU CANADA (MDE) (CANADA)",
+        "DRAINAGE_AREA_GROSS": 947700.0
+      }
+    },
+    {
+      "id": "02MC026",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.49385833740234,
+          45.27328109741211
+        ]
+      },
+      "properties": {
+        "STATION_NAME": "RIVIERE BEAUDETTE NEAR GLEN NEVIS",
+        "STATION_NUMBER": "02MC026",
+        "PROV_TERR_STATE_LOC": "ON",
+        "CONTRIBUTOR_EN": "ONTARIO MINISTRY OF NATURAL RESOURCES",
+        "CONTRIBUTOR_FR": "MINISTERE DES RICHESSES NATURELLES DE L'ONTARIO",
+        "DRAINAGE_AREA_GROSS": 134.39999389648438
+      }
+    },
+    {
+      "id": "02MC027",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.86805725097656,
+          45.08060836791992
+        ]
+      },
+      "properties": {
+        "STATION_NAME": "RAISIN RIVER AT BLACK RIVER",
+        "STATION_NUMBER": "02MC027",
+        "PROV_TERR_STATE_LOC": "ON",
+        "CONTRIBUTOR_EN": "ONTARIO MINISTRY OF NATURAL RESOURCES",
+        "CONTRIBUTOR_FR": "MINISTERE DES RICHESSES NATURELLES DE L'ONTARIO",
+        "DRAINAGE_AREA_GROSS": 128.6999969482422
+      }
+    },
+    {
+      "id": "02MC028",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.64385986328125,
+          45.32707977294922
+        ]
+      },
+      "properties": {
+        "STATION_NAME": "RIVIERE DELISLE NEAR ALEXANDRIA",
+        "STATION_NUMBER": "02MC028",
+        "PROV_TERR_STATE_LOC": "ON",
+        "CONTRIBUTOR_EN": "ONTARIO MINISTRY OF NATURAL RESOURCES",
+        "CONTRIBUTOR_FR": "MINISTERE DES RICHESSES NATURELLES DE L'ONTARIO",
+        "DRAINAGE_AREA_GROSS": 85.8499984741211
+      }
+    },
+    {
+      "id": "02MC030",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.77056121826172,
+          45.048828125
+        ]
+      },
+      "properties": {
+        "STATION_NAME": "SOUTH RAISIN RIVER NEAR CORNWALL",
+        "STATION_NUMBER": "02MC030",
+        "PROV_TERR_STATE_LOC": "ON",
+        "CONTRIBUTOR_EN": "ONTARIO MINISTRY OF NATURAL RESOURCES",
+        "CONTRIBUTOR_FR": "MINISTERE DES RICHESSES NATURELLES DE L'ONTARIO",
+        "DRAINAGE_AREA_GROSS": 33.33000183105469
+      }
+    },
+    {
+      "id": "02MC036",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.601806640625,
+          45.31710815429688
+        ]
+      },
+      "properties": {
+        "STATION_NAME": "RIVIERE DELISLE NEAR GLEN NORMAN",
+        "STATION_NUMBER": "02MC036",
+        "PROV_TERR_STATE_LOC": "ON",
+        "CONTRIBUTOR_EN": "ONTARIO MINISTRY OF NATURAL RESOURCES",
+        "CONTRIBUTOR_FR": "MINISTERE DES RICHESSES NATURELLES DE L'ONTARIO",
+        "DRAINAGE_AREA_GROSS": 157.5
+      }
+    },
+    {
+      "id": "02MC037",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.63800048828125,
+          45.30646896362305
+        ]
+      },
+      "properties": {
+        "STATION_NAME": "GARRY RIVER NEAR ALEXANDRIA",
+        "STATION_NUMBER": "02MC037",
+        "PROV_TERR_STATE_LOC": "ON",
+        "CONTRIBUTOR_EN": "ONTARIO MINISTRY OF NATURAL RESOURCES",
+        "CONTRIBUTOR_FR": "MINISTERE DES RICHESSES NATURELLES DE L'ONTARIO",
+        "DRAINAGE_AREA_GROSS": 30.3799991607666
+      }
+    },
+    {
+      "id": "02OA003",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.75215911865234,
+          45.66294097900391
+        ]
+      },
+      "properties": {
+        "STATION_NAME": "MILLE ILES (RIVIERE DES) A BOIS-DES-FILION",
+        "STATION_NUMBER": "02OA003",
+        "PROV_TERR_STATE_LOC": "QC",
+        "CONTRIBUTOR_EN": "WATER SURVEY OF CANADA (DOE) (CANADA)",
+        "CONTRIBUTOR_FR": "RELEVES HYDROLOGIQUES DU CANADA (MDE) (CANADA)",
+        "DRAINAGE_AREA_GROSS": 147100.0
+      }
+    },
+    {
+      "id": "02OA004",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.84249877929688,
+          45.51832962036133
+        ]
+      },
+      "properties": {
+        "STATION_NAME": "PRAIRIES (RIVIERE DES) AU RAPIDE DU CHEVAL BLANC",
+        "STATION_NUMBER": "02OA004",
+        "PROV_TERR_STATE_LOC": "QC",
+        "CONTRIBUTOR_EN": "WATER SURVEY OF CANADA (DOE) (CANADA)",
+        "CONTRIBUTOR_FR": "RELEVES HYDROLOGIQUES DU CANADA (MDE) (CANADA)",
+        "DRAINAGE_AREA_GROSS": 146600.0
+      }
+    },
+    {
+      "id": "02OA013",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.9566421508789,
+          45.4046516418457
+        ]
+      },
+      "properties": {
+        "STATION_NAME": "OUTAOUAIS (RIVIERE DES) A SAINTE-ANNE-DE-BELLEVUE",
+        "STATION_NUMBER": "02OA013",
+        "PROV_TERR_STATE_LOC": "QC",
+        "CONTRIBUTOR_EN": "WATER SURVEY OF CANADA (DOE) (CANADA)",
+        "CONTRIBUTOR_FR": "RELEVES HYDROLOGIQUES DU CANADA (MDE) (CANADA)",
+        "DRAINAGE_AREA_GROSS": 146600.0
+      }
+    },
+    {
+      "id": "02OA016",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.62316131591797,
+          45.41500854492188
+        ]
+      },
+      "properties": {
+        "STATION_NAME": "SAINT-LAURENT (FLEUVE) A LASALLE",
+        "STATION_NUMBER": "02OA016",
+        "PROV_TERR_STATE_LOC": "QC",
+        "CONTRIBUTOR_EN": "WATER SURVEY OF CANADA (DOE) (CANADA)",
+        "CONTRIBUTOR_FR": "RELEVES HYDROLOGIQUES DU CANADA (MDE) (CANADA)",
+        "DRAINAGE_AREA_GROSS": 950500.0
+      }
+    },
+    {
+      "id": "02OA033",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.94792175292969,
+          45.40224838256836
+        ]
+      },
+      "properties": {
+        "STATION_NAME": "OUTAOUAIS (RIVIERE DES) A LA MARINA DE SAINTE-ANNE-DE-BELLEVUE",
+        "STATION_NUMBER": "02OA033",
+        "PROV_TERR_STATE_LOC": "QC",
+        "CONTRIBUTOR_EN": "WATER SURVEY OF CANADA (DOE) (CANADA)",
+        "CONTRIBUTOR_FR": "RELEVES HYDROLOGIQUES DU CANADA (MDE) (CANADA)",
+        "DRAINAGE_AREA_GROSS": 146600.0
+      }
+    },
+    {
+      "id": "02OA039",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.8206787109375,
+          45.42768096923828
+        ]
+      },
+      "properties": {
+        "STATION_NAME": "SAINT-LOUIS (LAC) A POINTE-CLAIRE",
+        "STATION_NUMBER": "02OA039",
+        "PROV_TERR_STATE_LOC": "QC",
+        "CONTRIBUTOR_EN": "WATER SURVEY OF CANADA (DOE) (CANADA)",
+        "CONTRIBUTOR_FR": "RELEVES HYDROLOGIQUES DU CANADA (MDE) (CANADA)",
+        "DRAINAGE_AREA_GROSS": 950500.0
+      }
+    },
+    {
+      "id": "02OA054",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.7619400024414,
+          45.331939697265625
+        ]
+      },
+      "properties": {
+        "STATION_NAME": "CHATEAUGUAY (RIVIERE) A 2 KM EN AMONT DU PONT-ROUTE 132",
+        "STATION_NUMBER": "02OA054",
+        "PROV_TERR_STATE_LOC": "QC",
+        "CONTRIBUTOR_EN": "WATER SURVEY OF CANADA (DOE) (CANADA)",
+        "CONTRIBUTOR_FR": "RELEVES HYDROLOGIQUES DU CANADA (MDE) (CANADA)",
+        "DRAINAGE_AREA_GROSS": 2500.0
+      }
+    },
+    {
+      "id": "02OA057",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.84500122070313,
+          45.17499923706055
+        ]
+      },
+      "properties": {
+        "STATION_NAME": "ANGLAIS (RIVIERE DES) A 1,1 KM EN AVAL DU PONT-ROUTE A TRES-SAINT-SACREMENT",
+        "STATION_NUMBER": "02OA057",
+        "PROV_TERR_STATE_LOC": "QC",
+        "CONTRIBUTOR_EN": "MINISTERE DE L'ENVIRONNEMENT DU QUEBEC",
+        "CONTRIBUTOR_FR": "MINISTERE DE L'ENVIRONNEMENT DU QUEBEC",
+        "DRAINAGE_AREA_GROSS": 678.0999755859375
+      }
+    },
+    {
+      "id": "02OA088",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.6494369506836,
+          45.69306182861328
+        ]
+      },
+      "properties": {
+        "STATION_NAME": "MILLE-ILES (RIVIERE DES) AU BARRAGE DE TERREBONNE",
+        "STATION_NUMBER": "02OA088",
+        "PROV_TERR_STATE_LOC": "QC",
+        "CONTRIBUTOR_EN": "MINISTERE DE L'ENVIRONNEMENT DU QUEBEC",
+        "CONTRIBUTOR_FR": "MINISTERE DE L'ENVIRONNEMENT DU QUEBEC",
+        "DRAINAGE_AREA_GROSS": 147100.0
+      }
+    },
+    {
+      "id": "02OA094",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.88240051269531,
+          45.533199310302734
+        ]
+      },
+      "properties": {
+        "STATION_NAME": "MILLE ILES (RIVIERE DES) A BARRAGE DU GRAND-MOULIN",
+        "STATION_NUMBER": "02OA094",
+        "PROV_TERR_STATE_LOC": "QC",
+        "CONTRIBUTOR_EN": "MINISTERE DE L'ENVIRONNEMENT DU QUEBEC",
+        "CONTRIBUTOR_FR": "MINISTERE DE L'ENVIRONNEMENT DU QUEBEC",
+        "DRAINAGE_AREA_GROSS": 146600.0
+      }
+    },
+    {
+      "id": "02OA095",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.88240051269531,
+          45.533199310302734
+        ]
+      },
+      "properties": {
+        "STATION_NAME": "MILLE-ILES (RIVIERE DES)  EN AVAL DU BARRAGE GRAND-MOULIN A DEUX-MONTAGNES",
+        "STATION_NUMBER": "02OA095",
+        "PROV_TERR_STATE_LOC": "QC",
+        "CONTRIBUTOR_EN": "MINISTERE DE L'ENVIRONNEMENT DU QUEBEC",
+        "CONTRIBUTOR_FR": "MINISTERE DE L'ENVIRONNEMENT DU QUEBEC",
+        "DRAINAGE_AREA_GROSS": 146600.0
+      }
+    },
+    {
+      "id": "02OA105",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.97860717773438,
+          45.48917007446289
+        ]
+      },
+      "properties": {
+        "STATION_NAME": "DEUX MONTAGNES (LAC DES) A POINTE-CALUMET",
+        "STATION_NUMBER": "02OA105",
+        "PROV_TERR_STATE_LOC": "QC",
+        "CONTRIBUTOR_EN": "MINISTERE DE L'ENVIRONNEMENT DU QUEBEC",
+        "CONTRIBUTOR_FR": "MINISTERE DE L'ENVIRONNEMENT DU QUEBEC",
+        "DRAINAGE_AREA_GROSS": 146600.0
+      }
+    },
+    {
+      "id": "02OA107",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.99810791015625,
+          45.38906097412109
+        ]
+      },
+      "properties": {
+        "STATION_NAME": "OUTAOUAIS (RIVIERE DES) A TERRASSE-VAUDREUIL",
+        "STATION_NUMBER": "02OA107",
+        "PROV_TERR_STATE_LOC": "QC",
+        "CONTRIBUTOR_EN": "WATER SURVEY OF CANADA (DOE) (CANADA)",
+        "CONTRIBUTOR_FR": "RELEVES HYDROLOGIQUES DU CANADA (MDE) (CANADA)",
+        "DRAINAGE_AREA_GROSS": 146600.0
+      }
+    },
+    {
+      "id": "02OA108",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.1718978881836,
+          45.087100982666016
+        ]
+      },
+      "properties": {
+        "STATION_NAME": "CHATEAUGUAY (RIVIERE) A HUNTINGDON",
+        "STATION_NUMBER": "02OA108",
+        "PROV_TERR_STATE_LOC": "QC",
+        "CONTRIBUTOR_EN": "MINISTERE DE L'ENVIRONNEMENT DU QUEBEC",
+        "CONTRIBUTOR_FR": "MINISTERE DE L'ENVIRONNEMENT DU QUEBEC",
+        "DRAINAGE_AREA_GROSS": 1050.0
+      }
+    },
+    {
+      "id": "02OA109",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.97640228271484,
+          45.55989837646485
+        ]
+      },
+      "properties": {
+        "STATION_NAME": "DU CHENE (RIVIERE) A LA PASSERELLE LAUZON SUR LA MONTEE LAUZON",
+        "STATION_NUMBER": "02OA109",
+        "PROV_TERR_STATE_LOC": "QC",
+        "CONTRIBUTOR_EN": "MINISTERE DE L'ENVIRONNEMENT DU QUEBEC",
+        "CONTRIBUTOR_FR": "MINISTERE DE L'ENVIRONNEMENT DU QUEBEC",
+        "DRAINAGE_AREA_GROSS": 199.3999938964844
+      }
+    },
+    {
+      "id": "02OA110",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.8499984741211,
+          45.07659912109375
+        ]
+      },
+      "properties": {
+        "STATION_NAME": "NOIRE (RIVIERE) A L'ARTIFICE",
+        "STATION_NUMBER": "02OA110",
+        "PROV_TERR_STATE_LOC": "QC",
+        "CONTRIBUTOR_EN": "MINISTERE DE L'ENVIRONNEMENT DU QUEBEC",
+        "CONTRIBUTOR_FR": "MINISTERE DE L'ENVIRONNEMENT DU QUEBEC",
+        "DRAINAGE_AREA_GROSS": 47.84000015258789
+      }
+    },
+    {
+      "id": "02OA111",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.76239776611328,
+          45.10029983520508
+        ]
+      },
+      "properties": {
+        "STATION_NAME": "DES ANGLAIS (RIVIERE) A SAINT-CHRYSOSTOME",
+        "STATION_NUMBER": "02OA111",
+        "PROV_TERR_STATE_LOC": "QC",
+        "CONTRIBUTOR_EN": "MINISTERE DE L'ENVIRONNEMENT DU QUEBEC",
+        "CONTRIBUTOR_FR": "MINISTERE DE L'ENVIRONNEMENT DU QUEBEC",
+        "DRAINAGE_AREA_GROSS": 247.3000030517578
+      }
+    },
+    {
+      "id": "02OB008",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.42749786376953,
+          46.01028060913086
+        ]
+      },
+      "properties": {
+        "STATION_NAME": "L'ASSOMPTION (RIVIERE) AU PONT-ROUTE 158 A JOLIETTE",
+        "STATION_NUMBER": "02OB008",
+        "PROV_TERR_STATE_LOC": "QC",
+        "CONTRIBUTOR_EN": "WATER SURVEY OF CANADA (DOE) (CANADA)",
+        "CONTRIBUTOR_FR": "RELEVES HYDROLOGIQUES DU CANADA (MDE) (CANADA)",
+        "DRAINAGE_AREA_GROSS": 1291.0
+      }
+    },
+    {
+      "id": "02OB011",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.21459197998047,
+          45.95941162109375
+        ]
+      },
+      "properties": {
+        "STATION_NAME": "SAINT-LAURENT (FLEUVE) A LANORAIE",
+        "STATION_NUMBER": "02OB011",
+        "PROV_TERR_STATE_LOC": "QC",
+        "CONTRIBUTOR_EN": "WATER SURVEY OF CANADA (DOE) (CANADA)",
+        "CONTRIBUTOR_FR": "RELEVES HYDROLOGIQUES DU CANADA (MDE) (CANADA)",
+        "DRAINAGE_AREA_GROSS": 957500.0
+      }
+    },
+    {
+      "id": "02OB017",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.70527648925781,
+          46.02999877929688
+        ]
+      },
+      "properties": {
+        "STATION_NAME": "OUAREAU (RIVIERE) AUX CHUTES DORWIN",
+        "STATION_NUMBER": "02OB017",
+        "PROV_TERR_STATE_LOC": "QC",
+        "CONTRIBUTOR_EN": "MINISTERE DE L'ENVIRONNEMENT DU QUEBEC",
+        "CONTRIBUTOR_FR": "MINISTERE DE L'ENVIRONNEMENT DU QUEBEC",
+        "DRAINAGE_AREA_GROSS": 1264.0
+      }
+    },
+    {
+      "id": "02OB037",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.49305725097656,
+          45.84638977050781
+        ]
+      },
+      "properties": {
+        "STATION_NAME": "ACHIGAN (RIVIERE DE L') A L'EPIPHANIE",
+        "STATION_NUMBER": "02OB037",
+        "PROV_TERR_STATE_LOC": "QC",
+        "CONTRIBUTOR_EN": "MINISTERE DE L'ENVIRONNEMENT DU QUEBEC",
+        "CONTRIBUTOR_FR": "MINISTERE DE L'ENVIRONNEMENT DU QUEBEC",
+        "DRAINAGE_AREA_GROSS": 634.2000122070313
+      }
+    },
+    {
+      "id": "02OB046",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.39080047607422,
+          46.15169906616211
+        ]
+      },
+      "properties": {
+        "STATION_NAME": "BAYONNE (RIVIERE) A ST-FELIX-DE-VALOIS",
+        "STATION_NUMBER": "02OB046",
+        "PROV_TERR_STATE_LOC": "QC",
+        "CONTRIBUTOR_EN": "MINISTERE DE L'ENVIRONNEMENT DU QUEBEC",
+        "CONTRIBUTOR_FR": "MINISTERE DE L'ENVIRONNEMENT DU QUEBEC",
+        "DRAINAGE_AREA_GROSS": 196.1999969482422
+      }
+    },
+    {
+      "id": "02OB047",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.43990325927734,
+          45.977298736572266
+        ]
+      },
+      "properties": {
+        "STATION_NAME": "SAINT-PIERRE (RUISSEAU) AU PONT DU CHEMIN DU VIEUX-MOULIN A 0.2 KM DE LA RTE 343",
+        "STATION_NUMBER": "02OB047",
+        "PROV_TERR_STATE_LOC": "QC",
+        "CONTRIBUTOR_EN": "MINISTERE DE L'ENVIRONNEMENT DU QUEBEC",
+        "CONTRIBUTOR_FR": "MINISTERE DE L'ENVIRONNEMENT DU QUEBEC",
+        "DRAINAGE_AREA_GROSS": 28.0
+      }
+    },
+    {
+      "id": "02OH001",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.07805633544922,
+          45.039649963378906
+        ]
+      },
+      "properties": {
+        "STATION_NAME": "CHAMPLAIN (LAC) A PHILIPSBURG",
+        "STATION_NUMBER": "02OH001",
+        "PROV_TERR_STATE_LOC": "QC",
+        "CONTRIBUTOR_EN": "WATER SURVEY OF CANADA (DOE) (CANADA)",
+        "CONTRIBUTOR_FR": "RELEVES HYDROLOGIQUES DU CANADA (MDE) (CANADA)",
+        "DRAINAGE_AREA_GROSS": 21320.0
+      }
+    },
+    {
+      "id": "02OH012",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.03279876708984,
+          45.19839859008789
+        ]
+      },
+      "properties": {
+        "STATION_NAME": "MORPIONS (RIVIERE) A 3,1 KM EN AMONT DE LA RIVIERE AUX BROCHETS",
+        "STATION_NUMBER": "02OH012",
+        "PROV_TERR_STATE_LOC": "QC",
+        "CONTRIBUTOR_EN": "MINISTERE DE L'ENVIRONNEMENT DU QUEBEC",
+        "CONTRIBUTOR_FR": "MINISTERE DE L'ENVIRONNEMENT DU QUEBEC",
+        "DRAINAGE_AREA_GROSS": 94.55999755859376
+      }
+    },
+    {
+      "id": "02OH013",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.05069732666016,
+          45.15869903564453
+        ]
+      },
+      "properties": {
+        "STATION_NAME": "AUX BROCHETS (RIVIERE) A NOTRE-DAME-DE-STANBRIDGE",
+        "STATION_NUMBER": "02OH013",
+        "PROV_TERR_STATE_LOC": "QC",
+        "CONTRIBUTOR_EN": "MINISTERE DE L'ENVIRONNEMENT DU QUEBEC",
+        "CONTRIBUTOR_FR": "MINISTERE DE L'ENVIRONNEMENT DU QUEBEC",
+        "DRAINAGE_AREA_GROSS": 579.7000122070313
+      }
+    },
+    {
+      "id": "02OH014",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.01619720458984,
+          45.02190017700195
+        ]
+      },
+      "properties": {
+        "STATION_NAME": "DE LA ROCHE (RIVIERE) A SAINT-ARMAND",
+        "STATION_NUMBER": "02OH014",
+        "PROV_TERR_STATE_LOC": "QC",
+        "CONTRIBUTOR_EN": "MINISTERE DE L'ENVIRONNEMENT DU QUEBEC",
+        "CONTRIBUTOR_FR": "MINISTERE DE L'ENVIRONNEMENT DU QUEBEC",
+        "DRAINAGE_AREA_GROSS": 73.4000015258789
+      }
+    },
+    {
+      "id": "02OH015",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.07730102539063,
+          45.125301361083984
+        ]
+      },
+      "properties": {
+        "STATION_NAME": "EWING (RIVIERE) A SAINT-PIERRE-DE-VERONNE-A PIKE-RIVER",
+        "STATION_NUMBER": "02OH015",
+        "PROV_TERR_STATE_LOC": "QC",
+        "CONTRIBUTOR_EN": "MINISTERE DE L'ENVIRONNEMENT DU QUEBEC",
+        "CONTRIBUTOR_FR": "MINISTERE DE L'ENVIRONNEMENT DU QUEBEC",
+        "DRAINAGE_AREA_GROSS": 26.950000762939453
+      }
+    },
+    {
+      "id": "02OJ007",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.25843811035156,
+          45.39847183227539
+        ]
+      },
+      "properties": {
+        "STATION_NAME": "RICHELIEU (RIVIERE) AUX RAPIDES FRYERS",
+        "STATION_NUMBER": "02OJ007",
+        "PROV_TERR_STATE_LOC": "QC",
+        "CONTRIBUTOR_EN": "WATER SURVEY OF CANADA (DOE) (CANADA)",
+        "CONTRIBUTOR_FR": "RELEVES HYDROLOGIQUES DU CANADA (MDE) (CANADA)",
+        "DRAINAGE_AREA_GROSS": 22030.0
+      }
+    },
+    {
+      "id": "02OJ016",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.2501220703125,
+          45.30231094360352
+        ]
+      },
+      "properties": {
+        "STATION_NAME": "RICHELIEU (RIVIERE) A LA MARINA DE SAINT-JEAN",
+        "STATION_NUMBER": "02OJ016",
+        "PROV_TERR_STATE_LOC": "QC",
+        "CONTRIBUTOR_EN": "WATER SURVEY OF CANADA (DOE) (CANADA)",
+        "CONTRIBUTOR_FR": "RELEVES HYDROLOGIQUES DU CANADA (MDE) (CANADA)",
+        "DRAINAGE_AREA_GROSS": 21960.0
+      }
+    },
+    {
+      "id": "02OJ024",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.18694305419922,
+          45.49028015136719
+        ]
+      },
+      "properties": {
+        "STATION_NAME": "HURONS (RIVIERE DES) EN AVAL DU RUISSEAU SAINT-LOUIS-2",
+        "STATION_NUMBER": "02OJ024",
+        "PROV_TERR_STATE_LOC": "QC",
+        "CONTRIBUTOR_EN": "MINISTERE DE L'ENVIRONNEMENT DU QUEBEC",
+        "CONTRIBUTOR_FR": "MINISTERE DE L'ENVIRONNEMENT DU QUEBEC",
+        "DRAINAGE_AREA_GROSS": 314.79998779296875
+      }
+    },
+    {
+      "id": "02OJ026",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.3708267211914,
+          45.38972091674805
+        ]
+      },
+      "properties": {
+        "STATION_NAME": "L'ACADIE (RIVIERE) PRES DE L'AUTOROUTE NO. 10",
+        "STATION_NUMBER": "02OJ026",
+        "PROV_TERR_STATE_LOC": "QC",
+        "CONTRIBUTOR_EN": "WATER SURVEY OF CANADA (DOE) (CANADA)",
+        "CONTRIBUTOR_FR": "RELEVES HYDROLOGIQUES DU CANADA (MDE) (CANADA)",
+        "DRAINAGE_AREA_GROSS": 362.5
+      }
+    },
+    {
+      "id": "02OJ035",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.12310028076172,
+          45.52170181274414
+        ]
+      },
+      "properties": {
+        "STATION_NAME": "A L'OURS A SAINT-JEAN-BAPTISTE",
+        "STATION_NUMBER": "02OJ035",
+        "PROV_TERR_STATE_LOC": "QC",
+        "CONTRIBUTOR_EN": "MINISTERE DE L'ENVIRONNEMENT DU QUEBEC",
+        "CONTRIBUTOR_FR": "MINISTERE DE L'ENVIRONNEMENT DU QUEBEC",
+        "DRAINAGE_AREA_GROSS": 35.0
+      }
+    },
+    {
+      "id": "02OJ036",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.32559967041016,
+          45.07720184326172
+        ]
+      },
+      "properties": {
+        "STATION_NAME": "RICHELIEU (RIVIERE) A SAINT-PAUL-DE-L'ILE-AUX-NOIX",
+        "STATION_NUMBER": "02OJ036",
+        "PROV_TERR_STATE_LOC": "QC",
+        "CONTRIBUTOR_EN": "MINISTERE DE L'ENVIRONNEMENT DU QUEBEC",
+        "CONTRIBUTOR_FR": "MINISTERE DE L'ENVIRONNEMENT DU QUEBEC",
+        "DRAINAGE_AREA_GROSS": 21253.0
+      }
+    }
+  ],
+  "numberMatched": 59,
+  "numberReturned": 59,
+  "links": [
+    {
+      "type": "application/geo+json",
+      "rel": "self",
+      "title": "This document as GeoJSON",
+      "href": "https://api.weather.gc.ca/collections/hydrometric-stations/items?f=json&bbox=-75.0,44.8,-73.0,46.2&REAL_TIME=1&properties=STATION_NAME,STATION_NUMBER,PROV_TERR_STATE_LOC,CONTRIBUTOR_EN,CONTRIBUTOR_FR,DRAINAGE_AREA_GROSS&limit=500"
+    },
+    {
+      "rel": "alternate",
+      "type": "application/ld+json",
+      "title": "This document as RDF (JSON-LD)",
+      "href": "https://api.weather.gc.ca/collections/hydrometric-stations/items?f=jsonld&bbox=-75.0,44.8,-73.0,46.2&REAL_TIME=1&properties=STATION_NAME,STATION_NUMBER,PROV_TERR_STATE_LOC,CONTRIBUTOR_EN,CONTRIBUTOR_FR,DRAINAGE_AREA_GROSS&limit=500"
+    },
+    {
+      "type": "text/html",
+      "rel": "alternate",
+      "title": "This document as HTML",
+      "href": "https://api.weather.gc.ca/collections/hydrometric-stations/items?f=html&bbox=-75.0,44.8,-73.0,46.2&REAL_TIME=1&properties=STATION_NAME,STATION_NUMBER,PROV_TERR_STATE_LOC,CONTRIBUTOR_EN,CONTRIBUTOR_FR,DRAINAGE_AREA_GROSS&limit=500"
+    },
+    {
+      "type": "application/json",
+      "title": "Hydrometric Data - Monitoring Stations",
+      "rel": "collection",
+      "href": "https://api.weather.gc.ca/collections/hydrometric-stations"
+    }
+  ],
+  "timeStamp": "2026-11-16T00:43:16.290045Z"
+}

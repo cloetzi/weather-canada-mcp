@@ -182,6 +182,9 @@ FIXTURES = {
   "api/hydrometric-stations_squamish.json" => items("hydrometric-stations", bbox: snapped_bbox_km(*SQUAMISH, 50), REAL_TIME: 1,
                                                                             properties: HYDRO_STATION_PROPERTIES,
                                                                             limit: 500),
+  # The Ottawa River between Hawkesbury and Vaudreuil (both of its Gazetteer records, 45.34,-73.96 and 45.57,-74.39, are in it)
+  "api/hydrometric-stations_ottawa-river.json" => items("hydrometric-stations", bbox: "-75.0,44.8,-73.0,46.2", REAL_TIME: 1,
+                                                                                properties: HYDRO_STATION_PROPERTIES, limit: 500),
   "api/hydrometric-realtime_08GA076.json" => hydro_realtime("08GA076"),
   "api/hydrometric-realtime_08GA075.json" => hydro_realtime("08GA075"),
   "api/hydrometric-realtime_08GA022.json" => hydro_realtime("08GA022"),
