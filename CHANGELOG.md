@@ -1,5 +1,22 @@
 # Changelog
 
+## [0.3.0](https://github.com/cloetzi/weather-canada-mcp/compare/v0.2.1...v0.3.0) (2026-11-16)
+
+
+### Features
+
+* add the model ground elevation and an elevation_m input to get_snow_outlook ([#34](https://github.com/cloetzi/weather-canada-mcp/issues/34)) ([9f673fb](https://github.com/cloetzi/weather-canada-mcp/commit/9f673fb8997a045c887c89942044ac295d1f1aa3))
+* limit get_river_conditions to gauges on a river named as the location ([#33](https://github.com/cloetzi/weather-canada-mcp/issues/33)) ([7e8f11b](https://github.com/cloetzi/weather-canada-mcp/commit/7e8f11bc7067a64a7c3b9df681f0320652165224))
+* link each marine area to its own weather.gc.ca page and give warnings a category ([#35](https://github.com/cloetzi/weather-canada-mcp/issues/35)) ([68b8469](https://github.com/cloetzi/weather-canada-mcp/commit/68b84696d12d9423a317df974c480b2da572cfa2))
+* note the age of a stale forecast report and that river and AQHI data are preliminary ([#36](https://github.com/cloetzi/weather-canada-mcp/issues/36)) ([9e31584](https://github.com/cloetzi/weather-canada-mcp/commit/9e31584f0e612b2c3ca94ccb3112f5a0f353baeb))
+
+
+### Bug Fixes
+
+* include forecast-only AQHI locations in get_air_quality ([#32](https://github.com/cloetzi/weather-canada-mcp/issues/32)) ([9370efa](https://github.com/cloetzi/weather-canada-mcp/commit/9370efa32282f3ec1f674c55901f483f5c8d9fcf))
+* rank a settlement before the province of the same name and add Quebec City aliases ([#28](https://github.com/cloetzi/weather-canada-mcp/issues/28)) ([e06637e](https://github.com/cloetzi/weather-canada-mcp/commit/e06637e7ce88e8e85ac5749e0c82149fa03e5ba7))
+* use the new UTC offsets of BC, Alberta, western NWT and Manitoba ([#27](https://github.com/cloetzi/weather-canada-mcp/issues/27)) ([8b8a224](https://github.com/cloetzi/weather-canada-mcp/commit/8b8a224a98ee4abcdf64ac2bc58afd69b1cd35c2))
+
 ## [0.2.1](https://github.com/cloetzi/weather-canada-mcp/compare/v0.2.0...v0.2.1) (2026-11-15)
 
 
