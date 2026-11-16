@@ -5,7 +5,7 @@ require "date"
 module WeatherCanadaMCP
   # Local calendar dates and times in Canadian time zones, without a time zone database: each zone's standard offset and whether
   # it keeps daylight time (second Sunday in March to first Sunday in November, at 02:00 local). Zones that have
-  # stopped changing the clock are in PERMANENT. Unknown or missing zones use UTC-8, Canada's westernmost offset, so a day
+  # stopped changing the clock are in PERMANENT. Unknown or missing zones use UTC-7, Canada's westernmost offset since BC stopped changing the clock, so a day
   # still counts as today while it is today anywhere in Canada.
   module LocalTime
     # IANA zone => [standard offset in hours, observes daylight time]
@@ -27,7 +27,7 @@ module WeatherCanadaMCP
       "Canada/Central" => [-6, true], "Canada/Saskatchewan" => [-6, false], "Canada/Mountain" => [-7, true],
       "Canada/Yukon" => [-7, false], "Canada/Pacific" => [-8, true]
     }.freeze
-    FALLBACK = [-8, false].freeze
+    FALLBACK = [-7, false].freeze
 
     # Zones that stopped changing the clock and kept their daylight offset (tzdata 2026e). The 1 November 2026
     # switch from daylight time left the offset unchanged, so before the instant a zone follows ZONES and after it
@@ -55,7 +55,7 @@ module WeatherCanadaMCP
 
     def offset_hours(time, zone)
       since, fixed = PERMANENT[zone.to_s]
-      return fixed if since && time.utc >= since
+      return fixed if since && time.getutc >= since
 
       standard, daylight = ZONES.fetch(zone.to_s, FALLBACK)
       daylight && daylight_time?(time.utc + (standard * 3600)) ? standard + 1 : standard

@@ -43,7 +43,15 @@ class LocalTimeTest < Minitest::Test
     assert_equal Date.new(2026, 11, 16), LocalTime.date(Time.utc(2026, 11, 16, 7, 0), "America/Vancouver")
   end
 
+  def test_winter_standard_offsets_before_the_switch
+    assert_equal(-7, LocalTime.offset_hours(Time.utc(2026, 1, 15), "America/Edmonton"))
+    assert_equal(-6, LocalTime.offset_hours(Time.utc(2026, 1, 15), "America/Winnipeg"))
+    assert_equal(-7, LocalTime.offset_hours(Time.utc(2026, 1, 15), "America/Inuvik"))
+  end
+
   def test_zones_that_still_change_the_clock_are_unaffected
+    assert_equal(-4, LocalTime.offset_hours(Time.utc(2026, 11, 1, 5, 59), "America/Toronto"))
+    assert_equal(-5, LocalTime.offset_hours(Time.utc(2026, 11, 1, 6, 0), "America/Toronto"))
     assert_equal(-7, LocalTime.offset_hours(Time.utc(2027, 1, 15), "America/Cambridge_Bay"))
     assert_equal(-6, LocalTime.offset_hours(Time.utc(2027, 7, 15), "America/Cambridge_Bay"))
     assert_equal(-5, LocalTime.offset_hours(Time.utc(2027, 1, 15), "America/Toronto"))
@@ -62,7 +70,7 @@ class LocalTimeTest < Minitest::Test
 
   # Westernmost, so a day is not over while it is still that day somewhere in Canada.
   def test_unknown_zones_use_the_westernmost_offset
-    assert_equal(-8, LocalTime.offset_hours(Time.utc(2026, 7, 1), "Europe/Paris"))
+    assert_equal(-7, LocalTime.offset_hours(Time.utc(2026, 7, 1), "Europe/Paris"))
     assert_equal Date.new(2026, 11, 15), LocalTime.date(Time.utc(2026, 11, 16, 1), nil)
   end
 end
