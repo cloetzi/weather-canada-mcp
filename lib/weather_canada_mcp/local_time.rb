@@ -5,8 +5,8 @@ require "date"
 module WeatherCanadaMCP
   # Local calendar dates and times in Canadian time zones, without a time zone database: each zone's standard offset and whether
   # it keeps daylight time (second Sunday in March to first Sunday in November, at 02:00 local). Zones that have
-  # stopped changing the clock are in PERMANENT. Unknown or missing zones use UTC-7, Canada's westernmost offset since BC stopped changing the clock, so a day
-  # still counts as today while it is today anywhere in Canada.
+  # stopped changing the clock are in PERMANENT. Unknown or missing zones use UTC-7, Canada's westernmost offset since BC stopped
+  # changing the clock, so a day still counts as today while it is today anywhere in Canada.
   module LocalTime
     # IANA zone => [standard offset in hours, observes daylight time]
     ZONES = {
