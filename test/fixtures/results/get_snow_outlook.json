@@ -7,32 +7,32 @@
   "step_hours": 6,
   "steps": [
     {
-      "valid_from": "2026-11-15T10:00:00-08:00",
-      "valid_until": "2026-11-15T16:00:00-08:00",
+      "valid_from": "2026-11-15T11:00:00-07:00",
+      "valid_until": "2026-11-15T17:00:00-07:00",
       "snow_level_m": 1100,
       "new_snow_water_mm": 1.9,
       "new_snow_cm_estimate": 1.9,
       "blowing_snow_probability_pct": 0
     },
     {
-      "valid_from": "2026-11-15T16:00:00-08:00",
-      "valid_until": "2026-11-15T22:00:00-08:00",
+      "valid_from": "2026-11-15T17:00:00-07:00",
+      "valid_until": "2026-11-15T23:00:00-07:00",
       "snow_level_m": 1100,
       "new_snow_water_mm": 2.0,
       "new_snow_cm_estimate": 2.0,
       "blowing_snow_probability_pct": 0
     },
     {
-      "valid_from": "2026-11-15T22:00:00-08:00",
-      "valid_until": "2026-11-16T04:00:00-08:00",
+      "valid_from": "2026-11-15T23:00:00-07:00",
+      "valid_until": "2026-11-16T05:00:00-07:00",
       "snow_level_m": 1010,
       "new_snow_water_mm": 0.2,
       "new_snow_cm_estimate": 0.2,
       "blowing_snow_probability_pct": 0
     },
     {
-      "valid_from": "2026-11-16T04:00:00-08:00",
-      "valid_until": "2026-11-16T10:00:00-08:00",
+      "valid_from": "2026-11-16T05:00:00-07:00",
+      "valid_until": "2026-11-16T11:00:00-07:00",
       "snow_level_m": 980,
       "new_snow_water_mm": 0.3,
       "new_snow_cm_estimate": 0.3,
@@ -43,7 +43,7 @@
   "total_new_snow_cm_estimate": 4.4,
   "snow_to_liquid_ratio": 10,
   "model_runs": [
-    "2026-11-15T04:00:00-08:00"
+    "2026-11-15T05:00:00-07:00"
   ],
   "attribution": "Data Source: Environment and Climate Change Canada. Unofficial tool, not affiliated with or endorsed by ECCC."
 }

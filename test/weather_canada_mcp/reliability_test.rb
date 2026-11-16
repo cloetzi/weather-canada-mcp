@@ -27,7 +27,7 @@ class ReliabilityTest < Minitest::Test
 
     refute error
     refute again_error
-    assert_match(/\A127\.0\.0\.1 could not be reached; this is the data from 2026-11-15T10:45:00-08:00\.\z/, again["note"])
+    assert_match(/\A127\.0\.0\.1 could not be reached; this is the data from 2026-11-15T11:45:00-07:00\.\z/, again["note"])
     assert_equal data["stations"], again["stations"]
     assert_equal "note", again.keys.first
   end

@@ -26,9 +26,9 @@ class GetRadarMapTest < Minitest::Test
     result, error = radar(**WHISTLER)
 
     refute error
-    assert_equal "2026-11-15T11:30:00-08:00", result["observed_at"]
+    assert_equal "2026-11-15T12:30:00-07:00", result["observed_at"]
     assert_equal({ "snow_cm_per_h" => 0, "rain_mm_per_h" => 0 }, result["at_point"])
-    assert_equal [{ "time" => "2026-11-15T11:00:00-08:00", "snow_cm_per_h" => 0 }, { "time" => "2026-11-15T10:30:00-08:00", "snow_cm_per_h" => 0 }],
+    assert_equal [{ "time" => "2026-11-15T12:00:00-07:00", "snow_cm_per_h" => 0 }, { "time" => "2026-11-15T11:30:00-07:00", "snow_cm_per_h" => 0 }],
                  result["past_hour"]
   end
 
@@ -131,7 +131,7 @@ class GetRadarMapTest < Minitest::Test
     result = JSON.parse(content.first[:text])
 
     assert_equal 1, content.size
-    assert_equal(["2026-11-15T11:00:00-08:00", "2026-11-15T10:30:00-08:00"], result["past_hour"].map { |entry| entry["time"] })
+    assert_equal(["2026-11-15T12:00:00-07:00", "2026-11-15T11:30:00-07:00"], result["past_hour"].map { |entry| entry["time"] })
     assert_equal([0, 0], result["past_hour"].map { |entry| entry["snow_cm_per_h"] })
     refute(requests.any? { |request| request.query["REQUEST"] == "GetMap" || request.path == "/wms/CBMT" })
   end

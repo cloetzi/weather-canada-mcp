@@ -22,7 +22,7 @@ class GetAlertsTest < Minitest::Test
     assert_equal 1, result["alerts"].size
     assert_equal ["fog advisory", "advisory", "FGA"], alert.values_at("headline", "type", "code")
     assert_equal original["alert_text_en"], alert["text"]
-    assert_equal "2026-11-15T16:01:28-07:00", alert["expires_at"]
+    assert_equal "2026-11-15T17:01:28-06:00", alert["expires_at"]
   end
 
   def test_french_text

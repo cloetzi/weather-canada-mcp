@@ -16,7 +16,7 @@ class GetCurrentObservationsTest < Minitest::Test
     refute error
     assert_equal(%w[1100875 1048899 1101300], result["stations"].map { |station| station["id"] })
     assert_equal ["WHISTLER - NESTERS", "MSC", 661.8, 1.1], nesters.values_at("name", "provider", "elevation_m", "distance_km")
-    assert_equal "2026-11-15T10:41:00-08:00", nesters["observed_at"]
+    assert_equal "2026-11-15T11:41:00-07:00", nesters["observed_at"]
     temperature, humidity, pressure = reports("1100875").first.values_at("air_temp", "rel_hum", "stn_pres")
 
     assert_equal [temperature, humidity, (pressure / 10.0).round(3)],
@@ -28,11 +28,11 @@ class GetCurrentObservationsTest < Minitest::Test
     whistler = observations(**WHISTLER).first["stations"].find { |station| station["id"] == "1048899" }
     top_of_hour = reports("1048899").find { |report| report["date_tm-value"] == "2026-11-15T18:00:00.000Z" }
 
-    assert_equal "2026-11-15T10:28:00-08:00", whistler["observed_at"]
+    assert_equal "2026-11-15T11:28:00-07:00", whistler["observed_at"]
     assert_equal reports("1048899").first["air_temp"], whistler.dig("observations", "temperature_c")
     assert_equal top_of_hour.values_at("pcpn_amt_pst6hrs", "max_air_temp_pst24hrs", "tot_cld_amt"),
                  whistler["observations"].values_at("precipitation_past_6h_mm", "max_temperature_past_24h_c", "cloud_cover_pct")
-    assert_equal "2026-11-15T10:00:00-08:00", whistler.dig("earlier_readings", "precipitation_past_6h_mm")
+    assert_equal "2026-11-15T11:00:00-07:00", whistler.dig("earlier_readings", "precipitation_past_6h_mm")
     refute whistler["earlier_readings"].key?("temperature_c")
   end
 

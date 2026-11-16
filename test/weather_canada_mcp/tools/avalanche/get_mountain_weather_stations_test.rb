@@ -18,8 +18,8 @@ class AvalancheGetMountainWeatherStationsTest < Minitest::Test
     assert_equal ["Parks Canada"], result["stations"].map { |station| station["source"] }.uniq
   end
 
-  # Lake Louise is on Mountain Standard Time in November.
-  def local(utc) = Time.iso8601(utc).getlocal("-07:00").iso8601
+  # Alberta stopped changing the clock on 1 November 2026: Lake Louise is on UTC-6 all year.
+  def local(utc) = Time.iso8601(utc).getlocal("-06:00").iso8601
 
   def test_latest_reading
     upper = stations(**LAKE_LOUISE).first["stations"].find { |station| station["id"] == 111 }

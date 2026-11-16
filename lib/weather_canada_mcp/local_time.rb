@@ -4,8 +4,9 @@ require "date"
 
 module WeatherCanadaMCP
   # Local calendar dates and times in Canadian time zones, without a time zone database: each zone's standard offset and whether
-  # it keeps daylight time (second Sunday in March to first Sunday in November, at 02:00 local). Unknown or missing
-  # zones use UTC-8, Canada's westernmost offset, so a day still counts as today while it is today anywhere in Canada.
+  # it keeps daylight time (second Sunday in March to first Sunday in November, at 02:00 local). Zones that have
+  # stopped changing the clock are in PERMANENT. Unknown or missing zones use UTC-8, Canada's westernmost offset, so a day
+  # still counts as today while it is today anywhere in Canada.
   module LocalTime
     # IANA zone => [standard offset in hours, observes daylight time]
     ZONES = {
@@ -28,6 +29,16 @@ module WeatherCanadaMCP
     }.freeze
     FALLBACK = [-8, false].freeze
 
+    # Zones that stopped changing the clock and kept their daylight offset (tzdata 2026e). The 1 November 2026
+    # switch from daylight time left the offset unchanged, so before the instant a zone follows ZONES and after it
+    # the fixed offset applies. IANA zone => [UTC instant of the last scheduled switch, fixed offset in hours]
+    PERMANENT = {
+      "America/Vancouver" => [Time.utc(2026, 11, 1, 9), -7], "Canada/Pacific" => [Time.utc(2026, 11, 1, 9), -7],
+      "America/Edmonton" => [Time.utc(2026, 11, 1, 8), -6], "America/Yellowknife" => [Time.utc(2026, 11, 1, 8), -6],
+      "America/Inuvik" => [Time.utc(2026, 11, 1, 8), -6], "Canada/Mountain" => [Time.utc(2026, 11, 1, 8), -6],
+      "America/Winnipeg" => [Time.utc(2026, 11, 1, 7), -5], "Canada/Central" => [Time.utc(2026, 11, 1, 7), -5]
+    }.freeze
+
     module_function
 
     def known?(zone) = ZONES.key?(zone.to_s)
@@ -43,6 +54,9 @@ module WeatherCanadaMCP
     def date(time, zone) = (time.utc + (offset_hours(time, zone) * 3600)).to_date
 
     def offset_hours(time, zone)
+      since, fixed = PERMANENT[zone.to_s]
+      return fixed if since && time.utc >= since
+
       standard, daylight = ZONES.fetch(zone.to_s, FALLBACK)
       daylight && daylight_time?(time.utc + (standard * 3600)) ? standard + 1 : standard
     end
