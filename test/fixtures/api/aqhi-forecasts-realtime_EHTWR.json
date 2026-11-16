@@ -1,0 +1,80 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "id": "AQ_FCST-EHTWR-period-202611152200",
+      "properties": {
+        "id": "AQ_FCST-EHTWR-period-202611152200",
+        "aqhi_type": "AQHI-Forecast-Period",
+        "forecast_type": "original",
+        "location_name_en": "Quebec",
+        "location_name_fr": "Québec",
+        "location_id": "EHTWR",
+        "publication_datetime": "2026-11-15T22:00:00Z",
+        "forecast_period": {
+          "period_2": {
+            "forecast_period_en": "Tonight",
+            "forecast_period_fr": "Ce soir et cette nuit",
+            "aqhi": 1,
+            "aqhi_insmoke": null
+          },
+          "period_3": {
+            "forecast_period_en": "Tomorrow",
+            "forecast_period_fr": "Demain",
+            "aqhi": 1,
+            "aqhi_insmoke": null
+          },
+          "period_4": {
+            "forecast_period_en": "Tomorrow Night",
+            "forecast_period_fr": "Demain soir et nuit",
+            "aqhi": 2,
+            "aqhi_insmoke": null
+          },
+          "period_5": {
+            "forecast_period_en": "Day 3",
+            "forecast_period_fr": "Jour 3",
+            "aqhi": 2,
+            "aqhi_insmoke": null
+          }
+        }
+      },
+      "geometry": null
+    }
+  ],
+  "numberMatched": 6,
+  "numberReturned": 1,
+  "links": [
+    {
+      "type": "application/geo+json",
+      "rel": "self",
+      "title": "This document as GeoJSON",
+      "href": "https://api.weather.gc.ca/collections/aqhi-forecasts-realtime/items?f=json&location_id=EHTWR&aqhi_type=AQHI-Forecast-Period&sortby=-publication_datetime&skipGeometry=true&limit=1"
+    },
+    {
+      "rel": "alternate",
+      "type": "application/ld+json",
+      "title": "This document as RDF (JSON-LD)",
+      "href": "https://api.weather.gc.ca/collections/aqhi-forecasts-realtime/items?f=jsonld&location_id=EHTWR&aqhi_type=AQHI-Forecast-Period&sortby=-publication_datetime&skipGeometry=true&limit=1"
+    },
+    {
+      "type": "text/html",
+      "rel": "alternate",
+      "title": "This document as HTML",
+      "href": "https://api.weather.gc.ca/collections/aqhi-forecasts-realtime/items?f=html&location_id=EHTWR&aqhi_type=AQHI-Forecast-Period&sortby=-publication_datetime&skipGeometry=true&limit=1"
+    },
+    {
+      "type": "application/geo+json",
+      "rel": "next",
+      "title": "Items (next)",
+      "href": "https://api.weather.gc.ca/collections/aqhi-forecasts-realtime/items?offset=1&location_id=EHTWR&aqhi_type=AQHI-Forecast-Period&sortby=-publication_datetime&skipGeometry=true&limit=1"
+    },
+    {
+      "type": "application/json",
+      "title": "AQHI – Forecasts",
+      "rel": "collection",
+      "href": "https://api.weather.gc.ca/collections/aqhi-forecasts-realtime"
+    }
+  ],
+  "timeStamp": "2026-11-16T00:37:02.130063Z"
+}

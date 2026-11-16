@@ -8,6 +8,7 @@ module WeatherCanadaMCP
       FORECASTS_COLLECTION = "aqhi-forecasts-realtime"
       RADIUS_KM = 100
       STALE_AFTER = 3 * 3600
+      NO_OBSERVATION = "This location publishes a forecast but no hourly observation."
       PERIODS = %w[period_1 period_2 period_3 period_4 period_5].freeze
       # Health messages by risk category, word for word as canada.ca's "About the AQHI" page gives them (MESSAGES_URL),
       # with a capital and a full stop added. "Envisagez réduire" is the page's own wording. Low risk has one message for
@@ -62,7 +63,8 @@ module WeatherCanadaMCP
       description <<~TEXT
         The Air Quality Health Index (AQHI, 1 to 10+, higher is worse) at the nearest AQHI location (within 100 km): the
         latest hourly observation and the forecast for today, tonight, tomorrow and later, each with its risk category and
-        health messages for the general population and for people at risk.
+        health messages for the general population and for people at risk. A few locations (Montréal, Québec, Gatineau,
+        Whitehorse) have a forecast only: their current value is null.
       TEXT
       location_arguments
       argument :lang, :language
@@ -77,16 +79,16 @@ module WeatherCanadaMCP
       def call(args)
         lang = args.lang
         point = args.point
-        distance, observation = stations.aqhi.nearest(point.lat, point.lon, count: 1, radius_km: RADIUS_KM).first
-        return { location: point.to_h, note: "No AQHI location within #{RADIUS_KM} km. AQHI covers mostly populated areas." } unless observation
+        distance, feature, observed = nearest_location(point)
+        return { location: point.to_h, note: "No AQHI location within #{RADIUS_KM} km. AQHI covers mostly populated areas." } unless feature
 
-        properties = observation["properties"]
-        current = current(properties, lang)
+        properties = feature["properties"]
+        current = observed ? current(properties, lang) : { aqhi: nil, note: NO_OBSERVATION }
         forecast = forecast(properties["location_id"], lang)
         {
           location: point.to_h,
           aqhi_location: { id: properties["location_id"], name: properties["location_name_#{lang}"] || properties["location_name_en"],
-                           distance_km: round_km(distance), lat: coordinates_of(observation)&.last, lon: coordinates_of(observation)&.first },
+                           distance_km: round_km(distance), lat: coordinates_of(feature)&.last, lon: coordinates_of(feature)&.first },
           current:, forecast:,
           health_messages: health_messages([current, *forecast&.dig(:periods)], lang), health_messages_source: MESSAGES_URL.fetch(lang),
           source_url: lang == "fr" ? "https://meteo.gc.ca/airquality/pages/index_f.html" : "https://weather.gc.ca/airquality/pages/index_e.html"
@@ -94,6 +96,24 @@ module WeatherCanadaMCP
       end
 
       private
+
+      # [distance, feature, has an observation]: the nearest location with an observation, or a nearer one that only has a forecast.
+      def nearest_location(point)
+        observed = stations.aqhi.nearest(point.lat, point.lon, count: 1, radius_km: RADIUS_KM).first
+        observed&.push(true)
+        [observed, forecast_only(point)].compact.min_by(&:first)
+      end
+
+      # Without the forecast list the observation sites alone are searched.
+      def forecast_only(point)
+        ids = stations.aqhi.features.to_set { |feature| feature.dig("properties", "location_id") }
+        nearest = stations.aqhi_forecasts.nearest(point.lat, point.lon, count: 1, radius_km: RADIUS_KM) do |feature|
+          !ids.include?(feature.dig("properties", "location_id"))
+        end.first
+        nearest&.push(false)
+      rescue Sources::Error
+        nil
+      end
 
       def coordinates_of(feature)
         lon, lat = feature.dig("geometry", "coordinates")
