@@ -49,6 +49,10 @@ class GetAirQualityTest < Minitest::Test
     assert_equal "JAFUV", air_quality(**KELOWNA).first.dig("aqhi_location", "id")
   end
 
+  def test_the_data_are_called_preliminary
+    assert_match(/Preliminary, unverified data/, air_quality(**KELOWNA).first["note"])
+  end
+
   def test_health_messages_once_per_risk_category
     messages = air_quality(**KELOWNA).first["health_messages"]
 

@@ -34,7 +34,8 @@
     "wind_gust_kmh": 34,
     "wind_direction": "SE",
     "pressure_kpa": 100.4,
-    "pressure_tendency": "rising"
+    "pressure_tendency": "rising",
+    "note": "This report is 60 minutes old; get_current_observations has the newest readings from the stations nearby."
   },
   "forecast": [
     {

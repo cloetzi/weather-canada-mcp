@@ -120,5 +120,6 @@
       }
     }
   ],
+  "note": "Real-time readings are preliminary and unverified: they can change after review, and ice or equipment problems can affect them.",
   "attribution": "Data Source: Environment and Climate Change Canada. Unofficial tool, not affiliated with or endorsed by ECCC."
 }

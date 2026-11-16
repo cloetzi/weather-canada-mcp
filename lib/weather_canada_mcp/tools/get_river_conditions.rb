@@ -14,6 +14,8 @@ module WeatherCanadaMCP
       # A flow change under this share of the flow counts as steady.
       STEADY_SHARE = 0.05
       STALE_AFTER = 6 * 3600
+      PRELIMINARY = "Real-time readings are preliminary and unverified: they can change after review, and ice or equipment " \
+                    "problems can affect them."
       tool_name "get_river_conditions"
       title "Get river levels and flows"
       description <<~TEXT
@@ -38,7 +40,7 @@ module WeatherCanadaMCP
         # An explicit river replaces the river the location names.
         filter, source = (argument = river_filter(args.river)) ? [argument, :argument] : [river_place_filter(point), :place]
         stations = gauges(point, filter, limit).then { |nearest| concurrently(nearest) { |distance, feature| gauge(feature, distance, lang) } }
-        { location: point.to_h, gauges: stations, note: note(stations, filter && source, args.river) }.compact
+        { location: point.to_h, gauges: stations, note: [note(stations, filter && source, args.river), PRELIMINARY].compact.join(" ") }
       end
 
       private

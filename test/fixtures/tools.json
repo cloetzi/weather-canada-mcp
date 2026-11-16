@@ -78,7 +78,7 @@
   {
     "name": "get_forecast",
     "title": "Get the weather forecast",
-    "description": "Environment Canada's forecast for the nearest forecast site: current conditions, the official forecast by period (today, tonight, then about 6 days, with snow levels in the mountains where ECCC issues them), an hourly forecast, sunrise and sunset, and active warning headlines. The result names the site and its distance; a distant site, or one at a different elevation, may not match backcountry conditions. For full alert text use get_alerts.",
+    "description": "Environment Canada's forecast for the nearest forecast site: current conditions, the official forecast by period (today, tonight, then about 6 days, with snow levels in the mountains where ECCC issues them), an hourly forecast, sunrise and sunset, and active warning headlines. The current conditions are the forecast site's own report and can lag the newest station readings: get_current_observations has those. The result names the site and its distance; a distant site, or one at a different elevation, may not match backcountry conditions. For full alert text use get_alerts.",
     "input_schema": {
       "type": "object",
       "properties": {

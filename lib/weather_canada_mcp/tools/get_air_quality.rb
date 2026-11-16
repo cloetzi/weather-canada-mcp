@@ -8,6 +8,7 @@ module WeatherCanadaMCP
       FORECASTS_COLLECTION = "aqhi-forecasts-realtime"
       RADIUS_KM = 100
       STALE_AFTER = 3 * 3600
+      PRELIMINARY = "Preliminary, unverified data: observations are hourly values that can be revised, and forecasts change."
       PERIODS = %w[period_1 period_2 period_3 period_4 period_5].freeze
       # Health messages by risk category, word for word as canada.ca's "About the AQHI" page gives them (MESSAGES_URL),
       # with a capital and a full stop added. "Envisagez réduire" is the page's own wording. Low risk has one message for
@@ -79,7 +80,9 @@ module WeatherCanadaMCP
         lang = args.lang
         point = args.point
         nearby = AqhiLocations.new(stations, radius_km: RADIUS_KM).near(point.lat, point.lon)
-        return { location: point.to_h, note: "No AQHI location within #{RADIUS_KM} km. AQHI covers mostly populated areas." } unless nearby
+        unless nearby
+          return { location: point.to_h, note: "No AQHI location within #{RADIUS_KM} km. AQHI covers mostly populated areas. #{PRELIMINARY}" }
+        end
 
         found = nearby.found
         properties = found.properties
@@ -88,7 +91,7 @@ module WeatherCanadaMCP
         {
           location: point.to_h,
           aqhi_location: aqhi_location(found, lang),
-          current:, forecast:,
+          current:, forecast:, note: PRELIMINARY,
           health_messages: health_messages([current, *forecast&.dig(:periods)], lang), health_messages_source: MESSAGES_URL.fetch(lang),
           source_url: lang == "fr" ? "https://meteo.gc.ca/airquality/pages/index_f.html" : "https://weather.gc.ca/airquality/pages/index_e.html"
         }

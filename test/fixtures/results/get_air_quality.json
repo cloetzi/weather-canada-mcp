@@ -46,6 +46,7 @@
       }
     ]
   },
+  "note": "Preliminary, unverified data: observations are hourly values that can be revised, and forecasts change.",
   "health_messages": {
     "low": {
       "general": "Enjoy your usual outdoor activities.",
