@@ -7,7 +7,8 @@ module WeatherCanadaMCP
   module Places
     # Offline place-name lookup over NRCan's Canadian Geographical Names, loaded into SQLite by Gazetteer::Builder.
     # Read-only once built. Search matches whole names first, then word prefixes (FTS5, diacritics ignored), and ranks
-    # by feature type and NRCan's relevance-at-scale; nearest finds the closest named features to a point.
+    # by feature type and NRCan's relevance-at-scale (a settlement before a province of the same name: "Québec" is the city);
+    # nearest finds the closest named features to a point.
     class Gazetteer
       class Unavailable < WeatherCanadaMCP::Error; end
 
@@ -32,6 +33,12 @@ module WeatherCanadaMCP
       PROVINCE_ALIASES = PROVINCES.merge("PEI" => "Prince Edward Island", "QUEBEC" => "Quebec", "QUÉBEC" => "Quebec",
                                          "NFLD" => "Newfoundland and Labrador", "YK" => "Yukon", "NWT" => "Northwest Territories")
                                   .merge(PROVINCES.values.to_h { |name| [name.upcase, name] }).freeze
+
+      # Common English names and spellings that differ from NRCan's, by normalized key.
+      ALIASES = { "quebec city" => "quebec", "ville de quebec" => "quebec", "saint john s" => "st john s",
+                  "saint johns" => "st john s", "st johns" => "st john s" }.freeze
+
+      PROVINCE_TYPES = %w[Province Territory].freeze
 
       # The directory the gem builds the database in when WEATHER_MCP_GAZETTEER_PATH is unset.
       def self.default_path(env = ENV)
@@ -76,6 +83,8 @@ module WeatherCanadaMCP
         key = self.class.normalize(query)
         return [] if key.empty?
 
+        key = ALIASES.fetch(key, key)
+
         province = self.class.province_name(province)
         results = rank(rows("SELECT #{COLUMNS} FROM places WHERE key = ?#{" AND province = ?" if province}", [key, province].compact), key)
         results += rank(prefix_matches(key, province, limit * 10) - results, key) if results.size < limit
@@ -110,10 +119,13 @@ module WeatherCanadaMCP
 
       def rows(sql, binds) = @db.execute(sql, binds).map { |row| Place.new(*row) }
 
-      # Exact matches outrank prefix matches; among either, a match covering the whole query comes first, then weight.
+      # Exact matches outrank prefix matches; among either, a place people live in comes before a province or territory of
+      # the same name, then weight.
       def rank(places, key)
-        places.sort_by { |place| [self.class.normalize(place.name) == key ? 0 : 1, -place.score] }
+        places.sort_by { |place| [self.class.normalize(place.name) == key ? 0 : 1, province_or_territory?(place) ? 1 : 0, -place.score] }
       end
+
+      def province_or_territory?(place) = PROVINCE_TYPES.include?(place.type)
     end
   end
 end

@@ -1,4 +1,5 @@
 CGNDB ID,Geographical Name,ISO Language Code,Language,Syllabic Form,Generic Term,Generic Category,Concise Code,Toponymic Feature ID,Latitude,Longitude,Location,Province - Territory,Relevance at Scale,Decision Date,Source
+IAQFZ,Alberta,und,Undetermined,,Province,Administrative Area,PROV,b8ebf793bbe011d892e2080020a0f4c9,54.9916670,-114.3766670,,Alberta,30000000,1905-12-31,Act of Parliament
 IACYE,Banff,und,Undetermined,,Town,Populated Place,TOWN,7b1af00ed05511d892e2080020a0f4c9,51.1777778,-115.5736111,25-12-W5,Alberta,15000000,1995-01-01,AB-Ministry of Tourism and Sports
 IAHZE,Bow River,und,Undetermined,,River,Water Feature,RIV,0c85e8ad849c20c38d5065e12af410d5,49.9347222,-111.6886111,22-11-13-W4,Alberta,5000000,1947-03-13,AB-Ministry of Tourism and Sports
 HAKEN,Bow River,und,Undetermined,,River,Water Feature,RIV,0c2d5a2e849c20c35fc6eb563e7e8646,54.9333957,-105.2171242,68-22-W2,Saskatchewan,1000000,1953-04-02,"Saskatchewan-Ministry of Parks, Culture and Sport"
@@ -15,10 +16,28 @@ JAFUV,Kelowna,oka,"n̓səl̓xcin̓, nsyilxcn",,City,Populated Place,CITY,4c409d1
 IACFT,Lake Louise,und,Undetermined,,Hamlet,Populated Place,UNP,0cff7e46849c20c3e6c0de03a90928d2,51.4252778,-116.1805556,28-28-16-W5,Alberta,1200000,1952-04-03,AB-Ministry of Tourism and Sports
 GAPNF,Lake Louise,und,Undetermined,,Lake,Water Feature,LAKE,09d0e451bee611d892e2080020a0f4c9,49.0316670,-97.2286110,"11,14-1-2-E",Manitoba,50000,1974-09-11,MB-Natural Resources and Northern Development
 IAFIG,Lake Louise,und,Undetermined,,Lake,Water Feature,LAKE,0c84a316849c20c3695bb1507ebbfa5e,51.4116666,-116.2280556,28-16-W5,Alberta,250000,1952-04-03,AB-Ministry of Tourism and Sports
+EHHUN,Montréal,und,Undetermined,,Town,Populated Place,CITY,08b1ec0ebe3d11d892e2080020a0f4c9,45.5088220,-73.5540770,Montréal; Montréal,Quebec,17500000,2002-01-24,Quebec-Commission de Toponymie
+ERJDT,Montréal,und,Undetermined,,Territory equivalent to an MRC,Administrative Area,MUN1,0fdbcebc849c20c37ee71760d290d494,45.5166670,-73.6500000,Montréal; Montréal,Quebec,50000,2002-04-12,Quebec-Commission de Toponymie
+ENODR,Montréal,und,Undetermined,,Administrative Region,Administrative Area,MUN1,152cef7dd1e211d892e2080020a0f4c9,45.5000000,-73.6833334,Montréal; Montréal,Quebec,50000,1988-11-01,Quebec-Commission de Toponymie
+ESXOZ,Montréal,und,Undetermined,,Agglomeration,Administrative Area,MUN1,a4ab0d1199d442e19e30f8cd03f92179,45.5088220,-73.5540770,Montréal; Montréal,Quebec,7500000,2018-06-04,Quebec-Commission de Toponymie
+ESXLJ,Montréal,und,Undetermined,,Census Division,Administrative Area,GEOG,0ced09b5849c20c34d64d563a4b05d9d,45.5000000,-73.6833330,Montréal; Montréal,Quebec,7500000,2018-08-30,Quebec-Commission de Toponymie
+EMBOX,Montréal,und,Undetermined,,Post Office,Populated Place,UNP,9b96af43d1e111d892e2080020a0f4c9,45.5191667,-73.5558333,Montréal; Montréal,Quebec,50000,1986-12-18,Quebec-Commission de Toponymie
 JCRQL,Mount Robson,und,Undetermined,,Locality,Populated Place,UNP,0ca9a6a2849c20c3547f3c14d793aa95,53.0347222,-119.2319444,Cariboo Land District,British Columbia,1200000,1983-05-31,"British Columbia-Tourism, Arts, Culture and Sport"
 JBLBR,Mount Robson,und,Undetermined,,Mount,Terrain Feature,MTN,0cfb4745849c20c34703c7e77af6bb13,53.1105560,-119.1563890,Cariboo Land District,British Columbia,5000000,1912-04-02,"British Columbia-Tourism, Arts, Culture and Sport"
+FEOLW,Ottawa,und,Undetermined,,Community,Populated Place,UNP,5997e90fc6ce11d892e2080020a0f4c9,45.4005555,-75.6713889,Carleton,Ontario,50000,2001-01-01,Ontario-Ministry of Natural Resources and Forestry
+FEVNT,Ottawa,und,Undetermined,,City,Populated Place,CITY,f7365c02d05211d892e2080020a0f4c9,45.3333900,-75.5842900,Carleton; Russell,Ontario,30000000,2001-01-01,Ontario-Ministry of Natural Resources and Forestry
+EDLVS,Ottawa River,otw,Odawa,,River,Water Feature,RIV,890c315eba2a11d892e2080020a0f4c9,45.3410712,-73.9601886,Pointe-des-Cascades; Vaudreuil-Soulanges,Quebec,5000000,1983-11-23,Geographical Names Board of Canada
+FAYIT,Ottawa River,und,Undetermined,,River,Water Feature,RIV,890c315eba2a11d892e2080020a0f4c9,45.5663700,-74.3864900,Prescott,Ontario,5000000,1994-02-18,Ontario-Ministry of Natural Resources and Forestry
+ESXOY,Québec,mis,Uncoded languages,,Agglomeration,Administrative Area,MUN1,5165a5c45e654da8b1317c27474fe95c,46.8138190,-71.2079970,Québec; Capitale-Nationale,Quebec,7500000,2018-06-04,Quebec-Commission de Toponymie
+ERJDU,Québec,alq,Algonquin,,Territory equivalent to an MRC,Administrative Area,MUN1,0fdbcefd849c20c35a0c9e1d7a156273,46.8166670,-71.2166670,Québec; Capitale-Nationale,Quebec,50000,2002-04-12,Quebec-Commission de Toponymie
+EHTWR,Québec,mis,Uncoded languages,,Town,Populated Place,CITY,24e21a60be4811d892e2080020a0f4c9,46.8138190,-71.2079970,Québec; Capitale-Nationale,Quebec,30000000,2002-01-24,Quebec-Commission de Toponymie
+ESXLC,Québec,alq,Algonquin,,Census Division,Administrative Area,GEOG,0cc4d733849c20c3655178b0ccea2475,46.8500000,-71.3500000,Québec; Capitale-Nationale,Quebec,7500000,2018-08-30,Quebec-Commission de Toponymie
+EFGGK,Québec,und,Undetermined,,Province,Administrative Area,PROV,6f733341ba2011d892e2080020a0f4c9,52.0000000,-72.0000000,; ,Quebec,30000000,1983-11-23,Act of Parliament
+EMBCK,Québec,alq,Algonquin,,Post Office,Populated Place,UNP,961a6a93d1e111d892e2080020a0f4c9,46.8175000,-71.2119444,Québec; Capitale-Nationale,Quebec,50000,1986-12-18,Quebec-Commission de Toponymie
 FETGH,Revelstoke,und,Undetermined,,Community,Populated Place,UNP,171505b9849c20c3630326e2ede2324a,45.3539730,-75.6953690,Carleton,Ontario,85000,2004-03-05,Ontario-Ministry of Natural Resources and Forestry
 JBHTI,Revelstoke,und,Undetermined,,City,Populated Place,CITY,0cfb11f6849c20c3402f97ca86cfa79d,50.9988890,-118.1958330,Kootenay Land District,British Columbia,10000000,1924-03-31,"British Columbia-Tourism, Arts, Culture and Sport"
+FDOKP,Rivière des Outaouais,und,Undetermined,,River,Water Feature,RIV,890c315eba2a11d892e2080020a0f4c9,45.5663700,-74.3864900,Prescott,Ontario,5000000,1994-02-18,Ontario-Ministry of Natural Resources and Forestry
+EHNAY,Rivière des Outaouais,mis,Uncoded languages,,River,Water Feature,RIV,890c315eba2a11d892e2080020a0f4c9,45.3413880,-73.9586110,Pointe-des-Cascades; Vaudreuil-Soulanges,Quebec,5000000,1968-12-05,Quebec-Commission de Toponymie
 EMBDA,Rivière-du-Loup,und,Undetermined,,Post Office,Populated Place,UNP,9667521ad1e111d892e2080020a0f4c9,47.8333333,-69.5333333,Rivière-du-Loup; Rivière-du-Loup,Quebec,50000,1986-12-18,Quebec-Commission de Toponymie
 EQRRW,Rivière-du-Loup,und,Undetermined,,Town,Populated Place,CITY,0cf69990849c20c3d494ef28b617ccfe,47.8357520,-69.5366080,Rivière-du-Loup; Rivière-du-Loup,Quebec,10000000,1999-02-05,Quebec-Commission de Toponymie
 EKTTV,Rivière-du-Loup,und,Undetermined,,County Regional Municipality,Administrative Area,MUN1,0ccf2a79849c20c3583ad113086ccbab,47.9000000,-69.3333333,Saint-Épiphane; Rivière-du-Loup,Quebec,50000,1985-03-07,Quebec-Commission de Toponymie

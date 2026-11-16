@@ -16,6 +16,23 @@ class GazetteerTest < Minitest::Test
     assert_equal ["Squamish", "District Municipality", "British Columbia"], [best.name, best.type, best.province]
   end
 
+  def test_a_city_ranks_before_the_province_of_the_same_name
+    ["Québec", "Quebec", "quebec, QC"].each do |query|
+      name, province = Gazetteer.split_province(query)
+      best = @gazetteer.search(name, province:).first
+
+      assert_equal %w[Québec Town], [best.name, best.type], query
+      assert_in_delta 46.81, best.lat, 0.01
+    end
+    assert_equal "Province", @gazetteer.search("Alberta").first.type, "no settlement of that name: the province"
+  end
+
+  def test_common_english_names_find_the_place
+    assert_equal(%w[Québec Town], @gazetteer.search("Quebec City").first.then { [it.name, it.type] })
+    assert_equal "Québec", @gazetteer.search("Ville de Québec", province: "QC").first.name
+    assert_equal "Montréal", @gazetteer.search("Montreal").first.name
+  end
+
   def test_province_filter_and_suffix
     assert_equal "Alberta", @gazetteer.search("Lake Louise", province: "AB").first.province
     assert_equal "Hamlet", @gazetteer.search("Lake Louise", province: "Alberta").first.type
