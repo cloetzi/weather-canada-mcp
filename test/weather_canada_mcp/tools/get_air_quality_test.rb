@@ -32,9 +32,17 @@ class GetAirQualityTest < Minitest::Test
     assert_equal "EHTWR", result.dig("aqhi_location", "id")
     assert_equal "Quebec", result.dig("aqhi_location", "name")
     assert_nil result.dig("current", "aqhi")
-    assert_match(/no hourly observation/, result.dig("current", "note"))
+    assert_equal "This location publishes a forecast but no hourly observation.", result.dig("current", "note")
     refute_empty result.dig("forecast", "periods")
     assert_includes result["health_messages"].keys.first, "low"
+  end
+
+  def test_a_forecast_only_location_names_the_nearest_observation
+    result, error = air_quality(lat: 45.48, lon: -75.65)
+
+    refute error
+    assert_equal "EGLTT", result.dig("aqhi_location", "id")
+    assert_match(/no hourly observation\. The nearest observation is at .+, 5\.\d km away\./, result.dig("current", "note"))
   end
 
   def test_an_observation_site_that_is_nearer_than_a_forecast_only_location_wins
