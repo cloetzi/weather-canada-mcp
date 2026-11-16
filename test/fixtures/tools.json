@@ -308,7 +308,7 @@
   {
     "name": "get_river_conditions",
     "title": "Get river levels and flows",
-    "description": "Real-time water level (m) and flow (m3/s) at the Water Survey of Canada gauges nearest a location (within 50 km), with the change over 24 hours, the range over 3 days, and today's flow against the historical mean for this month. river keeps only gauges whose name contains it. Data are provisional and can be affected by ice; compare a level only with the same gauge. This is not a flood forecast: use get_alerts for warnings.",
+    "description": "Real-time water level (m) and flow (m3/s) at the Water Survey of Canada gauges nearest a location (within 50 km), with the change over 24 hours, the range over 3 days, and today's flow against the historical mean for this month. river keeps only gauges whose name contains it; when location names a river (\"Ottawa River\", \"Rivière des Outaouais\"), only gauges on that river within 50 km of the spot the name resolves to are used (a long river is resolved to one point, so give a town on it for another stretch). Data are provisional and can be affected by ice; compare a level only with the same gauge. This is not a flood forecast: use get_alerts for warnings.",
     "input_schema": {
       "type": "object",
       "properties": {

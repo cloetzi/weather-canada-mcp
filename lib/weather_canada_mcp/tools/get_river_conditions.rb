@@ -8,6 +8,7 @@ module WeatherCanadaMCP
       REALTIME_COLLECTION = "hydrometric-realtime"
       MONTHLY_COLLECTION = "hydrometric-monthly-mean"
       RADIUS_KM = 50
+      SAME_RIVER_KM = 1
       MAX_STATIONS = 5
       TREND_HOURS = 72
       # A flow change under this share of the flow counts as steady.
@@ -18,7 +19,9 @@ module WeatherCanadaMCP
       description <<~TEXT
         Real-time water level (m) and flow (m3/s) at the Water Survey of Canada gauges nearest a location (within 50 km),
         with the change over 24 hours, the range over 3 days, and today's flow against the historical mean for this month.
-        river keeps only gauges whose name contains it. Data are provisional and can be affected by ice; compare a level
+        river keeps only gauges whose name contains it; when location names a river ("Ottawa River", "Rivière des
+        Outaouais"), only gauges on that river within 50 km of the spot the name resolves to are used (a long river is
+        resolved to one point, so give a town on it for another stretch). Data are provisional and can be affected by ice; compare a level
         only with the same gauge. This is not a flood forecast: use get_alerts for warnings.
       TEXT
       location_arguments
@@ -32,13 +35,9 @@ module WeatherCanadaMCP
         lang = args.lang
         point = args.point
         limit = args.limit
-        filter = river_filter(args.river)
+        filter = river_filter(args.river) || river_place_filter(point)
         stations = gauges(point, filter, limit).then { |nearest| concurrently(nearest) { |distance, feature| gauge(feature, distance, lang) } }
-        result = { location: point.to_h, gauges: stations }
-        if stations.empty?
-          result[:note] = "No real-time gauge#{" named like #{args.river.inspect}" if filter} within #{RADIUS_KM} km."
-        end
-        result
+        { location: point.to_h, gauges: stations, note: note(stations, filter, args.river) }.compact
       end
 
       private
@@ -47,17 +46,36 @@ module WeatherCanadaMCP
         return if river.nil?
 
         normalized = normalize(river)
-        normalized.empty? ? nil : normalized
+        normalized.empty? ? nil : ->(name) { name.include?(normalized) }
+      end
+
+      # A river named as the location: gauges on it, wherever its name is spelled in English or French.
+      def river_place_filter(point)
+        return unless point.place&.type == "River"
+
+        same_spot = @context.gazetteer.open.nearest(point.lat, point.lon, radius_km: SAME_RIVER_KM, limit: 20).map(&:last)
+        RiverNames.new(point.place, same_spot).filter
       end
 
       def gauges(point, filter, limit)
         stations.hydrometric.nearest(point.lat, point.lon, count: limit, radius_km: RADIUS_KM) do |feature|
-          filter.nil? || normalize(feature.dig("properties", "STATION_NAME").to_s).include?(filter)
+          filter.nil? || filter.call(normalize(feature.dig("properties", "STATION_NAME").to_s))
+        end
+      end
+
+      def note(gauges, filter, river)
+        return "Only gauges on the river are listed; give a town on it for another stretch." if gauges.any? && river.nil? && filter
+        return unless gauges.empty?
+
+        if river.nil? && filter
+          "No real-time gauge on this river within #{RADIUS_KM} km of the spot its name resolves to. Give a town on the river instead."
+        else
+          "No real-time gauge#{" named like #{river.inspect}" if filter} within #{RADIUS_KM} km."
         end
       end
 
       # Upper case without accents, so "riviere" matches "RIVIÈRE".
-      def normalize(text) = text.unicode_normalize(:nfkd).gsub(/\p{Mn}/, "").upcase.squeeze(" ").strip
+      def normalize(text) = RiverNames.normalize(text)
 
       def gauge(feature, distance, lang)
         info = gauge_info(feature, distance, lang)

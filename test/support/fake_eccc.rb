@@ -39,7 +39,6 @@ class FakeEccc
   FIXED_FIXTURES = {
     "citypageweather-realtime" => "api/citypage_sites.json",
     "swob-stations" => "api/swob-stations_whistler.json",
-    "hydrometric-stations" => "api/hydrometric-stations_squamish.json",
     "aqhi-observations-realtime" => "api/aqhi-observations-realtime_kelowna.json",
     "marineweather-realtime" => "api/marineweather-realtime_squamish.json",
     "ltce-temperature" => "api/ltce-temperature_whistler.json",
@@ -48,6 +47,8 @@ class FakeEccc
     # The normals stations; a query naming a station gets api/climate-normals_<id>.json (KEYED_FIXTURES).
     "climate-normals" => "api/climate-normals_whistler.json"
   }.freeze
+  # Collections whose fixture depends on the area asked for: the method that picks it from the bbox.
+  BBOX_FIXTURES = { "weather-alerts" => :alerts_fixture, "hydrometric-stations" => :hydrometric_stations_fixture }.freeze
   # Collections served per station or location: the query parameter naming it, and fixtures named api/<collection>_<id>.json.
   KEYED_FIXTURES = {
     "swob-realtime" => "msc_id-value", "hydrometric-realtime" => "STATION_NUMBER",
@@ -127,10 +128,16 @@ class FakeEccc
 
     collection, item = request.path.match(%r{\A/collections/([\w-]+)/items(?:/([\w-]+))?\z})&.captures
     return keyed_fixture("citypage", item) if collection == "citypageweather-realtime" && item
-    return alerts_fixture(request.query["bbox"]) if collection == "weather-alerts"
+    return send(BBOX_FIXTURES[collection], request.query["bbox"]) if BBOX_FIXTURES.key?(collection)
 
     key = request.query[KEYED_FIXTURES[collection]] if KEYED_FIXTURES.key?(collection)
     key ? keyed_fixture(collection, key) : FIXED_FIXTURES[collection]
+  end
+
+  # The gauges of the Ottawa River area when the bbox reaches it, otherwise those around Squamish.
+  def hydrometric_stations_fixture(bbox)
+    min_lon, _, max_lon, = bbox.to_s.split(",").map(&:to_f)
+    min_lon < -73 && max_lon > -75 ? "api/hydrometric-stations_ottawa-river.json" : "api/hydrometric-stations_squamish.json"
   end
 
   # GetFeatureInfo fixtures are named after the place, layer and time: geomet/<place>/<layer>_<yyyymmddThhmmZ>.json.
