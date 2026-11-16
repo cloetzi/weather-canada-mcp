@@ -6,12 +6,15 @@ module WeatherCanadaMCP
     class GetForecast < Base
       MAX_HOURS = 24
       DISTANT_SITE_KM = 50
+      # A current report older than this is pointed away from, to the station readings.
+      STALE_CONDITIONS = 45 * 60
       tool_name "get_forecast"
       title "Get the weather forecast"
       description <<~TEXT
         Environment Canada's forecast for the nearest forecast site: current conditions, the official forecast by period
         (today, tonight, then about 6 days, with snow levels in the mountains where ECCC issues them), an hourly forecast,
-        sunrise and sunset, and active warning headlines. The result names the site and its distance; a distant site, or one at a different elevation, may not match backcountry conditions. For full alert text
+        sunrise and sunset, and active warning headlines. The current conditions are the forecast site's own report and can lag
+        the newest station readings: get_current_observations has those. The result names the site and its distance; a distant site, or one at a different elevation, may not match backcountry conditions. For full alert text
         use get_alerts.
       TEXT
       location_arguments
@@ -41,10 +44,21 @@ module WeatherCanadaMCP
 
       def shape(forecast, hours)
         {
-          issued_at: forecast.issued_at, warnings: forecast.warnings.map(&:to_h), current_conditions: forecast.conditions&.to_h,
+          issued_at: forecast.issued_at, warnings: forecast.warnings.map(&:to_h), current_conditions: conditions(forecast.conditions),
           forecast: forecast.periods.map(&:to_h), hourly: (forecast.hours.map(&:to_h) if hours.positive?),
           sun: { sunrise: forecast.sunrise, sunset: forecast.sunset }, normals: forecast.normals
         }
+      end
+
+      # The report, with a note when it is old enough that a station's own reading is likely newer.
+      def conditions(conditions)
+        return unless conditions
+
+        age = conditions.observed_at && (now - conditions.observed_at)
+        return conditions.to_h unless age && age > STALE_CONDITIONS
+
+        conditions.to_h.merge(note: "This report is #{age >= 7200 ? "#{(age / 3600).round} hours" : "#{(age / 60).round} minutes"} old; " \
+                                    "get_current_observations has the newest readings from the stations nearby.")
       end
 
       def site_info(forecast, site, distance, lang)

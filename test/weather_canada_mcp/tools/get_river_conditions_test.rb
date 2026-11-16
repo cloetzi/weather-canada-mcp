@@ -126,6 +126,12 @@ class GetRiverConditionsTest < Minitest::Test
 
   def river(name, type = "River") = WeatherCanadaMCP::Places::Gazetteer::Place.new(name, type, "Water Feature", "Alberta", 50.0, -115.0, 68.0)
 
+  def test_the_readings_are_called_preliminary
+    result, = rivers(**SQUAMISH)
+
+    assert_match(/preliminary and unverified/, result["note"])
+  end
+
   def test_no_matching_gauge
     result, = rivers(**SQUAMISH, river: "Fraser")
 

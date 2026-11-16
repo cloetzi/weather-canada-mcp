@@ -42,6 +42,22 @@ class GetForecastTest < Minitest::Test
     refute_includes result.to_s, "nil", "nulls are removed"
   end
 
+  def observed_at = Time.iso8601(FakeEccc.fixture_json("api/citypage_bc-50.json").dig("properties", "currentConditions", "timestamp", "en"))
+
+  def test_a_recent_report_has_no_note_about_its_age
+    result, = call_with_fake("get_forecast", lat: 49.7, lon: -123.15, hours: 0, clock: -> { observed_at + (30 * 60) })
+
+    refute result["current_conditions"].key?("note")
+  end
+
+  def test_an_old_report_points_to_the_station_observations
+    minutes, = call_with_fake("get_forecast", lat: 49.7, lon: -123.15, hours: 0, clock: -> { observed_at + (50 * 60) })
+    hours, = call_with_fake("get_forecast", lat: 49.7, lon: -123.15, hours: 0, clock: -> { observed_at + (3 * 3600) })
+
+    assert_match(/50 minutes old; get_current_observations/, minutes.dig("current_conditions", "note"))
+    assert_match(/3 hours old; get_current_observations/, hours.dig("current_conditions", "note"))
+  end
+
   def test_french
     result, = forecast(lat: 53.54, lon: -113.49, lang: "fr", hours: 0)
 
