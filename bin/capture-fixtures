@@ -236,7 +236,8 @@ FIXTURES = {
 CGN_URL = "https://ftp.maps.canada.ca/pub/nrcan_rncan/vector/geobase_cgn_toponyme/prov_csv_eng/cgn_canada_csv_eng.zip"
 # Real rows only: the header plus every row whose name is one of these, so tests cover ranking and ambiguity.
 CGN_NAMES = ["Squamish", "Whistler", "Lake Louise", "Banff", "Canmore", "Revelstoke", "Edmonton", "Tofino",
-             "Mount Robson", "Bow River", "Rivière-du-Loup", "Trois-Rivières", "Garibaldi", "Kelowna", "Jasper"].freeze
+             "Mount Robson", "Bow River", "Rivière-du-Loup", "Trois-Rivières", "Garibaldi", "Kelowna", "Jasper", "Québec", "Montréal",
+             "Alberta", "Ottawa", "Ottawa River", "Rivière des Outaouais"].freeze
 
 def fetch(url)
   uri = URI(url)
