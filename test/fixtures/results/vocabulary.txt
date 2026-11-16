@@ -121,6 +121,7 @@ min_lon
 min_records
 min_temperature_c
 min_temperature_past_24h_c
+model_ground_elevation_m
 model_runs
 month
 month_end_snow_depth_cm
@@ -149,6 +150,7 @@ period
 periods
 precip_chance_pct
 precipitation
+precipitation_at_elevation
 precipitation_past_24h_mm
 precipitation_past_6h_mm
 precipitation_past_hour_mm

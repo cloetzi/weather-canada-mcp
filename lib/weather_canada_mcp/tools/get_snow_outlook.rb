@@ -11,6 +11,10 @@ module WeatherCanadaMCP
       STEP_HOURS = { 12 => 3, 24 => 6, 48 => 12 }.freeze
       SNOW_LEVEL = %w[HRDPS-WEonG_2.5km_SnowLevelHeight RDPS-WEonG_10km_SnowLevelHeight].freeze
       BLOWING_SNOW = "HRDPS-WEonG_2.5km_BlowingSnow-Prob"
+      # The ground height of each model, in the same order: snow levels are heights above sea level, so they are read against it.
+      OROGRAPHY = %w[HRDPS-WEonG_2.5km_Orography RDPS-WEonG_10km_Orography].freeze
+      # Within this many metres of the snow level the precipitation type is a toss-up.
+      TRANSITION_M = 100
       # GeoMet's snow level codes for "no snow level to report" (the number is not a height).
       SNOW_LEVEL_CODES = {
         -1 => { "en" => "partly melted: the snow level is close to the surface",
@@ -27,12 +31,17 @@ module WeatherCanadaMCP
         Model guidance for snow at a point over the next 12, 24 or 48 hours, in four steps: the snow level (metres above
         sea level below which snow turns to rain, HRDPS 2.5 km), new snow as water equivalent (mm, RDPS 10 km) with an
         estimate in cm, and the probability of blowing snow. Raw model output, not a forecaster's forecast or an avalanche
-        bulletin; for text forecasts use get_forecast.
+        bulletin; for text forecasts use get_forecast. model_ground_elevation_m is the height of the ground in the model,
+        which can differ a lot from the real terrain in the mountains: compare snow_level_m with it, or give elevation_m to
+        see what falls at that height (rain below the snow level, snow above it).
       TEXT
       location_arguments
       argument :hours, :integer, in: STEP_HOURS.keys, default: 24, description: "How far ahead to look: 12, 24 or 48 hours."
+      argument :elevation_m, :integer, in: 0..6000, description: "Height in metres above sea level to judge snow or rain at (a ski hill, a pass)."
       argument :lang, :language
 
+      output :model_ground_elevation_m, :integer, "The height of the ground in the weather model at this point, in metres."
+      output :elevation_m, :integer, "The height asked about."
       output :step_hours, :integer, "Hours in each step."
       output :steps, :array, "The steps, each with its snow level, new snow and blowing snow probability."
       output :total_new_snow_water_mm, :number, "New snow over all steps, as water equivalent."
@@ -44,14 +53,19 @@ module WeatherCanadaMCP
         lang = args.lang
         point = args.point
         step = STEP_HOURS.fetch(args.hours)
-        # The step that contains now comes first.
-        start = Time.at(now.to_i / (step * 3600) * (step * 3600)).utc
-        ends = (1..STEPS).map { |k| start + (k * step * 3600) }
-        steps = concurrently(ends) { |to| step(point, to - (step * 3600), to, step, lang) }
-        shape(point, steps, step)
+        ground, steps = concurrently([-> { ground_elevation(point) }, -> { steps(point, step, lang) }], &:call)
+        steps.each { |entry| entry[:precipitation_at_elevation] = precipitation_at(entry, args.elevation_m) } if args.elevation_m
+        shape(point, steps, step).merge(model_ground_elevation_m: ground, elevation_m: args.elevation_m).compact
       end
 
       private
+
+      # The step that contains now comes first.
+      def steps(point, hours, lang)
+        start = Time.at(now.to_i / (hours * 3600) * (hours * 3600)).utc
+        ends = (1..STEPS).map { |k| start + (k * hours * 3600) }
+        concurrently(ends) { |to| step(point, to - (hours * 3600), to, hours, lang) }
+      end
 
       def step(point, from, to, hours, lang)
         level, snow, blowing = concurrently(
@@ -75,6 +89,26 @@ module WeatherCanadaMCP
           return { snow_level: code&.dig(lang), run: time(found.reference_time) }
         end
         {}
+      end
+
+      # The model's ground height at the point, to the nearest 10 m like the snow level, from the first model that covers it.
+      def ground_elevation(point)
+        OROGRAPHY.each do |layer|
+          found = wms_value(layer, point)
+          return (found.value / 10.0).round * 10 if found
+        end
+        nil
+      end
+
+      # Snow above the snow level and rain below it; a toss-up close to it. The codes -2 (snow to the surface) and -1
+      # (partly melted, snow near the ground) have no height.
+      def precipitation_at(entry, elevation)
+        level = entry[:snow_level_m]
+        return "snow" if level && elevation >= level + TRANSITION_M
+        return "rain" if level && elevation <= level - TRANSITION_M
+        return "rain or snow: close to the snow level" if level
+
+        entry[:snow_level] ? "snow or a mix: the snow is partly melted near the ground" : nil
       end
 
       # Centimetres of snow for millimetres of water at SNOW_TO_LIQUID.

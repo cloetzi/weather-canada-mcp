@@ -1,0 +1,25 @@
+{
+  "type": "FeatureCollection",
+  "layer": "HRDPS-WEonG_2.5km_Orography",
+  "features": [
+    {
+      "type": "Feature",
+      "id": "HRDPS-WEonG_2.5km_Orography(-122.9682,50.11939)",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.9682,
+          50.1194
+        ]
+      },
+      "properties": {
+        "value": 890.23114,
+        "class": "800 - 1000",
+        "title_en": "HRDPS-WEonG - Model orography [m]",
+        "title_fr": "SHRPD-ETsurG - Orographie du modèle [m]",
+        "time": "2026-11-16T00:00:00Z",
+        "dim_reference_time": "2026-11-15T18:00:00Z"
+      }
+    }
+  ]
+}

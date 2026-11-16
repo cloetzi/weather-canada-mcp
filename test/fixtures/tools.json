@@ -460,7 +460,7 @@
   {
     "name": "get_snow_outlook",
     "title": "Get the snow outlook",
-    "description": "Model guidance for snow at a point over the next 12, 24 or 48 hours, in four steps: the snow level (metres above sea level below which snow turns to rain, HRDPS 2.5 km), new snow as water equivalent (mm, RDPS 10 km) with an estimate in cm, and the probability of blowing snow. Raw model output, not a forecaster's forecast or an avalanche bulletin; for text forecasts use get_forecast.",
+    "description": "Model guidance for snow at a point over the next 12, 24 or 48 hours, in four steps: the snow level (metres above sea level below which snow turns to rain, HRDPS 2.5 km), new snow as water equivalent (mm, RDPS 10 km) with an estimate in cm, and the probability of blowing snow. Raw model output, not a forecaster's forecast or an avalanche bulletin; for text forecasts use get_forecast. model_ground_elevation_m is the height of the ground in the model, which can differ a lot from the real terrain in the mountains: compare snow_level_m with it, or give elevation_m to see what falls at that height (rain below the snow level, snow above it).",
     "input_schema": {
       "type": "object",
       "properties": {
@@ -491,6 +491,12 @@
           "default": 24,
           "description": "How far ahead to look: 12, 24 or 48 hours."
         },
+        "elevation_m": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 6000,
+          "description": "Height in metres above sea level to judge snow or rain at (a ski hill, a pass)."
+        },
         "lang": {
           "type": "string",
           "enum": [
@@ -508,6 +514,14 @@
         "location": {
           "type": "object",
           "description": "The point the result is for."
+        },
+        "model_ground_elevation_m": {
+          "type": "integer",
+          "description": "The height of the ground in the weather model at this point, in metres."
+        },
+        "elevation_m": {
+          "type": "integer",
+          "description": "The height asked about."
         },
         "step_hours": {
           "type": "integer",

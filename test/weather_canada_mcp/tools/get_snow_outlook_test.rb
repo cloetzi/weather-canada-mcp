@@ -43,6 +43,46 @@ class GetSnowOutlookTest < Minitest::Test
     assert_equal 0, first["blowing_snow_probability_pct"]
   end
 
+  def test_the_ground_height_of_the_model
+    result = outlook(**WHISTLER).first
+    ground = captured("whistler", "HRDPS-WEonG_2.5km_Orography", "latest")
+
+    assert_equal (ground / 10.0).round * 10, result["model_ground_elevation_m"]
+    refute result.key?("elevation_m")
+    refute(result["steps"].any? { |step| step.key?("precipitation_at_elevation") })
+  end
+
+  def test_snow_or_rain_at_a_given_height
+    result = outlook(**WHISTLER, elevation_m: 1500).first
+    steps = result["steps"].select { |step| step["snow_level_m"] }
+
+    assert_equal 1500, result["elevation_m"]
+    refute_empty steps
+    steps.each do |step|
+      expected = if step["snow_level_m"] + 100 <= 1500 then "snow"
+                 elsif step["snow_level_m"] - 100 >= 1500 then "rain"
+                 else "rain or snow: close to the snow level"
+                 end
+
+      assert_equal expected, step["precipitation_at_elevation"], step["snow_level_m"]
+    end
+  end
+
+  def test_a_height_near_the_snow_level_is_a_toss_up
+    level = outlook(**WHISTLER).first["steps"].first["snow_level_m"]
+    first = outlook(**WHISTLER, elevation_m: level + 50).first["steps"].first
+
+    assert_match(/close to the snow level/, first["precipitation_at_elevation"])
+  end
+
+  def test_the_snow_level_codes_have_no_type_at_a_height
+    result = outlook(**WHITEHORSE, elevation_m: 700).first
+    coded = result["steps"].select { |step| step["snow_level"] }
+
+    refute_empty coded
+    coded.each { |step| assert_includes ["snow or a mix: the snow is partly melted near the ground", nil], step["precipitation_at_elevation"] }
+  end
+
   def test_total_new_snow_is_the_sum_of_the_steps
     result = outlook(**WHISTLER).first
 
@@ -68,10 +108,13 @@ class GetSnowOutlookTest < Minitest::Test
     _, _, requests = outlook(**WHISTLER)
     wms = requests.select { |request| request.path == "/geomet" }
 
-    assert_equal 12, wms.size
+    steps = wms.reject { |request| request.query["LAYERS"].end_with?("Orography") }
+
+    assert_equal 12, steps.size
     assert_equal %w[HRDPS-WEonG_2.5km_BlowingSnow-Prob HRDPS-WEonG_2.5km_SnowLevelHeight RDPS_10km_Snow-Accum6h],
-                 wms.map { |request| request.query["LAYERS"] }.uniq.sort
-    assert(wms.all? { |request| request.query["TIME"].match?(/\A2026-11-1[56]T\d\d:00:00Z\z/) })
+                 steps.map { |request| request.query["LAYERS"] }.uniq.sort
+    assert(steps.all? { |request| request.query["TIME"].match?(/\A2026-11-1[56]T\d\d:00:00Z\z/) })
+    assert_equal(["HRDPS-WEonG_2.5km_Orography"], (wms - steps).map { |request| request.query["LAYERS"] })
   end
 
   def test_steps_the_models_cannot_answer_are_noted

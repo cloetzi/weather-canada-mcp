@@ -61,6 +61,7 @@ Arguments: `location`, `lat`, `lon`, `lang` wherever they apply; `limit` for "ho
 | When measured | `observed_at` | `time` only for entries of a time series |
 | When issued | `issued_at` | |
 | Validity | `valid_from`, `valid_until`, `expires_at` | |
+| Model terrain | `model_ground_elevation_m` | the height of the ground in a weather model, not of the real terrain |
 | Site used | block with `id`, `name`, `distance_km`, and `elevation_m`, `lat`, `lon` where known | |
 | Caveat | `note` | one string |
 | Links, credit | `source_url`, `url`, `attribution` | |
