@@ -208,6 +208,9 @@ FIXTURES = {
   # M3: get_snow_outlook (Whistler, 24 hours; Whitehorse, whose snow level is below the ground or near it)
   **snow_outlook("whistler", *WHISTLER),
   **snow_outlook("whitehorse", *WHITEHORSE, %w[HRDPS-WEonG_2.5km_SnowLevelHeight]),
+  # The model ground height (no TIME: the layer's latest)
+  "geomet/whistler/HRDPS-WEonG_2.5km_Orography_latest.json" => feature_info("HRDPS-WEonG_2.5km_Orography", *WHISTLER),
+  "geomet/whitehorse/HRDPS-WEonG_2.5km_Orography_latest.json" => feature_info("HRDPS-WEonG_2.5km_Orography", *WHITEHORSE),
   # get_marine_forecast (Squamish, at the head of Howe Sound; Halifax, whose areas are split and under warnings)
   "api/marineweather-realtime_squamish.json" => items("marineweather-realtime", bbox: bbox_km(*SQUAMISH, 25), limit: 50),
   "api/marineweather-realtime_halifax.json" => items("marineweather-realtime", bbox: bbox_km(*HALIFAX, 25), limit: 50),
