@@ -192,6 +192,16 @@ FIXTURES = {
   "api/aqhi-forecasts-realtime_JAFUV.json" => items("aqhi-forecasts-realtime", location_id: "JAFUV", aqhi_type: "AQHI-Forecast-Period",
                                                                                sortby: "-publication_datetime", skipGeometry: true,
                                                                                limit: 1),
+  # Locations with a forecast but no observation: the list the tool searches, and Québec's forecast
+  "api/aqhi-forecasts-realtime_list.json" => items("aqhi-forecasts-realtime", aqhi_type: "AQHI-Forecast-Period",
+                                                                              properties: "location_id,location_name_en,location_name_fr",
+                                                                              limit: 5000),
+  "api/aqhi-forecasts-realtime_EGLTT.json" => items("aqhi-forecasts-realtime", location_id: "EGLTT", aqhi_type: "AQHI-Forecast-Period",
+                                                                               sortby: "-publication_datetime", skipGeometry: true,
+                                                                               limit: 1),
+  "api/aqhi-forecasts-realtime_EHTWR.json" => items("aqhi-forecasts-realtime", location_id: "EHTWR", aqhi_type: "AQHI-Forecast-Period",
+                                                                               sortby: "-publication_datetime", skipGeometry: true,
+                                                                               limit: 1),
   # M3: get_snow_outlook (Whistler, 24 hours; Whitehorse, whose snow level is below the ground or near it)
   **snow_outlook("whistler", *WHISTLER),
   **snow_outlook("whitehorse", *WHITEHORSE, %w[HRDPS-WEonG_2.5km_SnowLevelHeight]),

@@ -380,7 +380,7 @@
   {
     "name": "get_air_quality",
     "title": "Get air quality",
-    "description": "The Air Quality Health Index (AQHI, 1 to 10+, higher is worse) at the nearest AQHI location (within 100 km): the latest hourly observation and the forecast for today, tonight, tomorrow and later, each with its risk category and health messages for the general population and for people at risk.",
+    "description": "The Air Quality Health Index (AQHI, 1 to 10+, higher is worse) at the nearest AQHI location (within 100 km): the latest hourly observation and the forecast for today, tonight, tomorrow and later, each with its risk category and health messages for the general population and for people at risk. A few locations (Montréal, Québec, Gatineau, Whitehorse) have a forecast only: their current value is null.",
     "input_schema": {
       "type": "object",
       "properties": {

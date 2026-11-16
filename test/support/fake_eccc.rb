@@ -41,6 +41,8 @@ class FakeEccc
     "swob-stations" => "api/swob-stations_whistler.json",
     "hydrometric-stations" => "api/hydrometric-stations_squamish.json",
     "aqhi-observations-realtime" => "api/aqhi-observations-realtime_kelowna.json",
+    # The forecast locations; a query naming one gets api/aqhi-forecasts-realtime_<id>.json (KEYED_FIXTURES).
+    "aqhi-forecasts-realtime" => "api/aqhi-forecasts-realtime_list.json",
     "marineweather-realtime" => "api/marineweather-realtime_squamish.json",
     "ltce-temperature" => "api/ltce-temperature_whistler.json",
     "ltce-precipitation" => "api/ltce-precipitation_whistler.json",

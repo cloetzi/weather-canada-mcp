@@ -24,6 +24,31 @@ class GetAirQualityTest < Minitest::Test
     assert_equal [2, "low"], forecast["periods"].first.values_at("aqhi", "risk")
   end
 
+  # Québec has a forecast but no hourly observation: it is the nearest location although an observation site is not far.
+  def test_a_location_with_a_forecast_only
+    result, error = air_quality(lat: 46.81, lon: -71.21)
+
+    refute error
+    assert_equal "EHTWR", result.dig("aqhi_location", "id")
+    assert_equal "Quebec", result.dig("aqhi_location", "name")
+    assert_nil result.dig("current", "aqhi")
+    assert_equal "This location publishes a forecast but no hourly observation.", result.dig("current", "note")
+    refute_empty result.dig("forecast", "periods")
+    assert_includes result["health_messages"].keys.first, "low"
+  end
+
+  def test_a_forecast_only_location_names_the_nearest_observation
+    result, error = air_quality(lat: 45.48, lon: -75.65)
+
+    refute error
+    assert_equal "EGLTT", result.dig("aqhi_location", "id")
+    assert_match(/no hourly observation\. The nearest observation is at .+, 5\.\d km away\./, result.dig("current", "note"))
+  end
+
+  def test_an_observation_site_that_is_nearer_than_a_forecast_only_location_wins
+    assert_equal "JAFUV", air_quality(**KELOWNA).first.dig("aqhi_location", "id")
+  end
+
   def test_health_messages_once_per_risk_category
     messages = air_quality(**KELOWNA).first["health_messages"]
 
@@ -41,7 +66,8 @@ class GetAirQualityTest < Minitest::Test
 
   def test_asks_for_period_forecasts_of_that_location
     _, _, requests = air_quality(**KELOWNA)
-    observations, forecasts = requests.map(&:query)
+    observations = requests.map(&:query).find { |query| query["latest"] }
+    forecasts = requests.map(&:query).find { |query| query["location_id"] }
 
     assert_equal "true", observations["latest"]
     assert_equal({ "location_id" => "JAFUV", "aqhi_type" => "AQHI-Forecast-Period", "sortby" => "-publication_datetime", "limit" => "1" },
@@ -50,7 +76,8 @@ class GetAirQualityTest < Minitest::Test
 
   def test_no_location_nearby
     empty = '{"type":"FeatureCollection","features":[]}'
-    result, = air_quality(**KELOWNA, routes: { "/collections/aqhi-observations-realtime/items" => ->(_) { [200, {}, empty] } })
+    result, = air_quality(**KELOWNA, routes: { "/collections/aqhi-observations-realtime/items" => ->(_) { [200, {}, empty] },
+                                               "/collections/aqhi-forecasts-realtime/items" => ->(_) { [200, {}, empty] } })
 
     assert_match(/No AQHI location within 100 km/, result["note"])
   end
