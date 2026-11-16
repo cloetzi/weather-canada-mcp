@@ -4,18 +4,18 @@
     "lon": -122.96,
     "timezone": "America/Vancouver"
   },
-  "observed_at": "2026-11-15T11:30:00-08:00",
+  "observed_at": "2026-11-15T12:30:00-07:00",
   "at_point": {
     "snow_cm_per_h": 0,
     "rain_mm_per_h": 0
   },
   "past_hour": [
     {
-      "time": "2026-11-15T11:00:00-08:00",
+      "time": "2026-11-15T12:00:00-07:00",
       "snow_cm_per_h": 0
     },
     {
-      "time": "2026-11-15T10:30:00-08:00",
+      "time": "2026-11-15T11:30:00-07:00",
       "snow_cm_per_h": 0
     }
   ],

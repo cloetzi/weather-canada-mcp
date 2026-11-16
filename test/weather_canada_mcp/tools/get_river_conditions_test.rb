@@ -25,7 +25,7 @@ class GetRiverConditionsTest < Minitest::Test
     refute error
     assert_equal(%w[08GA076 08GA075 08GA022], result["gauges"].map { |gauge| gauge["id"] })
     assert_equal ["SQUAMISH RIVER NEAR BRACKENDALE", "BC", 2353, 11], squamish.values_at("name", "province", "drainage_area_km2", "distance_km")
-    assert_equal({ "observed_at" => "2026-11-15T10:05:00-08:00", "level_m" => 4.66, "discharge_m3s" => 660.0 }, squamish["latest"])
+    assert_equal({ "observed_at" => "2026-11-15T11:05:00-07:00", "level_m" => 4.66, "discharge_m3s" => 660.0 }, squamish["latest"])
     assert_equal "https://wateroffice.ec.gc.ca/report/real_time_e.html?stn=08GA022", squamish["url"]
   end
 

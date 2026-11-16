@@ -16,7 +16,7 @@
       "lon": -123.14647674560548,
       "url": "https://wateroffice.ec.gc.ca/report/real_time_e.html?stn=08GA076",
       "latest": {
-        "observed_at": "2026-11-15T09:35:00-08:00",
+        "observed_at": "2026-11-15T10:35:00-07:00",
         "level_m": 2.654,
         "discharge_m3s": 43.4
       },
@@ -54,7 +54,7 @@
       "lon": -123.1020965576172,
       "url": "https://wateroffice.ec.gc.ca/report/real_time_e.html?stn=08GA075",
       "latest": {
-        "observed_at": "2026-11-15T08:05:00-08:00",
+        "observed_at": "2026-11-15T09:05:00-07:00",
         "level_m": 3.084,
         "discharge_m3s": 103.0
       },
@@ -92,7 +92,7 @@
       "lon": -123.20316314697266,
       "url": "https://wateroffice.ec.gc.ca/report/real_time_e.html?stn=08GA022",
       "latest": {
-        "observed_at": "2026-11-15T10:05:00-08:00",
+        "observed_at": "2026-11-15T11:05:00-07:00",
         "level_m": 4.66,
         "discharge_m3s": 660.0
       },

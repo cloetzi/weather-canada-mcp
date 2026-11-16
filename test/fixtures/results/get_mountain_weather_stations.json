@@ -14,7 +14,7 @@
       "lat": 51.46954,
       "lon": -116.34969,
       "latest": {
-        "observed_at": "2026-11-15T12:00:00-07:00",
+        "observed_at": "2026-11-15T13:00:00-06:00",
         "temperature_c": -4.5,
         "humidity_pct": 96,
         "wind_speed_kmh": 48,
@@ -24,13 +24,13 @@
         "wind_gust_direction": "S"
       },
       "window": {
-        "from": "2026-11-14T13:00:00-07:00",
+        "from": "2026-11-14T14:00:00-06:00",
         "readings": 24,
         "min_temperature_c": -7.1,
         "max_temperature_c": -2.2,
         "max_gust_kmh": 82.9,
         "max_gust_direction": "SE",
-        "max_gust_at": "2026-11-15T11:00:00-07:00"
+        "max_gust_at": "2026-11-15T12:00:00-06:00"
       }
     },
     {
@@ -42,13 +42,13 @@
       "lat": 51.45722,
       "lon": -116.357834,
       "latest": {
-        "observed_at": "2026-11-15T12:00:00-07:00",
+        "observed_at": "2026-11-15T13:00:00-06:00",
         "temperature_c": 0.7,
         "humidity_pct": 63,
         "snow_depth_cm": 14.6
       },
       "window": {
-        "from": "2026-11-14T13:00:00-07:00",
+        "from": "2026-11-14T14:00:00-06:00",
         "readings": 24,
         "snow_depth_change_cm": -0.1,
         "new_snow_cm": 3,
@@ -65,7 +65,7 @@
       "lat": 51.2126,
       "lon": -116.11409,
       "latest": {
-        "observed_at": "2026-11-15T12:00:00-07:00",
+        "observed_at": "2026-11-15T13:00:00-06:00",
         "temperature_c": -4.2,
         "humidity_pct": 93,
         "wind_speed_kmh": 31,
@@ -75,13 +75,13 @@
         "wind_gust_direction": "SW"
       },
       "window": {
-        "from": "2026-11-14T13:00:00-07:00",
+        "from": "2026-11-14T14:00:00-06:00",
         "readings": 24,
         "min_temperature_c": -5.9,
         "max_temperature_c": -0.7,
         "max_gust_kmh": 55.4,
         "max_gust_direction": "W",
-        "max_gust_at": "2026-11-15T07:00:00-07:00"
+        "max_gust_at": "2026-11-15T08:00:00-06:00"
       }
     }
   ],

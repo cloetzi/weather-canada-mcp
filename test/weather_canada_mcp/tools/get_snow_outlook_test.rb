@@ -28,9 +28,9 @@ class GetSnowOutlookTest < Minitest::Test
     assert_equal 6, result["step_hours"]
     starts = result["steps"].map { |step| step["valid_from"] }
 
-    assert_equal %w[2026-11-15T10:00:00-08:00 2026-11-15T16:00:00-08:00 2026-11-15T22:00:00-08:00 2026-11-16T04:00:00-08:00], starts
-    assert_equal "2026-11-16T10:00:00-08:00", result["steps"].last["valid_until"]
-    assert_equal ["2026-11-15T04:00:00-08:00"], result["model_runs"]
+    assert_equal %w[2026-11-15T11:00:00-07:00 2026-11-15T17:00:00-07:00 2026-11-15T23:00:00-07:00 2026-11-16T05:00:00-07:00], starts
+    assert_equal "2026-11-16T11:00:00-07:00", result["steps"].last["valid_until"]
+    assert_equal ["2026-11-15T05:00:00-07:00"], result["model_runs"]
   end
 
   def test_snow_level_new_snow_and_blowing_snow_at_the_end_of_each_step

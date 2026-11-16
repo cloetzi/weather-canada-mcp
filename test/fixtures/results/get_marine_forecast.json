@@ -9,7 +9,7 @@
       "name": "Howe Sound",
       "region": "Pacific Coast",
       "sub_region": "Georgia Basin",
-      "issued_at": "2026-11-15T09:30:00-08:00",
+      "issued_at": "2026-11-15T10:30:00-07:00",
       "warnings": [],
       "forecast": [
         {
@@ -19,7 +19,7 @@
         }
       ],
       "extended_forecast": {
-        "issued_at": "2026-11-15T03:00:00-08:00",
+        "issued_at": "2026-11-15T04:00:00-07:00",
         "periods": [
           {
             "period": "Tuesday",

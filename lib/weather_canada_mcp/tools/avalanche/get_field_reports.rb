@@ -62,8 +62,8 @@ module WeatherCanadaMCP
 
         private
 
-        # Report dates are local. Canadian dates run from UTC-2.5 to UTC-8, so the period ends on today's UTC date and starts
-        # days - 1 before today at UTC-8, within MIN's 31-day limit.
+        # Report dates are local. Canadian dates run from UTC-2.5 to UTC-7, so the period ends on today's UTC date and starts
+        # days - 1 before today at UTC-7, within MIN's 31-day limit.
         def period(days)
           to = now.utc.to_date
           from = [LocalTime.date(now, nil) - (days - 1), to - (MAX_DAYS - 1)].max
