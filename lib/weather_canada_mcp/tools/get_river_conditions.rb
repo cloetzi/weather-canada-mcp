@@ -35,9 +35,10 @@ module WeatherCanadaMCP
         lang = args.lang
         point = args.point
         limit = args.limit
-        filter = river_filter(args.river) || river_place_filter(point)
+        # An explicit river replaces the river the location names.
+        filter, source = (argument = river_filter(args.river)) ? [argument, :argument] : [river_place_filter(point), :place]
         stations = gauges(point, filter, limit).then { |nearest| concurrently(nearest) { |distance, feature| gauge(feature, distance, lang) } }
-        { location: point.to_h, gauges: stations, note: note(stations, filter, args.river) }.compact
+        { location: point.to_h, gauges: stations, note: note(stations, filter && source, args.river) }.compact
       end
 
       private
@@ -45,7 +46,7 @@ module WeatherCanadaMCP
       def river_filter(river)
         return if river.nil?
 
-        normalized = normalize(river)
+        normalized = RiverNames.normalize(river)
         normalized.empty? ? nil : ->(name) { name.include?(normalized) }
       end
 
@@ -59,23 +60,21 @@ module WeatherCanadaMCP
 
       def gauges(point, filter, limit)
         stations.hydrometric.nearest(point.lat, point.lon, count: limit, radius_km: RADIUS_KM) do |feature|
-          filter.nil? || filter.call(normalize(feature.dig("properties", "STATION_NAME").to_s))
+          filter.nil? || filter.call(RiverNames.normalize(feature.dig("properties", "STATION_NAME").to_s))
         end
       end
 
-      def note(gauges, filter, river)
-        return "Only gauges on the river are listed; give a town on it for another stretch." if gauges.any? && river.nil? && filter
+      # source is :argument or :place, the origin of the river filter, or nil without one.
+      def note(gauges, source, river)
+        return "Only gauges on the river are listed; give a town on it for another stretch." if gauges.any? && source == :place
         return unless gauges.empty?
 
-        if river.nil? && filter
-          "No real-time gauge on this river within #{RADIUS_KM} km of the spot its name resolves to. Give a town on the river instead."
-        else
-          "No real-time gauge#{" named like #{river.inspect}" if filter} within #{RADIUS_KM} km."
+        case source
+        when :place then "No real-time gauge on this river within #{RADIUS_KM} km of the spot its name resolves to. Give a town on the river instead."
+        when :argument then "No real-time gauge named like #{river.inspect} within #{RADIUS_KM} km."
+        else "No real-time gauge within #{RADIUS_KM} km."
         end
       end
-
-      # Upper case without accents, so "riviere" matches "RIVIÈRE".
-      def normalize(text) = RiverNames.normalize(text)
 
       def gauge(feature, distance, lang)
         info = gauge_info(feature, distance, lang)

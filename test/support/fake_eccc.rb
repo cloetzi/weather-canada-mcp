@@ -137,7 +137,7 @@ class FakeEccc
   # The gauges of the Ottawa River area when the bbox reaches it, otherwise those around Squamish.
   def hydrometric_stations_fixture(bbox)
     min_lon, _, max_lon, = bbox.to_s.split(",").map(&:to_f)
-    min_lon < -73 && max_lon > -75 ? "api/hydrometric-stations_ottawa-river.json" : "api/hydrometric-stations_squamish.json"
+    bbox && min_lon < -73 && max_lon > -75 ? "api/hydrometric-stations_ottawa-river.json" : "api/hydrometric-stations_squamish.json"
   end
 
   # GetFeatureInfo fixtures are named after the place, layer and time: geomet/<place>/<layer>_<yyyymmddThhmmZ>.json.

@@ -80,9 +80,23 @@ class GetRiverConditionsTest < Minitest::Test
       names = result["gauges"].map { |gauge| gauge["name"] }
 
       refute_empty names, location
-      assert(names.all? { |name| name.start_with?("OUTAOUAIS (RIVIERE DES)", "OTTAWA RIVER") }, "#{location}: #{names}")
+      assert(names.all? { |name| name.start_with?("OUTAOUAIS (RIVIERE DES)") }, "#{location}: #{names}")
       assert_match(/Only gauges on the river/, result["note"])
     end
+  end
+
+  def test_a_blank_river_argument_leaves_the_river_of_the_location
+    result, = rivers(location: "Ottawa River", river: "  ")
+
+    refute_empty result["gauges"]
+    assert_match(/Only gauges on the river/, result["note"])
+  end
+
+  def test_a_river_argument_replaces_the_river_of_the_location
+    result, = rivers(location: "Ottawa River", river: "no such gauge")
+
+    assert_empty result["gauges"]
+    assert_match(/named like "no such gauge"/, result["note"])
   end
 
   def test_a_river_with_no_gauge_near_asks_for_a_town
@@ -98,8 +112,16 @@ class GetRiverConditionsTest < Minitest::Test
     assert filter.call("BOW RIVER AT BANFF")
     refute filter.call("ELBOW RIVER AT SARCEE BRIDGE")
     refute filter.call("LITTLE BOW RIVER AT CARMANGAY")
-    assert WeatherCanadaMCP::Tools::RiverNames.new(river("Rivière du Loup"), []).filter.call("LOUP (RIVIERE DU) A ESPRIT-SAINT")
+    refute filter.call("BOW RIVERSIDE CREEK")
     assert_nil WeatherCanadaMCP::Tools::RiverNames.new(river("Banff", "Town"), []).filter
+  end
+
+  def test_french_and_punctuated_river_names
+    assert WeatherCanadaMCP::Tools::RiverNames.new(river("Rivière du Loup"), []).filter.call("LOUP (RIVIERE DU) A ESPRIT-SAINT")
+    assert WeatherCanadaMCP::Tools::RiverNames.new(river("Rivière Dumoine"), []).filter.call("DUMOINE (RIVIERE) A LA SORTIE DU LAC ROBINSON")
+    assert WeatherCanadaMCP::Tools::RiverNames.new(river("Rivière de l'Outaouais"), []).filter.call("OUTAOUAIS (RIVIERE DE L') A X")
+    assert WeatherCanadaMCP::Tools::RiverNames.new(river("St. John River"), []).filter.call("ST JOHN RIVER AT FREDERICTON")
+    assert WeatherCanadaMCP::Tools::RiverNames.new(river("Rivière Saint-Jean"), []).filter.call("SAINT-JEAN (RIVIERE) A X")
   end
 
   def river(name, type = "River") = WeatherCanadaMCP::Places::Gazetteer::Place.new(name, type, "Water Feature", "Alberta", 50.0, -115.0, 68.0)

@@ -6,7 +6,7 @@ module WeatherCanadaMCP
     # and "OUTAOUAIS (RIVIERE DES) A HULL" in French, and the gazetteer lists a river under both names, so the names of every
     # river record at the same spot are used.
     class RiverNames
-      ARTICLE = /(?:DES|DU|DE LA|DE L'|DE|D'|LA|LES|LE|L')\s*/
+      ARTICLE = /(?:DE L'|D'|L'|(?:DES|DU|DE LA|DE|LA|LES|LE)\s+)/
       FRENCH = /\ARIVIERE (?:#{ARTICLE})?(.+)\z/
 
       # place is the resolved Gazetteer::Place (or nil); same_spot the gazetteer places around it.
@@ -18,12 +18,16 @@ module WeatherCanadaMCP
       # river's name ("BOW RIVER AT BANFF", but not "ELBOW RIVER AT SARCEE BRIDGE").
       def filter
         patterns = @places.flat_map { |place| patterns(self.class.normalize(place.name)) }.uniq
-        ->(gauge_name) { patterns.any? { |pattern| gauge_name.start_with?(pattern) } } if patterns.any?
+        ->(gauge_name) { patterns.any? { |pattern| on_river?(self.class.normalize(gauge_name), pattern) } } if patterns.any?
       end
 
-      def self.normalize(text) = text.unicode_normalize(:nfkd).gsub(/\p{Mn}/, "").upcase.squeeze(" ").strip
+      # Upper case without accents, periods or hyphens ("ST. JOHN" and "SAINT-JEAN" compare as "ST JOHN" and "SAINT JEAN").
+      def self.normalize(text) = text.unicode_normalize(:nfkd).gsub(/\p{Mn}/, "").upcase.delete(".").tr("-", " ").squeeze(" ").strip
 
       private
+
+      # The gauge name begins with the pattern, which ends at a word boundary ("BOW RIVER", not "BOW RIVERSIDE").
+      def on_river?(gauge_name, pattern) = gauge_name.start_with?(pattern) && !gauge_name[pattern.size]&.match?(/[A-Z0-9]/)
 
       # "RIVIERE DES OUTAOUAIS" => ["OUTAOUAIS (RIVIERE", "RIVIERE DES OUTAOUAIS"]
       def patterns(name)
