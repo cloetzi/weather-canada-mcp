@@ -550,7 +550,7 @@
   {
     "name": "get_marine_forecast",
     "title": "Get the marine forecast",
-    "description": "Environment Canada's marine forecast for the marine area at a location (coastal waters, large lakes, Arctic waters): wind in knots, weather and visibility, waves, air temperature and freezing spray for today and tomorrow, the extended wind forecast, and marine warnings in effect. A point on land gets the nearest areas within 25 km. Quote warnings as given, without rewording or shortening. For alerts on land use get_alerts.",
+    "description": "Environment Canada's marine forecast for the marine area at a location (coastal waters, large lakes, Arctic waters): wind in knots, weather and visibility, waves, air temperature and freezing spray for today and tomorrow, the extended wind forecast, and marine warnings in effect. A point on land gets the nearest areas within 25 km. Quote warnings as given, without rewording or shortening: the feed carries each warning's name, status and category only, not a text, so point people to the area's url for the full text. For alerts on land use get_alerts.",
     "input_schema": {
       "type": "object",
       "properties": {

@@ -58,6 +58,39 @@ class GetMarineForecastTest < Minitest::Test
     assert_equal([["Strong wind warning", "IN EFFECT"]] * 2, area["warnings"].map { |warning| warning.values_at("name", "status") })
   end
 
+  def test_each_area_links_to_its_own_page
+    area = marine(**HOWE_SOUND).first["marine_areas"].sole
+
+    assert_equal "https://weather.gc.ca/marine/forecast_e.html?mapID=02&siteID=06400", area["url"]
+    refute area["forecast"].sole.key?("url"), "a part that is the whole area has the area's page"
+    assert_equal "https://meteo.gc.ca/marine/forecast_f.html?mapID=02&siteID=06400",
+                 marine(**HOWE_SOUND, lang: "fr").first.dig("marine_areas", 0, "url")
+  end
+
+  def test_the_parts_of_a_split_area_have_their_own_pages
+    area = marine(**EASTERN_SHORE, routes: HALIFAX).first["marine_areas"].sole
+
+    assert_nil area["url"]
+    assert_equal ["https://weather.gc.ca/marine/forecast_e.html?mapID=14&siteID=04603"], area["forecast"].filter_map { |part| part["url"] }.first(1)
+  end
+
+  def test_warnings_carry_their_category
+    area = marine(**EASTERN_SHORE, routes: HALIFAX).first["marine_areas"].sole
+
+    assert_equal ["marine"], area["warnings"].map { |warning| warning["category"] }.uniq
+  end
+
+  def test_every_area_in_the_captured_data_has_a_page_but_the_split_whole_areas
+    names = %w[squamish halifax].flat_map do |place|
+      FakeEccc.fixture_json("api/marineweather-realtime_#{place}.json")["features"].flat_map do |feature|
+        parts = feature["properties"].dig("regularForecast", "locations").filter_map { |part| part.dig("name", "en") }
+        parts.empty? ? [feature["properties"].dig("area", "value", "en")] : parts
+      end
+    end
+
+    assert_empty(names.reject { |name| WeatherCanadaMCP::Sources::ECCC::MarineSites.url(name, "en") }, "areas without a page in marine_sites.json")
+  end
+
   def test_air_temperature_when_given
     area = marine(lat: 44.65, lon: -63.57, routes: HALIFAX).first["marine_areas"].sole
 

@@ -9,6 +9,7 @@
       "name": "Howe Sound",
       "region": "Pacific Coast",
       "sub_region": "Georgia Basin",
+      "url": "https://weather.gc.ca/marine/forecast_e.html?mapID=02&siteID=06400",
       "issued_at": "2026-11-15T10:30:00-07:00",
       "warnings": [],
       "forecast": [

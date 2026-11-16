@@ -1,0 +1,43 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+# Writes lib/weather_canada_mcp/sources/eccc/marine_sites.json: the weather.gc.ca page of every marine forecast area.
+#
+# The marineweather-realtime collection names each area but not its page, whose address needs a map and a site number
+# (forecast_e.html?mapID=02&siteID=06400 is Howe Sound). The 15 regional index pages list them all, so this reads those pages
+# once, offline, and nothing here runs at runtime. Review the diff: a changed site number means ECCC renumbered an area.
+#
+#   bin/generate-marine-sites
+
+require "cgi"
+require "json"
+require "net/http"
+
+TARGET = File.expand_path("../lib/weather_canada_mcp/sources/eccc/marine_sites.json", __dir__)
+USER_AGENT = "weather-canada-mcp-fixture-capture (+https://github.com/cloetzi/weather-canada-mcp)"
+LINK = /forecast_e\.html\?mapID=(\d+)&amp;siteID=(\d+)">([^<]+)</
+
+def fetch(map_id)
+  uri = URI("https://weather.gc.ca/marine/region_e.html?mapID=#{map_id}")
+  response = Net::HTTP.start(uri.host, uri.port, use_ssl: true) { |http| http.request(Net::HTTP::Get.new(uri, "user-agent" => USER_AGENT)) }
+  raise "#{uri}: HTTP #{response.code}" unless response.is_a?(Net::HTTPSuccess)
+
+  response.body.force_encoding(Encoding::UTF_8)
+end
+
+sites = {}
+(1..15).each do |number|
+  fetch(format("%02d", number)).scan(LINK) do |map_id, site_id, name|
+    name = CGI.unescapeHTML(name).strip
+    # An area is listed on several maps with the same site number; the page works with any of them.
+    previous = sites[name]
+    raise "#{name} has two site numbers: #{previous.last} and #{site_id}" if previous && previous.last != site_id
+
+    sites[name] ||= [map_id, site_id]
+  end
+  sleep 1
+end
+
+lines = sites.sort.map { |name, ids| "  #{JSON.generate(name)}: #{JSON.generate(ids)}" }
+File.write(TARGET, "{\n#{lines.join(",\n")}\n}\n")
+puts "#{sites.size} areas -> #{TARGET}"

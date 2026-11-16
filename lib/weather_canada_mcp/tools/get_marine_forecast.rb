@@ -18,7 +18,8 @@ module WeatherCanadaMCP
         Environment Canada's marine forecast for the marine area at a location (coastal waters, large lakes, Arctic
         waters): wind in knots, weather and visibility, waves, air temperature and freezing spray for today and tomorrow,
         the extended wind forecast, and marine warnings in effect. A point on land gets the nearest areas within 25 km.
-        Quote warnings as given, without rewording or shortening. For alerts on land use get_alerts.
+        Quote warnings as given, without rewording or shortening: the feed carries each warning's name, status and category
+        only, not a text, so point people to the area's url for the full text. For alerts on land use get_alerts.
       TEXT
       location_arguments
       argument :lang, :language
@@ -54,25 +55,36 @@ module WeatherCanadaMCP
       def area(feature, distance, lang)
         properties = feature["properties"]
         regular = properties["regularForecast"].is_a?(Hash) ? properties["regularForecast"] : {}
+        english = properties.dig("area", "value", "en")
         {
           name: text(properties.dig("area", "value"), lang), region: text(properties.dig("area", "region"), lang),
           sub_region: text(properties.dig("area", "subRegion"), lang), distance_km: distance && round_km(distance),
-          issued_at: issued(regular), warnings: warnings(properties["warnings"], lang),
-          forecast: forecast(regular, properties["waveForecast"], lang), extended_forecast: extended(properties["extendedForecast"], lang)
+          url: page(english, lang), issued_at: issued(regular), warnings: warnings(properties["warnings"], lang),
+          forecast: forecast(regular, properties["waveForecast"], english, lang),
+          extended_forecast: extended(properties["extendedForecast"], lang)
         }
       end
 
       # One entry per part of the area (some areas are split, "Kane - northern half"), with its waves.
-      def forecast(regular, waves, lang)
+      def forecast(regular, waves, area_name, lang)
         wave_parts = locations(waves)
         locations(regular).map do |part|
           name = text(part["name"], lang)
           condition = part["weatherCondition"].is_a?(Hash) ? part["weatherCondition"] : {}
           wave = wave_part(wave_parts, name, lang)
-          { part: name, status: text(part["statusStatement"], lang), period: text(condition["periodOfCoverage"], lang),
+          { part: name, url: part_page(part, area_name, lang), status: text(part["statusStatement"], lang),
+            period: text(condition["periodOfCoverage"], lang),
             **CONDITIONS.to_h { |key, field| [field, text(condition[key], lang)] },
             waves: (text(wave["textSummary"], lang) if wave.is_a?(Hash)) }
         end
+      end
+
+      def page(name, lang) = Sources::ECCC::MarineSites.url(name, lang)
+
+      # The page of a part of a split area ("Kane - northern half"); a part that is the whole area has the area's page.
+      def part_page(part, area_name, lang)
+        english = part.dig("name", "en")
+        page(english, lang) unless english == area_name
       end
 
       # The wave forecast for a part of the area: the one with the same name, else the one for the whole area.
@@ -100,7 +112,8 @@ module WeatherCanadaMCP
           Array(part["events"]).filter_map do |event|
             next unless event.is_a?(Hash) && event.dig("status", "en") != ENDED
 
-            { name: text(event["name"], lang), status: text(event["status"], lang), part: text(part["name"], lang) }
+            { name: text(event["name"], lang), status: text(event["status"], lang), category: text(event["category"], lang),
+              part: text(part["name"], lang) }
           end
         end
       end
