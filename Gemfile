@@ -2,8 +2,8 @@
 
 source "https://rubygems.org"
 
-ruby file: ".ruby-version"
-
+# No `ruby` directive: .ruby-version and the Dockerfile pick Ruby. With one, Gemfile.lock records the Ruby version, so a
+# Ruby patch update (which Renovate makes without touching the lockfile) fails `bundle install` in frozen mode.
 gemspec
 
 group :development, :test do
